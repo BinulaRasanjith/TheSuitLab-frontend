@@ -1,0 +1,71 @@
+export default {
+    button: {
+        pr: "10",
+        pl: "10",
+        pt: "1",
+        pb: "2",
+        fontSize: "xl",
+        colorScheme: "telegram",
+        rounded: "3xl",
+    },
+
+    inputEmail: {
+        rounded: "md",
+        fontSize: "xl",
+        pl: "5",
+        pb: "2",
+        pt: "2",
+        placeholder: "Example@gmail.com",
+        type: "email",
+        id: "email",
+        name: "email",
+        float: "left",
+    },
+
+    inputPassword: {
+        rounded: "md",
+        fontSize: "xl",
+        pl: "5",
+        pb: "2",
+        pt: "2",
+        placeholder: "Enter your password",
+        type: "password",
+        id: "password",
+        name: "password",
+        float: "left",
+    },
+
+    form: {
+        as: "form",
+        flex: "1",
+        display: "flex",
+        flexDirection: "column",
+        bg: "white",
+        boxShadow: "2xl",
+        position: "absolute",
+        top: "10",
+        right: { base: "10", sm: "30", md: "60" },
+        borderRadius: "3xl",
+        p: "8",
+        width: { base: "80%", sm: "70%", md: "60%", lg: "50%", xl: "40%" },
+    },
+
+    lowerContainer: {
+        flex: "1",
+        bg: "slate.200",
+        roundedBottomLeft: "3xl",
+        roundedBottomRight: "3xl",
+        pt: "5",
+        pr: { xl: "50", lg: "30", md: "20", base: "2" },
+        pl: { xl: "50", lg: "30", md: "20", base: "2" },
+        alignItems: "center",
+        justifyContent: "center",
+    },
+
+    loginBgImage: {
+        width: "50%",
+        height: "100vh",
+        objectFit: "cover",
+        objectPosition: "center",
+    },
+}

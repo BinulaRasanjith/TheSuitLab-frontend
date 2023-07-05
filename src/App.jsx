@@ -1,6 +1,7 @@
 import { useState } from "react"
 import api from "./config/api"
-import axios from "axios"
+
+import Login from "./pages/Login/Login"
 
 function App() {
   const [email, setEmail] = useState("")
@@ -35,7 +36,7 @@ function App() {
 
   return (
     <>
-      <div>
+      {/* <div>
         <form onSubmit={handleSubmit}>
           <h1>Login</h1>
           <label htmlFor="email">Email</label>
@@ -46,7 +47,9 @@ function App() {
         </form>
       </div>
 
-      <button onClick={handleClick}>get</button>
+      <button onClick={handleClick}>get</button> */}
+
+      <Login />
     </>
   )
 }
