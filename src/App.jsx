@@ -1,3 +1,4 @@
+
 import Login from "./pages/Login"
 import Dashboard from "./pages/dashboard";
 import Forgotpassword from "./pages/Forgotpassword";
@@ -23,6 +24,7 @@ const App=() =>{
         <Slideshow2/>
         <Landingbottomdetails/>
     </div>
+
   )
 }
 
