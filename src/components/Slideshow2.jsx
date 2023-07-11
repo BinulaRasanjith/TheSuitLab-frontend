@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs'
 import { RxDotFilled } from 'react-icons/rx'
 
@@ -14,10 +14,10 @@ const Slideshow2 = () => {
             url: "https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80"
         },
         {
-          url:"https://media.istockphoto.com/id/1093110112/photo/picturesque-morning-in-plitvice-national-park-colorful-spring-scene-of-green-forest-with-pure.jpg?s=612x612&w=0&k=20&c=lpQ1sQI49bYbTp9WQ_EfVltAqSP1DXg0Ia7APTjjxz4="
+            url: "https://media.istockphoto.com/id/1093110112/photo/picturesque-morning-in-plitvice-national-park-colorful-spring-scene-of-green-forest-with-pure.jpg?s=612x612&w=0&k=20&c=lpQ1sQI49bYbTp9WQ_EfVltAqSP1DXg0Ia7APTjjxz4="
         },
         {
-          url:"https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk="
+            url: "https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk="
         }
 
     ]
@@ -45,12 +45,12 @@ const Slideshow2 = () => {
 
     useEffect(() => {
         const length = slides.length
-   
+
         setTimeout(() => {
-         // Increment the current slide index
-         setCurrent(current === length - 1 ? 0 : current + 1)
-       }, 5000); // Delay in milliseconds (e.g., 3000 = 3 seconds)
-     },[current]);
+            // Increment the current slide index
+            setCurrent(current === length - 1 ? 0 : current + 1)
+        }, 5000); // Delay in milliseconds (e.g., 3000 = 3 seconds)
+    }, [current]);
 
     return (
         <div className='max-w-[1580px] h-[500px] w-full m-auto relative group  '>
@@ -76,11 +76,12 @@ const Slideshow2 = () => {
                 })
                 }
             </div>
-            <div className='flex flex-col absolute top-[40%] right-[20%]'>
-                <p className='text-4xl text-white font-bold'>Visit</p>
-                <p className='text-4xl text-white font-bold'>Our Collection</p>
-                <p className='text-4xl text-white font-bold pb-3'></p>
-                <button type="button" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">learn More</button>
+            <div className='flex flex-col absolute top-[30%] left-[10%]'>
+                <p className='text-4xl text-white font-bold pb-3'>Lookbook</p>
+                <p className='text-white pb-3'>This guide is meant to help you get<br></br> your finances organized and make the<br></br> most out of your student budget. If <br></br> you’re like most students at UCSB, you <br></br>probably...</p>
+                <button type="button" class="text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-3xl text-sm px-5 py-3 text-center inline-flex items-center dark:focus:ring-gray-500 mb-2 w-32 justify-center">
+                    Visit
+                </button>
             </div>
 
         </div>

@@ -26,3 +26,9 @@ body::-webkit-scrollbar-thumb {
 body::-webkit-scrollbar-thumb:hover {
   background-color: transparent;
 }
+
+.swiper-pagination {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}

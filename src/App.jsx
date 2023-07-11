@@ -1,18 +1,14 @@
 import React from 'react'
 import Navbar from './components/Navbar'
-import Slideshow from './components/Slideshow'
-import Landingbottomdetails from './components/Landingbottomdetails'
-import Slideshow2 from './components/Slideshow2'
+import Landingpage from './pages/Landingpage'
+import Home from './pages/Home'
+
 
 const App = () => {
   return (
     <div>
-      <Navbar />
-
-      <Slideshow />
-      <Slideshow2 />
-      <Landingbottomdetails />
-      
+      {/* <Landingpage /> */}
+      <Home />
     </div>
   )
 }
