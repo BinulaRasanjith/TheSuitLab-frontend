@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import Slideshow from '../components/Slideshow'
-import Landingbottomdetails from '../components/Landingbottomdetails'
+import Footer from '../components/Footer'
 import Slideshow2 from '../components/Slideshow2'
 import Landingfunpart from '../components/Landingfunpart'
 import Recentdesigns from '../components/Recentdesigns'
@@ -11,14 +11,14 @@ import Feedback from '../components/Feedback'
 const Landingpage = () => {
     return (
         <div>
-            <Navbar page="home"/>
+            <Navbar page="home" />
             <Slideshow />
             <Landingfunpart />
             <Slideshow2 />
-            <Recentdesigns/>
+            <Recentdesigns />
             <Customertestimonials />
             <Feedback />
-            <Landingbottomdetails />
+            <Footer />
         </div>
     )
 }

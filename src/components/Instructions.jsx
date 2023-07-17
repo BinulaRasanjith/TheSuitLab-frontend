@@ -2,7 +2,7 @@ import React from 'react'
 
 const Instructions = () => {
     return (
-        <div className='flex flex-col items-center justify-center bg-white rounded-xl shadow-xl mb-5 mx-5 border border-gray'>
+        <div className='flex flex-col items-center justify-center bg-white mb-5 mx-5'>
             <div className='p-3'>
                 <h1 className='text-3xl text-bold'>THE FIT MAKES YOU A REAL MEN</h1>
             </div>

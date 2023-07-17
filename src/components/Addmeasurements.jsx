@@ -3,9 +3,9 @@ import measurement from '../assets/images/measurement.png'
 
 const Addmeasurements = () => {
     return (
-        <div className='flex items-center justify-center opacity-75 bg-gradient-to-r from-gray-25 via-transparent to-gray-25 bg-opacity-75 my-10 sm:my-0'>
+        <div className='flex items-center justify-center opacity-75 bg-gradient-to-r from-gray-25 via-transparent to-gray-25 bg-opacity-75 my-10 sm:my-0 '>
             <div className='relative'>
-                <img className=' w-screen h-80 sm:h-auto bg-cover' src={measurement} alt="measurement" />
+                <img className=' w-screen h-80 sm:h-auto bg-cover brightness-50' src={measurement} alt="measurement" />
             </div>
             <div className='absolute flex flex-col items-center justify-center'>
                 <div className=' flex flex-col p-3'>

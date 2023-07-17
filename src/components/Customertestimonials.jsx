@@ -2,7 +2,7 @@ import React from 'react'
 
 const Customertestimonials = () => {
     return (
-        <div className='flex flex-col rounded-lg bg-black p-5 mx-10 my-5'>
+        <div className='flex flex-col rounded-xl bg-black p-5 mx-5 my-5'>
             <div>
                 <p className='text-white text-bold text-4xl pb-3'>Customer Testimonials</p>
             </div>

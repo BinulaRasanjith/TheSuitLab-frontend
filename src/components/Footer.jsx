@@ -4,18 +4,18 @@ import mastercard from '../assets/images/mastercard.png'
 import visa from '../assets/images/visa.png'
 
 
-const Landingbottomdetails = () => {
+const Footer = () => {
     return (
         <div className='bg-black'>
             <div className='flex flex-col md:flex-row md:justify-between gap-10 md:gap-0 py-8'>
-                <div className='md:pl-20 pl-10'>
+                <div className='md:pl-20 pl-5'>
                     <div><img className='h-20 w-60' src={TSL_LOGO} alt="TSL_LOGO" /></div>
                     <div className='text-white max-w-xl m-auto'>Hercules Tailors, the pioneer-tailoring mart which is located at No: 241,
                         Horana Road, Kohuwala, is one of the first few tailors in Sri Lanka to offer
                         custom-tailored suits and shirts and trousers.
                     </div>
                 </div>
-                <div className='flex flex-col md:flex-row md:justify-between md:gap-40 gap-10 md:pr-20 pr-10'>
+                <div className='flex flex-col md:flex-row md:justify-between md:gap-40 gap-10 md:pr-20 pl-5 pr-5'>
                     <div>
                         <h3 className='text-white text-2xl pb-3'>Shop</h3>
                         <ul>
@@ -50,4 +50,4 @@ const Landingbottomdetails = () => {
     )
 }
 
-export default Landingbottomdetails
+export default Footer

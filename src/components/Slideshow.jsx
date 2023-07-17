@@ -55,7 +55,7 @@ const Slideshow = () => {
 
 
   return (
-    <div className='max-w-[1580px] h-[500px] w-full m-auto pt-10 relative group  '>
+    <div className='max-w-[1580px] h-[500px] w-full m-auto pt-10 relative group flex items-center justify-center'>
       <div style={{ backgroundImage: `url(${slides[current].url})` }} className='w-full h-full bg-center bg-cover duration-500'></div>
 
        {/* left Arrow */}
@@ -77,9 +77,10 @@ const Slideshow = () => {
           )})
           }
        </div>
-       <div className='flex flex-col items-center absolute top-[40%] right-[20%]'>
-        <p className='text-5xl text-white font-bold'>Welcome to the world of</p>
-        <p className='text-5xl text-white font-bold py-3'>Gentleman</p>
+
+       <div className='flex flex-col items-center absolute '>
+        <p className='text-xl sm:text-2xl md:text-5xl text-white font-bold'>Welcome to the world of</p>
+        <p className='text-xl sm:text-2xl md:text-5xl text-white font-bold py-3'>Gentleman</p>
         <button type="button" class="py-2.5 bg-opacity-50 px-5 mr-2 mb-2 text-sm font-medium text-white rounded-lg border border-white border-4">Shop Now</button>
        </div>
 
