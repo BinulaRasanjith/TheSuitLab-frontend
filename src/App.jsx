@@ -15,10 +15,10 @@ const App = () => {
     <div>
       {/* <Landingpage /> */}
       {/* <Home /> */}
-      {/* <Services /> */}
+      <Services />
       {/* <Contactus /> */}
       {/* <Aboutus /> */}
-      <Login />
+      {/* <Login /> */}
       {/* <Signup /> */}
       {/* <Forgotpassword /> */}
     </div>
