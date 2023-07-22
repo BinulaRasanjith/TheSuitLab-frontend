@@ -1,10 +1,10 @@
+import { Button } from '@chakra-ui/react'
+
 import loginImage from '../assets/images/LoginBackground.png'
 import TSL_LOGO_SM from '../assets/images/TSL_LOGO_SM.png'
 import googleIcon from '../assets/images/googleIcon.png'
-// import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
- 
 
   return (
     <div >
@@ -60,24 +60,24 @@ const Login = () => {
 
               <div className='flex items-center flex-col'>
                 <div className='flex flex-col items-start px-1'>
-                  <div className='text-red-700 float-left '>Account does not exixt or Password is incorrect</div>
-                  <div className='text-stone-500 float-left '>Fogot Password?</div>
+                  <div className='text-red-700 float-left '>Account does not exist or Password is incorrect</div>
+                  <div className='text-stone-500 float-left '>Forgot Password?</div>
 
                 </div>
                 <div className='pb-3 float-left'>
-                  <button type="button" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-lg px-5 py-2.5 text-center mr-2 mb-2 ">Log In</button>
-
+                  {/* <button type="button" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-lg px-5 py-2.5 text-center mr-2 mb-2 ">Log In</button> */}
+                  <Button padding={'20px 40px'} fontSize={'xl'} colorScheme='blue'>Login</Button>
                 </div>
-                <div className='flex item-center justify-center align-center pb-3 float-left'>
+                <div className='flex item-center justify-center align-center float-left'>
                   ----------------Or------------------
                 </div>
 
               </div>
               <div className='flex flex-col py-3 px-2 sm:px-10 items-center rounded-bl-3xl rounded-br-3xl float-left'>
-                <div className='flex justify-center align-center float-left'>
+                <Button mb={'10px'}>
                   <img className='pr-2' src={googleIcon} alt="googleIcon" />
                   <span className='text-stone-500'>Sign Up with google</span>
-                </div>
+                </Button>
                 <div className='flex justify-center align-center float-left'>
 
                   <div className='text-stone-500 mr-2'>New Here?</div>
