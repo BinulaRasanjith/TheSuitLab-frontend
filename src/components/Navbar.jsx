@@ -1,4 +1,4 @@
-import  { useState } from 'react'
+import { useState } from 'react'
 import TSL_LOGO from '../assets/images/TSL_LOGO.png'
 import TSL_LOGO_SM from '../assets/images/TSL_LOGO_SM.png'
 
@@ -8,9 +8,8 @@ const Navbar = ({ page }) => {
     switch (page) {
         case "home":
         case "services":
-        case "aboutus":
-        case "contactus":
-        case "landingpage":
+        case "about-us":
+        case "contact-us":
             checkPage = true;
             break;
         default:

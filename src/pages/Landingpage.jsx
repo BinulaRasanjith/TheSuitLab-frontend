@@ -1,4 +1,3 @@
-import Navbar from '../components/Navbar'
 import Slideshow from '../components/Slideshow'
 import Footer from '../components/Footer'
 import Slideshow2 from '../components/Slideshow2'
@@ -10,7 +9,6 @@ import Feedback from '../components/Feedback'
 const LandingPage = () => {
     return (
         <>
-            <Navbar page="home" />
             <Slideshow />
             <LandingFunPart />
             <Slideshow2 />
