@@ -1,5 +1,6 @@
 import Group277 from '../assets/images/Group277.png'
 
+// eslint-disable-next-line react/prop-types
 function SidebarItem({ label, children }) {
     return (
         <li className='pl-5 pr-2'>
@@ -9,6 +10,7 @@ function SidebarItem({ label, children }) {
     );
 }
 
+// eslint-disable-next-line react/prop-types
 function SecondLevelItem({ label, children }) {
     return (
         <li className='pl-10 pr-2'>
@@ -18,6 +20,7 @@ function SecondLevelItem({ label, children }) {
     );
 }
 
+// eslint-disable-next-line react/prop-types
 function ThirdLevelItem({ label, children }) {
     return (
         <li className='pl-8 pr-2'>

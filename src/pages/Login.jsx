@@ -1,7 +1,11 @@
 import loginImage from '../assets/images/LoginBackground.png'
 import TSL_LOGO_SM from '../assets/images/TSL_LOGO_SM.png'
 import googleIcon from '../assets/images/googleIcon.png'
+// import { useNavigate } from 'react-router-dom';
+
 const Login = () => {
+ 
+
   return (
     <div >
       <div className='flex items-center justify-center m-auto overflow-hidden'>
@@ -35,7 +39,7 @@ const Login = () => {
                 <img className='h-14' src={TSL_LOGO_SM} alt="" />
               </div>
             </div>
-            <form className='flex flex-col align-center justify-center lg:pl-10 lg:pr-10 pl-2 pr-2 mt-1'>
+            <form className='flex flex-col align-center justify-center lg:pl-10 lg:pr-10 pl-2 pr-2 mt-4'>
               <div className='lg:hidden flex flex-col align-center justify-center xl:ml-20 xl:mr-20 2xl:ml-40 2xl:mr-40'>
                 <div className='flex flex-col mb-4 lg:pl-10 lg:pr-10 pl-5 pr-5 max-w-2xl float-left'>
                   <input className='outline rounded text-xl pl-5 md:pb-2 md:pt-2 pb-1 pt-1 outline-gray-300' placeholder='Example@gmail.com' type="email" id="email" name="email" />
@@ -60,11 +64,11 @@ const Login = () => {
                   <div className='text-stone-500 float-left '>Fogot Password?</div>
 
                 </div>
-                <div className='pb-5 float-left'>
+                <div className='pb-3 float-left'>
                   <button type="button" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-lg px-5 py-2.5 text-center mr-2 mb-2 ">Log In</button>
 
                 </div>
-                <div className='flex item-center justify-center align-center pb-5 float-left'>
+                <div className='flex item-center justify-center align-center pb-3 float-left'>
                   ----------------Or------------------
                 </div>
 

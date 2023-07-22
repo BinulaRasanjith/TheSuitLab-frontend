@@ -20,11 +20,23 @@ import costume5 from '../assets/images/costume5.jpeg'
 
 
 const RecentDesigns = () => {
-    const [slidesPerView, setSlidesPerView] = useState(5);
+    const [slidesPerView, setSlidesPerView] = useState(
+        window.innerWidth >= 1200
+            ? 5
+            : window.innerWidth >= 992
+                ? 4
+                : window.innerWidth >= 768
+                    ? 3
+                    : window.innerWidth >= 500
+                        ? 2
+                        : 1
+
+    );
 
     useEffect(() => {
+
         const handleResize = () => {
-            const screenWidth = window.innerWidth;
+            let screenWidth = window.innerWidth;
 
             if (screenWidth >= 1200) {
                 setSlidesPerView(5);
@@ -71,7 +83,7 @@ const RecentDesigns = () => {
 
                         <div className="flex items-center justify-center flex-col bg-white rounded-lg drop-shadow-lg">
 
-                            <img className="rounded-t-lg h-64 md:h-44 h-auto w-full" src={costume1} alt="product image" />
+                            <img className="rounded-t-lg h-64 md:h-44 w-full" src={costume1} alt="product image" />
                             <small className='text-stone-500 pt-2 text-bold'>Medley, navy</small>
                             <p>Navy two-piece stretch</p>
                             <p>Suit</p>
@@ -101,7 +113,7 @@ const RecentDesigns = () => {
                     <SwiperSlide>
                         <div className="flex items-center flex-col bg-white rounded-lg drop-shadow-lg">
 
-                            <img className="rounded-t-lg h-64 md:h-44 h-auto w-full" src={costume2} alt="product image" />
+                            <img className="rounded-t-lg h-64 md:h-44 w-full" src={costume2} alt="product image" />
                             <small className='text-stone-500 pt-2 text-bold'>Medley, navy</small>
                             <p>Navy two-piece stretch</p>
                             <p>Suit</p>
@@ -130,7 +142,7 @@ const RecentDesigns = () => {
                     <SwiperSlide>
                         <div className="flex items-center flex-col bg-white rounded-lg drop-shadow-lg">
 
-                            <img className="rounded-t-lg h-64 md:h-44 h-auto w-full" src={costume3} alt="product image" />
+                            <img className="rounded-t-lg h-64 md:h-44 w-full" src={costume3} alt="product image" />
                             <small className='text-stone-500 pt-2 text-bold'>Medley, navy</small>
                             <p>Navy two-piece stretch</p>
                             <p>Suit</p>
@@ -159,7 +171,7 @@ const RecentDesigns = () => {
                     <SwiperSlide>
                         <div className="flex items-center flex-col bg-white rounded-lg drop-shadow-lg">
 
-                            <img className="rounded-t-lg h-64 md:h-44 h-auto w-full" src={costume4} alt="product image" />
+                            <img className="rounded-t-lg h-64 md:h-44 w-full" src={costume4} alt="product image" />
                             <small className='text-stone-500 pt-2 text-bold'>Medley, navy</small>
                             <p>Navy two-piece stretch</p>
                             <p>Suit</p>
@@ -188,7 +200,7 @@ const RecentDesigns = () => {
                     <SwiperSlide>
                         <div className="flex items-center flex-col bg-white rounded-lg drop-shadow-lg">
 
-                            <img className="rounded-t-lg h-64 md:h-44 h-auto w-full" src={costume5} alt="product image" />
+                            <img className="rounded-t-lg h-64 md:h-44 w-full" src={costume5} alt="product image" />
                             <small className='text-stone-500 pt-2 text-bold'>Medley, navy</small>
                             <p>Navy two-piece stretch</p>
                             <p>Suit</p>
@@ -217,7 +229,7 @@ const RecentDesigns = () => {
                     <SwiperSlide>
                         <div className="flex items-center flex-col bg-white rounded-lg drop-shadow-lg">
 
-                            <img className="rounded-t-lg h-64 md:h-44 h-auto w-full" src={costume1} alt="product image" />
+                            <img className="rounded-t-lg h-64 md:h-44 w-full" src={costume1} alt="product image" />
                             <small className='text-stone-500 pt-2 text-bold'>Medley, navy</small>
                             <p>Navy two-piece stretch</p>
                             <p>Suit</p>
@@ -246,7 +258,7 @@ const RecentDesigns = () => {
                     <SwiperSlide>
                         <div className="flex items-center flex-col bg-white rounded-lg drop-shadow-lg">
 
-                            <img className="rounded-t-lg h-64 md:h-44 h-auto w-full" src={costume2} alt="product image" />
+                            <img className="rounded-t-lg h-64 md:h-44 w-full" src={costume2} alt="product image" />
                             <small className='text-stone-500 pt-2 text-bold'>Medley, navy</small>
                             <p>Navy two-piece stretch</p>
                             <p>Suit</p>
@@ -275,7 +287,7 @@ const RecentDesigns = () => {
                     <SwiperSlide>
                         <div className="flex items-center flex-col bg-white rounded-lg drop-shadow-lg">
 
-                            <img className="rounded-t-lg h-64 md:h-44 h-auto w-full" src={costume3} alt="product image" />
+                            <img className="rounded-t-lg h-64 md:h-44 w-full" src={costume3} alt="product image" />
                             <small className='text-stone-500 pt-2 text-bold'>Medley, navy</small>
                             <p>Navy two-piece stretch</p>
                             <p>Suit</p>
@@ -304,7 +316,7 @@ const RecentDesigns = () => {
                     <SwiperSlide>
                         <div className="flex items-center flex-col bg-white rounded-lg drop-shadow-lg">
 
-                            <img className="rounded-t-lg h-64 md:h-44 h-auto w-full" src={costume4} alt="product image" />
+                            <img className="rounded-t-lg h-64 md:h-44 w-full" src={costume4} alt="product image" />
                             <small className='text-stone-500 pt-2 text-bold'>Medley, navy</small>
                             <p>Navy two-piece stretch</p>
                             <p>Suit</p>
@@ -333,7 +345,7 @@ const RecentDesigns = () => {
                     <SwiperSlide>
                         <div className="flex items-center flex-col bg-white rounded-lg drop-shadow-lg">
 
-                            <img className="rounded-t-lg h-64 md:h-44 h-auto w-full" src={costume5} alt="product image" />
+                            <img className="rounded-t-lg h-64 md:h-44 w-full" src={costume5} alt="product image" />
                             <small className='text-stone-500 pt-2 text-bold'>Medley, navy</small>
                             <p>Navy two-piece stretch</p>
                             <p>Suit</p>
