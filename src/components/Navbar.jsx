@@ -1,12 +1,25 @@
 import { useState } from 'react'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { Button } from '@chakra-ui/react'
+
 import TSL_LOGO from '../assets/images/TSL_LOGO.png'
 import TSL_LOGO_SM from '../assets/images/TSL_LOGO_SM.png'
 
 // eslint-disable-next-line react/prop-types
-const Navbar = ({ page }) => {
+const Navbar = () => {
+    const location = useLocation()
+    const navigate = useNavigate()
+
+    // handle login click
+    const handleLoginClick = () => {
+        navigate('/login')
+    }
+
+
+    const page = location.pathname.slice(1)
     let checkPage = false;
     switch (page) {
-        case "home":
+        case "":
         case "services":
         case "about-us":
         case "contact-us":
@@ -15,6 +28,7 @@ const Navbar = ({ page }) => {
         default:
             checkPage = false;
     }
+
     const [open, setOpen] = useState(false);
 
     return (
@@ -32,22 +46,35 @@ const Navbar = ({ page }) => {
                 <div className="max-w-screen-xl flex-wrap mx-auto">
 
                     <ul className="hidden sm:flex items-center p-1 font-medium  space-x-8 md:mt-0">
-                        <li className={page === "home" ? "text-white relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500  " : "text-white"}>
-                            <span className={page === "home" ? "relative px-5 py-1 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-lg " : ""}>Home</span>
+                        <li className={page === "" ? "text-white relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500  " : "text-white"}>
+                            <Link to='/' className={page === "" ? "relative px-5 py-1 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-lg " : ""}>Home</Link>
                         </li>
                         <li className={page === "services" ? "text-white relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500  " : "text-white"}>
-                            <span className={page === "services" ? "relative px-5 py-1 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-lg " : ""}>Services</span>
+                            <Link to='/services' className={page === "services" ? "relative px-5 py-1 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-lg " : ""}>Services</Link>
                         </li>
-                        <li className={page === "aboutus" ? "text-white relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500  " : "text-white"}>
-                            <span className={page === "aboutus" ? "relative px-5 py-1 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-lg " : ""}>About Us</span>
+                        <li className={page === "about-us" ? "text-white relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500  " : "text-white"}>
+                            <Link to='/about-us' className={page === "about-us" ? "relative px-5 py-1 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-lg " : ""}>About Us</Link>
                         </li>
-                        <li className={page === "contactus" ? "text-white relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500  " : "text-white"}>
-                            <span className={page === "contactus" ? "relative px-5 py-1 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-lg " : ""}>Contact Us</span>
+                        <li className={page === "contact-us" ? "text-white relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500  " : "text-white"}>
+                            <Link to='/contact-us' className={page === "contact-us" ? "relative px-5 py-1 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-lg " : ""}>Contact Us</Link>
                         </li>
                     </ul>
                 </div>
                 <div className='flex items-center mr-5'>
-                    <button className='text-white border border-white border-solid pt-1 pb-1 pl-3 pr-3 rounded'>Login</button>
+                    <Button
+                        textColor={'white'}
+                        bg={'transparent'}
+                        border={'2px'}
+                        _hover={{
+                            bg: 'white',
+                            textColor: 'black'
+                        }}
+                        _active={{
+                            bg: 'gray',
+                        }}
+                        onClick={handleLoginClick}>Login</Button>
+                    {/* <button className='text-white border border-white border-solid pt-1 pb-1 pl-3 pr-3 rounded'
+                        onClick={handleLoginClick}>Login</button> */}
                 </div>
 
             </nav>
@@ -60,11 +87,11 @@ const Navbar = ({ page }) => {
                     <li className={page === "services" ? "text-white relative inline-flex items-center justify-center p-0.5 overflow-hidden text-xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500  " : "text-white text-xl"}>
                         <span className={page === "services" ? "relative px-5 py-1 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-lg " : ""}>Services</span>
                     </li>
-                    <li className={page === "aboutus" ? "text-white relative inline-flex items-center justify-center p-0.5 overflow-hidden text-xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500  " : "text-white text-xl"}>
-                        <span className={page === "aboutus" ? "relative px-5 py-1 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-lg " : ""}>About Us</span>
+                    <li className={page === "about-us" ? "text-white relative inline-flex items-center justify-center p-0.5 overflow-hidden text-xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500  " : "text-white text-xl"}>
+                        <span className={page === "about-us" ? "relative px-5 py-1 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-lg " : ""}>About Us</span>
                     </li>
-                    <li className={page === "contactus" ? "text-white relative inline-flex items-center justify-center p-0.5 overflow-hidden text-xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500  " : "text-white text-xl"}>
-                        <span className={page === "contactus" ? "relative px-5 py-1 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-lg " : ""}>Contact Us</span>
+                    <li className={page === "contact-us" ? "text-white relative inline-flex items-center justify-center p-0.5 overflow-hidden text-xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500  " : "text-white text-xl"}>
+                        <span className={page === "contact-us" ? "relative px-5 py-1 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-lg " : ""}>Contact Us</span>
                     </li>
                 </ul>
             </div>
