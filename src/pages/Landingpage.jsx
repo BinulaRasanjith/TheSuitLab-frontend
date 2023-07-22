@@ -9,7 +9,7 @@ import Feedback from '../components/Feedback'
 
 const LandingPage = () => {
     return (
-        <div>
+        <>
             <Navbar page="home" />
             <Slideshow />
             <LandingFunPart />
@@ -18,7 +18,7 @@ const LandingPage = () => {
             <CustomerTestimonials />
             <Feedback />
             <Footer />
-        </div>
+        </>
     )
 }
 

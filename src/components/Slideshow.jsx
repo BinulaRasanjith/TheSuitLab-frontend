@@ -5,15 +5,6 @@ import { RxDotFilled } from 'react-icons/rx'
 
 const Slideshow = () => {
   const [current, setCurrent] = useState(0)
-  const length = slides.length
-
-  useEffect(() => {
-    setTimeout(() => {
-      // Increment the current slide index
-      setCurrent(current === length - 1 ? 0 : current + 1)
-    }, 5000); // 5 seconds
-  }, [current, length]);
-
   const slides = [
     {
       url: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
@@ -30,8 +21,16 @@ const Slideshow = () => {
     {
       url: "https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk="
     }
-
   ]
+
+  useEffect(() => {
+    const length = slides.length
+
+    setTimeout(() => {
+      // Increment the current slide index
+      setCurrent(current === length - 1 ? 0 : current + 1)
+    }, 5000); // 5 seconds
+  }, [current, slides.length]);
 
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1)

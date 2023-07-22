@@ -1,21 +1,10 @@
-// import Navbar from './components/Navbar'
-// import Landingpage from './pages/LandingPage'
-// import Home from './pages/Home'
-// import Services from './pages/Services'
-// import ContactUs from './pages/ContactUs'
-// import AboutUs from './pages/Aboutus'
-import Login from './pages/Login'
-import Signup from './pages/Signup'
-import ForgotPassword from './pages/ForgotPassword'
+import { RouterProvider } from "react-router-dom"
+import router from "./routes"
 
 
 const App = () => {
   return (
-    <>
-      <Login />
-      <ForgotPassword />
-      <Signup />
-    </>
+    <RouterProvider router={router} />
   )
 }
 
