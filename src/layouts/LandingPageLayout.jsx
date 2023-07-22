@@ -3,7 +3,6 @@ import Navbar from "../components/Navbar"
 
 function LandingPageLayout() {
     const location = useLocation()
-    console.log(location)
 
     return (
         <>
