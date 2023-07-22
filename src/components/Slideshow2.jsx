@@ -4,14 +4,15 @@ import { RxDotFilled } from 'react-icons/rx'
 
 const Slideshow2 = () => {
     const [current, setCurrent] = useState(0)
-    const length = slides.length
 
     useEffect(() => {
+        const length = slides.length
+
         setTimeout(() => {
             // Increment the current slide index
             setCurrent(current === length - 1 ? 0 : current + 1)
         }, 5000); // Delay in milliseconds (e.g., 3000 = 3 seconds)
-    }, [current, length]);
+    }, [current]);
 
     const slides = [
         {
