@@ -26,7 +26,7 @@ const Signup = () => {
 
 
                     <div className='flex flex-col bg-white drop-shadow-2xl rounded-3xl'>
-                        <div className='flex items-center justify-around md:justify-center  pt-3 md:pt-5 float-left font-bold'>
+                        <div className='flex items-center justify-around md:justify-center  pt-3 md:pt-10 float-left font-bold'>
                             <div className='flex flex-col items-start' >
                                 <div className='flex gap-2 text-2xl md:text-4xl'>
                                     <p>Sign</p>
@@ -72,7 +72,7 @@ const Signup = () => {
                                 </div>
 
                             </div>
-                            <div className='flex flex-col py-3 px-2 sm:px-20 bg-slate-200 items-center rounded-bl-3xl rounded-br-3xl float-left'>
+                            <div className='flex flex-col py-5 px-2 sm:px-20 items-center rounded-bl-3xl rounded-br-3xl float-left'>
                                 <div className='flex justify-center align-center float-left'>
                                     <img className='pr-2' src={googleIcon} alt="googleIcon" />
                                     <span className='text-stone-500'>Sign Up with google</span>

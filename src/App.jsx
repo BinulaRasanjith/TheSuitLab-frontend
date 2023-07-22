@@ -15,12 +15,13 @@ const App = () => {
     <div>
       {/* <Landingpage /> */}
       {/* <Home /> */}
-      <Services />
+      {/* <Services /> */}
       {/* <Contactus /> */}
       {/* <Aboutus /> */}
-      {/* <Login /> */}
-      {/* <Signup /> */}
-      {/* <Forgotpassword /> */}
+      {/* <DropDown/> */}
+      <Login />
+      <Forgotpassword />
+      <Signup />
     </div>
   )
 }

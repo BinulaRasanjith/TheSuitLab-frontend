@@ -24,7 +24,7 @@ const Forgotpassword = () => {
 
 
                     <div className='flex flex-col bg-white drop-shadow-2xl rounded-3xl py-5 px-3'>
-                        <div className='flex items-center justify-around md:justify-center pt-3 md:pt-5 float-left font-bold'>
+                        <div className='flex items-center justify-around md:justify-center py-5 float-left font-bold'>
                             <div className='flex flex-col items-start' >
                                 <div className='flex gap-3 text-2xl md:text-4xl'>
                                     <p>Forgot</p>
@@ -42,7 +42,7 @@ const Forgotpassword = () => {
                                 <div>we'll send you an verification code to verify you</div>
                             </div>
                             <div className='lg:hidden flex flex-col align-center justify-center'>
-                                <div className='flex flex-col mb-6 lg:pl-10  pl-5 pr-5 max-w-2xl float-left'>
+                                <div className='flex flex-col mb-6 lg:pl-10 pl-5 pr-5 max-w-2xl float-left'>
                                     <input className='outline rounded text-xl pl-5 md:pb-2 md:pt-2 pb-1 pt-1 outline-gray-300' placeholder='Example@gmail.com' type="email" id="email" name="email" />
                                 </div>
                             </div>
@@ -52,7 +52,7 @@ const Forgotpassword = () => {
                                 <label for="floating_email" className="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
                             </div>
 
-                            <div className='flex items-center flex-col'>
+                            <div className='flex items-center flex-col pb-5'>
                                 <div className='pb-5 float-left'>
                                     <button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-lg px-5 py-2.5 text-center mr-2 mb-2 ">Forgot Password</button>
 

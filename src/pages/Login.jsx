@@ -24,7 +24,7 @@ const Login = () => {
 
 
           <div className='flex flex-col bg-white drop-shadow-2xl rounded-3xl'>
-            <div className='flex items-center justify-around md:justify-center  pt-3 md:pt-10 float-left font-bold'>
+            <div className='flex items-center justify-around md:justify-center pt-3 md:pt-10 float-left font-bold'>
               <div className='flex flex-col items-start' >
                 <div className='flex gap-3 text-2xl md:text-4xl'>
                   <p>Log</p>
@@ -36,27 +36,27 @@ const Login = () => {
                 <img className='h-14' src={TSL_LOGO_SM} alt="" />
               </div>
             </div>
-            <form className='flex flex-col align-center justify-center float-left'>
+            <form className='flex flex-col align-center justify-center lg:pl-10 lg:pr-10 pl-2 pr-2 mt-1'>
               <div className='lg:hidden flex flex-col align-center justify-center xl:ml-20 xl:mr-20 2xl:ml-40 2xl:mr-40'>
-                <div className='flex flex-col mt-10 mb-10 lg:pl-10 lg:pr-10 pl-5 pr-5 max-w-2xl float-left'>
+                <div className='flex flex-col mb-4 lg:pl-10 lg:pr-10 pl-5 pr-5 max-w-2xl float-left'>
                   <input className='outline rounded text-xl pl-5 md:pb-2 md:pt-2 pb-1 pt-1 outline-gray-300' placeholder='Example@gmail.com' type="email" id="email" name="email" />
                 </div>
-                <div className='flex flex-col  lg:pl-10 lg:pr-10 pl-5 pr-5 pb-5 md:pb-10 max-w-2xl float-left'>
+                <div className='flex flex-col  lg:pl-10 lg:pr-10 pl-5 pr-5 pb-5 max-w-2xl float-left'>
                   <input className='outline rounded text-xl pl-5 pb-2 pt-2 outline-gray-300' placeholder='Enter your password' type="password" id="password" name="password" />
                 </div>
               </div>
 
-              <div className="lg:block hidden relative z-0 mb-6 w-full group pl-10 pr-10 max-w-2xl">
+              <div className="lg:block hidden relative z-0 mb-6 mt-4 w-full group max-w-2xl">
                 <input type="email" name="floating_email" id="floating_email" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 focus:outline-none focus:ring-0 peer" placeholder=" " required />
-                <label for="floating_email" className="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
+                <label for="floating_email" className="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
               </div>
-              <div class="lg:block hidden relative z-0 w-full mb-6 group pl-10 pr-10 max-w-2xl">
+              <div class="lg:block hidden relative z-0 w-full mb-6 group max-w-2xl">
                 <input type="password" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 focus:outline-none focus:ring-0 peer" placeholder=" " required />
-                <label for="floating_password" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
+                <label for="floating_password" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
               </div>
 
               <div className='flex items-center flex-col'>
-                <div className='flex flex-col items-start sm:px-0 px-2'>
+                <div className='flex flex-col items-start px-1'>
                   <div className='text-red-700 float-left '>Account does not exixt or Password is incorrect</div>
                   <div className='text-stone-500 float-left '>Fogot Password?</div>
 
@@ -70,7 +70,7 @@ const Login = () => {
                 </div>
 
               </div>
-              <div className='flex flex-col py-3 px-2 sm:px-20 bg-slate-200 items-center rounded-bl-3xl rounded-br-3xl float-left'>
+              <div className='flex flex-col py-3 px-2 sm:px-10 items-center rounded-bl-3xl rounded-br-3xl float-left'>
                 <div className='flex justify-center align-center float-left'>
                   <img className='pr-2' src={googleIcon} alt="googleIcon" />
                   <span className='text-stone-500'>Sign Up with google</span>
