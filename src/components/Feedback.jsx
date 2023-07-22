@@ -1,4 +1,3 @@
-import React from 'react'
 // import Swiper core and required modules
 import { Navigation, Pagination, A11y, Autoplay } from 'swiper/modules';
 
@@ -207,7 +206,7 @@ const Feedback = () => {
 
             {/* After Responsive */}
 
-            <div class="lg:hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 pb-5 px-10 overflow-y-scroll h-96">
+            <div className="lg:hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 pb-5 px-10 overflow-y-scroll h-96">
                 <div className='flex flex-col shadow-2xl h-full p-3 border border-gray rounded-lg hover:scale-105 transform-gpu'>
                     <div className="flex items-center justify-between mb-2">
 

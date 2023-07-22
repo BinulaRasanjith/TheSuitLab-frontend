@@ -1,4 +1,3 @@
-import React from 'react'
 import Rectangle244 from '../assets/images/Rectangle244.png'
 import Rectangle240 from '../assets/images/Rectangle240.png'
 import Rectangle241 from '../assets/images/Rectangle241.png'

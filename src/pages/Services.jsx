@@ -1,17 +1,15 @@
-import React from 'react'
 import Navbar from '../components/Navbar'
-import Ourservices from '../components/Ourservices'
-import Ourproducts from '../components/Ourproducts'
+import OurServices from '../components/OurServices'
+import OurProducts from '../components/OurProducts'
 import Footer from '../components/Footer'
 
 const Services = () => {
   return (
     <div>
-      <Navbar page="services"/>
-      <Ourservices />
-      <Ourproducts />
+      <Navbar page="services" />
+      <OurServices />
+      <OurProducts />
       <Footer />
-
     </div>
   )
 }

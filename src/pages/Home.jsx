@@ -1,12 +1,11 @@
-import React from 'react'
 import Navbar from '../components/Navbar'
 import Slideshow from '../components/Slideshow'
-import Homefunctionality from '../components/Homefunctionality'
+import HomeFunctionality from '../components/HomeFunctionality'
 import Instructions from '../components/Instructions'
-import Addmeasurements from '../components/Addmeasurements'
-import Recentdesigns from '../components/Recentdesigns'
+import AddMeasurements from '../components/AddMeasurements'
+import RecentDesigns from '../components/RecentDesigns'
 import Slideshow2 from '../components/Slideshow2'
-import Customertestimonials from '../components/Customertestimonials'
+import CustomerTestimonials from '../components/CustomerTestimonials'
 import Footer from '../components/Footer'
 import Fitness from '../components/Fitness'
 
@@ -15,13 +14,13 @@ const Home = () => {
     <div>
       <Navbar page="home" />
       <Slideshow />
-      <Homefunctionality />
+      <HomeFunctionality />
       <Instructions />
-      <Addmeasurements />
-      <Recentdesigns />
+      <AddMeasurements />
+      <RecentDesigns />
       <Slideshow2 />
       <Fitness />
-      <Customertestimonials />
+      <CustomerTestimonials />
       <Footer />
     </div>
   )

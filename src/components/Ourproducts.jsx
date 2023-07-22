@@ -15,7 +15,7 @@ import testimony_coat from '../assets/images/testimony_coat.png';
 import testimony_trouser from '../assets/images/testimony_trouser.png';
 import testimony_shirt from '../assets/images/testimony_shirt.png';
 
-const Ourproducts = () => {
+const OurProducts = () => {
 
     const [slidesPerView, setSlidesPerView] = useState(5);
 
@@ -218,4 +218,4 @@ const Ourproducts = () => {
     )
 }
 
-export default Ourproducts
+export default OurProducts

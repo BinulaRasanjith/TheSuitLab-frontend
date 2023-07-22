@@ -1,6 +1,4 @@
-import React from 'react'
-
-const Customertestimonials = () => {
+const CustomerTestimonials = () => {
     return (
         <div className='flex flex-col rounded-xl bg-black p-5 mx-5 my-5'>
             <div>
@@ -43,4 +41,4 @@ const Customertestimonials = () => {
     )
 }
 
-export default Customertestimonials
+export default CustomerTestimonials

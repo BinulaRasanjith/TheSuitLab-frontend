@@ -1,10 +1,9 @@
-import React from 'react'
 import Accessories1 from '../assets/images/Accessories1.png'
 import Accessories2 from '../assets/images/Accessories2.png'
 import Accessories3 from '../assets/images/Accessories3.png'
 import Accessories4 from '../assets/images/Accessories4.png'
 
-const Homefunctionality = () => {
+const HomeFunctionality = () => {
     return (
         <div className='grid grid-col-1 lg:grid-cols-2 md:grid-rows-1 gap-0 pb-10'>
             <div className='flex pt-5 px-5 md:pl-5 md:pr-5'>
@@ -22,7 +21,7 @@ const Homefunctionality = () => {
                         <p className='text-white'>Trousers with your favourite designs</p>
 
                     </div>
-                    <button type="button" class="text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-3xl text-sm px-5 py-3 text-center inline-flex items-center dark:focus:ring-gray-500 mr-2 mb-2 w-36 justify-center">
+                    <button type="button" className="text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-3xl text-sm px-5 py-3 text-center inline-flex items-center dark:focus:ring-gray-500 mr-2 mb-2 w-36 justify-center">
                         Customize Now
                     </button>
                 </div>
@@ -44,7 +43,7 @@ const Homefunctionality = () => {
                             <p className='text-white'>from the pre-made collections</p>
 
                         </div>
-                        <button type="button" class="text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-3xl text-sm px-5 py-3 text-center inline-flex items-center dark:focus:ring-gray-500 mr-2 mb-2 w-36 justify-center">
+                        <button type="button" className="text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-3xl text-sm px-5 py-3 text-center inline-flex items-center dark:focus:ring-gray-500 mr-2 mb-2 w-36 justify-center">
                             Purchase Now
                         </button>
                     </div>
@@ -66,7 +65,7 @@ const Homefunctionality = () => {
                                 <p className='text-white'>from 50+ designs</p>
 
                             </div>
-                            <button type="button" class="text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-3xl text-sm px-5 py-3 text-center inline-flex items-center dark:focus:ring-gray-500 mr-2 mb-2 w-36 justify-center">
+                            <button type="button" className="text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-3xl text-sm px-5 py-3 text-center inline-flex items-center dark:focus:ring-gray-500 mr-2 mb-2 w-36 justify-center">
                                 Hire Now
                             </button>
                         </div>
@@ -88,7 +87,7 @@ const Homefunctionality = () => {
                                 <p className='text-white'>Ties and Neck Ties</p>
 
                             </div>
-                            <button type="button" class="text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-3xl text-sm px-5 py-3 text-center inline-flex items-center dark:focus:ring-gray-500 mr-2 mb-2 w-36 justify-center">
+                            <button type="button" className="text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-3xl text-sm px-5 py-3 text-center inline-flex items-center dark:focus:ring-gray-500 mr-2 mb-2 w-36 justify-center">
                                 Place Now
                             </button>
                         </div>
@@ -100,4 +99,4 @@ const Homefunctionality = () => {
     )
 }
 
-export default Homefunctionality
+export default HomeFunctionality

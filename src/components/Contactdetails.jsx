@@ -1,5 +1,4 @@
-
-const Contactdetails = () => {
+const ContactDetails = () => {
     return (
         <div className="flex flex-col items-center justify-center pt-20 pb-10 md:py-10 px-2 md:px-5">
             <div className="flex flex-col items-center py-10">
@@ -44,4 +43,4 @@ const Contactdetails = () => {
     )
 }
 
-export default Contactdetails
+export default ContactDetails

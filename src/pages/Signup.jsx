@@ -1,4 +1,3 @@
-
 import loginImage from '../assets/images/LoginBackground.png'
 import googleIcon from '../assets/images/googleIcon.png'
 import TSL_LOGO_SM from '../assets/images/TSL_LOGO_SM.png'
@@ -39,24 +38,24 @@ const Signup = () => {
                             </div>
                         </div>
                         <form className='flex flex-col align-center justify-center float-left'>
-                            <div class="grid gap-4 py-3 grid-cols-1 md:grid-cols-2 lg:pl-10 lg:pr-10 pl-5 pr-5 max-w-2xl">
+                            <div className="grid gap-4 py-3 grid-cols-1 md:grid-cols-2 lg:pl-10 lg:pr-10 pl-5 pr-5 max-w-2xl">
                                 <div>
-                                    <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="First Name" pattern="[A-Z][a-z]{50}" required></input>
+                                    <input type="text" id="first_name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="First Name" pattern="[A-Z][a-z]{50}" required></input>
                                 </div>
                                 <div>
-                                    <input type="text" id="last_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Last Name" pattern="[A-Z][a-z]{50}" required></input>
+                                    <input type="text" id="last_name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Last Name" pattern="[A-Z][a-z]{50}" required></input>
                                 </div>
                                 <div>
-                                    <input type="text" id="company" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Address" pattern="[A-Z][a-z]{50}" required></input>
+                                    <input type="text" id="company" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Address" pattern="[A-Z][a-z]{50}" required></input>
                                 </div>
                                 <div>
-                                    <input type="tel" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Contact" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required></input>
+                                    <input type="tel" id="phone" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Contact" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required></input>
                                 </div>
                                 <div>
-                                    <input type="password" id="website" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Password" required></input>
+                                    <input type="password" id="website" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Password" required></input>
                                 </div>
                                 <div>
-                                    <input type="password" id="visitors" class="bg-gray-50 border border-blue-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Confirm Password" required></input>
+                                    <input type="password" id="visitors" className="bg-gray-50 border border-blue-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Confirm Password" required></input>
                                 </div>
                             </div>
 
@@ -65,7 +64,7 @@ const Signup = () => {
                                     <div className='text-red-700 float-left px-1'>Account does not exixt or Password is incorrect</div>
                                 </div>
                                 <div className='py-2 float-left'>
-                                    <button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-lg px-5 py-2.5 text-center ">Sign Up</button>
+                                    <button type="button" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-lg px-5 py-2.5 text-center ">Sign Up</button>
                                 </div>
                                 <div className='flex item-center justify-center align-center pb-2 float-left'>
                                     ----------------Or------------------

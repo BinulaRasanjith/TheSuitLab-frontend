@@ -1,8 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs'
 import { RxDotFilled } from 'react-icons/rx'
 
 const Slideshow2 = () => {
+    const [current, setCurrent] = useState(0)
+    const length = slides.length
+
+    useEffect(() => {
+        setTimeout(() => {
+            // Increment the current slide index
+            setCurrent(current === length - 1 ? 0 : current + 1)
+        }, 5000); // Delay in milliseconds (e.g., 3000 = 3 seconds)
+    }, [current, length]);
+
     const slides = [
         {
             url: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
@@ -22,9 +32,6 @@ const Slideshow2 = () => {
 
     ]
 
-    const [current, setCurrent] = useState(0)
-    const length = slides.length
-
     const nextSlide = () => {
         setCurrent(current === length - 1 ? 0 : current + 1)
     }
@@ -42,15 +49,6 @@ const Slideshow2 = () => {
         setCurrent(slideIndex)
 
     }
-
-    useEffect(() => {
-        const length = slides.length
-
-        setTimeout(() => {
-            // Increment the current slide index
-            setCurrent(current === length - 1 ? 0 : current + 1)
-        }, 5000); // Delay in milliseconds (e.g., 3000 = 3 seconds)
-    }, [current]);
 
     return (
         <div className='max-w-[1580px] h-[500px] w-full m-auto relative group  '>
@@ -79,7 +77,7 @@ const Slideshow2 = () => {
             <div className='flex flex-col absolute top-[30%] left-[10%]'>
                 <p className='text-4xl text-white font-bold pb-3'>Lookbook</p>
                 <p className='text-white pb-3'>This guide is meant to help you get<br></br> your finances organized and make the<br></br> most out of your student budget. If <br></br> you’re like most students at UCSB, you <br></br>probably...</p>
-                <button type="button" class="text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-3xl text-sm px-5 py-3 text-center inline-flex items-center dark:focus:ring-gray-500 mb-2 w-32 justify-center">
+                <button type="button" className="text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-3xl text-sm px-5 py-3 text-center inline-flex items-center dark:focus:ring-gray-500 mb-2 w-32 justify-center">
                     Visit
                 </button>
             </div>

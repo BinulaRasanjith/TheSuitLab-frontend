@@ -1,9 +1,8 @@
-import React from 'react'
 import rectangle237 from '../assets/images/rectangle237.png'
 import rectangle238 from '../assets/images/rectangle238.png'
 import rectangle239 from '../assets/images/rectangle239.png'
 
-const Ourservices = () => {
+const OurServices = () => {
     return (
         <div className='py-10 px-10'>
             <div className='flex items-center justify-center text-6xl text-bold py-10'><h1>Our Services</h1></div>
@@ -50,4 +49,4 @@ const Ourservices = () => {
     )
 }
 
-export default Ourservices
+export default OurServices

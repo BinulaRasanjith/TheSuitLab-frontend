@@ -1,26 +1,25 @@
-import React from 'react'
 import Navbar from '../components/Navbar'
 import Slideshow from '../components/Slideshow'
 import Footer from '../components/Footer'
 import Slideshow2 from '../components/Slideshow2'
-import Landingfunpart from '../components/Landingfunpart'
-import Recentdesigns from '../components/Recentdesigns'
-import Customertestimonials from '../components/Customertestimonials'
+import LandingFunPart from '../components/LandingFunPart'
+import RecentDesigns from '../components/RecentDesigns'
+import CustomerTestimonials from '../components/CustomerTestimonials'
 import Feedback from '../components/Feedback'
 
-const Landingpage = () => {
+const LandingPage = () => {
     return (
         <div>
             <Navbar page="home" />
             <Slideshow />
-            <Landingfunpart />
+            <LandingFunPart />
             <Slideshow2 />
-            <Recentdesigns />
-            <Customertestimonials />
+            <RecentDesigns />
+            <CustomerTestimonials />
             <Feedback />
             <Footer />
         </div>
     )
 }
 
-export default Landingpage
+export default LandingPage

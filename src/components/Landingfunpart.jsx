@@ -1,12 +1,11 @@
-import React from 'react'
 import Bg1 from '../assets/images/Bg1.png'
 import Bg2 from '../assets/images/Bg2.png'
 import Bg3 from '../assets/images/Bg3.png'
 
-const Landingfunpart = () => {
+const LandingFunPart = () => {
     return (
         <div className='flex flex-col items-center bg-white'>
-            <div  className='flex flex-col items-start justify-start'>
+            <div className='flex flex-col items-start justify-start'>
                 <div className='flex  pt-5 px-5 relative'>
                     <img className='max-h-72 w-screen max-w-full h-screen bg-cover' src={Bg1} alt="" />
                 </div>
@@ -21,7 +20,7 @@ const Landingfunpart = () => {
                         <p className='text-white'>Trousers with</p>
 
                     </div>
-                    <button type="button" class="text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-3xl text-sm px-5 py-3 text-center inline-flex items-center dark:focus:ring-gray-500 mr-2 mb-2 w-36 justify-center">
+                    <button type="button" className="text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-3xl text-sm px-5 py-3 text-center inline-flex items-center dark:focus:ring-gray-500 mr-2 mb-2 w-36 justify-center">
                         Customize Now
                     </button>
                 </div>
@@ -44,7 +43,7 @@ const Landingfunpart = () => {
                             <p className='text-white'>designs</p>
 
                         </div>
-                        <button type="button" class="text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-3xl text-sm px-5 py-3 text-center inline-flex items-center dark:focus:ring-gray-500 mr-2 mb-2 w-32 justify-center">
+                        <button type="button" className="text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-3xl text-sm px-5 py-3 text-center inline-flex items-center dark:focus:ring-gray-500 mr-2 mb-2 w-32 justify-center">
                             Hire Now
                         </button>
                     </div>
@@ -65,7 +64,7 @@ const Landingfunpart = () => {
                             <p className='text-white'> Neck Ties</p>
 
                         </div>
-                        <button type="button" class="text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-3xl text-sm px-5 py-3 text-center inline-flex items-center dark:focus:ring-gray-500 mb-2 w-32 justify-center">
+                        <button type="button" className="text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-3xl text-sm px-5 py-3 text-center inline-flex items-center dark:focus:ring-gray-500 mb-2 w-32 justify-center">
                             Place Now
                         </button>
                     </div>
@@ -77,4 +76,4 @@ const Landingfunpart = () => {
     )
 }
 
-export default Landingfunpart
+export default LandingFunPart

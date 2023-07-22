@@ -1,8 +1,7 @@
-import React from 'react'
 import loginImage from '../assets/images/loginImage.png'
 import googleIcon from '../assets/images/googleIcon.png'
 
-const Setnewpassword = () => {
+const SetNewPassword = () => {
     return (
         <div >
             <div className='flex overflow-hidden'>
@@ -25,19 +24,19 @@ const Setnewpassword = () => {
                             </div>
                         </div>
 
-                        <div class="lg:block hidden relative z-0 w-full mb-6 group lg:pl-20 lg:pr-20 pl-10 pr-10 max-w-2xl">
-                            <input type="password" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 focus:outline-none focus:ring-0 peer" placeholder=" " required />
-                            <label for="floating_password" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-6  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">New Password</label>
+                        <div className="lg:block hidden relative z-0 w-full mb-6 group lg:pl-20 lg:pr-20 pl-10 pr-10 max-w-2xl">
+                            <input type="password" name="floating_password" id="floating_password" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 focus:outline-none focus:ring-0 peer" placeholder=" " required />
+                            <label htmlFor="floating_password" className="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-6  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">New Password</label>
                         </div>
-                        <div class="lg:block hidden relative z-0 w-full mb-6 group lg:pl-20 lg:pr-20 pl-10 pr-10 max-w-2xl">
-                            <input type="password" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 focus:outline-none focus:ring-0 peer" placeholder=" " required />
-                            <label for="floating_password" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-6  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Confirm New Password</label>
+                        <div className="lg:block hidden relative z-0 w-full mb-6 group lg:pl-20 lg:pr-20 pl-10 pr-10 max-w-2xl">
+                            <input type="password" name="floating_password" id="floating_password" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 focus:outline-none focus:ring-0 peer" placeholder=" " required />
+                            <label htmlFor="floating_password" className="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-6  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Confirm New Password</label>
                         </div>
 
 
                         <div className='2xl:ml-40 xl:ml-20 lg:pl-10 md:pl-5 pl-3 pr-3 text-red-700 float-left pb-2 md:pb-5 '>Account does not exixt or Password is incorrect</div>
                         <div className='flex items-center justify-center float-left'>
-                            <button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-lg px-5 py-2.5 md:px-20 text-center mr-2 mb-2 ">Change Password</button>
+                            <button type="button" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-lg px-5 py-2.5 md:px-20 text-center mr-2 mb-2 ">Change Password</button>
 
                         </div>
                         <div className='2xl:ml-40 xl:ml-20 lg:pl-10  pl-3 pr-3 pb-2 text-stone-500 float-left '>Back to Login</div>
@@ -63,4 +62,4 @@ const Setnewpassword = () => {
     )
 }
 
-export default Setnewpassword
+export default SetNewPassword

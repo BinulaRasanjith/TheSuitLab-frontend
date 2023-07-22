@@ -1,8 +1,6 @@
-import React from 'react'
 import TSL_LOGO from '../assets/images/TSL_LOGO.png'
 import mastercard from '../assets/images/mastercard.png'
 import visa from '../assets/images/visa.png'
-
 
 const Footer = () => {
     return (
@@ -42,7 +40,7 @@ const Footer = () => {
                 <div className='flex'>
                     <img src={mastercard} alt="mastercard" />
                     <img src={visa} alt="visa" />
-                    
+
                 </div>
 
             </div>
