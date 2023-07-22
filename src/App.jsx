@@ -6,22 +6,16 @@
 // import AboutUs from './pages/Aboutus'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
-import Forgotpassword from './pages/Forgotpassword'
+import ForgotPassword from './pages/ForgotPassword'
 
 
 const App = () => {
   return (
-    <div>
-      {/* <Landingpage /> */}
-      {/* <Home /> */}
-      {/* <Services /> */}
-      {/* <Contactus /> */}
-      {/* <Aboutus /> */}
-      {/* <DropDown/> */}
+    <>
       <Login />
-      <Forgotpassword />
+      <ForgotPassword />
       <Signup />
-    </div>
+    </>
   )
 }
 
