@@ -45,8 +45,21 @@ const Navbar = () => {
                 </div>
                 <div className="max-w-screen-xl flex-wrap mx-auto">
 
-                    <ul className="hidden sm:flex items-center p-1 font-medium  space-x-8 md:mt-0">
-                        <li className={page === "" ? "text-white relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500  " : "text-white"}>
+                    <ul className="hidden sm:flex text-white items-center p-1 font-medium  space-x-8 md:mt-0">
+                        <li className={page === "" ? "inline-flex items-center justify-center p-0.5 overflow-hidden font-medium rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
+                            <Link to='/' className={"px-5 py-1 bg-gray-900 rounded-lg"}>Home</Link>
+                        </li>
+                        <li className={page === "services" ? "inline-flex items-center justify-center p-0.5 overflow-hidden font-medium rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
+                            <Link to='/services' className={"px-5 py-1 bg-white dark:bg-gray-900 rounded-lg"}>Services</Link>
+                        </li>
+                        <li className={page === "about-us" ? "inline-flex items-center justify-center p-0.5 overflow-hidden font-medium rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
+                            <Link to='/about-us' className={"px-5 py-1 bg-white dark:bg-gray-900 rounded-lg"}>About Us</Link>
+                        </li>
+                        <li className={page === "contact-us" ? "inline-flex items-center justify-center p-0.5 overflow-hidden font-medium rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
+                            <Link to='/contact-us' className={"px-5 py-1 bg-white dark:bg-gray-900 rounded-lg"}>Contact Us</Link>
+                        </li>
+
+                        {/* <li className={page === "" ? "text-white relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500  " : "text-white"}>
                             <Link to='/' className={page === "" ? "relative px-5 py-1 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-lg " : ""}>Home</Link>
                         </li>
                         <li className={page === "services" ? "text-white relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500  " : "text-white"}>
@@ -57,7 +70,7 @@ const Navbar = () => {
                         </li>
                         <li className={page === "contact-us" ? "text-white relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500  " : "text-white"}>
                             <Link to='/contact-us' className={page === "contact-us" ? "relative px-5 py-1 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-lg " : ""}>Contact Us</Link>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
                 <div className='flex items-center mr-5'>
@@ -101,3 +114,4 @@ const Navbar = () => {
 }
 
 export default Navbar
+\
