@@ -60,7 +60,7 @@ const RecentDesigns = () => {
     //   hidden xl:block
     return (
         <div>
-            <p className='text-bold text-4xl px-8 md:px-28 py-3'>Recent Designs</p>
+            <p className='w-full text-bold text-4xl px-8 md:px-28 py-3'>Recent Designs</p>
             <div className=' pt-3'>
                 <Swiper
 

@@ -8,7 +8,7 @@ import Feedback from '../components/Feedback'
 
 const LandingPage = () => {
     return (
-        <>
+        <div className="block w-full">
             <Slideshow />
             <LandingFunPart />
             <Slideshow2 />
@@ -16,7 +16,7 @@ const LandingPage = () => {
             <CustomerTestimonials />
             <Feedback />
             <Footer />
-        </>
+        </div>
     )
 }
 

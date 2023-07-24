@@ -6,7 +6,9 @@ function LandingPageLayout() {
     return (
         <>
             <Navbar />
-            <Outlet />
+            <main className="flex min-h-screen w-screen pt-16">
+                <Outlet />
+            </main>
         </>
     )
 }

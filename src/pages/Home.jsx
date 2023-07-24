@@ -1,4 +1,3 @@
-import Navbar from '../components/Navbar'
 import Slideshow from '../components/Slideshow'
 import HomeFunctionality from '../components/HomeFunctionality'
 import Instructions from '../components/Instructions'
@@ -11,8 +10,7 @@ import Fitness from '../components/Fitness'
 
 const Home = () => {
   return (
-    <div>
-      <Navbar page="home" />
+    <div className='block w-full'>
       <Slideshow />
       <HomeFunctionality />
       <Instructions />
