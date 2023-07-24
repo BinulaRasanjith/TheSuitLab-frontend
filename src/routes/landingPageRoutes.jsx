@@ -1,10 +1,10 @@
-import LandingPageLayout from '../layouts/LandingPageLayout';
-import LandingPage from '../pages/LandingPage';
-import Login from '../pages/Login';
-import AboutUs from '../pages/AboutUs';
-import Signup from '../pages/Signup';
-import Services from '../pages/Services';
-import ContactUs from '../pages/ContactUs';
+import LandingPageLayout from '../layouts/LandingPageLayout'
+import LandingPage from '../pages/LandingPage'
+import Login from '../pages/Login'
+import AboutUs from '../pages/AboutUs'
+import Signup from '../pages/Signup'
+import Services from '../pages/Services'
+import ContactUs from '../pages/ContactUs'
 
 const landingPageRoutes = {
     path: '/',
@@ -19,4 +19,4 @@ const landingPageRoutes = {
     ],
 }
 
-export default landingPageRoutes;
+export default landingPageRoutes
