@@ -5,7 +5,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google'
 import { ChakraProvider } from '@chakra-ui/react'
 
 import App from './App.jsx'
-import store from './store'
+import store from './store/store'
 import './index.css'
 
 const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID
