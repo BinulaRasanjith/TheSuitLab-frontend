@@ -83,7 +83,7 @@ const RecentDesigns = () => {
 
                         <div className="flex items-center justify-center flex-col bg-white rounded-lg drop-shadow-lg">
 
-                            <img className="rounded-t-lg h-64 md:h-44 w-full" src={costume1} alt="product image" />
+                            <img className="rounded-t-lg h-64 md:h-44 w-full object-cover" src={costume1} alt="product image" />
                             <small className='text-stone-500 pt-2 text-bold'>Medley, navy</small>
                             <p>Navy two-piece stretch</p>
                             <p>Suit</p>
@@ -113,7 +113,7 @@ const RecentDesigns = () => {
                     <SwiperSlide>
                         <div className="flex items-center flex-col bg-white rounded-lg drop-shadow-lg">
 
-                            <img className="rounded-t-lg h-64 md:h-44 w-full" src={costume2} alt="product image" />
+                            <img className="rounded-t-lg h-64 md:h-44 w-full object-cover" src={costume2} alt="product image" />
                             <small className='text-stone-500 pt-2 text-bold'>Medley, navy</small>
                             <p>Navy two-piece stretch</p>
                             <p>Suit</p>
@@ -142,7 +142,7 @@ const RecentDesigns = () => {
                     <SwiperSlide>
                         <div className="flex items-center flex-col bg-white rounded-lg drop-shadow-lg">
 
-                            <img className="rounded-t-lg h-64 md:h-44 w-full" src={costume3} alt="product image" />
+                            <img className="rounded-t-lg h-64 md:h-44 w-full object-cover" src={costume3} alt="product image" />
                             <small className='text-stone-500 pt-2 text-bold'>Medley, navy</small>
                             <p>Navy two-piece stretch</p>
                             <p>Suit</p>
@@ -171,7 +171,7 @@ const RecentDesigns = () => {
                     <SwiperSlide>
                         <div className="flex items-center flex-col bg-white rounded-lg drop-shadow-lg">
 
-                            <img className="rounded-t-lg h-64 md:h-44 w-full" src={costume4} alt="product image" />
+                            <img className="rounded-t-lg h-64 md:h-44 w-full object-cover" src={costume4} alt="product image" />
                             <small className='text-stone-500 pt-2 text-bold'>Medley, navy</small>
                             <p>Navy two-piece stretch</p>
                             <p>Suit</p>
@@ -200,7 +200,7 @@ const RecentDesigns = () => {
                     <SwiperSlide>
                         <div className="flex items-center flex-col bg-white rounded-lg drop-shadow-lg">
 
-                            <img className="rounded-t-lg h-64 md:h-44 w-full" src={costume5} alt="product image" />
+                            <img className="rounded-t-lg h-64 md:h-44 w-full object-cover" src={costume5} alt="product image" />
                             <small className='text-stone-500 pt-2 text-bold'>Medley, navy</small>
                             <p>Navy two-piece stretch</p>
                             <p>Suit</p>
@@ -229,7 +229,7 @@ const RecentDesigns = () => {
                     <SwiperSlide>
                         <div className="flex items-center flex-col bg-white rounded-lg drop-shadow-lg">
 
-                            <img className="rounded-t-lg h-64 md:h-44 w-full" src={costume1} alt="product image" />
+                            <img className="rounded-t-lg h-64 md:h-44 w-full object-cover" src={costume1} alt="product image" />
                             <small className='text-stone-500 pt-2 text-bold'>Medley, navy</small>
                             <p>Navy two-piece stretch</p>
                             <p>Suit</p>
@@ -258,7 +258,7 @@ const RecentDesigns = () => {
                     <SwiperSlide>
                         <div className="flex items-center flex-col bg-white rounded-lg drop-shadow-lg">
 
-                            <img className="rounded-t-lg h-64 md:h-44 w-full" src={costume2} alt="product image" />
+                            <img className="rounded-t-lg h-64 md:h-44 w-full object-cover" src={costume2} alt="product image" />
                             <small className='text-stone-500 pt-2 text-bold'>Medley, navy</small>
                             <p>Navy two-piece stretch</p>
                             <p>Suit</p>
@@ -287,7 +287,7 @@ const RecentDesigns = () => {
                     <SwiperSlide>
                         <div className="flex items-center flex-col bg-white rounded-lg drop-shadow-lg">
 
-                            <img className="rounded-t-lg h-64 md:h-44 w-full" src={costume3} alt="product image" />
+                            <img className="rounded-t-lg h-64 md:h-44 w-full object-cover" src={costume3} alt="product image" />
                             <small className='text-stone-500 pt-2 text-bold'>Medley, navy</small>
                             <p>Navy two-piece stretch</p>
                             <p>Suit</p>
@@ -316,7 +316,7 @@ const RecentDesigns = () => {
                     <SwiperSlide>
                         <div className="flex items-center flex-col bg-white rounded-lg drop-shadow-lg">
 
-                            <img className="rounded-t-lg h-64 md:h-44 w-full" src={costume4} alt="product image" />
+                            <img className="rounded-t-lg h-64 md:h-44 w-full object-cover" src={costume4} alt="product image" />
                             <small className='text-stone-500 pt-2 text-bold'>Medley, navy</small>
                             <p>Navy two-piece stretch</p>
                             <p>Suit</p>
@@ -345,7 +345,7 @@ const RecentDesigns = () => {
                     <SwiperSlide>
                         <div className="flex items-center flex-col bg-white rounded-lg drop-shadow-lg">
 
-                            <img className="rounded-t-lg h-64 md:h-44 w-full" src={costume5} alt="product image" />
+                            <img className="rounded-t-lg h-64 md:h-44 w-full object-cover" src={costume5} alt="product image" />
                             <small className='text-stone-500 pt-2 text-bold'>Medley, navy</small>
                             <p>Navy two-piece stretch</p>
                             <p>Suit</p>

@@ -36,7 +36,7 @@ const Feedback = () => {
                 >
 
                     <SwiperSlide>
-                        <div className='flex flex-col flex flex-col min-h-max shadow-2xl p-3 border border-gray rounded-lg hover:scale-105 transform-gpu '>
+                        <div className='flex flex-col min-h-max shadow-2xl p-3 border border-gray rounded-lg hover:scale-105 transform-gpu '>
                             <div className="flex items-center justify-between mb-2">
 
                                 <img className="w-10 h-10 rounded-full" src={Avatar} alt="Avatar"></img>

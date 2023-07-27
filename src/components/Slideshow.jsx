@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+
+import { Button } from '@chakra-ui/react'
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs'
 import { RxDotFilled } from 'react-icons/rx'
 
@@ -79,7 +81,19 @@ const Slideshow = () => {
       <div className='flex flex-col items-center absolute '>
         <p className='text-xl sm:text-2xl md:text-5xl text-white font-bold'>Welcome to the world of</p>
         <p className='text-xl sm:text-2xl md:text-5xl text-white font-bold py-3'>Gentleman</p>
-        <button type="button" className="py-2.5 bg-opacity-50 px-5 mr-2 mb-2 text-sm font-medium text-white rounded-lg border border-white border-4">Shop Now</button>
+        <Button
+          textColor={'white'}
+          bg={'transparent'}
+          border={'2px'}
+          _hover={{
+            bg: 'white',
+            border: '2px solid white',
+            textColor: 'black'
+          }}
+          _active={{
+            bg: 'gray.200',
+          }}
+        >Shop Now</Button>
       </div>
 
     </div>
