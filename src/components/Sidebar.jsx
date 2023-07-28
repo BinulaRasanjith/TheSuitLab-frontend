@@ -35,7 +35,7 @@ function ThirdLevelItem({ label, children }) {
 const Sidebar = () => {
     return (
         <div className='flex flex-col justify-between bg-white min-h-screen max-w-max drop-shadow-2xl pt-40 md:pt-20'>
-        
+
             <ul className="sidebar">
                 <SidebarItem label="LookBooks" />
                 <SidebarItem label="Clothing">
@@ -62,7 +62,7 @@ const Sidebar = () => {
 
 
             <div className='flex items-center justify-center pb-5 pt-5'>
-                <img src={Group277} alt="Group277" />
+                <img alt="Group277" src={Group277} />
             </div>
         </div>
     )

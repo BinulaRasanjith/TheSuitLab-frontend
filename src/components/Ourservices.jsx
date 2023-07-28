@@ -15,12 +15,12 @@ const OurServices = () => {
                         </div>
                     </div>
                     <div>
-                        <img src={rectangle237} alt="" />
+                        <img alt="" src={rectangle237} />
                     </div>
                 </div>
                 <div className='grid grid-cols-1 md:grid-cols-2 md:gap-x-20 lg:gap-x-52 gap-y-4'>
                     <div className='order-1 md:order-2'>
-                        <img src={rectangle238} alt="" />
+                        <img alt="" src={rectangle238} />
                     </div>
                     <div>
                         <h3 className='order-2 md:order-1 text-3xl text-bold pb-5'>Not only for men, also for children</h3>
@@ -40,7 +40,7 @@ const OurServices = () => {
                         </div>
                     </div>
                     <div>
-                        <img src={rectangle239} alt="" />
+                        <img alt="" src={rectangle239} />
                     </div>
 
                 </div>

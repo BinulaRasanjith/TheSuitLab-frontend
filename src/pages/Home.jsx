@@ -1,12 +1,12 @@
-import Slideshow from '../components/Slideshow'
+import AddMeasurements from '../components/AddMeasurements'
+import CustomerTestimonials from '../components/CustomerTestimonials'
+import Fitness from '../components/Fitness'
+import Footer from '../components/Footer'
 import HomeFunctionality from '../components/HomeFunctionality'
 import Instructions from '../components/Instructions'
-import AddMeasurements from '../components/AddMeasurements'
 import RecentDesigns from '../components/RecentDesigns'
+import Slideshow from '../components/Slideshow'
 import Slideshow2 from '../components/Slideshow2'
-import CustomerTestimonials from '../components/CustomerTestimonials'
-import Footer from '../components/Footer'
-import Fitness from '../components/Fitness'
 
 const Home = () => {
   return (

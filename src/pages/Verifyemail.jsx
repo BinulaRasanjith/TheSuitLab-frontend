@@ -7,12 +7,12 @@ const VerifyEmail = () => {
         <div >
             <div className='flex items-center justify-center m-auto overflow-hidden'>
 
-                <img className='object-cover h-screen relative w-full ' src={loginImage} alt="login image" />
+                <img alt="login image" className='object-cover h-screen relative w-full ' src={loginImage} />
                 <div className='grid grid-cols-1 md:grid-cols-2 justify-items-center md:gap-x-0 lg:gap-x-10 xl:gap-x-20 absolute px-2'>
 
                     <div className='hidden md:flex flex-col justify-between'>
                         <div className='flex items-center pt-10'>
-                            <div><img src={TSL_LOGO_SM} alt="" /></div>
+                            <div><img alt="" src={TSL_LOGO_SM} /></div>
                             <div className='lg:flex hidden text-white text-6xl'><p>The Suit Lab</p></div>
 
                         </div>
@@ -33,7 +33,7 @@ const VerifyEmail = () => {
                                 <div className='flex md:hidden'>WELCOME TO THE SUIT LAB</div>
                             </div>
                             <div className='flex md:hidden'>
-                                <img className='h-14' src={TSL_LOGO_SM} alt="" />
+                                <img alt="" className='h-14' src={TSL_LOGO_SM} />
                             </div>
                         </div>
                         <form className='flex flex-col align-center justify-center lg:pl-10 lg:pr-10 pl-2 pr-2 float-left'>
@@ -48,15 +48,15 @@ const VerifyEmail = () => {
                             </div>
 
                             <div className="lg:block hidden relative z-0 w-full mb-6 group max-w-2xl">
-                                <input type="number" name="floating_code" id="floating_code" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 focus:outline-none focus:ring-0 peer" placeholder=" " required />
-                                <label htmlFor="floating_code" className="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Enter Vefication Code</label>
+                                <input className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 focus:outline-none focus:ring-0 peer" id="floating_code" name="floating_code" placeholder=" " required type="number" />
+                                <label className="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6" htmlFor="floating_code">Enter Vefication Code</label>
                             </div>
 
                             <div className='flex items-center flex-col pb-5'>
                                 <div className='pb-5 float-left'>
-                                    <button type="button" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-lg px-5 py-2.5 text-center mr-2 mb-2 ">Set Password</button>
+                                    <button className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-lg px-5 py-2.5 text-center mr-2 mb-2 " type="button">Set Password</button>
                                 </div>
-                             
+
                                 <div>Back to Login</div>
 
                             </div>

@@ -1,6 +1,6 @@
-import OurServices from '../components/OurServices'
-import OurProducts from '../components/OurProducts'
 import Footer from '../components/Footer'
+import OurProducts from '../components/OurProducts'
+import OurServices from '../components/OurServices'
 
 const Services = () => {
   return (

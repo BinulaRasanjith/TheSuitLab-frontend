@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { Button } from '@chakra-ui/react'
+import { useState } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 import TSL_LOGO from '../assets/images/TSL_LOGO.png'
 import TSL_LOGO_SM from '../assets/images/TSL_LOGO_SM.png'
@@ -36,27 +36,27 @@ const Navbar = () => {
             <nav className="flex justify-between items-center bg-gray-900 fixed h-16 w-full z-20">
                 <div className='h-full flex items-center pr-2'>
                     <div className={checkPage ? "flex text-3xl text-white px-2 sm:hidden" : "text-3xl text-white px-2"} onClick={() => { setOpen(!open) }}>
-                        <ion-icon name={`${open ? "close" : "menu"}`} className="text-white"></ion-icon>
+                        <ion-icon className="text-white" name={`${open ? "close" : "menu"}`}></ion-icon>
                     </div>
                     <div className='h-full overflow-hidden'>
-                        <img className={"h-full object-cover  hidden md:block"} src={TSL_LOGO} alt="TSL_LOGO" />
-                        <img className={"h-full object-cover block md:hidden"} src={TSL_LOGO_SM} alt="Only_logo" />
+                        <img alt="TSL_LOGO" className={"h-full object-cover  hidden md:block"} src={TSL_LOGO} />
+                        <img alt="Only_logo" className={"h-full object-cover block md:hidden"} src={TSL_LOGO_SM} />
                     </div>
                 </div>
                 <div className="max-w-screen-xl flex-wrap mx-auto">
 
                     <ul className="hidden sm:flex text-white items-center p-1 font-medium gap-2 lg:gap-5 md:mt-0">
                         <li className={page === "" ? "inline-flex items-center justify-center p-0.5 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
-                            <Link to='/' className={"px-5 py-1 bg-gray-900 rounded-lg"}>Home</Link>
+                            <Link className={"px-5 py-1 bg-gray-900 rounded-lg"} to='/'>Home</Link>
                         </li>
                         <li className={page === "services" ? "inline-flex items-center justify-center p-0.5 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
-                            <Link to='/services' className={"px-5 py-1 bg-white dark:bg-gray-900 rounded-lg"}>Services</Link>
+                            <Link className={"px-5 py-1 bg-white dark:bg-gray-900 rounded-lg"} to='/services'>Services</Link>
                         </li>
                         <li className={page === "about-us" ? "inline-flex items-center justify-center p-0.5 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
-                            <Link to='/about-us' className={"px-5 py-1 bg-white dark:bg-gray-900 rounded-lg"}>About Us</Link>
+                            <Link className={"px-5 py-1 bg-white dark:bg-gray-900 rounded-lg"} to='/about-us'>About Us</Link>
                         </li>
                         <li className={page === "contact-us" ? "inline-flex items-center justify-center p-0.5 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
-                            <Link to='/contact-us' className={"px-5 py-1 bg-white dark:bg-gray-900 rounded-lg"}>Contact Us</Link>
+                            <Link className={"px-5 py-1 bg-white dark:bg-gray-900 rounded-lg"} to='/contact-us'>Contact Us</Link>
                         </li>
                         {/* <li className={page === "" ? "inline-flex items-center justify-center p-0.5 overflow-hidden font-medium rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
                             <Link to='/' className={"px-5 py-1 bg-gray-900 rounded-lg"}>Home</Link>
@@ -74,17 +74,17 @@ const Navbar = () => {
                 </div>
                 <div className='flex items-center mr-5'>
                     <Button
-                        textColor={'white'}
-                        bg={'transparent'}
-                        border={'2px'}
+                        _active={{
+                            bg: 'gray',
+                        }}
                         _hover={{
                             bg: 'white',
                             textColor: 'black'
                         }}
-                        _active={{
-                            bg: 'gray',
-                        }}
-                        onClick={handleLoginClick}>Login</Button>
+                        bg={'transparent'}
+                        border={'2px'}
+                        onClick={handleLoginClick}
+                        textColor={'white'}>Login</Button>
                     {/* <button className='text-white border border-white border-solid pt-1 pb-1 pl-3 pr-3 rounded'
                         onClick={handleLoginClick}>Login</button> */}
                 </div>
