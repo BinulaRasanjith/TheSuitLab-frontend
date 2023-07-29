@@ -1,14 +1,15 @@
 import { Button } from "@chakra-ui/react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import loginImage from "../assets/images/LoginBackground.png";
 import TSL_LOGO_SM from "../assets/images/TSL_LOGO_SM.png";
 import googleIcon from "../assets/images/googleIcon.png";
 import Input from "../components/LoginInput/Input";
-import { loginAsync, selectAuthError, selectAuthStatus, } from "../store/slices/authSlice";
+import { loginAsync, selectAuthError, selectAuthStatus, setError } from "../store/slices/authSlice";
 
 const Login = () => {
+	const dispatch = useDispatch()
 
 	const status = useSelector(selectAuthStatus)
 	const error = useSelector(selectAuthError)
@@ -19,9 +20,9 @@ const Login = () => {
 		setLoginCredentials({ ...loginCredentials, [name]: value })
 	}
 
-	const handleSubmit = (e) => {
-		loginAsync()
+	const handleSubmit = async (e) => {
 		e.preventDefault()
+		dispatch(loginAsync(loginCredentials))
 	}
 
 	return (
@@ -64,8 +65,10 @@ const Login = () => {
 							id="email"
 							name="email"
 							onChange={handleInputChange}
+							onFocus={() => { dispatch(setError(null)) }}
 							placeholder="Email"
 							type="email"
+							value={loginCredentials.email}
 						/>
 						<Input
 							className={"mb-2 lg:mb-3"}
@@ -73,8 +76,10 @@ const Login = () => {
 							id="password"
 							name="password"
 							onChange={handleInputChange}
+							onFocus={() => dispatch(setError(null))}
 							placeholder="Password"
 							type="password"
+							value={loginCredentials.password}
 						/>
 
 						<div className="text-sm lg:text-base text-stone-500 mb-2">
@@ -88,6 +93,8 @@ const Login = () => {
 								bg={"gray.700"}
 								color={"white"}
 								fontSize={{ base: "l", lg: "xl" }}
+								isLoading={status === "loading"}
+								loadingText="Logging in"
 								padding={{ base: "5px", lg: "20px" }}
 								type="submit"
 								width={{ base: "100%", md: "70%" }}
