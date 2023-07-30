@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { Button } from '@chakra-ui/react'
+import { useEffect, useState } from 'react'
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs'
 import { RxDotFilled } from 'react-icons/rx'
 
@@ -53,7 +54,7 @@ const Slideshow = () => {
 
   return (
     <div className='max-w-[1580px] h-[500px] w-full m-auto pt-10 relative group flex items-center justify-center'>
-      <div style={{ backgroundImage: `url(${slides[current].url})` }} className='w-full h-full bg-center bg-cover duration-500'></div>
+      <div className='w-full h-full bg-center bg-cover duration-500' style={{ backgroundImage: `url(${slides[current].url})` }}></div>
 
       {/* left Arrow */}
       <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
@@ -66,8 +67,8 @@ const Slideshow = () => {
       <div className='absolute flex top-[80%] right-[50%] left-[50%] justify-center py-2'>
         {slides.map((slide, slideIndex) => {
           return (
-            <div key={slideIndex}
-              onClick={() => goToSlide(slideIndex)} className='text-2xl justify-center py-2'>
+            <div className='text-2xl justify-center py-2'
+              key={slideIndex} onClick={() => goToSlide(slideIndex)}>
               <RxDotFilled />
 
             </div>
@@ -79,7 +80,19 @@ const Slideshow = () => {
       <div className='flex flex-col items-center absolute '>
         <p className='text-xl sm:text-2xl md:text-5xl text-white font-bold'>Welcome to the world of</p>
         <p className='text-xl sm:text-2xl md:text-5xl text-white font-bold py-3'>Gentleman</p>
-        <button type="button" className="py-2.5 bg-opacity-50 px-5 mr-2 mb-2 text-sm font-medium text-white rounded-lg border border-white border-4">Shop Now</button>
+        <Button
+          _active={{
+            bg: 'gray.200',
+          }}
+          _hover={{
+            bg: 'white',
+            border: '2px solid white',
+            textColor: 'black'
+          }}
+          bg={'transparent'}
+          border={'2px'}
+          textColor={'white'}
+        >Shop Now</Button>
       </div>
 
     </div>

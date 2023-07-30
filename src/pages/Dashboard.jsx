@@ -1,12 +1,8 @@
-import Sidebar from '../components/Sidebar'
-import Navbar from '../components/Navbar'
+import Sidebar2 from '../components/Sidebar2'
 
 const Dashboard = () => {
   return (
-    <div>
-      <Navbar page="dashboard"/>
-      <Sidebar />
-    </div>
+    <Sidebar2 />
   )
 }
 

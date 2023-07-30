@@ -1,19 +1,17 @@
 
 import { useEffect, useState } from 'react';
-// import Swiper core and required modules
-import { Navigation, Pagination, A11y, Autoplay } from 'swiper/modules';
-
-import { Swiper, SwiperSlide } from 'swiper/react';
-
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+// import Swiper core and required modules
+import { A11y, Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 import testimony_coat from '../assets/images/testimony_coat.png';
-import testimony_trouser from '../assets/images/testimony_trouser.png';
 import testimony_shirt from '../assets/images/testimony_shirt.png';
+import testimony_trouser from '../assets/images/testimony_trouser.png';
 
 const OurProducts = () => {
 
@@ -53,27 +51,27 @@ const OurProducts = () => {
                 </div>
                 <Swiper
 
+                    allowSlideNext={true}
+                    allowSlidePrev={true}
+                    autoplay={{ delay: 5000, disableOnInteraction: true }}
                     className='w-full h-full px-12 py-10'
                     // install Swiper modules
                     modules={[Navigation, Pagination, A11y, Autoplay]}
-                    setWrapperSize={true}
-                    spaceBetween={50}
-                    slidesPerView={slidesPerView}
                     navigation
-                    pagination={{ clickable: true, dynamicBullets: true, dynamicMainBullets: 2, }}
+                    onSlideChange={() => console.log('slide change')}
                     // scrollbar={{ draggable: true }}
                     onSwiper={(swiper) => console.log(swiper)}
-                    onSlideChange={() => console.log('slide change')}
-                    autoplay={{ delay: 5000, disableOnInteraction: true }}
-                    allowSlideNext={true}
-                    allowSlidePrev={true}
+                    pagination={{ clickable: true, dynamicBullets: true, dynamicMainBullets: 2, }}
+                    setWrapperSize={true}
+                    slidesPerView={slidesPerView}
+                    spaceBetween={50}
                 >
                     <SwiperSlide>
                         <div className='shadow-lg ring-gray-300 ring-1 rounded-xl px-3 py-2'>
-                            <div className='flex items-center justify-center text-bold text-2xl py-3 font-bold font-bold'><p>Suits</p></div>
+                            <div className='flex items-center justify-center text-bold text-2xl py-3 font-bold'><p>Suits</p></div>
                             <div><hr /></div>
                             <div>
-                                <img className="w-full h-64" src={testimony_coat} alt="" />
+                                <img alt="" className="w-full h-64" src={testimony_coat} />
 
                             </div>
                         </div>
@@ -83,7 +81,7 @@ const OurProducts = () => {
                             <div className='flex items-center justify-center text-bold text-2xl py-3 font-bold'><p>Trousers</p></div>
                             <div><hr /></div>
                             <div>
-                                <img className="w-full h-64" src={testimony_trouser} alt="" />
+                                <img alt="" className="w-full h-64" src={testimony_trouser} />
 
                             </div>
                         </div>
@@ -93,7 +91,7 @@ const OurProducts = () => {
                             <div className='flex items-center justify-center text-bold text-2xl py-3 font-bold'><p>Shirts</p></div>
                             <div><hr /></div>
                             <div>
-                                <img className="w-full h-64" src={testimony_shirt} alt="" />
+                                <img alt="" className="w-full h-64" src={testimony_shirt} />
 
                             </div>
                         </div>
@@ -103,7 +101,7 @@ const OurProducts = () => {
                             <div className='flex items-center justify-center text-bold text-2xl py-3 font-bold'><p>Ties</p></div>
                             <div><hr /></div>
                             <div>
-                                <img className="w-full h-64" src={testimony_trouser} alt="" />
+                                <img alt="" className="w-full h-64" src={testimony_trouser} />
 
                             </div>
                         </div>
@@ -113,7 +111,7 @@ const OurProducts = () => {
                             <div className='flex items-center justify-center text-bold text-2xl py-3 font-bold'><p>Coats</p></div>
                             <div><hr /></div>
                             <div>
-                                <img className="w-full h-64" src={testimony_coat} alt="" />
+                                <img alt="" className="w-full h-64" src={testimony_coat} />
 
                             </div>
                         </div>
@@ -123,7 +121,7 @@ const OurProducts = () => {
                             <div><p className='flex items-center justify-center text-bold text-2xl py-3 font-bold'>Boas</p></div>
                             <div><hr /></div>
                             <div>
-                                <img className="w-full h-64" src={testimony_shirt} alt="" />
+                                <img alt="" className="w-full h-64" src={testimony_shirt} />
 
                             </div>
                         </div>
@@ -135,27 +133,27 @@ const OurProducts = () => {
             <div>
                 <Swiper
 
+                    allowSlideNext={true}
+                    allowSlidePrev={true}
+                    autoplay={{ delay: 5000, disableOnInteraction: true }}
                     className='w-full h-full px-12 py-10'
                     // install Swiper modules
                     modules={[Navigation, Pagination, A11y, Autoplay]}
-                    setWrapperSize={true}
-                    spaceBetween={50}
-                    slidesPerView={slidesPerView}
                     navigation
-                    pagination={{ clickable: true, dynamicBullets: true, dynamicMainBullets: 2, }}
+                    onSlideChange={() => console.log('slide change')}
                     // scrollbar={{ draggable: true }}
                     onSwiper={(swiper) => console.log(swiper)}
-                    onSlideChange={() => console.log('slide change')}
-                    autoplay={{ delay: 5000, disableOnInteraction: true }}
-                    allowSlideNext={true}
-                    allowSlidePrev={true}
+                    pagination={{ clickable: true, dynamicBullets: true, dynamicMainBullets: 2, }}
+                    setWrapperSize={true}
+                    slidesPerView={slidesPerView}
+                    spaceBetween={50}
                 >
                     <SwiperSlide>
                         <div className='shadow-lg ring-gray-300 ring-1 rounded-xl px-3 py-2'>
-                            <div className='flex items-center justify-center text-bold text-2xl py-3 font-bold font-bold'><p>Suits</p></div>
+                            <div className='flex items-center justify-center text-bold text-2xl py-3 font-bold'><p>Suits</p></div>
                             <div><hr /></div>
                             <div>
-                                <img className="w-full h-64" src={testimony_coat} alt="" />
+                                <img alt="" className="w-full h-64" src={testimony_coat} />
 
                             </div>
                         </div>
@@ -165,7 +163,7 @@ const OurProducts = () => {
                             <div className='flex items-center justify-center text-bold text-2xl py-3 font-bold'><p>Trousers</p></div>
                             <div><hr /></div>
                             <div>
-                                <img className="w-full h-64" src={testimony_trouser} alt="" />
+                                <img alt="" className="w-full h-64" src={testimony_trouser} />
 
                             </div>
                         </div>
@@ -175,7 +173,7 @@ const OurProducts = () => {
                             <div className='flex items-center justify-center text-bold text-2xl py-3 font-bold'><p>Shirts</p></div>
                             <div><hr /></div>
                             <div>
-                                <img className="w-full h-64" src={testimony_shirt} alt="" />
+                                <img alt="" className="w-full h-64" src={testimony_shirt} />
 
                             </div>
                         </div>
@@ -185,7 +183,7 @@ const OurProducts = () => {
                             <div className='flex items-center justify-center text-bold text-2xl py-3 font-bold'><p>Ties</p></div>
                             <div><hr /></div>
                             <div>
-                                <img className="w-full h-64" src={testimony_trouser} alt="" />
+                                <img alt="" className="w-full h-64" src={testimony_trouser} />
 
                             </div>
                         </div>
@@ -195,7 +193,7 @@ const OurProducts = () => {
                             <div className='flex items-center justify-center text-bold text-2xl py-3 font-bold'><p>Coats</p></div>
                             <div><hr /></div>
                             <div>
-                                <img className="w-full h-64" src={testimony_coat} alt="" />
+                                <img alt="" className="w-full h-64" src={testimony_coat} />
 
                             </div>
                         </div>
@@ -205,7 +203,7 @@ const OurProducts = () => {
                             <div><p className='flex items-center justify-center text-bold text-2xl py-3 font-bold'>Boas</p></div>
                             <div><hr /></div>
                             <div>
-                                <img className="w-full h-64" src={testimony_shirt} alt="" />
+                                <img alt="" className="w-full h-64" src={testimony_shirt} />
 
                             </div>
                         </div>

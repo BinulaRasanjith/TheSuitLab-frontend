@@ -6,8 +6,8 @@ const Instructions = () => {
                 <h1 className='text-3xl text-bold'>THE FIT MAKES YOU A REAL MEN</h1>
             </div>
             <div className='flex flex-col items-center px-1 md:px-0'>
-                <p>We create clothes designed just for you. It's time to move beyond unflattering </p>
-                <p>conventional sizes and join a personalised future. The time has come for you to start </p>
+                <p>We create clothes designed just for you. It is time to move beyond unflattering </p>
+                <p>conventional sizes and join a personalized future. The time has come for you to start </p>
                 <p>wearing high-quality clothes made just for you.</p>
             </div>
             <div className='p-3'>

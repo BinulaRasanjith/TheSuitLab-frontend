@@ -1,96 +1,128 @@
-import { Button } from '@chakra-ui/react'
+import { Button } from "@chakra-ui/react";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import loginImage from '../assets/images/LoginBackground.png'
-import TSL_LOGO_SM from '../assets/images/TSL_LOGO_SM.png'
-import googleIcon from '../assets/images/googleIcon.png'
+import loginImage from "../assets/images/LoginBackground.png";
+import TSL_LOGO_SM from "../assets/images/TSL_LOGO_SM.png";
+import googleIcon from "../assets/images/googleIcon.png";
+import Input from "../components/LoginInput/Input";
+import { loginAsync, selectAuthError, selectAuthStatus, setError } from "../store/slices/authSlice";
 
 const Login = () => {
+	const dispatch = useDispatch()
 
-  return (
-    <div >
-      <div className='flex items-center justify-center m-auto overflow-hidden'>
+	const status = useSelector(selectAuthStatus)
+	const error = useSelector(selectAuthError)
+	const [loginCredentials, setLoginCredentials] = useState({ email: "", password: "" })
 
-        <img className='object-cover h-screen relative w-full ' src={loginImage} alt="login image" />
-        <div className='grid grid-cols-1 md:grid-cols-2 justify-items-center md:gap-x-0 lg:gap-x-10 xl:gap-x-20 absolute px-2'>
+	const handleInputChange = (e) => {
+		const { name, value } = e.target
+		setLoginCredentials({ ...loginCredentials, [name]: value })
+	}
 
-          <div className='hidden md:flex flex-col justify-between'>
-            <div className='flex items-center pt-10'>
-              <div><img src={TSL_LOGO_SM} alt="" /></div>
-              <div className='lg:flex hidden text-white text-6xl'><p>The Suit Lab</p></div>
+	const handleSubmit = async (e) => {
+		e.preventDefault()
+		dispatch(loginAsync(loginCredentials))
+	}
 
-            </div>
-            <div className='flex flex-col items-start text-white text-4xl'>
-              <p>WELCOME</p>
-              <p>TO THE SUIT LAB</p>
-            </div>
-          </div>
+	return (
+		<div className="flex justify-center items-center w-screen ">
+			{/* background image */}
+			<img
+				alt="login image"
+				className="object-cover h-screen w-screen absolute top-0 left-0 z-0"
+				src={loginImage}
+			/>
 
+			<div className="grid grid-cols-1 md:grid-cols-2 justify-items-center items-center md:gap-x-0 lg:gap-x-10 xl:gap-x-20 h-4/5 px-2 py-1 z-10">
+				<div className="hidden md:flex flex-col justify-around">
+					<div className="flex items-center pt-10">
+						<div>
+							<img alt="" src={TSL_LOGO_SM} />
+						</div>
+						<div className="lg:flex hidden text-white text-6xl">
+							<p>The Suit Lab</p>
+						</div>
+					</div>
+					<div className="flex flex-col items-start text-white text-4xl">
+						<p className="text-center w-full">WELCOME TO THE SUIT LAB</p>
+					</div>
+				</div>
 
-          <div className='flex flex-col bg-white drop-shadow-2xl rounded-3xl'>
-            <div className='flex items-center justify-around md:justify-center pt-3 md:pt-10 float-left font-bold'>
-              <div className='flex flex-col items-start' >
-                <div className='flex gap-3 text-2xl md:text-4xl'>
-                  <p>Log</p>
-                  <p>In</p>
-                </div>
-                <div className='flex md:hidden'>WELCOME TO THE SUIT LAB</div>
-              </div>
-              <div className='flex md:hidden'>
-                <img className='h-14' src={TSL_LOGO_SM} alt="" />
-              </div>
-            </div>
-            <form className='flex flex-col align-center justify-center lg:pl-10 lg:pr-10 pl-2 pr-2 mt-4'>
-              <div className='lg:hidden flex flex-col align-center justify-center xl:ml-20 xl:mr-20 2xl:ml-40 2xl:mr-40'>
-                <div className='flex flex-col mb-4 lg:pl-10 lg:pr-10 pl-5 pr-5 max-w-2xl float-left'>
-                  <input className='outline rounded text-xl pl-5 md:pb-2 md:pt-2 pb-1 pt-1 outline-gray-300' placeholder='Example@gmail.com' type="email" id="email" name="email" />
-                </div>
-                <div className='flex flex-col  lg:pl-10 lg:pr-10 pl-5 pr-5 pb-5 max-w-2xl float-left'>
-                  <input className='outline rounded text-xl pl-5 pb-2 pt-2 outline-gray-300' placeholder='Enter your password' type="password" id="password" name="password" />
-                </div>
-              </div>
+				<div className="flex flex-col w-11/12 bg-white px-5 py-3 lg:py-10 drop-shadow-2xl rounded-3xl h-fit">
+					<h1 className="text-center font-bold text-2xl md:text-3xl lg:text-4xl">
+						Login
+					</h1>
 
-              <div className="lg:block hidden relative z-0 mb-6 mt-4 w-full group max-w-2xl">
-                <input type="email" name="floating_email" id="floating_email" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 focus:outline-none focus:ring-0 peer" placeholder=" " required />
-                <label htmlFor="floating_email" className="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
-              </div>
-              <div className="lg:block hidden relative z-0 w-full mb-6 group max-w-2xl">
-                <input type="password" name="floating_password" id="floating_password" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 focus:outline-none focus:ring-0 peer" placeholder=" " required />
-                <label htmlFor="floating_password" className="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
-              </div>
+					<form className="flex flex-col align-center justify-center md:px-5 lg:px-10 pl-2 pr-2 mt-4" onSubmit={handleSubmit}>
+						{/* <div className="font-semibold text-sm lg:text-base text-red-600 text-center mb-1 md:mb-3">
+              Account does not exist or Password is incorrect
+            </div> */}
 
-              <div className='flex items-center flex-col'>
-                <div className='flex flex-col items-start px-1'>
-                  <div className='text-red-700 float-left '>Account does not exist or Password is incorrect</div>
-                  <div className='text-stone-500 float-left '>Forgot Password?</div>
+						<Input
+							className={"mb-5 lg:mb-8"}
+							error={error}
+							id="email"
+							name="email"
+							onChange={handleInputChange}
+							onFocus={() => { dispatch(setError(null)) }}
+							placeholder="Email"
+							type="email"
+							value={loginCredentials.email}
+						/>
+						<Input
+							className={"mb-2 lg:mb-3"}
+							error={error}
+							id="password"
+							name="password"
+							onChange={handleInputChange}
+							onFocus={() => dispatch(setError(null))}
+							placeholder="Password"
+							type="password"
+							value={loginCredentials.password}
+						/>
 
-                </div>
-                <div className='pb-3 float-left'>
-                  {/* <button type="button" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-lg px-5 py-2.5 text-center mr-2 mb-2 ">Log In</button> */}
-                  <Button padding={'20px 40px'} fontSize={'xl'} colorScheme='blue'>Login</Button>
-                </div>
-                <div className='flex item-center justify-center align-center float-left'>
-                  ----------------Or------------------
-                </div>
+						<div className="text-sm lg:text-base text-stone-500 mb-2">
+							Forgot Password?
+						</div>
+						<div className="flex items-center flex-col">
+							<div className="flex flex-col items-start px-1"></div>
+							<Button
+								_active={{ bg: "black" }}
+								_hover={{ bg: "gray.800" }}
+								bg={"gray.700"}
+								color={"white"}
+								fontSize={{ base: "l", lg: "xl" }}
+								isLoading={status === "loading"}
+								loadingText="Logging in"
+								padding={{ base: "5px", lg: "20px" }}
+								type="submit"
+								width={{ base: "100%", md: "70%" }}
+							>
+								Login
+							</Button>
 
-              </div>
-              <div className='flex flex-col py-3 px-2 sm:px-10 items-center rounded-bl-3xl rounded-br-3xl float-left'>
-                <Button mb={'10px'}>
-                  <img className='pr-2' src={googleIcon} alt="googleIcon" />
-                  <span className='text-stone-500'>Sign Up with google</span>
-                </Button>
-                <div className='flex justify-center align-center float-left'>
+							<div className="flex item-center justify-center items-center float-left m-2 md:m-4 w-full md:w-3/4">
+								<hr className="w-full mx-2 border-2 rounded-sm" />
+								Or
+								<hr className="w-full mx-2 border-2 rounded-sm" />
+							</div>
+						</div>
+						<div className="flex flex-col items-center rounded-bl-3xl rounded-br-3xl float-left">
+							<Button mb={"10px"} width={{ base: "100%", md: "70%" }}>
+								<img alt="googleIcon" className="mr-2" src={googleIcon} />
+								<span className="text-stone-800">Signup with Google</span>
+							</Button>
+							<div className="flex flex-col lg:flex-row justify-center align-center text-center float-left">
+								<div className="text-stone-500 md:mr-2">New Here?</div>
+								<div className="text-black">Create New Account</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	);
+};
 
-                  <div className='text-stone-500 mr-2'>New Here?</div>
-                  <div className='text-black'>Create New Account</div>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  )
-}
-
-export default Login
+export default Login;

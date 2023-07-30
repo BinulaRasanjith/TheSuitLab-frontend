@@ -5,7 +5,7 @@ import Accessories4 from '../assets/images/Accessories4.png'
 
 const HomeFunctionality = () => {
     return (
-        <div className='grid grid-col-1 lg:grid-cols-2 md:grid-rows-1 gap-0 pb-10'>
+        <div className='grid grid-col-1 lg:grid-cols-2 md:grid-rows-1 gap-0 pb-10 w-full'>
             <div className='flex pt-5 px-5 md:pl-5 md:pr-5'>
                 <div className='flex items-start justify-start relative'>
                     <img className='w-screen h-screen' src={Accessories1} alt="" />

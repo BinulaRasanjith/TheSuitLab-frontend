@@ -24,4 +24,4 @@ const landingPageRoutes = {
     ],
 }
 
-export default landingPageRoutes;
+export default landingPageRoutes

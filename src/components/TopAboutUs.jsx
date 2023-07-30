@@ -4,7 +4,7 @@ const TopAboutUs = () => {
   return (
     <div className='pt-10 md:pt-2'>
       <div className='flex items-start justify-start relative'>
-        <img className="bg-cover w-full h-screen" src={Rectangle243} alt="" />
+        <img alt="" className="bg-cover w-full h-screen" src={Rectangle243} />
       </div>
       <div className='flex flex-col items-start justify-start z-3 top-[3%] sm:top-[3%] md:top-[3%] left-[3%] absolute'>
         <div className='flex flex-col pb-7'>
