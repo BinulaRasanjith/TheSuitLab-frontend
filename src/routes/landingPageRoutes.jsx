@@ -5,6 +5,9 @@ import AboutUs from '../pages/AboutUs';
 import Signup from '../pages/Signup';
 import Services from '../pages/Services';
 import ContactUs from '../pages/ContactUs';
+import Dashboard from '../pages/Dashboard';
+import Admin from '../pages/Admin';
+
 
 const landingPageRoutes = {
     path: '/',
@@ -15,7 +18,9 @@ const landingPageRoutes = {
         { path: 'signup', element: <Signup /> },
         { path: 'about-us', element: <AboutUs /> },
         { path: 'services', element: <Services /> },
-        { path: 'contact-us', element: <ContactUs /> }
+        { path: 'contact-us', element: <ContactUs /> },
+        { path: 'dashboard', element: <Dashboard /> },
+        { path: 'admin', element: <Admin /> },
     ],
 }
 
