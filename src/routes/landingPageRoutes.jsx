@@ -6,7 +6,7 @@ import Signup from '../pages/Signup';
 import Services from '../pages/Services';
 import ContactUs from '../pages/ContactUs';
 import Dashboard from '../pages/Dashboard';
-import Admin from '../pages/Admin';
+import Admin from '../pages/Admin/Dashboard';
 
 
 const landingPageRoutes = {
@@ -20,7 +20,7 @@ const landingPageRoutes = {
         { path: 'services', element: <Services /> },
         { path: 'contact-us', element: <ContactUs /> },
         { path: 'dashboard', element: <Dashboard /> },
-        { path: 'admin', element: <Admin /> },
+        { path: 'admin', element: <Admin /> }
     ],
 }
 

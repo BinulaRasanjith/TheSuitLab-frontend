@@ -17,7 +17,7 @@ const Sidebar2 = () => {
     const [selected, setSelected] = useState('');
 
     return (
-        <div className=' bg-white max-w-max drop-shadow-2xl px-4 pt-20'>
+        <div className=' bg-white max-w-max  absolute h-screen drop-shadow-2xl px-4 pt-20'>
             <ul className=" flex flex-col items-start m-auto">
                 <li>
                     <button id="multiLevelDropdownButton" onClick={() => { handleToggleClick(1) }} data-dropdown-toggle="dropdown" data-dropdown-placement="right-start" className={`py-2 px-2 text-center w-44 flex items-center justify-between hover:bg-gray-100 rounded ${activeButtonId === 1 ? 'text-white bg-black hover:bg-black' : 'text-bg'}`} type="button">
@@ -152,6 +152,9 @@ const Sidebar2 = () => {
 
 
             </ul>
+ 
+            <div>
+        </div>
         </div>
     )
 }
