@@ -1,5 +1,5 @@
-import React from 'react'
 
+// eslint-disable-next-line react/prop-types
 const ControlPanel = ({ control, setControl }) => {
     return (
         <div className="absolute -left-10 top-0 z-50 flex flex-col">

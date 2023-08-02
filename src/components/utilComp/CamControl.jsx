@@ -1,5 +1,6 @@
-import React from 'react'
 
+
+// eslint-disable-next-line react/prop-types
 const CamControl = ({ camCont, setCamCont }) => {
     return (
         <div className="absolute -right-10 top-0 z-50 flex flex-col">

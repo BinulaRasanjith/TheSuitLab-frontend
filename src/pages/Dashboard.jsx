@@ -1,9 +1,9 @@
 // import ChooseBottom from '../components/ChooseBottom'
 // import Materials from '../components/Materials'
+import ChooseButtons from '../components/ChooseButtons'
 import Sidebar2 from '../components/Sidebar2'
 import UpperModel from '../components/UpperModel'
 
-import ChooseButtons from '../components/ChooseButtons'
 // import ChooseLapels from '../components/ChooseLapels'
 
 // import ChoosePocket from '../components/ChoosePocket'
@@ -16,7 +16,7 @@ import ChooseButtons from '../components/ChooseButtons'
 // import ChooseBackPocket from '../components/ChooseBackPocket'
 // import ChoosePantPocket from '../components/ChoosePantPocket'
 // import ChooseBeltLoop from '../components/ChooseBeltLoop'
-import ChooseCuff from '../components/ChooseCuff'
+// import ChooseCuff from '../components/ChooseCuff'
 
 const Dashboard = () => {
   return (

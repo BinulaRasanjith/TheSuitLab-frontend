@@ -1,11 +1,12 @@
+import { Environment, OrbitControls } from '@react-three/drei'
 import { Canvas } from "@react-three/fiber"
-import { ContactShadows, Environment, OrbitControls } from '@react-three/drei'
 import { Suspense } from 'react'
-import { NewCostume } from './NewCostume'
-import Experience from './Experience'
 import { useState } from 'react'
-import ControlPanel from "./utilComp/ControlPanel"
+
+import { NewCostume } from './NewCostume'
+// import Experience from './Experience'
 import CamControl from "./utilComp/CamControl"
+import ControlPanel from "./utilComp/ControlPanel"
 
 const UpperModel = () => {
     const [control, setControl] = useState({
@@ -23,9 +24,9 @@ const UpperModel = () => {
             <Canvas camera={{ position: [0, 0, 10], fov: 30 }}>
                 <Suspense fallback={false}>
                     {/* <Suit1 controller={controller} /> */}
-                    <NewCostume control={control} camCont={camCont} />
+                    <NewCostume camCont={camCont} control={control}  />
                 </Suspense>
-                <OrbitControls enableZoom={true} makeDefault minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2} />
+                <OrbitControls enableZoom={true} makeDefault maxPolarAngle={Math.PI / 2} minPolarAngle={Math.PI / 2}  />
                 <Environment preset="city" />
                 {/* <ContactShadows rotation-x={Math.PI / 2} position={[0, -4.5, 0]} opacity={0.25} width={10} height={10} blur={1} far={4.5} /> */}
             </Canvas>
