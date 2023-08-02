@@ -26,7 +26,7 @@ const testRoutes = {
                     element: <h1>Completed Orders</h1>
                 },
                 {
-                    path: '/test/orders/tobecollected',
+                    path: '/test/orders/to-be-collected',
                     element: <h1>To Be Canceled Orders</h1>
                 },
             ]
