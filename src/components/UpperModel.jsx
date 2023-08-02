@@ -18,7 +18,7 @@ const UpperModel = () => {
         scale: 2.3,
     })
     return (
-        <div className="w-1/3 h-screen flex items-center py-10 relative m-auto">
+        <div className="w-1/3 h-screen flex items-center py-10 relative mx-20">
             <ControlPanel control={control} setControl={setControl} />
             <CamControl camCont={camCont} setCamCont={setCamCont} />
             <Canvas camera={{ position: [0, 0, 10], fov: 30 }}>

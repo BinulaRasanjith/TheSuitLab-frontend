@@ -10,7 +10,7 @@ import sixDThree from "../assets/images/button_styles/6D3.png"
 
 const ChooseButtons = () => {
     return (
-        <div className="flex flex-col my-5 px-3 border-r-4 border-gray-400">
+        <div className="flex flex-col px-3 border-r-4 border-gray-400">
             <span className="p-5 text-2xl font-bold">Choose Your Buttons</span>
             <div className="grid grid-cols-3 gap-x-8 ">
                 <div className="flex flex-col p-3 items-center">
