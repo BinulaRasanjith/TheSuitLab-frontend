@@ -1,11 +1,10 @@
 import { PropTypes } from "prop-types"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 
-import { selectSidebarIsOpen, toggleSidebar, } from "../../store/slices/sidebarSlice"
+import { selectSidebarIsOpen, } from "../../store/slices/sidebarSlice"
 import SidebarItem from "./SidebarItem"
 
 const Sidebar = ({ items }) => {
-	const dispatch = useDispatch()
 	const sidebarIsOpen = useSelector(selectSidebarIsOpen)
 
 	return (
