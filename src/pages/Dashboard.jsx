@@ -1,8 +1,14 @@
 // import ChooseBottom from '../components/ChooseBottom'
 // import Materials from '../components/Materials'
-import ChooseButtons from '../components/ChooseButtons'
-import RightSideBar from '../components/RightSideBar'
-import UpperModel from '../components/UpperModel'
+
+// import ChooseButtons from '../components/ChooseButtons'
+// import RightSideBar from '../components/RightSideBar'
+// import Sidebar2 from '../components/Sidebar2'
+// import UpperModel from '../components/UpperModel'
+import SuitCustomizationLanding from './customer/SuitCustomizationLanding'
+
+
+// import Sidebar from '../components/Sidebar/Sidebar'
 
 // import ChooseLapels from '../components/ChooseLapels'
 
@@ -24,9 +30,9 @@ const Dashboard = () => {
       {/* <ChooseCuff /> */}
 
       {/* <Materials /> */}
-      <ChooseButtons />
-      <UpperModel />
-      <RightSideBar />
+      {/* <ChooseButtons /> */}
+      {/* <UpperModel /> */}
+      {/* <RightSideBar /> */}
       {/* <ChooseLapels /> */}
       {/* <ChooseBottom /> */}
       {/* <ChoosePocket /> */}
