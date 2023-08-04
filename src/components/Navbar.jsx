@@ -1,34 +1,38 @@
 import { Button } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, } from 'react-redux'
 import { NavLink, useNavigate } from 'react-router-dom'
 
 import TSL_LOGO from '../assets/images/TSL_LOGO.png'
 import TSL_LOGO_SM from '../assets/images/TSL_LOGO_SM.png'
-import { selectSidebarIsOpen, toggleSidebar } from '../store/slices/sidebarSlice'
+import { toggleSidebar } from '../store/slices/sidebarSlice'
 
 // eslint-disable-next-line react/prop-types
 const Navbar = () => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 
-	const sidebarIsOpen = useSelector(selectSidebarIsOpen)
-
 	const [isLogged, setIsLogged] = useState(false)
 
 	useEffect(() => {
-		// setIsLogged(true)
+		setIsLogged(true)
 	}, [])
 
 	// handle login click
 	const handleLoginClick = () => {
+		setIsLogged(true)
 		navigate('/login')
 	}
 
 	// handle signup click
 	const handleSignupClick = () => {
 		navigate('/signup')
+	}
+
+	// handle logout click
+	const handleLogoutClick = () => {
+		setIsLogged(false)
 	}
 
 	const [open, setOpen] = useState(false);
@@ -70,39 +74,59 @@ const Navbar = () => {
 					</ul>
 				</div>
 				<div className='flex items-center gap-x-3 mr-5'>
-					<Button
-						_active={{
-							bg: 'gray',
-						}}
-						_hover={{
-							bg: 'white',
-							border: '2px',
-							borderColor: 'white',
-							textColor: 'black'
-						}}
-						bg={'transparent'}
-						border={'2px'}
-						fontSize={{ base: '0.8rem', md: '1rem' }}
-						onClick={handleSignupClick}
-						padding={{ base: '4px', md: '0.5rem 2rem' }}
-						textColor={'white'}>Sign Up</Button>
+					{isLogged ?
+						<Button
+							_active={{
+								bg: 'gray',
+							}}
+							_hover={{
+								bg: 'white',
+								border: '2px',
+								borderColor: 'white',
+								textColor: 'black'
+							}}
+							bg={'transparent'}
+							border={'2px'}
+							fontSize={{ base: '0.8rem', md: '1rem' }}
+							onClick={handleLogoutClick}
+							padding={{ base: '4px', md: '0.5rem 2rem' }}
+							textColor={'white'}>Log Out</Button>
+						:
+						(<>
+							<Button
+								_active={{
+									bg: 'gray',
+								}}
+								_hover={{
+									bg: 'white',
+									border: '2px',
+									borderColor: 'white',
+									textColor: 'black'
+								}}
+								bg={'transparent'}
+								border={'2px'}
+								fontSize={{ base: '0.8rem', md: '1rem' }}
+								onClick={handleSignupClick}
+								padding={{ base: '4px', md: '0.5rem 2rem' }}
+								textColor={'white'}>Sign Up</Button>
 
-					<Button
-						_active={{
-							bg: 'gray',
-						}}
-						_hover={{
-							bg: 'white',
-							border: '2px',
-							borderColor: 'white',
-							textColor: 'black'
-						}}
-						bg={'transparent'}
-						border={'2px'}
-						fontSize={{ base: '0.8rem', md: '1rem' }}
-						onClick={handleLoginClick}
-						padding={{ base: '4px', md: '0.5rem 2rem' }}
-						textColor={'white'}>Log In</Button>
+							<Button
+								_active={{
+									bg: 'gray',
+								}}
+								_hover={{
+									bg: 'white',
+									border: '2px',
+									borderColor: 'white',
+									textColor: 'black'
+								}}
+								bg={'transparent'}
+								border={'2px'}
+								fontSize={{ base: '0.8rem', md: '1rem' }}
+								onClick={handleLoginClick}
+								padding={{ base: '4px', md: '0.5rem 2rem' }}
+								textColor={'white'}>Log In</Button>
+						</>)}
 				</div>
 
 			</nav >
