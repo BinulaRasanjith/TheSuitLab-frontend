@@ -15,6 +15,11 @@ const Navbar = () => {
         navigate('/login')
     }
 
+    // handle signup click
+    const handleSignupClick = () => {
+        navigate('/signup')
+    }
+
 
     const page = location.pathname.slice(1)
     let checkPage = false;
@@ -33,7 +38,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="flex justify-between items-center bg-gray-900 fixed h-16 w-full z-40">
+            <nav className="flex justify-between items-center bg-primary fixed h-16 w-full z-40">
                 <div className='h-full flex items-center pr-2'>
                     <div className={checkPage ? "flex text-3xl text-white px-2 sm:hidden" : "text-3xl text-white px-2"} onClick={() => { setOpen(!open) }}>
                         <ion-icon className="text-white" name={`${open ? "close" : "menu"}`}></ion-icon>
@@ -47,29 +52,17 @@ const Navbar = () => {
 
                     <ul className="hidden sm:flex text-white items-center p-1 font-medium gap-2 lg:gap-5 md:mt-0">
                         <li className={page === "" ? "inline-flex items-center justify-center p-0.5 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
-                            <Link className={"px-5 py-1 bg-gray-900 rounded-lg"} to='/'>Home</Link>
+                            <Link className={"px-5 py-1 bg-primary rounded-lg"} to='/'>Home</Link>
                         </li>
                         <li className={page === "services" ? "inline-flex items-center justify-center p-0.5 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
-                            <Link className={"px-5 py-1 bg-white dark:bg-gray-900 rounded-lg"} to='/services'>Services</Link>
+                            <Link className={"px-5 py-1 bg-primary rounded-lg"} to='/services'>Services</Link>
                         </li>
                         <li className={page === "about-us" ? "inline-flex items-center justify-center p-0.5 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
-                            <Link className={"px-5 py-1 bg-white dark:bg-gray-900 rounded-lg"} to='/about-us'>About Us</Link>
+                            <Link className={"px-5 py-1 bg-primary rounded-lg"} to='/about-us'>About Us</Link>
                         </li>
                         <li className={page === "contact-us" ? "inline-flex items-center justify-center p-0.5 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
-                            <Link className={"px-5 py-1 bg-white dark:bg-gray-900 rounded-lg"} to='/contact-us'>Contact Us</Link>
+                            <Link className={"px-5 py-1 bg-primary rounded-lg"} to='/contact-us'>Contact Us</Link>
                         </li>
-                        {/* <li className={page === "" ? "inline-flex items-center justify-center p-0.5 overflow-hidden font-medium rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
-                            <Link to='/' className={"px-5 py-1 bg-gray-900 rounded-lg"}>Home</Link>
-                        </li>
-                        <li className={page === "services" ? "inline-flex items-center justify-center p-0.5 overflow-hidden font-medium rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
-                            <Link to='/services' className={"px-5 py-1 bg-white dark:bg-gray-900 rounded-lg"}>Services</Link>
-                        </li>
-                        <li className={page === "about-us" ? "inline-flex items-center justify-center p-0.5 overflow-hidden font-medium rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
-                            <Link to='/about-us' className={"px-5 py-1 bg-white dark:bg-gray-900 rounded-lg"}>About Us</Link>
-                        </li>
-                        <li className={page === "contact-us" ? "inline-flex items-center justify-center p-0.5 overflow-hidden font-medium rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
-                            <Link to='/contact-us' className={"px-5 py-1 bg-white dark:bg-gray-900 rounded-lg"}>Contact Us</Link>
-                        </li> */}
                     </ul>
                 </div>
                 <div className='flex items-center gap-x-3 mr-5'>
@@ -83,7 +76,7 @@ const Navbar = () => {
                         }}
                         bg={'transparent'}
                         border={'2px'}
-                        onClick={handleLoginClick}
+                        onClick={handleSignupClick}
                         textColor={'white'}>Sign Up</Button>
 
                     <Button
@@ -97,7 +90,7 @@ const Navbar = () => {
                         bg={'transparent'}
                         border={'2px'}
                         onClick={handleLoginClick}
-                        textColor={'white'}>Login</Button>
+                        textColor={'white'}>Log In</Button>
                 </div>
 
             </nav>

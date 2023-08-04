@@ -8,6 +8,7 @@ function Input({
 	value,
 	onChange,
 	onFocus,
+	onBlur,
 	error,
 	className,
 }) {
@@ -20,6 +21,7 @@ function Input({
 				}
 				id={id}
 				name={name}
+				onBlur={onBlur}
 				onChange={onChange}
 				onFocus={onFocus}
 				placeholder=" "
@@ -45,9 +47,10 @@ Input.propTypes = {
 	id: PropTypes.string,
 	name: PropTypes.string.isRequired,
 	value: PropTypes.string,
+	onBlur: PropTypes.func,
 	onChange: PropTypes.func,
 	onFocus: PropTypes.func,
-	error: PropTypes.bool,
+	error: PropTypes.string,
 	className: PropTypes.string,
 };
 
