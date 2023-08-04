@@ -13,7 +13,7 @@ export function NewCostume(props) {
 
   return (
     // eslint-disable-next-line react/no-unknown-property
-    <group {...props} dispose={null} scale={props.camCont.scale} position={[props.control.x, props.control.y, props.control.z]}>
+    <group {...props} dispose={null} position={[props.control.x, props.control.y, props.control.z]} scale={props.camCont.scale}>
       {/* <group position={[0.034, -0.389, 0.082]}>
         <mesh geometry={nodes.Jacket_Button002.geometry} material={materials['Button.003']} position={[-1.101, 0.124, 0.012]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} />
         <mesh geometry={nodes.Jacket_Button003.geometry} material={materials['Button.003']} position={[-1.1, 0.041, 0.032]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} />

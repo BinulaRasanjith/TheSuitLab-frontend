@@ -5,6 +5,8 @@ import RightSideBar from '../components/RightSideBar'
 import Sidebar2 from '../components/Sidebar2'
 import UpperModel from '../components/UpperModel'
 
+// import Sidebar from '../components/Sidebar/Sidebar'
+
 // import ChooseLapels from '../components/ChooseLapels'
 
 // import ChoosePocket from '../components/ChoosePocket'
