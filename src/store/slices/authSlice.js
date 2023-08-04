@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import jwtDecode from "jwt-decode";
 
 import api from "../../api/api";
-import { login as loginAPI, logout as logoutAPI } from "../../api/authAPIs";
+import { login as loginAPI, logout as logoutAPI, signup as signupAPI } from "../../api/authAPIs";
 
 const initialState = {
 	user: {
@@ -19,10 +20,27 @@ export const loginAsync = createAsyncThunk(
 	async (payload) => {
 		try {
 			const response = await loginAPI(payload);
-			const { user, accessToken, message } = response.data;
+			const { accessToken, message } = response.data;
 
 			api.defaults.headers.common.Authorization = `Bearer ${accessToken}`; // set the access token in the api module
 			localStorage.setItem("accessToken", accessToken); // set the access token in the local storage
+
+			const user = jwtDecode(accessToken); // decode the access token to get the user data
+
+			return { message, accessToken, user };
+		}
+		catch (error) {
+			return Promise.reject(error);
+		}
+	}
+);
+
+export const signupAsync = createAsyncThunk(
+	'auth/signup',
+	async (payload) => {
+		try {
+			const response = await signupAPI(payload);
+			const { user, message } = response.data;
 
 			return { user, message };
 		}
@@ -30,7 +48,8 @@ export const loginAsync = createAsyncThunk(
 			return Promise.reject(error);
 		}
 	}
-)
+);
+
 
 const authSlice = createSlice({
 	name: 'auth',
