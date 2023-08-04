@@ -35,13 +35,13 @@ const SidebarItem = ({ label, icon, to, subItems }) => {
 
 	const handleClick = (e) => {
 		e.preventDefault()
-		if (subItems) navigate(subItems[0].to)
-		else navigate(to)
-	}
-
-	const handleArrowClick = (e) => {
-		e.preventDefault()
-		setIsOpen(!isOpen)
+		if (pathname.includes(to)) {
+			setIsOpen(!isOpen)
+		} else if (!subItems) {
+			navigate(to)
+		} else {
+			navigate(subItems[0].to)
+		}
 	}
 
 	useEffect(() => {
@@ -55,8 +55,9 @@ const SidebarItem = ({ label, icon, to, subItems }) => {
 				<span className={'text-xl'}>{icon}</span>
 				{sidebarIsOpen && label}
 				{sidebarIsOpen && subItems &&
-					<span className={`transition-all duration-300 ml-auto text-xs ${isOpen ? 'transform rotate-180' : ''}`}
-						onClick={handleArrowClick}><BiSolidDownArrow /></span>}
+					<span className={`transition-all duration-300 ml-auto text-xs ${isOpen ? 'transform rotate-180' : ''}`}>
+						<BiSolidDownArrow />
+					</span>}
 			</div>
 			<Collapse animateOpacity in={isOpen} unmountOnExit>
 				<div className='flex flex-col'>
