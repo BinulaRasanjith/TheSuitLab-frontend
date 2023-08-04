@@ -28,7 +28,7 @@ const Dashboard = () => {
   return (
     <>
       {/* <ChooseCuff /> */}
-
+      <SuitCustomizationLanding />
       {/* <Materials /> */}
       {/* <ChooseButtons /> */}
       {/* <UpperModel /> */}
