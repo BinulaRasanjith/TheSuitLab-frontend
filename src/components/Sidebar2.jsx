@@ -18,7 +18,7 @@ const Sidebar2 = () => {
 
     return (
         <div className=' bg-white max-w-max drop-shadow-2xl px-4 pt-20'>
-            <ul className=" flex flex-col items-start m-auto">
+            <ul className=" flex flex-col items-start">
                 <li>
                     <button className={`py-2 px-2 text-center w-44 flex items-center justify-between hover:bg-gray-100 rounded ${activeButtonId === 1 ? 'text-white bg-black hover:bg-black' : 'text-bg'}`} data-dropdown-placement="right-start" data-dropdown-toggle="dropdown" id="multiLevelDropdownButton" onClick={() => { handleToggleClick(1) }} type="button">
                         <div className='flex items-center'>

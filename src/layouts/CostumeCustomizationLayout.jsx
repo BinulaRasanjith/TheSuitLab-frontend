@@ -6,7 +6,7 @@ const CostumeCustomizationLayout = () => {
     return (
         <>
             <Navbar />
-            <main className="flex min-h-screen w-screen pt-16">
+            <main className="flex min-h-screen w-screen m-auto overflow-hidden">
                 <Outlet />
             </main>
         </>

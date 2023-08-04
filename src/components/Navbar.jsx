@@ -33,7 +33,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="flex justify-between items-center bg-gray-900 fixed h-16 w-full z-20">
+            <nav className="flex justify-between items-center bg-gray-900 fixed h-16 w-full z-40">
                 <div className='h-full flex items-center pr-2'>
                     <div className={checkPage ? "flex text-3xl text-white px-2 sm:hidden" : "text-3xl text-white px-2"} onClick={() => { setOpen(!open) }}>
                         <ion-icon className="text-white" name={`${open ? "close" : "menu"}`}></ion-icon>

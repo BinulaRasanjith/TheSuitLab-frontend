@@ -1,6 +1,7 @@
 // import ChooseBottom from '../components/ChooseBottom'
 // import Materials from '../components/Materials'
 import ChooseButtons from '../components/ChooseButtons'
+import RightSideBar from '../components/RightSideBar'
 import Sidebar2 from '../components/Sidebar2'
 import UpperModel from '../components/UpperModel'
 
@@ -27,6 +28,7 @@ const Dashboard = () => {
       {/* <Materials /> */}
       <ChooseButtons />
       <UpperModel />
+      <RightSideBar />
       {/* <ChooseLapels /> */}
       {/* <ChooseBottom /> */}
       {/* <ChoosePocket /> */}
