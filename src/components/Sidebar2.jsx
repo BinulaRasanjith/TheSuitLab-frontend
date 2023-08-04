@@ -20,7 +20,7 @@ const Sidebar2 = () => {
         <div className=' bg-white max-w-max drop-shadow-2xl px-4 pt-20'>
             <ul className=" flex flex-col items-start">
                 <li>
-                    <button className={`py-2 px-2 text-center w-44 flex items-center justify-between hover:bg-gray-100 rounded ${activeButtonId === 1 ? 'text-white bg-black hover:bg-black' : 'text-bg'}`} data-dropdown-placement="right-start" data-dropdown-toggle="dropdown" id="multiLevelDropdownButton" onClick={() => { handleToggleClick(1) }} type="button">
+                    <button className={`py-2 px-2 text-center w-44 flex items-center justify-between rounded ${activeButtonId === 1 ? 'text-white bg-black hover:bg-black' : 'text-bg'}`} data-dropdown-placement="right-start" data-dropdown-toggle="dropdown" id="multiLevelDropdownButton" onClick={() => { handleToggleClick(1) }} type="button">
                         <div className='flex items-center'>
                             <ion-icon className="mr-4" src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/svg/document-outline.svg"></ion-icon>
                             <span className='pl-2.5'>Lookbooks</span>
@@ -46,7 +46,7 @@ const Sidebar2 = () => {
 
                 </li>
                 <li>
-                    <button className={`py-2 px-2 text-center w-44 flex items-center justify-between hover:bg-gray-100 rounded ${activeButtonId === 2 ? 'text-white bg-black hover:bg-black' : 'text-bg'}`} data-dropdown-placement="right-start" data-dropdown-toggle="dropdown" id="multiLevelDropdownButton" onClick={() => { handleToggleClick(2) }} type="button">
+                    <button className={`py-2 px-2 text-center w-44 flex items-center justify-between rounded ${activeButtonId === 2 ? 'text-white bg-black hover:bg-black' : 'text-bg'}`} data-dropdown-placement="right-start" data-dropdown-toggle="dropdown" id="multiLevelDropdownButton" onClick={() => { handleToggleClick(2) }} type="button">
                         <div className='flex items-center'>
                             <ion-icon className="text-bg" src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/svg/brush-outline.svg"></ion-icon>
                             <span className='pl-2.5'>Custom Suits</span>
@@ -72,7 +72,7 @@ const Sidebar2 = () => {
                     </div>)}
                 </li>
                 <li>
-                    <button className={`py-2 px-2 text-center w-44 flex items-center justify-between hover:bg-gray-100 rounded ${activeButtonId === 3 ? 'text-white bg-black hover:bg-black' : 'text-bg'}`} data-dropdown-placement="right-start" data-dropdown-toggle="dropdown" id="multiLevelDropdownButton" onClick={() => { handleToggleClick(3) }} type="button">
+                    <button className={`py-2 px-2 text-center w-44 flex items-center justify-between rounded ${activeButtonId === 3 ? 'text-white bg-black hover:bg-black' : 'text-bg'}`} data-dropdown-placement="right-start" data-dropdown-toggle="dropdown" id="multiLevelDropdownButton" onClick={() => { handleToggleClick(3) }} type="button">
                         <div className='flex items-center'>
                             <ion-icon className="text-bg mr-4" src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/svg/cut-outline.svg"></ion-icon>
                             <span className='pl-2.5'>Accessories</span>
@@ -97,7 +97,7 @@ const Sidebar2 = () => {
                     </div>)}
                 </li>
                 <li>
-                    <button className={`py-2 px-2 text-center w-44 flex items-center justify-between hover:bg-gray-100 rounded ${activeButtonId === 4 ? 'text-white bg-black hover:bg-black' : 'text-bg'}`} data-dropdown-placement="right-start" data-dropdown-toggle="dropdown" id="multiLevelDropdownButton" onClick={() => { handleToggleClick(4) }} type="button">
+                    <button className={`py-2 px-2 text-center w-44 flex items-center justify-between rounded ${activeButtonId === 4 ? 'text-white bg-black hover:bg-black' : 'text-bg'}`} data-dropdown-placement="right-start" data-dropdown-toggle="dropdown" id="multiLevelDropdownButton" onClick={() => { handleToggleClick(4) }} type="button">
                         <div className='flex items-center'>
                             <ion-icon className="text-bg mr-4" src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/svg/people-outline.svg"></ion-icon>
                             <span className='pl-2.5'>About Us</span>
@@ -123,7 +123,7 @@ const Sidebar2 = () => {
                 </li>
 
                 <li>
-                    <button className={`py-2 px-2 text-center w-44 flex items-center justify-between hover:bg-gray-100 rounded ${activeButtonId === 5 ? 'text-white bg-black hover:bg-black' : 'text-bg'}`} data-dropdown-placement="right-start" data-dropdown-toggle="dropdown" id="multiLevelDropdownButton" onClick={() => { handleToggleClick(5) }} type="button">
+                    <button className={`py-2 px-2 text-center w-44 flex items-center justify-between rounded ${activeButtonId === 5 ? 'text-white bg-black hover:bg-black' : 'text-bg'}`} data-dropdown-placement="right-start" data-dropdown-toggle="dropdown" id="multiLevelDropdownButton" onClick={() => { handleToggleClick(5) }} type="button">
                         <div className='flex items-center'>
                             <ion-icon className="text-bg mr-4" src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/svg/person-circle-outline.svg"></ion-icon>
                             <span className='pl-2.5'>Profile</span>

@@ -72,7 +72,20 @@ const Navbar = () => {
                         </li> */}
                     </ul>
                 </div>
-                <div className='flex items-center mr-5'>
+                <div className='flex items-center gap-x-3 mr-5'>
+                    <Button
+                        _active={{
+                            bg: 'gray',
+                        }}
+                        _hover={{
+                            bg: 'white',
+                            textColor: 'black'
+                        }}
+                        bg={'transparent'}
+                        border={'2px'}
+                        onClick={handleLoginClick}
+                        textColor={'white'}>Sign Up</Button>
+
                     <Button
                         _active={{
                             bg: 'gray',
@@ -85,8 +98,6 @@ const Navbar = () => {
                         border={'2px'}
                         onClick={handleLoginClick}
                         textColor={'white'}>Login</Button>
-                    {/* <button className='text-white border border-white border-solid pt-1 pb-1 pl-3 pr-3 rounded'
-                        onClick={handleLoginClick}>Login</button> */}
                 </div>
 
             </nav>
