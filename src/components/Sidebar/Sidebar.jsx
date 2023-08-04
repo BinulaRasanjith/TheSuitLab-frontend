@@ -9,13 +9,12 @@ const Sidebar = ({ items }) => {
 	const sidebarIsOpen = useSelector(selectSidebarIsOpen)
 
 	return (
-		<div className={"flex flex-col gap-2 border-r-2 items-center transition-all ease-in-out duration-300" +
+		<div className={"flex flex-col gap-2 pt-8 border-r-2 items-center transition-all ease-in-out duration-300" +
 			(sidebarIsOpen ? " w-60" : "w-fit")}>
-			<button onClick={() => dispatch(toggleSidebar())}>T</button>
 			{items && items.map((item, index) => (
 				<SidebarItem key={index} {...item} />
 			))}
-		</div>
+		</div >
 	)
 }
 

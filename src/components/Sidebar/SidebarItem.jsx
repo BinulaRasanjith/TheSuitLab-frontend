@@ -1,5 +1,7 @@
+import { Collapse } from '@chakra-ui/react'
 import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
+import { BiSolidDownArrow } from 'react-icons/bi'
 import { useSelector } from 'react-redux'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 
@@ -28,6 +30,7 @@ const SidebarItem = ({ label, icon, to, subItems }) => {
 	const navigate = useNavigate()
 	const { pathname } = useLocation()
 	const sidebarIsOpen = useSelector(selectSidebarIsOpen)
+	const isActive = pathname.includes(to)
 	const [isOpen, setIsOpen] = useState(false)
 
 	const handleClick = (e) => {
@@ -36,23 +39,32 @@ const SidebarItem = ({ label, icon, to, subItems }) => {
 		else navigate(to)
 	}
 
+	const handleArrowClick = (e) => {
+		e.preventDefault()
+		setIsOpen(!isOpen)
+	}
+
 	useEffect(() => {
 		if (pathname.includes(to)) setIsOpen(true)
 		else setIsOpen(false)
 	}, [pathname, to])
 
 	return (
-		<div className={`flex flex-col transition-all ease-in-out duration-1000 mx-2 rounded-md overflow-hidden ${(isOpen ? 'bg-gray-300 ' : '')} ${sidebarIsOpen ? 'w-11/12 ' : 'w-fit '}`}>
-			<NavLink className={({ isActive }) => {
-				return `px-3 h-10 flex gap-2 items-center rounded-md ${isActive ? 'bg-primary text-white' : 'hover:bg-gray-200'} ${sidebarIsOpen ? 'w-full' : 'w-10 items-center justify-center'}`
-			}} onClick={handleClick} to={to}>
+		<div className={`flex flex-col cursor-pointer transition-all ease-in-out duration-1000 mx-2 rounded-md overflow-hidden ${(isOpen ? 'bg-gray-300 ' : '')} ${sidebarIsOpen ? 'w-11/12 ' : 'w-fit '}`}>
+			<div className={`px-3 h-10 flex gap-2 items-center rounded-md ${isActive ? 'bg-primary text-white' : 'hover:bg-gray-200'} ${sidebarIsOpen ? 'w-full' : 'w-10 items-center justify-center'}`} onClick={handleClick}>
 				<span className={'text-xl'}>{icon}</span>
 				{sidebarIsOpen && label}
-			</NavLink>
-
-			{isOpen && sidebarIsOpen && subItems && subItems.map((subItem, index) => (
-				<SubItem key={index} {...subItem} />
-			))}
+				{sidebarIsOpen && subItems &&
+					<span className={`transition-all duration-300 ml-auto text-xs ${isOpen ? 'transform rotate-180' : ''}`}
+						onClick={handleArrowClick}><BiSolidDownArrow /></span>}
+			</div>
+			<Collapse animateOpacity in={isOpen} unmountOnExit>
+				<div className='flex flex-col'>
+					{isOpen && sidebarIsOpen && subItems && subItems.map((subItem, index) => (
+						<SubItem key={index} {...subItem} />
+					))}
+				</div>
+			</Collapse>
 		</div>
 	)
 }

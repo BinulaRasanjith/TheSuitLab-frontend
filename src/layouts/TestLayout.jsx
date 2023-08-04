@@ -1,9 +1,11 @@
 import { HiChartBar, HiColorSwatch, HiShoppingCart } from "react-icons/hi"
 import { HiHandThumbUp, HiUserCircle } from "react-icons/hi2";
+// import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom"
 
 import Navbar from "../components/Navbar"
 import Sidebar from "../components/Sidebar/Sidebar"
+// import { selectSidebarIsOpen } from "../store/slices/sidebarSlice";
 
 const sidebarItems = [
     {
@@ -52,6 +54,7 @@ const sidebarItems = [
 ]
 
 const TestLayout = () => {
+    // const sidebarIsOpen = useSelector(selectSidebarIsOpen)
 
     return (
         <>

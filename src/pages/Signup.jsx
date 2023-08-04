@@ -40,7 +40,7 @@ const Signup = () => {
         <div className='flex items-center justify-center m-auto overflow-hidden'>
             <img
                 alt="login image"
-                className="object-cover h-screen w-screen absolute top-0 left-0 z-0"
+                className="object-cover h-screen w-screen fixed top-0 left-0 z-0"
                 src={loginImage}
             />
 
@@ -68,7 +68,7 @@ const Signup = () => {
                     <form className="flex flex-col align-center justify-center md:px-5 lg:px-10 pl-2 pr-2 mt-4" onSubmit={handleSubmit}>
 
 
-                        <div className='grid grid-cols-2 grid-rows-3 gap-2 my-3'>
+                        <div className='grid grid-cols-1 sm:grid-cols-2 grid-rows-3 gap-2 my-3'>
                             <Input
                                 id="first-name"
                                 name="firstName"
