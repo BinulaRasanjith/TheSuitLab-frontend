@@ -107,7 +107,7 @@ const ViewCustomers = () => {
                         <div className='flex flex-col m-8 sm:rounded-full'>
 
                             <div className="flex flex-row ml-4">
-                                <h4 className=' font-bold text-black p-1'>All Customers</h4>
+                                <span className=' text-xl font-bold text-black p-1'>All Customers</span>
 
                                 <div className=" ml-96">
                                     <label className="sr-only">Search</label>

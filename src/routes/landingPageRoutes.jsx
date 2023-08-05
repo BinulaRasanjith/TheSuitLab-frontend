@@ -9,6 +9,7 @@ import Dashboard from '../pages/Dashboard';
 import Admin from '../pages/Admin/Dashboard';
 import ViewCustomers from '../pages/Admin/Customers';
 import ViewOrders from '../pages/Admin/Orders';
+import Employee from '../pages/Admin/Employees';
 
 
 
@@ -26,6 +27,7 @@ const landingPageRoutes = {
         { path: 'admin', element: <Admin /> },
         { path: 'admin/customers', element: <ViewCustomers /> },
         { path: 'admin/orders', element: <ViewOrders /> },
+        { path: 'admin/employees', element: <Employee /> },
         
     ],
 }
