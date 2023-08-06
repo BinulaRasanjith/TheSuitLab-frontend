@@ -11,6 +11,7 @@ const App = () => {
 			api.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`
 		}
 	}, [])
+
 	return (
 		<RouterProvider router={router} />
 	)
