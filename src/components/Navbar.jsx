@@ -131,7 +131,7 @@ const Navbar = () => {
 
 			</nav >
 
-			<div className={open === true ? "sm:hidden z-20 fixed top-14  left-0 shadow dark:bg-gray-700" : "hidden"}>
+			<div className={open ? "sm:hidden z-20 fixed top-14  left-0 shadow dark:bg-gray-700" : "hidden"}>
 				<ul className="flex flex-col items-center p-2 text-sm text-gray-700 dark:text-gray-200">
 					<NavLink className={({ isActive }) => {
 						return `px-3 py-1 ${isActive ? 'border-2 rounded-md border-cyan-500' : ''}`
