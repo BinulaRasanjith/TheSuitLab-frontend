@@ -30,11 +30,11 @@ const landingPageRoutes = {
         { path: 'about-us', element: <AboutUs /> },
         { path: 'services', element: <Services /> },
         { path: 'contact-us', element: <ContactUs /> },
-        { path: 'dashboard', element: <Dashboard /> },
-        { path: 'admin', element: <Admin /> },
-        { path: 'admin/customers', element: <ViewCustomers /> },
-        { path: 'admin/orders', element: <ViewOrders /> },
-        { path: 'admin/employees', element: <Employee /> },
+        // { path: 'dashboard', element: <Dashboard /> },
+        // { path: 'admin', element: <Admin /> },
+        // { path: 'admin/customers', element: <ViewCustomers /> },
+        // { path: 'admin/orders', element: <ViewOrders /> },
+        // { path: 'admin/employees', element: <Employee /> },
         
     ],
 }
