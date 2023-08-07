@@ -60,16 +60,16 @@ const Navbar = () => {
 
 					<ul className="hidden sm:flex text-white items-center p-1 font-medium gap-2 lg:gap-5 md:mt-0">
 						<NavLink className={({ isActive }) => {
-							return `px-3 py-1 ${isActive ? 'border-2 rounded-md border-cyan-500' : ''}`
+							return `px-3 py-1 ${isActive ? 'font-bold' : ''}`
 						}} to='/'>Home</NavLink>
 						<NavLink className={({ isActive }) => {
-							return `px-3 py-1 ${isActive ? 'border-2 rounded-md border-cyan-500' : ''}`
+							return `px-3 py-1 ${isActive ? 'font-bold' : ''}`
 						}} to='/services'>Services</NavLink>
 						<NavLink className={({ isActive }) => {
-							return `px-3 py-1 ${isActive ? 'border-2 rounded-md border-cyan-500' : ''}`
+							return `px-3 py-1 ${isActive ? 'font-bold' : ''}`
 						}} to='/about-us'>About Us</NavLink>
 						<NavLink className={({ isActive }) => {
-							return `px-3 py-1 ${isActive ? 'border-2 rounded-md border-cyan-500' : ''}`
+							return `px-3 py-1 ${isActive ? 'font-bold' : ''}`
 						}} to='/contact-us'>Contact Us</NavLink>
 					</ul>
 				</div>
@@ -131,7 +131,7 @@ const Navbar = () => {
 
 			</nav >
 
-			<div className={open === true ? "sm:hidden z-20 fixed top-14  left-0 shadow dark:bg-gray-700" : "hidden"}>
+			<div className={open ? "sm:hidden z-20 fixed top-14  left-0 shadow dark:bg-gray-700" : "hidden"}>
 				<ul className="flex flex-col items-center p-2 text-sm text-gray-700 dark:text-gray-200">
 					<NavLink className={({ isActive }) => {
 						return `px-3 py-1 ${isActive ? 'border-2 rounded-md border-cyan-500' : ''}`
