@@ -1,17 +1,24 @@
-import LandingPageLayout from '../layouts/LandingPageLayout';
-import LandingPage from '../pages/LandingPage';
-import Login from '../pages/Login';
-import AboutUs from '../pages/AboutUs';
-import Signup from '../pages/Signup';
-import Services from '../pages/Services';
-import ContactUs from '../pages/ContactUs';
-import Dashboard from '../pages/Dashboard';
-import Admin from '../pages/Admin/Dashboard';
-import ViewCustomers from '../pages/Admin/Customers';
-import ViewOrders from '../pages/Admin/Orders';
-import Employee from '../pages/Admin/Employees';
+// import LandingPageLayout from '../layouts/LandingPageLayout';
+// import LandingPage from '../pages/LandingPage';
+// import Login from '../pages/Login';
+// import AboutUs from '../pages/AboutUs';
+// import Signup from '../pages/Signup';
+// import Services from '../pages/Services';
+// import ContactUs from '../pages/ContactUs';
+// import Dashboard from '../pages/Dashboard';
+// import Admin from '../pages/Admin/Dashboard';
+// import ViewCustomers from '../pages/Admin/Customers';
+// import ViewOrders from '../pages/Admin/Orders';
+// import Employee from '../pages/Admin/Employees';
 
 
+import LandingPageLayout from '../layouts/LandingPageLayout'
+import AboutUs from '../pages/AboutUs'
+import ContactUs from '../pages/ContactUs'
+import LandingPage from '../pages/LandingPage'
+import Login from '../pages/Login'
+import Services from '../pages/Services'
+import Signup from '../pages/Signup'
 
 const landingPageRoutes = {
     path: '/',
