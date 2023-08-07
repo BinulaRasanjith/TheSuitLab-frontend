@@ -60,16 +60,16 @@ const Navbar = () => {
 
 					<ul className="hidden sm:flex text-white items-center p-1 font-medium gap-2 lg:gap-5 md:mt-0">
 						<NavLink className={({ isActive }) => {
-							return `px-3 py-1 ${isActive ? 'border-2 rounded-md border-cyan-500' : ''}`
+							return `px-3 py-1 ${isActive ? 'font-bold' : ''}`
 						}} to='/'>Home</NavLink>
 						<NavLink className={({ isActive }) => {
-							return `px-3 py-1 ${isActive ? 'border-2 rounded-md border-cyan-500' : ''}`
+							return `px-3 py-1 ${isActive ? 'font-bold' : ''}`
 						}} to='/services'>Services</NavLink>
 						<NavLink className={({ isActive }) => {
-							return `px-3 py-1 ${isActive ? 'border-2 rounded-md border-cyan-500' : ''}`
+							return `px-3 py-1 ${isActive ? 'font-bold' : ''}`
 						}} to='/about-us'>About Us</NavLink>
 						<NavLink className={({ isActive }) => {
-							return `px-3 py-1 ${isActive ? 'border-2 rounded-md border-cyan-500' : ''}`
+							return `px-3 py-1 ${isActive ? 'font-bold' : ''}`
 						}} to='/contact-us'>Contact Us</NavLink>
 					</ul>
 				</div>
