@@ -85,7 +85,7 @@ const CustomerMainLayout = () => {
             <Navbar />
             <main className="flex min-h-screen w-screen pt-16 transition-all ease-in-out duration-300">
                 <Sidebar items={sidebarItems} />
-                <div className="block transition-all ease-in-out duration-300" id="main-left">
+                <div className="block transition-all w-full ease-in-out duration-300" id="main-left">
                     <Outlet />
                 </div>
             </main>
