@@ -1,35 +1,23 @@
 import CustomerAccessoriesLayout from "../layouts/customerLayouts/CustomerAccessoriesLayout"
 import CustomerCostumeCustomizationLayout from "../layouts/customerLayouts/CustomerCostumeCustomizationLayout"
-import CustomerMainLayout from "../layouts/customerLayouts/CustomerMainLayout"
+import AdminMainLayout from "../layouts/adminLayouts/AdminMainLayouts"
+
+//pages
+import AdminDashboard from "../pages/Admin/Dashboard"
+import Employees from "../pages/Admin/Employees"
+import Customers from "../pages/Admin/Customers"
+import Orders from "../pages/Admin/Orders"
+
 
 const costumerRoutes = {
-    path: "/customer",
-    element: <CustomerMainLayout />,
+    path: "/admin",
+    element: <AdminMainLayout />,
     children: [
-        { path: "home", element: <div>Home</div> },
-        { path: "lookbooks", element: <div>Lookbooks</div> },
-        {
-            path: "custom-suit",
-            element: <CustomerCostumeCustomizationLayout />,
-            children: [
-                { path: "fabric", element: <div>Fabrics</div> },
-                { path: "style", element: <div>Styles</div> },
-                { path: "color-contrast", element: <div>Color contrast</div> },
-                { path: "measurements", element: <div>Measurements</div> },
-            ]
-        },
-        {
-            path: "accessories",
-            element: <CustomerAccessoriesLayout />,
-            children: [
-                { path: "shoes", element: <div>Shoes</div> },
-                { path: "belts", element: <div>Belts</div> },
-                { path: "bow-ties", element: <div>Bow ties</div> },
-                { path: "neck-ties", element: <div>Neck ties</div> },
-            ]
-        },
-        { path: "cart", element: <div>Cart</div> },
-        { path: "profile", element: <div>Profile</div> },
+        { path: "dashboard", element: <AdminDashboard /> },
+        { path: "employees", element: <Employees /> },
+        { path: "customer", element: <Customers />},
+        { path: "orders", element: <Orders /> },
+       
     ],
 }
 

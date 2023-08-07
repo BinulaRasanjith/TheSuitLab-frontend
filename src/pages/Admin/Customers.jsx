@@ -1,4 +1,3 @@
-import Sidebar2 from '../../components/Sidebar2'
 import staffCard from "../../components/staffCard";
 
 const ViewCustomers = () => {
@@ -7,7 +6,7 @@ const ViewCustomers = () => {
     return (
 
         <div className="flex flex-row">
-            <div className="flex flex-col bg-gray-100 h-screen justify-between w-60 py-4 px-2">
+            {/* <div className="flex flex-col bg-gray-100 h-screen justify-between w-60 py-4 px-2">
                 <div className="flex-col flex-auto">
 
                     <div className="p-2 mb-2">
@@ -98,7 +97,7 @@ const ViewCustomers = () => {
                         Logout
                     </button>
                 </div>
-            </div>
+            </div> */}
 
             <div className="flex-auto">
 

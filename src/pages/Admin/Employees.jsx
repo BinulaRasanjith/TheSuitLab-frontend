@@ -1,5 +1,3 @@
-import Sidebar2 from '../../components/Sidebar2'
-import staffCard from "../../components/staffCard";
 import Costume1 from '../../assets/images/costume1.jpeg'
 import Costume2 from '../../assets/images/costume2.jpeg'
 import Costume3 from '../../assets/images/costume3.jpeg'
@@ -12,7 +10,7 @@ const Employees = () => {
     return (
 
         <div className="flex flex-row">
-            <div className="flex flex-col bg-gray-100 h-screen justify-between w-60 py-4 px-2">
+            {/* <div className="flex flex-col bg-gray-100 h-screen justify-between w-60 py-4 px-2">
                 <div className="flex-col flex-auto">
 
                     <div className="p-2 mb-2">
@@ -103,7 +101,7 @@ const Employees = () => {
                         Logout
                     </button>
                 </div>
-            </div>
+            </div> */}
 
 
             {/*offset*/}
