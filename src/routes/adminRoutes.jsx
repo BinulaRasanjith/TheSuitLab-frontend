@@ -7,6 +7,7 @@ import AdminDashboard from "../pages/Admin/Dashboard"
 import Employees from "../pages/Admin/Employees"
 import Customers from "../pages/Admin/Customers"
 import Orders from "../pages/Admin/Orders"
+import Profile from "../pages/Admin/Profile"
 
 
 const costumerRoutes = {
@@ -17,7 +18,7 @@ const costumerRoutes = {
         { path: "employees", element: <Employees /> },
         { path: "customer", element: <Customers />},
         { path: "orders", element: <Orders /> },
-       
+        { path: "profile", element: <Profile /> },   
     ],
 }
 
