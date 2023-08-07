@@ -1,10 +1,15 @@
+import Navbar from '../../components/Navbar'
 import Sidebar2 from '../../components/Sidebar2'
 
-const Dashboard = () => {
+const OA_Dashboard = () => {
   return (
-    <Sidebar2 />
+    <>
+      <Sidebar2 />
+      <Navbar />
+    </>
+
   )
 }
 
 
-export default Dashboard
+export default OA_Dashboard
