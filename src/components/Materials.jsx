@@ -25,26 +25,26 @@ const Materials = () => {
   return (
     <div className='mt-5 p-3 grid grid-cols-4 gap-y-5 gap-x-9 border-r-4 border-gray-400'>
 
-        <button><img alt="" className='h-24 w-28'  src={blue_texture_1}  /></button>
-        <button><img alt="" className='h-24 w-28'  src={blue_texture_2}  /></button>
-        <button><img alt="" className='h-24 w-28'  src={brown_texture_1}  /></button>
-        <button><img alt="" className='h-24 w-28'  src={charcol_texture_1}  /></button>
-        <button><img alt="" className='h-24 w-28'  src={dark_blue_1}  /></button>
-        <button><img alt="" className='h-24 w-28'  src={dark_blue_2}  /></button>
-        <button><img alt="" className='h-24 w-28'  src={dark_chocolate_1}  /></button>
-        <button><img alt="" className='h-24 w-28'  src={brown_texture_2}  /></button>
-        <button><img alt="" className='h-24 w-28'  src={grey_texture_1}  /></button>
-        <button><img alt="" className='h-24 w-28'  src={gray_texture_2}  /></button>
-        <button><img alt="" className='h-24 w-28'  src={midnight_gray_1}  /></button>
-        <button><img alt="" className='h-24 w-28'  src={navy_suit_1}  /></button>
-        <button><img alt="" className='h-24 w-28'  src={wool_navy_1}  /></button>
-        <button><img alt="" className='h-24 w-28'  src={brown_suit_1}  /></button>
-        <button><img alt="" className='h-24 w-28'  src={purple_texture_1}  /></button>
-        <button><img alt="" className='h-24 w-28'  src={light_khaki_texture_1}  /></button>
-        <button><img alt="" className='h-24 w-28'  src={light_olive_1}  /></button>
-        <button><img alt="" className='h-24 w-28'  src={khaki_texture_1}  /></button>
-        <button><img alt="" className='h-24 w-28'  src={green_texture_1}  /></button>
-        <button><img alt="" className='h-24 w-28'  src={dark_khaki_texture_1}  /></button>
+      <button><img alt="" className='h-24 w-28' src={blue_texture_1} /></button>
+      <button><img alt="" className='h-24 w-28' src={blue_texture_2} /></button>
+      <button><img alt="" className='h-24 w-28' src={brown_texture_1} /></button>
+      <button><img alt="" className='h-24 w-28' src={charcol_texture_1} /></button>
+      <button><img alt="" className='h-24 w-28' src={dark_blue_1} /></button>
+      <button><img alt="" className='h-24 w-28' src={dark_blue_2} /></button>
+      <button><img alt="" className='h-24 w-28' src={dark_chocolate_1} /></button>
+      <button><img alt="" className='h-24 w-28' src={brown_texture_2} /></button>
+      <button><img alt="" className='h-24 w-28' src={grey_texture_1} /></button>
+      <button><img alt="" className='h-24 w-28' src={gray_texture_2} /></button>
+      <button><img alt="" className='h-24 w-28' src={midnight_gray_1} /></button>
+      <button><img alt="" className='h-24 w-28' src={navy_suit_1} /></button>
+      <button><img alt="" className='h-24 w-28' src={wool_navy_1} /></button>
+      <button><img alt="" className='h-24 w-28' src={brown_suit_1} /></button>
+      <button><img alt="" className='h-24 w-28' src={purple_texture_1} /></button>
+      <button><img alt="" className='h-24 w-28' src={light_khaki_texture_1} /></button>
+      <button><img alt="" className='h-24 w-28' src={light_olive_1} /></button>
+      <button><img alt="" className='h-24 w-28' src={khaki_texture_1} /></button>
+      <button><img alt="" className='h-24 w-28' src={green_texture_1} /></button>
+      <button><img alt="" className='h-24 w-28' src={dark_khaki_texture_1} /></button>
 
     </div>
   )
