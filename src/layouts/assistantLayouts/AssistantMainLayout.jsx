@@ -1,20 +1,20 @@
-import { BiSolidBookReader } from "react-icons/bs"
+// import { BiSolidBookReader } from "react-icons/bs"
 import { HiColorSwatch } from "react-icons/hi"
 import { HiCalendarDays } from "react-icons/hi2";
 import { HiShoppingCart } from "react-icons/hi2"
-import { TbArrowBackUp } from "react-icons/pi"
+// import { TbArrowBackUp } from "react-icons/pi"
 import { BiSolidMessageAltEdit } from "react-icons/bi"
 import { FaUserCircle } from "react-icons/fa"
 
 import { Outlet } from "react-router-dom"
 
 import Navbar from "../../components/Navbar"
-import Sidebar from "../../components/Sidebar/Sidebar"
+import Sidebar from "../../components/oaSidebar"
 
-const sidebarItems = [
+const oasidebarItems = [
     {
         label: 'Dashboard',
-        icon: <BiSolidBookReader />,
+        icon: <HiShoppingCart />,
         to: '/assistant/dashboard',
     },
     {
@@ -34,7 +34,7 @@ const sidebarItems = [
     },
     {
         label: 'Returns',
-        icon: <TbArrowBackUp />,
+        icon: <HiShoppingCart />,
         to: '/assistant/returns',
     },
     {
@@ -100,14 +100,14 @@ const sidebarItems = [
     },
 ]
 
-const CustomerMainLayout = () => {
+const AssistantMainLayout = () => {
     // const sidebarIsOpen = useSelector(selectSidebarIsOpen)
 
     return (
         <>
             <Navbar />
             <main className="flex min-h-screen w-screen pt-16 transition-all ease-in-out duration-300">
-                <Sidebar items={sidebarItems} />
+                <Sidebar items={oasidebarItems} />
                 <div className="block transition-all w-full ease-in-out duration-300" id="main-left">
                     <Outlet />
                 </div>
@@ -116,4 +116,4 @@ const CustomerMainLayout = () => {
     )
 }
 
-export default CustomerMainLayout
+export default AssistantMainLayout

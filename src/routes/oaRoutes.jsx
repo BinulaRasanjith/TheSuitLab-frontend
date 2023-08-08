@@ -3,8 +3,8 @@
 // import CustomerMainLayout from "../layouts/customerLayouts/CustomerMainLayout"
 
 // import CustomerAccessoriesLayout from "../layouts/customerLayouts/CustomerAccessoriesLayout"
-// import CustomerCostumeCustomizationLayout from "../layouts/customerLayouts/CustomerCostumeCustomizationLayout"
-import AssistantMainLayout from "../layouts/assiatantLayouts/AssistantMainLayout"
+// import AssistantViewLayout from "../layouts/assistantLayouts/AssistantViewLayout"
+import AssistantMainLayout from "../layouts/assistantLayouts/AssistantMainLayout"
 
 const oaRoutes = {
     path: "/assistant",
@@ -16,7 +16,7 @@ const oaRoutes = {
         { path: "handover", element: <div>Handover</div> },
         { path: "orders", element: <div>Orders</div> },
         { path: "returns", element: <div>Returns</div> },
-        { path: "notification", element: <div>Notification</div> },
+        { path: "notifications", element: <div>Notifications</div> },
         // {
         //     path: "custom-suit",
         //     element: <CustomerCostumeCustomizationLayout />,

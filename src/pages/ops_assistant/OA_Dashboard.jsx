@@ -1,10 +1,10 @@
 import Navbar from '../../components/Navbar'
-import Sidebar2 from '../../components/Sidebar2'
+import Sidebar from '../../components/oaSidebar'
 
 const OA_Dashboard = () => {
   return (
     <>
-      <Sidebar2 />
+      <Sidebar />
       <Navbar />
     </>
 
