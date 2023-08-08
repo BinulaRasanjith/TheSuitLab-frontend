@@ -1,4 +1,4 @@
-import { createSlice } from "@redux js/toolkit"; // import the createSlice function from the @redux js/toolkit package
+import { createSlice } from "@reduxjs/toolkit"; // import the createSlice function from the @redux js/toolkit package
 
 const initialState = { // define the initial state of the slice
     isOpen: true,
@@ -9,7 +9,7 @@ const sidebarSlice = createSlice({ // create the sidebar slice
     initialState, // the initial state of the slice
     reducers: { // the reducers of the slice
         toggleSidebar: (state) => { // this reducer will be used to toggle the sidebar. It will set the isOpen property of the state to the opposite of its current value.
-            state.isOpen = !state.isOpen; 
+            state.isOpen = !state.isOpen;
         },
         setSidebarOpenState: (state, action) => { // this reducer will be used to set the isOpen property of the state to the value passed to it.
             state.isOpen = action.payload;

@@ -1,4 +1,4 @@
-import { ReactPropTypes } from 'react'
+import PropTypes from 'prop-types'
 
 const ContentWrapper = ({ children }) => {
     return (
@@ -9,7 +9,7 @@ const ContentWrapper = ({ children }) => {
 }
 
 ContentWrapper.propTypes = {
-    children: ReactPropTypes.node.isRequired,
+    children: PropTypes.node.isRequired,
 }
 
 export default ContentWrapper
