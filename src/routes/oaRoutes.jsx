@@ -1,43 +1,18 @@
-// import CustomerAccessoriesLayout from "../layouts/customerLayouts/CustomerAccessoriesLayout"
-// import CustomerCostumeCustomizationLayout from "../layouts/customerLayouts/CustomerCostumeCustomizationLayout"
-// import CustomerMainLayout from "../layouts/customerLayouts/CustomerMainLayout"
 
-// import CustomerAccessoriesLayout from "../layouts/customerLayouts/CustomerAccessoriesLayout"
-// import AssistantViewLayout from "../layouts/assistantLayouts/AssistantViewLayout"
 import AssistantMainLayout from "../layouts/assistantLayouts/AssistantMainLayout"
+import OA_Dashboard from "../pages/ops_assistant/OA_Dashboard"
 
 const oaRoutes = {
     path: "/assistant",
-    // element: <CustomerMainLayout />,
     element: <AssistantMainLayout />,
     children: [
-        { path: "dashboard", element: <div>Dashboard</div> },
+        // { path: "dashboard", element: <div>Dashboard</div> },
+        { path: "dashboard", element: <OA_Dashboard /> },
         { path: "materials", element: <div>Materials</div> },
         { path: "handover", element: <div>Handover</div> },
         { path: "orders", element: <div>Orders</div> },
         { path: "returns", element: <div>Returns</div> },
         { path: "notifications", element: <div>Notifications</div> },
-        // {
-        //     path: "custom-suit",
-        //     element: <CustomerCostumeCustomizationLayout />,
-        //     children: [
-        //         { path: "fabric", element: <div>Fabrics</div> },
-        //         { path: "style", element: <div>Styles</div> },
-        //         { path: "color-contrast", element: <div>Color contrast</div> },
-        //         { path: "measurements", element: <div>Measurements</div> },
-        //     ]
-        // },
-        // {
-        //     path: "accessories",
-        //     element: <CustomerAccessoriesLayout />,
-        //     children: [
-        //         { path: "shoes", element: <div>Shoes</div> },
-        //         { path: "belts", element: <div>Belts</div> },
-        //         { path: "bow-ties", element: <div>Bow ties</div> },
-        //         { path: "neck-ties", element: <div>Neck ties</div> },
-        //     ]
-        // },
-        // { path: "cart", element: <div>Cart</div> },
         { path: "profile", element: <div>Profile</div> },
     ],
 }

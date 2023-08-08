@@ -8,7 +8,7 @@ import { FaUserCircle } from "react-icons/fa"
 
 import { Outlet } from "react-router-dom"
 
-import Navbar from "../../components/Navbar"
+import Navbar from "../../components/TopNavBar/Staffnavbar"
 import Sidebar from "../../components/oaSidebar"
 
 const oasidebarItems = [
