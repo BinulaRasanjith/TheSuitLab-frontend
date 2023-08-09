@@ -33,17 +33,12 @@ const SuitCustomizationLanding = () => {
                     } z-10 border-2 mt-5 font-bold border-black bg-transparent rounded-lg shadow w-44 transition-opacity duration-300`} id="dropdownHover">
                     <ul aria-labelledby="dropdownHoverButton" className="py-2 text-sm text-black">
                         <li>
-                            <a className="block px-4 py-2 hover:bg-gray-100" href="#">Dashboard</a>
+                            <a className="block px-4 py-2 hover:bg-gray-100" href="#">Customize Jacket</a>
                         </li>
                         <li>
-                            <a className="block px-4 py-2 hover:bg-gray-100" href="#">Settings</a>
+                            <a className="block px-4 py-2 hover:bg-gray-100" href="#">Customize Pant</a>
                         </li>
-                        <li>
-                            <a className="block px-4 py-2 hover:bg-gray-100" href="#">Earnings</a>
-                        </li>
-                        <li>
-                            <a className="block px-4 py-2 hover:bg-gray-100" href="#">Sign out</a>
-                        </li>
+
                     </ul>
                 </div>
 

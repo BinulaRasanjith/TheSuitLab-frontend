@@ -1,4 +1,4 @@
-import { createSlice } from "@redux js/toolkit"; // import the createSlice function from the @redux js/toolkit package
+import { createSlice } from "@reduxjs/toolkit"; // import the createSlice function from the @redux js/toolkit package
 
 const initialState = { // define the initial state of the slice
     isOpen: true,

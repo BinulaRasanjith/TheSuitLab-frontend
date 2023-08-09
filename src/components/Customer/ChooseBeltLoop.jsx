@@ -1,9 +1,9 @@
-import BuckleSideAdjuster from '../assets/images/belt_loop_styles/BuckleSideAdjusters.png'
-import ButtonSideAdjuster from '../assets/images/belt_loop_styles/ButtonSideAdjusters.png'
-import Double from '../assets/images/belt_loop_styles/Double (1).png'
-import Modern from '../assets/images/belt_loop_styles/Modern (1).png'
-import None from '../assets/images/belt_loop_styles/None (1).png'
-import Single from '../assets/images/belt_loop_styles/Single (1).png'
+import BuckleSideAdjuster from '../../assets/images/belt_loop_styles/BuckleSideAdjusters.png'
+import ButtonSideAdjuster from '../../assets/images/belt_loop_styles/ButtonSideAdjusters.png'
+import Double from '../../assets/images/belt_loop_styles/Double (1).png'
+import Modern from '../../assets/images/belt_loop_styles/Modern (1).png'
+import None from '../../assets/images/belt_loop_styles/None (1).png'
+import Single from '../../assets/images/belt_loop_styles/Single (1).png'
 
 const ChooseBeltLoop = () => {
     return (
@@ -33,11 +33,11 @@ const ChooseBeltLoop = () => {
                 </div>
                 <div className='flex flex-col items-center p-5 justify-center'>
                     <img alt="NONE-BUTTON SIDE" className='pb-5' src={ButtonSideAdjuster} />
-                    <label className='text-sm'>NONE-BUTTON <br/>SIDE</label>
+                    <label className='text-sm'>NONE-BUTTON <br />SIDE</label>
                 </div>
                 <div className='flex flex-col items-center p-5 justify-center'>
                     <img alt="NONE-BUTTON SIDE" className='pb-5' src={BuckleSideAdjuster} />
-                    <label className='text-sm'>NONE-BUCKLE<br/> SIDE</label>
+                    <label className='text-sm'>NONE-BUCKLE<br /> SIDE</label>
                 </div>
 
             </div>

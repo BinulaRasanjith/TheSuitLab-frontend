@@ -61,7 +61,7 @@ const Navbar = () => {
 					<ul className="hidden sm:flex text-white items-center p-1 font-medium gap-2 lg:gap-5 md:mt-0">
 						<NavLink className={({ isActive }) => {
 							return `px-3 py-1 ${isActive ? 'font-bold' : ''}`
-						}} to='/'>Home</NavLink>
+						}} to='/home'>Home</NavLink>
 						<NavLink className={({ isActive }) => {
 							return `px-3 py-1 ${isActive ? 'font-bold' : ''}`
 						}} to='/services'>Services</NavLink>

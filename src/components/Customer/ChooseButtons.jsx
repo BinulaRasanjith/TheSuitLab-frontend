@@ -1,12 +1,12 @@
-import oneButton from "../assets/images/button_styles/1Button.png"
-import twoButton from "../assets/images/button_styles/2Button.png"
-import threeButton from "../assets/images/button_styles/3Button.png"
-import fourButton from "../assets/images/button_styles/4Button.png"
-import fourDOne from "../assets/images/button_styles/4D1.png"
-import fourDTwo from "../assets/images/button_styles/4D2.png"
-import sixDOne from "../assets/images/button_styles/6D1.png"
-import sixDTwo from "../assets/images/button_styles/6D2.png"
-import sixDThree from "../assets/images/button_styles/6D3.png"
+import oneButton from "../../assets/images/button_styles/1Button.png"
+import twoButton from "../../assets/images/button_styles/2Button.png"
+import threeButton from "../../assets/images/button_styles/3Button.png"
+import fourButton from "../../assets/images/button_styles/4Button.png"
+import fourDOne from "../../assets/images/button_styles/4D1.png"
+import fourDTwo from "../../assets/images/button_styles/4D2.png"
+import sixDOne from "../../assets/images/button_styles/6D1.png"
+import sixDTwo from "../../assets/images/button_styles/6D2.png"
+import sixDThree from "../../assets/images/button_styles/6D3.png"
 
 const ChooseButtons = () => {
     return (

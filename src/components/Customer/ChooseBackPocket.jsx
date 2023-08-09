@@ -1,8 +1,8 @@
-import Curved from '../assets/images/back_pocket_styles/Curved (1).png'
-import Double from '../assets/images/back_pocket_styles/Double.png'
-import Modern from '../assets/images/back_pocket_styles/Modern.png'
-import Single from '../assets/images/back_pocket_styles/Single.png'
-import Square from '../assets/images/back_pocket_styles/Square.png'
+import Curved from '../../assets/images/back_pocket_styles/Curved (1).png'
+import Double from '../../assets/images/back_pocket_styles/Double.png'
+import Modern from '../../assets/images/back_pocket_styles/Modern.png'
+import Single from '../../assets/images/back_pocket_styles/Single.png'
+import Square from '../../assets/images/back_pocket_styles/Square.png'
 
 const ChooseBackPocket = () => {
     return (

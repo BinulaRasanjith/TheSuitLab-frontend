@@ -1,12 +1,12 @@
 import { Environment, OrbitControls } from '@react-three/drei'
 import { Canvas } from "@react-three/fiber"
-import { Suspense } from 'react'
 import { useState } from 'react'
+import { Suspense } from 'react'
 
+import CamControl from "../utilComp/CamControl"
+import ControlPanel from "../utilComp/ControlPanel"
 import BackNext from './BackNext'
 import { NewCostume } from './NewCostume'
-import CamControl from "./utilComp/CamControl"
-import ControlPanel from "./utilComp/ControlPanel"
 
 const UpperModel = () => {
     const [control, setControl] = useState({

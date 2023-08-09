@@ -1,14 +1,16 @@
 // import ChooseBottom from '../components/ChooseBottom'
 // import Materials from '../components/Materials'
 import Sidebar from '../components/Sidebar/Sidebar'
+// import LookBook from './customer/LookBook'
+
 // import ChooseButtons from '../components/ChooseButtons'
 // import RightSideBar from '../components/RightSideBar'
 // import Sidebar2 from '../components/Sidebar2'
 // import ChooseJacketContrast from '../components/ChooseJacketContrast'
 // import ChoosePantContrast from '../components/ChoosePantContrast'
 
-import ShoesGallery from '../components/ShoesGallery'
-// import UpperModel from '../components/UpperModel'
+// import ShoesGallery from '../components/ShoesGallery'
+import UpperModel from '../components/Customer/UpperModel'
 // import SuitCustomizationLanding from './customer/SuitCustomizationLanding'
 
 
@@ -34,12 +36,13 @@ const Dashboard = () => {
       {/* <ChooseCuff /> */}
       {/* <SuitCustomizationLanding /> */}
       <Sidebar />
-      <ShoesGallery />
+      {/* <LookBook /> */}
+      {/* <ShoesGallery /> */}
       {/* <ChooseJacketContrast /> */}
       {/* <ChoosePantContrast /> */}
       {/* <Materials /> */}
       {/* <ChooseButtons /> */}
-      {/* <UpperModel /> */}
+      <UpperModel />
       {/* <RightSideBar /> */}
       {/* <ChooseLapels /> */}
       {/* <ChooseBottom /> */}

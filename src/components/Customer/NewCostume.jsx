@@ -7,12 +7,12 @@ Command: npx gltfjsx@6.2.3 public/models/newCostume.gltf
 import { useGLTF } from '@react-three/drei'
 
 export function NewCostume(props) {
-  const { nodes, materials } = useGLTF('../../models/newCostume.gltf')
+  const { nodes, materials } = useGLTF('../../../models/newCostume.gltf')
 
 
 
   return (
-    // eslint-disable-next-line react/no-unknown-property
+    // eslint-disable-next-line react/no-unknown-property, react/prop-types
     <group {...props} dispose={null} position={[props.control.x, props.control.y, props.control.z]} scale={props.camCont.scale}>
       {/* <group position={[0.034, -0.389, 0.082]}>
         <mesh geometry={nodes.Jacket_Button002.geometry} material={materials['Button.003']} position={[-1.101, 0.124, 0.012]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} />
@@ -80,4 +80,4 @@ export function NewCostume(props) {
   )
 }
 
-useGLTF.preload('../../models/newCostume.gltf')
+useGLTF.preload('../../../models/newCostume.gltf')

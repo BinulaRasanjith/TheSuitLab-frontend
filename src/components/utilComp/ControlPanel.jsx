@@ -1,4 +1,4 @@
-import { ReactPropTypes } from "react"
+
 
 const ControlPanel = ({ control, setControl }) => {
     return (
@@ -10,9 +10,5 @@ const ControlPanel = ({ control, setControl }) => {
     )
 }
 
-ControlPanel.propTypes = {
-    control: ReactPropTypes.object,
-    setControl: ReactPropTypes.func
-}
 
 export default ControlPanel

@@ -1,12 +1,12 @@
-import Cuff from '../assets/images/cuffs_styles/Cuff.png'
-import DoubleTabs from '../assets/images/cuffs_styles/DoubleTabs.png'
-import FoldoverTabs from '../assets/images/cuffs_styles/FoldoverTabs.png'
-import None from '../assets/images/cuffs_styles/None (2).png'
-import SingleTab from '../assets/images/cuffs_styles/SingleTabs.png'
+import Cuff from '../../assets/images/cuffs_styles/Cuff.png'
+import DoubleTabs from '../../assets/images/cuffs_styles/DoubleTabs.png'
+import FoldoverTabs from '../../assets/images/cuffs_styles/FoldoverTabs.png'
+import None from '../../assets/images/cuffs_styles/None (2).png'
+import SingleTab from '../../assets/images/cuffs_styles/SingleTabs.png'
 
 const ChooseCuff = () => {
-  return (
-    <div className='my-5 px-10 border-r-4 border-gray-400'>
+    return (
+        <div className='my-5 px-10 border-r-4 border-gray-400'>
 
             <span className='p-5 text-2xl font-bold'>Choose Your cuff style</span>
             <div className='grid grid-cols-3 gap-3 mt-10'>
@@ -38,7 +38,7 @@ const ChooseCuff = () => {
             </div>
 
         </div>
-  )
+    )
 }
 
 export default ChooseCuff
