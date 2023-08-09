@@ -1,6 +1,6 @@
 
 import AssistantMainLayout from "../layouts/assistantLayouts/AssistantMainLayout"
-import OA_Dashboard from "../pages/ops_assistant/OA_Dashboard"
+import OA_Dashboard from "../pages/Assistant/Dashboard"
 
 const oaRoutes = {
     path: "/assistant",

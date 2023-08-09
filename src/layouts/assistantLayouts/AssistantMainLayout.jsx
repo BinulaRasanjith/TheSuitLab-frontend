@@ -1,20 +1,19 @@
-// import { BiSolidBookReader } from "react-icons/bs"
+import { BsBarChartFill } from "react-icons/bs"
 import { HiColorSwatch } from "react-icons/hi"
-import { HiCalendarDays } from "react-icons/hi2";
-import { HiShoppingCart } from "react-icons/hi2"
-// import { TbArrowBackUp } from "react-icons/pi"
+import { HiCalendarDays, HiShoppingCart } from "react-icons/hi2"
+import { TbArrowBackUp, TbLogout } from "react-icons/tb"
 import { BiSolidMessageAltEdit } from "react-icons/bi"
 import { FaUserCircle } from "react-icons/fa"
 
 import { Outlet } from "react-router-dom"
 
 import Navbar from "../../components/TopNavBar/Staffnavbar"
-import Sidebar from "../../components/oaSidebar"
+import Sidebar from "../../components/AssistantSidebar"
 
 const oasidebarItems = [
     {
         label: 'Dashboard',
-        icon: <HiShoppingCart />,
+        icon: <BsBarChartFill />,
         to: '/assistant/dashboard',
     },
     {
@@ -34,7 +33,7 @@ const oasidebarItems = [
     },
     {
         label: 'Returns',
-        icon: <HiShoppingCart />,
+        icon: <TbArrowBackUp />,
         to: '/assistant/returns',
     },
     {
@@ -98,6 +97,11 @@ const oasidebarItems = [
         icon: <FaUserCircle />,
         to: '/assistant/profile',
     },
+    {
+        label: 'Log Out',
+        icon: <TbLogout />,
+        to: '/',
+    }
 ]
 
 const AssistantMainLayout = () => {

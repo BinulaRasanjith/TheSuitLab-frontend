@@ -7,7 +7,7 @@ import { BiSolidMessageAltEdit } from "react-icons/bi"
 import { FaUserCircle } from "react-icons/fa"
 
 
-const Sidebar2 = () => {
+const AssistantSidebar = () => {
 
     const [activeButtonId, setActiveButtonId] = useState(null);
 
@@ -30,7 +30,7 @@ const Sidebar2 = () => {
                 <ul className=" flex flex-col items-start m-auto">
 
                     <li>
-                        <button id="multiLevelDropdownButton" onClick={() => { handleToggleClick(1) }} data-dropdown-toggle="dropdown" data-dropdown-placement="right-start" className={`py-2 px-2 text-center w-56 h-9 mt-2 flex items-center justify-between hover:bg-gray-100 rounded ${activeButtonId === 1 ? 'text-white bg-black hover:bg-black' : 'text-bg'}`} type="button">
+                        <button id="multiLevelDropdownButton" onClick={() => { handleToggleClick(1) }} data-dropdown-toggle="dropdown" data-dropdown-placement="right-start" className={`py-2 px-2 text-center w-56 mt-2 flex items-center justify-between rounded ${activeButtonId === 1 ? 'text-white bg-black hover:bg-black' : 'text-bg hover:bg-gray-100'}`} type="button">
                             <div className='flex items-center'>
                                 <BsBarChartFill />
                                 <span className='pl-2.5'>Dashboard</span>
@@ -39,7 +39,7 @@ const Sidebar2 = () => {
                     </li>
 
                     <li>
-                        <button id="multiLevelDropdownButton" onClick={() => { handleToggleClick(2) }} data-dropdown-toggle="dropdown" data-dropdown-placement="right-start" className={`py-2 px-2 text-center w-56 h-9 mt-2 flex items-center justify-between hover:bg-gray-100 rounded ${activeButtonId === 2 ? 'text-white bg-black hover:bg-black' : 'text-bg'}`} type="button">
+                        <button id="multiLevelDropdownButton" onClick={() => { handleToggleClick(2) }} data-dropdown-toggle="dropdown" data-dropdown-placement="right-start" className={`py-2 px-2 text-center w-56 mt-2 flex items-center justify-between rounded ${activeButtonId === 2 ? 'text-white bg-black hover:bg-black' : 'text-bg hover:bg-gray-100'}`} type="button">
                             <div className='flex items-center'>
                                 <HiColorSwatch />
                                 <span className='pl-2.5'>Materials</span>
@@ -48,7 +48,7 @@ const Sidebar2 = () => {
                     </li>
 
                     <li>
-                        <button id="multiLevelDropdownButton" onClick={() => { handleToggleClick(3) }} data-dropdown-toggle="dropdown" data-dropdown-placement="right-start" className={`py-2 px-2 text-center w-56 h-9 mt-2 flex items-center justify-between hover:bg-gray-100 rounded ${activeButtonId === 3 ? 'text-white bg-black hover:bg-black' : 'text-bg'}`} type="button">
+                        <button id="multiLevelDropdownButton" onClick={() => { handleToggleClick(3) }} data-dropdown-toggle="dropdown" data-dropdown-placement="right-start" className={`py-2 px-2 text-center w-56 mt-2 flex items-center justify-between rounded ${activeButtonId === 3 ? 'text-white bg-black hover:bg-black' : 'text-bg hover:bg-gray-100'}`} type="button">
                             <div className='flex items-center'>
                                 <HiCalendarDays />
                                 <span className='pl-2.5'>Handover</span>
@@ -57,7 +57,7 @@ const Sidebar2 = () => {
                     </li>
 
                     <li>
-                        <button id="multiLevelDropdownButton" onClick={() => { handleToggleClick(4) }} data-dropdown-toggle="dropdown" data-dropdown-placement="right-start" className={`py-2 px-2 text-center w-56 h-9 mt-2 flex items-center justify-between hover:bg-gray-100 rounded ${activeButtonId === 4 ? 'text-white bg-black hover:bg-black' : 'text-bg'}`} type="button">
+                        <button id="multiLevelDropdownButton" onClick={() => { handleToggleClick(4) }} data-dropdown-toggle="dropdown" data-dropdown-placement="right-start" className={`py-2 px-2 text-center w-56 mt-2 flex items-center justify-between rounded ${activeButtonId === 4 ? 'text-white bg-black hover:bg-black' : 'text-bg hover:bg-gray-100'}`} type="button">
                             <div className='flex items-center'>
                                 <HiShoppingCart />
                                 <span className='pl-2.5'>Orders</span>
@@ -66,7 +66,7 @@ const Sidebar2 = () => {
                     </li>
 
                     <li>
-                        <button id="multiLevelDropdownButton" onClick={() => { handleToggleClick(5) }} data-dropdown-toggle="dropdown" data-dropdown-placement="right-start" className={`py-2 px-2 text-center w-56 h-9 mt-2 flex items-center justify-between hover:bg-gray-100 rounded ${activeButtonId === 5 ? 'text-white bg-black hover:bg-black' : 'text-bg'}`} type="button">
+                        <button id="multiLevelDropdownButton" onClick={() => { handleToggleClick(5) }} data-dropdown-toggle="dropdown" data-dropdown-placement="right-start" className={`py-2 px-2 text-center w-56 mt-2 flex items-center justify-between rounded ${activeButtonId === 5 ? 'text-white bg-black hover:bg-black' : 'text-bg hover:bg-gray-100'}`} type="button">
                             <div className='flex items-center'>
                                 <TbArrowBackUp />
                                 <span className='pl-2.5'>Returns</span>
@@ -75,7 +75,7 @@ const Sidebar2 = () => {
                     </li>
 
                     <li>
-                        <button id="multiLevelDropdownButton" onClick={() => { handleToggleClick(6) }} data-dropdown-toggle="dropdown" data-dropdown-placement="right-start" className={`py-2 px-2 text-center w-56 h-9 mt-2 flex items-center justify-between hover:bg-gray-100 rounded ${activeButtonId === 6 ? 'text-white bg-black hover:bg-black' : 'text-bg'}`} type="button">
+                        <button id="multiLevelDropdownButton" onClick={() => { handleToggleClick(6) }} data-dropdown-toggle="dropdown" data-dropdown-placement="right-start" className={`py-2 px-2 text-center w-56 mt-2 flex items-center justify-between rounded ${activeButtonId === 6 ? 'text-white bg-black hover:bg-black' : 'text-bg hover:bg-gray-100'}`} type="button">
                             <div className='flex items-center'>
                                 <BiSolidMessageAltEdit />
                                 <span className='pl-2.5'>Notifications</span>
@@ -84,7 +84,7 @@ const Sidebar2 = () => {
                     </li>
 
                     <li>
-                        <button id="multiLevelDropdownButton" onClick={() => { handleToggleClick(7) }} data-dropdown-toggle="dropdown" data-dropdown-placement="right-start" className={`py-2 px-2 text-center w-56 h-9 mt-2 flex items-center justify-between hover:bg-gray-100 rounded ${activeButtonId === 7 ? 'text-white bg-black hover:bg-black' : 'text-bg'}`} type="button">
+                        <button id="multiLevelDropdownButton" onClick={() => { handleToggleClick(7) }} data-dropdown-toggle="dropdown" data-dropdown-placement="right-start" className={`py-2 px-2 text-center w-56 mt-2 flex items-center justify-between rounded ${activeButtonId === 7 ? 'text-white bg-black hover:bg-black' : 'text-bg hover:bg-gray-100'}`} type="button">
                             <div className='flex items-center'>
                                 <FaUserCircle />
                                 <span className='pl-2.5'>Profile</span>
@@ -99,7 +99,7 @@ const Sidebar2 = () => {
                 <ul className=" flex flex-col items-start m-auto">
 
                 <li>
-                    <button id="multiLevelDropdownButton" data-dropdown-toggle="dropdown" data-dropdown-placement="right-start" className={`py-2 px-2 text-center w-56 h-9 mt-2 flex items-center justify-between hover:bg-gray-100 rounded`} type="button">
+                    <button id="multiLevelDropdownButton" data-dropdown-toggle="dropdown" data-dropdown-placement="right-start" className={`py-2 px-2 text-center w-56 mt-2 flex items-center justify-between hover:bg-gray-100 rounded`} type="button">
                         <div className='flex items-center'>
                             <TbLogout />
                             <span className='pl-2.5'>Log Out</span>
@@ -114,4 +114,4 @@ const Sidebar2 = () => {
     )
 }
 
-export default Sidebar2;
+export default AssistantSidebar;
