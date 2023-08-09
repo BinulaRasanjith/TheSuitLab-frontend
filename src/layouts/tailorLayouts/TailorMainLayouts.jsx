@@ -8,41 +8,49 @@ import { Outlet } from "react-router-dom"
 import Navbar from "../../components/Navbar"
 import Sidebar from "../../components/Sidebar/Sidebar"
 
-
 const sidebarItems = [
     {
         label: 'Dashboard',
         icon: <HiHome />,
-        to: '/admin/dashboard',
-    },
-    {
-        label: 'Employees',
-        icon: <BiSolidBookReader />,
-        to: '/admin/employees',
-    },
-    {
-        label: 'Customers',
-        icon: <PiShirtFoldedFill />,
-        to: '/admin/customer',
+        to: '/tailor/dashboard',
     },
     {
         label: 'Orders',
         icon: <IoMdBowtie />,
-        to: '/admin/orders',
+        to: '/tailor/orders',
+    },
+    {
+        label: 'Materials',
+        icon: <IoMdBowtie />,
+        to: '/tailor/materials',
+        subItems: [
+            {
+                label: 'Fabric',
+                to: '/tailor/materials/fabric',
+            },
+            {
+                label: 'String',
+                to: '/tailor/materials/string',
+            },
+            {
+                label: 'Buttons',
+                to: '/tailor/materials/buttons',
+            },
+        ]
     },
     {
         label: 'Reviews',
         icon: <BsFillCartFill />,
-        to: '/admin/test',
+        to: '/tailor/materials/test',
     },
     {
         label: 'Profile',
         icon: <HiUserCircle />,
-        to: '/admin/profile',
+        to: '/tailor/materials/profile',
     },
 ]
 
-const AdminMainLayout = () => {
+const TailorMainLayout = () => {
     // const sidebarIsOpen = useSelector(selectSidebarIsOpen)
 
     return (
@@ -58,4 +66,4 @@ const AdminMainLayout = () => {
     )
 }
 
-export default AdminMainLayout
+export default TailorMainLayout

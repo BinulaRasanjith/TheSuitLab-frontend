@@ -56,7 +56,7 @@ const TailorData = [
 ];
 
 
-const Employees = () => {
+const Test = () => {
 
     return (
 
@@ -130,4 +130,4 @@ const Employees = () => {
 }
 
 
-export default Employees
+export default Test

@@ -5,6 +5,7 @@ import landingPageRoutes from "./landingPageRoutes";
 import testRoutes from "./testRoutes";
 import customerRoutes from "./customerRoutes";
 import admiin from "./adminRoutes";
+import tailor from "./tailorRoutes";
 
 const router = createBrowserRouter([
     landingPageRoutes, // This is the landing page routes
@@ -12,6 +13,8 @@ const router = createBrowserRouter([
     testRoutes, // This is the test routes
     customerRoutes, // This is the customer routes
     admiin, // This is the admin routes
+    tailor, // This is the tailor routes
+
 ])
 
 export default router;
