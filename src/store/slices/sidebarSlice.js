@@ -9,7 +9,7 @@ const sidebarSlice = createSlice({ // create the sidebar slice
     initialState, // the initial state of the slice
     reducers: { // the reducers of the slice
         toggleSidebar: (state) => { // this reducer will be used to toggle the sidebar. It will set the isOpen property of the state to the opposite of its current value.
-            state.isOpen = !state.isOpen; 
+            state.isOpen = !state.isOpen;
         },
         setSidebarOpenState: (state, action) => { // this reducer will be used to set the isOpen property of the state to the value passed to it.
             state.isOpen = action.payload;
