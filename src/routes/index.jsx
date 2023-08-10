@@ -10,4 +10,14 @@ const router = createBrowserRouter([
     customerRoutes, // This is the customer routes
 ])
 
+
+/* 
+[
+    {path: '/' , element: <LandingPageLayout />},
+    {path: 'login' , element: <Login />},
+    {path: 'home' , element: <Home />},
+]
+
+*/
+
 export default router;
