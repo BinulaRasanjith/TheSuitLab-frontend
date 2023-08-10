@@ -1,3 +1,8 @@
+import Costume1 from '../../assets/images/costume1.jpeg'
+import Costume2 from '../../assets/images/costume2.jpeg'
+import Costume3 from '../../assets/images/costume3.jpeg'
+import Costume4 from '../../assets/images/costume4.jpeg'
+import Costume5 from '../../assets/images/costume5.jpeg'
 
 const ViewOrders = () => {
 
@@ -74,7 +79,7 @@ const ViewOrders = () => {
                                         <tbody>
                                             <tr className="bg-white border rounded-3xl hover:bg-gray-300 text-black whitespace-nowrap font-medium">
                                                 <td className="px-6 py-4">
-                                                    #007324786345
+                                                <img className="w-36 h-36 mb-1 object-cover rounded-full shadow-lg" src={Costume1} alt="image" />
                                                 </td>
                                                 <td className="px-6 py-4 text-center">
                                                     3
