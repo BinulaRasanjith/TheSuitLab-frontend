@@ -10,7 +10,7 @@ import { Outlet } from "react-router-dom"
 import Navbar from "../../components/TopNavBar/Staffnavbar"
 import Sidebar from "../../components/AssistantSidebar"
 
-const oasidebarItems = [
+const assistantSidebarItems = [
     {
         label: 'Dashboard',
         icon: <BsBarChartFill />,
@@ -111,7 +111,7 @@ const AssistantMainLayout = () => {
         <>
             <Navbar />
             <main className="flex min-h-screen w-screen pt-16 transition-all ease-in-out duration-300">
-                <Sidebar items={oasidebarItems} />
+                <Sidebar items={assistantSidebarItems} />
                 <div className="block transition-all w-full ease-in-out duration-300" id="main-left">
                     <Outlet />
                 </div>

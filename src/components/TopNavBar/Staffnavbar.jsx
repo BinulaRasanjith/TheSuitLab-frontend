@@ -44,36 +44,6 @@ const Staffnavbar = () => {
                     </div>
                 </div>
 
-                {/* <div className="max-w-screen-xl flex-wrap mx-auto">
-
-                    <ul className="hidden sm:flex text-white items-center p-1 font-medium gap-2 lg:gap-5 md:mt-0">
-                        <li className={page === "" ? "inline-flex items-center justify-center p-0.5 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
-                            <Link className={"px-5 py-1 bg-gray-900 rounded-lg"} to='/'>Home</Link>
-                        </li>
-                        <li className={page === "services" ? "inline-flex items-center justify-center p-0.5 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
-                            <Link className={"px-5 py-1 bg-white dark:bg-gray-900 rounded-lg"} to='/services'>Services</Link>
-                        </li>
-                        <li className={page === "about-us" ? "inline-flex items-center justify-center p-0.5 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
-                            <Link className={"px-5 py-1 bg-white dark:bg-gray-900 rounded-lg"} to='/about-us'>About Us</Link>
-                        </li>
-                        <li className={page === "contact-us" ? "inline-flex items-center justify-center p-0.5 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
-                            <Link className={"px-5 py-1 bg-white dark:bg-gray-900 rounded-lg"} to='/contact-us'>Contact Us</Link>
-                        </li>
-                        <li className={page === "" ? "inline-flex items-center justify-center p-0.5 overflow-hidden font-medium rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
-                            <Link to='/' className={"px-5 py-1 bg-gray-900 rounded-lg"}>Home</Link>
-                        </li>
-                        <li className={page === "services" ? "inline-flex items-center justify-center p-0.5 overflow-hidden font-medium rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
-                            <Link to='/services' className={"px-5 py-1 bg-white dark:bg-gray-900 rounded-lg"}>Services</Link>
-                        </li>
-                        <li className={page === "about-us" ? "inline-flex items-center justify-center p-0.5 overflow-hidden font-medium rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
-                            <Link to='/about-us' className={"px-5 py-1 bg-white dark:bg-gray-900 rounded-lg"}>About Us</Link>
-                        </li>
-                        <li className={page === "contact-us" ? "inline-flex items-center justify-center p-0.5 overflow-hidden font-medium rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
-                            <Link to='/contact-us' className={"px-5 py-1 bg-white dark:bg-gray-900 rounded-lg"}>Contact Us</Link>
-                        </li>
-                    </ul>
-                </div> */}
-
                 <div className='flex items-center mr-5'>
                     <Button
                         // _active={{

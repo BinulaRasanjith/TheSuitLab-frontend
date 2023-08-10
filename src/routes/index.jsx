@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 
 import costumeCustomizationRoutes from "./costumeCustomizationRoutes";
 import landingPageRoutes from "./landingPageRoutes";
-import oaRoutes from "./oaRoutes";
+import oaRoutes from "./assistantRoutes";
 
 const router = createBrowserRouter([
     landingPageRoutes, // This is the landing page routes
