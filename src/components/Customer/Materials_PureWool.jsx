@@ -21,28 +21,28 @@ import wool_navy_1 from '../../assets/images/materials/wool navy 1.png'
 
 const Materials_PureWool = () => {
     return (
-        <div className='mt-5 p-3 grid grid-cols-4 gap-y-5 gap-x-9 border-r-4 border-gray-400'>
+        <div className='p-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 border-r-4 border-gray-400 overflow-y-auto h-screen xl:w-1/2'>
 
-            <button><img alt="" className='h-24 w-28' src={blue_texture_1} /></button>
-            <button><img alt="" className='h-24 w-28' src={blue_texture_2} /></button>
-            <button><img alt="" className='h-24 w-28' src={brown_texture_1} /></button>
-            <button><img alt="" className='h-24 w-28' src={charcol_texture_1} /></button>
-            <button><img alt="" className='h-24 w-28' src={dark_blue_1} /></button>
-            <button><img alt="" className='h-24 w-28' src={dark_blue_2} /></button>
-            <button><img alt="" className='h-24 w-28' src={dark_chocolate_1} /></button>
-            <button><img alt="" className='h-24 w-28' src={brown_texture_2} /></button>
-            <button><img alt="" className='h-24 w-28' src={grey_texture_1} /></button>
-            <button><img alt="" className='h-24 w-28' src={gray_texture_2} /></button>
-            <button><img alt="" className='h-24 w-28' src={midnight_gray_1} /></button>
-            <button><img alt="" className='h-24 w-28' src={navy_suit_1} /></button>
-            <button><img alt="" className='h-24 w-28' src={wool_navy_1} /></button>
-            <button><img alt="" className='h-24 w-28' src={brown_suit_1} /></button>
-            <button><img alt="" className='h-24 w-28' src={purple_texture_1} /></button>
-            <button><img alt="" className='h-24 w-28' src={light_khaki_texture_1} /></button>
-            <button><img alt="" className='h-24 w-28' src={light_olive_1} /></button>
-            <button><img alt="" className='h-24 w-28' src={khaki_texture_1} /></button>
-            <button><img alt="" className='h-24 w-28' src={green_texture_1} /></button>
-            <button><img alt="" className='h-24 w-28' src={dark_khaki_texture_1} /></button>
+            <button><img alt="" className='h-20 w-24' src={blue_texture_1} /></button>
+            <button><img alt="" className='h-20 w-24' src={blue_texture_2} /></button>
+            <button><img alt="" className='h-20 w-24' src={brown_texture_1} /></button>
+            <button><img alt="" className='h-20 w-24' src={charcol_texture_1} /></button>
+            <button><img alt="" className='h-20 w-24' src={dark_blue_1} /></button>
+            <button><img alt="" className='h-20 w-24' src={dark_blue_2} /></button>
+            <button><img alt="" className='h-20 w-24' src={dark_chocolate_1} /></button>
+            <button><img alt="" className='h-20 w-24' src={brown_texture_2} /></button>
+            <button><img alt="" className='h-20 w-24' src={grey_texture_1} /></button>
+            <button><img alt="" className='h-20 w-24' src={gray_texture_2} /></button>
+            <button><img alt="" className='h-20 w-24' src={midnight_gray_1} /></button>
+            <button><img alt="" className='h-20 w-24' src={navy_suit_1} /></button>
+            <button><img alt="" className='h-20 w-24' src={wool_navy_1} /></button>
+            <button><img alt="" className='h-20 w-24' src={brown_suit_1} /></button>
+            <button><img alt="" className='h-20 w-24' src={purple_texture_1} /></button>
+            <button><img alt="" className='h-20 w-24' src={light_khaki_texture_1} /></button>
+            <button><img alt="" className='h-20 w-24' src={light_olive_1} /></button>
+            <button><img alt="" className='h-20 w-24' src={khaki_texture_1} /></button>
+            <button><img alt="" className='h-20 w-24' src={green_texture_1} /></button>
+            <button><img alt="" className='h-20 w-24' src={dark_khaki_texture_1} /></button>
 
         </div>
     )
