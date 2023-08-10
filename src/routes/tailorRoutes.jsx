@@ -1,6 +1,7 @@
 import SingleOutletLayout from "../layouts/SingleOutletLayout"
 import TailorMainLayout from "../layouts/tailorLayouts/TailorMainLayout"
 import Fabrics from "../pages/tailor/Fabrics"
+import Buttons from "../pages/tailor/Buttons"
 
 const tailorRoutes = {
     path: '/tailor',
@@ -46,7 +47,7 @@ const tailorRoutes = {
                 },
                 {
                     path: 'Buttons',
-                    element: <h1>Buttons</h1>
+                    element: <Buttons />
                 },
             ]
         },
