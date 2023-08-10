@@ -35,7 +35,7 @@ const AssistantSidebar = () => {
                         <Link to="/assistant/dashboard">
                         <button id="multiLevelDropdownButton" onClick={() => { handleToggleClick(1) }} data-dropdown-toggle="dropdown" data-dropdown-placement="right-start" className={`py-2 px-2 text-center w-56 mt-2 flex items-center justify-between rounded ${activeButtonId === 1 ? 'text-white bg-black hover:bg-black' : 'text-bg hover:bg-gray-100'}`} type="button">
                             <div className='flex items-center'>
-                                <BsBarChartFill />
+                                <BsBarChartFill size={20} />
                                 <span className='pl-2.5'>Dashboard</span>
                             </div>
                         </button>
@@ -46,7 +46,7 @@ const AssistantSidebar = () => {
                         <Link to="/assistant/materials">
                         <button id="multiLevelDropdownButton" onClick={() => { handleToggleClick(2) }} data-dropdown-toggle="dropdown" data-dropdown-placement="right-start" className={`py-2 px-2 text-center w-56 mt-2 flex items-center justify-between rounded ${activeButtonId === 2 ? 'text-white bg-black hover:bg-black' : 'text-bg hover:bg-gray-100'}`} type="button">
                             <div className='flex items-center'>
-                                <HiColorSwatch />
+                                <HiColorSwatch size={20} />
                                 <span className='pl-2.5'>Materials</span>
                             </div>
                         </button>
@@ -57,7 +57,7 @@ const AssistantSidebar = () => {
                         <Link to="/assistant/handover">
                         <button id="multiLevelDropdownButton" onClick={() => { handleToggleClick(3) }} data-dropdown-toggle="dropdown" data-dropdown-placement="right-start" className={`py-2 px-2 text-center w-56 mt-2 flex items-center justify-between rounded ${activeButtonId === 3 ? 'text-white bg-black hover:bg-black' : 'text-bg hover:bg-gray-100'}`} type="button">
                             <div className='flex items-center'>
-                                <HiCalendarDays />
+                                <HiCalendarDays size={20} />
                                 <span className='pl-2.5'>Handover</span>
                             </div>
                         </button>
@@ -68,7 +68,7 @@ const AssistantSidebar = () => {
                         <Link to="/assistant/orders">
                         <button id="multiLevelDropdownButton" onClick={() => { handleToggleClick(4) }} data-dropdown-toggle="dropdown" data-dropdown-placement="right-start" className={`py-2 px-2 text-center w-56 mt-2 flex items-center justify-between rounded ${activeButtonId === 4 ? 'text-white bg-black hover:bg-black' : 'text-bg hover:bg-gray-100'}`} type="button">
                             <div className='flex items-center'>
-                                <HiShoppingCart />
+                                <HiShoppingCart size={20} />
                                 <span className='pl-2.5'>Orders</span>
                             </div>
                         </button>
@@ -79,7 +79,7 @@ const AssistantSidebar = () => {
                         <Link to="/assistant/returns">
                         <button id="multiLevelDropdownButton" onClick={() => { handleToggleClick(5) }} data-dropdown-toggle="dropdown" data-dropdown-placement="right-start" className={`py-2 px-2 text-center w-56 mt-2 flex items-center justify-between rounded ${activeButtonId === 5 ? 'text-white bg-black hover:bg-black' : 'text-bg hover:bg-gray-100'}`} type="button">
                             <div className='flex items-center'>
-                                <TbArrowBackUp />
+                                <TbArrowBackUp size={20} />
                                 <span className='pl-2.5'>Returns</span>
                             </div>
                         </button>
@@ -90,7 +90,7 @@ const AssistantSidebar = () => {
                         <Link to="/assistant/notifications">
                         <button id="multiLevelDropdownButton" onClick={() => { handleToggleClick(6) }} data-dropdown-toggle="dropdown" data-dropdown-placement="right-start" className={`py-2 px-2 text-center w-56 mt-2 flex items-center justify-between rounded ${activeButtonId === 6 ? 'text-white bg-black hover:bg-black' : 'text-bg hover:bg-gray-100'}`} type="button">
                             <div className='flex items-center'>
-                                <BiSolidMessageAltEdit />
+                                <BiSolidMessageAltEdit size={20} />
                                 <span className='pl-2.5'>Notifications</span>
                             </div>
                         </button>
@@ -101,7 +101,7 @@ const AssistantSidebar = () => {
                         <Link to="/assistant/profile">
                         <button id="multiLevelDropdownButton" onClick={() => { handleToggleClick(7) }} data-dropdown-toggle="dropdown" data-dropdown-placement="right-start" className={`py-2 px-2 text-center w-56 mt-2 flex items-center justify-between rounded ${activeButtonId === 7 ? 'text-white bg-black hover:bg-black' : 'text-bg hover:bg-gray-100'}`} type="button">
                             <div className='flex items-center'>
-                                <FaUserCircle />
+                                <FaUserCircle size={20} />
                                 <span className='pl-2.5'>Profile</span>
                             </div>
                         </button>
@@ -117,7 +117,7 @@ const AssistantSidebar = () => {
                 <li>
                     <button id="multiLevelDropdownButton" data-dropdown-toggle="dropdown" data-dropdown-placement="right-start" className={`py-2 px-2 text-center w-56 mt-2 flex items-center justify-between hover:bg-gray-100 rounded`} type="button">
                         <div className='flex items-center'>
-                            <TbLogout />
+                            <TbLogout size={20} />
                             <span className='pl-2.5'>Log Out</span>
                         </div>
                     </button>

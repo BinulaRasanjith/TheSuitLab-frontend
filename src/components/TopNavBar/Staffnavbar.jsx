@@ -58,7 +58,7 @@ const Staffnavbar = () => {
                         width={'5.5rem'}
                         height={'2rem'}
                         onClick={handleLoginClick}
-                        textColor={'white'}>Login</Button>
+                        textColor={'white'}>Log Out</Button>
                     {/* <button className='text-white border border-white border-solid pt-1 pb-1 pl-3 pr-3 rounded'
                         onClick={handleLoginClick}>Login</button> */}
                 </div>
