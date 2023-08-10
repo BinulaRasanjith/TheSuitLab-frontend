@@ -1,11 +1,14 @@
 import { Button } from '@chakra-ui/react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
-import { useDispatch, } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useNavigate } from 'react-router-dom'
 
 import TSL_LOGO from '../assets/images/TSL_LOGO.png'
 import TSL_LOGO_SM from '../assets/images/TSL_LOGO_SM.png'
+import { CUSTOMER } from '../constants'
+import { selectUser } from '../store/slices/authSlice'
+import { logout } from '../store/slices/authSlice'
 import { toggleSidebar } from '../store/slices/sidebarSlice'
 
 // eslint-disable-next-line react/prop-types
@@ -13,15 +16,10 @@ const Navbar = () => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 
-	const [isLogged, setIsLogged] = useState(false)
-
-	useEffect(() => {
-		setIsLogged(true)
-	}, [])
+	const user = useSelector(selectUser)
 
 	// handle login click
 	const handleLoginClick = () => {
-		setIsLogged(true)
 		navigate('/login')
 	}
 
@@ -32,7 +30,8 @@ const Navbar = () => {
 
 	// handle logout click
 	const handleLogoutClick = () => {
-		setIsLogged(false)
+		navigate('/')
+		dispatch(logout())
 	}
 
 	const [open, setOpen] = useState(false);
@@ -40,16 +39,23 @@ const Navbar = () => {
 	return (
 		<>
 			<nav className="flex justify-between items-center bg-primary fixed h-16 w-full z-40">
-				<div className='flex sm:hidden'>
-					<button className="flex items-center px-3 py-2 text-secondary text-2xl" onClick={() => setOpen(!open)}>
-						{open ? <FaTimes /> : <FaBars />}
-					</button>
-				</div>
-				{isLogged && <div>
-					<button className="flex items-center px-3 py-2 text-secondary text-2xl" onClick={() => dispatch(toggleSidebar())}>
-						<FaBars />
-					</button>
-				</div>}
+				{// responsive burger button for landing page
+					!user.id &&
+					<div className='flex sm:hidden'>
+						<button className="flex items-center px-3 py-2 text-secondary text-2xl" onClick={() => setOpen(!open)}>
+							{open ? <FaTimes /> : <FaBars />}
+						</button>
+					</div>
+				}
+
+				{// sidebar toggle burger button
+					user.id &&
+					<div>
+						<button className="flex items-center px-3 py-2 text-secondary text-2xl" onClick={() => dispatch(toggleSidebar())}>
+							<FaBars />
+						</button>
+					</div>
+				}
 				<div className='h-full flex items-center pr-2'>
 					<div className='h-full overflow-hidden'>
 						<img alt="TSL_LOGO" className={"h-full object-cover  hidden md:block"} src={TSL_LOGO} />
@@ -57,24 +63,27 @@ const Navbar = () => {
 					</div>
 				</div>
 				<div className="max-w-screen-xl flex-wrap mx-auto">
-
-					<ul className="hidden sm:flex text-white items-center p-1 font-medium gap-2 lg:gap-5 md:mt-0">
-						<NavLink className={({ isActive }) => {
-							return `px-3 py-1 ${isActive ? 'font-bold' : ''}`
-						}} to='/home'>Home</NavLink>
-						<NavLink className={({ isActive }) => {
-							return `px-3 py-1 ${isActive ? 'font-bold' : ''}`
-						}} to='/services'>Services</NavLink>
-						<NavLink className={({ isActive }) => {
-							return `px-3 py-1 ${isActive ? 'font-bold' : ''}`
-						}} to='/about-us'>About Us</NavLink>
-						<NavLink className={({ isActive }) => {
-							return `px-3 py-1 ${isActive ? 'font-bold' : ''}`
-						}} to='/contact-us'>Contact Us</NavLink>
-					</ul>
+					{
+						// if user is logged in and is a customer OR if user is not logged in
+						(!user.id || user.role === CUSTOMER) &&
+						<ul className="hidden sm:flex text-white items-center p-1 font-medium gap-2 lg:gap-5 md:mt-0">
+							<NavLink className={({ isActive }) => {
+								return `px-3 py-1 ${isActive ? 'font-bold' : ''}`
+							}} to='/home'>Home</NavLink>
+							<NavLink className={({ isActive }) => {
+								return `px-3 py-1 ${isActive ? 'font-bold' : ''}`
+							}} to='/services'>Services</NavLink>
+							<NavLink className={({ isActive }) => {
+								return `px-3 py-1 ${isActive ? 'font-bold' : ''}`
+							}} to='/about-us'>About Us</NavLink>
+							<NavLink className={({ isActive }) => {
+								return `px-3 py-1 ${isActive ? 'font-bold' : ''}`
+							}} to='/contact-us'>Contact Us</NavLink>
+						</ul>
+					}
 				</div>
 				<div className='flex items-center gap-x-3 mr-5'>
-					{isLogged ?
+					{user.id ?
 						<Button
 							_active={{
 								bg: 'gray',
