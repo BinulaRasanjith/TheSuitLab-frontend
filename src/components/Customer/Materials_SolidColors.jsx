@@ -21,7 +21,7 @@ import wool_navy_1 from '../../assets/images/materials/wool navy 1.png'
 
 const Materials_SolidColors = () => {
     return (
-        <div className='p-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 border-r-4 border-gray-400 overflow-y-auto h-screen xl:w-1/2'>
+        <div className='p-3 grid gap-x-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 border-r-4 border-gray-400 overflow-y-auto h-screen'>
 
             <button><img alt="" className='h-20 w-24' src={blue_texture_1} /></button>
             <button><img alt="" className='h-20 w-24' src={blue_texture_2} /></button>
