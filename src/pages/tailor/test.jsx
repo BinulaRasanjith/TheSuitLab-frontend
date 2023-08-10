@@ -4,7 +4,7 @@ import Costume3 from '../../assets/images/costume3.jpeg'
 import Costume4 from '../../assets/images/costume4.jpeg'
 import Costume5 from '../../assets/images/costume5.jpeg'
 
-const ViewOrders = () => {
+const ViewButtons = () => {
 
 
     return (
@@ -50,20 +50,19 @@ const ViewOrders = () => {
                                         <thead className="text-xs text-gray-500 uppercase bg-gray-100 rounded-3xl">
                                             <tr>
                                                 <th scope="col" className="px-6 py-3">
-                                                    Order Id
+                                                    Button Pic
                                                 </th>
                                                 <th scope="col" className="px-6 py-3">
-                                                    Item Count
+                                                    Button Id
+
                                                 </th>
                                                 <th scope="col" className="px-6 py-3">
-                                                    Phone Number
+                                                    Quantity
                                                 </th>
                                                 <th scope="col" className="px-6 py-3">
-                                                    Customer
+                                                    
                                                 </th>
-                                                <th scope="col" className="px-6 py-3">
-                                                    Ordered Date
-                                                </th>
+                                                
                                                 <th scope="col" className="px-6 py-3">
                                                     Status
                                                 </th>
@@ -79,7 +78,7 @@ const ViewOrders = () => {
                                         <tbody>
                                             <tr className="bg-white border rounded-3xl hover:bg-gray-300 text-black whitespace-nowrap font-medium">
                                                 <td className="px-4 py-4">
-                                                <img className="w-16 h-18 object-cover rounded-md shadow-lg" src={Costume1} alt="image" />
+                                                    <img className="w-16 h-18 object-cover rounded-md shadow-lg" src={Costume1} alt="image" />
                                                 </td>
                                                 <td className="px-6 py-4 text-center">
                                                     3
@@ -90,9 +89,53 @@ const ViewOrders = () => {
                                                 <td className="px-6 py-4">
                                                     Floyd Miles
                                                 </td>
+                                                
                                                 <td className="px-6 py-4">
-                                                    2023-07-17
+                                                    Collected
                                                 </td>
+                                                <td className="px-6 py-4 text-right">
+                                                    <a href="#" className="px-4 py-2 text-blue-100 no-underline bg-blue-500 rounded
+                                                     hover:bg-blue-600 hover:underline hover:text-blue-200">Edit</a>
+                                                </td>
+                                            </tr>
+
+                                            <tr className="bg-white border rounded-3xl hover:bg-gray-300 text-black whitespace-nowrap font-medium">
+                                                <td className="px-4 py-4">
+                                                    <img className="w-16 h-18 object-cover rounded-md shadow-lg" src={Costume1} alt="image" />
+                                                </td>
+                                                <td className="px-6 py-4 text-center">
+                                                    3
+                                                </td>
+                                                <td className="px-6 py-4">
+                                                    +91 9876543210
+                                                </td>
+                                                <td className="px-6 py-4">
+                                                    Floyd Miles
+                                                </td>
+                                                
+                                                <td className="px-6 py-4">
+                                                    Collected
+                                                </td>
+                                                <td className="px-6 py-4 text-right">
+                                                    <a href="#" className="px-4 py-2 text-blue-100 no-underline bg-blue-500 rounded
+                                                     hover:bg-blue-600 hover:underline hover:text-blue-200">Edit</a>
+                                                </td>
+                                            </tr>
+
+                                            <tr className="bg-white border rounded-3xl hover:bg-gray-300 text-black whitespace-nowrap font-medium">
+                                                <td className="px-6 py-4">
+                                                    #007324786345
+                                                </td>
+                                                <td className="px-6 py-4 text-center">
+                                                    3
+                                                </td>
+                                                <td className="px-6 py-4">
+                                                    +91 9876543210
+                                                </td>
+                                                <td className="px-6 py-4">
+                                                    Floyd Miles
+                                                </td>
+                                              
                                                 <td className="px-6 py-4">
                                                     Collected
                                                 </td>
@@ -114,9 +157,7 @@ const ViewOrders = () => {
                                                 <td className="px-6 py-4">
                                                     Floyd Miles
                                                 </td>
-                                                <td className="px-6 py-4">
-                                                    2023-07-17
-                                                </td>
+                                                
                                                 <td className="px-6 py-4">
                                                     Collected
                                                 </td>
@@ -138,9 +179,7 @@ const ViewOrders = () => {
                                                 <td className="px-6 py-4">
                                                     Floyd Miles
                                                 </td>
-                                                <td className="px-6 py-4">
-                                                    2023-07-17
-                                                </td>
+                                                
                                                 <td className="px-6 py-4">
                                                     Collected
                                                 </td>
@@ -162,33 +201,7 @@ const ViewOrders = () => {
                                                 <td className="px-6 py-4">
                                                     Floyd Miles
                                                 </td>
-                                                <td className="px-6 py-4">
-                                                    2023-07-17
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    Collected
-                                                </td>
-                                                <td className="px-6 py-4 text-right">
-                                                    <a href="#" className="px-4 py-2 text-blue-100 no-underline bg-blue-500 rounded
-                                                     hover:bg-blue-600 hover:underline hover:text-blue-200">Edit</a>
-                                                </td>
-                                            </tr>
-                                            <tr className="bg-white border rounded-3xl hover:bg-gray-300 text-black whitespace-nowrap font-medium">
-                                                <td className="px-6 py-4">
-                                                    #007324786345
-                                                </td>
-                                                <td className="px-6 py-4 text-center">
-                                                    3
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    +91 9876543210
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    Floyd Miles
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    2023-07-17
-                                                </td>
+                                              
                                                 <td className="px-6 py-4">
                                                     Collected
                                                 </td>
@@ -212,4 +225,4 @@ const ViewOrders = () => {
     )
 }
 
-export default ViewOrders
+export default ViewButtons
