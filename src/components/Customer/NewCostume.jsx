@@ -7,7 +7,7 @@ Command: npx gltfjsx@6.2.3 public/models/newCostume.gltf
 import { useGLTF } from '@react-three/drei'
 
 export function NewCostume(props) {
-  const { nodes, materials } = useGLTF('../../../models/newCostume.gltf')
+  const { nodes, materials } = useGLTF('/models/newCostume.gltf')
 
 
 
@@ -80,4 +80,4 @@ export function NewCostume(props) {
   )
 }
 
-useGLTF.preload('../../../models/newCostume.gltf')
+useGLTF.preload('/models/newCostume.gltf')

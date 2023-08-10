@@ -21,7 +21,7 @@ import wool_navy_1 from '../../assets/images/materials/wool navy 1.png'
 
 
 
-const Materials = () => {
+const Materials_ViewAll = () => {
   return (
     <div className='mt-5 p-3 grid grid-cols-4 gap-y-5 gap-x-9 border-r-4 border-gray-400'>
 
@@ -50,4 +50,4 @@ const Materials = () => {
   )
 }
 
-export default Materials
+export default Materials_ViewAll

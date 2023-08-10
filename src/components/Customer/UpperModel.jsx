@@ -8,6 +8,7 @@ import ControlPanel from "../utilComp/ControlPanel"
 import BackNext from './BackNext'
 import { NewCostume } from './NewCostume'
 
+
 const UpperModel = () => {
     const [control, setControl] = useState({
         x: 0,

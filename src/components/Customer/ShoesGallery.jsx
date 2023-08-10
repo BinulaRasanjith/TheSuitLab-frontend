@@ -1,9 +1,9 @@
-import ShoeOne from '../assets/images/shoes/shoe1 1.png'
-import ShoeTwo from '../assets/images/shoes/shoe2 1.png'
-import ShoeThree from '../assets/images/shoes/shoe3 1.png'
-import ShoeFour from '../assets/images/shoes/shoe4 1.png'
-import ShoeFive from '../assets/images/shoes/shoe5 1.png'
-import ShoeSix from '../assets/images/shoes/shoe6 1.png'
+import ShoeOne from '../../assets/images/shoes/shoe1 1.png'
+import ShoeTwo from '../../assets/images/shoes/shoe2 1.png'
+import ShoeThree from '../../assets/images/shoes/shoe3 1.png'
+import ShoeFour from '../../assets/images/shoes/shoe4 1.png'
+import ShoeFive from '../../assets/images/shoes/shoe5 1.png'
+import ShoeSix from '../../assets/images/shoes/shoe6 1.png'
 import AccessoryCard from "./AccessoryCard"
 
 const ShoesGallery = () => {
