@@ -38,7 +38,7 @@ const Navbar = () => {
 
 	return (
 		<>
-			<nav className="flex justify-between items-center bg-primary fixed h-16 w-full z-40">
+			<header className="flex justify-between items-center bg-primary fixed h-16 w-screen z-40">
 				{// responsive burger button for landing page
 					!user.id &&
 					<div className='flex sm:hidden'>
@@ -138,7 +138,7 @@ const Navbar = () => {
 						</>)}
 				</div>
 
-			</nav >
+			</header>
 
 			<div className={open ? "sm:hidden z-20 fixed top-14  left-0 shadow dark:bg-gray-700" : "hidden"}>
 				<ul className="flex flex-col items-center p-2 text-sm text-gray-700 dark:text-gray-200">

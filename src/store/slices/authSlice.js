@@ -30,13 +30,7 @@ export const loginAsync = createAsyncThunk( // this thunk will make a POST reque
 
 			const decodedJWT = await jwtDecode(accessToken); // decode the access token to get the user data. The access token contains the user data in the payload.
 
-			const user = {
-				id: decodedJWT.user.id,
-				firstName: decodedJWT.user.firstName,
-				lastName: decodedJWT.user.lastName,
-				email: decodedJWT.user.email,
-				role: decodedJWT.user.role,
-			};
+			const user = setUserObject(decodedJWT.user)
 
 			return { user, message }; // return the user data and the message
 
@@ -73,6 +67,9 @@ const authSlice = createSlice({ // create the auth slice
 			api.defaults.headers.common.Authorization = null; // remove the access token from the api module
 			state.user = initialState.user; // reset the user state
 		},
+		setUser: (state, action) => { // this reducer will be used to set the user state of the slice. It will be used to persist the login state of the user.
+			state.user = action.payload; // set the user state to the user data passed to the reducer
+		},
 		setError: (state, action) => { // this reducer will be used to set the error state of the slice. It will be used to display the error message to the user.
 			state.error = action.payload; // set the error state to the error message passed to the reducer
 		}
@@ -95,10 +92,21 @@ const authSlice = createSlice({ // create the auth slice
 	}
 });
 
+export function setUserObject(user) {
+	return {
+		id: user.id,
+		firstName: user.firstName,
+		lastName: user.lastName,
+		mobileNo: user.mobileNo,
+		email: user.email,
+		role: user.role,
+	}
+}
+
 
 export const selectUser = (state) => state.auth.user;
 export const selectAuthStatus = (state) => state.auth.status;
 export const selectAuthError = (state) => state.auth.error;
 
-export const { logout, setError } = authSlice.actions;
+export const { logout, setError, setUser } = authSlice.actions;
 export default authSlice.reducer;
