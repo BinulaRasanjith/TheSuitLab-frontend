@@ -4,6 +4,55 @@ import Costume3 from '../../assets/images/costume3.jpeg'
 import Costume4 from '../../assets/images/costume4.jpeg'
 import Costume5 from '../../assets/images/costume5.jpeg'
 
+
+const customers = [
+    {
+        orderId: '#007324786345',
+        phoneNumber: '(225) 555-0118',
+        customer: 'Heshan Cooray',
+        OrderedDate: '2023-07-07',
+        status: 'Collected',
+    },
+    {
+        orderId: '#007783264383',
+        phoneNumber: '(205) 555-0100',
+        customer: 'Janaka Ishan',
+        OrderedDate: '2023-03-17',
+        status: 'Collected',
+    },
+    {
+        orderId: '#007373652345',
+        phoneNumber: '(302) 555-0107',
+        customer: 'Kushan Dias',
+        OrderedDate: '2023-07-07',
+        status: 'Collected',
+    },
+    {
+        orderId: '#007376876554',
+        phoneNumber: '(252) 555-0126',
+        customer: 'Malin Perera',
+        OrderedDate: '2023-06-27',
+        status: 'Collected',
+    },
+    {
+        orderId: '#007908322342',
+        phoneNumber: '(208) 555-0112',
+        customer: 'Shyam Fernando',
+        OrderedDate: '2023-05-11',
+        status: 'Collected',
+    },
+    {
+        orderId: '#007083473634',
+        phoneNumber: '(704) 555-0127',
+        customer: 'Gihan Nawagamuwa',
+        OrderedDate: '2023-07-07',
+        status: 'Collected',
+    }
+
+];
+
+
+
 const ViewOrders = () => {
 
 
@@ -46,14 +95,11 @@ const ViewOrders = () => {
                             <div className=" min-h-screen bg-white m-5">
 
                                 <div className="relative overflow-x-hidden shadow-md">
-                                    <table className="w-full text-sm text-left text-gray-400 rounded-3xl ">
+                                    <table className="w-full text-sm text-left text-gray-400 rounded-3xl">
                                         <thead className="text-xs text-gray-500 uppercase bg-gray-100 rounded-3xl">
                                             <tr>
                                                 <th scope="col" className="px-6 py-3">
                                                     Order Id
-                                                </th>
-                                                <th scope="col" className="px-6 py-3">
-                                                    Item Count
                                                 </th>
                                                 <th scope="col" className="px-6 py-3">
                                                     Phone Number
@@ -70,133 +116,29 @@ const ViewOrders = () => {
                                                 <th scope="col" className="px-6 py-3">
                                                     Option
                                                 </th>
-
-                                                {/* <th scope="col" className="px-6 py-3">
-                                                    <span className="sr-only">Edit</span>
-                                                </th> */}
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr className="bg-white border rounded-3xl hover:bg-gray-300 text-black whitespace-nowrap font-medium">
-                                                <td className="px-6 py-4">
-                                                <img className="w-36 h-36 mb-1 object-cover rounded-full shadow-lg" src={Costume1} alt="image" />
-                                                </td>
-                                                <td className="px-6 py-4 text-center">
-                                                    3
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    +91 9876543210
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    Floyd Miles
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    2023-07-17
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    Collected
-                                                </td>
-                                                <td className="px-6 py-4 text-right">
-                                                    <a href="#" className="px-4 py-2 text-blue-100 no-underline bg-blue-500 rounded
-                                                     hover:bg-blue-600 hover:underline hover:text-blue-200">Edit</a>
-                                                </td>
-                                            </tr>
-                                            <tr className="bg-white border rounded-3xl hover:bg-gray-300 text-black whitespace-nowrap font-medium">
-                                                <td className="px-6 py-4">
-                                                    #007324786345
-                                                </td>
-                                                <td className="px-6 py-4 text-center">
-                                                    3
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    +91 9876543210
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    Floyd Miles
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    2023-07-17
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    Collected
-                                                </td>
-                                                <td className="px-6 py-4 text-right">
-                                                    <a href="#" className="px-4 py-2 text-blue-100 no-underline bg-blue-500 rounded
-                                                     hover:bg-blue-600 hover:underline hover:text-blue-200">Edit</a>
-                                                </td>
-                                            </tr>
-                                            <tr className="bg-white border rounded-3xl hover:bg-gray-300 text-black whitespace-nowrap font-medium">
-                                                <td className="px-6 py-4">
-                                                    #007324786345
-                                                </td>
-                                                <td className="px-6 py-4 text-center">
-                                                    3
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    +91 9876543210
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    Floyd Miles
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    2023-07-17
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    Collected
-                                                </td>
-                                                <td className="px-6 py-4 text-right">
-                                                    <a href="#" className="px-4 py-2 text-blue-100 no-underline bg-blue-500 rounded
-                                                     hover:bg-blue-600 hover:underline hover:text-blue-200">Edit</a>
-                                                </td>
-                                            </tr>
-                                            <tr className="bg-white border rounded-3xl hover:bg-gray-300 text-black whitespace-nowrap font-medium">
-                                                <td className="px-6 py-4">
-                                                    #007324786345
-                                                </td>
-                                                <td className="px-6 py-4 text-center">
-                                                    3
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    +91 9876543210
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    Floyd Miles
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    2023-07-17
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    Collected
-                                                </td>
-                                                <td className="px-6 py-4 text-right">
-                                                    <a href="#" className="px-4 py-2 text-blue-100 no-underline bg-blue-500 rounded
-                                                     hover:bg-blue-600 hover:underline hover:text-blue-200">Edit</a>
-                                                </td>
-                                            </tr>
-                                            <tr className="bg-white border rounded-3xl hover:bg-gray-300 text-black whitespace-nowrap font-medium">
-                                                <td className="px-6 py-4">
-                                                    #007324786345
-                                                </td>
-                                                <td className="px-6 py-4 text-center">
-                                                    3
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    +91 9876543210
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    Floyd Miles
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    2023-07-17
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    Collected
-                                                </td>
-                                                <td className="px-6 py-4 text-right">
-                                                    <a href="#" className="px-4 py-2 text-blue-100 no-underline bg-blue-500 rounded
-                                                     hover:bg-blue-600 hover:underline hover:text-blue-200">Edit</a>
-                                                </td>
-                                            </tr>
+                                            {customers.map((customer, index) => (
+                                                <tr
+                                                    key={index}
+                                                    className="bg-white border rounded-3xl hover:bg-gray-300 text-black whitespace-nowrap font-medium"
+                                                >
+                                                    <td className="px-6 py-4">{customer.orderId}</td>
+                                                    <td className="px-6 py-4">{customer.phoneNumber}</td>
+                                                    <td className="px-6 py-4">{customer.customer}</td>
+                                                    <td className="px-6 py-4">{customer.OrderedDate}</td>
+                                                    <td className="px-6 py-4">{customer.status}</td>
+                                                    <td className="px-6 py-4 text-right">
+                                                        <a
+                                                            href="#"
+                                                            className="px-4 py-2 text-blue-100 no-underline bg-blue-500 rounded hover:bg-blue-600 hover:underline hover:text-blue-200"
+                                                        >
+                                                            Edit
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            ))}
                                         </tbody>
                                     </table>
                                 </div>

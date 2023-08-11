@@ -11,7 +11,7 @@ import Profile from "../pages/Admin/Profile"
 import Reviews from "../pages/Admin/Test1"
 
 
-const costumerRoutes = {
+const adminRoutes = {
     path: "/admin",
     element: <AdminMainLayout />,
     children: [
@@ -24,4 +24,4 @@ const costumerRoutes = {
     ],
 }
 
-export default costumerRoutes
+export default adminRoutes
