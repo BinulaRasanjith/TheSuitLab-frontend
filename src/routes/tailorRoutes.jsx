@@ -65,6 +65,10 @@ const tailorRoutes = {
             path: 'profile',
             element: <Profile />
         },
+        {
+            path: 'test',
+            element: <TEST />
+        },
     ]
 }
 

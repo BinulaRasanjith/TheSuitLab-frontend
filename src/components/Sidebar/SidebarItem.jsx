@@ -34,6 +34,7 @@ const SidebarItem = ({ label, icon, to, subItems }) => {
 	const [isOpen, setIsOpen] = useState(false)
 
 	const handleClick = (e) => {
+		console.log(pathname, to)
 		e.preventDefault()
 		if (pathname.includes(to)) {
 			setIsOpen(!isOpen)

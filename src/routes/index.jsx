@@ -1,10 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import costumeCustomizationRoutes from "./costumeCustomizationRoutes";
+import adminRoutes from "./adminRoutes";
 import customerRoutes from "./customerRoutes";
 import landingPageRoutes from "./landingPageRoutes";
 import tailorRoutes from "./tailorRoutes";
-import adminRoutes from "./adminRoutes";
 
 const router = createBrowserRouter([
     landingPageRoutes, // This is the landing page routes

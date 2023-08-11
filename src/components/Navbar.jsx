@@ -11,7 +11,7 @@ import { selectUser } from '../store/slices/authSlice'
 import { logout } from '../store/slices/authSlice'
 import { toggleSidebar } from '../store/slices/sidebarSlice'
 
-// eslint-disable-next-line react/prop-types
+
 const Navbar = () => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
@@ -40,7 +40,7 @@ const Navbar = () => {
 		<>
 			<header className="flex justify-between items-center bg-primary fixed h-16 w-screen z-40">
 				{// responsive burger button for landing page
-					!user.id &&
+					(!user.id || user.role === CUSTOMER) &&
 					<div className='flex sm:hidden'>
 						<button className="flex items-center px-3 py-2 text-secondary text-2xl" onClick={() => setOpen(!open)}>
 							{open ? <FaTimes /> : <FaBars />}
@@ -49,7 +49,7 @@ const Navbar = () => {
 				}
 
 				{// sidebar toggle burger button
-					user.id &&
+					(user.id && user.role !== CUSTOMER) &&
 					<div>
 						<button className="flex items-center px-3 py-2 text-secondary text-2xl" onClick={() => dispatch(toggleSidebar())}>
 							<FaBars />
@@ -69,7 +69,7 @@ const Navbar = () => {
 						<ul className="hidden sm:flex text-white items-center p-1 font-medium gap-2 lg:gap-5 md:mt-0">
 							<NavLink className={({ isActive }) => {
 								return `px-3 py-1 ${isActive ? 'font-bold' : ''}`
-							}} to='/home'>Home</NavLink>
+							}} to={`${user.role === CUSTOMER ? '/customer' : '/home'}`}>Home</NavLink>
 							<NavLink className={({ isActive }) => {
 								return `px-3 py-1 ${isActive ? 'font-bold' : ''}`
 							}} to='/services'>Services</NavLink>
@@ -141,6 +141,7 @@ const Navbar = () => {
 			</header>
 
 			<div className={open ? "sm:hidden z-20 fixed top-14  left-0 shadow dark:bg-gray-700" : "hidden"}>
+				{/* TODO: set conditions for customer */}
 				<ul className="flex flex-col items-center p-2 text-sm text-gray-700 dark:text-gray-200">
 					<NavLink className={({ isActive }) => {
 						return `px-3 py-1 ${isActive ? 'border-2 rounded-md border-cyan-500' : ''}`
