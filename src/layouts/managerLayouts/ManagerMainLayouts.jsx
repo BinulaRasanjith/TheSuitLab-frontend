@@ -16,14 +16,23 @@ const sidebarItems = [
         to: '/manager/dashboard',
     },
     {
-        label: 'Employees',
-        icon: <BiSolidBookReader />,
-        to: '/manager/employees',
-    },
-    {
-        label: 'Customers',
-        icon: <PiShirtFoldedFill />,
-        to: '/manager/customer',
+        label: 'Materials',
+        icon: <IoMdBowtie />,
+        to: '/manager/materials',
+        subItems: [
+            {
+                label: 'Fabric',
+                to: '/manager/materials/fabric',
+            },
+            {
+                label: 'String',
+                to: '/manager/materials/string',
+            },
+            {
+                label: 'Buttons',
+                to: '/manager/materials/buttons',
+            },
+        ]
     },
     {
         label: 'Orders',
@@ -31,9 +40,24 @@ const sidebarItems = [
         to: '/manager/orders',
     },
     {
+        label: 'Suppliers',
+        icon: <IoMdBowtie />,
+        to: '/manager/suppliers',
+    },
+    {
+        label: 'Payments',
+        icon: <HiHome />,
+        to: '/manager/payments',
+    },
+    {
+        label: 'Customers',
+        icon: <PiShirtFoldedFill />,
+        to: '/manager/customer',
+    },
+    {
         label: 'Reviews',
         icon: <BsFillCartFill />,
-        to: '/manager/test',
+        to: '/manager/reviews',
     },
     {
         label: 'Profile',

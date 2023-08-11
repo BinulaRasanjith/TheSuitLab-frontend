@@ -20,7 +20,7 @@ const adminRoutes = {
         { path: "customer", element: <Customers />},
         { path: "orders", element: <Orders /> },
         { path: "profile", element: <Profile /> },  
-        { path: "test", element: <Reviews /> }, 
+        { path: "reviews", element: <div>Reviews</div> }, 
     ],
 }
 

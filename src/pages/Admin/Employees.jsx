@@ -1,4 +1,5 @@
-
+import { Button } from "@chakra-ui/react"
+import { AiFillPlusCircle } from 'react-icons/ai'
 //images
 import Costume1 from '../../assets/images/costume1.jpeg'
 import Costume2 from '../../assets/images/costume2.jpeg'
@@ -64,15 +65,26 @@ const Employees = () => {
             <div className='flex-auto ml-3'>
                 <div className='flex flex-col'>
 
-                    <div className='flex-row mt-6 grid grid-cols-2'>
-                        <div className="flex ml-5 justify-start ">
-                            <span className=' font-bold text-xl text-black  uppercase'>Product managers</span>
-                        </div>
-                        <div className="flex flex-row mr-5 justify-end ">
-                            <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white uppercase bg-black rounded-3xl hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">New User</a>
+                    <div className="flex items-center justify-between ml-4 mt-3 mr-2">
+                                <span className=' font-bold text-xl text-black  uppercase'>Product managers</span>
 
-                        </div>
-                    </div>
+                                <Button
+                                    hover={
+                                        {
+                                            bgColor: 'primary.100',
+                                            color: 'primary.200'
+                                        }
+                                    }
+                                    bgColor={'primary.100'}
+                                    color={'primary.200'}
+                                    leftIcon={<AiFillPlusCircle />}
+                                    m={3}
+                                    rounded={'full'}
+
+                                >
+                                    Add User
+                                </Button>
+                            </div>
 
                     {/* cards*/}
                     <div className="bg-white">

@@ -8,6 +8,8 @@ import TailorDashboard from "../pages/Tailor/Dashboard"
 import Orders from "../pages/Tailor/Orders"
 import Profile from "../pages/Tailor/Profile"
 import Reviews from "../pages/Tailor/Test1"
+import Fabrics from "../pages/Tailor/Fabrics"
+import Buttons from "../pages/tailor/Buttons"
 
 
 const tailorRoutes = {
@@ -21,9 +23,9 @@ const tailorRoutes = {
             path: "materials", 
             element: <MaterialsLayout />,
             children: [
-                { path: "fabric", element: <div>Fabrics</div> },
+                { path: "fabric", element: <Fabrics /> },
                 { path: "string", element: <div>String</div> },
-                { path: "buttons", element: <div>Color contrast</div> },
+                { path: "buttons", element: <Buttons /> },
                 { path: "colors", element: <div>Color contrast</div> },
             ]    
     },  

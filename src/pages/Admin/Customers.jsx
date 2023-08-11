@@ -1,5 +1,5 @@
-import staffCard from "../../components/staffCard";
-
+import { Button } from "@chakra-ui/react"
+import { AiFillPlusCircle } from 'react-icons/ai'
 
 const customers = [
     {
@@ -56,10 +56,10 @@ const ViewCustomers = () => {
             <div className="flex-auto">
 
                 <div className='flex flex-col '>
-                    <div className='flex-col mt-6  ml-8 shadow-lg sm:rounded-lg'>
-                        <div className='flex flex-col m-8 sm:rounded-full'>
+                    <div className='flex-col mt-4  ml-8 shadow-lg sm:rounded-lg'>
+                        <div className='flex flex-col m-6 sm:rounded-full'>
 
-                            <div className="flex flex-row ml-4">
+                            <div className="flex items-center justify-between ml-4">
                                 <span className=' text-xl font-bold text-black p-1'>All Customers</span>
 
                                 <div className=" ml-96">
@@ -74,15 +74,33 @@ const ViewCustomers = () => {
                                          focus:border-gray-400 " placeholder="Search" />
                                     </div>
                                 </div>
-                                <div className=" ml-9 flex">
-                                    {/* <label for="Sort" className="text-sm font-medium text-gray-900 ">Small select</label> */}
-                                    <select id="Sort" className="block w-full p-2 mb-6 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
-                                        <option selected>Sort By</option>
-                                        <option value="US">All</option>
-                                        <option value="CA">ASC</option>
-                                        <option value="FR">DSC</option>
-                                    </select>
+                                <div className=" flex">
+                                    <div className=" ml-5 flex-col">
+                                        {/* <label for="Sort" className="text-sm font-medium text-gray-900 ">Small select</label> */}
+                                        <select id="Sort" className="block p-1  text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+                                            <option selected>Sort By</option>
+                                            <option value="US">All</option>
+                                            <option value="CA">ASC</option>
+                                            <option value="FR">DSC</option>
+                                        </select>
+                                    </div>
                                 </div>
+                                <Button
+                                    hover={
+                                        {
+                                            bgColor: 'primary.100',
+                                            color: 'primary.200'
+                                        }
+                                    }
+                                    bgColor={'primary.100'}
+                                    color={'primary.200'}
+                                    leftIcon={<AiFillPlusCircle />}
+                                    m={3}
+                                    rounded={'full'}
+
+                                >
+                                    Add Customer
+                                </Button>
                             </div>
 
                             <div className=" min-h-screen bg-white m-5">
@@ -122,7 +140,7 @@ const ViewCustomers = () => {
                                                     <td className="px-6 py-4">{customer.email}</td>
                                                     <td className="px-6 py-4">{customer.lastOrder}</td>
                                                     <td className="px-6 py-4">{customer.status}</td>
-                                                    <td className="px-6 py-4 text-right">
+                                                    <td className="px-6 py-4">
                                                         <a
                                                             href="#"
                                                             className="px-4 py-2 text-blue-100 no-underline bg-blue-500 rounded hover:bg-blue-600 hover:underline hover:text-blue-200"

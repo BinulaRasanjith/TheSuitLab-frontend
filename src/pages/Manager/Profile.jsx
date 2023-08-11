@@ -1,4 +1,3 @@
-import staffCard from "../../components/staffCard";
 
 //images
 import Costume1 from '../../assets/images/costume1.jpeg'

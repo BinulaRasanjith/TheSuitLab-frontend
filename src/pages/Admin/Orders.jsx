@@ -117,7 +117,7 @@ const ViewOrders = () => {
                                                     <td className="px-6 py-4">{customer.customer}</td>
                                                     <td className="px-6 py-4">{customer.OrderedDate}</td>
                                                     <td className="px-6 py-4">{customer.status}</td>
-                                                    <td className="px-6 py-4 text-right">
+                                                    <td className="px-6 py-4">
                                                         <a
                                                             href="#"
                                                             className="px-4 py-2 text-blue-100 no-underline bg-blue-500 rounded hover:bg-blue-600 hover:underline hover:text-blue-200"

@@ -1,4 +1,3 @@
-import staffCard from "../../components/staffCard";
 
 const Dashboard = () => {
 

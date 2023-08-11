@@ -20,11 +20,11 @@ const sidebarItems = [
         icon: <BiSolidBookReader />,
         to: '/admin/employees',
     },
-    {
-        label: 'Customers',
-        icon: <PiShirtFoldedFill />,
-        to: '/admin/customer',
-    },
+    // {
+    //     label: 'Customers',
+    //     icon: <PiShirtFoldedFill />,
+    //     to: '/admin/customer',
+    // },
     {
         label: 'Orders',
         icon: <IoMdBowtie />,
@@ -33,7 +33,7 @@ const sidebarItems = [
     {
         label: 'Reviews',
         icon: <BsFillCartFill />,
-        to: '/admin/test',
+        to: '/admin/reviews',
     },
     {
         label: 'Profile',
