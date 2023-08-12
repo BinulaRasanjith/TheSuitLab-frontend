@@ -53,7 +53,7 @@ const Slideshow = () => {
 
 
   return (
-    <div className='max-w-[1580px] h-[500px] w-full m-auto pt-10 relative group flex items-center justify-center'>
+    <div className='max-w-[1580px] h-[500px] w-full m-auto relative group flex items-center justify-center'>
       <div className='w-full h-full bg-center bg-cover duration-500' style={{ backgroundImage: `url(${slides[current].url})` }}></div>
 
       {/* left Arrow */}

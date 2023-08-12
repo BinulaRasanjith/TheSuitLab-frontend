@@ -1,9 +1,6 @@
-//layouts
-import TailorMainLayout from "../layouts/tailorLayouts/TailorMainLayouts"
-import MaterialsLayout from "../layouts/tailorLayouts/MaterialsLayout"
 
-
-//pages
+import SingleOutletLayout from "../layouts/SingleOutletLayout"
+import TailorMainLayout from "../layouts/tailorLayouts/TailorMainLayout"
 import TailorDashboard from "../pages/Tailor/Dashboard"
 import Orders from "../pages/Tailor/Orders"
 import Profile from "../pages/Tailor/Profile"
@@ -13,7 +10,7 @@ import Buttons from "../pages/tailor/Buttons"
 
 
 const tailorRoutes = {
-    path: "/tailor",
+    path: '/tailor',
     element: <TailorMainLayout />,
     children: [
         { path: "", element: <TailorDashboard /> },

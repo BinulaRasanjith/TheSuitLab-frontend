@@ -2,6 +2,8 @@ import { HiBriefcase, HiChartBar, HiShoppingCart } from "react-icons/hi"
 import { HiHandThumbUp, HiUserCircle } from "react-icons/hi2";
 import { Outlet } from "react-router-dom"
 
+import ContentWrapper from "../../components/ContentWrapper";
+import MainLayout from "../../components/MainLayout";
 import Navbar from "../../components/Navbar"
 import Sidebar from "../../components/Sidebar/Sidebar"
 
@@ -40,17 +42,15 @@ const sidebarItems = [
 ]
 
 const AdminMainLayout = () => {
-    // const sidebarIsOpen = useSelector(selectSidebarIsOpen)
-
     return (
         <>
             <Navbar />
-            <main className="flex min-h-screen w-screen pt-16 transition-all ease-in-out duration-300">
+            <MainLayout>
                 <Sidebar items={sidebarItems} />
-                <div className="block transition-all w-full ease-in-out duration-300" id="main-left">
+                <ContentWrapper>
                     <Outlet />
-                </div>
-            </main>
+                </ContentWrapper>
+            </MainLayout>
         </>
     )
 }
