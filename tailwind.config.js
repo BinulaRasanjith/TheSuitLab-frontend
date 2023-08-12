@@ -12,8 +12,6 @@ export default {
       colors: {
         primary: '#111111',
         secondary: '#FEFEFE',
-        borderColor: '#DCDCDC',
-        supplierColor: '#A0AEC0'
       }
     },
   },

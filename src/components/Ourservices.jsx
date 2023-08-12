@@ -4,7 +4,7 @@ import rectangle239 from '../assets/images/rectangle239.png'
 
 const OurServices = () => {
     return (
-        <div className='pb-10 px-10'>
+        <div className='py-10 px-10'>
             <div className='flex items-center justify-center text-6xl text-bold py-10'><h1>Our Services</h1></div>
             <div className='grid grid-rows-3 justify-items-center'>
                 <div className='grid grid-cols-1 md:grid-cols-2 md:gap-x-20 lg:gap-x-52 gap-y-4'>

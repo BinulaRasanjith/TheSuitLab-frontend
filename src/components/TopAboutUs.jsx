@@ -2,7 +2,7 @@ import Rectangle243 from '../assets/images/Rectangle243.png'
 
 const TopAboutUs = () => {
   return (
-    <div>
+    <div className='pt-10 md:pt-2'>
       <div className='flex items-start justify-start relative'>
         <img alt="" className="bg-cover w-full h-screen" src={Rectangle243} />
       </div>

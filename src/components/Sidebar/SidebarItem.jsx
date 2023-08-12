@@ -58,14 +58,11 @@ const SidebarItem = ({ label, icon, to, subItems }) => {
 				setIsOpen(false)
 			}
 		}
-	}, [isMain, pathname, subItems, to])
+	}, [isMain, pathname, subItems, to])
 
 	return (
-		<div className={`flex flex-col cursor-pointer transition-all ease-in-out duration-1000 mx-2 rounded-md overflow-hidden ${(isOpen ? 'bg-gray-300 ' : '')
-			} ${sidebarIsOpen ? 'w-11/12 ' : 'w-fit '}`}>
-			<div className={`px-3 h-10 flex gap-2 items-center rounded-md ${isActive ? 'bg-primary text-white' : 'hover:bg-gray-200'
-				} ${sidebarIsOpen ? 'w-full' : 'w-10 items-center justify-center'}`}
-				onClick={handleClick}>
+		<div className={`flex flex-col cursor-pointer transition-all ease-in-out duration-1000 mx-2 rounded-md overflow-hidden ${(isOpen ? 'bg-gray-300 ' : '')} ${sidebarIsOpen ? 'w-11/12 ' : 'w-fit '}`}>
+			<div className={`px-3 h-10 flex gap-2 items-center rounded-md ${isActive ? 'bg-primary text-white' : 'hover:bg-gray-200'} ${sidebarIsOpen ? 'w-full' : 'w-10 items-center justify-center'}`} onClick={handleClick}>
 				<span className={'text-xl'}>{icon}</span>
 				{sidebarIsOpen && label}
 				{sidebarIsOpen && subItems &&

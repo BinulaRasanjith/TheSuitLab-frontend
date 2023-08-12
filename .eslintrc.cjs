@@ -12,7 +12,6 @@ module.exports = {
   rules: {
     "perfectionist/sort-interfaces": "error",
     "perfectionist/sort-objects": "off",
-    "perfectionist/sort-jsx-props": "off",
     'react-refresh/only-export-components': 'warn',
   },
   settings: { react: { version: '18.2' } },

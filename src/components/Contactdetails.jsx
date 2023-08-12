@@ -1,11 +1,11 @@
 const ContactDetails = () => {
     return (
-        <div className="flex flex-col items-center justify-center py-10 md:py-10 px-2 md:px-5">
-            <div className="flex flex-col items-center py-5 sm:py-10">
-                <h1 className="text-xl sm:text-4xl font-bold">We would love to</h1>
-                <h1 className="text-xl sm:text-4xl font-bold">hear from you</h1>
+        <div className="flex flex-col items-center justify-center pt-20 pb-10 md:py-10 px-2 md:px-5">
+            <div className="flex flex-col items-center py-10">
+                <h1 className="text-4xl font-bold">We would love to</h1>
+                <h1 className="text-4xl font-bold">hear from you</h1>
             </div>
-            <div className="flex flex-col items-center justify-center m-auto">
+            <div className="flex flex-col items-center justify-center">
                 <p>We would like to help and answer any questions or concerns you might have. Any</p>
                 <p> problem regarding your product, service or instruction contact us, you are only a</p>
                 <p> second away.</p>

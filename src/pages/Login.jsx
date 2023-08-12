@@ -11,9 +11,6 @@ import { loginAsync, selectAuthError, selectAuthStatus, setError } from "../stor
 const Login = () => {
 	const dispatch = useDispatch()
 
-	const user = useSelector((state) => state.auth.user)
-	const message = useSelector((state) => state.auth.message)
-
 	const status = useSelector(selectAuthStatus)
 	const error = useSelector(selectAuthError)
 	const [loginCredentials, setLoginCredentials] = useState({ email: "", password: "" })
@@ -25,9 +22,7 @@ const Login = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
-		await dispatch(loginAsync(loginCredentials))
-		console.log(user)
-		console.log(message)
+		dispatch(loginAsync(loginCredentials))
 	}
 
 	return (

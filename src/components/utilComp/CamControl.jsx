@@ -1,4 +1,4 @@
-
+import { ReactPropTypes } from "react"
 
 const CamControl = ({ camCont, setCamCont }) => {
     return (
@@ -9,5 +9,9 @@ const CamControl = ({ camCont, setCamCont }) => {
     )
 }
 
+CamControl.propTypes = {
+    camCont: ReactPropTypes.object,
+    setCamCont: ReactPropTypes.func
+}
 
 export default CamControl

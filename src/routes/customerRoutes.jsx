@@ -1,75 +1,36 @@
-import Materials_PureLinen from "../components/customer/Materials_PureLinen"
-import Materials_PureWool from "../components/customer/Materials_PureWool"
-import Materials_SolidColors from "../components/customer/Materials_SolidColors"
-import Materials_ViewAll from "../components/customer/Materials_ViewAll"
-import Materials_patterns from "../components/customer/Materials_patterns"
-import SingleOutletLayout from "../layouts/SingleOutletLayout"
+import CustomerAccessoriesLayout from "../layouts/customerLayouts/CustomerAccessoriesLayout"
+import CustomerCostumeCustomizationLayout from "../layouts/customerLayouts/CustomerCostumeCustomizationLayout"
 import CustomerMainLayout from "../layouts/customerLayouts/CustomerMainLayout"
-import JacketStyleLayout from "../layouts/customerLayouts/JacketStyleLayout"
-import Home from "../pages/customer/Home"
-import LookBook from "../pages/customer/LookBook"
-import SuitCustomizationLanding from "../pages/customer/SuitCustomizationLanding"
 
-// TODO: complete the navigation routes
 const costumerRoutes = {
     path: "/customer",
     element: <CustomerMainLayout />,
     children: [
+        { path: "home", element: <div>Home</div> },
+        { path: "lookbooks", element: <div>Lookbooks</div> },
         {
-            path: '',
-            element: <Home />
-        },
-        {
-            path: 'lookbook',
-            element: <LookBook />
-        },
-        {
-            path: 'profile',
-            element: <div>Profile</div>
-        },
-        {
-            path: 'customize-suit',
-            element: <SuitCustomizationLanding />
-        },
-        {
-            path: 'customize-suit/jacket',
-            element: <JacketStyleLayout />,
+            path: "custom-suit",
+            element: <CustomerCostumeCustomizationLayout />,
             children: [
-                {
-                    path: 'fabric',
-                    element: <SingleOutletLayout />,
-                    children: [
-                        {
-                            path: 'all',
-                            element: <Materials_ViewAll />,
-                        },
-                        {
-                            path: 'solid-colors',
-                            element: <Materials_SolidColors />,
-                        },
-                        {
-                            path: 'patterns',
-                            element: <Materials_patterns />,
-                        },
-                        {
-                            path: 'pure-linen',
-                            element: <Materials_PureLinen />,
-                        },
-                        {
-                            path: 'pure-wool',
-                            element: <Materials_PureWool />,
-                        },
-                    ]
-                }
-
+                { path: "fabric", element: <div>Fabrics</div> },
+                { path: "style", element: <div>Styles</div> },
+                { path: "color-contrast", element: <div>Color contrast</div> },
+                { path: "measurements", element: <div>Measurements</div> },
             ]
         },
         {
-            path: 'customize-suit/pant',
-            element: <div>Style Pant</div>
-        }
-    ]
+            path: "accessories",
+            element: <CustomerAccessoriesLayout />,
+            children: [
+                { path: "shoes", element: <div>Shoes</div> },
+                { path: "belts", element: <div>Belts</div> },
+                { path: "bow-ties", element: <div>Bow ties</div> },
+                { path: "neck-ties", element: <div>Neck ties</div> },
+            ]
+        },
+        { path: "cart", element: <div>Cart</div> },
+        { path: "profile", element: <div>Profile</div> },
+    ],
 }
-
 
 export default costumerRoutes

@@ -1,8 +1,7 @@
 import axios from "axios";  // import axios to make requests to the server
 
+import { SERVER_URL } from "../config/config";  // import the server url from the config file
 import { refreshToken } from "./authAPIs";   // import the refresh token function from the authAPIs file
-
-const SERVER_URL = `${import.meta.env.VITE_SERVER_URL || "http://localhost:3333"}`;
 
 const API_URL = `${SERVER_URL}/api`;  // the base url of the API
 
@@ -29,7 +28,7 @@ api.interceptors.response.use( // this interceptor will be called every time a r
                 return api.request(originalRequest);  // retry the original request
             } catch (_error) {  // if the refresh token has expired
                 return Promise.reject(_error); // reject the promise with the error
-            }
+            } 
         }
         return Promise.reject(error);  // if the error is not related to the access token, reject the promise with the error
     }
