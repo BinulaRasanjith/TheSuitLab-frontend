@@ -1,8 +1,5 @@
-import { BiSolidBookReader } from "react-icons/bi"
-import { BsFillCartFill } from "react-icons/bs"
-import { HiHome, HiUserCircle } from "react-icons/hi2";
-import { IoMdBowtie } from "react-icons/io"
-import { PiShirtFoldedFill } from "react-icons/pi"
+import { HiBriefcase, HiChartBar, HiShoppingCart } from "react-icons/hi"
+import { HiHandThumbUp, HiUserCircle } from "react-icons/hi2";
 import { Outlet } from "react-router-dom"
 
 import Navbar from "../../components/Navbar"
@@ -12,12 +9,12 @@ import Sidebar from "../../components/Sidebar/Sidebar"
 const sidebarItems = [
     {
         label: 'Dashboard',
-        icon: <HiHome />,
+        icon: <HiChartBar />,
         to: '/admin',
     },
     {
         label: 'Employees',
-        icon: <BiSolidBookReader />,
+        icon: <HiBriefcase />,
         to: '/admin/employees',
     },
     // {
@@ -27,12 +24,12 @@ const sidebarItems = [
     // },
     {
         label: 'Orders',
-        icon: <IoMdBowtie />,
+        icon: <HiShoppingCart />,
         to: '/admin/orders',
     },
     {
         label: 'Reviews',
-        icon: <BsFillCartFill />,
+        icon: <HiHandThumbUp />,
         to: '/admin/reviews',
     },
     {
