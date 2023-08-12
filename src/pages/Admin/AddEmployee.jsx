@@ -5,16 +5,16 @@ import React, { useState } from "react"
 
 const AddEmployee = () => {
 
-
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [role, setRole] = useState('');
-    const [mobileNumber, setMobileNumber] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [role, setRole] = useState("");
+    const [mobileNumber, setMobileNumber] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     const handleAddUserClick = async () => {
 
+        e.preventDefault()
         // const user = {
         //     mobileNo: "03456822567834",
         //     firstName: "First",
@@ -56,7 +56,7 @@ const AddEmployee = () => {
 
                                         <div className="flex-row mt-6 grid grid-cols-2 mb-1">
                                             <label className="text-md text-gray-500">Role</label>
-                                            <select className="border border-gray-200 rounded-xl focus:outline-none focus:border-gray-500"
+                                            <select id="role" name="role" className="border border-gray-200 rounded-xl focus:outline-none focus:border-gray-500"
                                                 value={role}
                                                 onChange={(e) => setRole(e.target.value)}
                                             >
@@ -68,33 +68,32 @@ const AddEmployee = () => {
                                         </div>
                                         <div className="flex-row mt-6 grid grid-cols-2 mb-1">
                                             <label className="text-md text-gray-500">First Name</label>
-                                            <input className="border border-gray-200 rounded-xl  focus:outline-none focus:border-gray-500" type="text" value={firstName}
+                                            <input id="firstName" name="firstName" className="border border-gray-200 rounded-xl  focus:outline-none focus:border-gray-500" type="text" value={firstName}
                                                 onChange={(e) => setFirstName(e.target.value)} />
                                         </div>
                                         <div className="flex-row mt-6 grid grid-cols-2 mb-1">
                                             <label className="text-md text-gray-500">Last Name</label>
-                                            <input className="border border-gray-200 rounded-xl  focus:outline-none focus:border-gray-500" type="text" value={lastName}
+                                            <input id="lastName" name="lastName" className="border border-gray-200 rounded-xl  focus:outline-none focus:border-gray-500" type="text" value={lastName}
                                                 onChange={(e) => setLastName(e.target.value)} />
                                         </div>
 
                                         <div className="flex-row mt-6 grid grid-cols-2 mb-1">
                                             <label className="text-md text-gray-500">Mobile Number</label>
-                                            <input className="border border-gray-200 rounded-xl  focus:outline-none focus:border-gray-500" type="text" value={mobileNumber}
+                                            <input id="mobileNumber" name="mobileNumber" className="border border-gray-200 rounded-xl  focus:outline-none focus:border-gray-500" type="text" value={mobileNumber}
                                                 onChange={(e) => setMobileNumber(e.target.value)} />
                                         </div>
                                         <div className="flex-row mt-6 grid grid-cols-2 mb-1">
                                             <label className="text-md text-gray-500">Email</label>
-                                            <input className="border border-gray-200 rounded-xl  focus:outline-none focus:border-gray-500" type="text" value={email}
+                                            <input id="email" name="email" className="border border-gray-200 rounded-xl  focus:outline-none focus:border-gray-500" type="text" value={email}
                                                 onChange={(e) => setEmail(e.target.value)} />
                                         </div>
 
                                         <div className="flex-row mt-6 grid grid-cols-2 mb-1">
                                             <label className="text-md text-gray-500">Password</label>
-                                            <input className="border border-gray-200 rounded-xl  focus:outline-none focus:border-gray-500"
+                                            <input id="password" name="password" className="border border-gray-200 rounded-xl  focus:outline-none focus:border-gray-500"
                                                 type="password" value={password}
                                                 onChange={(e) => setPassword(e.target.value)} />
                                         </div>
-
 
                                         <div className="flex flex-row mr-4 mt-5 justify-start ">
                                             {/* <a href="#" class="inline-flex items-center px-10 py-2 text-sm font-medium text-center
