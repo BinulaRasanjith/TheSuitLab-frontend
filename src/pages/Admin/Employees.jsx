@@ -79,6 +79,13 @@ const Employees = () => {
                             m={3}
                             onClick={(handleAddUserClick)}
                             rounded={'full'}
+                            color={'white'} 
+                            bgColor={"black"}
+                            _hover={
+                                {
+                                    bg: 'blue.500',
+                                }
+                            }
                         >
                             Add User
                         </Button>

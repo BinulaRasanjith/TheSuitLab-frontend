@@ -1,7 +1,7 @@
 import { Button } from "@chakra-ui/react"
 import { AiFillPlusCircle } from 'react-icons/ai'
 
-const customers = [
+const payments = [
     {
         supplierId: '#00732',
         quantity: '+91 9876543210',
@@ -66,8 +66,8 @@ const Payments = () => {
                     <div className='flex-col mt-4  ml-8 shadow-lg sm:rounded-lg'>
                         <div className='flex flex-col m-6 sm:rounded-full'>
 
-                            <div className="flex items-center justify-between ml-4">
-                                <span className=' text-xl font-bold text-black p-1'>Payments</span>
+                            <div className="flex items-center ml-4">
+                                <span className=' text-xl font-bold text-black p-1'>Supplier Payments</span>
 
                                 <div className=" ml-96">
                                     <label className="sr-only">Search</label>
@@ -122,21 +122,21 @@ const Payments = () => {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {customers.map((customer, index) => (
+                                            {payments.map((payment, index) => (
                                                 <tr
                                                     key={index}
                                                     className="bg-white border rounded-3xl hover:bg-gray-300 text-black whitespace-nowrap font-medium"
                                                 >
-                                                    <td className="px-6 py-4">{customer.supplierId}</td>
-                                                    <td className="px-6 py-4">{customer.quantity}</td>
-                                                    <td className="px-6 py-4 ">{customer.orderId}</td>
-                                                    <td className="px-6 py-4">{customer.orderDate}</td>
-                                                    <td className="px-6 py-4">{formatCurrency(customer.amount)}</td>
+                                                    <td className="px-6 py-4">{payment.supplierId}</td>
+                                                    <td className="px-6 py-4">{payment.quantity}</td>
+                                                    <td className="px-6 py-4 ">{payment.orderId}</td>
+                                                    <td className="px-6 py-4">{payment.orderDate}</td>
+                                                    <td className="px-6 py-4">{formatCurrency(payment.amount)}</td>
                                                     <td className="px-6 py-4">
-                                                        {customer.status === "Pay" ? (
+                                                        {payment.status === "Pay" ? (
                                                             <a
                                                                 href="#"
-                                                                className="px-4 py-2 text-white no-underline bg-green-600 rounded hover:bg-blue-400 hover:text-white"
+                                                                className="px-3.5 py-2 text-white no-underline bg-green-600 rounded hover:bg-blue-400 hover:text-white"
                                                             >
                                                                 Pay Now
                                                             </a>

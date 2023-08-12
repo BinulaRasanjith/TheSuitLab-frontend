@@ -21,7 +21,7 @@ const customers = [
         phoneNumber: '+91 9876543210',
         email: 'jane@gmail.com',
         lastOrder: '2023-07-07',
-        status: 'Active',
+        status: 'Inactive',
     },
     {
         name: 'Ronald Richards',
@@ -35,7 +35,7 @@ const customers = [
         phoneNumber: '+94 9876577210',
         email: 'marvin@gmail.com',
         lastOrder: '2023-05-11',
-        status: 'Active',
+        status: 'Inactive',
     },
     {
         name: 'Jacob Janes',
@@ -86,17 +86,17 @@ const ViewCustomers = () => {
                                     </div>
                                 </div>
                                 <Button
-                                    hover={
-                                        {
-                                            bgColor: 'primary.100',
-                                            color: 'primary.200'
-                                        }
-                                    }
-                                    bgColor={'primary.100'}
-                                    color={'primary.200'}
+                                   
                                     leftIcon={<AiFillPlusCircle />}
                                     m={3}
                                     rounded={'full'}
+                                    color={'white'} 
+                                    bgColor={"black"}
+                                    _hover={
+                                        {
+                                            bg: 'blue.500',
+                                        }
+                                    }
 
                                 >
                                     Add Customer
@@ -141,12 +141,21 @@ const ViewCustomers = () => {
                                                     <td className="px-6 py-4">{customer.lastOrder}</td>
                                                     <td className="px-6 py-4">{customer.status}</td>
                                                     <td className="px-6 py-4">
-                                                        <a
-                                                            href="#"
-                                                            className="px-4 py-2 text-blue-100 no-underline bg-blue-500 rounded hover:bg-blue-600 hover:underline hover:text-blue-200"
-                                                        >
-                                                            Edit
-                                                        </a>
+                                                    {customer.status === "Active" ? (
+                                                            <a
+                                                                href="#"
+                                                                className="px-4 py-2 text-white no-underline bg-green-600 rounded hover:bg-blue-400 hover:text-white"
+                                                            >
+                                                                Active
+                                                            </a>
+                                                        ) : (
+                                                            <button
+                                                                className="px-3 py-1.5 text-white bg-red-500 rounded cursor-not-allowed"
+                                                                disabled
+                                                            >
+                                                                Inactive
+                                                            </button>
+                                                        )}
                                                     </td>
                                                 </tr>
                                             ))}

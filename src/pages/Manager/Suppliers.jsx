@@ -1,5 +1,6 @@
 import { Button } from "@chakra-ui/react"
 import { AiFillPlusCircle } from 'react-icons/ai'
+import { useNavigate } from "react-router"
 
 const customers = [
     {
@@ -50,6 +51,11 @@ const customers = [
 
 const Suppliers = () => {
 
+    const navigate = useNavigate()
+    const handleAddSupplierClick = () => {
+        navigate('/manager/add-supplier')
+    }
+
     return (
 
         <div className="flex flex-row">
@@ -96,6 +102,7 @@ const Suppliers = () => {
                                     color={'primary.200'}
                                     leftIcon={<AiFillPlusCircle />}
                                     m={3}
+                                    onClick={(handleAddSupplierClick)}
                                     rounded={'full'}
 
                                 >

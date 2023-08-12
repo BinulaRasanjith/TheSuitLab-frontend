@@ -12,35 +12,31 @@ const AddEmployee = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleAddUserClick = async () => {
+    const handleAddUserClick = async (e) => {
 
         e.preventDefault()
-        // const user = {
-        //     mobileNo: "03456822567834",
-        //     firstName: "First",
-        //     lastName: "Last",
-        //     role: "TAILOR",
-        //     password: "password"
-        // }
 
         const user = {
             mobileNo: mobileNumber,
             firstName: firstName,
             lastName: lastName,
             role: role,
+            email: email,
             password: password
         }
 
-        addUser(user)
-            .then((res) => {
-                console.log(res)
-            })
+        try {
+            const response = await addUser(user);
+            console.log(response);
+            alert(response);
+        } catch (error) {
+            console.error(error);
+        }
+
     }
 
     return (
         <>
-            {/* <h1>Add Employee</h1> */}
-
             <div className="flex flex-row">
                 <div className='flex-auto flex-col'>
                     <div className="bg-white border border-gray-200 ml-10 mt-10  rounded-lg shadow ">
@@ -96,9 +92,14 @@ const AddEmployee = () => {
                                         </div>
 
                                         <div className="flex flex-row mr-4 mt-5 justify-start ">
-                                            {/* <a href="#" class="inline-flex items-center px-10 py-2 text-sm font-medium text-center
-                                         text-white uppercase bg-black rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">Save</a> */}
-                                            <Button type="submit">
+                                            <Button 
+                                            color={'white'} 
+                                            bgColor={"black"}
+                                            _hover={{
+                                                bg: 'blue.500',
+
+                                            }}
+                                            type="submit">
                                                 SAVE
                                             </Button>
 
@@ -115,10 +116,6 @@ const AddEmployee = () => {
                     </div>
                 </div>
             </div>
-
-            {/* <Button onClick={handleAddUserClick}>
-                add
-            </Button> */}
         </>
     )
 }
