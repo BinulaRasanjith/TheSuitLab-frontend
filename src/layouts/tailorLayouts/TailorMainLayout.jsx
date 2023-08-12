@@ -11,7 +11,7 @@ const sidebarItems = [
     {
         label: 'Dashboard',
         icon: <HiChartBar />,
-        to: '/tailor/dashboard',
+        to: '/tailor',
     },
     {
         label: 'Orders',

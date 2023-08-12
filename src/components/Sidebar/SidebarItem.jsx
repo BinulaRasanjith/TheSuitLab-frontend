@@ -1,4 +1,5 @@
 import { Collapse } from '@chakra-ui/react'
+import { set } from 'lodash'
 import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
 import { BiSolidDownArrow } from 'react-icons/bi'
@@ -28,31 +29,44 @@ const SubItem = ({ label, to }) => {
 
 const SidebarItem = ({ label, icon, to, subItems }) => {
 	const navigate = useNavigate()
+	const isMain = to.split('/').length === 2
 	const { pathname } = useLocation()
 	const sidebarIsOpen = useSelector(selectSidebarIsOpen)
-	const isActive = pathname.includes(to)
+	const [isActive, setIsActive] = useState(false)
 	const [isOpen, setIsOpen] = useState(false)
 
-	const handleClick = (e) => {
-		console.log(pathname, to)
-		e.preventDefault()
-		if (pathname.includes(to)) {
-			setIsOpen(!isOpen)
-		} else if (!subItems) {
-			navigate(to)
-		} else {
+	const handleClick = () => {
+		if (isMain) navigate(to)
+		if (pathname.includes(to) && subItems) setIsOpen(!isOpen)
+		else if (subItems) {
 			navigate(subItems[0].to)
 		}
+		else navigate(to)
 	}
 
 	useEffect(() => {
-		if (pathname.includes(to)) setIsOpen(true)
-		else setIsOpen(false)
-	}, [pathname, to])
+		if (isMain) {
+			if (pathname === to) setIsActive(true)
+			else setIsActive(false)
+		}
+		else {
+			if (pathname.includes(to)) {
+				setIsActive(true)
+				setIsOpen(true)
+			}
+			else {
+				setIsActive(false)
+				setIsOpen(false)
+			}
+		}
+	}, [isMain, pathname, subItems, to])
 
 	return (
-		<div className={`flex flex-col cursor-pointer transition-all ease-in-out duration-1000 mx-2 rounded-md overflow-hidden ${(isOpen ? 'bg-gray-300 ' : '')} ${sidebarIsOpen ? 'w-11/12 ' : 'w-fit '}`}>
-			<div className={`px-3 h-10 flex gap-2 items-center rounded-md ${isActive ? 'bg-primary text-white' : 'hover:bg-gray-200'} ${sidebarIsOpen ? 'w-full' : 'w-10 items-center justify-center'}`} onClick={handleClick}>
+		<div className={`flex flex-col cursor-pointer transition-all ease-in-out duration-1000 mx-2 rounded-md overflow-hidden ${(isOpen ? 'bg-gray-300 ' : '')
+			} ${sidebarIsOpen ? 'w-11/12 ' : 'w-fit '}`}>
+			<div className={`px-3 h-10 flex gap-2 items-center rounded-md ${isActive ? 'bg-primary text-white' : 'hover:bg-gray-200'
+				} ${sidebarIsOpen ? 'w-full' : 'w-10 items-center justify-center'}`}
+				onClick={handleClick}>
 				<span className={'text-xl'}>{icon}</span>
 				{sidebarIsOpen && label}
 				{sidebarIsOpen && subItems &&
