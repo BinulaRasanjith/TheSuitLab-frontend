@@ -12,7 +12,7 @@ const sidebarItems = [
     {
         label: 'Dashboard',
         icon: <HiHome />,
-        to: '/tailor/dashboard',
+        to: '/tailor',
     },
     {
         label: 'Orders',

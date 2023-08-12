@@ -13,7 +13,7 @@ const sidebarItems = [
     {
         label: 'Dashboard',
         icon: <HiHome />,
-        to: '/manager/dashboard',
+        to: '/manager',
     },
     {
         label: 'Materials',
@@ -38,6 +38,7 @@ const sidebarItems = [
         label: 'Orders',
         icon: <IoMdBowtie />,
         to: '/manager/orders',
+        
     },
     {
         label: 'Suppliers',

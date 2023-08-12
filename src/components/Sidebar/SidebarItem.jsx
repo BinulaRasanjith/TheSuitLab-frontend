@@ -28,26 +28,37 @@ const SubItem = ({ label, to }) => {
 
 const SidebarItem = ({ label, icon, to, subItems }) => {
 	const navigate = useNavigate()
+	const isMain = to.split('/').length === 2
 	const { pathname } = useLocation()
 	const sidebarIsOpen = useSelector(selectSidebarIsOpen)
-	const isActive = pathname.includes(to)
+	const [isActive, setIsActive] = useState(false)
 	const [isOpen, setIsOpen] = useState(false)
 
-	const handleClick = (e) => {
-		e.preventDefault()
-		if (pathname.includes(to)) {
-			setIsOpen(!isOpen)
-		} else if (!subItems) {
-			navigate(to)
-		} else {
+	const handleClick = () => {
+		if (isMain) navigate(to)
+		if (pathname.includes(to) && subItems) setIsOpen(!isOpen)
+		else if (subItems) {
 			navigate(subItems[0].to)
 		}
+		else navigate(to)
 	}
 
 	useEffect(() => {
-		if (pathname.includes(to)) setIsOpen(true)
-		else setIsOpen(false)
-	}, [pathname, to])
+		if (isMain) {
+			if (pathname === to) setIsActive(true)
+			else setIsActive(false)
+		}
+		else {
+			if (pathname.includes(to)) {
+				setIsActive(true)
+				setIsOpen(true)
+			}
+			else {
+				setIsActive(false)
+				setIsOpen(false)
+			}
+		}
+	}, [isMain, pathname, subItems, to])
 
 	return (
 		<div className={`flex flex-col cursor-pointer transition-all ease-in-out duration-1000 mx-2 rounded-md overflow-hidden ${(isOpen ? 'bg-gray-300 ' : '')} ${sidebarIsOpen ? 'w-11/12 ' : 'w-fit '}`}>

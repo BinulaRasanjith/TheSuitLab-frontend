@@ -16,7 +16,7 @@ const tailorRoutes = {
     path: "/tailor",
     element: <TailorMainLayout />,
     children: [
-        { path: "dashboard", element: <TailorDashboard /> },
+        { path: "", element: <TailorDashboard /> },
         { path: "orders", element: <Orders /> },
         { path: "profile", element: <Profile /> },
         { 
