@@ -1,15 +1,9 @@
-import CustomerAccessoriesLayout from "../layouts/customerLayouts/CustomerAccessoriesLayout"
-import CustomerCostumeCustomizationLayout from "../layouts/customerLayouts/CustomerCostumeCustomizationLayout"
 import AdminMainLayout from "../layouts/adminLayouts/AdminMainLayouts"
-
-//pages
+import AddEmployee from "../pages/Admin/AddEmployee"
 import AdminDashboard from "../pages/Admin/Dashboard"
 import Employees from "../pages/Admin/Employees"
-import Customers from "../pages/Admin/Customers"
 import Orders from "../pages/Admin/Orders"
 import Profile from "../pages/Admin/Profile"
-import Reviews from "../pages/Admin/Test1"
-
 
 const adminRoutes = {
     path: "/admin",
@@ -17,10 +11,10 @@ const adminRoutes = {
     children: [
         { path: "", element: <AdminDashboard /> },
         { path: "employees", element: <Employees /> },
-        { path: "customer", element: <Customers />},
+        { path: "add-employee", element: <AddEmployee /> },
         { path: "orders", element: <Orders /> },
-        { path: "profile", element: <Profile /> },  
-        { path: "reviews", element: <div>Reviews</div> }, 
+        { path: "profile", element: <Profile /> },
+        { path: "reviews", element: <div>Reviews</div> },
     ],
 }
 
