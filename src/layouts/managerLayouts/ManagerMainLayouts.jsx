@@ -1,6 +1,6 @@
 import { BiSolidBookReader } from "react-icons/bi"
-import { BsFillCartFill } from "react-icons/bs"
-import { HiHome, HiUserCircle } from "react-icons/hi2";
+import { HiUserGroup, HiChartBar, HiShoppingCart, HiCreditCard } from "react-icons/hi"
+import { HiHandThumbUp,HiUserCircle } from "react-icons/hi2";
 import { IoMdBowtie } from "react-icons/io"
 import { PiShirtFoldedFill } from "react-icons/pi"
 import { Outlet } from "react-router-dom"
@@ -8,11 +8,10 @@ import { Outlet } from "react-router-dom"
 import Navbar from "../../components/Navbar"
 import Sidebar from "../../components/Sidebar/Sidebar"
 
-
 const sidebarItems = [
     {
         label: 'Dashboard',
-        icon: <HiHome />,
+        icon: <HiChartBar />,
         to: '/manager',
     },
     {
@@ -36,28 +35,27 @@ const sidebarItems = [
     },
     {
         label: 'Orders',
-        icon: <IoMdBowtie />,
-        to: '/manager/orders',
-        
+        icon: <HiShoppingCart />,
+        to: '/manager/orders',   
     },
     {
         label: 'Suppliers',
-        icon: <IoMdBowtie />,
+        icon: <HiUserGroup />,
         to: '/manager/suppliers',
     },
     {
         label: 'Payments',
-        icon: <HiHome />,
+        icon: <HiCreditCard />,
         to: '/manager/payments',
     },
     {
         label: 'Customers',
-        icon: <PiShirtFoldedFill />,
+        icon: <HiUserGroup />,
         to: '/manager/customer',
     },
     {
         label: 'Reviews',
-        icon: <BsFillCartFill />,
+        icon: <HiHandThumbUp />,
         to: '/manager/reviews',
     },
     {
