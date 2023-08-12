@@ -1,5 +1,4 @@
 import { Collapse } from '@chakra-ui/react'
-import { set } from 'lodash'
 import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
 import { BiSolidDownArrow } from 'react-icons/bi'
