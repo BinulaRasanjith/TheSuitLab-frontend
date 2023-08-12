@@ -1,9 +1,11 @@
-import { Button } from '@chakra-ui/react'
+/* eslint-disable perfectionist/sort-jsx-props */
+// import { Button } from '@chakra-ui/react'
 import { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 import TSL_LOGO from '../../assets/images/TSL_LOGO.png'
 import TSL_LOGO_SM from '../../assets/images/TSL_LOGO_SM.png'
+import AVATAR from '../../assets/images/avatar.png'
 
 // eslint-disable-next-line react/prop-types
 const Staffnavbar = () => {
@@ -44,8 +46,35 @@ const Staffnavbar = () => {
                     </div>
                 </div>
 
-                <div className='flex items-center mr-5'>
-                    <Button
+                <div className='flex items-center mr-5 gap-3'>
+                    <div className='flex flex-col'>
+                        <div className='text-white text-end'>Bhanuka Rajakaruna</div>
+                        <div className='text-gray-400 text-xs text-end'>Operation Assistant</div>
+                    </div>
+                    <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" className="w-10 h-10 rounded-full cursor-pointer" src={AVATAR} alt="User dropdown" />
+
+                    {/*  Dropdown menu  */}
+                    <div id="userDropdown" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                        <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
+                            <div>Bonnie Green</div>
+                            <div className="font-medium truncate">name@flowbite.com</div>
+                        </div>
+                        <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="avatarButton">
+                            <li>
+                                <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                            </li>
+                            <li>
+                                <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                            </li>
+                            <li>
+                                <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                            </li>
+                        </ul>
+                        <div className="py-1">
+                            <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+                        </div>
+                    </div>
+                    {/* <Button
                         // _active={{
                         //     bg: 'gray',
                         // }}
@@ -58,9 +87,7 @@ const Staffnavbar = () => {
                         width={'5.5rem'}
                         height={'2rem'}
                         onClick={handleLoginClick}
-                        textColor={'white'}>Log Out</Button>
-                    {/* <button className='text-white border border-white border-solid pt-1 pb-1 pl-3 pr-3 rounded'
-                        onClick={handleLoginClick}>Login</button> */}
+                        textColor={'white'}>Log Out</Button> */}
                 </div>
 
             </nav>
