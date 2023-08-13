@@ -7,3 +7,11 @@ export const TAILOR = 'tailor';
 
 // user status
 export const ACTIVE = 'ACTIVE';
+
+// authSlice statuses
+export const IDLE = 'idle';
+export const LOADING = 'loading';
+export const SIGNUP_SUCCESS = 'signup-success';
+export const SUCCEEDED = 'succeeded';
+export const FAILED = 'failed';
+
