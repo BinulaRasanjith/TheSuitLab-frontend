@@ -12,6 +12,3 @@ export const ACTIVE = 'ACTIVE';
 export const IDLE = 'idle';
 export const LOADING = 'loading';
 export const SIGNUP_SUCCESS = 'signup-success';
-export const SUCCEEDED = 'succeeded';
-export const FAILED = 'failed';
-
