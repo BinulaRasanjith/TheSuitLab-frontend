@@ -1,12 +1,18 @@
 import { BiSolidBookReader } from "react-icons/bi"
 import { BsFillCartFill } from "react-icons/bs"
+<<<<<<< Updated upstream
 import { HiHome, HiUserCircle, HiShoppingCart} from "react-icons/hi2";
+=======
+import { HiHome, HiUserCircle,HiShoppingCart } from "react-icons/hi2";
+>>>>>>> Stashed changes
 import { IoMdBowtie } from "react-icons/io"
 import { PiShirtFoldedFill } from "react-icons/pi"
 import { Outlet } from "react-router-dom"
 
 import Navbar from "../../components/Navbar"
 import Sidebar from "../../components/Sidebar/Sidebar"
+import ContentWrapper from "../../components/ContentWrapper";
+import MainLayout from "../../components/MainLayout";
 
 const sidebarItems = [
     {
@@ -18,6 +24,24 @@ const sidebarItems = [
         label: 'Orders',
         icon: <HiShoppingCart />,
         to: '/tailor/orders',
+        subItems: [
+            {
+                label: 'All',
+                to: '/tailor/orders/all',
+            },
+            {
+                label: 'Collected',
+                to: '/tailor/orders/collected',
+            },
+            {
+                label: 'Completed',
+                to: '/tailor/orders/completed',
+            },
+            {
+                label: 'To be collected',
+                to: '/tailor/orders/to-be-collected',
+            },
+        ]
     },
     {
         label: 'Materials',

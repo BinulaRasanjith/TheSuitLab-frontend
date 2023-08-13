@@ -68,12 +68,13 @@
 //layouts
 import TailorMainLayout from "../layouts/tailorLayouts/TailorMainLayouts"
 import MaterialsLayout from "../layouts/tailorLayouts/MaterialsLayout"
+import SingleOutletLayout from "../layouts/SingleOutletLayout"
 
 
 //pages
-import TailorDashboard from "../pages/Tailor/Dashboard"
-import Orders from "../pages/Tailor/Orders"
-import Profile from "../pages/Tailor/Profile"
+import TailorDashboard from "../pages/tailor/Dashboard"
+import Orders from "../pages/tailor/Orders"
+import Profile from "../pages/tailor/Profile"
 import Reviews from "../pages/Tailor/Test1"
 import Buttons from "../pages/tailor/Buttons"
 import Fabrics from "../pages/tailor/Fabrics"

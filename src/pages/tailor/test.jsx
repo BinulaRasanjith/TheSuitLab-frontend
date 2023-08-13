@@ -1,7 +1,7 @@
-import Costume1 from '../../assets/images/costume1.jpeg'
-import Costume2 from '../../assets/images/costume2.jpeg'
-import Costume3 from '../../assets/images/costume3.jpeg'
-import Costume4 from '../../assets/images/costume4.jpeg'
+import button1 from '../../assets/images/buttons/button1.jpg'
+import button2 from '../../assets/images/buttons/button2.jpg'
+import button3 from '../../assets/images/buttons/button3.jpg'
+import button4 from '../../assets/images/buttons/button4.jpg'
 import Costume5 from '../../assets/images/costume5.jpeg'
 
 const ViewButtons = () => {
@@ -78,7 +78,7 @@ const ViewButtons = () => {
                                         <tbody>
                                             <tr className="bg-white border rounded-3xl hover:bg-gray-300 text-black whitespace-nowrap font-medium">
                                                 <td className="px-4 py-4">
-                                                    <img className="w-16 h-18 object-cover rounded-md shadow-lg" src={Costume1} alt="image" />
+                                                    <img className="w-16 h-18 object-cover rounded-md shadow-lg" src={button1} alt="image" />
                                                 </td>
                                                 <td className="px-6 py-4 text-center">
                                                     3
@@ -98,10 +98,57 @@ const ViewButtons = () => {
                                                      hover:bg-blue-600 hover:underline hover:text-blue-200">Edit</a>
                                                 </td>
                                             </tr>
+ 
+                                            <tr className="bg-white border rounded-3xl hover:bg-gray-300 text-black whitespace-nowrap font-medium">
+                                                <td className="px-4 py-4">
+                                                    <img className="w-16 h-18 object-cover rounded-md shadow-lg" src={button2} alt="image" />
+                                                </td>
+                                                <td className="px-6 py-4 text-center">
+                                                    3
+                                                </td>
+                                                <td className="px-6 py-4">
+                                                    +91 9876543210
+                                                </td>
+                                                <td className="px-6 py-4">
+                                                    Floyd Miles
+                                                </td>
+                                                
+                                                <td className="px-6 py-4">
+                                                    Collected
+                                                </td>
+                                                <td className="px-6 py-4 text-right">
+                                                    <a href="#" className="px-4 py-2 text-blue-100 no-underline bg-blue-500 rounded
+                                                     hover:bg-blue-600 hover:underline hover:text-blue-200">Edit</a>
+                                                </td>
+                                            </tr>
+
+                                            <tr className="bg-white border rounded-3xl hover:bg-gray-300 text-black whitespace-nowrap font-medium">
+                                                <td className="px-6 py-4">
+                                                    #007324786345
+                                                </td>
+                                                <td className="px-6 py-4 text-center">
+                                                    3
+                                                </td>
+                                                <td className="px-6 py-4">
+                                                    +91 9876543210
+                                                </td>
+                                                <td className="px-6 py-4">
+                                                    Floyd Miles
+                                                </td>
+                                              
+                                                <td className="px-6 py-4">
+                                                    Collected
+                                                </td>
+                                                <td className="px-6 py-4 text-right">
+                                                    <a href="#" className="px-4 py-2 text-blue-100 no-underline bg-blue-500 rounded
+                                                     hover:bg-blue-600 hover:underline hover:text-blue-200">Edit</a>
+                                                </td>
+                                            </tr>
+                                       
 
                                             <tr className="bg-white border rounded-3xl hover:bg-gray-300 text-black whitespace-nowrap font-medium">
                                                 <td className="px-4 py-4">
-                                                    <img className="w-16 h-18 object-cover rounded-md shadow-lg" src={Costume1} alt="image" />
+                                                    <img className="w-16 h-18 object-cover rounded-md shadow-lg" src={button3} alt="image" />
                                                 </td>
                                                 <td className="px-6 py-4 text-center">
                                                     3
@@ -121,95 +168,8 @@ const ViewButtons = () => {
                                                      hover:bg-blue-600 hover:underline hover:text-blue-200">Edit</a>
                                                 </td>
                                             </tr>
-
-                                            <tr className="bg-white border rounded-3xl hover:bg-gray-300 text-black whitespace-nowrap font-medium">
-                                                <td className="px-6 py-4">
-                                                    #007324786345
-                                                </td>
-                                                <td className="px-6 py-4 text-center">
-                                                    3
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    +91 9876543210
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    Floyd Miles
-                                                </td>
-                                              
-                                                <td className="px-6 py-4">
-                                                    Collected
-                                                </td>
-                                                <td className="px-6 py-4 text-right">
-                                                    <a href="#" className="px-4 py-2 text-blue-100 no-underline bg-blue-500 rounded
-                                                     hover:bg-blue-600 hover:underline hover:text-blue-200">Edit</a>
-                                                </td>
-                                            </tr>
-                                            <tr className="bg-white border rounded-3xl hover:bg-gray-300 text-black whitespace-nowrap font-medium">
-                                                <td className="px-6 py-4">
-                                                    #007324786345
-                                                </td>
-                                                <td className="px-6 py-4 text-center">
-                                                    3
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    +91 9876543210
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    Floyd Miles
-                                                </td>
-                                                
-                                                <td className="px-6 py-4">
-                                                    Collected
-                                                </td>
-                                                <td className="px-6 py-4 text-right">
-                                                    <a href="#" className="px-4 py-2 text-blue-100 no-underline bg-blue-500 rounded
-                                                     hover:bg-blue-600 hover:underline hover:text-blue-200">Edit</a>
-                                                </td>
-                                            </tr>
-                                            <tr className="bg-white border rounded-3xl hover:bg-gray-300 text-black whitespace-nowrap font-medium">
-                                                <td className="px-6 py-4">
-                                                    #007324786345
-                                                </td>
-                                                <td className="px-6 py-4 text-center">
-                                                    3
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    +91 9876543210
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    Floyd Miles
-                                                </td>
-                                                
-                                                <td className="px-6 py-4">
-                                                    Collected
-                                                </td>
-                                                <td className="px-6 py-4 text-right">
-                                                    <a href="#" className="px-4 py-2 text-blue-100 no-underline bg-blue-500 rounded
-                                                     hover:bg-blue-600 hover:underline hover:text-blue-200">Edit</a>
-                                                </td>
-                                            </tr>
-                                            <tr className="bg-white border rounded-3xl hover:bg-gray-300 text-black whitespace-nowrap font-medium">
-                                                <td className="px-6 py-4">
-                                                    #007324786345
-                                                </td>
-                                                <td className="px-6 py-4 text-center">
-                                                    3
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    +91 9876543210
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    Floyd Miles
-                                                </td>
-                                              
-                                                <td className="px-6 py-4">
-                                                    Collected
-                                                </td>
-                                                <td className="px-6 py-4 text-right">
-                                                    <a href="#" className="px-4 py-2 text-blue-100 no-underline bg-blue-500 rounded
-                                                     hover:bg-blue-600 hover:underline hover:text-blue-200">Edit</a>
-                                                </td>
-                                            </tr>
+                                         
+                                       
                                         </tbody>
                                     </table>
                                 </div>

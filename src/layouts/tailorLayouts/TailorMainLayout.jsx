@@ -70,6 +70,7 @@ const sidebarItems = [
         icon: <HiUserCircle />,
         to: '/tailor/test',
     },
+    
 ]
 
 const TailorMainLayout = () => {
