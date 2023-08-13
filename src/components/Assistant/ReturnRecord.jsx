@@ -1,4 +1,5 @@
 // import React from "react";
+import { Button } from '@chakra-ui/react'
 import PropTypes from "prop-types";
 
 const ReturnRecord = ({
@@ -12,22 +13,33 @@ const ReturnRecord = ({
     return (
         <>
             <div className=" flex flex-row justify-between w-full">
-                <div className=" text-sm font-medium text-black">{OrderId}</div>
+                <div className=" w-40 text-sm font-medium text-black">{OrderId}</div>
                 <div className=" text-sm font-medium text-black">{ItemCount}</div>
                 <div className=" text-sm font-medium text-black">{OrderedDate}</div>
                 <div className=" text-sm font-medium text-black">{ReturnedDate}</div>
-                <div className=" text-sm font-medium text-black">{Reason}</div>
                 <div className="relative mb-3" data-te-input-wrapper-init>
-                    <textarea className="peer block w-30 h-12 border border-solid border-zinc-600 rounded bg-transparent "
+                    <textarea className=" peer block w-56 h-24 p-2 resize-none text-sm border border-solid border-gray-300 rounded bg-transparent "
                         id="exampleFormControlTextarea1"
-                        placeholder="Your message"
-                        rows="3"></textarea>
+                        placeholder="Reason for return"
+                        rows="3"
+                        value={Reason}>
+                    </textarea>
                 </div>
-                <div className=" text-sm font-medium text-gray-500">
-                    <button>Mark</button>
+                <div className=" w-24 text-sm font-medium text-gray-500">
+                    <Button
+                        _hover={{
+                            bg: 'gray',
+                            textColor: 'white'
+                        }}
+                        bg={'black'}
+                        border={'1px'}
+                        height={'2rem'}
+                        // onClick={handleLoginClick}
+                        textColor={'white'}
+                        width={'5.5rem'}>Edit</Button>
                 </div>
             </div>
-            <div className=" w-full border border-b-zinc-600"></div>
+            <div className=" w-full border border-gray-200"></div>
         </>
     );
 };

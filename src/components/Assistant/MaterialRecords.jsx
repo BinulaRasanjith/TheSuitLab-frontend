@@ -3,7 +3,7 @@ import { Button } from '@chakra-ui/react'
 import PropTypes from "prop-types";
 
 
-const RentalRecord = ({
+const MaterialRecord = ({
     CustomerId,
     SuitId,
     CustomerMobile,
@@ -21,23 +21,24 @@ const RentalRecord = ({
                 <div className=" w-40 px-7 text-sm font-medium text-gray-500">
                     <Button
                         _hover={{
-                            bg: 'gray',
+                            bg: '#6B9DCA',
                             textColor: 'white'
                         }}
-                        bg={'black'}
+                        bg={'#BEE7FF80'}
                         border={'1px'}
+                        borderColor={'#6B9DCA'}
                         height={'2rem'}
                         // onClick={handleLoginClick}
-                        textColor={'white'}
-                        width={'5.5rem'}>Mark</Button>
+                        textColor={'#6B9DCA'}
+                        width={'5.5rem'}>Update</Button>
                 </div>
             </div>
-            <div className=" w-full border border-b-zinc-300"></div>
+            <div className=" w-full border border-b-zinc-200"></div>
         </>
     );
 };
 
-RentalRecord.propTypes = {
+MaterialRecord.propTypes = {
     CustomerId: PropTypes.string.isRequired,
     SuitId: PropTypes.number.isRequired,
     CustomerMobile: PropTypes.object.isRequired,
@@ -45,4 +46,4 @@ RentalRecord.propTypes = {
     HandoverDate: PropTypes.number.isRequired,
 };
 
-export default RentalRecord;
+export default MaterialRecord;
