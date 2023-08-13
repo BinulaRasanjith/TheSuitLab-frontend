@@ -16,6 +16,7 @@ const ContentWrapper = ({ children, customizeLayout }) => {
 
 ContentWrapper.propTypes = {
     children: PropTypes.node.isRequired,
+    customizeLayout: PropTypes.bool
 }
 
 export default ContentWrapper
