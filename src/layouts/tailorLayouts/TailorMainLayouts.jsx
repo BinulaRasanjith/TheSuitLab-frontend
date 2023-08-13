@@ -1,6 +1,6 @@
 import { BiSolidBookReader } from "react-icons/bi"
 import { BsFillCartFill } from "react-icons/bs"
-import { HiHome, HiUserCircle } from "react-icons/hi2";
+import { HiHome, HiUserCircle, HiShoppingCart} from "react-icons/hi2";
 import { IoMdBowtie } from "react-icons/io"
 import { PiShirtFoldedFill } from "react-icons/pi"
 import { Outlet } from "react-router-dom"
@@ -16,7 +16,7 @@ const sidebarItems = [
     },
     {
         label: 'Orders',
-        icon: <IoMdBowtie />,
+        icon: <HiShoppingCart />,
         to: '/tailor/orders',
     },
     {
@@ -46,7 +46,7 @@ const sidebarItems = [
     {
         label: 'Profile',
         icon: <HiUserCircle />,
-        to: '/tailor/materials/profile',
+        to: '/tailor/profile',
     },
     {
         label: 'TEST',
