@@ -1,7 +1,7 @@
-import button1 from '../../assets/images/buttons/button1.jpg'
-import button2 from '../../assets/images/buttons/button2.jpg'
-import button3 from '../../assets/images/buttons/button3.jpg'
-import button4 from '../../assets/images/buttons/button4.jpg'
+import button1 from '../../assets/images/strings/string1.webp'
+import button2 from '../../assets/images/strings/string2.webp'
+import button3 from '../../assets/images/strings/string3.webp'
+import button4 from '../../assets/images/strings/string4.webp'
 import Costume5 from '../../assets/images/costume5.jpeg'
 
 const ViewButtons = () => {

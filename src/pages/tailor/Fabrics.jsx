@@ -1,7 +1,8 @@
-import button1 from '../../assets/images/buttons/button1.jpg'
-import button2 from '../../assets/images/buttons/button2.jpg'
-import button3 from '../../assets/images/buttons/button3.jpg'
-import button4 from '../../assets/images/buttons/button4.jpg'
+import button1 from "../../assets/images/fabrics/pattern/pattern- navy blue with red strips.jpg"
+import button2 from "../../assets/images/fabrics/pattern/pattern-ark aegean suit.jpg"
+import button3 from "../../assets/images/fabrics/pattern/pattern-black small square textured.jpg"
+import button4 from "../../assets/images/fabrics/pattern/pattern-blue and navy check.jpg"
+
 import Costume5 from '../../assets/images/costume5.jpeg'
 
 const ViewButtons = () => {
