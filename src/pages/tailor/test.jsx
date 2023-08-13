@@ -18,7 +18,7 @@ const ViewButtons = () => {
                         <div className='flex flex-col m-8 sm:rounded-full'>
 
                             <div className="flex flex-row ml-4">
-                                <h4 className=' font-bold text-black p-1'>All Orders</h4>
+                                <h4 className=' font-bold text-black p-1'>Buttons</h4>
 
                                 <div className=" ml-96">
                                     <label className="sr-only">Search</label>
@@ -60,11 +60,11 @@ const ViewButtons = () => {
                                                     Quantity
                                                 </th>
                                                 <th scope="col" className="px-6 py-3">
-                                                    
+                                                    Last updated
                                                 </th>
                                                 
                                                 <th scope="col" className="px-6 py-3">
-                                                    Status
+                                                    Price
                                                 </th>
                                                 <th scope="col" className="px-6 py-3">
                                                     Option
@@ -123,8 +123,9 @@ const ViewButtons = () => {
                                             </tr>
 
                                             <tr className="bg-white border rounded-3xl hover:bg-gray-300 text-black whitespace-nowrap font-medium">
-                                                <td className="px-6 py-4">
-                                                    #007324786345
+                                                <td className="px-4 py-4">
+                                                <img className="w-16 h-18 object-cover rounded-md shadow-lg" src={button4} alt="image" />
+                                                 
                                                 </td>
                                                 <td className="px-6 py-4 text-center">
                                                     3

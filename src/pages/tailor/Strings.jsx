@@ -18,7 +18,7 @@ const ViewButtons = () => {
                         <div className='flex flex-col m-8 sm:rounded-full'>
 
                             <div className="flex flex-row ml-4">
-                                <h4 className=' font-bold text-black p-1'>Buttons</h4>
+                                <h2 className=' font-bold text-black p-2'>Strings</h2>
 
                                 <div className=" ml-96">
                                     <label className="sr-only">Search</label>

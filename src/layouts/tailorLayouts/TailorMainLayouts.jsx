@@ -1,10 +1,6 @@
 import { BiSolidBookReader } from "react-icons/bi"
 import { BsFillCartFill } from "react-icons/bs"
-<<<<<<< Updated upstream
 import { HiHome, HiUserCircle, HiShoppingCart} from "react-icons/hi2";
-=======
-import { HiHome, HiUserCircle,HiShoppingCart } from "react-icons/hi2";
->>>>>>> Stashed changes
 import { IoMdBowtie } from "react-icons/io"
 import { PiShirtFoldedFill } from "react-icons/pi"
 import { Outlet } from "react-router-dom"
@@ -53,7 +49,7 @@ const sidebarItems = [
                 to: '/tailor/materials/fabric',
             },
             {
-                label: 'String',
+                label: 'Strings',
                 to: '/tailor/materials/string',
             },
             {
@@ -72,11 +68,7 @@ const sidebarItems = [
         icon: <HiUserCircle />,
         to: '/tailor/profile',
     },
-    {
-        label: 'TEST',
-        icon: <HiUserCircle />,
-        to: '/tailor/test',
-    },
+   
 ]
 
 const TailorMainLayout = () => {
