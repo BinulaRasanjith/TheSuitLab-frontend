@@ -20,12 +20,11 @@ const UpperModel = () => {
     })
     return (
 
-        <div className="w-1/3 h-screen flex items-center relative">
+        <div className="w-1/2 h-screen flex items-center relative">
             <ControlPanel control={control} setControl={setControl} />
             <CamControl camCont={camCont} setCamCont={setCamCont} />
             <Canvas camera={{ position: [0, 0, 10], fov: 30 }}>
                 <Suspense fallback={false}>
-                    {/* <Suit1 controller={controller} /> */}
                     <NewCostume camCont={camCont} control={control} />
                 </Suspense>
                 <OrbitControls enableZoom={true} makeDefault maxPolarAngle={Math.PI / 2} minPolarAngle={Math.PI / 2} />

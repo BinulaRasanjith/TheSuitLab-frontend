@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 
 import { selectSidebarIsOpen } from '../store/slices/sidebarSlice'
 
+// eslint-disable-next-line react/prop-types
 const ContentWrapper = ({ children, customizeLayout }) => {
     const sidebarIsOpen = useSelector(selectSidebarIsOpen) // get sidebar state from redux store
 

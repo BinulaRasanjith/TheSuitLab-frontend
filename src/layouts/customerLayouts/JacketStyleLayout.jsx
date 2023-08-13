@@ -12,7 +12,7 @@ const sidebarItems = [
         to: '/customer/customize-suit/jacket/fabric',
         subItems: [
             {
-                label: 'All',
+                label: 'View all',
                 to: '/customer/customize-suit/jacket/fabric/all',
             },
             {
@@ -35,51 +35,51 @@ const sidebarItems = [
     },
     {
         label: 'Style',
-        to: '/customer/customize/jacket/style',
+        to: '/customer/customize-suit/jacket/style',
         subItems: [
             {
                 label: 'Buttons',
-                to: '/customer/customize/jacket/style/button'
+                to: '/customer/customize-suit/jacket/style/buttons'
             },
             {
                 label: 'Lapel',
-                to: '/customer/customize/jacket/style/lapel'
+                to: '/customer/customize-suit/jacket/style/lapel'
             },
             {
                 label: 'Bottom',
-                to: '/customer/customize/jacket/style/bottom'
+                to: '/customer/customize-suit/jacket/style/bottom'
             },
             {
                 label: 'Pocket',
-                to: '/customer/customize/jacket/style/pocket'
+                to: '/customer/customize-suit/jacket/style/pocket'
             },
             {
                 label: 'Sleeve button',
-                to: '/customer/customize/jacket/style/sleeve-button'
+                to: '/customer/customize-suit/jacket/style/sleeve-button'
             },
             {
                 label: 'Vent',
-                to: '/customer/customize/jacket/style/vent'
+                to: '/customer/customize-suit/jacket/style/vent'
             },
         ]
     },
     {
         label: 'Color contrast',
-        to: '/customer/customize/jacket/color-contrast',
+        to: '/customer/customize-suit/jacket/color-contrast',
         subItems: [
             {
                 label: 'Jacket Contrast',
-                to: '/customer/customize/jacket/color-contrast/jacket-contrast'
+                to: '/customer/customize-suit/jacket/color-contrast/jacket-contrast'
             },
             {
                 label: 'Button',
-                to: '/customer/customize/jacket/color-contrast/button'
+                to: '/customer/customize-suit/jacket/color-contrast/button'
             },
         ]
     },
     {
         label: 'Measurements',
-        to: '/customer/customize/jacket/measurements',
+        to: '/customer/customize-suit/jacket/measurements',
     },
 ]
 

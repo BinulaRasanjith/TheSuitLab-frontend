@@ -1,48 +1,59 @@
-import blue_texture_1 from '../../assets/images/materials/blue texture 1.png'
-import blue_texture_2 from '../../assets/images/materials/blue texture 2.png'
-import brown_suit_1 from '../../assets/images/materials/brown suit 1.png'
-import brown_texture_1 from '../../assets/images/materials/brown texture 1.png'
-import brown_texture_2 from '../../assets/images/materials/brown texture 2.png'
-import charcol_texture_1 from '../../assets/images/materials/charcol texture 1.png'
-import dark_blue_1 from '../../assets/images/materials/dark blue 1.png'
-import dark_blue_2 from '../../assets/images/materials/dark blue 2.png'
-import dark_chocolate_1 from '../../assets/images/materials/dark chocolate 1.png'
-import dark_khaki_texture_1 from '../../assets/images/materials/dark khaki texture 1.png'
-import green_texture_1 from '../../assets/images/materials/green texture 1.png'
-import grey_texture_1 from '../../assets/images/materials/grey texture 1.png'
-import gray_texture_2 from '../../assets/images/materials/grey texture 2.png'
-import khaki_texture_1 from '../../assets/images/materials/khaki texture 1.png'
-import light_khaki_texture_1 from '../../assets/images/materials/light khaki texture 1.png'
-import light_olive_1 from '../../assets/images/materials/light olive 1.png'
-import midnight_gray_1 from '../../assets/images/materials/midnight grey 1.png'
-import navy_suit_1 from '../../assets/images/materials/navy suit 1.png'
-import purple_texture_1 from '../../assets/images/materials/purple texture 1.png'
-import wool_navy_1 from '../../assets/images/materials/wool navy 1.png'
+
+import pure_wool_grey_pure_wool from '../../assets/images/fabrics/pure wool/pure wool- grey pure wool.jpg'
+import pure_wool_700_LZ_002 from '../../assets/images/fabrics/pure wool/pure wool-700-LZ-002.jpg'
+import pure_wool_700_LZ_003 from '../../assets/images/fabrics/pure wool/pure wool-700-LZ-003.jpg'
+import pure_wool_700_LZ_004 from '../../assets/images/fabrics/pure wool/pure wool-700-LZ-004.jpg'
+import pure_wool_700_LZ_005 from '../../assets/images/fabrics/pure wool/pure wool-700-LZ-005.jpg'
+import pure_wool_700_LZ_006 from '../../assets/images/fabrics/pure wool/pure wool-700-LZ-006.jpg'
+import pure_wool_700_LZ_008 from '../../assets/images/fabrics/pure wool/pure wool-700-LZ-008.jpg'
+import pure_wool_700_LZ_009 from '../../assets/images/fabrics/pure wool/pure wool-700-LZ-009.jpg'
+import pure_wool_700_LZ_010 from '../../assets/images/fabrics/pure wool/pure wool-700-LZ-010.jpg'
+import pure_wool_700_LZ_013 from '../../assets/images/fabrics/pure wool/pure wool-700-LZ-013.jpg'
+import pure_wool_700_LZ_014 from '../../assets/images/fabrics/pure wool/pure wool-700-LZ-014.jpg'
+import pure_wool_700_LZ_015 from '../../assets/images/fabrics/pure wool/pure wool-700-LZ-015.jpg'
+import pure_wool_700_LZ_022 from '../../assets/images/fabrics/pure wool/pure wool-700-LZ-022.jpg'
+import pure_wool_700_LZ_023 from '../../assets/images/fabrics/pure wool/pure wool-700-LZ-023.jpg'
+import pure_wool_700_LZ_026 from '../../assets/images/fabrics/pure wool/pure wool-700-LZ-026.jpg'
+import pure_wool_700_LZ_030 from '../../assets/images/fabrics/pure wool/pure wool-700-LZ-030.jpg'
+import pure_wool_700_LZ_032 from '../../assets/images/fabrics/pure wool/pure wool-700-LZ-032.jpg'
+import pure_wool_blue_birds_eye_pure_wool from '../../assets/images/fabrics/pure wool/pure wool-blue birds eye pure wool.jpg'
+import pure_wool_blue_wave_virgin_wool from '../../assets/images/fabrics/pure wool/pure wool-blue wave virgin wool.jpg'
+import pure_wool_blue_windowpane_pure_wool from '../../assets/images/fabrics/pure wool/pure wool-blue windowpane pure wool.jpg'
+import pure_wool_bluepure_wool from '../../assets/images/fabrics/pure wool/pure wool-bluepure wool.jpg'
+import pure_wool_charcol_grey_pure_wool from '../../assets/images/fabrics/pure wool/pure wool-charcol grey pure wool.jpg'
+import pure_wool_dark_grey_birds_eye_pure_wool from '../../assets/images/fabrics/pure wool/pure wool-dark grey birds eye pure wool.jpg'
+
 
 const Materials_PureWool = () => {
     return (
-        <div className='p-3 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 border-r-4 border-gray-400 overflow-y-auto h-screen'>
+        <div className='p-3 grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 border-r-4 border-gray-400 overflow-y-auto h-screen'>
 
-            <button><img alt="" className='h-20 w-24' src={blue_texture_1} /></button>
-            <button><img alt="" className='h-20 w-24' src={blue_texture_2} /></button>
-            <button><img alt="" className='h-20 w-24' src={brown_texture_1} /></button>
-            <button><img alt="" className='h-20 w-24' src={charcol_texture_1} /></button>
-            <button><img alt="" className='h-20 w-24' src={dark_blue_1} /></button>
-            <button><img alt="" className='h-20 w-24' src={dark_blue_2} /></button>
-            <button><img alt="" className='h-20 w-24' src={dark_chocolate_1} /></button>
-            <button><img alt="" className='h-20 w-24' src={brown_texture_2} /></button>
-            <button><img alt="" className='h-20 w-24' src={grey_texture_1} /></button>
-            <button><img alt="" className='h-20 w-24' src={gray_texture_2} /></button>
-            <button><img alt="" className='h-20 w-24' src={midnight_gray_1} /></button>
-            <button><img alt="" className='h-20 w-24' src={navy_suit_1} /></button>
-            <button><img alt="" className='h-20 w-24' src={wool_navy_1} /></button>
-            <button><img alt="" className='h-20 w-24' src={brown_suit_1} /></button>
-            <button><img alt="" className='h-20 w-24' src={purple_texture_1} /></button>
-            <button><img alt="" className='h-20 w-24' src={light_khaki_texture_1} /></button>
-            <button><img alt="" className='h-20 w-24' src={light_olive_1} /></button>
-            <button><img alt="" className='h-20 w-24' src={khaki_texture_1} /></button>
-            <button><img alt="" className='h-20 w-24' src={green_texture_1} /></button>
-            <button><img alt="" className='h-20 w-24' src={dark_khaki_texture_1} /></button>
+
+            <button><img alt="" className='h-20 w-24' src={pure_wool_grey_pure_wool} /></button>
+            <button><img alt="" className='h-20 w-24' src={pure_wool_700_LZ_002} /></button>
+            <button><img alt="" className='h-20 w-24' src={pure_wool_700_LZ_003} /></button>
+            <button><img alt="" className='h-20 w-24' src={pure_wool_700_LZ_004} /></button>
+            <button><img alt="" className='h-20 w-24' src={pure_wool_700_LZ_005} /></button>
+            <button><img alt="" className='h-20 w-24' src={pure_wool_700_LZ_006} /></button>
+            <button><img alt="" className='h-20 w-24' src={pure_wool_700_LZ_008} /></button>
+            <button><img alt="" className='h-20 w-24' src={pure_wool_700_LZ_009} /></button>
+            <button><img alt="" className='h-20 w-24' src={pure_wool_700_LZ_010} /></button>
+            <button><img alt="" className='h-20 w-24' src={pure_wool_700_LZ_013} /></button>
+            <button><img alt="" className='h-20 w-24' src={pure_wool_700_LZ_014} /></button>
+
+            <button><img alt="" className='h-20 w-24' src={pure_wool_700_LZ_015} /></button>
+            <button><img alt="" className='h-20 w-24' src={pure_wool_700_LZ_022} /></button>
+            <button><img alt="" className='h-20 w-24' src={pure_wool_700_LZ_023} /></button>
+            <button><img alt="" className='h-20 w-24' src={pure_wool_700_LZ_026} /></button>
+            <button><img alt="" className='h-20 w-24' src={pure_wool_700_LZ_030} /></button>
+            <button><img alt="" className='h-20 w-24' src={pure_wool_700_LZ_032} /></button>
+            <button><img alt="" className='h-20 w-24' src={pure_wool_blue_birds_eye_pure_wool} /></button>
+            <button><img alt="" className='h-20 w-24' src={pure_wool_blue_wave_virgin_wool} /></button>
+            <button><img alt="" className='h-20 w-24' src={pure_wool_blue_windowpane_pure_wool} /></button>
+            <button><img alt="" className='h-20 w-24' src={pure_wool_bluepure_wool} /></button>
+            <button><img alt="" className='h-20 w-24' src={pure_wool_charcol_grey_pure_wool} /></button>
+            <button><img alt="" className='h-20 w-24' src={pure_wool_dark_grey_birds_eye_pure_wool} /></button>
+
 
         </div>
     )
