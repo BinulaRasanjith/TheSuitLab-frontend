@@ -1,26 +1,35 @@
 import { Button } from '@chakra-ui/react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 import loginImage from '../assets/images/LoginBackground.png'
 import TSL_LOGO_SM from '../assets/images/TSL_LOGO_SM.png'
 import googleIcon from '../assets/images/googleIcon.png'
 import Input from '../components/Input/Input'
-import { selectAuthError, selectAuthStatus, setError, signupAsync } from "../store/slices/authSlice";
+import { IDLE, SIGNUP_SUCCESS } from '../constants'
+import { selectAuthError, selectAuthStatus, setError, setStatus, signupAsync } from "../store/slices/authSlice";
 
 const Signup = () => {
+    const navigate = useNavigate()
     const dispatch = useDispatch()
 
     const status = useSelector(selectAuthStatus)
     const error = useSelector(selectAuthError)
 
-    const [signupCredentials, setSignupCredentials] = useState({ firstName: '', lastName: '', address: '', mobileNumber: '', password: '', confirmPassword: '' })
+    const [signupCredentials, setSignupCredentials] = useState({ firstName: '', lastName: '', address: '', mobileNo: '', password: '', confirmPassword: '' })
     const [passwordError, setPasswordError] = useState('')
+
+    useEffect(() => {
+        if (status === SIGNUP_SUCCESS) {
+            dispatch(setStatus(IDLE))
+            navigate('/login')
+        }
+    }, [navigate, status])
 
     const handleInputChange = (e) => {
         const { name, value } = e.target
         setSignupCredentials({ ...signupCredentials, [name]: value })
-        console.log(signupCredentials);
     }
 
     const handlePasswordChange = () => {
@@ -94,9 +103,8 @@ const Signup = () => {
                                 value={signupCredentials.address}
                             />
                             <Input
-
-                                id="mobile-number"
-                                name="mobileNumber"
+                                id="mobile-no"
+                                name="mobileNo"
                                 onChange={handleInputChange}
                                 placeholder="Mobile Number"
                                 type="text"

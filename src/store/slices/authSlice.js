@@ -3,6 +3,7 @@ import jwtDecode from "jwt-decode";
 
 import api from "../../api/api";
 import { login as loginAPI, logout as logoutAPI, signup as signupAPI } from "../../api/authAPIs";
+import { IDLE, LOADING, SIGNUP_SUCCESS } from "../../constants";
 
 const initialState = {
 	user: {
@@ -13,7 +14,7 @@ const initialState = {
 		email: null,
 		role: null,
 	},
-	status: 'idle',
+	status: IDLE,
 	error: null,
 };
 
@@ -43,10 +44,13 @@ export const signupAsync = createAsyncThunk( // this thunk will make a POST requ
 	'auth/signup',
 	async (payload) => { // the payload is the data that is passed to the thunk when it is dispatched. In this case, the payload will be the data entered by the user in the signup form. 
 		try {
+			console.log(payload)
 			const response = await signupAPI(payload); // try to make the POST request to the /auth/signup endpoint of the server.
-			const { user, message } = response.data; // get the user data and the message from the response.
+			const { message } = response.data; // get the user data and the message from the response.
 
-			return { user, message }; // return the user data and the message
+			if (message === "Signup successful") {
+				return { message }; // return the user data and the message
+			}
 		}
 		catch (error) { // if the request fails, reject the promise with the error
 			return Promise.reject(error);
@@ -68,6 +72,9 @@ const authSlice = createSlice({ // create the auth slice
 		setUser: (state, action) => { // this reducer will be used to set the user state of the slice. It will be used to persist the login state of the user.
 			state.user = action.payload; // set the user state to the user data passed to the reducer
 		},
+		setStatus: (state, action) => { // this reducer will be used to set the status state of the slice. It will be used to display the status of the login/signup process to the user.
+			state.status = action.payload; // set the status state to the status passed to the reducer
+		},
 		setError: (state, action) => { // this reducer will be used to set the error state of the slice. It will be used to display the error message to the user.
 			state.error = action.payload; // set the error state to the error message passed to the reducer
 		}
@@ -76,15 +83,28 @@ const authSlice = createSlice({ // create the auth slice
 		builder
 			// loginAsync reducers
 			.addCase(loginAsync.pending, (state) => { // this reducer will be called when the loginAsync thunk is dispatched. It will set the status state to loading.
-				state.status = 'loading';
+				state.status = LOADING;
 			})
 			.addCase(loginAsync.fulfilled, (state, action) => { // this reducer will be called when the loginAsync thunk is fulfilled. It will set the status state to idle and set the user state to the user data returned by the thunk.
-				state.status = 'idle';
+				state.status = IDLE;
 				state.user = action.payload.user;
 				state.message = action.payload.message;
 			})
 			.addCase(loginAsync.rejected, (state, action) => { // this reducer will be called when the loginAsync thunk is rejected. It will set the status state to idle and set the error state to the error message returned by the thunk.
-				state.status = 'idle';
+				state.status = IDLE;
+				state.error = action.error.message;
+			})
+
+			// signupAsync reducers
+			.addCase(signupAsync.pending, (state) => { // this reducer will be called when the signupAsync thunk is dispatched. It will set the status state to loading.
+				state.status = LOADING;
+			})
+			.addCase(signupAsync.fulfilled, (state, action) => { // this reducer will be called when the signupAsync thunk is fulfilled. It will set the status state to idle and set the user state to the user data returned by the thunk.
+				state.status = SIGNUP_SUCCESS;
+				console.log(action.payload.message)
+			})
+			.addCase(signupAsync.rejected, (state, action) => { // this reducer will be called when the signupAsync thunk is rejected. It will set the status state to idle and set the error state to the error message returned by the thunk.
+				state.status = IDLE;
 				state.error = action.error.message;
 			})
 	}
@@ -106,5 +126,5 @@ export const selectUser = (state) => state.auth.user;
 export const selectAuthStatus = (state) => state.auth.status;
 export const selectAuthError = (state) => state.auth.error;
 
-export const { logout, setError, setUser } = authSlice.actions;
+export const { logout, setError, setUser, setStatus } = authSlice.actions;
 export default authSlice.reducer;
