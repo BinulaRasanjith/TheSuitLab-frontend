@@ -7,7 +7,7 @@ import Regular from '../../assets/images/lapel_styles/Regular 1.png'
 import Small from '../../assets/images/lapel_styles/Small 1.png'
 const ChooseLapels = () => {
     return (
-        <div className='my-5 px-3 grid grid-rows-3 grid-cols-1 border-r-4 border-gray-200 justify-center items-center'>
+        <div className='my-5 px-3 grid grid-rows-3 grid-cols-1 justify-center items-center'>
             <div className='flex-flex-col'>
                 <span className='text-2xl font-bold ml-5 '>Choose Your Lapel Style</span>
                 <div className='grid grid-cols-4 gap-x-5 mt-5'>

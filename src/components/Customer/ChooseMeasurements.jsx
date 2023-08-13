@@ -5,7 +5,7 @@ const ChooseMeasurements = () => {
     const standards = ["XXS", "XS", "S", "M", "L", "XL", "XXL", "XXXL"];
 
     return (
-        <div className="p-3 flex flex-col items-start overflow-y-auto h-screen border-r-4 border-gray-400">
+        <div className="p-3 flex flex-col items-start overflow-y-auto h-screen">
             <span className='text-2xl font-bold ml-5 my-5'>Your Body Size</span>
             <div className="my-2">
                 <span className='text-xl font-bold ml-5 '>Select Unit</span>

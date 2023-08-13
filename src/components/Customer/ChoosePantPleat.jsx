@@ -9,7 +9,7 @@ import ScissorPleat from '../../assets/images/pleat_styles/ScissorPleats.png'
 
 const ChoosePantPleat = () => {
     return (
-        <div className='my-5 px-10 border-r-4 border-gray-400'>
+        <div className='my-5 px-10'>
             <span className='p-5 text-2xl font-bold'>Choose Your pant pleat style</span>
             <div className='grid grid-cols-3 gap-4 mt-5'>
 

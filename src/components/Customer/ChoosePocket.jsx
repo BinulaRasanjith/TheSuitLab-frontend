@@ -9,7 +9,7 @@ import PKSeven from '../../assets/images/pocket_styles/PK-7 1.png'
 
 const ChoosePocket = () => {
     return (
-        <div className='flex flex-col gap-10 my-5 px-3 border-r-4 border-gray-200'>
+        <div className='flex flex-col gap-10 my-5 px-3'>
             <div>
                 <span className='ml-5 text-xl sm:text-2xl font-bold'>Choose Your Pocket</span>
                 <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-5'>

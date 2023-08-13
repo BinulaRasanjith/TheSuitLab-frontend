@@ -27,7 +27,7 @@ import CustomCheckbox from './CustomCheckBox'
 
 const ChoosePantContrast = () => {
     return (
-        <div className='flex flex-col overflow-y-auto h-screen gap-y-5 border-r-2 border-gray-400'>
+        <div className='flex flex-col overflow-y-auto h-screen gap-y-5'>
             <div className="flex flex-col items-start">
                 <span className="p-5 text-xl sm:text-2xl font-bold">Choose Your Pant Contrast</span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pl-5">

@@ -7,7 +7,7 @@ import Square from '../../assets/images/back_pocket_styles/Square.png'
 const ChooseBackPocket = () => {
     return (
 
-        <div className='my-5 px-10 border-r-4 border-gray-400'>
+        <div className='my-5 px-10'>
 
             <span className='p-5 text-2xl font-bold'>Choose Your back pocket style</span>
             <div className='grid grid-cols-3 gap-5 mt-5'>
