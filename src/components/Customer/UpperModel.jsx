@@ -12,17 +12,17 @@ import { NewCostume } from './NewCostume'
 const UpperModel = () => {
     const [control, setControl] = useState({
         x: 0,
-        y: -1.7,
+        y: -5.2,
         z: 0
     })
     const [camCont, setCamCont] = useState({
-        scale: 2.3,
+        scale: 4.3,
     })
     return (
 
-        <div className="w-1/2 h-screen flex items-center relative">
-            <ControlPanel control={control} setControl={setControl} />
-            <CamControl camCont={camCont} setCamCont={setCamCont} />
+        <div className="w-1/2 h-[calc(100vh-4rem)] flex items-center relative">
+            {/* <ControlPanel control={control} setControl={setControl} />
+            <CamControl camCont={camCont} setCamCont={setCamCont} /> */}
             <Canvas camera={{ position: [0, 0, 10], fov: 30 }}>
                 <Suspense fallback={false}>
                     <NewCostume camCont={camCont} control={control} />

@@ -1,22 +1,28 @@
 import { Button } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import loginImage from "../assets/images/LoginBackground.png";
 import TSL_LOGO_SM from "../assets/images/TSL_LOGO_SM.png";
 import googleIcon from "../assets/images/googleIcon.png";
 import Input from "../components/Input/Input";
-import { loginAsync, selectAuthError, selectAuthStatus, setError } from "../store/slices/authSlice";
+import { loginAsync, selectAuthError, selectAuthStatus, selectUser, setError } from "../store/slices/authSlice";
 
 const Login = () => {
+	const navigate = useNavigate()
 	const dispatch = useDispatch()
 
-	const user = useSelector((state) => state.auth.user)
-	const message = useSelector((state) => state.auth.message)
-
+	const user = useSelector(selectUser)
 	const status = useSelector(selectAuthStatus)
 	const error = useSelector(selectAuthError)
 	const [loginCredentials, setLoginCredentials] = useState({ email: "", password: "" })
+
+	useEffect(() => {
+		if (user.id !== null) {
+			navigate(`/${user.role}`)
+		}
+	}, [navigate, user])
 
 	const handleInputChange = (e) => {
 		const { name, value } = e.target
@@ -25,9 +31,7 @@ const Login = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
-		await dispatch(loginAsync(loginCredentials))
-		console.log(user)
-		console.log(message)
+		dispatch(loginAsync(loginCredentials))
 	}
 
 	return (

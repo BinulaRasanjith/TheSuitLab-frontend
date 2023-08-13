@@ -14,7 +14,6 @@ const initialState = {
 		role: null,
 	},
 	status: 'idle',
-	message: null,
 	error: null,
 };
 
@@ -32,8 +31,7 @@ export const loginAsync = createAsyncThunk( // this thunk will make a POST reque
 
 			const user = setUserObject(decodedJWT.user)
 
-			return { user, message }; // return the user data and the message
-
+			return { user }; // return the user data and the message
 		}
 		catch (error) {
 			return Promise.reject(error); // if the request fails, reject the promise with the error
