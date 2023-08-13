@@ -4,7 +4,7 @@ import Curved from '../../assets/images/bottom_styles/curved 1.png'
 
 const ChooseBottom = () => {
     return (
-        <div className='my-5 px-3 border-r-4 border-gray-200'>
+        <div className='my-5 px-3'>
             <span className='p-5 text-2xl font-bold'>Choose Your Bottom</span>
             <div className='grid grid-cols-3 gap-5 mt-10'>
                 <div className='flex flex-col items-center p-3 justify-center'>
