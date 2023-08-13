@@ -1,4 +1,7 @@
-import { FaAccessibleIcon } from 'react-icons/fa'
+import { BiSolidColor } from 'react-icons/bi'
+import { GiRolledCloth } from 'react-icons/gi'
+import { SiStylelint } from 'react-icons/si'
+import { TbRulerMeasure } from 'react-icons/tb'
 import { Outlet } from 'react-router-dom'
 
 import ContentWrapper from '../../components/ContentWrapper'
@@ -8,7 +11,7 @@ import Sidebar from '../../components/Sidebar/Sidebar'
 const sidebarItems = [
     {
         label: 'Fabric',
-        icon: <FaAccessibleIcon />,
+        icon: <GiRolledCloth />,
         to: '/customer/customize-suit/jacket/fabric',
         subItems: [
             {
@@ -35,6 +38,7 @@ const sidebarItems = [
     },
     {
         label: 'Style',
+        icon: <SiStylelint />,
         to: '/customer/customize-suit/jacket/style',
         subItems: [
             {
@@ -65,6 +69,7 @@ const sidebarItems = [
     },
     {
         label: 'Color contrast',
+        icon: <BiSolidColor />,
         to: '/customer/customize-suit/jacket/color-contrast',
         subItems: [
             {
@@ -79,19 +84,23 @@ const sidebarItems = [
     },
     {
         label: 'Measurements',
+        icon: <TbRulerMeasure />,
         to: '/customer/customize-suit/jacket/measurements',
     },
 ]
 
 const JacketStyleLayout = () => {
     return (
-        <div className='flex'>
+        <>
             <Sidebar items={sidebarItems} />
             <ContentWrapper customizeLayout>
-                <Outlet />
+                <div className='w-1/2 h-full overflow-y-auto scroll-m-1'>
+                    <Outlet />
+                </div>
                 <UpperModel />
             </ContentWrapper>
-        </div>
+        </>
+
     )
 }
 

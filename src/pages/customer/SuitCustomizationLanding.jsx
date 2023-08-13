@@ -15,7 +15,7 @@ const SuitCustomizationLanding = () => {
     const navigate = useNavigate()
 
     const goToJacketCustomization = () => {
-        navigate('/customer/customize-suit/jacket')
+        navigate('/customer/customize-suit/jacket/fabric/all')
     }
 
     const goToPantCustomization = () => {
