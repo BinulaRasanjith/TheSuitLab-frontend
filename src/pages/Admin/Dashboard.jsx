@@ -4,8 +4,8 @@ const Dashboard = () => {
 
   return (
 
-    <div className="h-full flex flex-row m-1">
-      <div className='shadow-xl rounded-2xl'>
+    <div className="w-full">
+      <div className='shadow-xl rounded-2xl m-2'>
         <div className="mt-2 grid gap-10 lg:grid-cols-4 sm-grid-cols-2 p-5">
           {/* grid stat here*/}
           <div className="flex items-center bg-white border-0 rounded shadow-lg justify-between p-5">

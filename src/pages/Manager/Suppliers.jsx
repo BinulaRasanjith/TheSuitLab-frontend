@@ -59,12 +59,14 @@ const Suppliers = () => {
 
     return (
 
-        <div className="h-full flex flex-row m-4">
-            <div className="shadow-xl rounded-2xl p-2">
+        <div className="w-full p-5">
+            <div className="shadow-xl rounded-2xl mx-2 mt-8">
                 <div className="flex flex-row  m-4 items-center justify-between">
-                    <span className=' text-xl font-bold text-black p-1'>All Suppliers</span>
+                    <div>
+                        <span className=' text-xl font-bold text-black p-1'>All Suppliers</span>
+                    </div>
 
-                    <div className=" ml-96">
+                    <div className="flex items-center gap-4">
                         <label className="sr-only">Search</label>
                         <div className="relative">
                             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -73,35 +75,35 @@ const Suppliers = () => {
                             <input type="text" id="table-search" className="block p-2 pl-10 text-sm text-black border border-gray-300 rounded-3xl w-52
                                          focus:border-gray-400 " placeholder="Search" />
                         </div>
-                    </div>
-                    <div className="ml-10">
-                        <select id="Sort" className="block p-2 w-full  text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+
+                        <select id="Sort" className="block p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
                             <option selected>Sort By</option>
                             <option value="US">All</option>
                             <option value="CA">ASC</option>
                             <option value="FR">DSC</option>
                         </select>
 
-                    </div>
-                    <Button
-                        _hover={
-                            {
-                                bgColor: 'blue.500',
-                            }
-                        }
-                        color={'white'}
-                        bgColor={"black"}
-                        leftIcon={<AiFillPlusCircle />}
-                        ml={3}
-                        onClick={(handleAddSupplierClick)}
-                        rounded={'full'}
 
-                    >
-                        Add Supplier
-                    </Button>
+                        <Button
+                            _hover={
+                                {
+                                    bgColor: 'blue.500',
+                                }
+                            }
+                            color={'white'}
+                            bgColor={"black"}
+                            leftIcon={<AiFillPlusCircle />}
+                            ml={3}
+                            onClick={(handleAddSupplierClick)}
+                            rounded={'full'}
+
+                        >
+                            Add Supplier
+                        </Button>
+                    </div>
                 </div>
 
-                <div className="m-4 mt-9">
+                <div className="m-4">
                     <table className="w-full text-sm text-left text-gray-400">
                         <thead className="text-xs text-gray-500 uppercase bg-gray-100 ">
                             <tr>

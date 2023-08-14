@@ -53,14 +53,15 @@ const customers = [
 const ViewCustomers = () => {
 
     return (
+        <div className="w-full p-5">
+            <div className='shadow-xl rounded-2xl mx-2 mt-8'>
 
-        <div className="h-full flex flex-row m-4">
-            <div className='shadow-xl rounded-2xl p-2'>
+                <div className="flex flex-row m-4 justify-between">
+                    <div>
+                        <span className=' text-xl font-bold text-black p-1'>All Customers</span>
+                    </div>
 
-                <div className="flex flex-row m-4 items-center">
-                    <span className=' text-xl font-bold text-black p-1'>All Customers</span>
-
-                    <div className=" ml-96">
+                    <div className="flex items-center gap-4">
                         <label className="sr-only">Search</label>
                         <div className="relative">
                             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -69,37 +70,35 @@ const ViewCustomers = () => {
                             <input type="text" id="table-search" className="block p-2 pl-10 text-sm text-black border border-gray-300 rounded-3xl w-52
                                  focus:border-gray-400 " placeholder="Search" />
                         </div>
-                    </div>
-                    <div className="ml-10">
 
-                        {/* <label for="Sort" className="text-sm font-medium text-gray-900 ">Small select</label> */}
-                        <select id="Sort" className="block p-1  text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+                        <select id="Sort" className="block p-1 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
                             <option selected>Sort By</option>
                             <option value="US">All</option>
                             <option value="CA">ASC</option>
                             <option value="FR">DSC</option>
                         </select>
 
-                    </div>
-                    <Button
 
-                        leftIcon={<AiFillPlusCircle />}
-                        ml={3}
-                        rounded={'full'}
-                        color={'white'}
-                        bgColor={"black"}
-                        _hover={
-                            {
-                                bg: 'blue.500',
+                        <Button
+
+                            leftIcon={<AiFillPlusCircle />}
+                            ml={3}
+                            rounded={'full'}
+                            color={'white'}
+                            bgColor={"black"}
+                            _hover={
+                                {
+                                    bg: 'blue.500',
+                                }
                             }
-                        }
 
-                    >
-                        Add Customer
-                    </Button>
+                        >
+                            Add Customer
+                        </Button>
+                    </div>
                 </div>
 
-                <div className="m-4 mt-9">
+                <div className="m-4">
 
                     <div className="relative overflow-x-hidden shadow-md">
                         <table className="w-full text-sm text-left text-gray-400">
