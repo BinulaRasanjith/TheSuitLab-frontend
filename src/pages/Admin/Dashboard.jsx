@@ -74,7 +74,7 @@ const Dashboard = () => {
           {/*grid end here*/}
         </div>
         {/*grid start here*/}
-        
+
         <div className="mt-5  grid lg:grid-cols-3 md:grid-cols-2 p-4 gap-2">
           <div className="bg-white p-8 flex-col rounded shadow-lg">
             <b className='flex flex-row text-gray-500'>PERFOMANCE</b></div>
