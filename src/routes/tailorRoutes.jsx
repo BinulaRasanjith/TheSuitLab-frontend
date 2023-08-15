@@ -77,7 +77,9 @@ import Profile from "../pages/Tailor/Profile"
 import Reviews from "../pages/Tailor/Test1"
 import Buttons from "../pages/tailor/Buttons"
 import Fabrics from "../pages/tailor/Fabrics"
+import String from "../pages/tailor/String"
 import TEST from "../pages/tailor/test"
+//import String from 
 
 
 const tailorRoutes = {
@@ -92,11 +94,12 @@ const tailorRoutes = {
             element: <MaterialsLayout />,
             children: [
                 { path: "fabric", element: <Fabrics/> },
-                { path: "string", element: <div>String</div> },
+                { path: "string", element: <String/> },
                 { path: "buttons", element: <Buttons/> },
                 { path: "colors", element: <div>Color contrast</div> },
             ]    
     },  
+
         { path: "reviews", element: <Reviews /> },
         { path: "test", element: <TEST /> }, 
     ],
