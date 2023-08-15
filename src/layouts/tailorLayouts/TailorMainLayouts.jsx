@@ -1,12 +1,14 @@
 import { BiSolidBookReader } from "react-icons/bi"
 import { BsFillCartFill } from "react-icons/bs"
-import { HiHome, HiUserCircle } from "react-icons/hi2";
+import { HiHome, HiUserCircle, HiShoppingCart} from "react-icons/hi2";
 import { IoMdBowtie } from "react-icons/io"
 import { PiShirtFoldedFill } from "react-icons/pi"
 import { Outlet } from "react-router-dom"
 
 import Navbar from "../../components/Navbar"
 import Sidebar from "../../components/Sidebar/Sidebar"
+import ContentWrapper from "../../components/ContentWrapper";
+import MainLayout from "../../components/MainLayout";
 
 const sidebarItems = [
     {
@@ -16,8 +18,26 @@ const sidebarItems = [
     },
     {
         label: 'Orders',
-        icon: <IoMdBowtie />,
+        icon: <HiShoppingCart />,
         to: '/tailor/orders',
+        subItems: [
+            {
+                label: 'All',
+                to: '/tailor/orders/all',
+            },
+            {
+                label: 'Collected',
+                to: '/tailor/orders/collected',
+            },
+            {
+                label: 'Completed',
+                to: '/tailor/orders/completed',
+            },
+            {
+                label: 'To be collected',
+                to: '/tailor/orders/to-be-collected',
+            },
+        ]
     },
     {
         label: 'Materials',
@@ -29,7 +49,7 @@ const sidebarItems = [
                 to: '/tailor/materials/fabric',
             },
             {
-                label: 'String',
+                label: 'Strings',
                 to: '/tailor/materials/string',
             },
             {
@@ -46,13 +66,9 @@ const sidebarItems = [
     {
         label: 'Profile',
         icon: <HiUserCircle />,
-        to: '/tailor/materials/profile',
+        to: '/tailor/profile',
     },
-    {
-        label: 'TEST',
-        icon: <HiUserCircle />,
-        to: '/tailor/test',
-    },
+   
 ]
 
 const TailorMainLayout = () => {

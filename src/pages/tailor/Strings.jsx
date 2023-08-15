@@ -1,7 +1,7 @@
-import button1 from '../../assets/images/buttons/button1.jpg'
-import button2 from '../../assets/images/buttons/button2.jpg'
-import button3 from '../../assets/images/buttons/button3.jpg'
-import button4 from '../../assets/images/buttons/button4.jpg'
+import button1 from '../../assets/images/strings/string1.webp'
+import button2 from '../../assets/images/strings/string2.webp'
+import button3 from '../../assets/images/strings/string3.webp'
+import button4 from '../../assets/images/strings/string4.webp'
 import Costume5 from '../../assets/images/costume5.jpeg'
 
 const ViewButtons = () => {
@@ -18,7 +18,7 @@ const ViewButtons = () => {
                         <div className='flex flex-col m-8 sm:rounded-full'>
 
                             <div className="flex flex-row ml-4">
-                                <h4 className=' font-bold text-black p-1'>Buttons</h4>
+                                <h2 className=' font-bold text-black p-2'>Strings</h2>
 
                                 <div className=" ml-96">
                                     <label className="sr-only">Search</label>
