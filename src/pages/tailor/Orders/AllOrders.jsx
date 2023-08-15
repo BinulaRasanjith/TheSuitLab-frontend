@@ -1,4 +1,7 @@
 import Records from "../../../components/OrderItems/Records"
+import SearchBox from "../../../components/Assistant/HeaderSearchBox"
+import DropDownFilter from "../../../components/Assistant/HeaderDropDown"
+import Pagination from "../../../components/Assistant/Pagination"
 
 const AllOrders = () => {
     return (
@@ -9,14 +12,14 @@ const AllOrders = () => {
                         <div className=' text-2xl font-semibold'>All orders</div>
                         <div className=' text-sm font-regular text-blue-400'>Recent orders</div>
                     </div>
-                    {/* <div className=" flex gap-4 align-middle">
+                    <div className=" flex gap-4 align-middle">
                             <div>
                                 <SearchBox />
                             </div>
                             <div>
                                 <DropDownFilter />
                             </div>
-                        </div> */}
+                        </div>
                 </div>
                 <div className=" flex flex-col">
                     <div className=' flex justify-between text-sm font-medium text-gray-400'>
@@ -34,6 +37,7 @@ const AllOrders = () => {
                 <div className=" flex justify-between">
                     <div className=" py-3 text-sm font-medium text-neutral-400">Showing data 1 to 8 of 256K entries</div>
                     <div className=" py-3">
+                        <Pagination />
                     </div>
                 </div>
             </div>

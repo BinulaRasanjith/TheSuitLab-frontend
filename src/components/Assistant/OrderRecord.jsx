@@ -41,7 +41,7 @@ const OrderRecord = ({
 
 OrderRecord.propTypes = {
     OrderId: PropTypes.string.isRequired,
-    ItemCount: PropTypes.number.isRequired,
+    ItemCount: PropTypes.number .isRequired,
     MobileNo: PropTypes.string.isRequired,
     Customer: PropTypes.string.isRequired,
     OrderedDate: PropTypes.object.isRequired,
