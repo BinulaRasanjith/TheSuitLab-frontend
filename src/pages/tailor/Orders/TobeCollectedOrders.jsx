@@ -6,7 +6,7 @@ const AllOrders = () => {
             <div className=" flex flex-col justify-between mx-10 my-8 p-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg">
                 <div className=" flex justify-between align-middle pb-5">
                     <div className='flex flex-col'>
-                        <div className=' text-2xl font-semibold'>All orders</div>
+                        <div className=' text-2xl font-semibold'>To be collected orders</div>
                         <div className=' text-sm font-regular text-blue-400'>Recent orders</div>
                     </div>
                     {/* <div className=" flex gap-4 align-middle">
@@ -22,8 +22,8 @@ const AllOrders = () => {
                     <div className=' flex justify-between text-sm font-medium text-gray-400'>
                         <div className=" w-40 text-">Order Id</div>
                         <div className=" w-32 text-">Item Count</div>
-                        <div className=" w-32 text-">Phone Number</div>
                         <div className=" w-32 text-">Customer</div>
+                        <div className=" w-32 text-">Phone Number</div>
                         <div className=" w-32 text-">Ordered Date</div>
                         <div className=" w-40 px-10">Status</div>
                     </div>

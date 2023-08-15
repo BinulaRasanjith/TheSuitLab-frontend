@@ -22,8 +22,8 @@ const AllOrders = () => {
                     <div className=' flex justify-between text-sm font-medium text-gray-400'>
                         <div className=" w-40 text-">Order Id</div>
                         <div className=" w-32 text-">Item Count</div>
-                        <div className=" w-32 text-">Phone Number</div>
                         <div className=" w-32 text-">Customer</div>
+                        <div className=" w-32 text-">Phone number</div>
                         <div className=" w-32 text-">Ordered Date</div>
                         <div className=" w-40 px-10">Status</div>
                     </div>
