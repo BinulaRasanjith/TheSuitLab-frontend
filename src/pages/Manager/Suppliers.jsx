@@ -1,61 +1,69 @@
-import React from 'react'
+import { Button } from "@chakra-ui/react"
+import { AiFillPlusCircle } from 'react-icons/ai'
+import { useNavigate } from "react-router"
 import { BiSearch } from 'react-icons/bi'
 
 const customers = [
     {
-        orderId: '#007324786345',
-        phoneNumber: '(225) 555-0118',
-        customer: 'Heshan Cooray',
-        OrderedDate: '2023-07-07',
-        status: 'Collected',
+        name: 'Jane Cooper',
+        phoneNumber: '+91 9876543210',
+        email: 'jane@gmail.com',
+        lastOrder: '2023-07-07',
+        status: 'Active',
     },
     {
-        orderId: '#007783264383',
-        phoneNumber: '(205) 555-0100',
-        customer: 'Janaka Ishan',
-        OrderedDate: '2023-03-17',
-        status: 'Collected',
+        name: 'Floyd Miles',
+        phoneNumber: ' +91 3376443210',
+        email: 'floyd@yahoo.com',
+        lastOrder: '2023-03-17',
+        status: 'Active',
     },
     {
-        orderId: '#007373652345',
-        phoneNumber: '(302) 555-0107',
-        customer: 'Kushan Dias',
-        OrderedDate: '2023-07-07',
-        status: 'Collected',
+        name: 'Jane Cooper',
+        phoneNumber: '+91 9876543210',
+        email: 'jane@gmail.com',
+        lastOrder: '2023-07-07',
+        status: 'Active',
     },
     {
-        orderId: '#007376876554',
-        phoneNumber: '(252) 555-0126',
-        customer: 'Malin Perera',
-        OrderedDate: '2023-06-27',
-        status: 'Collected',
+        name: 'Ronald Richards',
+        phoneNumber: '+91 987654256',
+        email: 'ronald@gmail.com',
+        lastOrder: '2023-06-27',
+        status: 'Active',
     },
     {
-        orderId: '#007908322342',
-        phoneNumber: '(208) 555-0112',
-        customer: 'Shyam Fernando',
-        OrderedDate: '2023-05-11',
-        status: 'Collected',
+        name: 'Marvin Mackiney',
+        phoneNumber: '+94 9876577210',
+        email: 'marvin@gmail.com',
+        lastOrder: '2023-05-11',
+        status: 'Active',
     },
     {
-        orderId: '#007083473634',
-        phoneNumber: '(704) 555-0127',
-        customer: 'Gihan Nawagamuwa',
-        OrderedDate: '2023-07-07',
-        status: 'Collected',
+        name: 'Jacob Janes',
+        phoneNumber: '+94 983343210',
+        email: 'jane@gmail.com',
+        lastOrder: '2023-07-07',
+        status: 'Active',
     }
 
 ];
 
 
-const Orders = () => {
+const Suppliers = () => {
+
+    const navigate = useNavigate()
+    const handleAddSupplierClick = () => {
+        navigate('/manager/add-supplier')
+    }
 
     return (
+
         <div className="w-full p-5">
-            <div className='shadow-xl rounded-2xl mx-2 mt-8'>
-                <div className="flex flex-row m-4 justify-between">
+            <div className="shadow-xl rounded-2xl mx-2 mt-8">
+                <div className="flex flex-row  m-4 items-center justify-between">
                     <div>
-                        <span className=' text-xl font-bold text-black p-1'>All Orders</span>
+                        <span className=' text-xl font-bold text-black p-1'>All Suppliers</span>
                     </div>
 
                     <div className="flex items-center gap-4">
@@ -64,8 +72,8 @@ const Orders = () => {
                             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                 <BiSearch />
                             </div>
-                            <input type="text" className="block p-2 pl-10 text-sm text-black border border-gray-300 rounded-3xl w-52
-                                     focus:border-gray-400 " placeholder="Search" />
+                            <input type="text" id="table-search" className="block p-2 pl-10 text-sm text-black border border-gray-300 rounded-3xl w-52
+                                         focus:border-gray-400 " placeholder="Search" />
                         </div>
 
                         <select id="Sort" className="block p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
@@ -74,24 +82,42 @@ const Orders = () => {
                             <option value="CA">ASC</option>
                             <option value="FR">DSC</option>
                         </select>
+
+
+                        <Button
+                            _hover={
+                                {
+                                    bgColor: 'blue.500',
+                                }
+                            }
+                            color={'white'}
+                            bgColor={"black"}
+                            leftIcon={<AiFillPlusCircle />}
+                            ml={3}
+                            onClick={(handleAddSupplierClick)}
+                            rounded={'full'}
+
+                        >
+                            Add Supplier
+                        </Button>
                     </div>
                 </div>
 
                 <div className="m-4">
-                    <table className=" w-full text-sm text-left text-gray-400 ">
-                        <thead className="text-xs text-gray-500 uppercase bg-gray-100">
+                    <table className="w-full text-sm text-left text-gray-400">
+                        <thead className="text-xs text-gray-500 uppercase bg-gray-100 ">
                             <tr>
                                 <th scope="col" className="px-6 py-3">
-                                    Order Id
+                                    Supplier Name
                                 </th>
                                 <th scope="col" className="px-6 py-3">
                                     Phone Number
                                 </th>
                                 <th scope="col" className="px-6 py-3">
-                                    Customer
+                                    Email
                                 </th>
                                 <th scope="col" className="px-6 py-3">
-                                    Ordered Date
+                                    Last Order
                                 </th>
                                 <th scope="col" className="px-6 py-3">
                                     Status
@@ -99,19 +125,18 @@ const Orders = () => {
                                 <th scope="col" className="px-6 py-3">
                                     Option
                                 </th>
-
                             </tr>
                         </thead>
                         <tbody>
                             {customers.map((customer, index) => (
                                 <tr
                                     key={index}
-                                    className=" border hover:bg-gray-300 text-black whitespace-nowrap font-medium"
+                                    className="border hover:bg-gray-300 text-black whitespace-nowrap font-medium"
                                 >
-                                    <td className="px-6 py-4">{customer.orderId}</td>
+                                    <td className="px-6 py-4">{customer.name}</td>
                                     <td className="px-6 py-4">{customer.phoneNumber}</td>
-                                    <td className="px-6 py-4">{customer.customer}</td>
-                                    <td className="px-6 py-4">{customer.OrderedDate}</td>
+                                    <td className="px-6 py-4">{customer.email}</td>
+                                    <td className="px-6 py-4">{customer.lastOrder}</td>
                                     <td className="px-6 py-4">{customer.status}</td>
                                     <td className="px-6 py-4">
                                         <a
@@ -127,9 +152,9 @@ const Orders = () => {
                     </table>
                 </div>
             </div>
-        </div>
+        </div >
 
     )
 }
 
-export default Orders
+export default Suppliers
