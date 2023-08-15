@@ -65,7 +65,7 @@ const sidebarItems = [
         icon: <HiUserCircle />,
         to: '/tailor/profile',
     },
-  
+
 ]
 
 const TailorMainLayout = () => {

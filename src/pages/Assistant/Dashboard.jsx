@@ -83,7 +83,7 @@ const Dashboard = () => {
 			optionsChartBarDoubleDatasetsExample
 		);
 
-		Chart.destroy();
+		// Chart.destroy();
 	});
 
 	return (

@@ -25,7 +25,7 @@ const ViewButtons = () => {
                                     <div className="relative">
                                         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                             <svg className="w-4 h-4  dark:text-gray-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                                             </svg>
                                         </div>
                                         <input type="text" id="table-search" className="block p-2 pl-10 text-sm text-black border border-gray-300 rounded-3xl w-60
@@ -62,7 +62,7 @@ const ViewButtons = () => {
                                                 <th scope="col" className="px-6 py-3">
                                                     Last updated
                                                 </th>
-                                                
+
                                                 <th scope="col" className="px-6 py-3">
                                                     Price
                                                 </th>
@@ -89,7 +89,7 @@ const ViewButtons = () => {
                                                 <td className="px-6 py-4">
                                                     Floyd Miles
                                                 </td>
-                                                
+
                                                 <td className="px-6 py-4">
                                                     Collected
                                                 </td>
@@ -98,7 +98,7 @@ const ViewButtons = () => {
                                                      hover:bg-blue-600 hover:underline hover:text-blue-200">Edit</a>
                                                 </td>
                                             </tr>
- 
+
                                             <tr className="bg-white border rounded-3xl hover:bg-gray-300 text-black whitespace-nowrap font-medium">
                                                 <td className="px-4 py-4">
                                                     <img className="w-16 h-18 object-cover rounded-md shadow-lg" src={button2} alt="image" />
@@ -112,7 +112,7 @@ const ViewButtons = () => {
                                                 <td className="px-6 py-4">
                                                     Floyd Miles
                                                 </td>
-                                                
+
                                                 <td className="px-6 py-4">
                                                     Collected
                                                 </td>
@@ -124,8 +124,8 @@ const ViewButtons = () => {
 
                                             <tr className="bg-white border rounded-3xl hover:bg-gray-300 text-black whitespace-nowrap font-medium">
                                                 <td className="px-4 py-4">
-                                                <img className="w-16 h-18 object-cover rounded-md shadow-lg" src={button4} alt="image" />
-                                                 
+                                                    <img className="w-16 h-18 object-cover rounded-md shadow-lg" src={button4} alt="image" />
+
                                                 </td>
                                                 <td className="px-6 py-4 text-center">
                                                     3
@@ -136,7 +136,7 @@ const ViewButtons = () => {
                                                 <td className="px-6 py-4">
                                                     Floyd Miles
                                                 </td>
-                                              
+
                                                 <td className="px-6 py-4">
                                                     Collected
                                                 </td>
@@ -145,7 +145,7 @@ const ViewButtons = () => {
                                                      hover:bg-blue-600 hover:underline hover:text-blue-200">Edit</a>
                                                 </td>
                                             </tr>
-                                       
+
 
                                             <tr className="bg-white border rounded-3xl hover:bg-gray-300 text-black whitespace-nowrap font-medium">
                                                 <td className="px-4 py-4">
@@ -160,7 +160,7 @@ const ViewButtons = () => {
                                                 <td className="px-6 py-4">
                                                     Floyd Miles
                                                 </td>
-                                                
+
                                                 <td className="px-6 py-4">
                                                     Collected
                                                 </td>
@@ -169,8 +169,8 @@ const ViewButtons = () => {
                                                      hover:bg-blue-600 hover:underline hover:text-blue-200">Edit</a>
                                                 </td>
                                             </tr>
-                                         
-                                       
+
+
                                         </tbody>
                                     </table>
                                 </div>

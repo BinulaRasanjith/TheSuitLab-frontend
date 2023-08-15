@@ -12,7 +12,7 @@ const AssistantRoutes = {
   element: <AssistantMainLayout />,
   children: [
     // { path: "dashboard", element: <div>Dashboard</div> },
-    { path: "dashboard", element: <Dashboard /> },
+    { path: "", element: <Dashboard /> },
     { path: "materials", element: <Materials /> },
     { path: "handover", element: <Handover /> },
     { path: "orders", element: <Orders /> },

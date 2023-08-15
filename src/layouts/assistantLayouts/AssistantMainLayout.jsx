@@ -1,20 +1,23 @@
+import { BiSolidMessageAltEdit } from "react-icons/bi"
 import { BsBarChartFill } from "react-icons/bs"
+import { FaUserCircle } from "react-icons/fa"
 import { HiColorSwatch } from "react-icons/hi"
 import { HiCalendarDays, HiShoppingCart } from "react-icons/hi2"
 import { TbArrowBackUp, TbLogout } from "react-icons/tb"
-import { BiSolidMessageAltEdit } from "react-icons/bi"
-import { FaUserCircle } from "react-icons/fa"
-
 import { Outlet } from "react-router-dom"
 
-import Navbar from "../../components/TopNavBar/Staffnavbar"
-import Sidebar from "../../components/AssistantSidebar"
+import ContentWrapper from "../../components/ContentWrapper";
+import MainLayout from "../../components/MainLayout";
+// import Navbar from "../../components/TopNavBar/Staffnavbar"
+import Navbar from "../../components/Navbar"
+// import Sidebar from "../../components/AssistantSidebar"
+import Sidebar from "../../components/Sidebar/Sidebar"
 
 const assistantSidebarItems = [
     {
         label: 'Dashboard',
         icon: <BsBarChartFill />,
-        to: '/assistant/dashboard',
+        to: '/assistant',
     },
     {
         label: 'Materials',
@@ -41,57 +44,7 @@ const assistantSidebarItems = [
         icon: <BiSolidMessageAltEdit />,
         to: '/assistant/notification',
     },
-    // {
-    //     label: 'Custom Suit',
-    //     icon: <PiShirtFoldedFill />,
-    //     to: '/assistant/custom-suit',
-    //     subItems: [
-    //         {
-    //             label: 'Fabric',
-    //             to: '/assistant/custom-suit/fabric',
-    //         },
-    //         {
-    //             label: 'Style',
-    //             to: '/assistant/custom-suit/style',
-    //         },
-    //         {
-    //             label: 'Color contrast',
-    //             to: '/assistant/custom-suit/color-contrast',
-    //         },
-    //         {
-    //             label: 'Measurements',
-    //             to: '/assistant/custom-suit/measurements',
-    //         },
-    //     ]
-    // },
-    // {
-    //     label: 'Accessories',
-    //     icon: <IoMdBowtie />,
-    //     to: '/assistant/accessories',
-    //     subItems: [
-    //         {
-    //             label: 'Shoes',
-    //             to: '/assistant/accessories/shoes',
-    //         },
-    //         {
-    //             label: 'Belts',
-    //             to: '/assistant/accessories/belts',
-    //         },
-    //         {
-    //             label: 'Bow ties',
-    //             to: '/assistant/accessories/bow-ties',
-    //         },
-    //         {
-    //             label: 'Neck ties',
-    //             to: '/assistant/accessories/neck-ties',
-    //         }
-    //     ]
-    // },
-    // {
-    //     label: 'Cart',
-    //     icon: <BsFillCartFill />,
-    //     to: '/assistant/cart',
-    // },
+
     {
         label: 'Profile',
         icon: <FaUserCircle />,
@@ -110,12 +63,12 @@ const AssistantMainLayout = () => {
     return (
         <>
             <Navbar />
-            <main className="flex min-h-screen w-screen pt-16 transition-all ease-in-out duration-300">
+            <MainLayout>
                 <Sidebar items={assistantSidebarItems} />
-                <div className="block transition-all w-full ease-in-out duration-300" id="main-left">
+                <ContentWrapper>
                     <Outlet />
-                </div>
-            </main>
+                </ContentWrapper>
+            </MainLayout>
         </>
     )
 }

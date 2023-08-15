@@ -32,7 +32,7 @@ const Staffnavbar = () => {
     }
 
     const [open, setOpen] = useState(false);
-    const [isUserDropdownOpen, setUserDropdownOpen] = useState(false);
+    const [isUserDropdownOpen, setUserDropdownOpen] = useState(true);
 
 
     return (
