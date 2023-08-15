@@ -11,7 +11,7 @@ const costumerRoutes = {
     path: "/admin",
     element: <AdminMainLayout />,
     children: [
-        { path: "dashboard", element: <AdminDashboard /> },
+        { path: "", element: <AdminDashboard /> },
         { path: "employees", element: <Employees /> },
         { path: "customer", element: <Customers /> },
         { path: "orders", element: <Orders /> },

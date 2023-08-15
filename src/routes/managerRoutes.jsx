@@ -16,7 +16,7 @@ const managerRoutes = {
     path: "/manager",
     element: <ManagerMainLayout />,
     children: [
-        { path: "dashboard", element: <ManagerDashboard /> },
+        { path: "", element: <ManagerDashboard /> },
         {
             path: "materials",
             element: <MaterialsLayout />,
