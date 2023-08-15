@@ -1,9 +1,11 @@
 import SingleOutletLayout from "../layouts/SingleOutletLayout";
 import TailorMainLayout from "../layouts/tailorLayouts/TailorMainLayout";
 import TailorDashboard from "../pages/Tailor/Dashboard";
-import AllOrders from "../pages/tailor/Orders/AllOrders";
 import Buttons from "../pages/tailor/Buttons";
 import Fabrics from "../pages/tailor/Fabrics";
+import AllOrders from "../pages/tailor/Orders/AllOrders";
+import CollectedOrders from "../pages/tailor/Orders/CollectedOrders";
+import CompletedOrders from "../pages/tailor/Orders/CompletedOrders";
 import Profile from "../pages/tailor/Profile";
 import Strings from "../pages/tailor/Strings";
 
@@ -25,11 +27,11 @@ const tailorRoutes = {
 				},
 				{
 					path: "collected",
-					element: <h1>Collected Orders</h1>,
+					element: <CollectedOrders />,
 				},
 				{
 					path: "completed",
-					element: <h1>Completed Orders</h1>,
+					element: <CompletedOrders />,
 				},
 				{
 					path: "to-be-collected",
