@@ -9,8 +9,8 @@ import img5 from "../../assets/images/buttons/button5.jpg"
 import img6 from "../../assets/images/buttons/button6.jpg"
 import img7 from "../../assets/images/buttons/button7.jpg"
 import img8 from "../../assets/images/buttons/button8.gif"
-import MaterialCard from "../../components/MaterialCard/MaterialCard"
 import CardContainer from "../../components/MaterialCard/CardContainer"
+import MaterialCard from "../../components/MaterialCard/MaterialCard"
 
 const buttons = [
 	{

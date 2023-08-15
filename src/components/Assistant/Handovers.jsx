@@ -33,13 +33,13 @@ const RentedItems = () => {
             rented: "2023-08-06",
             handover: "2023-08-09",
         },
-        {
-            cus_id: "#CS903420156",
-            suit_id: "S00229",
-            cus_mobile: "+94765763883",
-            rented: "2023-08-06",
-            handover: "2023-08-08",
-        },
+        // {
+        //     cus_id: "#CS903420156",
+        //     suit_id: "S00229",
+        //     cus_mobile: "+94765763883",
+        //     rented: "2023-08-06",
+        //     handover: "2023-08-08",
+        // },
         // {
         //     cus_id: "#CS970045356",
         //     suit_id: "S00369",

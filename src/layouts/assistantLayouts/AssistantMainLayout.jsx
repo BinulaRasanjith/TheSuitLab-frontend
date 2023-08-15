@@ -42,7 +42,7 @@ const assistantSidebarItems = [
     {
         label: 'Notification',
         icon: <BiSolidMessageAltEdit />,
-        to: '/assistant/notification',
+        to: '/assistant/notifications',
     },
 
     {

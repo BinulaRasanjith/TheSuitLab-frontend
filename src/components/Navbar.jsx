@@ -127,7 +127,7 @@ const Navbar = () => {
 						<div className='text-white text-end'>Bhanuka Rajakaruna</div>
 						<div className='text-gray-400 text-xs text-end'>Operation Assistant</div>
 					</div>
-					<img id="avatarButton" type="button" onClick={() => setUserDropdownOpen(!isUserDropdownOpen)} data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" className="w-10 h-10 rounded-full cursor-pointer" src={AVATAR} alt="User dropdown" />
+					<img id="avatarButton" type="button" onClick={() => setUserDropdownOpen(!(isUserDropdownOpen))} data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" className="w-10 h-10 rounded-full cursor-pointer" src={AVATAR} alt="User dropdown" />
 
 					{/*  Dropdown menu  */}
 					<div id="userDropdown" className="z-10 fixed ${isUserDropdownOpen ? 'block' : 'hidden'} bg-white divide-y divide-gray-300 border border-gray-300 rounded-lg shadow w-44 top-20 right-2">

@@ -33,13 +33,13 @@ const RentedItems = () => {
             sup_mobile: "+94765765111",
             last_order: "2023-08-09",
         },
-        {
-            mat_name: "Cotton twill",
-            mat_code: "00029",
-            sup_id: "S115",
-            sup_mobile: "+94765765112",
-            last_order: "2023-08-08",
-        },
+        // {
+        //     mat_name: "Cotton twill",
+        //     mat_code: "00029",
+        //     sup_id: "S115",
+        //     sup_mobile: "+94765765112",
+        //     last_order: "2023-08-08",
+        // },
         // {
         //     mat_name: "Silk blend",
         //     mat_code: "00019",
