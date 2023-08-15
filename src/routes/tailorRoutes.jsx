@@ -1,10 +1,10 @@
 import SingleOutletLayout from "../layouts/SingleOutletLayout";
 import TailorMainLayout from "../layouts/tailorLayouts/TailorMainLayout";
 import TailorDashboard from "../pages/Tailor/Dashboard";
-import Orders from "../pages/Tailor/Orders";
-import Profile from "../pages/tailor/Profile";
+import AllOrders from "../pages/tailor/Orders/AllOrders";
 import Buttons from "../pages/tailor/Buttons";
 import Fabrics from "../pages/tailor/Fabrics";
+import Profile from "../pages/tailor/Profile";
 import Strings from "../pages/tailor/Strings";
 
 const tailorRoutes = {
@@ -21,7 +21,7 @@ const tailorRoutes = {
 			children: [
 				{
 					path: "all",
-					element: <Orders />,
+					element: <AllOrders />,
 				},
 				{
 					path: "collected",
