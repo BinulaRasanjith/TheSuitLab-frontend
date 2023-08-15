@@ -24,7 +24,6 @@ const AddSupplier = () => {
         } catch (error) {
             console.error(error);
         }
-
     }
 
     return (
@@ -37,10 +36,8 @@ const AddSupplier = () => {
                     </div>
 
                     <form onSubmit={handleAddSupplierClick}>
-
-                        <div className="flex flex-row mt-8">
-
-                            <div className="flex flex-col w-96 gap-5 ml-16">
+                        <div className="flex flex-row mt-8 gap-24">
+                            <div className="flex flex-col w-96 gap-3 ml-16">
 
                                 <div className="flex flex-row justify-between">
                                     <label className="text-md text-gray-500">Name</label>
