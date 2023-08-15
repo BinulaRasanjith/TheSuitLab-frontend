@@ -76,17 +76,20 @@ const Dashboard = () => {
 	];
 
 	document.addEventListener("DOMContentLoaded", function () {
+		// Chart.destroy();
 		new Chart(
 			document.getElementById("chart-bar-double-datasets-example"),
 			dataChartBarDoubleDatasetsExample,
 			optionsChartBarDoubleDatasetsExample
 		);
+
+		Chart.destroy();
 	});
 
 	return (
-		<div className=" flex flex-col justify-between m-9 gap-7">
+		<div className=" flex flex-col justify-between mx-10 my-8 gap-7">
 			{/* DASHBOARD CARDS FOR STATUS VIEW */}
-			<div className="grid grid-cols-4 justify-start flex-wrap gap-4">
+			<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-7">
 				{assistantStateBoxItems.map((item, index) => (
 					<StateCard
 						BigCount={item.bigcount}

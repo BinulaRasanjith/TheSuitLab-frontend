@@ -33,7 +33,7 @@ const AssistantSidebar = () => {
     const [selected, setSelected] = useState('');
 
     return (
-        <div className=' flex flex-col justify-between bg-white max-w-max drop-shadow-2xl px-4 py-4'>
+        <div className=' flex flex-col justify-between bg-white max-w-max drop-shadow-xl px-4 py-4'>
 
             <div>
                 <ul className=" flex flex-col items-start m-auto">

@@ -13,28 +13,28 @@ const RecentOrders = () => {
 
     const records = [
         {
-            image: <img alt="" className=' w-14 h-14 rounded-lg' src={light_olive_1} />,
+            image: <img alt="" className=' w-14 h-14 object-cover rounded-lg' src={light_olive_1} />,
             itemname: 'Black taill suit',
             attributes: 'Black, Teill',
             payment: 'Paid',
             price: '28,990.00',
         },
         {
-            image: <img alt="" className=' w-14 h-14 rounded-lg' src={midnight_gray_1} />,
+            image: <img alt="" className=' w-14 h-14 object-cover rounded-lg' src={midnight_gray_1} />,
             itemname: 'Cotton Tuxedo',
             attributes: 'Brown, Cotton',
             payment: 'Paid',
             price: '12,990.00',
         },
         {
-            image: <img alt="" className=' w-14 h-14 rounded-lg' src={navy_suit_1} />,
+            image: <img alt="" className=' w-14 h-14 object-cover rounded-lg' src={navy_suit_1} />,
             itemname: 'Notch Lapel Tuxedo',
             attributes: 'Blue, Lapel',
             payment: 'Paid',
             price: '15,990.00',
         },
         {
-            image: <img alt="" className=' w-14 h-14 rounded-lg' src={purple_texture_1} />,
+            image: <img alt="" className=' w-14 h-14 object-cover rounded-lg' src={purple_texture_1} />,
             itemname: 'Notch Lapel Tuxedo',
             attributes: 'Grey, Lapel',
             payment: 'Paid',
