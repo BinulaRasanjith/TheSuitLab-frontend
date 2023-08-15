@@ -46,10 +46,10 @@ const ViewButtons = () => {
                                         <thead className="text-xs text-gray-500 uppercase bg-gray-100 rounded-3xl">
                                             <tr>
                                                 <th className="px-6 py-3" scope="col">
-                                                    Button Pic
+                                                    String Pic
                                                 </th>
                                                 <th className="px-6 py-3" scope="col">
-                                                    Button Id
+                                                    String Id
 
                                                 </th>
                                                 <th className="px-6 py-3" scope="col">
