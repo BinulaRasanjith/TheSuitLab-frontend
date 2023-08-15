@@ -2,8 +2,7 @@ import SingleOutletLayout from "../layouts/SingleOutletLayout";
 import TailorMainLayout from "../layouts/tailorLayouts/TailorMainLayout";
 import TailorDashboard from "../pages/Tailor/Dashboard";
 import Orders from "../pages/Tailor/Orders";
-import Profile from "../pages/Tailor/Profile";
-import Reviews from "../pages/Tailor/Test1";
+import Profile from "../pages/tailor/Profile";
 import Buttons from "../pages/tailor/Buttons";
 import Fabrics from "../pages/tailor/Fabrics";
 import Strings from "../pages/tailor/Strings";
@@ -58,7 +57,7 @@ const tailorRoutes = {
 		},
 		{
 			path: "reviews",
-			element: <Reviews />,
+			element: <div>Review</div>,
 		},
 		{
 			path: "profile",

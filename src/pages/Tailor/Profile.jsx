@@ -24,8 +24,8 @@ const Profile = () => {
                                 className="mx-auto mb-4 w-36 border border-zinc-500 rounded-lg"
                                 alt="Avatar" /></div>
                             <div className=' flex flex-col justify-center'>
-                                <div><h5 className="mb-2 text-xl font-medium leading-tight"></h5></div>
-                                <div><p className="text-neutral-500 dark:text-neutral-400">Operation Assistant</p></div>
+                                <div><h5 className="mb-2 text-xl font-medium leading-tight"></h5>Ravindu Manawasinghe</div>
+                                <div><p className="text-neutral-500 dark:text-neutral-400">Tailoring Supervisor</p></div>
                             </div>
                         </div>
                     </div>
