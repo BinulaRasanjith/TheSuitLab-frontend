@@ -1,11 +1,14 @@
 import { BiSolidBookReader } from "react-icons/bi"
 import { HiUserGroup, HiChartBar, HiShoppingCart, HiCreditCard } from "react-icons/hi"
-import { HiHandThumbUp,HiUserCircle } from "react-icons/hi2";
+import { HiHandThumbUp, HiUserCircle } from "react-icons/hi2";
 import { IoMdBowtie } from "react-icons/io"
 import { Outlet } from "react-router-dom"
 
+import ContentWrapper from "../../components/ContentWrapper";
+import MainLayout from "../../components/MainLayout";
 import Navbar from "../../components/Navbar"
 import Sidebar from "../../components/Sidebar/Sidebar"
+
 
 const sidebarItems = [
     {
@@ -35,7 +38,7 @@ const sidebarItems = [
     {
         label: 'Orders',
         icon: <HiShoppingCart />,
-        to: '/manager/orders',   
+        to: '/manager/orders',
     },
     {
         label: 'Suppliers',
@@ -69,13 +72,21 @@ const ManagerMainLayout = () => {
 
     return (
         <>
-            <Navbar />
+            {/* <Navbar />
             <main className="flex min-h-screen w-screen pt-16 transition-all ease-in-out duration-300">
                 <Sidebar items={sidebarItems} />
                 <div className="block transition-all w-full ease-in-out duration-300" id="main-left">
                     <Outlet />
                 </div>
-            </main>
+            </main> */}
+
+            <Navbar />
+            <MainLayout>
+                <Sidebar items={sidebarItems} />
+                <ContentWrapper>
+                    <Outlet />
+                </ContentWrapper>
+            </MainLayout>
         </>
     )
 }

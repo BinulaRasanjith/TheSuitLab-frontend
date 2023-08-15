@@ -16,24 +16,24 @@ const managerRoutes = {
     path: "/manager",
     element: <ManagerMainLayout />,
     children: [
-        { path: "", element: <ManagerDashboard /> },
-        { 
-            path: "materials", 
+        { path: "dashboard", element: <ManagerDashboard /> },
+        {
+            path: "materials",
             element: <MaterialsLayout />,
             children: [
                 { path: "fabric", element: <Fabrics /> },
                 { path: "string", element: <div>String</div> },
                 { path: "buttons", element: <Buttons /> },
                 { path: "colors", element: <div>Color contrast</div> },
-            ]    
-        },  
+            ]
+        },
         { path: "orders", element: <Orders /> },
         { path: "payments", element: < Payments /> },
         { path: "suppliers", element: < Suppliers /> },
         { path: "add-supplier", element: < AddSupplier /> },
-        { path: "customer", element: <Customers />},
-        { path: "profile", element: <Profile /> },  
-        { path: "reviews", element: <div>Reviews</div>  }, 
+        { path: "customer", element: <Customers /> },
+        { path: "profile", element: <Profile /> },
+        { path: "reviews", element: <div>Reviews</div> },
     ],
 }
 
