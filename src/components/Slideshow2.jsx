@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs'
 import { RxDotFilled } from 'react-icons/rx'
+import { useNavigate } from 'react-router-dom'
 
 const Slideshow2 = () => {
+    const navigate = useNavigate()
     const [current, setCurrent] = useState(0)
     const slides = [
         {
@@ -75,7 +77,7 @@ const Slideshow2 = () => {
             <div className='flex flex-col absolute top-[30%] left-[10%]'>
                 <p className='text-4xl text-white font-bold pb-3'>Lookbook</p>
                 <p className='text-white pb-3'>This guide is meant to help you get<br></br> your finances organized and make the<br></br> most out of your student budget. If <br></br> you’re like most students at UCSB, you <br></br>probably...</p>
-                <button className="text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-3xl text-sm px-5 py-3 text-center inline-flex items-center dark:focus:ring-gray-500 mb-2 w-32 justify-center" type="button">
+                <button onClick={() => navigate('/customer/lookbook')} className="text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-3xl text-sm px-5 py-3 text-center inline-flex items-center dark:focus:ring-gray-500 mb-2 w-32 justify-center" type="button">
                     Visit
                 </button>
             </div>

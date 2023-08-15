@@ -96,7 +96,7 @@ const HomeFunctionality = () => {
 								<p className='text-white'>Ties and Neck Ties</p>
 
 							</div>
-							<Button onClick={() => navigate('/customer/')}>
+							<Button onClick={() => navigate('/customer/accessories/shoes')}>
 								Place Now
 							</Button>
 						</div>

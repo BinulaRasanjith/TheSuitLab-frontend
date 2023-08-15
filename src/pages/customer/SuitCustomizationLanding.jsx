@@ -19,7 +19,7 @@ const SuitCustomizationLanding = () => {
     }
 
     const goToPantCustomization = () => {
-        navigate('/customer/customize-suit/pants')
+        navigate('/customer/customize-suit/pant/fabric/all')
     }
 
     const goToJacketAndPantCustomization = () => {
@@ -56,9 +56,9 @@ const SuitCustomizationLanding = () => {
                     </ul>
                 </div> */}
 
-                <Menu>
+                <Menu className="md:mx-10">
                     <MenuButton as={Button} rightIcon={<BiSolidDownArrow className='text-xs' />}>
-                        Actions
+                        Design Your Own
                     </MenuButton>
                     <MenuList>
                         <MenuItem onClick={goToJacketCustomization}>Customize Jacket</MenuItem>

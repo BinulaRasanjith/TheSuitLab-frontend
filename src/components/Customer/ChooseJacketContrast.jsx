@@ -31,7 +31,7 @@ const ChooseJacketContrast = () => {
     return (
         <div className='flex flex-col overflow-y-auto h-screen gap-y-5'>
             <div className="flex flex-col items-start">
-                <span className="p-5 text-xl sm:text-2xl font-bold">Choose Your Jacket Contrast</span>
+                <span className="p-5 text-xl sm:text-2xl font-bold">Select Items</span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pl-5">
                     <CustomCheckbox label="Lapels" />
 
@@ -43,7 +43,7 @@ const ChooseJacketContrast = () => {
                 </div>
             </div>
             <div className='flex flex-col'>
-                <span className="p-5 text-xl sm:text-2xl font-bold">Choose Your Contrast Fabrics</span>
+                <span className="p-5 text-xl sm:text-2xl font-bold">Choose Material</span>
                 <div className='p-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-5'>
 
                     <button><img alt="" className='h-20 w-24' src={None} /></button>
