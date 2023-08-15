@@ -29,7 +29,7 @@ import CustomCheckbox from './CustomCheckBox'
 const ChooseJacketContrast = () => {
 
     return (
-        <div className='flex flex-col overflow-y-auto h-screen gap-y-5'>
+        <div className='flex flex-col gap-y-5'>
             <div className="flex flex-col items-start">
                 <span className="p-5 text-xl sm:text-2xl font-bold">Select Items</span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pl-5">
