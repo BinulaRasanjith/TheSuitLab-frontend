@@ -6,6 +6,7 @@ import Fabrics from "../pages/tailor/Fabrics";
 import AllOrders from "../pages/tailor/Orders/AllOrders";
 import CollectedOrders from "../pages/tailor/Orders/CollectedOrders";
 import CompletedOrders from "../pages/tailor/Orders/CompletedOrders";
+import TobeCollectedOrders from "../pages/tailor/Orders/TobeCollectedOrders";
 import Profile from "../pages/tailor/Profile";
 import Strings from "../pages/tailor/Strings";
 
@@ -35,7 +36,7 @@ const tailorRoutes = {
 				},
 				{
 					path: "to-be-collected",
-					element: <h1>To Be Canceled Orders</h1>,
+					element: <TobeCollectedOrders />,
 				},
 			],
 		},
