@@ -1,5 +1,5 @@
 /* eslint-disable perfectionist/sort-jsx-props */
-import AVATAR from '../../assets/images/avatar.png'
+import AVATAR from '../assets/images/avatar.png'
 
 
 const Profile = () => {

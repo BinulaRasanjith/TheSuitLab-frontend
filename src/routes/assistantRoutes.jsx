@@ -4,8 +4,8 @@ import Handover from "../pages/Assistant/Handover";
 import Materials from "../pages/Assistant/Materials";
 import Notifications from "../pages/Assistant/Notifications";
 import Orders from "../pages/Assistant/Orders";
-import Profile from "../pages/Assistant/Profile";
 import Returns from "../pages/Assistant/Returns";
+import Profile from "../pages/Profile";
 
 const AssistantRoutes = {
   path: "/assistant",
