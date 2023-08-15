@@ -15,7 +15,7 @@ const landingPageRoutes = {
         { path: 'signup', element: <Signup /> },
         { path: 'about-us', element: <AboutUs /> },
         { path: 'services', element: <Services /> },
-        { path: 'contact-us', element: <ContactUs /> }
+        { path: 'contact-us', element: <ContactUs /> },
     ],
 }
 

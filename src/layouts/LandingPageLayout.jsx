@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom"
 
+import MainLayout from "../components/MainLayout"
 import Navbar from "../components/Navbar"
 
 function LandingPageLayout() {
@@ -7,9 +8,10 @@ function LandingPageLayout() {
     return (
         <>
             <Navbar />
-            <main className="flex min-h-screen w-screen pt-16">
+            <MainLayout>
                 <Outlet />
-            </main>
+            </MainLayout>
+
         </>
     )
 }

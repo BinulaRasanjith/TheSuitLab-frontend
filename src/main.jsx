@@ -15,6 +15,12 @@ const theme = extendTheme({
     body: 'Poppins, sans-serif',
     heading: 'Poppins, sans-serif',
   },
+  colors: {
+    primary: {
+      100: '#111111',
+      200: '#FEFEFE',
+    },
+  },
 });
 
 ReactDOM.createRoot(document.getElementById('root')).render(

@@ -1,19 +1,28 @@
 import { Button } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import loginImage from "../assets/images/LoginBackground.png";
 import TSL_LOGO_SM from "../assets/images/TSL_LOGO_SM.png";
 import googleIcon from "../assets/images/googleIcon.png";
-import Input from "../components/LoginInput/Input";
-import { loginAsync, selectAuthError, selectAuthStatus, setError } from "../store/slices/authSlice";
+import Input from "../components/Input/Input";
+import { loginAsync, selectAuthError, selectAuthStatus, selectUser, setError } from "../store/slices/authSlice";
 
 const Login = () => {
+	const navigate = useNavigate()
 	const dispatch = useDispatch()
 
+	const user = useSelector(selectUser)
 	const status = useSelector(selectAuthStatus)
 	const error = useSelector(selectAuthError)
 	const [loginCredentials, setLoginCredentials] = useState({ email: "", password: "" })
+
+	useEffect(() => {
+		if (user.id !== null) {
+			navigate(`/${user.role}`)
+		}
+	}, [navigate, user])
 
 	const handleInputChange = (e) => {
 		const { name, value } = e.target
@@ -34,19 +43,15 @@ const Login = () => {
 				src={loginImage}
 			/>
 
-			<div className="grid grid-cols-1 md:grid-cols-2 justify-items-center items-center md:gap-x-0 lg:gap-x-10 xl:gap-x-20 h-4/5 px-2 py-1 z-10">
-				<div className="hidden md:flex flex-col justify-around">
-					<div className="flex items-center pt-10">
-						<div>
-							<img alt="" src={TSL_LOGO_SM} />
-						</div>
-						<div className="lg:flex hidden text-white text-6xl">
+			<div className="grid grid-cols-1 md:grid-cols-2 items-center md:gap-x-0 lg:gap-x-10 xl:gap-x-20 h-4/5 px-2 py-1 z-10">
+				<div className="hidden md:flex flex-col h-full justify-center">
+					<div className="flex items-center justify-self-center">
+						<img alt="" src={TSL_LOGO_SM} />
+						<div className="hidden lg:flex  text-white text-6xl">
 							<p>The Suit Lab</p>
 						</div>
 					</div>
-					<div className="flex flex-col items-start text-white text-4xl">
-						<p className="text-center w-full">WELCOME TO THE SUIT LAB</p>
-					</div>
+					<p className="text-white text-3xl text-center w-full justify-self-end">WELCOME TO THE SUIT LAB</p>
 				</div>
 
 				<div className="flex flex-col w-11/12 bg-white px-5 py-3 lg:py-10 drop-shadow-2xl rounded-3xl h-fit">
@@ -121,7 +126,7 @@ const Login = () => {
 					</form>
 				</div>
 			</div>
-		</div>
+		</div >
 	);
 };
 

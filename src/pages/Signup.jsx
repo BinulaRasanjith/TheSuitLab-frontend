@@ -1,88 +1,193 @@
-import loginImage from '../assets/images/LoginBackground.png'
-import TSL_LOGO_SM from '../assets/images/TSL_LOGO_SM.png'
-import googleIcon from '../assets/images/googleIcon.png'
+import { Button } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
+import loginImage from "../assets/images/LoginBackground.png";
+import TSL_LOGO_SM from "../assets/images/TSL_LOGO_SM.png";
+import googleIcon from "../assets/images/googleIcon.png";
+import Input from "../components/Input/Input";
+import { IDLE, SIGNUP_SUCCESS } from "../constants";
+import {
+	selectAuthError,
+	selectAuthStatus,
+	setError,
+	setStatus,
+	signupAsync,
+} from "../store/slices/authSlice";
 
 const Signup = () => {
-    return (
-        <div>
-            <div className='flex items-center justify-center m-auto overflow-hidden'>
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
-                <img alt="login image" className='object-cover h-screen relative w-full ' src={loginImage} />
-                <div className='grid grid-cols-1 md:grid-cols-2 justify-items-center md:gap-x-0 lg:gap-x-10 xl:gap-x-20 absolute px-2'>
+	const status = useSelector(selectAuthStatus);
+	const error = useSelector(selectAuthError);
 
-                    <div className='hidden md:flex flex-col justify-between'>
-                        <div className='flex items-center pt-5'>
-                            <div><img alt="" src={TSL_LOGO_SM} /></div>
-                            <div className='lg:flex hidden text-white text-6xl'><p>The Suit Lab</p></div>
+	const [signupCredentials, setSignupCredentials] = useState({
+		firstName: "",
+		lastName: "",
+		address: "",
+		mobileNo: "",
+		password: "",
+		confirmPassword: "",
+	});
+	const [passwordError, setPasswordError] = useState("");
 
-                        </div>
-                        <div className='flex flex-col flex-wrap items-start text-white text-4xl'>
-                            <p>SIGN UP TO</p>
-                            <p>EXPOLRE THE FASHION</p>
-                        </div>
-                    </div>
+	useEffect(() => {
+		if (status === SIGNUP_SUCCESS) {
+			dispatch(setStatus(IDLE));
+			navigate("/login");
+		}
+	}, [dispatch, navigate, status]);
 
+	const handleInputChange = (e) => {
+		const { name, value } = e.target;
+		setSignupCredentials({ ...signupCredentials, [name]: value });
+	};
 
-                    <div className='flex flex-col bg-white drop-shadow-2xl rounded-3xl'>
-                        <div className='flex items-center justify-around md:justify-center  pt-3 md:pt-10 float-left font-bold'>
-                            <div className='flex flex-col items-start' >
-                                <div className='flex gap-2 text-2xl md:text-4xl'>
-                                    <p>Sign</p>
-                                    <p>Up</p>
-                                </div>
-                                <div className='flex md:hidden'>WELCOME TO THE SUIT LAB</div>
-                            </div>
-                            <div className='flex md:hidden'>
-                                <img alt="" className='h-14' src={TSL_LOGO_SM} />
-                            </div>
-                        </div>
-                        <form className='flex flex-col align-center justify-center float-left'>
-                            <div className="grid gap-4 py-3 grid-cols-1 md:grid-cols-2 lg:pl-10 lg:pr-10 pl-5 pr-5 max-w-2xl">
-                                <div>
-                                    <input className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" id="first_name" pattern="[A-Z][a-z]{50}" placeholder="First Name" required type="text"></input>
-                                </div>
-                                <div>
-                                    <input className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" id="last_name" pattern="[A-Z][a-z]{50}" placeholder="Last Name" required type="text"></input>
-                                </div>
-                                <div>
-                                    <input className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" id="company" pattern="[A-Z][a-z]{50}" placeholder="Address" required type="text"></input>
-                                </div>
-                                <div>
-                                    <input className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" id="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" placeholder="Contact" required type="tel"></input>
-                                </div>
-                                <div>
-                                    <input className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" id="website" placeholder="Password" required type="password"></input>
-                                </div>
-                                <div>
-                                    <input className="bg-gray-50 border border-blue-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" id="visitors" placeholder="Confirm Password" required type="password"></input>
-                                </div>
-                            </div>
+	const handlePasswordChange = () => {
+		if (
+			signupCredentials.password !== signupCredentials.confirmPassword &&
+			signupCredentials.confirmPassword !== "" &&
+			signupCredentials.password !== ""
+		) {
+			setPasswordError("Passwords do not match");
+		} else {
+			setPasswordError("");
+		}
+	};
 
-                            <div className='flex items-center flex-col'>
-                                <div className='flex flex-col items-start'>
-                                    <div className='text-red-700 float-left px-1'>Account does not exixt or Password is incorrect</div>
-                                </div>
-                                <div className='py-2 float-left'>
-                                    <button className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-lg px-5 py-2.5 text-center " type="button">Sign Up</button>
-                                </div>
-                                <div className='flex item-center justify-center align-center pb-2 float-left'>
-                                    ----------------Or------------------
-                                </div>
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		dispatch(signupAsync(signupCredentials));
+	};
 
-                            </div>
-                            <div className='flex flex-col py-5 px-2 sm:px-20 items-center rounded-bl-3xl rounded-br-3xl float-left'>
-                                <div className='flex justify-center align-center float-left'>
-                                    <img alt="googleIcon" className='pr-2' src={googleIcon} />
-                                    <span className='text-stone-500'>Sign Up with google</span>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
-}
+	return (
+		<div className="flex items-center justify-center m-auto overflow-hidden">
+			<img
+				alt="login image"
+				className="object-cover h-screen w-screen fixed top-0 left-0 z-0"
+				src={loginImage}
+			/>
 
-export default Signup
+			<div className="grid grid-cols-1 md:grid-cols-2 justify-items-center items-center md:gap-x-0 lg:gap-x-10 xl:gap-x-20 h-4/5 px-2 py-1 z-10">
+				<div className="hidden md:flex flex-col justify-around">
+					<div className="flex items-center pt-10">
+						<div>
+							<img alt="" src={TSL_LOGO_SM} />
+						</div>
+						<div className="lg:flex hidden text-white text-6xl">
+							<p>The Suit Lab</p>
+						</div>
+					</div>
+					<div className="flex flex-col items-start text-white text-4xl">
+						<p className="text-center w-full">WELCOME TO THE SUIT LAB</p>
+					</div>
+				</div>
+
+				<div className="flex flex-col w-11/12 bg-white px-5 py-3 lg:py-10 drop-shadow-2xl rounded-3xl h-fit">
+					<h1 className="text-center font-bold text-2xl md:text-3xl lg:text-4xl">
+						Sign Up
+					</h1>
+
+					<form
+						className="flex flex-col align-center justify-center md:px-5 lg:px-10 pl-2 pr-2 mt-4"
+						onSubmit={handleSubmit}
+					>
+						<div className="grid grid-cols-1 sm:grid-cols-2 grid-rows-3 gap-2 my-3">
+							<Input
+								id="first-name"
+								name="firstName"
+								onChange={handleInputChange}
+								placeholder="First Name"
+								type="text"
+								value={signupCredentials.firstName}
+							/>
+							<Input
+								id="last-name"
+								name="lastName"
+								onChange={handleInputChange}
+								placeholder="Last Name"
+								type="text"
+								value={signupCredentials.lastName}
+							/>
+							<Input
+								id="address"
+								name="address"
+								onChange={handleInputChange}
+								placeholder="Address"
+								type="text"
+								value={signupCredentials.address}
+							/>
+							<Input
+								id="mobile-no"
+								name="mobileNo"
+								onChange={handleInputChange}
+								placeholder="Mobile Number"
+								type="text"
+								value={signupCredentials.mobileNumber}
+							/>
+							<Input
+								error={passwordError}
+								id="password"
+								name="password"
+								onBlur={handlePasswordChange}
+								onChange={handleInputChange}
+								placeholder="Password"
+								type="password"
+								value={signupCredentials.password}
+							/>
+							<Input
+								error={passwordError}
+								id="confirm-password"
+								name="confirmPassword"
+								onBlur={handlePasswordChange}
+								onChange={handleInputChange}
+								placeholder="Confirm Password"
+								type="password"
+								value={signupCredentials.confirmPassword}
+							/>
+						</div>
+						{passwordError && (
+							<div className="font-semibold text-sm lg:text-base text-red-600 text-center mb-1 md:mb-3">
+								{passwordError}
+							</div>
+						)}
+
+						<div className="flex items-center flex-col">
+							<div className="flex flex-col items-start px-1"></div>
+							<Button
+								_active={{ bg: "black" }}
+								_hover={{ bg: "gray.800" }}
+								bg={"gray.700"}
+								color={"white"}
+								fontSize={{ base: "l", lg: "xl" }}
+								isLoading={status === "loading"}
+								loadingText="Logging in"
+								padding={{ base: "5px", lg: "20px" }}
+								type="submit"
+								width={{ base: "100%", md: "70%" }}
+							>
+								Sign Up
+							</Button>
+
+							<div className="flex item-center justify-center items-center float-left m-2 md:m-4 w-full md:w-3/4">
+								<hr className="w-full mx-2 border-2 rounded-sm" />
+								Or
+								<hr className="w-full mx-2 border-2 rounded-sm" />
+							</div>
+						</div>
+						<div className="flex flex-col items-center rounded-bl-3xl rounded-br-3xl float-left">
+							<Button mb={"10px"} width={{ base: "100%", md: "70%" }}>
+								<img alt="googleIcon" className="mr-2" src={googleIcon} />
+								<span className="text-stone-800">Signup with Google</span>
+							</Button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	);
+};
+
+export default Signup;

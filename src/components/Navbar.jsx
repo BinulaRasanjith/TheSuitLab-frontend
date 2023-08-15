@@ -1,114 +1,245 @@
-import { Button } from '@chakra-ui/react'
-import { useState } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Button } from "@chakra-ui/react";
+import { useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
 
-import TSL_LOGO from '../assets/images/TSL_LOGO.png'
-import TSL_LOGO_SM from '../assets/images/TSL_LOGO_SM.png'
+import TSL_LOGO from "../assets/images/TSL_LOGO.png";
+import TSL_LOGO_SM from "../assets/images/TSL_LOGO_SM.png";
+import { CUSTOMER } from "../constants";
+import { selectUser } from "../store/slices/authSlice";
+import { logout } from "../store/slices/authSlice";
+import { toggleSidebar } from "../store/slices/sidebarSlice";
 
-// eslint-disable-next-line react/prop-types
 const Navbar = () => {
-    const location = useLocation()
-    const navigate = useNavigate()
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
-    // handle login click
-    const handleLoginClick = () => {
-        navigate('/login')
-    }
+	const user = useSelector(selectUser);
 
+	// handle login click
+	const handleLoginClick = () => {
+		navigate("/login");
+	};
 
-    const page = location.pathname.slice(1)
-    let checkPage = false;
-    switch (page) {
-        case "":
-        case "services":
-        case "about-us":
-        case "contact-us":
-            checkPage = true;
-            break;
-        default:
-            checkPage = false;
-    }
+	// handle signup click
+	const handleSignupClick = () => {
+		navigate("/signup");
+	};
 
-    const [open, setOpen] = useState(false);
+	// handle logout click
+	const handleLogoutClick = () => {
+		navigate("/");
+		dispatch(logout());
+	};
 
-    return (
-        <>
-            <nav className="flex justify-between items-center bg-gray-900 fixed h-16 w-full z-20">
-                <div className='h-full flex items-center pr-2'>
-                    <div className={checkPage ? "flex text-3xl text-white px-2 sm:hidden" : "text-3xl text-white px-2"} onClick={() => { setOpen(!open) }}>
-                        <ion-icon className="text-white" name={`${open ? "close" : "menu"}`}></ion-icon>
-                    </div>
-                    <div className='h-full overflow-hidden'>
-                        <img alt="TSL_LOGO" className={"h-full object-cover  hidden md:block"} src={TSL_LOGO} />
-                        <img alt="Only_logo" className={"h-full object-cover block md:hidden"} src={TSL_LOGO_SM} />
-                    </div>
-                </div>
-                <div className="max-w-screen-xl flex-wrap mx-auto">
+	const [open, setOpen] = useState(false);
 
-                    <ul className="hidden sm:flex text-white items-center p-1 font-medium gap-2 lg:gap-5 md:mt-0">
-                        <li className={page === "" ? "inline-flex items-center justify-center p-0.5 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
-                            <Link className={"px-5 py-1 bg-gray-900 rounded-lg"} to='/'>Home</Link>
-                        </li>
-                        <li className={page === "services" ? "inline-flex items-center justify-center p-0.5 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
-                            <Link className={"px-5 py-1 bg-white dark:bg-gray-900 rounded-lg"} to='/services'>Services</Link>
-                        </li>
-                        <li className={page === "about-us" ? "inline-flex items-center justify-center p-0.5 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
-                            <Link className={"px-5 py-1 bg-white dark:bg-gray-900 rounded-lg"} to='/about-us'>About Us</Link>
-                        </li>
-                        <li className={page === "contact-us" ? "inline-flex items-center justify-center p-0.5 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
-                            <Link className={"px-5 py-1 bg-white dark:bg-gray-900 rounded-lg"} to='/contact-us'>Contact Us</Link>
-                        </li>
-                        {/* <li className={page === "" ? "inline-flex items-center justify-center p-0.5 overflow-hidden font-medium rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
-                            <Link to='/' className={"px-5 py-1 bg-gray-900 rounded-lg"}>Home</Link>
-                        </li>
-                        <li className={page === "services" ? "inline-flex items-center justify-center p-0.5 overflow-hidden font-medium rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
-                            <Link to='/services' className={"px-5 py-1 bg-white dark:bg-gray-900 rounded-lg"}>Services</Link>
-                        </li>
-                        <li className={page === "about-us" ? "inline-flex items-center justify-center p-0.5 overflow-hidden font-medium rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
-                            <Link to='/about-us' className={"px-5 py-1 bg-white dark:bg-gray-900 rounded-lg"}>About Us</Link>
-                        </li>
-                        <li className={page === "contact-us" ? "inline-flex items-center justify-center p-0.5 overflow-hidden font-medium rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500" : ""}>
-                            <Link to='/contact-us' className={"px-5 py-1 bg-white dark:bg-gray-900 rounded-lg"}>Contact Us</Link>
-                        </li> */}
-                    </ul>
-                </div>
-                <div className='flex items-center mr-5'>
-                    <Button
-                        _active={{
-                            bg: 'gray',
-                        }}
-                        _hover={{
-                            bg: 'white',
-                            textColor: 'black'
-                        }}
-                        bg={'transparent'}
-                        border={'2px'}
-                        onClick={handleLoginClick}
-                        textColor={'white'}>Login</Button>
-                    {/* <button className='text-white border border-white border-solid pt-1 pb-1 pl-3 pr-3 rounded'
-                        onClick={handleLoginClick}>Login</button> */}
-                </div>
+	return (
+		<>
+			<header className="flex justify-between items-center bg-primary fixed h-16 w-screen z-40">
+				{
+					// responsive burger button for landing page
+					(!user.id || user.role === CUSTOMER) && (
+						<div className="flex sm:hidden">
+							<button
+								className="flex items-center px-3 py-2 text-secondary text-2xl"
+								onClick={() => setOpen(!open)}
+							>
+								{open ? <FaTimes /> : <FaBars />}
+							</button>
+						</div>
+					)
+				}
 
-            </nav>
+				{
+					// sidebar toggle burger button
+					user.id && user.role !== CUSTOMER && (
+						<div>
+							<button
+								className="flex items-center px-3 py-2 text-secondary text-2xl"
+								onClick={() => dispatch(toggleSidebar())}
+							>
+								<FaBars />
+							</button>
+						</div>
+					)
+				}
+				<div className="h-full flex items-center pr-2">
+					<div className="h-full overflow-hidden">
+						<img
+							alt="TSL_LOGO"
+							className={"h-full object-cover  hidden md:block"}
+							src={TSL_LOGO}
+						/>
+						<img
+							alt="Only_logo"
+							className={"h-full object-cover block md:hidden"}
+							src={TSL_LOGO_SM}
+						/>
+					</div>
+				</div>
+				<div className="max-w-screen-xl flex-wrap mx-auto">
+					{
+						// if user is logged in and is a customer OR if user is not logged in
+						(!user.id || user.role === CUSTOMER) && (
+							<ul className="hidden sm:flex text-white items-center p-1 font-medium gap-2 lg:gap-5 md:mt-0">
+								<NavLink
+									className={({ isActive }) => {
+										return `px-3 py-1 ${isActive ? "font-bold" : ""}`;
+									}}
+									to={`${user.role === CUSTOMER ? "/customer" : "/"}`}
+								>
+									Home
+								</NavLink>
+								<NavLink
+									className={({ isActive }) => {
+										return `px-3 py-1 ${isActive ? "font-bold" : ""}`;
+									}}
+									to="/services"
+								>
+									Services
+								</NavLink>
+								<NavLink
+									className={({ isActive }) => {
+										return `px-3 py-1 ${isActive ? "font-bold" : ""}`;
+									}}
+									to="/about-us"
+								>
+									About Us
+								</NavLink>
+								<NavLink
+									className={({ isActive }) => {
+										return `px-3 py-1 ${isActive ? "font-bold" : ""}`;
+									}}
+									to="/contact-us"
+								>
+									Contact Us
+								</NavLink>
+							</ul>
+						)
+					}
+				</div>
+				<div className="flex items-center gap-x-3 mr-5">
+					{user.id ? (
+						<Button
+							_active={{
+								bg: "gray",
+							}}
+							_hover={{
+								bg: "white",
+								border: "2px",
+								borderColor: "white",
+								textColor: "black",
+							}}
+							bg={"transparent"}
+							border={"2px"}
+							fontSize={{ base: "0.8rem", md: "1rem" }}
+							onClick={handleLogoutClick}
+							padding={{ base: "4px", md: "0.5rem 2rem" }}
+							textColor={"white"}
+						>
+							Log Out
+						</Button>
+					) : (
+						<>
+							<Button
+								_active={{
+									bg: "gray",
+								}}
+								_hover={{
+									bg: "white",
+									border: "2px",
+									borderColor: "white",
+									textColor: "black",
+								}}
+								bg={"transparent"}
+								border={"2px"}
+								fontSize={{ base: "0.8rem", md: "1rem" }}
+								onClick={handleSignupClick}
+								padding={{ base: "4px", md: "0.5rem 2rem" }}
+								textColor={"white"}
+							>
+								Sign Up
+							</Button>
 
-            <div className={open === true ? "sm:hidden z-10 fixed top-14  left-0 shadow dark:bg-gray-700" : "hidden"}>
-                <ul className="flex flex-col items-center p-2 text-sm text-gray-700 dark:text-gray-200">
-                    <li className={page === "home" ? "text-white  relative inline-flex items-center justify-center p-0.5 overflow-hidden text-xl font-medium rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 " : "text-white text-xl"}>
-                        <span className={page === "home" ? "relative px-5 py-1 transition-all ease-in duration-75 bg-white rounded-lg " : ""}>Home</span>
-                    </li>
-                    <li className={page === "services" ? "text-white relative inline-flex items-center justify-center p-0.5 overflow-hidden text-xl font-medium rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500  " : "text-white text-xl"}>
-                        <span className={page === "services" ? "relative px-5 py-1 transition-all ease-in duration-75 bg-white rounded-lg " : ""}>Services</span>
-                    </li>
-                    <li className={page === "about-us" ? "text-white relative inline-flex items-center justify-center p-0.5 overflow-hidden text-xl font-medium rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500  " : "text-white text-xl"}>
-                        <span className={page === "about-us" ? "relative px-5 py-1 transition-all ease-in duration-75 bg-white rounded-lg " : ""}>About Us</span>
-                    </li>
-                    <li className={page === "contact-us" ? "text-white relative inline-flex items-center justify-center p-0.5 overflow-hidden text-xl font-medium rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500  " : "text-white text-xl"}>
-                        <span className={page === "contact-us" ? "relative px-5 py-1 transition-all ease-in duration-75 bg-white rounded-lg " : ""}>Contact Us</span>
-                    </li>
-                </ul>
-            </div>
-        </>
-    )
-}
+							<Button
+								_active={{
+									bg: "gray",
+								}}
+								_hover={{
+									bg: "white",
+									border: "2px",
+									borderColor: "white",
+									textColor: "black",
+								}}
+								bg={"transparent"}
+								border={"2px"}
+								fontSize={{ base: "0.8rem", md: "1rem" }}
+								onClick={handleLoginClick}
+								padding={{ base: "4px", md: "0.5rem 2rem" }}
+								textColor={"white"}
+							>
+								Log In
+							</Button>
+						</>
+					)}
+				</div>
+			</header>
 
-export default Navbar
+			<div
+				className={
+					open
+						? "sm:hidden z-20 fixed top-14  left-0 shadow dark:bg-gray-700"
+						: "hidden"
+				}
+			>
+				{/* TODO: set conditions for customer */}
+				<ul className="flex flex-col items-center p-2 text-sm text-gray-700 dark:text-gray-200">
+					<NavLink
+						className={({ isActive }) => {
+							return `px-3 py-1 ${
+								isActive ? "border-2 rounded-md border-cyan-500" : ""
+							}`;
+						}}
+						to="/"
+					>
+						Home
+					</NavLink>
+					<NavLink
+						className={({ isActive }) => {
+							return `px-3 py-1 ${
+								isActive ? "border-2 rounded-md border-cyan-500" : ""
+							}`;
+						}}
+						to="/services"
+					>
+						Services
+					</NavLink>
+					<NavLink
+						className={({ isActive }) => {
+							return `px-3 py-1 ${
+								isActive ? "border-2 rounded-md border-cyan-500" : ""
+							}`;
+						}}
+						to="/about-us"
+					>
+						About Us
+					</NavLink>
+					<NavLink
+						className={({ isActive }) => {
+							return `px-3 py-1 ${
+								isActive ? "border-2 rounded-md border-cyan-500" : ""
+							}`;
+						}}
+						to="/contact-us"
+					>
+						Contact Us
+					</NavLink>
+				</ul>
+			</div>
+		</>
+	);
+};
+
+export default Navbar;
