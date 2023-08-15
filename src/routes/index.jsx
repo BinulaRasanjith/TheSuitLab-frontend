@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import adminRoutes from "./adminRoutes";
+import oaRoutes from "./assistantRoutes";
 import customerRoutes from "./customerRoutes";
 import landingPageRoutes from "./landingPageRoutes";
 import tailorRoutes from "./tailorRoutes";
-import oaRoutes from "./assistantRoutes";
 
 
 const router = createBrowserRouter([
