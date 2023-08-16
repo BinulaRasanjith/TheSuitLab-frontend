@@ -6,7 +6,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 import TSL_LOGO from "../assets/images/TSL_LOGO.png";
 import TSL_LOGO_SM from "../assets/images/TSL_LOGO_SM.png";
-import AVATAR from "../assets/images/avatar.png";
+import { PROFILE_PICTURE_URL } from "../config/config";
 import { CUSTOMER } from "../constants";
 import { selectUser } from "../store/slices/authSlice";
 import { logout } from "../store/slices/authSlice";
@@ -100,8 +100,9 @@ const Navbar = () => {
 									className={({ isActive }) => {
 										return `px-3 py-1 ${isActive ? "font-bold" : ""}`;
 									}}
-									to={`${user.role === CUSTOMER ? "/customer/services" : "/services"
-										}`}
+									to={`${
+										user.role === CUSTOMER ? "/customer/services" : "/services"
+									}`}
 								>
 									Services
 								</NavLink>
@@ -109,8 +110,9 @@ const Navbar = () => {
 									className={({ isActive }) => {
 										return `px-3 py-1 ${isActive ? "font-bold" : ""}`;
 									}}
-									to={`${user.role === CUSTOMER ? "/customer/about-us" : "/about-us"
-										}`}
+									to={`${
+										user.role === CUSTOMER ? "/customer/about-us" : "/about-us"
+									}`}
 								>
 									About Us
 								</NavLink>
@@ -118,10 +120,11 @@ const Navbar = () => {
 									className={({ isActive }) => {
 										return `px-3 py-1 ${isActive ? "font-bold" : ""}`;
 									}}
-									to={`${user.role === CUSTOMER
-										? "/customer/contact-us"
-										: "contact-us"
-										}`}
+									to={`${
+										user.role === CUSTOMER
+											? "/customer/contact-us"
+											: "contact-us"
+									}`}
 								>
 									Contact Us
 								</NavLink>
@@ -152,15 +155,16 @@ const Navbar = () => {
 									data-dropdown-toggle="userDropdown"
 									data-dropdown-placement="bottom-start"
 									className="w-10 h-10 rounded-full cursor-pointer"
-									src={AVATAR}
+									src={`${PROFILE_PICTURE_URL}/${user.image}`}
 									alt="User dropdown"
 								/>
 
 								{/*  Dropdown menu  */}
 								<div
 									id="userDropdown"
-									className={`z-10 fixed ${isUserDropdownOpen ? "block" : "hidden"
-										} bg-white divide-y divide-gray-300 border border-gray-300 rounded-lg shadow w-44 top-20 right-2`}
+									className={`z-10 fixed ${
+										isUserDropdownOpen ? "block" : "hidden"
+									} bg-white divide-y divide-gray-300 border border-gray-300 rounded-lg shadow w-44 top-20 right-2`}
 								>
 									<div className="px-4 py-3 text-sm text-gray-900">
 										<div>{`${user.firstName} ${user.lastName}`}</div>
@@ -278,8 +282,9 @@ const Navbar = () => {
 				<ul className="flex flex-col items-center p-2 text-sm text-gray-700 dark:text-gray-200">
 					<NavLink
 						className={({ isActive }) => {
-							return `px-3 py-1 ${isActive ? "border-2 rounded-md border-cyan-500" : ""
-								}`;
+							return `px-3 py-1 ${
+								isActive ? "border-2 rounded-md border-cyan-500" : ""
+							}`;
 						}}
 						to="/"
 					>
@@ -287,8 +292,9 @@ const Navbar = () => {
 					</NavLink>
 					<NavLink
 						className={({ isActive }) => {
-							return `px-3 py-1 ${isActive ? "border-2 rounded-md border-cyan-500" : ""
-								}`;
+							return `px-3 py-1 ${
+								isActive ? "border-2 rounded-md border-cyan-500" : ""
+							}`;
 						}}
 						to="/services"
 					>
@@ -296,8 +302,9 @@ const Navbar = () => {
 					</NavLink>
 					<NavLink
 						className={({ isActive }) => {
-							return `px-3 py-1 ${isActive ? "border-2 rounded-md border-cyan-500" : ""
-								}`;
+							return `px-3 py-1 ${
+								isActive ? "border-2 rounded-md border-cyan-500" : ""
+							}`;
 						}}
 						to="/about-us"
 					>
@@ -305,8 +312,9 @@ const Navbar = () => {
 					</NavLink>
 					<NavLink
 						className={({ isActive }) => {
-							return `px-3 py-1 ${isActive ? "border-2 rounded-md border-cyan-500" : ""
-								}`;
+							return `px-3 py-1 ${
+								isActive ? "border-2 rounded-md border-cyan-500" : ""
+							}`;
 						}}
 						to="/contact-us"
 					>
