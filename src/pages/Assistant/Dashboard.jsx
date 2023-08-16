@@ -1,6 +1,7 @@
+import { useEffect, useState } from "react";
+import { HiOutlineScissors } from "react-icons/hi2";
 import { HiOutlineSquare3Stack3D } from "react-icons/hi2";
 import { HiOutlineBanknotes } from "react-icons/hi2";
-import { HiOutlineScissors } from "react-icons/hi2";
 import { PiHandbag } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import { Chart, initTE } from "tw-elements";
@@ -9,7 +10,29 @@ import RecentOrders from "../../components/Assistant/RecentOrders";
 import StateCard from "../../components/DashboardStateCard";
 
 const Dashboard = () => {
+
 	initTE({ Chart });
+	const [canvas, setCanvas] = useState(null);
+
+	window.onload = function () {
+		new Chart(
+			document.getElementById("chart-bar-double-datasets-example"),
+			dataChartBarDoubleDatasetsExample,
+			optionsChartBarDoubleDatasetsExample,
+		);
+	};
+
+	useEffect(() => {
+		const canvasElement = document.getElementById("chart-bar-double-datasets-example");
+		setCanvas(canvasElement);
+
+		// Destroy the canvas when the component unmounts
+		return () => {
+			if (canvas) {
+				Chart.destroy(canvas);
+			}
+		};
+	}, []);
 
 	// DATA
 	const dataChartBarDoubleDatasetsExample = {
@@ -75,21 +98,21 @@ const Dashboard = () => {
 		},
 	];
 
-	document.addEventListener("DOMContentLoaded", function () {
-		// Chart.destroy();
-		new Chart(
-			document.getElementById("chart-bar-double-datasets-example"),
-			dataChartBarDoubleDatasetsExample,
-			optionsChartBarDoubleDatasetsExample
-		);
 
-		// Chart.destroy();
-	});
+	// document.addEventListener("DOMContentLoaded", function () {
+	// 	new Chart(
+	// 		document.getElementById("chart-bar-double-datasets-example"),
+	// 		dataChartBarDoubleDatasetsExample,
+	// 		optionsChartBarDoubleDatasetsExample,
+	// 	);
+
+	// });
 
 	return (
 		<div className=" flex flex-col justify-between mx-10 my-8 gap-7">
 			{/* DASHBOARD CARDS FOR STATUS VIEW */}
-			<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-7">
+			{/* <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-7"> */}
+			<div className="flex justify-between flex-wrap gap-2 md:gap-7">
 				{assistantStateBoxItems.map((item, index) => (
 					<StateCard
 						BigCount={item.bigcount}

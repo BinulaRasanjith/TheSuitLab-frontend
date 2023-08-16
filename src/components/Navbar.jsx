@@ -31,7 +31,7 @@ const Navbar = () => {
 
 	// handle logout click
 	const handleLogoutClick = () => {
-		navigate("/");
+		navigate("/", { replace: true });
 		dispatch(logout());
 	};
 
@@ -122,67 +122,54 @@ const Navbar = () => {
 						)
 					}
 				</div>
-				<div className='flex items-center mr-5 gap-3 relative'>
-					<div className='flex flex-col'>
-						<div className='text-white text-end'>Bhanuka Rajakaruna</div>
-						<div className='text-gray-400 text-xs text-end'>Operation Assistant</div>
-					</div>
-					<img id="avatarButton" type="button" onClick={() => setUserDropdownOpen(!(isUserDropdownOpen))} data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" className="w-10 h-10 rounded-full cursor-pointer" src={AVATAR} alt="User dropdown" />
 
-					{/*  Dropdown menu  */}
-					<div id="userDropdown" className="z-10 fixed ${isUserDropdownOpen ? 'block' : 'hidden'} bg-white divide-y divide-gray-300 border border-gray-300 rounded-lg shadow w-44 top-20 right-2">
-						<div className="px-4 py-3 text-sm text-gray-900">
-							<div>Bhanuka Rajakaruna</div>
-							<div className="font-medium truncate">bhanukayar@gmail.com</div>
-						</div>
-						<ul className="py-2 text-sm text-gray-700" aria-labelledby="avatarButton">
-							<li>
-								<a href="#" className="block px-4 py-2 hover:bg-gray-100 ">Dashboard</a>
-							</li>
-							<li>
-								<a href="#" className="block px-4 py-2 hover:bg-gray-100 ">Profile</a>
-							</li>
-						</ul>
-						<div className="py-1">
-							<a href="#" className="block px-4 py-2 text-sm text-gray-700 ">Sign out</a>
-						</div>
-					</div>
-					{/* <Button
-                        // _active={{
-                        //     bg: 'gray',
-                        // }}
-                        _hover={{
-                            bg: 'white',
-                            textColor: 'black'
-                        }}
-                        bg={'transparent'}
-                        border={'1px'}
-                        width={'5.5rem'}
-                        height={'2rem'}
-                        onClick={handleLoginClick}
-                        textColor={'white'}>Log Out</Button> */}
-				</div>
 				<div className="flex items-center gap-x-3 mr-5">
 					{user.id ? (
-						<Button
-							_active={{
-								bg: "gray",
-							}}
-							_hover={{
-								bg: "white",
-								border: "2px",
-								borderColor: "white",
-								textColor: "black",
-							}}
-							bg={"transparent"}
-							border={"2px"}
-							fontSize={{ base: "0.8rem", md: "1rem" }}
-							onClick={handleLogoutClick}
-							padding={{ base: "4px", md: "0.5rem 2rem" }}
-							textColor={"white"}
-						>
-							Log Out
-						</Button>
+						<>
+							<div className='flex items-center gap-3 relative'>
+								<div className='flex flex-col'>
+									<div className='text-white text-end'>Bhanuka Rajakaruna</div>
+									<div className='text-gray-400 text-xs text-end'>Operation Assistant</div>
+								</div>
+								<img id="avatarButton" type="button" onClick={() => setUserDropdownOpen(!isUserDropdownOpen)} data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" className="w-10 h-10 rounded-full cursor-pointer" src={AVATAR} alt="User dropdown" />
+
+								{/*  Dropdown menu  */}
+								<div id="userDropdown" className={`z-10 fixed ${isUserDropdownOpen ? 'block' : 'hidden'} bg-white divide-y divide-gray-300 border border-gray-300 rounded-lg shadow w-44 top-20 right-2`}>
+									<div className="px-4 py-3 text-sm text-gray-900">
+										<div>Bhanuka Rajakaruna</div>
+										<div className="font-medium truncate">bhanukayar@gmail.com</div>
+									</div>
+									<ul className="py-2 text-sm text-gray-700" aria-labelledby="avatarButton">
+										<li>
+											<a href="#" className="block px-4 py-2 hover:bg-gray-100 ">Dashboard</a>
+										</li>
+										<li>
+											<a href="#" className="block px-4 py-2 hover:bg-gray-100 ">Profile</a>
+										</li>
+									</ul>
+									<div className="py-1" onClick={handleLogoutClick}>
+										<a href="#" className="block px-4 py-2 text-sm text-gray-700 ">Log Out</a>
+									</div>
+								</div>
+							</div>
+							{/* <Button
+								_active={{
+									bg: "gray",
+								}}
+								_hover={{
+									bg: "white",
+									border: "2px",
+									borderColor: "white",
+									textColor: "black",
+								}}
+								bg={"transparent"}
+								border={"2px"}
+								fontSize={{ base: "0.8rem", md: "1rem" }}
+								onClick={handleLogoutClick}
+								padding={{ base: "4px", md: "0.5rem 2rem" }}
+								textColor={"white"}
+							>Log Out</Button> */}
+						</>
 					) : (
 						<>
 							<Button
