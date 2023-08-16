@@ -2,11 +2,15 @@
 // import { BsFillCartFill } from "react-icons/bs"
 // import { HiHome, HiUserCircle } from "react-icons/hi2";
 // import { IoMdBowtie } from "react-icons/io"
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 // import { PiShirtFoldedFill } from "react-icons/pi"
-import { Outlet } from "react-router-dom"
+import { Outlet, useNavigate } from "react-router-dom";
 
-import MainLayout from "../../components/MainLayout"
-import Navbar from "../../components/Navbar"
+import MainLayout from "../../components/MainLayout";
+import Navbar from "../../components/Navbar";
+import { CUSTOMER } from "../../constants";
+import { selectUser } from "../../store/slices/authSlice";
 // import Sidebar from "../../components/Sidebar/Sidebar"
 
 // const sidebarItems = [
@@ -79,14 +83,21 @@ import Navbar from "../../components/Navbar"
 // ]
 
 const CustomerMainLayout = () => {
-    return (
-        <>
-            <Navbar />
-            <MainLayout>
-                <Outlet />
-            </MainLayout>
-        </>
-    );
-}
+	const navigate = useNavigate();
+	const user = useSelector(selectUser);
 
-export default CustomerMainLayout
+	useEffect(() => {
+		if (user.role !== CUSTOMER) navigate("/");
+	}, [navigate, user]);
+
+	return (
+		<>
+			<Navbar />
+			<MainLayout>
+				<Outlet />
+			</MainLayout>
+		</>
+	);
+};
+
+export default CustomerMainLayout;
