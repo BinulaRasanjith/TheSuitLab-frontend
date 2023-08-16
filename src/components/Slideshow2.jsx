@@ -8,19 +8,19 @@ const Slideshow2 = () => {
     const [current, setCurrent] = useState(0)
     const slides = [
         {
-            url: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
+            url: "https://images.pexels.com/photos/7506120/pexels-photo-7506120.jpeg",
         },
         {
-            url: "https://imgv3.fotor.com/images/slider-image/A-clear-close-up-photo-of-a-woman.jpg"
+            url: "https://images.pexels.com/photos/375902/pexels-photo-375902.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
         },
         {
-            url: "https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80"
+            url: "https://img.freepik.com/free-photo/front-view-smiling-male-office-worker-suit-holding-documents-pointing-something-right-side-isolated-dark-wall_140725-97201.jpg?w=1480&t=st=1692209222~exp=1692209822~hmac=90e6dddbf4f14bee6ba66d7aadc75ba5dfae357d14bc5eb614cbf0b2fcd0e372"
         },
         {
-            url: "https://media.istockphoto.com/id/1093110112/photo/picturesque-morning-in-plitvice-national-park-colorful-spring-scene-of-green-forest-with-pure.jpg?s=612x612&w=0&k=20&c=lpQ1sQI49bYbTp9WQ_EfVltAqSP1DXg0Ia7APTjjxz4="
+            url: "https://img.freepik.com/free-photo/cropped-portrait-successful-businessman-buttoning-his-elegant-suit-isolated-dark-background_613910-5505.jpg?w=1800&t=st=1692208781~exp=1692209381~hmac=2fa53a694e0a4ea1e743449d0da12a10978a43b315817bca8dd1cd3105991ef0"
         },
         {
-            url: "https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk="
+            url: "https://img.freepik.com/free-photo/successful-handsome-business-man-office_1303-20916.jpg?w=1480&t=st=1692208835~exp=1692209435~hmac=d988686c4331eceae58ef3d55f0178d60d84ac7ec78489bd26017a359affbb32"
         }
     ]
 
