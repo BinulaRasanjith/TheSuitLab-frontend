@@ -119,7 +119,9 @@ const Navbar = () => {
 									className={({ isActive }) => {
 										return `px-3 py-1 ${isActive ? "font-bold" : ""}`;
 									}}
-									to="/services"
+									to={`${
+										user.role === CUSTOMER ? "/customer/services" : "/services"
+									}`}
 								>
 									Services
 								</NavLink>
@@ -127,7 +129,9 @@ const Navbar = () => {
 									className={({ isActive }) => {
 										return `px-3 py-1 ${isActive ? "font-bold" : ""}`;
 									}}
-									to="/about-us"
+									to={`${
+										user.role === CUSTOMER ? "/customer/about-us" : "/about-us"
+									}`}
 								>
 									About Us
 								</NavLink>
@@ -135,7 +139,11 @@ const Navbar = () => {
 									className={({ isActive }) => {
 										return `px-3 py-1 ${isActive ? "font-bold" : ""}`;
 									}}
-									to="/contact-us"
+									to={`${
+										user.role === CUSTOMER
+											? "/customer/contact-us"
+											: "contact-us"
+									}`}
 								>
 									Contact Us
 								</NavLink>
