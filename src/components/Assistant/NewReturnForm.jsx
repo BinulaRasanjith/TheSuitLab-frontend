@@ -1,17 +1,14 @@
-// import { useState } from "react";
 import PropTypes from "prop-types";
+import { useState } from "react";
 import { AiFillCloseCircle } from "react-icons/ai"
 
+import { addReturn } from "../../api/returnAPI"
 
 const NewReturnForm = ({ isOpen, onClose }) => {
 
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [role, setRole] = useState("");
-    const [mobileNumber, setMobileNumber] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [image, setImage] = useState(null);
+    const [orderid, setOrderID] = useState("");
+    const [itemcount, setItemCount] = useState("");
+    const [reason, setReason] = useState("");
 
 
     const handleAddUserClick = async (e) => {
@@ -22,23 +19,15 @@ const NewReturnForm = ({ isOpen, onClose }) => {
         //     mobileNo: mobileNumber,
         //     firstName: firstName,
         //     lastName: lastName,
-        //     role: role,
-        //     email: email,
-        //     password: password,
-        //     image: image
         // }
 
-        const user = new FormData();
-        user.append("mobileNo", mobileNumber);
-        user.append("firstName", firstName);
-        user.append("lastName", lastName);
-        user.append("role", role);
-        user.append("email", email);
-        user.append("password", password);
-        user.append("image", image);
+        const suitreturn = new FormData();
+        suitreturn.append("mobileNo", orderid);
+        suitreturn.append("firstName", itemcount);
+        suitreturn.append("lastName", reason);
 
         try {
-            const response = await addUser(user);
+            const response = await addReturn(suitreturn);
             console.log(response);
             // alert(response);
         } catch (error) {
