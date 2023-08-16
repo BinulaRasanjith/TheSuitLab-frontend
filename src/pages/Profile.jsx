@@ -5,7 +5,8 @@ import AVATAR from '../assets/images/avatar.png'
 const Profile = () => {
     return (
         <div>
-            <div className=" flex flex-col justify-between w-full p-10 gap-6">
+            {/* <div className=" flex flex-col justify-between w-full p-10 gap-6"> */}
+            <div className=" flex flex-col justify-between gap-12 mx-10 my-8 p-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg">
 
 
                 <div className=" flex justify-start">
@@ -19,12 +20,12 @@ const Profile = () => {
                             <p className="text-neutral-500 dark:text-neutral-400">Operation Assistant</p>
                         </div> */}
                         <div className=" flex justify-center gap-12 mx-5">
-                            <div className=" border-neutral-200 rounded-lg"><img
+                            <div className=" "><img
                                 src={AVATAR}
-                                className="mx-auto mb-4 w-36 border border-zinc-500 rounded-lg"
+                                className="mx-auto mb-4 w-28 rounded-3xl"
                                 alt="Avatar" /></div>
                             <div className=' flex flex-col justify-center'>
-                                <div><h5 className="mb-2 text-xl font-medium leading-tight">Bhanuka Rajakaruna</h5></div>
+                                <div><h5 className="mb-2 text-3xl font-medium leading-tight">Bhanuka Rajakaruna</h5></div>
                                 <div><p className="text-neutral-500 dark:text-neutral-400">Operation Assistant</p></div>
                             </div>
                         </div>

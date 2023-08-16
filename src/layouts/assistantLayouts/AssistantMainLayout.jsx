@@ -50,11 +50,11 @@ const assistantSidebarItems = [
         icon: <FaUserCircle />,
         to: '/assistant/profile',
     },
-    {
-        label: 'Log Out',
-        icon: <TbLogout />,
-        to: '/',
-    }
+    // {
+    //     label: 'Log Out',
+    //     icon: <TbLogout />,
+    //     to: '/',
+    // }
 ]
 
 const AssistantMainLayout = () => {

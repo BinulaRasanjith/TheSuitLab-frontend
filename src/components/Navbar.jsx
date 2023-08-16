@@ -129,7 +129,7 @@ const Navbar = () => {
 							<div className='flex items-center gap-3 relative'>
 								<div className='flex flex-col cursor-pointer' onClick={() => setUserDropdownOpen(!isUserDropdownOpen)}>
 									<div className='text-white text-end'>Bhanuka Rajakaruna</div>
-									<div className='text-gray-400 text-xs text-end'>Operation Assistant</div>
+									<div className={`${user.id || user.role === CUSTOMER ? '' : ''} text-gray-400 text-xs text-end`}>Operation Assistant</div>
 								</div>
 								<img id="avatarButton" type="button" onClick={() => setUserDropdownOpen(!isUserDropdownOpen)} data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" className="w-10 h-10 rounded-full cursor-pointer" src={AVATAR} alt="User dropdown" />
 
@@ -137,7 +137,7 @@ const Navbar = () => {
 								<div id="userDropdown" className={`z-10 fixed ${isUserDropdownOpen ? 'block' : 'hidden'} bg-white divide-y divide-gray-300 border border-gray-300 rounded-lg shadow w-44 top-20 right-2`}>
 									<div className="px-4 py-3 text-sm text-gray-900">
 										<div>Bhanuka Rajakaruna</div>
-										<div className="font-medium truncate">bhanukayar@gmail.com</div>
+										<div className=" font-medium truncate">bhanukayar@gmail.com</div>
 									</div>
 									<ul className="py-2 text-sm text-gray-700" aria-labelledby="avatarButton">
 										<li>

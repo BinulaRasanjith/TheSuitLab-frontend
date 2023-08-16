@@ -1,11 +1,14 @@
+import { Button } from '@chakra-ui/react';
+
 import DropDownFilter from '../../components/Assistant/HeaderDropDown';
 import SearchBox from '../../components/Assistant/HeaderSearchBox';
+import NewReturnForm from '../../components/Assistant/NewReturnForm';
 import Pagination from '../../components/Assistant/Pagination'
 import Returnset from '../../components/Assistant/ReturnedItems';
 
 const Returns = () => {
     return (
-        <div>
+        <div className='relative'>
             <div className=" flex flex-col justify-between mx-10 my-8 p-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg">
                 <div className=" flex justify-between align-middle pb-5">
                     <div className='flex flex-col'>
@@ -33,6 +36,9 @@ const Returns = () => {
 
                 </div>
                 <div><Returnset /></div>
+                <div className=" flex my-4 justify-center">
+                    <Button colorScheme='gray' size='md'>New Inquery</Button>
+                </div>
                 <div className=" flex justify-between">
                     <div className=" py-3 text-sm font-medium text-neutral-400">Showing data 1 to 8 of 256K entries</div>
                     <div className=" py-3">
@@ -40,6 +46,8 @@ const Returns = () => {
                     </div>
                 </div>
             </div>
+
+            <NewReturnForm />
 
 
             {/* <div className=" flex justify-center w-full">
