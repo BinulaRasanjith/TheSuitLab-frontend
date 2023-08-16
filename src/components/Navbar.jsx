@@ -112,6 +112,7 @@ const Navbar = () => {
 										return `px-3 py-1 ${isActive ? "font-bold" : ""}`;
 									}}
 									to={`${user.role === CUSTOMER ? "/customer" : "/"}`}
+									end
 								>
 									Home
 								</NavLink>
