@@ -4,8 +4,8 @@ import Customers from "../pages/Admin/Customers";
 import AdminDashboard from "../pages/Admin/Dashboard";
 import Employees from "../pages/Admin/Employees";
 import Orders from "../pages/Admin/Orders";
-import Profile from "../pages/Admin/Profile";
 import Reviews from "../pages/Admin/Test1";
+import Profile from "../pages/Profile";
 
 const costumerRoutes = {
 	path: "/admin",
