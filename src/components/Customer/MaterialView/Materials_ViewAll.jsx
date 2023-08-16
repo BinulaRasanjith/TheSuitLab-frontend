@@ -18,15 +18,22 @@ import midnight_gray_1 from '../../../assets/images/materials/midnight grey 1.pn
 import navy_suit_1 from '../../../assets/images/materials/navy suit 1.png'
 import purple_texture_1 from '../../../assets/images/materials/purple texture 1.png'
 import wool_navy_1 from '../../../assets/images/materials/wool navy 1.png'
+import { useCustomization } from "../../../contexts/Controller";
 import Container from './Container'
 
 
-
 const Materials_ViewAll = () => {
+
+  const {
+    setMaterial
+  } = useCustomization();
+
+
+
   return (
     <Container>
 
-      <button><img alt="" className='h-20 w-24' src={blue_texture_1} /></button>
+      <button onClick={() => setMaterial("Fabric_Polyester_002_SD")} ><img alt="" className='h-20 w-24' src={blue_texture_1} /></button>
       <button><img alt="" className='h-20 w-24' src={blue_texture_2} /></button>
       <button><img alt="" className='h-20 w-24' src={brown_texture_1} /></button>
       <button><img alt="" className='h-20 w-24' src={charcol_texture_1} /></button>
@@ -34,7 +41,7 @@ const Materials_ViewAll = () => {
       <button><img alt="" className='h-20 w-24' src={dark_blue_2} /></button>
       <button><img alt="" className='h-20 w-24' src={dark_chocolate_1} /></button>
       <button><img alt="" className='h-20 w-24' src={brown_texture_2} /></button>
-      <button><img alt="" className='h-20 w-24' src={grey_texture_1} /></button>
+      <button onClick={() => setMaterial("grey_texture")}><img alt="" className='h-20 w-24' src={grey_texture_1} /></button>
       <button><img alt="" className='h-20 w-24' src={gray_texture_2} /></button>
       <button><img alt="" className='h-20 w-24' src={midnight_gray_1} /></button>
       <button><img alt="" className='h-20 w-24' src={navy_suit_1} /></button>

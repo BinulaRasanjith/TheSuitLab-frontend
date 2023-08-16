@@ -1,66 +1,120 @@
-import staffCard from "../../components/staffCard";
+/* eslint-disable perfectionist/sort-jsx-props */
+import AVATAR from '../../assets/images/avatar.png'
 
-//images
-import Costume1 from '../../assets/images/costume1.jpeg'
-import Costume2 from '../../assets/images/costume2.jpeg'
-import Costume3 from '../../assets/images/costume3.jpeg'
-import Costume4 from '../../assets/images/costume4.jpeg'
-import Costume5 from '../../assets/images/costume5.jpeg'
 
 const Profile = () => {
-
     return (
-        <div className="flex flex-row">
-            <div className='flex-auto flex-col'>
-                <div class="bg-white border border-gray-200 ml-10 mt-10  rounded-lg shadow ">
-                    <div class="flex flex-col p-6">
-                        <div className=" border-b-2 border-gray-300">
-                            <h2 class="mb-4 mt-3 text-2xl  justify-start font-medium text-gray-900">Account settings</h2>
+        <div>
+            <div className=" flex flex-col justify-between w-full p-10 gap-6">
+
+
+                <div className=" flex justify-start">
+                    <div>
+                        {/* <div className="text-center">
+                            <img
+                                src={AVATAR}
+                                className="mx-auto mb-4 w-28 border border-zinc-500 rounded-lg"
+                                alt="Avatar" />
+                            <h5 className="mb-2 text-xl font-medium leading-tight">Bhanuka Rajakaruna</h5>
+                            <p className="text-neutral-500 dark:text-neutral-400">Operation Assistant</p>
+                        </div> */}
+                        <div className=" flex justify-center gap-12 mx-5">
+                            <div className=" border-neutral-200 rounded-lg"><img
+                                src={AVATAR}
+                                className="mx-auto mb-4 w-36 border border-zinc-500 rounded-lg"
+                                alt="Avatar" /></div>
+                            <div className=' flex flex-col justify-center'>
+                                <div><h5 className="mb-2 text-xl font-medium leading-tight">Bhanuka Rajakaruna</h5></div>
+                                <div><p className="text-neutral-500 dark:text-neutral-400">Operation Assistant</p></div>
+                            </div>
                         </div>
-                        <div className="flex flex-row mt-8">
-                            <img class="w-52 h-52 object-cover mb-1 rounded-full shadow-lg" src={Costume1} alt="image" />
+                    </div>
+                </div>
 
-                            <div className="flex flex-col ml-20">
-
-                                <div className="flex-row mt-6 grid grid-cols-2 mb-1">
-                                    <label class="text-md text-gray-500">First Name</label>
-                                    <input class="border border-gray-200 rounded-xl  focus:outline-none focus:border-gray-500" type="text" value='John' />
-                                </div>
-                                <div className="flex-row mt-6 grid grid-cols-2 mb-1">
-                                    <label class="text-md text-gray-500">Last Name</label>
-                                    <input class="border border-gray-200 rounded-xl  focus:outline-none focus:border-gray-500" type="text" value='Doe' />
-                                </div>
-                                <div className="flex-row mt-6 grid grid-cols-2 mb-1">
-                                    <label class="text-md text-gray-500">Address</label>
-                                    <input class="border border-gray-200 rounded-xl  focus:outline-none focus:border-gray-500" type="text" value='Bambalapitiya, Colombo 04' />
-                                </div>
-                                <div className="flex-row mt-6 grid grid-cols-2 mb-1">
-                                    <label class="text-md text-gray-500">Contact</label>
-                                    <input class="border border-gray-200 rounded-xl  focus:outline-none focus:border-gray-500" type="text" value='' />
-                                </div>
-                                <div className="flex-row mt-6 grid grid-cols-2 mb-1">
-                                    <label class="text-md text-gray-500">Password</label>
-                                    <input class="border border-gray-200 rounded-xl  focus:outline-none focus:border-gray-500" type="password" value='dfgghhhrh' />
-                                </div>
-
-
-                                <div className="flex flex-row mr-4 mt-5 justify-start ">
-                                    <a href="#" class="inline-flex items-center px-10 py-2 text-sm font-medium text-center text-white uppercase bg-black rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">Save</a>
-
-                                </div>
-
-                            </div >
-
-
+                <div className=" flex gap-12">
+                    <div className=" border border-solid rounded flex flex-col gap-5 bg-gray-50 px-7 py-9 w-full">
+                        <div>
+                            <label htmlFor="currency" className=" ">First Name</label>
+                            <input
+                                type="text"
+                                name="price"
+                                id="price"
+                                className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                placeholder="Pasan"
+                            />
                         </div>
-
+                        <div>
+                            <label htmlFor="currency" className=" ">Last Name</label>
+                            <input
+                                type="text"
+                                name="price"
+                                id="price"
+                                className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                placeholder="Gamage"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="currency" className=" ">Mobile</label>
+                            <input
+                                type="text"
+                                name="price"
+                                id="price"
+                                className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                placeholder="0764927560"
+                            />
+                        </div>
+                        <div>
+                            <button className=" w-full rounded-md border-0 py-2 text-gray-100 bg-black">Update Now</button>
+                        </div>
                     </div>
 
+                    <div className=" border border-solid rounded flex flex-col gap-5 bg-gray-50 px-7 py-9 w-full">
+                        <div>
+                            <label htmlFor="currency" className=" ">Current Password</label>
+                            <input
+                                type="password"
+                                name="price"
+                                id="price"
+                                className="block w-full rounded-md border-0 py-1.5 pl-5 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                placeholder="Current Password"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="currency" className=" ">New Password</label>
+                            <input
+                                type="password"
+                                name="price"
+                                id="price"
+                                className="block w-full rounded-md border-0 py-1.5 pl-5 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                placeholder="New Password"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="currency" className=" ">Confirm Password</label>
+                            <input
+                                type="password"
+                                name="price"
+                                id="price"
+                                className="block w-full rounded-md border-0 py-1.5 pl-5 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                placeholder="Confirm New Password"
+                            />
+                        </div>
+                        <div>
+                            <button className=" w-full rounded-md border-0 py-2 text-gray-100 bg-black" >Change Password</button>
+                        </div>
+                    </div>
                 </div>
+
             </div>
+
+            {/* <div className=" flex justify-center w-full">
+                <div className=" flex flex-col justify-center h-screen">
+                    <div className=" text-4xl font-semibold text-zinc-400">This profile settings page is under development :(</div>
+                </div>
+            </div> */}
+
         </div>
+    );
+};
 
-    )
-}
-
-export default Profile
+export default Profile;

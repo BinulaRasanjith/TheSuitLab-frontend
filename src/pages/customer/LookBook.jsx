@@ -39,7 +39,7 @@ const LookBook = () => {
     return (
         <div className='flex flex-col items-center p-5'>
             <h1 className='text-4xl font-bold py-4'>LookBook</h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 overflow-y-auto h-screen">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 overflow-y-auto h-screen">
                 {images && images.map((imageUrl, index) => (
                     <img
                         alt={`Image ${index}`}
