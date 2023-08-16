@@ -4,17 +4,16 @@ import adminRoutes from "./adminRoutes";
 import assistantRoutes from "./assistantRoutes";
 import customerRoutes from "./customerRoutes";
 import landingPageRoutes from "./landingPageRoutes";
+import managerRoutes from "./managerRoutes";
 import tailorRoutes from "./tailorRoutes";
-import manager from "./managerRoutes";
-
 
 const router = createBrowserRouter([
-    landingPageRoutes, // This is the landing page routes
-    customerRoutes, // This is the customer routes
-    tailorRoutes, // This is the tailor routes
-    adminRoutes, // This is the admin routes
-    assistantRoutes, // This is the costume customization routes,
-    manager
-])
+	landingPageRoutes,
+	customerRoutes,
+	tailorRoutes,
+	adminRoutes,
+	assistantRoutes,
+	managerRoutes,
+]);
 
 export default router;

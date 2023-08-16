@@ -7,32 +7,41 @@ import loginImage from "../assets/images/LoginBackground.png";
 import TSL_LOGO_SM from "../assets/images/TSL_LOGO_SM.png";
 import googleIcon from "../assets/images/googleIcon.png";
 import Input from "../components/Input/Input";
-import { loginAsync, selectAuthError, selectAuthStatus, selectUser, setError } from "../store/slices/authSlice";
+import {
+	loginAsync,
+	selectAuthError,
+	selectAuthStatus,
+	selectUser,
+	setError,
+} from "../store/slices/authSlice";
 
 const Login = () => {
-	const navigate = useNavigate()
-	const dispatch = useDispatch()
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
-	const user = useSelector(selectUser)
-	const status = useSelector(selectAuthStatus)
-	const error = useSelector(selectAuthError)
-	const [loginCredentials, setLoginCredentials] = useState({ email: "", password: "" })
+	const user = useSelector(selectUser);
+	const status = useSelector(selectAuthStatus);
+	const error = useSelector(selectAuthError);
+	const [loginCredentials, setLoginCredentials] = useState({
+		email: "",
+		password: "",
+	});
 
 	useEffect(() => {
 		if (user.id !== null) {
-			navigate(`/${user.role}`)
+			navigate(`/${user.role}`, { replace: true });
 		}
-	}, [navigate, user])
+	}, [navigate, user]);
 
 	const handleInputChange = (e) => {
-		const { name, value } = e.target
-		setLoginCredentials({ ...loginCredentials, [name]: value })
-	}
+		const { name, value } = e.target;
+		setLoginCredentials({ ...loginCredentials, [name]: value });
+	};
 
 	const handleSubmit = async (e) => {
-		e.preventDefault()
-		dispatch(loginAsync(loginCredentials))
-	}
+		e.preventDefault();
+		dispatch(loginAsync(loginCredentials));
+	};
 
 	return (
 		<div className="flex justify-center items-center w-screen ">
@@ -51,7 +60,9 @@ const Login = () => {
 							<p>The Suit Lab</p>
 						</div>
 					</div>
-					<p className="text-white text-3xl text-center w-full justify-self-end">WELCOME TO THE SUIT LAB</p>
+					<p className="text-white text-3xl text-center w-full justify-self-end">
+						WELCOME TO THE SUIT LAB
+					</p>
 				</div>
 
 				<div className="flex flex-col w-11/12 bg-white px-5 py-3 lg:py-10 drop-shadow-2xl rounded-3xl h-fit">
@@ -59,7 +70,10 @@ const Login = () => {
 						Login
 					</h1>
 
-					<form className="flex flex-col align-center justify-center md:px-5 lg:px-10 pl-2 pr-2 mt-4" onSubmit={handleSubmit}>
+					<form
+						className="flex flex-col align-center justify-center md:px-5 lg:px-10 pl-2 pr-2 mt-4"
+						onSubmit={handleSubmit}
+					>
 						{/* <div className="font-semibold text-sm lg:text-base text-red-600 text-center mb-1 md:mb-3">
               Account does not exist or Password is incorrect
             </div> */}
@@ -70,7 +84,9 @@ const Login = () => {
 							id="email"
 							name="email"
 							onChange={handleInputChange}
-							onFocus={() => { dispatch(setError(null)) }}
+							onFocus={() => {
+								dispatch(setError(null));
+							}}
 							placeholder="Email"
 							type="email"
 							value={loginCredentials.email}
@@ -126,7 +142,7 @@ const Login = () => {
 					</form>
 				</div>
 			</div>
-		</div >
+		</div>
 	);
 };
 
