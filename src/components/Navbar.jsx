@@ -7,16 +7,11 @@ import { NavLink, useNavigate } from "react-router-dom";
 import TSL_LOGO from "../assets/images/TSL_LOGO.png";
 import TSL_LOGO_SM from "../assets/images/TSL_LOGO_SM.png";
 import AVATAR from "../assets/images/avatar.png";
-import {
-	ADMIN,
-	CUSTOMER,
-	OPERATION_ASSISTANT,
-	PRODUCT_MANAGER,
-	TAILOR,
-} from "../constants";
+import { CUSTOMER } from "../constants";
 import { selectUser } from "../store/slices/authSlice";
 import { logout } from "../store/slices/authSlice";
 import { toggleSidebar } from "../store/slices/sidebarSlice";
+import displayRoleName from "../utils/displayRoleName";
 
 const Navbar = () => {
 	const navigate = useNavigate();
@@ -24,21 +19,6 @@ const Navbar = () => {
 	const [isUserDropdownOpen, setUserDropdownOpen] = useState(false);
 
 	const user = useSelector(selectUser);
-
-	const displayRoleName = (role) => {
-		switch (role) {
-			case ADMIN:
-				return "Admin";
-			case OPERATION_ASSISTANT:
-				return "Operation Assistant";
-			case PRODUCT_MANAGER:
-				return "Product Manager";
-			case TAILOR:
-				return "Tailoring Supervisor";
-			default:
-				return "";
-		}
-	};
 
 	// handle login click
 	const handleLoginClick = () => {

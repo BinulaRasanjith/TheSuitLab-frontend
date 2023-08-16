@@ -127,4 +127,5 @@ export const selectAuthStatus = (state) => state.auth.status;
 export const selectAuthError = (state) => state.auth.error;
 
 export const { logout, setError, setUser, setStatus } = authSlice.actions;
+
 export default authSlice.reducer;

@@ -1,7 +1,7 @@
 import { Button } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import loginImage from "../assets/images/LoginBackground.png";
 import TSL_LOGO_SM from "../assets/images/TSL_LOGO_SM.png";
@@ -136,7 +136,12 @@ const Login = () => {
 							</Button>
 							<div className="flex flex-col lg:flex-row justify-center align-center text-center float-left">
 								<div className="text-stone-500 md:mr-2">New Here?</div>
-								<div className="text-black">Create New Account</div>
+								<Link
+									to="/signup"
+									className="text-black hover:underline hover:text-primary"
+								>
+									Create New Account
+								</Link>
 							</div>
 						</div>
 					</form>
