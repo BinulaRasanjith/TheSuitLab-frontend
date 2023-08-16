@@ -10,7 +10,7 @@ import Buttons from "../pages/Manager/Buttons"
 import Suppliers from "../pages/Manager/Suppliers"
 import AddSupplier from "../pages/Manager/AddSupplier"
 import Payments from "../pages/Manager/Payments"
-import test from "../pages/Manager/Test1"
+
 
 
 const managerRoutes = {
@@ -35,7 +35,7 @@ const managerRoutes = {
         { path: "customer", element: <Customers /> },
         { path: "profile", element: <Profile /> },
         { path: "reviews", element: <div>Reviews</div> },
-        { path: "test", element: <test /> },
+
     ],
 }
 
