@@ -3,6 +3,8 @@ import Costume1 from '../../assets/images/costume1.jpeg'
 import { addUser } from "../../api/userAPI"
 import React, { useState } from "react"
 import { PRODUCT_MANAGER, TAILOR, OPERATION_ASSISTANT } from "../../constants"
+import Dropzone from 'react-dropzone'
+
 
 const AddEmployee = () => {
 
@@ -12,29 +14,43 @@ const AddEmployee = () => {
     const [mobileNumber, setMobileNumber] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [image, setImage] = useState(null); // New state for the uploaded image
+
 
     const handleAddUserClick = async (e) => {
 
         e.preventDefault()
 
-        const user = {
-            mobileNo: mobileNumber,
-            firstName: firstName,
-            lastName: lastName,
-            role: role,
-            email: email,
-            password: password
-        }
+        // const user = {
+        //     mobileNo: mobileNumber,
+        //     firstName: firstName,
+        //     lastName: lastName,
+        //     role: role,
+        //     email: email,
+        //     password: password,
+        //     image: image
+        // }
+
+        const user = new FormData();
+        user.append("mobileNo", mobileNumber);
+        user.append("firstName", firstName);
+        user.append("lastName", lastName);
+        user.append("role", role);
+        user.append("email", email);
+        user.append("password", password);
+        user.append("image", image);
 
         try {
             const response = await addUser(user);
-            console.log(response.data);
-            alert(response);
+            console.log(response);
+            // alert(response);
         } catch (error) {
             console.error(error);
         }
 
     }
+
+
 
     return (
         <>
@@ -47,7 +63,25 @@ const AddEmployee = () => {
                     <form onSubmit={handleAddUserClick}>
                         <div className="flex flex-row mt-8 gap-24">
                             <div className="flex flex-col">
-                                <img className="w-52 h-52 object-cover mb-1 rounded-full shadow-lg" src={Costume1} alt="image" />
+
+                                <Dropzone
+                                    onDrop={acceptedFiles => {
+                                        // Handle the uploaded file here
+                                        setImage(acceptedFiles[0]);
+                                        console.log(acceptedFiles);
+                                    }}
+                                    accept="image/*"
+                                >
+                                    {({ getRootProps, getInputProps }) => (
+                                        <div {...getRootProps()} className="w-52 h-52 object-cover mb-1 rounded-full shadow-lg dropzone">
+                                            <input {...getInputProps()} />
+                                            {image && (
+                                                <img className="w-52 h-52 object-cover mb-1 rounded-full shadow-lg" src={URL.createObjectURL(image)} alt="uploaded" />
+                                            )}
+                                        </div>
+                                    )}
+                                </Dropzone>
+
                             </div>
                             <div className="flex flex-col gap-3 w-96">
                                 <div className="flex flex-row justify-between">
@@ -111,9 +145,7 @@ const AddEmployee = () => {
                                         SAVE
                                     </Button>
                                 </div>
-
                             </div >
-
                         </div>
                     </form>
                 </div>

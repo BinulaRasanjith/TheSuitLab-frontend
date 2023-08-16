@@ -1,6 +1,6 @@
 import { BiSolidBookReader } from "react-icons/bi"
 import { HiUserGroup, HiChartBar, HiShoppingCart, HiCreditCard } from "react-icons/hi"
-import { HiHandThumbUp,HiUserCircle } from "react-icons/hi2";
+import { HiHandThumbUp, HiUserCircle } from "react-icons/hi2";
 import { IoMdBowtie } from "react-icons/io"
 import { Outlet } from "react-router-dom"
 
@@ -35,7 +35,7 @@ const sidebarItems = [
     {
         label: 'Orders',
         icon: <HiShoppingCart />,
-        to: '/manager/orders',   
+        to: '/manager/orders',
     },
     {
         label: 'Suppliers',
@@ -61,6 +61,11 @@ const sidebarItems = [
         label: 'Profile',
         icon: <HiUserCircle />,
         to: '/manager/profile',
+    },
+    {
+        label: 'Image',
+        icon: <HiUserCircle />,
+        to: '/manager/test',
     },
 ]
 

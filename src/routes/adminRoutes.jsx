@@ -4,6 +4,7 @@ import AdminDashboard from "../pages/Admin/Dashboard"
 import Employees from "../pages/Admin/Employees"
 import Orders from "../pages/Admin/Orders"
 import Profile from "../pages/Admin/Profile"
+// import test2 from "../pages/Admin/test2"
 
 const adminRoutes = {
     path: "/admin",
@@ -15,6 +16,8 @@ const adminRoutes = {
         { path: "orders", element: <Orders /> },
         { path: "profile", element: <Profile /> },
         { path: "reviews", element: <div>Reviews</div> },
+        // { path: "test", element: <test2 /> },
+
     ],
 }
 

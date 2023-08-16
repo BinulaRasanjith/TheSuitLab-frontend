@@ -10,6 +10,7 @@ import Buttons from "../pages/Manager/Buttons"
 import Suppliers from "../pages/Manager/Suppliers"
 import AddSupplier from "../pages/Manager/AddSupplier"
 import Payments from "../pages/Manager/Payments"
+import test from "../pages/Manager/Test1"
 
 
 const managerRoutes = {
@@ -17,23 +18,24 @@ const managerRoutes = {
     element: <ManagerMainLayout />,
     children: [
         { path: "", element: <ManagerDashboard /> },
-        { 
-            path: "materials", 
+        {
+            path: "materials",
             element: <MaterialsLayout />,
             children: [
                 { path: "fabric", element: <Fabrics /> },
                 { path: "string", element: <div>String</div> },
                 { path: "buttons", element: <Buttons /> },
                 { path: "colors", element: <div>Color contrast</div> },
-            ]    
-        },  
+            ]
+        },
         { path: "orders", element: <Orders /> },
         { path: "payments", element: < Payments /> },
         { path: "suppliers", element: < Suppliers /> },
         { path: "add-supplier", element: < AddSupplier /> },
-        { path: "customer", element: <Customers />},
-        { path: "profile", element: <Profile /> },  
-        { path: "reviews", element: <div>Reviews</div>  }, 
+        { path: "customer", element: <Customers /> },
+        { path: "profile", element: <Profile /> },
+        { path: "reviews", element: <div>Reviews</div> },
+        { path: "test", element: <test /> },
     ],
 }
 
