@@ -24,9 +24,7 @@ import Container from './Container'
 
 const Materials_ViewAll = () => {
 
-  const {
-    setMaterial
-  } = useCustomization();
+  const { setMaterial } = useCustomization();
 
 
 
@@ -41,16 +39,16 @@ const Materials_ViewAll = () => {
       <button><img alt="" className='h-20 w-24' src={dark_blue_2} /></button>
       <button><img alt="" className='h-20 w-24' src={dark_chocolate_1} /></button>
       <button><img alt="" className='h-20 w-24' src={brown_texture_2} /></button>
-      <button onClick={() => setMaterial("grey_texture")}><img alt="" className='h-20 w-24' src={grey_texture_1} /></button>
+      <button onClick={() => setMaterial("grey")}><img alt="" className='h-20 w-24' src={grey_texture_1} /></button>
       <button><img alt="" className='h-20 w-24' src={gray_texture_2} /></button>
       <button><img alt="" className='h-20 w-24' src={midnight_gray_1} /></button>
       <button><img alt="" className='h-20 w-24' src={navy_suit_1} /></button>
       <button><img alt="" className='h-20 w-24' src={wool_navy_1} /></button>
       <button><img alt="" className='h-20 w-24' src={brown_suit_1} /></button>
       <button><img alt="" className='h-20 w-24' src={purple_texture_1} /></button>
-      <button><img alt="" className='h-20 w-24' src={light_khaki_texture_1} /></button>
-      <button><img alt="" className='h-20 w-24' src={light_olive_1} /></button>
-      <button><img alt="" className='h-20 w-24' src={khaki_texture_1} /></button>
+      <button onClick={() => setMaterial("Fabric_Burlap_003_SD")}><img alt="" className='h-20 w-24' src={light_khaki_texture_1} /></button>
+      <button onClick={() => setMaterial("Fabric_polyester_001_SD")}><img alt="" className='h-20 w-24' src={light_olive_1} /></button>
+      <button onClick={() => setMaterial("Fabric_011_SD")}><img alt="" className='h-20 w-24' src={khaki_texture_1} /></button>
       <button><img alt="" className='h-20 w-24' src={green_texture_1} /></button>
       <button><img alt="" className='h-20 w-24' src={dark_khaki_texture_1} /></button>
 

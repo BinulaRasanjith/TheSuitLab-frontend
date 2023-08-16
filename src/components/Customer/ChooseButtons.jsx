@@ -7,21 +7,24 @@ import fourDTwo from "../../assets/images/button_styles/4D2.png"
 import sixDOne from "../../assets/images/button_styles/6D1.png"
 import sixDTwo from "../../assets/images/button_styles/6D2.png"
 import sixDThree from "../../assets/images/button_styles/6D3.png"
+import { useCustomization } from "../../contexts/Controller";
 
 const ChooseButtons = () => {
+
+    const { setButton, setTwo, setThree, setFour } = useCustomization();
     return (
         <div className="flex my-5 flex-col px-3">
             <span className="p-5 text-2xl font-bold">Choose Your Buttons</span>
             <div className="grid grid-cols-3 gap-x-8 ">
-                <div className="flex flex-col p-3 items-center">
+                <div onClick={() => setButton(1)} className="flex flex-col p-3 items-center">
                     <img alt="" className="pb-3" src={oneButton} />
                     <label className="text-sm">1 BUTTON,SINGLE <br />BREASTED</label>
                 </div>
-                <div className="flex flex-col p-3 items-center">
+                <div onClick={() => { setButton(2), setTwo(true) }} className="flex flex-col p-3 items-center">
                     <img alt="" className="pb-3" src={twoButton} />
                     <label className="text-sm">2 BUTTONS,SINGLE <br />BREASTED</label>
                 </div>
-                <div className="flex flex-col p-3 items-center">
+                <div onClick={() => { setButton(3), setThree(true) }} className="flex flex-col p-3 items-center">
                     <img alt="" className="pb-3" src={threeButton} />
                     <label className="text-sm">3 BUTTONS,SINGLE <br />BREASTED</label>
                 </div>
@@ -33,7 +36,7 @@ const ChooseButtons = () => {
                     <img alt="" className="pb-3" src={fourDOne} />
                     <label className="text-sm">4 BUTTONs,DOUBLE <br />BREASTED (1 TO)</label>
                 </div>
-                <div className="flex flex-col p-3 items-center">
+                <div onClick={() => { setButton(4), setThree(false) }} className="flex flex-col p-3 items-center">
                     <img alt="" className="pb-3" src={fourDTwo} />
                     <label className="text-sm">4 BUTTONs,DOUBLE <br />BREASTED (2 TO)</label>
                 </div>

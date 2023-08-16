@@ -7,6 +7,7 @@ import { Outlet } from "react-router-dom"
 
 import MainLayout from "../../components/MainLayout"
 import Navbar from "../../components/Navbar"
+import { CustomizationProvider } from "../../contexts/Controller";
 // import Sidebar from "../../components/Sidebar/Sidebar"
 
 // const sidebarItems = [
@@ -81,10 +82,12 @@ import Navbar from "../../components/Navbar"
 const CustomerMainLayout = () => {
     return (
         <>
-            <Navbar />
-            <MainLayout>
-                <Outlet />
-            </MainLayout>
+            <CustomizationProvider>
+                <Navbar />
+                <MainLayout>
+                    <Outlet />
+                </MainLayout>
+            </CustomizationProvider>
         </>
     );
 }

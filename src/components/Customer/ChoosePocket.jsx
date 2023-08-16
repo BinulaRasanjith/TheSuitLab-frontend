@@ -5,15 +5,18 @@ import PKFour from '../../assets/images/pocket_styles/PK-4 1.png'
 import PKFive from '../../assets/images/pocket_styles/PK-5 1.png'
 import PKSix from '../../assets/images/pocket_styles/PK-6 1.png'
 import PKSeven from '../../assets/images/pocket_styles/PK-7 1.png'
+import { useCustomization } from "../../contexts/Controller";
 // 
 
 const ChoosePocket = () => {
+
+    const { setPocketFlaps } = useCustomization();
     return (
         <div className='flex flex-col gap-10 my-5 px-3'>
             <div>
                 <span className='ml-5 text-xl sm:text-2xl font-bold'>Choose Your Pocket</span>
                 <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-5'>
-                    <div className='flex p-2 flex-col justify-center items-center'>
+                    <div onClick={() => setPocketFlaps(false)} className='flex p-2 flex-col justify-center items-center'>
                         <img alt="" className="pb-2" src={PKOne} />
                         <label className="text-sm">2 STRAIGHT <br /> POCKETS</label>
                     </div>
@@ -29,7 +32,7 @@ const ChoosePocket = () => {
                         <img alt="" className="pb-2" src={PKFour} />
                         <label className="text-sm">2 SLANTED POCKETS & <br />1 TICKET POCKET </label>
                     </div>
-                    <div className='flex p-2 flex-col justify-center items-center'>
+                    <div onClick={() => setPocketFlaps(true)} className='flex p-2 flex-col justify-center items-center'>
                         <img alt="" className="pb-2" src={PKFive} />
                         <label className="text-sm">2 STRAIGHT POCKETS<br />(NO FLAPS)</label>
                     </div>
