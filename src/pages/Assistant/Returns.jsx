@@ -1,4 +1,5 @@
 import { Button } from '@chakra-ui/react';
+import { useState } from "react";
 
 import DropDownFilter from '../../components/Assistant/HeaderDropDown';
 import SearchBox from '../../components/Assistant/HeaderSearchBox';
@@ -7,6 +8,17 @@ import Pagination from '../../components/Assistant/Pagination'
 import Returnset from '../../components/Assistant/ReturnedItems';
 
 const Returns = () => {
+
+
+    const [isNewReturnForm, addNewReturn] = useState(false);
+    const handleFormClose = () => {
+        addNewReturn(false); // Set isNewReturnForm to false to close the form
+    };
+
+    const handleFormOpen = () => {
+        addNewReturn(true); // Set isNewReturnForm to false to close the form
+    };
+
     return (
         <div className='relative'>
             <div className=" flex flex-col justify-between mx-10 my-8 p-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg">
@@ -37,7 +49,8 @@ const Returns = () => {
                 </div>
                 <div><Returnset /></div>
                 <div className=" flex my-4 justify-center">
-                    <Button colorScheme='gray' size='md'>New Inquery</Button>
+                    <Button colorScheme='gray' onClick={handleFormOpen} size='md'>New Inquery</Button>
+                    {/* <Button colorScheme='gray' onClick={() => addNewReturn(!isNewReturnForm)} size='md'>New Inquery</Button> */}
                 </div>
                 <div className=" flex justify-between">
                     <div className=" py-3 text-sm font-medium text-neutral-400">Showing data 1 to 8 of 256K entries</div>
@@ -47,7 +60,12 @@ const Returns = () => {
                 </div>
             </div>
 
-            <NewReturnForm />
+            <div className={`relative  ${isNewReturnForm ? 'block' : 'hidden'}`}>
+                <NewReturnForm isOpen={isNewReturnForm} onClose={handleFormClose} />
+            </div>
+            {/* <div className={`relative  ${isNewReturnForm ? 'block' : 'hidden'}`}><NewReturnForm onClose={handleFormClose} /></div> */}
+
+
 
 
             {/* <div className=" flex justify-center w-full">

@@ -1,15 +1,20 @@
+// import { useState } from "react";
+import PropTypes from "prop-types";
 import { AiFillCloseCircle } from "react-icons/ai"
 
-const NewReturnForm = () => {
+
+const NewReturnForm = ({ isOpen, onClose }) => {
 
     return (
-        <div className="relative">
+        <div className={`relative  ${isOpen ? 'block' : 'hidden'}`}>
+            {/* <div className={`relative  ${isOpen ? 'block' : 'hidden'}`} onClick={onClose}> */}
+            {/* <div className="relative"> */}
 
             <div className="fixed left-0 right-0 bottom-0 top-0 z-40 opacity-30 bg-black"></div>
 
             <div className="fixed top-16 bottom-0 right-0 left-0 z-40 flex flex-col items-center justify-center">
                 <div className=" z-50 m-8 max-w-md w-96 rounded-lg bg-white p-8 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
-                    <div className="relative flex justify-end mb-3"><AiFillCloseCircle size={24} /></div>
+                    <div className="relative flex justify-end mb-3" onClick={onClose}><AiFillCloseCircle size={24} /></div>
                     <form>
                         {/* <!--Name input--> */}
                         <div className="relative mb-6" data-te-input-wrapper-init>
@@ -28,10 +33,10 @@ const NewReturnForm = () => {
                         {/* <!--Email input--> */}
                         <div className="relative mb-6" data-te-input-wrapper-init>
                             <input
-                                type="email"
+                                type="number"
                                 className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-non placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                                 id="exampleInput8"
-                                placeholder="Email address" />
+                                placeholder="Item count" />
                             <label
                                 htmlFor="exampleInput8"
                                 className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-400 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none"
@@ -84,6 +89,11 @@ const NewReturnForm = () => {
 
         </div>
     );
+};
+
+NewReturnForm.propTypes = {
+    onClose: PropTypes.func.isRequired,
+    isOpen: PropTypes.bool.isRequired,
 };
 
 export default NewReturnForm;
