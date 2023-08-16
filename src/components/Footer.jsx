@@ -4,18 +4,19 @@ import visa from '../assets/images/visa.png'
 
 const Footer = () => {
     return (
-        <div className='bg-black'>
+
+        <div className='flex flex-col justify-between bg-black h-96 p-10'>
             <div className='flex flex-col md:flex-row md:justify-between gap-10 md:gap-0 py-8'>
-                <div className='md:pl-20 pl-5'>
+                <div className=' flex flex-col gap-4'>
                     <div><img className='h-20 w-60' src={TSL_LOGO} alt="TSL_LOGO" /></div>
-                    <div className='text-white max-w-xl m-auto'>Hercules Tailors, the pioneer-tailoring mart which is located at No: 241,
-                        Horana Road, Kohuwala, is one of the first few tailors in Sri Lanka to offer
+                    <div className='text-white max-w-xl m-auto'>The Suit Lab, the pioneer-tailoring mart which is located at No 296,
+                        W. A. Weerasinghe Mawatha, Colombo 10, Sri Lanka is one of the first few tailors in Sri Lanka to offer
                         custom-tailored suits and shirts and trousers.
                     </div>
                 </div>
                 <div className='flex flex-col md:flex-row md:justify-between md:gap-40 gap-10 md:pr-20 pl-5 pr-5'>
                     <div>
-                        <h3 className='text-white text-2xl pb-3'>Shop</h3>
+                        <h3 className='text-white text-2xl font-bold pb-3'>Shop</h3>
                         <ul>
                             <li className='text-white'>Suits</li>
                             <li className='text-white'>Shirts</li>
@@ -25,7 +26,7 @@ const Footer = () => {
                         </ul>
                     </div>
                     <div>
-                        <h3 className='text-white text-2xl pb-3'>Customer Care</h3>
+                        <h3 className='text-white text-2xl font-bold pb-3'>Customer Care</h3>
                         <ul>
                             <li className='text-white'>About us</li>
                             <li className='text-white'>FAQ</li>
@@ -35,12 +36,11 @@ const Footer = () => {
                 </div>
 
             </div>
-            <div className='flex flex-col md:flex-row items-center justify-center gap-5 md:gap-80 pb-10 px-10'>
+            <div className='flex flex-col md:flex-row items-center justify-between gap-5 md:gap-80'>
                 <div className='text-white'>© 2023 The Suit Lab. All rights reserved.</div>
-                <div className='flex'>
+                <div className='flex gap-5 h-8'>
                     <img src={mastercard} alt="mastercard" />
                     <img src={visa} alt="visa" />
-
                 </div>
 
             </div>

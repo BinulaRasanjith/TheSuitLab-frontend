@@ -9,8 +9,8 @@ import { Outlet, useNavigate } from "react-router-dom";
 
 import MainLayout from "../../components/MainLayout"
 import Navbar from "../../components/Navbar"
-import { CustomizationProvider } from "../../contexts/Controller";
 import { CUSTOMER } from "../../constants";
+import { CustomizationProvider } from "../../contexts/Controller";
 import { selectUser } from "../../store/slices/authSlice";
 // import Sidebar from "../../components/Sidebar/Sidebar"
 

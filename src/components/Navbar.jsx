@@ -92,12 +92,12 @@ const Navbar = () => {
 					<div className="flex align-center h-14 overflow-hidden">
 						<img
 							alt="TSL_LOGO"
-							className={"h-full object-cover  hidden md:block"}
+							className={"h-14 object-cover  hidden md:block"}
 							src={TSL_LOGO}
 						/>
 						<img
 							alt="Only_logo"
-							className={"h-full object-cover block md:hidden"}
+							className={"h-14 object-cover block md:hidden"}
 							src={TSL_LOGO_SM}
 						/>
 					</div>
@@ -120,9 +120,8 @@ const Navbar = () => {
 									className={({ isActive }) => {
 										return `px-3 py-1 ${isActive ? "font-bold" : ""}`;
 									}}
-									to={`${
-										user.role === CUSTOMER ? "/customer/services" : "/services"
-									}`}
+									to={`${user.role === CUSTOMER ? "/customer/services" : "/services"
+										}`}
 								>
 									Services
 								</NavLink>
@@ -130,9 +129,8 @@ const Navbar = () => {
 									className={({ isActive }) => {
 										return `px-3 py-1 ${isActive ? "font-bold" : ""}`;
 									}}
-									to={`${
-										user.role === CUSTOMER ? "/customer/about-us" : "/about-us"
-									}`}
+									to={`${user.role === CUSTOMER ? "/customer/about-us" : "/about-us"
+										}`}
 								>
 									About Us
 								</NavLink>
@@ -140,11 +138,10 @@ const Navbar = () => {
 									className={({ isActive }) => {
 										return `px-3 py-1 ${isActive ? "font-bold" : ""}`;
 									}}
-									to={`${
-										user.role === CUSTOMER
-											? "/customer/contact-us"
-											: "contact-us"
-									}`}
+									to={`${user.role === CUSTOMER
+										? "/customer/contact-us"
+										: "contact-us"
+										}`}
 								>
 									Contact Us
 								</NavLink>
@@ -182,9 +179,8 @@ const Navbar = () => {
 								{/*  Dropdown menu  */}
 								<div
 									id="userDropdown"
-									className={`z-10 fixed ${
-										isUserDropdownOpen ? "block" : "hidden"
-									} bg-white divide-y divide-gray-300 border border-gray-300 rounded-lg shadow w-44 top-20 right-2`}
+									className={`z-10 fixed ${isUserDropdownOpen ? "block" : "hidden"
+										} bg-white divide-y divide-gray-300 border border-gray-300 rounded-lg shadow w-44 top-20 right-2`}
 								>
 									<div className="px-4 py-3 text-sm text-gray-900">
 										<div>{`${user.firstName} ${user.lastName}`}</div>
@@ -302,9 +298,8 @@ const Navbar = () => {
 				<ul className="flex flex-col items-center p-2 text-sm text-gray-700 dark:text-gray-200">
 					<NavLink
 						className={({ isActive }) => {
-							return `px-3 py-1 ${
-								isActive ? "border-2 rounded-md border-cyan-500" : ""
-							}`;
+							return `px-3 py-1 ${isActive ? "border-2 rounded-md border-cyan-500" : ""
+								}`;
 						}}
 						to="/"
 					>
@@ -312,9 +307,8 @@ const Navbar = () => {
 					</NavLink>
 					<NavLink
 						className={({ isActive }) => {
-							return `px-3 py-1 ${
-								isActive ? "border-2 rounded-md border-cyan-500" : ""
-							}`;
+							return `px-3 py-1 ${isActive ? "border-2 rounded-md border-cyan-500" : ""
+								}`;
 						}}
 						to="/services"
 					>
@@ -322,9 +316,8 @@ const Navbar = () => {
 					</NavLink>
 					<NavLink
 						className={({ isActive }) => {
-							return `px-3 py-1 ${
-								isActive ? "border-2 rounded-md border-cyan-500" : ""
-							}`;
+							return `px-3 py-1 ${isActive ? "border-2 rounded-md border-cyan-500" : ""
+								}`;
 						}}
 						to="/about-us"
 					>
@@ -332,9 +325,8 @@ const Navbar = () => {
 					</NavLink>
 					<NavLink
 						className={({ isActive }) => {
-							return `px-3 py-1 ${
-								isActive ? "border-2 rounded-md border-cyan-500" : ""
-							}`;
+							return `px-3 py-1 ${isActive ? "border-2 rounded-md border-cyan-500" : ""
+								}`;
 						}}
 						to="/contact-us"
 					>
