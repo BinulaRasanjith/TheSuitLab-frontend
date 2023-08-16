@@ -39,7 +39,7 @@ const Navbar = () => {
 
 	return (
 		<>
-			<header className="flex justify-between items-center bg-primary fixed h-16 w-screen z-40">
+			<header className="flex justify-between items-center bg-primary fixed h-16 w-screen z-40 " >
 				{
 					// responsive burger button for landing page
 					(!user.id || user.role === CUSTOMER) && (
@@ -127,7 +127,7 @@ const Navbar = () => {
 					{user.id ? (
 						<>
 							<div className='flex items-center gap-3 relative'>
-								<div className='flex flex-col'>
+								<div className='flex flex-col cursor-pointer' onClick={() => setUserDropdownOpen(!isUserDropdownOpen)}>
 									<div className='text-white text-end'>Bhanuka Rajakaruna</div>
 									<div className='text-gray-400 text-xs text-end'>Operation Assistant</div>
 								</div>
@@ -141,14 +141,24 @@ const Navbar = () => {
 									</div>
 									<ul className="py-2 text-sm text-gray-700" aria-labelledby="avatarButton">
 										<li>
-											<a href="#" className="block px-4 py-2 hover:bg-gray-100 ">Dashboard</a>
+											<NavLink
+												className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 "
+												onClick={() => setUserDropdownOpen(!isUserDropdownOpen)}
+												to="/assistant/">
+												Dashboard
+											</NavLink>
 										</li>
 										<li>
-											<a href="#" className="block px-4 py-2 hover:bg-gray-100 ">Profile</a>
+											<NavLink
+												className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 "
+												onClick={() => setUserDropdownOpen(!isUserDropdownOpen)}
+												to="/assistant/profile">
+												Profile
+											</NavLink>
 										</li>
 									</ul>
 									<div className="py-1" onClick={handleLogoutClick}>
-										<a href="#" className="block px-4 py-2 text-sm text-gray-700 ">Log Out</a>
+										<div onClick={() => setUserDropdownOpen(!isUserDropdownOpen)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer ">Log Out</div>
 									</div>
 								</div>
 							</div>
