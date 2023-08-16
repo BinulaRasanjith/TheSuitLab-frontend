@@ -1,13 +1,14 @@
-import CardContainer from "../../components/EmployeeCard/CardContainer"
-import EmployeeCard from "../../components/EmployeeCard/EmployeeCard"
-import Costume5 from '../../assets/images/costume5.jpeg'
+import { Button } from "@chakra-ui/react"
+import { AiFillPlusCircle } from 'react-icons/ai'
+import { useNavigate } from "react-router"
+
 import Costume1 from '../../assets/images/costume1.jpeg'
 import Costume2 from '../../assets/images/costume2.jpeg'
 import Costume3 from '../../assets/images/costume3.jpeg'
 import Costume4 from '../../assets/images/costume4.jpeg'
-import { AiFillPlusCircle } from 'react-icons/ai'
-import { Button } from "@chakra-ui/react"
-import { useNavigate } from "react-router"
+import Costume5 from '../../assets/images/costume5.jpeg'
+import CardContainer from "../../components/EmployeeCard/CardContainer"
+import EmployeeCard from "../../components/EmployeeCard/EmployeeCard"
 
 const employees = [
     {
