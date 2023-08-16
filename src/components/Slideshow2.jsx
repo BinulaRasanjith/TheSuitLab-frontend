@@ -76,7 +76,7 @@ const Slideshow2 = () => {
             </div>
             <div className='flex flex-col absolute top-[30%] left-[10%]'>
                 <p className='text-4xl text-white font-bold pb-3'>Lookbook</p>
-                <p className='text-white pb-3'>This guide is meant to help you get<br></br> your finances organized and make the<br></br> most out of your student budget. If <br></br> you’re like most students at UCSB, you <br></br>probably...</p>
+                <p className='text-white pb-3'>Step into a world of refined style and unparalleled<br></br> craftsmanship with our Suit Tailorshop Lookbook.<br></br> Discover the artistry behind every suit, where fabric<br></br> Discover the artistry behind every suit, where<br></br> fabric meets precision to create masterpieces that<br></br> embody sophistication and confidence.</p>
                 <button onClick={() => navigate('/customer/lookbook')} className="text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-3xl text-sm px-5 py-3 text-center inline-flex items-center dark:focus:ring-gray-500 mb-2 w-32 justify-center" type="button">
                     Visit
                 </button>

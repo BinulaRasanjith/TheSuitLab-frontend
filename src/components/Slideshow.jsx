@@ -53,8 +53,8 @@ const Slideshow = () => {
 
 
   return (
-    <div className='max-w-[1580px] h-[500px] w-full m-auto relative group flex items-center justify-center'>
-      <div className='w-full h-full bg-center bg-cover duration-500' style={{ backgroundImage: `url(${slides[current].url})` }}></div>
+    <div className='max-w-[1580px] h-screen w-full m-auto relative group flex items-center justify-center'>
+      <div className='w-full h-screen bg-center bg-cover duration-500' style={{ backgroundImage: `url(${slides[current].url})` }}></div>
 
       {/* left Arrow */}
       <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
