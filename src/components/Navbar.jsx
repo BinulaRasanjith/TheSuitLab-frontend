@@ -194,15 +194,19 @@ const Navbar = () => {
 										className="py-2 text-sm text-gray-700"
 										aria-labelledby="avatarButton"
 									>
-										<li>
-											<NavLink
-												className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 "
-												onClick={() => setUserDropdownOpen(!isUserDropdownOpen)}
-												to="/assistant/"
-											>
-												Dashboard
-											</NavLink>
-										</li>
+										{user.role !== CUSTOMER && (
+											<li>
+												<NavLink
+													className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 "
+													onClick={() =>
+														setUserDropdownOpen(!isUserDropdownOpen)
+													}
+													to={`/${user.role}}`}
+												>
+													Dashboard
+												</NavLink>
+											</li>
+										)}
 										<li>
 											<NavLink
 												className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 "
