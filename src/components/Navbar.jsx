@@ -6,8 +6,14 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 import TSL_LOGO from "../assets/images/TSL_LOGO.png";
 import TSL_LOGO_SM from "../assets/images/TSL_LOGO_SM.png";
-import AVATAR from '../assets/images/avatar.png'
-import { CUSTOMER } from "../constants";
+import AVATAR from "../assets/images/avatar.png";
+import {
+	ADMIN,
+	CUSTOMER,
+	OPERATION_ASSISTANT,
+	PRODUCT_MANAGER,
+	TAILOR,
+} from "../constants";
 import { selectUser } from "../store/slices/authSlice";
 import { logout } from "../store/slices/authSlice";
 import { toggleSidebar } from "../store/slices/sidebarSlice";
@@ -18,6 +24,21 @@ const Navbar = () => {
 	const [isUserDropdownOpen, setUserDropdownOpen] = useState(false);
 
 	const user = useSelector(selectUser);
+
+	const displayRoleName = (role) => {
+		switch (role) {
+			case ADMIN:
+				return "Admin";
+			case OPERATION_ASSISTANT:
+				return "Operation Assistant";
+			case PRODUCT_MANAGER:
+				return "Product Manager";
+			case TAILOR:
+				return "Tailoring Supervisor";
+			default:
+				return "";
+		}
+	};
 
 	// handle login click
 	const handleLoginClick = () => {
@@ -39,7 +60,7 @@ const Navbar = () => {
 
 	return (
 		<>
-			<header className="flex justify-between items-center bg-primary fixed h-16 w-screen z-40 " >
+			<header className="flex justify-between items-center bg-primary fixed h-16 w-screen z-40 ">
 				{
 					// responsive burger button for landing page
 					(!user.id || user.role === CUSTOMER) && (
@@ -126,25 +147,50 @@ const Navbar = () => {
 				<div className="flex items-center gap-x-3 mr-5">
 					{user.id ? (
 						<>
-							<div className='flex items-center gap-3 relative'>
-								<div className='flex flex-col cursor-pointer' onClick={() => setUserDropdownOpen(!isUserDropdownOpen)}>
-									<div className='text-white text-end'>Bhanuka Rajakaruna</div>
-									<div className={`${user.id || user.role === CUSTOMER ? '' : ''} text-gray-400 text-xs text-end`}>Operation Assistant</div>
+							<div className="flex items-center gap-3 relative">
+								<div
+									className="flex flex-col cursor-pointer"
+									onClick={() => setUserDropdownOpen(!isUserDropdownOpen)}
+								>
+									<div className="text-white text-end">{`${user.firstName} ${user.lastName}`}</div>
+									{user.id && user.role !== CUSTOMER && (
+										<div className={`text-gray-400 text-xs text-end`}>
+											{displayRoleName(user.role)}
+										</div>
+									)}
 								</div>
-								<img id="avatarButton" type="button" onClick={() => setUserDropdownOpen(!isUserDropdownOpen)} data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" className="w-10 h-10 rounded-full cursor-pointer" src={AVATAR} alt="User dropdown" />
+								<img
+									id="avatarButton"
+									type="button"
+									onClick={() => setUserDropdownOpen(!isUserDropdownOpen)}
+									data-dropdown-toggle="userDropdown"
+									data-dropdown-placement="bottom-start"
+									className="w-10 h-10 rounded-full cursor-pointer"
+									src={AVATAR}
+									alt="User dropdown"
+								/>
 
 								{/*  Dropdown menu  */}
-								<div id="userDropdown" className={`z-10 fixed ${isUserDropdownOpen ? 'block' : 'hidden'} bg-white divide-y divide-gray-300 border border-gray-300 rounded-lg shadow w-44 top-20 right-2`}>
+								<div
+									id="userDropdown"
+									className={`z-10 fixed ${
+										isUserDropdownOpen ? "block" : "hidden"
+									} bg-white divide-y divide-gray-300 border border-gray-300 rounded-lg shadow w-44 top-20 right-2`}
+								>
 									<div className="px-4 py-3 text-sm text-gray-900">
-										<div>Bhanuka Rajakaruna</div>
-										<div className=" font-medium truncate">bhanukayar@gmail.com</div>
+										<div>{`${user.firstName} ${user.lastName}`}</div>
+										<div className=" font-medium truncate">{user.email}</div>
 									</div>
-									<ul className="py-2 text-sm text-gray-700" aria-labelledby="avatarButton">
+									<ul
+										className="py-2 text-sm text-gray-700"
+										aria-labelledby="avatarButton"
+									>
 										<li>
 											<NavLink
 												className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 "
 												onClick={() => setUserDropdownOpen(!isUserDropdownOpen)}
-												to="/assistant/">
+												to="/assistant/"
+											>
 												Dashboard
 											</NavLink>
 										</li>
@@ -152,13 +198,19 @@ const Navbar = () => {
 											<NavLink
 												className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 "
 												onClick={() => setUserDropdownOpen(!isUserDropdownOpen)}
-												to="/assistant/profile">
+												to="/assistant/profile"
+											>
 												Profile
 											</NavLink>
 										</li>
 									</ul>
 									<div className="py-1" onClick={handleLogoutClick}>
-										<div onClick={() => setUserDropdownOpen(!isUserDropdownOpen)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer ">Log Out</div>
+										<div
+											onClick={() => setUserDropdownOpen(!isUserDropdownOpen)}
+											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer "
+										>
+											Log Out
+										</div>
 									</div>
 								</div>
 							</div>
@@ -237,8 +289,9 @@ const Navbar = () => {
 				<ul className="flex flex-col items-center p-2 text-sm text-gray-700 dark:text-gray-200">
 					<NavLink
 						className={({ isActive }) => {
-							return `px-3 py-1 ${isActive ? "border-2 rounded-md border-cyan-500" : ""
-								}`;
+							return `px-3 py-1 ${
+								isActive ? "border-2 rounded-md border-cyan-500" : ""
+							}`;
 						}}
 						to="/"
 					>
@@ -246,8 +299,9 @@ const Navbar = () => {
 					</NavLink>
 					<NavLink
 						className={({ isActive }) => {
-							return `px-3 py-1 ${isActive ? "border-2 rounded-md border-cyan-500" : ""
-								}`;
+							return `px-3 py-1 ${
+								isActive ? "border-2 rounded-md border-cyan-500" : ""
+							}`;
 						}}
 						to="/services"
 					>
@@ -255,8 +309,9 @@ const Navbar = () => {
 					</NavLink>
 					<NavLink
 						className={({ isActive }) => {
-							return `px-3 py-1 ${isActive ? "border-2 rounded-md border-cyan-500" : ""
-								}`;
+							return `px-3 py-1 ${
+								isActive ? "border-2 rounded-md border-cyan-500" : ""
+							}`;
 						}}
 						to="/about-us"
 					>
@@ -264,8 +319,9 @@ const Navbar = () => {
 					</NavLink>
 					<NavLink
 						className={({ isActive }) => {
-							return `px-3 py-1 ${isActive ? "border-2 rounded-md border-cyan-500" : ""
-								}`;
+							return `px-3 py-1 ${
+								isActive ? "border-2 rounded-md border-cyan-500" : ""
+							}`;
 						}}
 						to="/contact-us"
 					>

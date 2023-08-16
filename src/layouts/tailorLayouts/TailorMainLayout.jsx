@@ -8,7 +8,7 @@ import ContentWrapper from "../../components/ContentWrapper";
 import MainLayout from "../../components/MainLayout";
 import Navbar from "../../components/Navbar";
 import Sidebar from "../../components/Sidebar/Sidebar";
-import { ADMIN, TAILOR } from "../../constants";
+import { TAILOR } from "../../constants";
 import { selectUser } from "../../store/slices/authSlice";
 
 const sidebarItems = [
