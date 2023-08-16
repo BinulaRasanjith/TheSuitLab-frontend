@@ -7,16 +7,11 @@ import { useSelector } from "react-redux";
 // import { PiShirtFoldedFill } from "react-icons/pi"
 import { Outlet, useNavigate } from "react-router-dom";
 
-<<<<<<< HEAD
 import MainLayout from "../../components/MainLayout"
 import Navbar from "../../components/Navbar"
 import { CustomizationProvider } from "../../contexts/Controller";
-=======
-import MainLayout from "../../components/MainLayout";
-import Navbar from "../../components/Navbar";
 import { CUSTOMER } from "../../constants";
 import { selectUser } from "../../store/slices/authSlice";
->>>>>>> e3b171b6dc0b397c9a78e9b017cb88e837b3e7ac
 // import Sidebar from "../../components/Sidebar/Sidebar"
 
 // const sidebarItems = [
