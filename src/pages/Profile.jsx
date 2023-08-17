@@ -17,9 +17,9 @@ const Profile = () => {
 	const user = useSelector(selectUser);
 
 	const [profileDetails, setProfileDetails] = useState({
-		firstName: "",
-		lastName: "",
-		mobileNo: "",
+		firstName: user.firstName,
+		lastName: user.lastName,
+		mobileNo: user.mobileNo,
 	});
 
 	const [passwordCredentials, setPasswordCredentials] = useState({
@@ -35,6 +35,7 @@ const Profile = () => {
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;
 		setProfileDetails({ ...profileDetails, [name]: value });
+		setProfileError(false);
 	};
 
 	const handlePswInputChange = (e) => {
@@ -54,8 +55,11 @@ const Profile = () => {
 
 		try {
 			await updateProfile({ firstName, lastName, mobileNo });
-			await refreshToken();
-			setUserState();
+			const response = await refreshToken(); // refresh access token because user details are changed
+
+			localStorage.setItem("accessToken", response.data.accessToken); //	set access token in local storage
+			setUserState(); // set user state in redux store
+
 			setProfileError(false);
 			toast({
 				title: "Success",

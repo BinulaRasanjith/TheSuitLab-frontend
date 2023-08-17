@@ -13,6 +13,7 @@ const initialState = {
 		mobileNo: null,
 		email: null,
 		role: null,
+		image: null,
 	},
 	status: IDLE,
 	error: null,
@@ -118,6 +119,7 @@ export function setUserObject(user) {
 		mobileNo: user.mobileNo,
 		email: user.email,
 		role: user.role,
+		image: user.image,
 	}
 }
 
