@@ -6,7 +6,7 @@ const CustomizationContext = createContext({});
 
 export const CustomizationProvider = (props) => {
 
-	const [material, setMaterial] = useState("");
+	const [material, setMaterial] = useState("grey");
 	const [PocketFlaps, setPocketFlaps] = useState("false");
 
 	return (
