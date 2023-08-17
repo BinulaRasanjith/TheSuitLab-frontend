@@ -154,7 +154,7 @@ const Navbar = () => {
 									onClick={() => setUserDropdownOpen(!isUserDropdownOpen)}
 									data-dropdown-toggle="userDropdown"
 									data-dropdown-placement="bottom-start"
-									className="w-10 h-10 rounded-full cursor-pointer"
+									className="w-10 h-10 object-cover rounded-full cursor-pointer"
 									src={`${PROFILE_PICTURE_URL}/${user.image}`}
 									alt="User dropdown"
 								/>
@@ -164,9 +164,9 @@ const Navbar = () => {
 									id="userDropdown"
 									className={`z-10 fixed ${
 										isUserDropdownOpen ? "block" : "hidden"
-									} bg-white divide-y divide-gray-300 border border-gray-300 rounded-lg shadow w-44 top-20 right-2`}
+									} bg-primary divide-y divide-gray-300 border border-gray-300 rounded-lg shadow w-44 top-20 right-2`}
 								>
-									<div className="px-4 py-3 text-sm text-gray-900">
+									<div className="px-4 py-3 text-sm text-white">
 										<div>{`${user.firstName} ${user.lastName}`}</div>
 										<div className=" font-medium truncate">{user.email}</div>
 									</div>
@@ -177,7 +177,7 @@ const Navbar = () => {
 										{user.role !== CUSTOMER && (
 											<li>
 												<NavLink
-													className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 "
+													className="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-black"
 													onClick={() =>
 														setUserDropdownOpen(!isUserDropdownOpen)
 													}
@@ -189,7 +189,7 @@ const Navbar = () => {
 										)}
 										<li>
 											<NavLink
-												className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 "
+												className="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-black"
 												onClick={() => setUserDropdownOpen(!isUserDropdownOpen)}
 												to="/assistant/profile"
 											>
@@ -200,7 +200,7 @@ const Navbar = () => {
 									<div className="py-1" onClick={handleLogoutClick}>
 										<div
 											onClick={() => setUserDropdownOpen(!isUserDropdownOpen)}
-											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer "
+											className="block px-4 py-2 text-sm text-white hover:bg-gray-100 cursor-pointer hover:text-black"
 										>
 											Log Out
 										</div>
