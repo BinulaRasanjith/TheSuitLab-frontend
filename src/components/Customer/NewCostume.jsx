@@ -12,7 +12,7 @@ import { useCustomization } from "../../contexts/Controller";
 
 export function NewCostume(props) {
   const { nodes, materials } = useGLTF('/models/newCostume.gltf')
-  const { material, PocketFlaps, button, two } = useCustomization();
+  const { material, PocketFlaps } = useCustomization();
 
 
   const TextureProps = {
@@ -50,6 +50,38 @@ export function NewCostume(props) {
       roughnessMap: "/textures/Fabric_Burlap_003_SD/Fabric_Burlap_003_roughness.jpg",
       aoMap: "/textures/Fabric_Burlap_003_SD/Fabric_Burlap_003_ambientOcclusion.jpg",
     }),
+    "Fabric_Lace_004": useTexture({
+      map: "/textures/Fabric_Lace_004/Fabric_Lace_004_basecolor.jpg",
+      normalMap: "/textures/Fabric_Lace_004/Fabric_Lace_004_normal.jpg",
+      roughnessMap: "/textures/Fabric_Lace_004/Fabric_Lace_004_roughness.jpg",
+      aoMap: "/textures/Fabric_Lace_004/Fabric_Lace_004_ambientOcclusion.jpg",
+    }),
+    "Fabric_015": useTexture({
+      map: "/textures/Fabric_015/Fabric_015_COLOR.jpg",
+      normalMap: "/textures/Fabric_015/Fabric_015_NORM.jpg",
+      roughnessMap: "/textures/Fabric_Polyester_002_SD/Fabric_Polyester_002_roughness.jpg",
+      // roughnessMap: "/textures/Fabric_015/Fabric_015_ROUGH.jpg",
+      aoMap: "/textures/Fabric_015/Fabric_015_OCC.jpg",
+    }),
+    "Leather_Perforated_001": useTexture({
+      map: "/textures/Leather_Perforated_001/Leather_Perforated_001_basecolor.jpg",
+      normalMap: "/textures/Leather_Perforated_001/Leather_Perforated_001_normal.jpg",
+      roughnessMap: "/textures/Leather_Perforated_001/Leather_Perforated_001_roughness.jpg",
+      aoMap: "/textures/Leather_Perforated_001/Leather_Perforated_001_ambientOcclusion.jpg",
+    }),
+    "Fabric_019a": useTexture({
+      map: "/textures/Fabric_019a/Fabric_019a_Base_Color.jpg",
+      normalMap: "/textures/Fabric_019a/Fabric_019a_Normal.jpg",
+      roughnessMap: "/textures/Fabric_019a/Fabric_019a_Roughness.jpg",
+      aoMap: "/textures/Fabric_019a/Fabric_019a_ambientOcclusion.jpg",
+    }),
+    "Brown_001": useTexture({
+      map: "/textures/Brown_001/Leather_010_basecolor.jpg",
+      normalMap: "/textures/Brown_001/Fabric_011_NORM.jpg",
+      // roughnessMap: "/textures/Brown_001/Fabric_011_ROUGH.jpg",
+      roughnessMap: "/textures/Fabric_Polyester_002_SD/Fabric_Polyester_002_roughness.jpg",
+      aoMap: "/textures/Brown_001/Fabric_011_OCC.jpg",
+    }),
   }
 
   return (
@@ -66,21 +98,21 @@ export function NewCostume(props) {
       {/* <mesh geometry={nodes.Jacket_Button004.geometry} material={materials['Button.002']} position={[-1.101, 0.124, 0.012]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} /> */}
 
 
-      <mesh geometry={nodes.Jacket_Button005.geometry} material={materials['Button.002']} position={[-1.273, 0.883, -0.307]} rotation={[-0.741, 0.965, 1.754]} scale={0.025} visible >
-        <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
-
-      <mesh geometry={nodes.Jacket_Button006.geometry} material={materials['Button.002']} position={[0.000, -0.100, 0.006]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={button === 2 && two ? true : false}>
-        <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
-
-      {/* <mesh geometry={nodes.Jacket_Button006.geometry} material={materials['Button.002']} position={[0.000, -0.180, 0.006]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025}>
+      {/* <mesh geometry={nodes.Jacket_Button005.geometry} material={materials['Button.002']} position={[-1.273, 0.883, -0.307]} rotation={[-0.741, 0.965, 1.754]} scale={0.025} visible >
         <meshStandardMaterial {...TextureProps[material]} />
       </mesh> */}
 
-      <mesh geometry={nodes.Jacket_Button009.geometry} material={materials['Button.002']} position={[0.124, -0.111, 0.028]} rotation={[-1.579, -0.08, -0.739]} scale={0.025} >
+      <mesh geometry={nodes.Jacket_Button006.geometry} material={materials['Button.002']} position={[0.000, -0.100, 0.006]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025}>
         <meshStandardMaterial {...TextureProps[material]} />
       </mesh>
+
+      <mesh geometry={nodes.Jacket_Button006.geometry} material={materials['Button.002']} position={[0.000, -0.180, 0.006]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025}>
+        <meshStandardMaterial {...TextureProps[material]} />
+      </mesh>
+
+      {/* <mesh geometry={nodes.Jacket_Button009.geometry} material={materials['Button.002']} position={[0.124, -0.111, 0.028]} rotation={[-1.579, -0.08, -0.739]} scale={0.025} >
+        <meshStandardMaterial {...TextureProps[material]} />
+      </mesh> */}
 
       {/* <mesh geometry={nodes.Shoes.geometry} material={materials.Shoes} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} >
          <meshStandardMaterial {...TextureProps[material]} />
@@ -90,7 +122,7 @@ export function NewCostume(props) {
         <meshStandardMaterial {...TextureProps[material]} />
       </mesh>
 
-      <mesh geometry={nodes.Jacket_Button.geometry} material={materials.Button} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={button === 1 ? true : false}>
+      <mesh geometry={nodes.Jacket_Button.geometry} material={materials.Button} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} >
         <meshStandardMaterial {...TextureProps[material]} />
       </mesh>
 
@@ -103,9 +135,9 @@ export function NewCostume(props) {
       <mesh geometry={nodes.Jacket_Suit_Button_Holes.geometry} material={materials.Suit_WineVelvetSolid} rotation={[-Math.PI / 2, 0, 0]} scale={0.025}>
         <meshStandardMaterial {...TextureProps[material]} />
       </mesh>
-      {/* <mesh geometry={nodes.Jacket_Suit_ChestPocket.geometry} material={materials.Suit_WineVelvetSolid} rotation={[-Math.PI / 2, 0, 0]} scale={0.025}>
+      <mesh geometry={nodes.Jacket_Suit_ChestPocket.geometry} material={materials.Suit_WineVelvetSolid} rotation={[-Math.PI / 2, 0, 0]} scale={0.025}>
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh> */}
+      </mesh>
 
 
       <mesh geometry={nodes.Jacket_Suit_PocketFlaps.geometry} material={materials.Suit_NavyWindowpane} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={PocketFlaps} >

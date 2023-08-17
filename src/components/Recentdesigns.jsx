@@ -71,7 +71,7 @@ const RecentDesigns = () => {
                     navigation
                     onSlideChange={() => console.log('slide change')}
                     // scrollbar={{ draggable: true }}
-                    onSwiper={(swiper) => console.log(swiper)}
+                    // onSwiper={(swiper) => console.log(swiper)}
                     pagination={{ clickable: true, dynamicBullets: true, dynamicMainBullets: 2, }}
                     setWrapperSize={true}
                     slidesPerView={slidesPerView}
