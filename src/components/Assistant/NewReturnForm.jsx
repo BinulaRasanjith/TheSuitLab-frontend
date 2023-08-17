@@ -6,10 +6,16 @@ import { addReturn } from "../../api/returnAPI"
 
 const NewReturnForm = ({ isOpen, onClose }) => {
 
-    const [orderid, setOrderID] = useState("");
-    const [itemcount, setItemCount] = useState("");
-    const [reason, setReason] = useState("");
+    const [returnData, setReturnData] = useState({
+        referenceNo: "",
+        itemCount: "",
+        reason: ""
+    })
 
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setReturnData({ ...returnData, [name]: value });
+    };
 
     const handleAddUserClick = async (e) => {
 
@@ -54,7 +60,9 @@ const NewReturnForm = ({ isOpen, onClose }) => {
                                 type="text"
                                 className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                                 id="orderid"
-                                name="orderid"
+                                name="referenceNo"
+                                value={returnData.referenceNo}
+                                onChange={handleInputChange}
                                 placeholder="Order Id" />
                             <label
                                 htmlFor="orderid"
@@ -69,7 +77,9 @@ const NewReturnForm = ({ isOpen, onClose }) => {
                                 type="number"
                                 className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-non placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                                 id="itemcount"
-                                name="itemcount"
+                                name="itemCount"
+                                value={returnData.itemCount}
+                                onChange={handleInputChange}
                                 placeholder="Item count" />
                             <label
                                 htmlFor="itemcount"
@@ -84,6 +94,8 @@ const NewReturnForm = ({ isOpen, onClose }) => {
                                 className="peer block min-h-[auto] w-full resize-none rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                                 id="reason"
                                 name="reason"
+                                value={returnData.reason}
+                                onChange={handleInputChange}
                                 rows="3"
                                 placeholder="Reason for returning"></textarea>
                             <label
