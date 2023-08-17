@@ -18,7 +18,7 @@ const sidebarItems = [
 	{
 		label: "Dashboard",
 		icon: <HiHome />,
-		to: "/admin/dashboard",
+		to: "/admin",
 	},
 	{
 		label: "Employees",

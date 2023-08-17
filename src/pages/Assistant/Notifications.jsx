@@ -36,7 +36,7 @@ const Notifications = () => {
                             id="exampleFormControlTextarea1"
                             placeholder="Message"
                             rows="3"
-                            value="Hi [customer name], Your suit is ready for a fitting! We've finished tailoring your suit to your measurements. Please come in to our store at your earliest convenience to try it on. We're available from 10am to 6pm, Monday through Saturday. We can't wait to see you! Sincerely, The Suit Lab Group">
+                            value={"Hi [customer name], \n\nYour suit is ready for a fitting! We've finished tailoring your suit to your measurements. Please come in to our store at your earliest convenience to try it on. We're available from 10am to 6pm, Monday through Saturday. We can't wait to see you! \n\nSincerely, The Suit Lab Group"}>
                         </textarea>
                     </div>
                     <div className=" flex flex-col">

@@ -24,6 +24,7 @@ const Signup = () => {
 	const error = useSelector(selectAuthError);
 
 	const [signupCredentials, setSignupCredentials] = useState({
+		email: "",
 		firstName: "",
 		lastName: "",
 		address: "",
@@ -110,6 +111,15 @@ const Signup = () => {
 								placeholder="Last Name"
 								type="text"
 								value={signupCredentials.lastName}
+							/>
+							<Input
+								id="email"
+								name="email"
+								onChange={handleInputChange}
+								placeholder="Email"
+								type="email"
+								value={signupCredentials.email}
+								className={"col-span-2"}
 							/>
 							<Input
 								id="address"

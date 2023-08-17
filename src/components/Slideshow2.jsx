@@ -8,19 +8,19 @@ const Slideshow2 = () => {
     const [current, setCurrent] = useState(0)
     const slides = [
         {
-            url: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
+            url: "https://images.pexels.com/photos/7506120/pexels-photo-7506120.jpeg",
         },
         {
-            url: "https://imgv3.fotor.com/images/slider-image/A-clear-close-up-photo-of-a-woman.jpg"
+            url: "https://images.pexels.com/photos/375902/pexels-photo-375902.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
         },
         {
-            url: "https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80"
+            url: "https://img.freepik.com/free-photo/front-view-smiling-male-office-worker-suit-holding-documents-pointing-something-right-side-isolated-dark-wall_140725-97201.jpg?w=1480&t=st=1692209222~exp=1692209822~hmac=90e6dddbf4f14bee6ba66d7aadc75ba5dfae357d14bc5eb614cbf0b2fcd0e372"
         },
         {
-            url: "https://media.istockphoto.com/id/1093110112/photo/picturesque-morning-in-plitvice-national-park-colorful-spring-scene-of-green-forest-with-pure.jpg?s=612x612&w=0&k=20&c=lpQ1sQI49bYbTp9WQ_EfVltAqSP1DXg0Ia7APTjjxz4="
+            url: "https://cdn.mos.cms.futurecdn.net/uPTkLTkC2kZiKzWGCs7oG3-1920-80.jpg.webp"
         },
         {
-            url: "https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk="
+            url: "https://www.apetogentleman.com/wp-content/uploads/2019/05/Suit.png"
         }
     ]
 
@@ -76,7 +76,7 @@ const Slideshow2 = () => {
             </div>
             <div className='flex flex-col absolute top-[30%] left-[10%]'>
                 <p className='text-4xl text-white font-bold pb-3'>Lookbook</p>
-                <p className='text-white pb-3'>This guide is meant to help you get<br></br> your finances organized and make the<br></br> most out of your student budget. If <br></br> you’re like most students at UCSB, you <br></br>probably...</p>
+                <p className='text-white pb-3'>Step into a world of refined style and unparalleled<br></br> craftsmanship with our Suit Tailorshop Lookbook.<br></br> Discover the artistry behind every suit, where fabric<br></br> Discover the artistry behind every suit, where<br></br> fabric meets precision to create masterpieces that<br></br> embody sophistication and confidence.</p>
                 <button onClick={() => navigate('/customer/lookbook')} className="text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-3xl text-sm px-5 py-3 text-center inline-flex items-center dark:focus:ring-gray-500 mb-2 w-32 justify-center" type="button">
                     Visit
                 </button>

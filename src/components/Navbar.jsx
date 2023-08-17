@@ -6,17 +6,12 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 import TSL_LOGO from "../assets/images/TSL_LOGO.png";
 import TSL_LOGO_SM from "../assets/images/TSL_LOGO_SM.png";
-import AVATAR from "../assets/images/avatar.png";
-import {
-	ADMIN,
-	CUSTOMER,
-	OPERATION_ASSISTANT,
-	PRODUCT_MANAGER,
-	TAILOR,
-} from "../constants";
+import { PROFILE_PICTURE_URL } from "../config/config";
+import { CUSTOMER } from "../constants";
 import { selectUser } from "../store/slices/authSlice";
 import { logout } from "../store/slices/authSlice";
 import { toggleSidebar } from "../store/slices/sidebarSlice";
+import displayRoleName from "../utils/displayRoleName";
 
 const Navbar = () => {
 	const navigate = useNavigate();
@@ -24,21 +19,6 @@ const Navbar = () => {
 	const [isUserDropdownOpen, setUserDropdownOpen] = useState(false);
 
 	const user = useSelector(selectUser);
-
-	const displayRoleName = (role) => {
-		switch (role) {
-			case ADMIN:
-				return "Admin";
-			case OPERATION_ASSISTANT:
-				return "Operation Assistant";
-			case PRODUCT_MANAGER:
-				return "Product Manager";
-			case TAILOR:
-				return "Tailoring Supervisor";
-			default:
-				return "";
-		}
-	};
 
 	// handle login click
 	const handleLoginClick = () => {
@@ -92,12 +72,12 @@ const Navbar = () => {
 					<div className="flex align-center h-14 overflow-hidden">
 						<img
 							alt="TSL_LOGO"
-							className={"h-full object-cover  hidden md:block"}
+							className={"h-14 object-cover  hidden md:block"}
 							src={TSL_LOGO}
 						/>
 						<img
 							alt="Only_logo"
-							className={"h-full object-cover block md:hidden"}
+							className={"h-14 object-cover block md:hidden"}
 							src={TSL_LOGO_SM}
 						/>
 					</div>
@@ -112,6 +92,7 @@ const Navbar = () => {
 										return `px-3 py-1 ${isActive ? "font-bold" : ""}`;
 									}}
 									to={`${user.role === CUSTOMER ? "/customer" : "/"}`}
+									end
 								>
 									Home
 								</NavLink>
@@ -119,7 +100,9 @@ const Navbar = () => {
 									className={({ isActive }) => {
 										return `px-3 py-1 ${isActive ? "font-bold" : ""}`;
 									}}
-									to="/services"
+									to={`${
+										user.role === CUSTOMER ? "/customer/services" : "/services"
+									}`}
 								>
 									Services
 								</NavLink>
@@ -127,7 +110,9 @@ const Navbar = () => {
 									className={({ isActive }) => {
 										return `px-3 py-1 ${isActive ? "font-bold" : ""}`;
 									}}
-									to="/about-us"
+									to={`${
+										user.role === CUSTOMER ? "/customer/about-us" : "/about-us"
+									}`}
 								>
 									About Us
 								</NavLink>
@@ -135,7 +120,11 @@ const Navbar = () => {
 									className={({ isActive }) => {
 										return `px-3 py-1 ${isActive ? "font-bold" : ""}`;
 									}}
-									to="/contact-us"
+									to={`${
+										user.role === CUSTOMER
+											? "/customer/contact-us"
+											: "contact-us"
+									}`}
 								>
 									Contact Us
 								</NavLink>
@@ -165,8 +154,8 @@ const Navbar = () => {
 									onClick={() => setUserDropdownOpen(!isUserDropdownOpen)}
 									data-dropdown-toggle="userDropdown"
 									data-dropdown-placement="bottom-start"
-									className="w-10 h-10 rounded-full cursor-pointer"
-									src={AVATAR}
+									className="w-10 h-10 object-cover rounded-full cursor-pointer"
+									src={`${PROFILE_PICTURE_URL}/${user.image}`}
 									alt="User dropdown"
 								/>
 
@@ -175,9 +164,9 @@ const Navbar = () => {
 									id="userDropdown"
 									className={`z-10 fixed ${
 										isUserDropdownOpen ? "block" : "hidden"
-									} bg-white divide-y divide-gray-300 border border-gray-300 rounded-lg shadow w-44 top-20 right-2`}
+									} bg-primary divide-y divide-gray-300 border border-gray-300 rounded-lg shadow w-44 top-20 right-2`}
 								>
-									<div className="px-4 py-3 text-sm text-gray-900">
+									<div className="px-4 py-3 text-sm text-white">
 										<div>{`${user.firstName} ${user.lastName}`}</div>
 										<div className=" font-medium truncate">{user.email}</div>
 									</div>
@@ -185,18 +174,22 @@ const Navbar = () => {
 										className="py-2 text-sm text-gray-700"
 										aria-labelledby="avatarButton"
 									>
+										{user.role !== CUSTOMER && (
+											<li>
+												<NavLink
+													className="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-black"
+													onClick={() =>
+														setUserDropdownOpen(!isUserDropdownOpen)
+													}
+													to={`/${user.role}}`}
+												>
+													Dashboard
+												</NavLink>
+											</li>
+										)}
 										<li>
 											<NavLink
-												className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 "
-												onClick={() => setUserDropdownOpen(!isUserDropdownOpen)}
-												to="/assistant/"
-											>
-												Dashboard
-											</NavLink>
-										</li>
-										<li>
-											<NavLink
-												className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 "
+												className="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-black"
 												onClick={() => setUserDropdownOpen(!isUserDropdownOpen)}
 												to="/assistant/profile"
 											>
@@ -207,7 +200,7 @@ const Navbar = () => {
 									<div className="py-1" onClick={handleLogoutClick}>
 										<div
 											onClick={() => setUserDropdownOpen(!isUserDropdownOpen)}
-											className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer "
+											className="block px-4 py-2 text-sm text-white hover:bg-gray-100 cursor-pointer hover:text-black"
 										>
 											Log Out
 										</div>

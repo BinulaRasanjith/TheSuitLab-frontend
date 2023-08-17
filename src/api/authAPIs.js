@@ -19,3 +19,13 @@ export const refreshToken = () => {
     // this function will make a GET request to the /auth/refresh-token endpoint of the server. It will return a promise that will resolve to the response from the server.
     return api.get("/auth/refresh-token"); // make a GET request to the /auth/refresh-token endpoint of the server.
 };
+
+export const changePassword = (data) => {
+    // this function will make a POST request to the /auth/change-password endpoint of the server. It will return a promise that will resolve to the response from the server.
+    return api.post("/auth/change-password", data); // make a POST request to the /auth/change-password endpoint of the server. Pass the data as the request body.
+};
+
+export const updateProfile = (data) => {
+    // this function will make a POST request to the /auth/update-profile endpoint of the server. It will return a promise that will resolve to the response from the server.
+    return api.post("/auth/update-profile", data); // make a POST request to the /auth/update-profile endpoint of the server. Pass the data as the request body.
+}

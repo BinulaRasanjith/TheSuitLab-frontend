@@ -8,19 +8,19 @@ const Slideshow = () => {
   const [current, setCurrent] = useState(0)
   const slides = [
     {
-      url: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
+      url: "https://images.pexels.com/photos/325876/pexels-photo-325876.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     },
     {
-      url: "https://imgv3.fotor.com/images/slider-image/A-clear-close-up-photo-of-a-woman.jpg"
+      url: "https://img.freepik.com/free-photo/confident-young-businessman-modern-luxury-office-generated-by-ai_188544-17326.jpg?t=st=1692209494~exp=1692213094~hmac=f43beaf0fc6108385bd0c96e33e5d3425af3e4dfd233af752d09be862b1ab9d7&w=1800"
     },
     {
-      url: "https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80"
+      url: "https://cdn.pixabay.com/photo/2017/08/10/08/00/suit-2619784_1280.jpg"
     },
     {
-      url: "https://media.istockphoto.com/id/1093110112/photo/picturesque-morning-in-plitvice-national-park-colorful-spring-scene-of-green-forest-with-pure.jpg?s=612x612&w=0&k=20&c=lpQ1sQI49bYbTp9WQ_EfVltAqSP1DXg0Ia7APTjjxz4="
+      url: "https://cdn.pixabay.com/photo/2017/01/14/10/03/fashion-1979136_1280.jpg"
     },
     {
-      url: "https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk="
+      url: "https://images.pexels.com/photos/1416971/pexels-photo-1416971.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     }
   ]
 
@@ -53,8 +53,8 @@ const Slideshow = () => {
 
 
   return (
-    <div className='max-w-[1580px] h-[500px] w-full m-auto relative group flex items-center justify-center'>
-      <div className='w-full h-full bg-center bg-cover duration-500' style={{ backgroundImage: `url(${slides[current].url})` }}></div>
+    <div className='max-w-[1580px] h-screen w-full m-auto relative group flex items-center justify-center'>
+      <div className='w-full h-screen bg-center bg-cover duration-500' style={{ backgroundImage: `url(${slides[current].url})` }}></div>
 
       {/* left Arrow */}
       <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
