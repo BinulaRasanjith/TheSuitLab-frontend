@@ -216,7 +216,7 @@ const costumerRoutes = {
 							element: <ChoosePantContrast />,
 						},
 						{
-							path: "button",
+							path: "button-color",
 							element: <ChooseButtonContrast />,
 						},
 					],
