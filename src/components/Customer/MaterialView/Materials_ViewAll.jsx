@@ -23,8 +23,6 @@ const Materials_ViewAll = () => {
 
   const { setMaterial } = useCustomization();
 
-
-
   return (
     <Container>
 

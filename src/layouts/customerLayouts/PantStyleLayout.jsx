@@ -77,7 +77,7 @@ const sidebarItems = [
                 to: '/customer/customize-suit/pant/color-contrast/pant-contrast'
             },
             {
-                label: 'Button',
+                label: 'Button Contrast',
                 to: '/customer/customize-suit/pant/color-contrast/button-color'
             },
         ]
