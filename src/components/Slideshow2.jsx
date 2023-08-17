@@ -17,10 +17,10 @@ const Slideshow2 = () => {
             url: "https://img.freepik.com/free-photo/front-view-smiling-male-office-worker-suit-holding-documents-pointing-something-right-side-isolated-dark-wall_140725-97201.jpg?w=1480&t=st=1692209222~exp=1692209822~hmac=90e6dddbf4f14bee6ba66d7aadc75ba5dfae357d14bc5eb614cbf0b2fcd0e372"
         },
         {
-            url: "https://img.freepik.com/free-photo/cropped-portrait-successful-businessman-buttoning-his-elegant-suit-isolated-dark-background_613910-5505.jpg?w=1800&t=st=1692208781~exp=1692209381~hmac=2fa53a694e0a4ea1e743449d0da12a10978a43b315817bca8dd1cd3105991ef0"
+            url: "https://cdn.mos.cms.futurecdn.net/uPTkLTkC2kZiKzWGCs7oG3-1920-80.jpg.webp"
         },
         {
-            url: "https://img.freepik.com/free-photo/successful-handsome-business-man-office_1303-20916.jpg?w=1480&t=st=1692208835~exp=1692209435~hmac=d988686c4331eceae58ef3d55f0178d60d84ac7ec78489bd26017a359affbb32"
+            url: "https://www.apetogentleman.com/wp-content/uploads/2019/05/Suit.png"
         }
     ]
 

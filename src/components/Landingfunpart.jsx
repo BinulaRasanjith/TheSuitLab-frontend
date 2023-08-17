@@ -32,9 +32,9 @@ const LandingFunPart = () => {
                         <img className='max-h-72 w-screen max-w-full h-screen bg-cover' src={Bg2} alt="" />
                     </div>
 
-                    <div className='flex flex-col absolute p-10'>
+                    <div className='flex flex-col absolute p-10 ml-10'>
                         <div className='pb-3'>
-                            <h1 className='text-white font-bold text-4xl'>Pick Your</h1>
+                            <h1 className='text-white font-bold text-4xl'>Pick Your Suit</h1>
                             <h2 className='text-white font-bold text-4xl'>Now</h2>
 
                         </div>
