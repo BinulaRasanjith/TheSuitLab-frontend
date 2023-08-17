@@ -65,7 +65,7 @@ const AssistantMainLayout = () => {
 	const navigate = useNavigate();
 	const user = useSelector(selectUser);
 	useEffect(() => {
-		if (user.role !== OPERATION_ASSISTANT) navigate("/");
+		if (user.role != OPERATION_ASSISTANT) navigate("/");
 	}, [navigate, user]);
 	return (
 		<>
