@@ -5,51 +5,7 @@ import { BiSearch } from "react-icons/bi";
 
 import { getUsers } from "../../api/userAPI";
 import { CUSTOMER } from "../../constants";
-
-const customers = [
-	{
-		name: "Jane Cooper",
-		phoneNumber: "+91 9876543210",
-		email: "jane@gmail.com",
-		lastOrder: "2023-07-07",
-		status: "Active",
-	},
-	{
-		name: "Floyd Miles",
-		phoneNumber: " +91 3376443210",
-		email: "floyd@yahoo.com",
-		lastOrder: "2023-03-17",
-		status: "Active",
-	},
-	{
-		name: "Jane Cooper",
-		phoneNumber: "+91 9876543210",
-		email: "jane@gmail.com",
-		lastOrder: "2023-07-07",
-		status: "Inactive",
-	},
-	{
-		name: "Ronald Richards",
-		phoneNumber: "+91 987654256",
-		email: "ronald@gmail.com",
-		lastOrder: "2023-06-27",
-		status: "Active",
-	},
-	{
-		name: "Marvin Mackiney",
-		phoneNumber: "+94 9876577210",
-		email: "marvin@gmail.com",
-		lastOrder: "2023-05-11",
-		status: "Inactive",
-	},
-	{
-		name: "Jacob Janes",
-		phoneNumber: "+94 983343210",
-		email: "jane@gmail.com",
-		lastOrder: "2023-07-07",
-		status: "Active",
-	},
-];
+import { ACTIVE } from "../../constants";
 
 const ViewCustomers = () => {
 	const [customers1, setCustomers] = useState([]);
@@ -155,19 +111,19 @@ const ViewCustomers = () => {
 										<td className="px-6 py-4">{customer.lastOrder}</td>
 										<td className="px-6 py-4">{customer.status}</td>
 										<td className="px-6 py-4">
-											{customer.status === "Active" ? (
+											{customer.status === ACTIVE ? (
 												<a
 													href="#"
 													className="px-4 py-2 text-white no-underline bg-green-600 rounded hover:bg-blue-400 hover:text-white"
 												>
-													Active
+													Edit
 												</a>
 											) : (
 												<button
 													className="px-3 py-1.5 text-white bg-red-500 rounded cursor-not-allowed"
 													disabled
 												>
-													Inactive
+													Edit
 												</button>
 											)}
 										</td>
