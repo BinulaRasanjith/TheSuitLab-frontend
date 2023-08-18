@@ -4,6 +4,7 @@ import { getReturns } from "../../api/returnAPI";
 import ReturnRecord from "./ReturnRecord";
 
 const ReturnedItems = () => {
+
 	const [returns, setReturns] = useState([]);
 
 	useEffect(() => {
@@ -36,6 +37,7 @@ const ReturnedItems = () => {
 			</div>
 		</>
 	);
+	
 };
 
 export default ReturnedItems;

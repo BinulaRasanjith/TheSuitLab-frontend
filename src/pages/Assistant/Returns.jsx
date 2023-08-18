@@ -5,7 +5,7 @@ import DropDownFilter from "../../components/Assistant/HeaderDropDown";
 import SearchBox from "../../components/Assistant/HeaderSearchBox";
 import NewReturnForm from "../../components/Assistant/NewReturnForm";
 import Pagination from "../../components/Assistant/Pagination";
-import Returnset from "../../components/Assistant/ReturnedItems";
+import Returnset from "../../components/Assistant/ReturnedItemSet";
 
 const Returns = () => {
 	const [isNewReturnForm, addNewReturn] = useState(false);
