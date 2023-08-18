@@ -1,6 +1,6 @@
-import DropDownFilter from '../../components/Assistant/HeaderDropDown';
-import SearchBox from '../../components/Assistant/HeaderSearchBox';
-import MaterialItems from '../../components/Assistant/MaterialItems';
+import DropDownFilter from '../../components/Assistant/HeaderDropDown'
+import SearchBox from '../../components/Assistant/HeaderSearchBox'
+import MaterialItems from '../../components/Assistant/MaterialItemSet'
 import Pagination from '../../components/Assistant/Pagination'
 
 const Materials = () => {

@@ -1,7 +1,7 @@
-import DropDownFilter from '../../components/Assistant/HeaderDropDown';
-import SearchBox from '../../components/Assistant/HeaderSearchBox';
-import OrderedItems from '../../components/Assistant/OrderedItems';
-import Pagination from '../../components/Assistant/Pagination'
+import DropDownFilter from '../../components/Assistant/HeaderDropDown'
+import SearchBox from '../../components/Assistant/HeaderSearchBox'
+import OrderedItems from "../../components/Assistant/OrderedItemSet"
+import Pagination from "../../components/Assistant/Pagination"
 
 const Orders = () => {
     return (

@@ -1,6 +1,6 @@
-import Handovers from '../../components/Assistant/Handovers';
-import DropDownFilter from '../../components/Assistant/HeaderDropDown';
-import SearchBox from '../../components/Assistant/HeaderSearchBox';
+import Handovers from '../../components/Assistant/HandoveredItemSet'
+import DropDownFilter from '../../components/Assistant/HeaderDropDown'
+import SearchBox from '../../components/Assistant/HeaderSearchBox'
 import Pagination from '../../components/Assistant/Pagination'
 
 const Handover = () => {
