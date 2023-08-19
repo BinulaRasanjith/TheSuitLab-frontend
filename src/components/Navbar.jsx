@@ -6,10 +6,11 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 import TSL_LOGO from "../assets/images/TSL_LOGO.png";
 import TSL_LOGO_SM from "../assets/images/TSL_LOGO_SM.png";
+import defaultPhoto from "../assets/images/avatar.png";
 import { PROFILE_PICTURE_URL } from "../config/config";
 import { CUSTOMER } from "../constants";
-import { selectUser } from "../store/slices/authSlice";
 import { logout } from "../store/slices/authSlice";
+import { selectUser } from "../store/slices/authSlice";
 import { toggleSidebar } from "../store/slices/sidebarSlice";
 import displayRoleName from "../utils/displayRoleName";
 
@@ -155,7 +156,11 @@ const Navbar = () => {
 									data-dropdown-toggle="userDropdown"
 									data-dropdown-placement="bottom-start"
 									className="w-10 h-10 object-cover rounded-full cursor-pointer"
-									src={`${PROFILE_PICTURE_URL}/${user.image}`}
+									src={
+										user.image
+											? `${PROFILE_PICTURE_URL}/${user.image}`
+											: defaultPhoto
+									}
 									alt="User dropdown"
 								/>
 

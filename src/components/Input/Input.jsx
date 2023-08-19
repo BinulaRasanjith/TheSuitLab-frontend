@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 function Input({
 	type,
@@ -12,6 +12,7 @@ function Input({
 	error,
 	className,
 }) {
+	const today = new Date().toISOString().split("T")[0];
 	return (
 		<div className={"relative z-0 " + className}>
 			<input
@@ -27,6 +28,7 @@ function Input({
 				placeholder=" "
 				type={type}
 				value={value}
+				max={type === "date" ? today : undefined}
 			/>
 			<label
 				className={

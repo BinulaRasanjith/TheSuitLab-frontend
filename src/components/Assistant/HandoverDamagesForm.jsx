@@ -1,4 +1,3 @@
-// import { useState } from "react";
 import PropTypes from "prop-types";
 import { AiFillCloseCircle } from "react-icons/ai"
 

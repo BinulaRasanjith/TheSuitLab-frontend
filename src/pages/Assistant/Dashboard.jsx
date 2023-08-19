@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import { HiOutlineScissors } from "react-icons/hi2";
-import { HiOutlineSquare3Stack3D } from "react-icons/hi2";
-import { HiOutlineBanknotes } from "react-icons/hi2";
-import { PiHandbag } from "react-icons/pi";
-import { Link } from "react-router-dom";
-import { Chart, initTE } from "tw-elements";
+import { useEffect, useState } from "react"
+import { HiOutlineScissors } from "react-icons/hi2"
+import { HiOutlineSquare3Stack3D } from "react-icons/hi2"
+import { HiOutlineBanknotes } from "react-icons/hi2"
+import { PiHandbag } from "react-icons/pi"
+import { Link } from "react-router-dom"
+import { Chart, initTE } from "tw-elements"
 
-import RecentOrders from "../../components/Assistant/RecentOrders";
-import StateCard from "../../components/DashboardStateCard";
+import RecentOrders from "../../components/Assistant/RecentOrderSet"
+import StateCard from "../../components/DashboardStateCard"
 
 const Dashboard = () => {
 

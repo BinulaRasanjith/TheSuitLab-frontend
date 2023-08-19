@@ -22,9 +22,8 @@ const NewReturnForm = ({ isOpen, onClose }) => {
 		e.preventDefault();
 
 		try {
-			const response = await addReturn(returnData);
-			console.log(response);
-			// alert(response);
+			await addReturn(returnData);
+			onClose();
 		} catch (error) {
 			console.error(error);
 		}
