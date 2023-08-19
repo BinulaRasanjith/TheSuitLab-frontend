@@ -1,7 +1,7 @@
 import blue_texture_1 from '../../../assets/images/materials/blue texture 1.png'
 import brown_suit_1 from '../../../assets/images/materials/brown suit 1.png'
 import brown_texture_1 from '../../../assets/images/materials/brown texture 1.png'
-import brown_texture_2 from '../../../assets/images/materials/brown texture 2.png'
+// import brown_texture_2 from '../../../assets/images/materials/brown texture 2.png'
 import charcol_texture_1 from '../../../assets/images/materials/charcol texture 1.png'
 import dark_blue_2 from '../../../assets/images/materials/dark blue 2.png'
 import dark_chocolate_1 from '../../../assets/images/materials/dark chocolate 1.png'
@@ -31,7 +31,7 @@ const Materials_ViewAll = () => {
       <button><img alt="" className='h-20 w-24' src={charcol_texture_1} /></button>
       <button onClick={() => setMaterial("Fabric_Lace_004")}><img alt="" className='h-20 w-24' src={dark_blue_2} /></button>
       <button><img alt="" className='h-20 w-24' src={dark_chocolate_1} /></button>
-      <button><img alt="" className='h-20 w-24' src={brown_texture_2} /></button>
+      {/* <button><img alt="" className='h-20 w-24' src={brown_texture_2} /></button> */}
       <button onClick={() => setMaterial("grey")}><img alt="" className='h-20 w-24' src={grey_texture_1} /></button>
       <button><img alt="" className='h-20 w-24' src={midnight_gray_1} /></button>
       <button><img alt="" className='h-20 w-24' src={navy_suit_1} /></button>

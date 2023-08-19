@@ -5,9 +5,11 @@ Command: npx gltfjsx@6.2.3 public/models/newCostume.gltf
 
 // import { useRef } from 'react'
 import { useGLTF, useTexture } from '@react-three/drei'
+
 // import { useLoader } from '@react-three/fiber'
 // import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { useCustomization } from "../../contexts/Controller";
+
 
 
 export function NewCostume(props) {
