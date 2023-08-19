@@ -5,6 +5,8 @@ Command: npx gltfjsx@6.2.3 public/models/newCostume.gltf
 
 // import { useRef } from 'react'
 import { useGLTF, useTexture } from '@react-three/drei'
+import * as THREE from "three";
+
 
 // import { useLoader } from '@react-three/fiber'
 // import { TextureLoader } from 'three/src/loaders/TextureLoader'
@@ -93,8 +95,7 @@ export function NewCostume(props) {
       map: "/textures/Brown_001/Leather_010_basecolor.jpg",
       normalMap: "/textures/Brown_001/Fabric_011_NORM.jpg",
       // roughnessMap: "/textures/Brown_001/Fabric_011_ROUGH.jpg",
-      roughnessMap:
-        "/textures/Fabric_Polyester_002_SD/Fabric_Polyester_002_roughness.jpg",
+      roughnessMap: "/textures/Fabric_Polyester_002_SD/Fabric_Polyester_002_roughness.jpg",
       aoMap: "/textures/Brown_001/Fabric_011_OCC.jpg",
     }),
     Fabric_026: useTexture({
@@ -110,6 +111,20 @@ export function NewCostume(props) {
       aoMap: "/textures/Fabric_Silk_001/Fabric_Silk_001_ambientOcclusion.jpg",
     }),
   };
+
+  TextureProps[material].map.repeat.set(3, 3);
+  TextureProps[material].normalMap.repeat.set(3, 3);
+  TextureProps[material].roughnessMap.repeat.set(3, 3);
+  TextureProps[material].aoMap.repeat.set(3, 3);
+
+  TextureProps[material].map.wrapS = TextureProps[material].map.wrapT =
+    THREE.RepeatWrapping;
+  TextureProps[material].normalMap.wrapS = TextureProps[material].normalMap.wrapT =
+    THREE.RepeatWrapping;
+  TextureProps[material].roughnessMap.wrapS =
+    TextureProps[material].roughnessMap.wrapT = THREE.RepeatWrapping;
+  TextureProps[material].aoMap.wrapS = TextureProps[material].aoMap.wrapT =
+    THREE.RepeatWrapping;
 
   return (
     // eslint-disable-next-line react/no-unknown-property, react/prop-types
