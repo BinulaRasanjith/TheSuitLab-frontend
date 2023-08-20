@@ -29,21 +29,30 @@ const Materials_ViewAll = () => {
 
       <button onClick={() => setMaterial("Fabric_Polyester_002_SD")} ><img alt="" className='h-20 w-24' src={blue_texture_1} /></button>
       <button onClick={() => setMaterial("Leather_Perforated_001")}><img alt="" className='h-20 w-24' src={brown_texture_1} /></button>
-      <button><img alt="" className='h-20 w-24' src={charcol_texture_1} /></button>
+      {/* <button><img alt="" className='h-20 w-24' src={charcol_texture_1} /></button> */}
       <button onClick={() => setMaterial("Fabric_Lace_004")}><img alt="" className='h-20 w-24' src={dark_blue_2} /></button>
-      <button><img alt="" className='h-20 w-24' src={dark_chocolate_1} /></button>
+      {/* <button><img alt="" className='h-20 w-24' src={dark_chocolate_1} /></button> */}
       {/* <button><img alt="" className='h-20 w-24' src={brown_texture_2} /></button> */}
       <button onClick={() => setMaterial("grey")}><img alt="" className='h-20 w-24' src={grey_texture_1} /></button>
-      <button><img alt="" className='h-20 w-24' src={midnight_gray_1} /></button>
+      {/* <button><img alt="" className='h-20 w-24' src={midnight_gray_1} /></button>
       <button><img alt="" className='h-20 w-24' src={navy_suit_1} /></button>
       <button><img alt="" className='h-20 w-24' src={wool_navy_1} /></button>
-      <button><img alt="" className='h-20 w-24' src={brown_suit_1} /></button>
+      <button><img alt="" className='h-20 w-24' src={brown_suit_1} /></button> */}
       <button onClick={() => setMaterial("Fabric_019a")}><img alt="" className='h-20 w-24' src={purple_texture_1} /></button>
       <button onClick={() => setMaterial("Fabric_015")}><img alt="" className='h-20 w-24' src={light_khaki_texture_1} /></button>
       <button onClick={() => setMaterial("Fabric_polyester_001_SD")}><img alt="" className='h-20 w-24' src={light_olive_1} /></button>
       <button onClick={() => setMaterial("Fabric_011_SD")}><img alt="" className='h-20 w-24' src={khaki_texture_1} /></button>
-      <button><img alt="" className='h-20 w-24' src={green_texture_1} /></button>
+      {/* <button><img alt="" className='h-20 w-24' src={green_texture_1} /></button> */}
       <button onClick={() => setMaterial("Brown_001")}><img alt="" className='h-20 w-24' src={dark_khaki_texture_1} /></button>
+      <button onClick={() => setMaterial("Fabric_Carpet_001_SD")}><img alt="" className='h-20 w-24' src={dark_khaki_texture_1} /></button>
+      <button onClick={() => setMaterial("Fabric_Knitted_005_SD")}><img alt="" className='h-20 w-24' src={dark_khaki_texture_1} /></button>
+      <button onClick={() => setMaterial("Malachite_001_SD")}><img alt="" className='h-20 w-24' src={dark_khaki_texture_1} /></button>
+      <button onClick={() => setMaterial("Fabric_Knitted_005_SD")}><img alt="" className='h-20 w-24' src={dark_khaki_texture_1} /></button>
+      <button onClick={() => setMaterial("Fabric_026")}><img alt="" className='h-20 w-24' src={dark_khaki_texture_1} /></button>
+      <button onClick={() => setMaterial("Fabric_Silk_001")}><img alt="" className='h-20 w-24' src={dark_khaki_texture_1} /></button>
+      <button onClick={() => setMaterial("Fabric_Knitted_005_SD")}><img alt="" className='h-20 w-24' src={dark_khaki_texture_1} /></button>
+
+
     </Container>
   )
 }

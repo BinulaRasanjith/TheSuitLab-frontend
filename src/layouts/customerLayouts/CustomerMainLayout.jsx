@@ -87,9 +87,9 @@ const CustomerMainLayout = () => {
 	const navigate = useNavigate();
 	const user = useSelector(selectUser);
 
-	useEffect(() => {
-		if (user.role !== CUSTOMER) navigate("/");
-	}, [navigate, user]);
+	// useEffect(() => {
+	// 	if (user.role !== CUSTOMER) navigate("/");
+	// }, [navigate, user]);
 
 	return (
 		<>

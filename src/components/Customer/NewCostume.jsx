@@ -107,6 +107,24 @@ export function NewCostume(props) {
       roughnessMap: "/textures/Fabric_Silk_001/Fabric_Silk_001_roughness.jpg",
       aoMap: "/textures/Fabric_Silk_001/Fabric_Silk_001_ambientOcclusion.jpg",
     }),
+    Fabric_Carpet_001_SD: useTexture({
+      map: "/textures/Fabric_Carpet_001_SD/Fabric_Carpet_001_basecolor.jpg",
+      normalMap: "/textures/Fabric_Carpet_001_SD/Fabric_Carpet_001_normal.jpg",
+      roughnessMap: "/textures/Fabric_Carpet_001_SD/Fabric_Carpet_001_roughness.jpg",
+      aoMap: "/textures/Fabric_Carpet_001_SD/Fabric_Carpet_001_ambientOcclusion.jpg",
+    }),
+    Fabric_Knitted_005_SD: useTexture({
+      map: "/textures/Fabric_Knitted_005_SD/Fabric_Knitted_005_basecolor.jpg",
+      normalMap: "/textures/Fabric_Knitted_005_SD/Fabric_Knitted_005_normal.jpg",
+      roughnessMap: "/textures/Fabric_Knitted_005_SD/Fabric_Knitted_005_roughness.jpg",
+      aoMap: "/textures/Fabric_Knitted_005_SD/Fabric_Knitted_005_ambientOcclusion.jpg",
+    }),
+    Malachite_001_SD: useTexture({
+      map: "/textures/Malachite_001_SD/Malachite_001_basecolor.jpg",
+      normalMap: "/textures/Malachite_001_SD/Malachite_001_normal.jpg",
+      roughnessMap: "/textures/Malachite_001_SD/Malachite_001_roughness.jpg",
+      aoMap: "/textures/Malachite_001_SD/Malachite_001_ambientOcclusion.jpg",
+    }),
   };
 
 
@@ -126,7 +144,7 @@ export function NewCostume(props) {
       dispose={null}>
       position={[props.control.x, props.control.y, props.control.z]}
       scale={props.camCont.scale}
-
+      {/* 
       <mesh
         geometry={nodes.JacketSlim_Button001.geometry}
         material={materials['Button.001']}
@@ -135,9 +153,9 @@ export function NewCostume(props) {
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
-      <mesh
+      {/* <mesh
         geometry={nodes.Jacket_Button005.geometry}
         material={materials['Button.002']}
         position={[-1.273, 0.883, -0.307]}
@@ -145,9 +163,9 @@ export function NewCostume(props) {
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
-      <mesh
+      {/* <mesh
         geometry={nodes.Jacket_Button009.geometry}
         material={materials['Button.002']}
         position={[0.124, -0.111, 0.028]}
@@ -155,8 +173,8 @@ export function NewCostume(props) {
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
-
+      </mesh> */}
+      {/* 
       <mesh
         geometry={nodes.Shoes.geometry}
         material={materials.Shoes}
@@ -164,52 +182,52 @@ export function NewCostume(props) {
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
-      <mesh
+      {/* <mesh
         geometry={nodes.Tie.geometry}
         material={materials.Tie}
         rotation={[-Math.PI / 2, 0, 0]}
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
-      <mesh
+      {/* <mesh
         geometry={nodes.Jacket_Button.geometry}
         material={materials.Button}
         rotation={[-Math.PI / 2, 0, 0]}
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
-      <mesh
+      {/* <mesh
         geometry={nodes.Jacket_Lining.geometry}
         material={materials.b0b0b0}
         rotation={[-Math.PI / 2, 0, 0]}
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
-      <mesh
+      {/* <mesh
         geometry={nodes.Jacket_Lining_Tag.geometry}
         material={materials.b0b0b0}
         rotation={[-Math.PI / 2, 0, 0]}
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
-      <mesh
+      {/* <mesh
         geometry={nodes.Jacket_Suit_Button_Holes.geometry}
         material={materials.Suit_WineVelvetSolid}
         rotation={[-Math.PI / 2, 0, 0]}
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
       <mesh
         geometry={nodes.Jacket_Suit_ChestPocket.geometry}
@@ -247,43 +265,43 @@ export function NewCostume(props) {
         <meshStandardMaterial {...TextureProps[material]} />
       </mesh>
 
-      <mesh
+      {/* <mesh
         geometry={nodes.Jacket_Suit_Notch_Vents.geometry}
         material={materials.Suit_DarkBrownPlaid}
         rotation={[-Math.PI / 2, 0, 0]}
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
-      <mesh
+      {/* <mesh
         geometry={nodes.Jacket_Suit__Peak_Vents.geometry}
         material={materials.b0b0b0}
         rotation={[-Math.PI / 2, 0, 0]}
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
-      <mesh
+      {/* <mesh
         geometry={nodes.Jacket_Suit_Peak_NoVents.geometry}
         material={materials.b0b0b0}
         rotation={[-Math.PI / 2, 0, 0]}
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
-      <mesh
+      {/* <mesh
         geometry={nodes.Pants_Button.geometry}
         material={materials.Button}
         rotation={[-Math.PI / 2, 0, 0]}
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
-      <mesh
+      {/* <mesh
         geometry={nodes.Pants_Suit_Button_Holes.geometry}
         material={materials.b0b0b0}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -299,18 +317,18 @@ export function NewCostume(props) {
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
-      <mesh
+      {/* <mesh
         geometry={nodes.Pants_Suit_PocketWelts.geometry}
         material={materials.b0b0b0}
         rotation={[-Math.PI / 2, 0, 0]}
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
-      <mesh
+      {/* <mesh
         geometry={nodes.Shirt_Button.geometry}
         material={materials.Button}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -335,9 +353,9 @@ export function NewCostume(props) {
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
-      <mesh
+      {/* <mesh
         geometry={nodes.Vest_Button.geometry}
         material={materials.Button}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -362,8 +380,8 @@ export function NewCostume(props) {
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
-
+      </mesh> */}
+      {/* 
       <mesh
         geometry={nodes.Vest_Strap.geometry}
         material={materials.b0b0b0}
@@ -386,18 +404,18 @@ export function NewCostume(props) {
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
-      <mesh
+      {/* <mesh
         geometry={nodes.Shoes_Slim.geometry}
         material={materials.Shoes}
         rotation={[-Math.PI / 2, 0, 0]}
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
-      <mesh
+      {/* <mesh
         geometry={nodes.TieSlim.geometry}
         material={materials.Tie}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -409,8 +427,8 @@ export function NewCostume(props) {
         material={materials.Button}
         rotation={[-Math.PI / 2, 0, 0]}
         scale={0.025}
-      />
-
+      /> */}
+      {/* 
       <mesh
         geometry={nodes.JacketSlim_Lining_Tag.geometry}
         material={materials.b0b0b0}
@@ -418,17 +436,17 @@ export function NewCostume(props) {
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
-      <mesh
+      {/* <mesh
         geometry={nodes.JacketSlim_Suit_Button_Holes.geometry}
         material={materials.b0b0b0}
         rotation={[-Math.PI / 2, 0, 0]}
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
-
+      </mesh> */}
+      {/* 
       <mesh
         geometry={nodes.JacketSlim_Suit_Notch_NoVents.geometry}
         material={materials.Suit_WineVelvetSolid}
@@ -442,9 +460,9 @@ export function NewCostume(props) {
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
-      <mesh
+      {/* <mesh
         geometry={nodes.JacketSlim_Suit_Peak_NoVents.geometry}
         material={materials.b0b0b0}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -460,89 +478,89 @@ export function NewCostume(props) {
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
-      <mesh
+      {/* <mesh
         geometry={nodes.PantsSlim_Button.geometry}
         material={materials.Button}
         rotation={[-Math.PI / 2, 0, 0]}
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
-      <mesh
+      {/* <mesh
         geometry={nodes.PantsSlim_Suit.geometry}
         material={materials.b0b0b0}
         rotation={[-Math.PI / 2, 0, 0]}
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
-      <mesh
+      {/* <mesh
         geometry={nodes.PantsSlim_Suit_Button_Holes.geometry}
         material={materials.b0b0b0}
         rotation={[-Math.PI / 2, 0, 0]}
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
-      <mesh
+      {/* <mesh
         geometry={nodes.PantsSlim_Suit_PocketWelts.geometry}
         material={materials.b0b0b0}
         rotation={[-Math.PI / 2, 0, 0]}
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
-      <mesh
+      {/* <mesh
         geometry={nodes.ShirtSlim.geometry}
         material={materials.ShirtFabric}
         rotation={[-Math.PI / 2, 0, 0]}
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
-      <mesh
+      {/* <mesh
         geometry={nodes.ShirtSlim_Button.geometry}
         material={materials.Button}
         rotation={[-Math.PI / 2, 0, 0]}
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
-      <mesh
+      {/* <mesh
         geometry={nodes.ShirtSlim_Button_Holes.geometry}
         material={materials.b0b0b0}
         rotation={[-Math.PI / 2, 0, 0]}
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
-      <mesh
+      {/* <mesh
         geometry={nodes.VestSlim_Button.geometry}
         material={materials.Button}
         rotation={[-Math.PI / 2, 0, 0]}
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
-      <mesh
+      {/* <mesh
         geometry={nodes.VestSlim_Lining_Tag.geometry}
         material={materials.b0b0b0}
         rotation={[-Math.PI / 2, 0, 0]}
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
-
+      </mesh> */}
+      {/* 
       <mesh
         geometry={nodes.VestSlim_Strap.geometry}
         material={materials.b0b0b0}
@@ -550,25 +568,25 @@ export function NewCostume(props) {
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
-      <mesh
+      {/* <mesh
         geometry={nodes.VestSlim_Suit.geometry}
         material={materials.b0b0b0}
         rotation={[-Math.PI / 2, 0, 0]}
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
-      <mesh
+      {/* <mesh
         geometry={nodes.VestSlim_Suit_Button_Holes.geometry}
         material={materials.b0b0b0}
         rotation={[-Math.PI / 2, 0, 0]}
         scale={0.025}
       >
         <meshStandardMaterial {...TextureProps[material]} />
-      </mesh>
+      </mesh> */}
 
 
     </group>
