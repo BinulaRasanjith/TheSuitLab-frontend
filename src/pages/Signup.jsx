@@ -1,4 +1,4 @@
-import { Button } from "@chakra-ui/react";
+import { Button, useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -19,6 +19,7 @@ import {
 const Signup = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+	const toast = useToast();
 
 	const status = useSelector(selectAuthStatus);
 	const error = useSelector(selectAuthError);
@@ -37,9 +38,16 @@ const Signup = () => {
 	useEffect(() => {
 		if (status === SIGNUP_SUCCESS) {
 			dispatch(setStatus(IDLE));
-			navigate("/login");
+			navigate("/login", { replace: true });
+			toast({
+				title: "Account created.",
+				description: "We've created your account for you.",
+				status: "success",
+				duration: 9000,
+				isClosable: true,
+			});
 		}
-	}, [dispatch, navigate, status]);
+	}, [dispatch, navigate, status, toast]);
 
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;
