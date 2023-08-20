@@ -1,6 +1,3 @@
-/* eslint-disable perfectionist/sort-jsx-props */
-// import React from "react";
-
 import RentalRecord from "./HandoverRecord";
 
 const RentedItems = () => {

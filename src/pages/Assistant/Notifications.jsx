@@ -1,7 +1,4 @@
-// import DropDownFilter from "../../components/Assistant/HeaderDropDown"
-// import DropDownFilter from "../../components/Assistant/HeaderDropDown"
-// import SearchBox from "../../components/Assistant/HeaderSearchBox"
-import { Button } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react"
 
 const Notifications = () => {
     return (
@@ -10,7 +7,7 @@ const Notifications = () => {
                 <div className=" flex flex-col justify-start align-middle pb-5 gap-10">
                     <div className='flex flex-col'>
                         <div className=' text-2xl font-semibold'>Notifications</div>
-                        <div className=' text-sm font-regular text-gray-400'>Customer’s SMS and Email Service</div>
+                        <div className=' text-sm font-regular text-gray-400'>Customer&#39;s SMS and Email Service</div>
                     </div>
                     <div className="flex flex-col gap-7">
                         <div className=' flex flex-col w-80 h-44 p-4 gap-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg'>

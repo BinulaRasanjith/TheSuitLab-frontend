@@ -4,111 +4,33 @@ Command: npx gltfjsx@6.2.3 public/models/newPant.gltf
 */
 
 import { useGLTF } from '@react-three/drei'
-import { useTexture } from '@react-three/drei'
+// import { useTexture } from '@react-three/drei'
 
 // import React, { useRef } from 'react'
-import { useCustomization } from "../../contexts/Controller";
 
 export default function NewPant(props) {
   const { nodes, materials } = useGLTF('/models/newPant.gltf')
-  const { material } = useCustomization();
 
-  const TextureProps = {
-    "grey": useTexture({
-      map: "/textures/Poly - formal coat/color_map.jpg",
-      normalMap: "/textures/Poly - formal coat/normal_map_opengl.jpg",
-      roughnessMap: "/textures/Poly - formal coat/roughness_map.jpg",
-      aoMap: "/textures/Poly - formal coat/ao_map.jpg",
-    }),
-
-    "Fabric_Polyester_002_SD": useTexture({
-      map: "/textures/Fabric_Polyester_002_SD/Fabric_Polyester_002_basecolor.jpg",
-      normalMap: "/textures/Fabric_Polyester_002_SD/Fabric_Polyester_002_normal.jpg",
-      roughnessMap: "/textures/Fabric_Polyester_002_SD/Fabric_Polyester_002_roughness.jpg",
-      aoMap: "/textures/Fabric_Polyester_002_SD/Fabric_Polyester_002_ambientOcclusion.jpg",
-    }),
-
-    "Fabric_polyester_001_SD": useTexture({
-      map: "/textures/Fabric_polyester_001_SD/Fabric_polyester_001_basecolor.jpg",
-      normalMap: "/textures/Fabric_polyester_001_SD/Fabric_polyester_001_normal.jpg",
-      roughnessMap: "/textures/Fabric_polyester_001_SD/Fabric_polyester_001_roughness.jpg",
-      aoMap: "/textures/Fabric_polyester_001_SD/Fabric_polyester_001_ambientOcclusion.jpg",
-    }),
-
-    "Fabric_011_SD": useTexture({
-      map: "/textures/Fabric_011_SD/Fabric_011_COLOR.jpg",
-      normalMap: "/textures/Fabric_011_SD/Fabric_011_NORM.jpg",
-      roughnessMap: "/textures/Fabric_Polyester_002_SD/Fabric_Polyester_002_roughness.jpg",
-      // roughnessMap: "/textures/Fabric_011_SD/Fabric_011_ROUGH.jpg",
-      aoMap: "/textures/Fabric_011_SD/Fabric_011_OCC.jpg",
-    }),
-    "Fabric_Burlap_003_SD": useTexture({
-      map: "/textures/Fabric_Burlap_003_SD/Fabric_Burlap_003_basecolor.jpg",
-      normalMap: "/textures/Fabric_Burlap_003_SD/Fabric_Burlap_003_normal.jpg",
-      roughnessMap: "/textures/Fabric_Burlap_003_SD/Fabric_Burlap_003_roughness.jpg",
-      aoMap: "/textures/Fabric_Burlap_003_SD/Fabric_Burlap_003_ambientOcclusion.jpg",
-    }),
-    "Fabric_Lace_004": useTexture({
-      map: "/textures/Fabric_Lace_004/Fabric_Lace_004_basecolor.jpg",
-      normalMap: "/textures/Fabric_Lace_004/Fabric_Lace_004_normal.jpg",
-      roughnessMap: "/textures/Fabric_Lace_004/Fabric_Lace_004_roughness.jpg",
-      aoMap: "/textures/Fabric_Lace_004/Fabric_Lace_004_ambientOcclusion.jpg",
-    }),
-    "Fabric_015": useTexture({
-      map: "/textures/Fabric_015/Fabric_015_COLOR.jpg",
-      normalMap: "/textures/Fabric_015/Fabric_015_NORM.jpg",
-      roughnessMap: "/textures/Fabric_Polyester_002_SD/Fabric_Polyester_002_roughness.jpg",
-      // roughnessMap: "/textures/Fabric_015/Fabric_015_ROUGH.jpg",
-      aoMap: "/textures/Fabric_015/Fabric_015_OCC.jpg",
-    }),
-    "Leather_Perforated_001": useTexture({
-      map: "/textures/Leather_Perforated_001/Leather_Perforated_001_basecolor.jpg",
-      normalMap: "/textures/Leather_Perforated_001/Leather_Perforated_001_normal.jpg",
-      roughnessMap: "/textures/Leather_Perforated_001/Leather_Perforated_001_roughness.jpg",
-      aoMap: "/textures/Leather_Perforated_001/Leather_Perforated_001_ambientOcclusion.jpg",
-    }),
-    "Fabric_019a": useTexture({
-      map: "/textures/Fabric_019a/Fabric_019a_Base_Color.jpg",
-      normalMap: "/textures/Fabric_019a/Fabric_019a_Normal.jpg",
-      roughnessMap: "/textures/Fabric_019a/Fabric_019a_Roughness.jpg",
-      aoMap: "/textures/Fabric_019a/Fabric_019a_ambientOcclusion.jpg",
-    }),
-    "Brown_001": useTexture({
-      map: "/textures/Brown_001/Leather_010_basecolor.jpg",
-      normalMap: "/textures/Brown_001/Fabric_011_NORM.jpg",
-      // roughnessMap: "/textures/Brown_001/Fabric_011_ROUGH.jpg",
-      roughnessMap: "/textures/Fabric_Polyester_002_SD/Fabric_Polyester_002_roughness.jpg",
-      aoMap: "/textures/Brown_001/Fabric_011_OCC.jpg",
-    }),
-  }
 
   return (
     <group {...props} dispose={null} position={[props.control.x, props.control.y, props.control.z]} scale={props.camCont.scale}>
 
       <mesh geometry={nodes.Pants_Button.geometry} material={materials.Button} rotation={[-Math.PI / 2, 0, 0]} scale={0.025}>
-        <meshStandardMaterial {...TextureProps[material]} />
       </mesh>
       <mesh geometry={nodes.Pants_Suit_Button_Holes.geometry} material={materials.b0b0b0} rotation={[-Math.PI / 2, 0, 0]} scale={0.025}>
-        <meshStandardMaterial {...TextureProps[material]} />
       </mesh>
       <mesh geometry={nodes.Pants_Suit_Main.geometry} material={materials.Suit_OlivieSolidBrushedTwill} rotation={[-Math.PI / 2, 0, 0]} scale={0.025}>
-        <meshStandardMaterial {...TextureProps[material]} />
       </mesh>
       <mesh geometry={nodes.Pants_Suit_PocketWelts.geometry} material={materials.b0b0b0} rotation={[-Math.PI / 2, 0, 0]} scale={0.025}>
-        <meshStandardMaterial {...TextureProps[material]} />
       </mesh>
 
       <mesh geometry={nodes.PantsSlim_Button.geometry} material={materials.Button} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} >
-        <meshStandardMaterial {...TextureProps[material]} />
       </mesh>
       <mesh geometry={nodes.PantsSlim_Suit.geometry} material={materials.b0b0b0} rotation={[-Math.PI / 2, 0, 0]} scale={0.025}>
-        <meshStandardMaterial {...TextureProps[material]} />
       </mesh>
       <mesh geometry={nodes.PantsSlim_Suit_Button_Holes.geometry} material={materials.b0b0b0} rotation={[-Math.PI / 2, 0, 0]} scale={0.025}>
-        <meshStandardMaterial {...TextureProps[material]} />
       </mesh>
       <mesh geometry={nodes.PantsSlim_Suit_PocketWelts.geometry} material={materials.b0b0b0} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} >
-        <meshStandardMaterial {...TextureProps[material]} />
       </mesh>
 
     </group>

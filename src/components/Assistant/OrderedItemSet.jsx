@@ -1,6 +1,3 @@
-/* eslint-disable perfectionist/sort-jsx-props */
-// import React from "react";
-
 import OrderRecord from "./OrderRecord";
 
 const OrderedItems = () => {
@@ -37,22 +34,6 @@ const OrderedItems = () => {
             ordered_date: "2023-02-07",
             status: "Collected",
         },
-        // {
-        //     order_id: "#007121322342",
-        //     item_count: "1",
-        //     mobile: "(208) 555-0881",
-        //     customer: "Theshan Gamage",
-        //     ordered_date: "2023-02-10",
-        //     status: "Collected",
-        // },
-        // {
-        //     order_id: "#007083473634",
-        //     item_count: "1",
-        //     mobile: "(704) 555-0127",
-        //     customer: "Kushan Dias",
-        //     ordered_date: "2023-03-07",
-        //     status: "Collected",
-        // },
     ];
 
     return (
