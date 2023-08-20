@@ -5,7 +5,6 @@ Command: npx gltfjsx@6.2.3 public/models/newCostume.gltf
 */
 import { useGLTF, useTexture } from "@react-three/drei";
 import PropTypes from "prop-types";
-// import { useCustomization } from "../../contexts/Controller";
 import { useSelector } from "react-redux";
 import * as THREE from "three";
 
@@ -13,7 +12,6 @@ import { selectJacket } from "../../store/slices/jacketCustomizationSlice";
 
 export function NewCostume(props) {
 	const { nodes, materials } = useGLTF("/models/newCostume.gltf");
-	// const { material, PocketFlaps } = useCustomization();
 	const material = useSelector(selectJacket).fabric;
 
 	const TextureProps = {

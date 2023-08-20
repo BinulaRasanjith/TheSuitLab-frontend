@@ -12,3 +12,7 @@ export const ACTIVE = 'ACTIVE';
 export const IDLE = 'idle';
 export const LOADING = 'loading';
 export const SIGNUP_SUCCESS = 'signup-success';
+
+// material types
+export const FABRIC = 'fabric';
+export const BUTTON = 'button';

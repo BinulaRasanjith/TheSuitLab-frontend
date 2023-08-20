@@ -1,7 +1,7 @@
 import api from './api';
 
-export const getMaterials = async () => {
-    return api.post('/materials');
+export const getMaterials = async (type) => {
+    return api.post('/materials', { type });
 }
 
 export const addMaterial = async (material) => {
