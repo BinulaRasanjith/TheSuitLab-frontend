@@ -12,6 +12,6 @@ export const updateReturn = (new_data) => {
     return api.post('/returns/update-return', new_data);
 }
 
-export const removeReturns = (id) => {
-    return api.get(`/returns/remove-return/${id}`);
+export const removeReturn = (id) => {
+    return api.delete(`/returns/remove-return/${id}`);
 }
