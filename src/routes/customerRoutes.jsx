@@ -31,6 +31,7 @@ import PantStyleLayout from "../layouts/customerLayouts/PantStyleLayout";
 import AboutUs from "../pages/Aboutus";
 import ContactUs from "../pages/Contactus";
 import Services from "../pages/Services";
+import CustomizeMeasurements from "../pages/customer/CustomizeMeasurements";
 import Home from "../pages/customer/Home";
 import LookBook from "../pages/customer/LookBook";
 import SuitCustomizationLanding from "../pages/customer/SuitCustomizationLanding";
@@ -62,6 +63,10 @@ const costumerRoutes = {
 		{
 			path: "profile",
 			element: <div>Profile</div>,
+		},
+		{
+			path: "customize-measurements",
+			element: <CustomizeMeasurements />,
 		},
 		{
 			path: "customize-suit",
