@@ -13,28 +13,6 @@ const sidebarItems = [
 		label: "Fabric",
 		icon: <GiRolledCloth />,
 		to: "/customer/customize-suit/jacket/fabric",
-		// subItems: [
-		//     {
-		//         label: 'View all',
-		//         to: '/customer/customize-suit/jacket/fabric/all',
-		//     },
-		//     {
-		//         label: 'Solid colors',
-		//         to: '/customer/customize-suit/jacket/fabric/solid-colors',
-		//     },
-		//     {
-		//         label: 'Patterns',
-		//         to: '/customer/customize-suit/jacket/fabric/patterns',
-		//     },
-		//     {
-		//         label: 'Pure linen',
-		//         to: '/customer/customize-suit/jacket/fabric/pure-linen',
-		//     },
-		//     {
-		//         label: 'Pure wool',
-		//         to: '/customer/customize-suit/jacket/fabric/pure-wool',
-		//     },
-		// ]
 	},
 	{
 		label: "Style",

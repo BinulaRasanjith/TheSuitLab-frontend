@@ -74,29 +74,6 @@ const costumerRoutes = {
 				{
 					path: "fabric",
 					element: <Materials_ViewAll />,
-					// element: <SingleOutletLayout />,
-					// children: [
-					// 	{
-					// 		path: "all",
-					// 		element: <Materials_ViewAll />,
-					// 	},
-					// 	{
-					// 		path: "solid-colors",
-					// 		element: <Materials_SolidColors />,
-					// 	},
-					// 	{
-					// 		path: "patterns",
-					// 		element: <Materials_patterns />,
-					// 	},
-					// 	{
-					// 		path: "pure-linen",
-					// 		element: <Materials_PureLinen />,
-					// 	},
-					// 	{
-					// 		path: "pure-wool",
-					// 		element: <Materials_PureWool />,
-					// 	},
-					// ],
 				},
 				{
 					path: "style",
@@ -154,29 +131,8 @@ const costumerRoutes = {
 			children: [
 				{
 					path: "fabric",
-					element: <SingleOutletLayout />,
-					children: [
-						{
-							path: "all",
-							element: <Materials_ViewAll />,
-						},
-						{
-							path: "solid-colors",
-							element: <Materials_SolidColors />,
-						},
-						{
-							path: "patterns",
-							element: <Materials_patterns />,
-						},
-						{
-							path: "pure-linen",
-							element: <Materials_PureLinen />,
-						},
-						{
-							path: "pure-wool",
-							element: <Materials_PureWool />,
-						},
-					],
+					element: <Materials_ViewAll />,
+
 				},
 				{
 					path: "style",

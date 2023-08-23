@@ -12,7 +12,7 @@ const SuitCustomizationLanding = () => {
 	};
 
 	const goToPantCustomization = () => {
-		navigate("/customer/customize-suit/pant/fabric/all");
+		navigate("/customer/customize-suit/pant/fabric");
 	};
 
 	const goToJacketAndPantCustomization = () => {

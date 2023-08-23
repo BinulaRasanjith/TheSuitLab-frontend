@@ -13,28 +13,6 @@ const sidebarItems = [
         label: 'Fabric',
         icon: <GiRolledCloth />,
         to: '/customer/customize-suit/pant/fabric',
-        subItems: [
-            {
-                label: 'View all',
-                to: '/customer/customize-suit/pant/fabric/all',
-            },
-            {
-                label: 'Solid colors',
-                to: '/customer/customize-suit/pant/fabric/solid-colors',
-            },
-            {
-                label: 'Patterns',
-                to: '/customer/customize-suit/pant/fabric/patterns',
-            },
-            {
-                label: 'Pure linen',
-                to: '/customer/customize-suit/pant/fabric/pure-linen',
-            },
-            {
-                label: 'Pure wool',
-                to: '/customer/customize-suit/pant/fabric/pure-wool',
-            },
-        ]
     },
     {
         label: 'Style',
