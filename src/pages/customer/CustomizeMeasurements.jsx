@@ -41,7 +41,7 @@ const CustomizeMeasurements = () => {
 			>
 				Current Sizes
 			</div>
-			<div className={`mt-4 transition-opacity ease-in-out duration-1000 ${measurementType === "current-sizes" ? 'opacity-100' : 'opacity-0 hidden'
+			<div className={`mt-4 transition-opacity ease-in-out duration-1000 flex flex-col ${measurementType === "current-sizes" ? 'opacity-100' : 'opacity-0 hidden'
 				}`}>
 				<div className='flex justify-center m-5'>
 					<Select
@@ -69,6 +69,9 @@ const CustomizeMeasurements = () => {
 					<MeasurementBlock image={TROUSER_LENGTH} description="Measure from the top of your pant’s waistband to the floor along the outside of your leg. Make sure the tape is tight, that you are standing straight, and then measure." header="Trouser Length" />
 					<MeasurementBlock image={CUFF} description="Measure width around cuff as shown." header="Cuff" />
 				</div>
+				<button className="bg-black text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed">
+					Save
+				</button>
 			</div>
 
 
@@ -77,7 +80,7 @@ const CustomizeMeasurements = () => {
 			{/* Standard Sizes */}
 
 			<div className="bg-black hover:opacity-80 text-white px-4 py-4 rounded-lg m-5 font-extrabold" onClick={() => setMeasurementType(measurementType === "Standard" ? "" : 'Standard')}>Standard Sizes</div>
-			<div className={`mt-4 transition-opacity ease-in-out duration-1000 ${measurementType === "Standard" ? 'opacity-100' : 'opacity-0 hidden'
+			<div className={`mt-4 transition-opacity ease-in-out duration-1000 flex flex-col ${measurementType === "Standard" ? 'opacity-100' : 'opacity-0 hidden'
 				}`}>
 				<div className='flex justify-around m-5'>
 					<Select
@@ -119,6 +122,9 @@ const CustomizeMeasurements = () => {
 					<MeasurementBlock image={TROUSER_LENGTH} description="Measure from the top of your pant’s waistband to the floor along the outside of your leg. Make sure the tape is tight, that you are standing straight, and then measure." header="Trouser Length" value={combinedMeasurements[selectedSize]?.[selectedUnit]?.trouser?.TrouserLength} />
 					<MeasurementBlock image={CUFF} description="Measure width around cuff as shown." header="Cuff" value={combinedMeasurements[selectedSize]?.[selectedUnit]?.trouser?.Cuff} />
 				</div>
+				<button className="bg-black text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed">
+					Save
+				</button>
 			</div>
 
 			{/* Custom Sizes */}
@@ -128,7 +134,7 @@ const CustomizeMeasurements = () => {
 			>
 				Custom Sizes
 			</div>
-			<div className={`mt-4 transition-opacity ease-in-out duration-1000 ${measurementType === "custom" ? 'opacity-100' : 'opacity-0 hidden'
+			<div className={`mt-4 transition-opacity ease-in-out duration-1000 flex flex-col ${measurementType === "custom" ? 'opacity-100' : 'opacity-0 hidden'
 				}`}>
 				<div className='flex justify-center m-5'>
 					<Select
@@ -156,6 +162,9 @@ const CustomizeMeasurements = () => {
 					<MeasurementBlock image={TROUSER_LENGTH} description="Measure from the top of your pant’s waistband to the floor along the outside of your leg. Make sure the tape is tight, that you are standing straight, and then measure." header="Trouser Length" />
 					<MeasurementBlock image={CUFF} description="Measure width around cuff as shown." header="Cuff" />
 				</div>
+				<button className="bg-black text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed">
+					Save
+				</button>
 			</div>
 
 		</div>
