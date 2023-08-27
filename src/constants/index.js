@@ -18,7 +18,7 @@ export const FABRIC = 'fabric';
 export const BUTTON = 'button';
 
 
-export const combinedMeasurements = {
+export const STANDARD_MEASUREMENTS = {
     XS: {
       label: 'Extra Small',
       inch: {
@@ -40,8 +40,8 @@ export const combinedMeasurements = {
           TrouserLength: 29,
           Cuff: 14,
         },
-        
-      centi: {
+      },
+      cm: {
         jacket: {
             FullShoulderWidth: 14,
             Sleeves: 81.3,
@@ -61,7 +61,8 @@ export const combinedMeasurements = {
           Cuff: 35.6,
         },
       },
-    },S: {
+    },
+    S: {
         label: 'Small',
         inch: {
             jacket: {
@@ -83,7 +84,7 @@ export const combinedMeasurements = {
               Cuff: 15,
             },
           },
-        centi: {
+        cm: {
             jacket: {
                 FullShoulderWidth: 14.6,
                 Sleeves: 83.8,
@@ -103,7 +104,8 @@ export const combinedMeasurements = {
               Cuff: 38.1,
             },
           },
-      },M: {
+      },
+      M: {
         label: 'Medium',
         inch: {
             jacket: {
@@ -127,7 +129,7 @@ export const combinedMeasurements = {
               Cuff: 16,
             },
           },
-        centi: {
+        cm: {
             jacket: {
                 FullShoulderWidth: 15.2,
                 Sleeves: 86.4,
@@ -163,7 +165,6 @@ export const combinedMeasurements = {
               Neck: 15.5,
             },
             trouser: {
-           
               TrouserWaist: 34,
               Crotch: 23,
               Thigh: 23,
@@ -171,7 +172,7 @@ export const combinedMeasurements = {
               Cuff: 17,
             },
           },
-        centi: {
+        cm: {
             jacket: {
                 FullShoulderWidth: 15.9,
                 Sleeves: 88.9,
@@ -215,7 +216,7 @@ export const combinedMeasurements = {
               Cuff: 18,
             },
           },
-          centi: {
+          cm: {
            jacket: {
              FullShoulderWidth: 16.5,
               Sleeves: 91.4,
@@ -260,7 +261,7 @@ export const combinedMeasurements = {
               Cuff: 19,
             },
           },
-          centi: {
+          cm: {
             jacket: {
                 FullShoulderWidth: 17.1,
                 Sleeves: 94,
@@ -281,9 +282,7 @@ export const combinedMeasurements = {
             },
           },
       },
-   
     }
-}
 
 
 
@@ -302,7 +301,7 @@ export const combinedMeasurements = {
 //           FrontJacketLength: 28,
 //           Neck: 14,
 //         },
-//         centi: {
+//         cm: {
 //           FullShoulderWidth: 14,
 //           Sleeves: 81.3,
 //           FullChest: 86.4,
@@ -322,7 +321,7 @@ export const combinedMeasurements = {
 //           TrouserLength: 29,
 //           Cuff: 14,
 //         },
-//         centi: {
+//         cm: {
 //           TrouserWaist: 71.1,
 //           Crotch: 50.8,
 //           Thigh: 50.8,
@@ -344,7 +343,7 @@ export const combinedMeasurements = {
 //               FrontJacketLength: 28.5,
 //               Neck: 14.5,
 //             },
-//             centi: {
+//             cm: {
 //               FullShoulderWidth: 14.6,
 //               Sleeves: 83.8,
 //               FullChest: 91.4,
@@ -364,7 +363,7 @@ export const combinedMeasurements = {
 //               TrouserLength: 30,
 //               Cuff: 15,
 //             },
-//             centi: {
+//             cm: {
 //               TrouserWaist: 76.2,
 //               Crotch: 53.3,
 //               Thigh: 53.3,
@@ -386,7 +385,7 @@ export const combinedMeasurements = {
 //               FrontJacketLength: 29,
 //               Neck: 15,
 //             },
-//             centi: {
+//             cm: {
 //               FullShoulderWidth: 15.2,
 //               Sleeves: 86.4,
 //               FullChest: 96.5,
@@ -406,7 +405,7 @@ export const combinedMeasurements = {
 //               TrouserLength: 31,
 //               Cuff: 16,
 //             },
-//             centi: {
+//             cm: {
 //               TrouserWaist: 81.3,
 //               Crotch: 55.9,
 //               Thigh: 55.9,
@@ -429,7 +428,7 @@ export const combinedMeasurements = {
 //               FrontJacketLength: 29.5,
 //               Neck: 15.5,
 //             },
-//             centi: {
+//             cm: {
 //               FullShoulderWidth: 15.9,
 //               Sleeves: 88.9,
 //               FullChest: 101.6,
@@ -449,7 +448,7 @@ export const combinedMeasurements = {
 //               TrouserLength: 32,
 //               Cuff: 17,
 //             },
-//             centi: {
+//             cm: {
 //               TrouserWaist: 86.4,
 //               Crotch: 58.4,
 //               Thigh: 58.4,
@@ -472,7 +471,7 @@ export const combinedMeasurements = {
 //               FrontJacketLength: 30,
 //               Neck: 16,
 //             },
-//             centi: {
+//             cm: {
 //               FullShoulderWidth: 16.5,
 //               Sleeves: 91.4,
 //               FullChest: 106.7,
@@ -492,7 +491,7 @@ export const combinedMeasurements = {
 //               TrouserLength: 33,
 //               Cuff: 18,
 //             },
-//             centi: {
+//             cm: {
 //               TrouserWaist: 91.4,
 //               Crotch: 61,
 //               Thigh: 61,
@@ -515,7 +514,7 @@ export const combinedMeasurements = {
 //               FrontJacketLength: 30.5,
 //               Neck: 16.5,
 //             },
-//             centi: {
+//             cm: {
 //               FullShoulderWidth: 17.1,
 //               Sleeves: 94,
 //               FullChest: 111.8,
@@ -535,7 +534,7 @@ export const combinedMeasurements = {
 //               TrouserLength: 34,
 //               Cuff: 19,
 //             },
-//             centi: {
+//             cm: {
 //               TrouserWaist: 96.5,
 //               Crotch: 63.5,
 //               Thigh: 63.5,
