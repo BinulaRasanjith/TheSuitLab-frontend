@@ -11,13 +11,13 @@ const initialState = {
     error: null,
 };
 
-export const setMaterials = createAsyncThunk(
-    "materials/setMaterials",
-    async (payload) => {
-        try {
-            let response;
-            response = await getMaterialsAPI(payload);
-            return { type: payload, data: response.data.materials };
+export const setMaterials = createAsyncThunk( // get materials from API and set them in the store (state.materials) based on the payload (type of material) 
+    "materials/setMaterials", // action type 
+    async (payload) => { // payload is the type of material (fabric, button, lapel, bottom, pocket, sleeve) 
+        try { // get materials from API
+            let response; // response is the data from the API
+            response = await getMaterialsAPI(payload); // get materials from API based on the payload (type of material)
+            return { type: payload, data: response.data.materials }; // return the type of material and the data from the API 
         } catch (error) {
             return Promise.reject(error);
         }
