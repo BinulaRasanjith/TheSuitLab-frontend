@@ -1,6 +1,6 @@
 import api from './api';
 
-export const getMaterials = async (type) => {
+export const getMaterials = async (type) => { // get materials from API based on the payload (type of material)
     return api.post('/materials', { type });
 }
 

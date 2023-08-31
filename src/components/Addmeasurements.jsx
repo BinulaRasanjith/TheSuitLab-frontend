@@ -21,7 +21,7 @@ const AddMeasurements = () => {
                 </div>
 
                 <Button className="p-3" onClick={() => navigate("/customer/customize-measurements")}>
-                    Customize Now
+                    Add Measurements
                 </Button>
 
             </div>
