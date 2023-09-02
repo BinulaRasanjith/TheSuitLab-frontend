@@ -30,7 +30,7 @@ const materialSlice = createSlice({
     reducers: {
         
     },
-    extraReducers: (builder) => {
+    extraReducers: (builder) => {  
         builder
             .addCase(setMaterials.pending, (state) => {
                 state.status = LOADING;

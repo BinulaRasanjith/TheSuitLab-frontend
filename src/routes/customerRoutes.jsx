@@ -1,6 +1,9 @@
 import BeltsGallery from "../components/Customer/BeltsGallery";
 import BowsGallery from "../components/Customer/BowsGallery";
+import CurrentSizes from "../components/Customer/CurrentSizes";
+import CustomSizes from "../components/Customer/CustomSizes";
 import ShoesGallery from "../components/Customer/ShoesGallery";
+import StandardSizes from "../components/Customer/StandardSizes";
 import TiesGallery from "../components/Customer/TiesGallery";
 import ChooseBeltLoop from "../components/customer/ChooseBeltLoop";
 import ChooseBottom from "../components/customer/ChooseBottom";
@@ -14,13 +17,14 @@ import ChoosePant from "../components/customer/ChoosePant";
 import ChoosePantContrast from "../components/customer/ChoosePantContrast";
 import ChoosePantPleat from "../components/customer/ChoosePantPleat";
 import ChoosePantPocket from "../components/customer/ChoosePantPocket";
-import ChooseBackPocket from "../components/customer/ChoosePocket";
 import ChoosePockets from "../components/customer/ChoosePocket";
+import ChooseBackPocket from "../components/customer/ChoosePocket";
 import ChooseSleeveButtons from "../components/customer/ChooseSleeveButtons";
 import ChooseVents from "../components/customer/ChooseVent";
 import Materials_ViewAll from "../components/customer/MaterialView/Materials_ViewAll";
 import SingleOutletLayout from "../layouts/SingleOutletLayout";
 import AccessoriesLayout from "../layouts/customerLayouts/AccessoriesLayout";
+import AddMeasurementsLayout from "../layouts/customerLayouts/AddMeasurementsLayout";
 import CustomerMainLayout from "../layouts/customerLayouts/CustomerMainLayout";
 import JacketStyleLayout from "../layouts/customerLayouts/JacketStyleLayout";
 import PantStyleLayout from "../layouts/customerLayouts/PantStyleLayout";
@@ -120,9 +124,28 @@ const costumerRoutes = {
 						},
 					],
 				},
+
+			],
+		},
+		{
+			path: "customize-suit/jacket/measurements",
+			element: <AddMeasurementsLayout />,
+			children: [
 				{
-					path: "measurements",
-					element: <ChooseMeasurements />,
+					path: "",
+					element: <CustomizeMeasurements />,
+				},
+				{
+					path: "current-sizes",
+					element: <CurrentSizes />
+				},
+				{
+					path: "standard-sizes",
+					element: <StandardSizes />
+				},
+				{
+					path: "custom-sizes",
+					element: <CustomSizes />
 				},
 			],
 		},
@@ -179,9 +202,16 @@ const costumerRoutes = {
 						},
 					],
 				},
+
+			],
+		},
+		{
+			path: "customize-suit/pant/measurements",
+			element: <AddMeasurementsLayout />,
+			children: [
 				{
-					path: "measurements",
-					element: <ChooseMeasurements />,
+					path: "",
+					element: <CustomizeMeasurements />,
 				},
 			],
 		},

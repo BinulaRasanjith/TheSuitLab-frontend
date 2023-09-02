@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 import Input from "../Input/Input";
 
-const MeasurementBlock = ({ header, description, image, value }) => {
+const MeasurementBlock = ({ header, description, image, value, selectedUnit }) => {
 	return (
 		<div
 			id="measurement-block"
@@ -13,7 +13,7 @@ const MeasurementBlock = ({ header, description, image, value }) => {
 			<p className="p-3">{description}</p>
 			<Input
 				type="number"
-				placeholder="size"
+				placeholder={selectedUnit === "cm" ? "cm" : "inch"}
 				className="w-full text-center m-4"
 				value={value}
 			/>
@@ -26,5 +26,6 @@ MeasurementBlock.propTypes = {
 	image: PropTypes.string.isRequired,
 	description: PropTypes.string.isRequired,
 	value: PropTypes.number.isRequired,
+	selectedUnit: PropTypes.string.isRequired,
 };
 export default MeasurementBlock;

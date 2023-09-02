@@ -17,9 +17,9 @@ const jacketCustomizationSlice = createSlice({
     name: "jacketCustomization",
     initialState,
     reducers: {
-        setJacket: (state, action) => {
-            for (const [key, value] of Object.entries(action.payload)) {
-                state.jacket[key] = value;
+        setJacket: (state, action) => {  // this reducer will be used to set the jacket property of the state to the value passed to it.
+            for (const [key, value] of Object.entries(action.payload)) { // loop through the object passed to the reducer
+                state.jacket[key] = value;  // set the jacket property of the state to the value passed to it.
             }
         },
     }
