@@ -2,6 +2,7 @@ import BeltsGallery from "../components/Customer/BeltsGallery";
 import BowsGallery from "../components/Customer/BowsGallery";
 import CurrentSizes from "../components/Customer/CurrentSizes";
 import CustomSizes from "../components/Customer/CustomSizes";
+import CustomizeMeasurements from "../components/Customer/CustomizeMeasurements";
 import ShoesGallery from "../components/Customer/ShoesGallery";
 import StandardSizes from "../components/Customer/StandardSizes";
 import TiesGallery from "../components/Customer/TiesGallery";
@@ -12,7 +13,6 @@ import ChooseButtons from "../components/customer/ChooseButtons";
 import ChooseCuff from "../components/customer/ChooseCuff";
 import ChooseJacketContrast from "../components/customer/ChooseJacketContrast";
 import ChooseLapel from "../components/customer/ChooseLapels";
-import ChooseMeasurements from "../components/customer/ChooseMeasurements";
 import ChoosePant from "../components/customer/ChoosePant";
 import ChoosePantContrast from "../components/customer/ChoosePantContrast";
 import ChoosePantPleat from "../components/customer/ChoosePantPleat";
@@ -31,9 +31,9 @@ import PantStyleLayout from "../layouts/customerLayouts/PantStyleLayout";
 import AboutUs from "../pages/Aboutus";
 import ContactUs from "../pages/Contactus";
 import Services from "../pages/Services";
-import CustomizeMeasurements from "../pages/customer/CustomizeMeasurements";
 import Home from "../pages/customer/Home";
 import LookBook from "../pages/customer/LookBook";
+import MeasurementDashboard from "../pages/customer/MeasurementDashboard";
 import SuitCustomizationLanding from "../pages/customer/SuitCustomizationLanding";
 // TODO: complete the navigation routes
 const costumerRoutes = {
@@ -66,7 +66,26 @@ const costumerRoutes = {
 		},
 		{
 			path: "customize-measurements",
-			element: <CustomizeMeasurements />,
+			element: <SingleOutletLayout />,
+			children: [
+				{
+					path: "",
+					element: <MeasurementDashboard />,
+				},
+				{
+					path: "current-sizes",
+					element: <CurrentSizes />
+				},
+				{
+					path: "standard-sizes",
+					element: <StandardSizes />
+				},
+				{
+					path: "custom-sizes",
+					element: <CustomSizes />
+				},
+			],
+
 		},
 		{
 			path: "customize-suit",
