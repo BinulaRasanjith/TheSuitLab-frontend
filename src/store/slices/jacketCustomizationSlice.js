@@ -8,6 +8,7 @@ const initialState = {
         bottom: null,
         pocket: null,
         sleeve: null,
+        vent: null,
     },
     status: "idle",
     error: null,
