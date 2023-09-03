@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import { getMaterials as getMaterialsAPI } from "../../api/materialAPI";
-import { IDLE, LOADING } from "../../constants";
+import { FABRIC_PATTERN, FABRIC_SOLID, IDLE, LOADING } from "../../constants";
 
 const initialState = {
     materials: {
@@ -28,9 +28,9 @@ const materialSlice = createSlice({
     name: "materials",
     initialState,
     reducers: {
-        
+
     },
-    extraReducers: (builder) => {  
+    extraReducers: (builder) => {
         builder
             .addCase(setMaterials.pending, (state) => {
                 state.status = LOADING;
@@ -47,7 +47,8 @@ const materialSlice = createSlice({
 });
 
 // materials selector
-export const selectFabrics = (state) => state.materials.materials.fabric;
+export const selectFabricSolid = (state) => state.materials.materials[FABRIC_SOLID];
+export const selectFabricPattern = (state) => state.materials.materials[FABRIC_PATTERN];
 
 // materials actions
 // export const { } = materialSlice.actions;

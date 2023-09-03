@@ -2,21 +2,21 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { MATERIAL_IMAGES_URL } from "../../../config/config";
-import { FABRIC } from "../../../constants";
+import { FABRIC_SOLID } from "../../../constants";
 import { setJacket } from "../../../store/slices/jacketCustomizationSlice";
 import {
-	selectFabrics,
+	selectFabricSolid,
 	setMaterials,
 } from "../../../store/slices/materialSlice";
 import Container from "./Container";
 
-const Materials_ViewAll = () => {
+const MaterialsFabricSolid = () => {
 	const dispatch = useDispatch();
 
-	const materials = useSelector(selectFabrics);
+	const materials = useSelector(selectFabricSolid);
 
 	useEffect(() => {
-		dispatch(setMaterials(FABRIC));
+		dispatch(setMaterials(FABRIC_SOLID));
 	}, [dispatch]);
 
 	return (
@@ -35,7 +35,8 @@ const Materials_ViewAll = () => {
 								src={`${MATERIAL_IMAGES_URL}/${material.image}`}
 								alt={material.materialCode}
 							/>
-							<p>{material.materialCode}</p>
+							<p>{material.materialName}</p>
+							<p>Rs. {material.unitPrice}</p> {/* TODO: Add currency */}
 						</div>
 					);
 				})}
@@ -43,4 +44,4 @@ const Materials_ViewAll = () => {
 	);
 };
 
-export default Materials_ViewAll;
+export default MaterialsFabricSolid;

@@ -13,6 +13,16 @@ const sidebarItems = [
 		label: "Fabric",
 		icon: <GiRolledCloth />,
 		to: "/customer/customize-suit/jacket/fabric",
+		subItems: [
+			{
+				label: "Solid",
+				to: "/customer/customize-suit/jacket/fabric/solid",
+			},
+			{
+				label: "Pattern",
+				to: "/customer/customize-suit/jacket/fabric/pattern",
+			},
+		],
 	},
 	{
 		label: "Style",

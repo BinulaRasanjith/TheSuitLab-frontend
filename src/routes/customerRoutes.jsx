@@ -3,6 +3,8 @@ import BowsGallery from "../components/Customer/BowsGallery";
 import CurrentSizes from "../components/Customer/CurrentSizes";
 import CustomSizes from "../components/Customer/CustomSizes";
 import CustomizeMeasurements from "../components/Customer/CustomizeMeasurements";
+import MaterialsFabricPattern from "../components/Customer/MaterialView/MaterialsFabricPattern";
+import MaterialsFabricSolid from "../components/Customer/MaterialView/MaterialsFabricSolid";
 import ShoesGallery from "../components/Customer/ShoesGallery";
 import StandardSizes from "../components/Customer/StandardSizes";
 import TiesGallery from "../components/Customer/TiesGallery";
@@ -21,7 +23,6 @@ import ChoosePockets from "../components/customer/ChoosePocket";
 import ChooseBackPocket from "../components/customer/ChoosePocket";
 import ChooseSleeveButtons from "../components/customer/ChooseSleeveButtons";
 import ChooseVents from "../components/customer/ChooseVent";
-import Materials_ViewAll from "../components/customer/MaterialView/Materials_ViewAll";
 import SingleOutletLayout from "../layouts/SingleOutletLayout";
 import AccessoriesLayout from "../layouts/customerLayouts/AccessoriesLayout";
 import AddMeasurementsLayout from "../layouts/customerLayouts/AddMeasurementsLayout";
@@ -74,18 +75,17 @@ const costumerRoutes = {
 				},
 				{
 					path: "current-sizes",
-					element: <CurrentSizes />
+					element: <CurrentSizes />,
 				},
 				{
 					path: "standard-sizes",
-					element: <StandardSizes />
+					element: <StandardSizes />,
 				},
 				{
 					path: "custom-sizes",
-					element: <CustomSizes />
+					element: <CustomSizes />,
 				},
 			],
-
 		},
 		{
 			path: "customize-suit",
@@ -97,7 +97,17 @@ const costumerRoutes = {
 			children: [
 				{
 					path: "fabric",
-					element: <Materials_ViewAll />,
+					element: <SingleOutletLayout />,
+					children: [
+						{
+							path: "solid",
+							element: <MaterialsFabricSolid />,
+						},
+						{
+							path: "pattern",
+							element: <MaterialsFabricPattern />,
+						},
+					],
 				},
 				{
 					path: "style",
@@ -143,7 +153,6 @@ const costumerRoutes = {
 						},
 					],
 				},
-
 			],
 		},
 		{
@@ -156,15 +165,15 @@ const costumerRoutes = {
 				},
 				{
 					path: "current-sizes",
-					element: <CurrentSizes />
+					element: <CurrentSizes />,
 				},
 				{
 					path: "standard-sizes",
-					element: <StandardSizes />
+					element: <StandardSizes />,
 				},
 				{
 					path: "custom-sizes",
-					element: <CustomSizes />
+					element: <CustomSizes />,
 				},
 			],
 		},
@@ -174,8 +183,17 @@ const costumerRoutes = {
 			children: [
 				{
 					path: "fabric",
-					element: <Materials_ViewAll />,
-
+					element: <SingleOutletLayout />,
+					children: [
+						{
+							path: "solid",
+							element: <MaterialsFabricSolid />,
+						},
+						{
+							path: "pattern",
+							element: <MaterialsFabricPattern />,
+						},
+					],
 				},
 				{
 					path: "style",
@@ -221,7 +239,6 @@ const costumerRoutes = {
 						},
 					],
 				},
-
 			],
 		},
 		{
