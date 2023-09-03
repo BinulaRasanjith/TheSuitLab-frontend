@@ -14,7 +14,9 @@ export const LOADING = 'loading';
 export const SIGNUP_SUCCESS = 'signup-success';
 
 // material types
-export const FABRIC = 'fabric';
+// material types
+export const FABRIC_SOLID = 'fabric-solid';
+export const FABRIC_PATTERN = 'fabric-pattern';
 export const BUTTON = 'button';
 
 
