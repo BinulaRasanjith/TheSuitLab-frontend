@@ -1,6 +1,6 @@
 import { Select } from "@chakra-ui/react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import FullShoulderWidth from "../../assets/images/measurements/men_size_1 (1).jpg";
 import Sleeves from "../../assets/images/measurements/men_size_2.jpg";
@@ -19,6 +19,7 @@ import CUFF from "../../assets/images/measurements/men_size_14.jpg";
 import MeasurementBlock from "../../components/Customer/MeasurementBlock";
 
 const CurrentSizes = () => {
+    const location = useLocation();
     const navigate = useNavigate();
     const [selectedCategory, setSelectedCategory] = useState("jacket");
 
@@ -38,7 +39,7 @@ const CurrentSizes = () => {
                         <option value="all">All</option>
                     </Select>
                     <button
-                        onClick={() => navigate("/customer/customize-suit/jacket/measurements")}
+                        onClick={() => navigate(location.pathname.includes("/customize-suit/jacket") ? "/customer/customize-suit/jacket/measurements" : location.pathname.includes("/customize-suit/pant") ? "/customer/customize-suit/pant/measurements" : location.pathname.includes("/customize-suit/all") ? "/customer/customize-suit/all/measurements" : "/customer/customize-measurements")}
                         type="button"
                         className="inline-block rounded-full bg-neutral-800 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] transition duration-150 ease-in-out hover:bg-neutral-800 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-neutral-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:outline-none focus:ring-0 active:bg-neutral-900 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] dark:bg-neutral-900 dark:shadow-[0_4px_9px_-4px_#030202] dark:hover:bg-neutral-900 dark:hover:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)] dark:focus:bg-neutral-900 dark:focus:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)] dark:active:bg-neutral-900 dark:active:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)]">
                         Back
