@@ -2,12 +2,31 @@ import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 
 // Import the images for suits
-import SuitImage1 from '../../assets/images/shoes/shoe1 1.png';
-import SuitImage2 from '../../assets/images/shoes/shoe2 1.png';
-import SuitImage3 from '../../assets/images/shoes/shoe3 1.png';
-import SuitImage4 from '../../assets/images/shoes/shoe4 1.png';
-import SuitImage5 from '../../assets/images/shoes/shoe5 1.png';
-import SuitImage6 from '../../assets/images/shoes/shoe6 1.png';
+import SuitImage1 from '../../assets/images/rentsuits/black suit/1.webp';
+import SuitImage3 from '../../assets/images/rentsuits/black suit/3.webp';
+import SuitImage4 from '../../assets/images/rentsuits/black suit/4.webp';
+import SuitImage5 from '../../assets/images/rentsuits/black suit/5.webp';
+import SuitImage6 from '../../assets/images/rentsuits/black suit/6.webp';
+import SuitImage7 from '../../assets/images/rentsuits/black paisley suit/1.webp';
+// import SuitImage8 from '../../assets/images/rentsuits/black paisley suit/3.webp';
+// import SuitImage9 from '../../assets/images/rentsuits/black paisley suit/3.webp';
+// import SuitImage10 from '../../assets/images/rentsuits/black paisley suit/4.webp';
+// import SuitImage11 from '../../assets/images/rentsuits/black paisley suit/5.webp';
+// import SuitImage12 from '../../assets/images/rentsuits/black paisley suit/6.webp';
+import SuitImage13 from '../../assets/images/rentsuits/burgandy strech/1.webp';
+// import SuitImage14 from '../../assets/images/rentsuits/burgandy strech/3.webp';
+// import SuitImage15 from '../../assets/images/rentsuits/burgandy strech/3.webp';
+// import SuitImage17 from '../../assets/images/rentsuits/burgandy strech/4.webp';
+// import SuitImage18 from '../../assets/images/rentsuits/burgandy strech/5.webp';
+// import SuitImage19 from '../../assets/images/rentsuits/burgandy strech/6.webp';
+import SuitImage20 from '../../assets/images/rentsuits/burgundy suit/1.webp';
+// import SuitImage21 from '../../assets/images/rentsuits/burgundy suit/3.webp';
+// import SuitImage22 from '../../assets/images/rentsuits/burgundy suit/3.webp';
+// import SuitImage23 from '../../assets/images/rentsuits/burgundy suit/4.webp';
+// import SuitImage24 from '../../assets/images/rentsuits/burgundy suit/5.webp';
+// import SuitImage26 from '../../assets/images/rentsuits/burgundy suit/6.webp';
+
+
 
 
 const SuitDescription = () => {
@@ -37,11 +56,11 @@ const SuitDescription = () => {
 
     // Create an array of suit data
     const suitData = [
-        { id: 1, name: "Sample Suit 1", description: "Clarks Men's Tilden Cap Oxford", images: [SuitImage1, SuitImage4, SuitImage5], price: 9500 },
-        { id: 2, name: "Sample Suit 2", description: "Clarks Men's Tilden Cap Oxford", images: [SuitImage2, SuitImage1, SuitImage4, SuitImage5], price: 7000 },
-        { id: 3, name: "Sample Suit 3", description: "Clarks Men's Tilden Cap Oxford", images: [SuitImage2, SuitImage4, SuitImage5], price: 5500 },
-        { id: 4, name: "Sample Suit 4", description: "Clarks Men's Tilden Cap Oxford", images: [SuitImage4], price: 1800 },
-        { id: 5, name: "Sample Suit 5", description: "Clarks Men's Tilden Cap Oxford", images: [SuitImage5], price: 9000 },
+        { id: 1, name: "Sample Suit 1", description: "Clarks Men's Tilden Cap Oxford", images: [SuitImage1, SuitImage3, SuitImage4, SuitImage5], price: 9500 },
+        { id: 2, name: "Sample Suit 2", description: "Clarks Men's Tilden Cap Oxford", images: [SuitImage7, SuitImage7, SuitImage3, SuitImage4], price: 7000 },
+        { id: 3, name: "Sample Suit 3", description: "Clarks Men's Tilden Cap Oxford", images: [SuitImage13, SuitImage3, SuitImage4, SuitImage5], price: 5500 },
+        { id: 4, name: "Sample Suit 4", description: "Clarks Men's Tilden Cap Oxford", images: [SuitImage20, SuitImage3], price: 1800 },
+        { id: 5, name: "Sample Suit 5", description: "Clarks Men's Tilden Cap Oxford", images: [SuitImage5, SuitImage3], price: 9000 },
         { id: 6, name: "Sample Suit 6", description: "Description for Suit 6", images: [SuitImage6], price: 6500 },
     ];
 
@@ -70,8 +89,8 @@ const SuitDescription = () => {
                     <div class="flex flex-wrap -mx-4">
                         <div class="w-full mb-8 md:w-1/2 md:mb-0">
                             <div class="sticky top-0 z-50 overflow-hidden">
-                                <div className="relative mb-6 lg:mb-10 lg:h-2/4">
-                                    <img src={selectedImage} alt="Selected Image" className="object-cover w-full h-full" />
+                                <div className=" mb-6 lg:mb-10 h-60 items-center">
+                                    <img src={selectedImage} alt="Selected Image" className=" object-cover w-52 h-52" />
                                 </div>
                                 <div className="flex-wrap hidden md:flex">
                                     {suitDetails.images.map((image, index) => (
@@ -82,15 +101,6 @@ const SuitDescription = () => {
                                         </div>
                                     ))}
                                 </div>
-                                {/* <div class="px-6 pb-6 mt-6 border-t border-gray-300 dark:border-gray-400">
-                                    <div class="flex flex-wrap items-center mt-6">
-                                        <span class="mr-2"></span>
-                                        <h2 class="text-lg font-bold text-gray-700 dark:text-gray-400">Free Shipping</h2>
-                                    </div>
-                                    <div class="mt-2 px-7">
-                                        <a class="text-sm text-blue-400 dark:text-blue-2800" href="#">Get delivery dates</a>
-                                    </div>
-                                </div> */}
                             </div>
 
                         </div>
