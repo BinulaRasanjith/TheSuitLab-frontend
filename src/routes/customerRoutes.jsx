@@ -34,6 +34,10 @@ import Services from "../pages/Services";
 import Home from "../pages/customer/Home";
 import LookBook from "../pages/customer/LookBook";
 import SuitCustomizationLanding from "../pages/customer/SuitCustomizationLanding";
+import HireSuitLayout from "../layouts/customerLayouts/HireSuitLayout";
+import JacketsGallery from "../components/Customer/jacketsGallery";
+import PantsGallery from "../components/Customer/pantsGallery";
+import SuitDescription from "../components/Customer/suitDescription";
 // TODO: complete the navigation routes
 const costumerRoutes = {
 	path: "/customer",
@@ -246,6 +250,24 @@ const costumerRoutes = {
 				{
 					path: "bow-ties",
 					element: <BowsGallery />,
+				},
+			],
+		},
+		{
+			path: "hire-suit",
+			element: <HireSuitLayout />,
+			children: [
+				{
+					path: "jackets",
+					element: <JacketsGallery />,
+				},
+				{
+					path: "pants",
+					element: <PantsGallery />,
+				},
+				{
+					path: ":suitType/:suitId", // Dynamic route parameter for both suit type and suit ID
+					element: <SuitDescription />,
 				},
 			],
 		},

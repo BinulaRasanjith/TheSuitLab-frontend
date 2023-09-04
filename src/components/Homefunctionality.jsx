@@ -86,7 +86,7 @@ const HomeFunctionality = () => {
 								<p className="text-white">Find your dream suit</p>
 								<p className="text-white">from 50+ designs</p>
 							</div>
-							<Button onClick={() => navigate("/customer/")}>Hire Now</Button>
+							<Button onClick={() => navigate("/customer/hire-suit")}>Hire Now</Button>
 						</div>
 					</div>
 
