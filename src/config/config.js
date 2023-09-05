@@ -4,4 +4,4 @@ export const API_URL = `${SERVER_URL}/api`; // TODO: use this
 
 export const PROFILE_PICTURE_URL = `${SERVER_URL}/uploads/profile-pics`;
 
-export const MATERIAL_IMAGES_URL = `${SERVER_URL}/uploads/materials-images`;
+export const MATERIAL_IMAGES_URL = `${SERVER_URL}/uploads/material-images`;

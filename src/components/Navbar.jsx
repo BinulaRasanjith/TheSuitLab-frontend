@@ -2,7 +2,7 @@ import { Button } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 import TSL_LOGO from "../assets/images/TSL_LOGO.png";
 import TSL_LOGO_SM from "../assets/images/TSL_LOGO_SM.png";
@@ -16,6 +16,7 @@ import displayRoleName from "../utils/displayRoleName";
 
 const Navbar = () => {
 	const navigate = useNavigate();
+	const { pathname } = useLocation();
 	const dispatch = useDispatch();
 	const [isUserDropdownOpen, setUserDropdownOpen] = useState(false);
 
@@ -58,16 +59,18 @@ const Navbar = () => {
 
 				{
 					// sidebar toggle burger button
-					user.id && user.role !== CUSTOMER && (
-						<div>
-							<button
-								className="flex items-center px-3 py-2 text-secondary text-2xl"
-								onClick={() => dispatch(toggleSidebar())}
-							>
-								<FaBars />
-							</button>
-						</div>
-					)
+					user.id &&
+						(user.role !== CUSTOMER ||
+							pathname.includes("/customer/customize-suit")) && (
+							<div>
+								<button
+									className="flex items-center px-3 py-2 text-secondary text-2xl"
+									onClick={() => dispatch(toggleSidebar())}
+								>
+									<FaBars />
+								</button>
+							</div>
+						)
 				}
 				<div className="h-full flex items-center pr-2">
 					<div className="flex align-center h-14 overflow-hidden">

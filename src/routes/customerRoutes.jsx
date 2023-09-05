@@ -1,6 +1,12 @@
 import BeltsGallery from "../components/Customer/BeltsGallery";
 import BowsGallery from "../components/Customer/BowsGallery";
+import CurrentSizes from "../components/Customer/CurrentSizes";
+import CustomSizes from "../components/Customer/CustomSizes";
+import CustomizeMeasurements from "../components/Customer/CustomizeMeasurements";
+import MaterialsFabricPattern from "../components/Customer/MaterialView/MaterialsFabricPattern";
+import MaterialsFabricSolid from "../components/Customer/MaterialView/MaterialsFabricSolid";
 import ShoesGallery from "../components/Customer/ShoesGallery";
+import StandardSizes from "../components/Customer/StandardSizes";
 import TiesGallery from "../components/Customer/TiesGallery";
 import ChooseBeltLoop from "../components/customer/ChooseBeltLoop";
 import ChooseBottom from "../components/customer/ChooseBottom";
@@ -9,22 +15,17 @@ import ChooseButtons from "../components/customer/ChooseButtons";
 import ChooseCuff from "../components/customer/ChooseCuff";
 import ChooseJacketContrast from "../components/customer/ChooseJacketContrast";
 import ChooseLapel from "../components/customer/ChooseLapels";
-import ChooseMeasurements from "../components/customer/ChooseMeasurements";
 import ChoosePant from "../components/customer/ChoosePant";
 import ChoosePantContrast from "../components/customer/ChoosePantContrast";
 import ChoosePantPleat from "../components/customer/ChoosePantPleat";
 import ChoosePantPocket from "../components/customer/ChoosePantPocket";
-import ChooseBackPocket from "../components/customer/ChoosePocket";
 import ChoosePockets from "../components/customer/ChoosePocket";
+import ChooseBackPocket from "../components/customer/ChoosePocket";
 import ChooseSleeveButtons from "../components/customer/ChooseSleeveButtons";
 import ChooseVents from "../components/customer/ChooseVent";
-import Materials_PureLinen from "../components/customer/MaterialView/Materials_PureLinen";
-import Materials_PureWool from "../components/customer/MaterialView/Materials_PureWool";
-import Materials_SolidColors from "../components/customer/MaterialView/Materials_SolidColors";
-import Materials_ViewAll from "../components/customer/MaterialView/Materials_ViewAll";
-import Materials_patterns from "../components/customer/MaterialView/Materials_patterns";
 import SingleOutletLayout from "../layouts/SingleOutletLayout";
 import AccessoriesLayout from "../layouts/customerLayouts/AccessoriesLayout";
+import AddMeasurementsLayout from "../layouts/customerLayouts/AddMeasurementsLayout";
 import CustomerMainLayout from "../layouts/customerLayouts/CustomerMainLayout";
 import JacketStyleLayout from "../layouts/customerLayouts/JacketStyleLayout";
 import PantStyleLayout from "../layouts/customerLayouts/PantStyleLayout";
@@ -33,11 +34,13 @@ import ContactUs from "../pages/Contactus";
 import Services from "../pages/Services";
 import Home from "../pages/customer/Home";
 import LookBook from "../pages/customer/LookBook";
+import MeasurementDashboard from "../pages/customer/MeasurementDashboard";
 import SuitCustomizationLanding from "../pages/customer/SuitCustomizationLanding";
 import HireSuitLayout from "../layouts/customerLayouts/HireSuitLayout";
 import JacketsGallery from "../components/Customer/jacketsGallery";
 import PantsGallery from "../components/Customer/pantsGallery";
 import SuitDescription from "../components/Customer/suitDescription";
+
 // TODO: complete the navigation routes
 const costumerRoutes = {
 	path: "/customer",
@@ -68,6 +71,28 @@ const costumerRoutes = {
 			element: <div>Profile</div>,
 		},
 		{
+			path: "customize-measurements",
+			element: <SingleOutletLayout />,
+			children: [
+				{
+					path: "",
+					element: <MeasurementDashboard />,
+				},
+				{
+					path: "current-sizes",
+					element: <CurrentSizes />,
+				},
+				{
+					path: "standard-sizes",
+					element: <StandardSizes />,
+				},
+				{
+					path: "custom-sizes",
+					element: <CustomSizes />,
+				},
+			],
+		},
+		{
 			path: "customize-suit",
 			element: <SuitCustomizationLanding />,
 		},
@@ -80,24 +105,12 @@ const costumerRoutes = {
 					element: <SingleOutletLayout />,
 					children: [
 						{
-							path: "all",
-							element: <Materials_ViewAll />,
+							path: "solid",
+							element: <MaterialsFabricSolid />,
 						},
 						{
-							path: "solid-colors",
-							element: <Materials_SolidColors />,
-						},
-						{
-							path: "patterns",
-							element: <Materials_patterns />,
-						},
-						{
-							path: "pure-linen",
-							element: <Materials_PureLinen />,
-						},
-						{
-							path: "pure-wool",
-							element: <Materials_PureWool />,
+							path: "pattern",
+							element: <MaterialsFabricPattern />,
 						},
 					],
 				},
@@ -145,9 +158,27 @@ const costumerRoutes = {
 						},
 					],
 				},
+			],
+		},
+		{
+			path: "customize-suit/jacket/measurements",
+			element: <AddMeasurementsLayout />,
+			children: [
 				{
-					path: "measurements",
-					element: <ChooseMeasurements />,
+					path: "",
+					element: <CustomizeMeasurements />,
+				},
+				{
+					path: "current-sizes",
+					element: <CurrentSizes />,
+				},
+				{
+					path: "standard-sizes",
+					element: <StandardSizes />,
+				},
+				{
+					path: "custom-sizes",
+					element: <CustomSizes />,
 				},
 			],
 		},
@@ -160,24 +191,12 @@ const costumerRoutes = {
 					element: <SingleOutletLayout />,
 					children: [
 						{
-							path: "all",
-							element: <Materials_ViewAll />,
+							path: "solid",
+							element: <MaterialsFabricSolid />,
 						},
 						{
-							path: "solid-colors",
-							element: <Materials_SolidColors />,
-						},
-						{
-							path: "patterns",
-							element: <Materials_patterns />,
-						},
-						{
-							path: "pure-linen",
-							element: <Materials_PureLinen />,
-						},
-						{
-							path: "pure-wool",
-							element: <Materials_PureWool />,
+							path: "pattern",
+							element: <MaterialsFabricPattern />,
 						},
 					],
 				},
@@ -225,9 +244,15 @@ const costumerRoutes = {
 						},
 					],
 				},
+			],
+		},
+		{
+			path: "customize-suit/pant/measurements",
+			element: <AddMeasurementsLayout />,
+			children: [
 				{
-					path: "measurements",
-					element: <ChooseMeasurements />,
+					path: "",
+					element: <CustomizeMeasurements />,
 				},
 			],
 		},

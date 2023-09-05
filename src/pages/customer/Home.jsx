@@ -1,4 +1,4 @@
-// import AddMeasurements from '../../components/AddMeasurements'
+import AddMeasurements from '../../components/AddMeasurements'
 import CustomerTestimonials from '../../components/CustomerTestimonials'
 // import Fitness from '../../components/Fitness'
 import Footer from '../../components/Footer'
@@ -12,7 +12,7 @@ const Home = () => {
     <div className='block w-full'>
       <HomeFunctionality />
       <Instructions />
-      {/* <AddMeasurements /> */}
+      <AddMeasurements />
       <RecentDesigns />
       <Slideshow2 />
       {/* <Fitness /> */}

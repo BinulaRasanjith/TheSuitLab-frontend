@@ -113,7 +113,7 @@ const authSlice = createSlice({ // create the auth slice
 
 export function setUserObject(user) {
 	return {
-		id: user.id,
+		id: user.userId,
 		firstName: user.firstName,
 		lastName: user.lastName,
 		mobileNo: user.mobileNo,

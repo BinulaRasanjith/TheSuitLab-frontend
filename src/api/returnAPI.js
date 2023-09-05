@@ -7,3 +7,11 @@ export const addReturn = (data) => {
 export const getReturns = () => {
     return api.get('/returns/get-returns');
 }
+
+export const updateReturn = (new_data) => {
+    return api.post('/returns/update-return', new_data);
+}
+
+export const removeReturn = (id) => {
+    return api.delete(`/returns/remove-return/${id}`);
+}
