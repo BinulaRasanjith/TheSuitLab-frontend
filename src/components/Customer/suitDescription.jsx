@@ -8,25 +8,95 @@ import SuitImage4 from '../../assets/images/rentsuits/black suit/4.webp';
 import SuitImage5 from '../../assets/images/rentsuits/black suit/5.webp';
 import SuitImage6 from '../../assets/images/rentsuits/black suit/6.webp';
 import SuitImage7 from '../../assets/images/rentsuits/black paisley suit/1.webp';
-// import SuitImage8 from '../../assets/images/rentsuits/black paisley suit/3.webp';
-// import SuitImage9 from '../../assets/images/rentsuits/black paisley suit/3.webp';
-// import SuitImage10 from '../../assets/images/rentsuits/black paisley suit/4.webp';
-// import SuitImage11 from '../../assets/images/rentsuits/black paisley suit/5.webp';
-// import SuitImage12 from '../../assets/images/rentsuits/black paisley suit/6.webp';
+import SuitImage8 from '../../assets/images/rentsuits/black paisley suit/3.webp';
+import SuitImage9 from '../../assets/images/rentsuits/black paisley suit/3.webp';
+import SuitImage10 from '../../assets/images/rentsuits/black paisley suit/4.webp';
+import SuitImage11 from '../../assets/images/rentsuits/black paisley suit/5.webp';
+import SuitImage12 from '../../assets/images/rentsuits/black paisley suit/6.webp';
 import SuitImage13 from '../../assets/images/rentsuits/burgandy strech/1.webp';
-// import SuitImage14 from '../../assets/images/rentsuits/burgandy strech/3.webp';
-// import SuitImage15 from '../../assets/images/rentsuits/burgandy strech/3.webp';
-// import SuitImage17 from '../../assets/images/rentsuits/burgandy strech/4.webp';
-// import SuitImage18 from '../../assets/images/rentsuits/burgandy strech/5.webp';
-// import SuitImage19 from '../../assets/images/rentsuits/burgandy strech/6.webp';
-import SuitImage20 from '../../assets/images/rentsuits/burgundy suit/1.webp';
-// import SuitImage21 from '../../assets/images/rentsuits/burgundy suit/3.webp';
-// import SuitImage22 from '../../assets/images/rentsuits/burgundy suit/3.webp';
-// import SuitImage23 from '../../assets/images/rentsuits/burgundy suit/4.webp';
-// import SuitImage24 from '../../assets/images/rentsuits/burgundy suit/5.webp';
-// import SuitImage26 from '../../assets/images/rentsuits/burgundy suit/6.webp';
-
-
+import SuitImage14 from '../../assets/images/rentsuits/burgandy strech/3.webp';
+import SuitImage15 from '../../assets/images/rentsuits/burgandy strech/3.webp';
+import SuitImage16 from '../../assets/images/rentsuits/burgandy strech/4.webp';
+import SuitImage17 from '../../assets/images/rentsuits/burgandy strech/5.webp';
+import SuitImage18 from '../../assets/images/rentsuits/burgandy strech/6.webp';
+import SuitImage19 from '../../assets/images/rentsuits/burgundy suit/1.webp';
+import SuitImage20 from '../../assets/images/rentsuits/burgundy suit/3.webp';
+import SuitImage21 from '../../assets/images/rentsuits/burgundy suit/3.webp';
+import SuitImage22 from '../../assets/images/rentsuits/burgundy suit/4.webp';
+import SuitImage23 from '../../assets/images/rentsuits/burgundy suit/5.webp';
+import SuitImage24 from '../../assets/images/rentsuits/burgundy suit/6.webp';
+import SuitImage25 from '../../assets/images/rentsuits/cafe brown suit/1.webp';
+import SuitImage26 from '../../assets/images/rentsuits/cafe brown suit/3.webp';
+import SuitImage27 from '../../assets/images/rentsuits/cafe brown suit/3.webp';
+import SuitImage28 from '../../assets/images/rentsuits/cafe brown suit/4.webp';
+import SuitImage29 from '../../assets/images/rentsuits/cafe brown suit/5.webp';
+import SuitImage30 from '../../assets/images/rentsuits/cafe brown suit/6.webp';
+import SuitImage31 from '../../assets/images/rentsuits/caremal suit/1.webp';
+import SuitImage32 from '../../assets/images/rentsuits/caremal suit/3.webp';
+import SuitImage33 from '../../assets/images/rentsuits/caremal suit/3.webp';
+import SuitImage34 from '../../assets/images/rentsuits/caremal suit/4.webp';
+import SuitImage35 from '../../assets/images/rentsuits/caremal suit/5.webp';
+import SuitImage36 from '../../assets/images/rentsuits/caremal suit/6.webp';
+import SuitImage37 from '../../assets/images/rentsuits/cobolt blue suit/1.webp';
+import SuitImage38 from '../../assets/images/rentsuits/cobolt blue suit/3.webp';
+import SuitImage39 from '../../assets/images/rentsuits/cobolt blue suit/3.webp';
+import SuitImage40 from '../../assets/images/rentsuits/cobolt blue suit/4.webp';
+import SuitImage41 from '../../assets/images/rentsuits/cobolt blue suit/5.webp';
+import SuitImage42 from '../../assets/images/rentsuits/cobolt blue suit/6.webp';
+import SuitImage43 from '../../assets/images/rentsuits/dark blue suit/1.webp';
+import SuitImage44 from '../../assets/images/rentsuits/dark blue suit/3.webp';
+import SuitImage45 from '../../assets/images/rentsuits/dark blue suit/3.webp';
+import SuitImage46 from '../../assets/images/rentsuits/dark blue suit/4.webp';
+import SuitImage47 from '../../assets/images/rentsuits/dark blue suit/5.webp';
+import SuitImage48 from '../../assets/images/rentsuits/dark blue suit/6.webp';
+import SuitImage49 from '../../assets/images/rentsuits/dark green/1.webp';
+import SuitImage50 from '../../assets/images/rentsuits/dark green/3.webp';
+import SuitImage51 from '../../assets/images/rentsuits/dark green/3.webp';
+import SuitImage52 from '../../assets/images/rentsuits/dark green/4.webp';
+import SuitImage53 from '../../assets/images/rentsuits/dark green/5.webp';
+import SuitImage54 from '../../assets/images/rentsuits/dark green/6.webp';
+import SuitImage55 from '../../assets/images/rentsuits/green suit/1.webp';
+import SuitImage56 from '../../assets/images/rentsuits/green suit/3.webp';
+import SuitImage57 from '../../assets/images/rentsuits/green suit/3.webp';
+import SuitImage58 from '../../assets/images/rentsuits/green suit/4.webp';
+import SuitImage59 from '../../assets/images/rentsuits/green suit/5.webp';
+import SuitImage60 from '../../assets/images/rentsuits/green suit/6.webp';
+import SuitImage61 from '../../assets/images/rentsuits/light brown suit/1.webp';
+import SuitImage62 from '../../assets/images/rentsuits/light brown suit/2.webp';
+import SuitImage63 from '../../assets/images/rentsuits/light brown suit/3.webp';
+import SuitImage64 from '../../assets/images/rentsuits/light brown suit/4.webp';
+import SuitImage65 from '../../assets/images/rentsuits/light brown suit/5.webp';
+import SuitImage66 from '../../assets/images/rentsuits/light brown suit/6.webp';
+import SuitImage67 from '../../assets/images/rentsuits/marine blue suit/1.webp';
+import SuitImage68 from '../../assets/images/rentsuits/marine blue suit/2.webp';
+import SuitImage69 from '../../assets/images/rentsuits/marine blue suit/3.webp';
+import SuitImage70 from '../../assets/images/rentsuits/marine blue suit/4.webp';
+import SuitImage71 from '../../assets/images/rentsuits/marine blue suit/5.webp';
+import SuitImage72 from '../../assets/images/rentsuits/marine blue suit/6.webp';
+import SuitImage73 from '../../assets/images/rentsuits/maroon suit/1.webp';
+import SuitImage74 from '../../assets/images/rentsuits/maroon suit/2.webp';
+import SuitImage75 from '../../assets/images/rentsuits/maroon suit/3.webp';
+import SuitImage76 from '../../assets/images/rentsuits/maroon suit/4.webp';
+import SuitImage77 from '../../assets/images/rentsuits/maroon suit/5.webp';
+import SuitImage78 from '../../assets/images/rentsuits/maroon suit/6.webp';
+import SuitImage79 from '../../assets/images/rentsuits/rose pink venice suit/1.webp';
+import SuitImage80 from '../../assets/images/rentsuits/rose pink venice suit/2.webp';
+import SuitImage81 from '../../assets/images/rentsuits/rose pink venice suit/3.webp';
+import SuitImage82 from '../../assets/images/rentsuits/rose pink venice suit/4.webp';
+import SuitImage83 from '../../assets/images/rentsuits/rose pink venice suit/5.webp';
+import SuitImage84 from '../../assets/images/rentsuits/rose pink venice suit/6.webp';
+import SuitImage85 from '../../assets/images/rentsuits/white n black suit/1.webp';
+import SuitImage86 from '../../assets/images/rentsuits/white n black suit/2.webp';
+import SuitImage87 from '../../assets/images/rentsuits/white n black suit/3.webp';
+import SuitImage88 from '../../assets/images/rentsuits/white n black suit/4.webp';
+import SuitImage89 from '../../assets/images/rentsuits/white n black suit/5.webp';
+import SuitImage90 from '../../assets/images/rentsuits/white n black suit/6.webp';
+import SuitImage91 from '../../assets/images/rentsuits/white palma suit/1.webp';
+//import SuitImage92 from '../../assets/images/rentsuits/white palma suit/2.webp';
+//import SuitImage93 from '../../assets/images/rentsuits/white palma suit/3.webp';
+//import SuitImage94 from '../../assets/images/rentsuits/white palma suit/4.webp';
+//import SuitImage95 from '../../assets/images/rentsuits/white palma suit/5.webp';
+//import SuitImage96 from '../../assets/images/rentsuits/white palma suit/6.webp';
 
 
 const SuitDescription = () => {
@@ -57,11 +127,20 @@ const SuitDescription = () => {
     // Create an array of suit data
     const suitData = [
         { id: 1, name: "Sample Suit 1", description: "Clarks Men's Tilden Cap Oxford", images: [SuitImage1, SuitImage3, SuitImage4, SuitImage5], price: 9500 },
-        { id: 2, name: "Sample Suit 2", description: "Clarks Men's Tilden Cap Oxford", images: [SuitImage7, SuitImage7, SuitImage3, SuitImage4], price: 7000 },
-        { id: 3, name: "Sample Suit 3", description: "Clarks Men's Tilden Cap Oxford", images: [SuitImage13, SuitImage3, SuitImage4, SuitImage5], price: 5500 },
-        { id: 4, name: "Sample Suit 4", description: "Clarks Men's Tilden Cap Oxford", images: [SuitImage20, SuitImage3], price: 1800 },
-        { id: 5, name: "Sample Suit 5", description: "Clarks Men's Tilden Cap Oxford", images: [SuitImage5, SuitImage3], price: 9000 },
-        { id: 6, name: "Sample Suit 6", description: "Description for Suit 6", images: [SuitImage6], price: 6500 },
+        { id: 2, name: "Sample Suit 2", description: "Clarks Men's Tilden Cap Oxford", images: [SuitImage7, SuitImage8, SuitImage9, SuitImage10, SuitImage11, SuitImage12], price: 7000 },
+        { id: 3, name: "Sample Suit 3", description: "Clarks Men's Tilden Cap Oxford", images: [SuitImage13, SuitImage14, SuitImage15, SuitImage16, SuitImage17, SuitImage18], price: 5500 },
+        { id: 4, name: "Sample Suit 4", description: "Clarks Men's Tilden Cap Oxford", images: [SuitImage19, SuitImage20, SuitImage21, SuitImage22, SuitImage23, SuitImage24], price: 1800 },
+        { id: 5, name: "Sample Suit 5", description: "Clarks Men's Tilden Cap Oxford", images: [SuitImage25, SuitImage26, SuitImage27, SuitImage28, SuitImage29, SuitImage30], price: 9000 },
+        { id: 6, name: "Sample Suit 6", description: "Description for Suit 6", images: [SuitImage31, SuitImage32, SuitImage33, SuitImage34, SuitImage35, SuitImage36], price: 6500 },
+        { id: 7, name: "Sample Suit 7", description: "Description for Suit 7", images: [SuitImage37, SuitImage38, SuitImage39, SuitImage40, SuitImage41, SuitImage42], price: 7500 },
+        { id: 8, name: "Sample Suit 8", description: "Description for Suit 8", images: [SuitImage43, SuitImage44, SuitImage45, SuitImage46, SuitImage47, SuitImage48], price: 8500 },
+        { id: 9, name: "Sample Suit 9", description: "Description for Suit 9", images: [SuitImage49, SuitImage50, SuitImage51, SuitImage52, SuitImage53, SuitImage54], price: 9500 },
+        { id: 10, name: "Sample Suit 10", description: "Description for Suit 10", images: [SuitImage55, SuitImage56, SuitImage57, SuitImage58, SuitImage59, SuitImage60], price: 10500 },
+        { id: 11, name: "Sample Suit 11", description: "Description for Suit 11", images: [SuitImage61, SuitImage62, SuitImage63, SuitImage64, SuitImage65, SuitImage66], price: 11500 },
+        { id: 12, name: "Sample Suit 12", description: "Description for Suit 12", images: [SuitImage67, SuitImage68, SuitImage69, SuitImage70, SuitImage71, SuitImage72], price: 12500 },
+        { id: 13, name: "Sample Suit 13", description: "Description for Suit 13", images: [SuitImage73, SuitImage74, SuitImage75, SuitImage76, SuitImage77, SuitImage78], price: 13500 },
+        { id: 14, name: "Sample Suit 14", description: "Description for Suit 14", images: [SuitImage79, SuitImage80, SuitImage81, SuitImage82, SuitImage83, SuitImage84], price: 14500 },
+        { id: 15, name: "Sample Suit 15", description: "Description for Suit 15", images: [SuitImage85, SuitImage86, SuitImage87, SuitImage88, SuitImage89, SuitImage90], price: 15500 },
     ];
 
     // Find the suit details based on suitId
