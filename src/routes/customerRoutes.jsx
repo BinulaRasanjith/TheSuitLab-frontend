@@ -1,5 +1,6 @@
 import BeltsGallery from "../components/Customer/BeltsGallery";
 import BowsGallery from "../components/Customer/BowsGallery";
+import Cart from "../components/Customer/Cart";
 import CurrentSizes from "../components/Customer/CurrentSizes";
 import CustomSizes from "../components/Customer/CustomSizes";
 import CustomizeMeasurements from "../components/Customer/CustomizeMeasurements";
@@ -8,6 +9,9 @@ import MaterialsFabricSolid from "../components/Customer/MaterialView/MaterialsF
 import ShoesGallery from "../components/Customer/ShoesGallery";
 import StandardSizes from "../components/Customer/StandardSizes";
 import TiesGallery from "../components/Customer/TiesGallery";
+import JacketsGallery from "../components/Customer/jacketsGallery";
+import PantsGallery from "../components/Customer/pantsGallery";
+import SuitDescription from "../components/Customer/suitDescription";
 import ChooseBeltLoop from "../components/customer/ChooseBeltLoop";
 import ChooseBottom from "../components/customer/ChooseBottom";
 import ChooseButtonContrast from "../components/customer/ChooseButtonContrast";
@@ -19,14 +23,15 @@ import ChoosePant from "../components/customer/ChoosePant";
 import ChoosePantContrast from "../components/customer/ChoosePantContrast";
 import ChoosePantPleat from "../components/customer/ChoosePantPleat";
 import ChoosePantPocket from "../components/customer/ChoosePantPocket";
-import ChoosePockets from "../components/customer/ChoosePocket";
 import ChooseBackPocket from "../components/customer/ChoosePocket";
+import ChoosePockets from "../components/customer/ChoosePocket";
 import ChooseSleeveButtons from "../components/customer/ChooseSleeveButtons";
 import ChooseVents from "../components/customer/ChooseVent";
 import SingleOutletLayout from "../layouts/SingleOutletLayout";
 import AccessoriesLayout from "../layouts/customerLayouts/AccessoriesLayout";
 import AddMeasurementsLayout from "../layouts/customerLayouts/AddMeasurementsLayout";
 import CustomerMainLayout from "../layouts/customerLayouts/CustomerMainLayout";
+import HireSuitLayout from "../layouts/customerLayouts/HireSuitLayout";
 import JacketStyleLayout from "../layouts/customerLayouts/JacketStyleLayout";
 import PantStyleLayout from "../layouts/customerLayouts/PantStyleLayout";
 import AboutUs from "../pages/Aboutus";
@@ -36,11 +41,6 @@ import Home from "../pages/customer/Home";
 import LookBook from "../pages/customer/LookBook";
 import MeasurementDashboard from "../pages/customer/MeasurementDashboard";
 import SuitCustomizationLanding from "../pages/customer/SuitCustomizationLanding";
-import HireSuitLayout from "../layouts/customerLayouts/HireSuitLayout";
-import JacketsGallery from "../components/Customer/jacketsGallery";
-import PantsGallery from "../components/Customer/pantsGallery";
-import SuitDescription from "../components/Customer/suitDescription";
-import Cart from "../components/Customer/Cart";
 
 // TODO: complete the navigation routes
 const costumerRoutes = {

@@ -13,10 +13,29 @@ export const IDLE = 'idle';
 export const LOADING = 'loading';
 export const SIGNUP_SUCCESS = 'signup-success';
 
+// costume types
+export const JACKET = 'jacket';
+export const PANT = 'pant';
+
 // material types
 export const FABRIC_SOLID = 'fabric-solid';
 export const FABRIC_PATTERN = 'fabric-pattern';
 export const BUTTON = 'button';
+
+// design types
+export const PRE_DESIGNED = 'pre-designed';
+export const CUSTOMIZED = 'customized';
+
+// sizes
+export const S = 'S';
+export const M = 'M';
+export const L = 'L';
+export const XL = 'XL';
+export const XXL = 'XXL';
+
+// hire availability types
+export const AVAILABLE = 'available';
+export const UNAVAILABLE = 'unavailable';
 
 
 export const STANDARD_MEASUREMENTS = {
