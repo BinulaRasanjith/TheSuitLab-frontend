@@ -40,6 +40,7 @@ import HireSuitLayout from "../layouts/customerLayouts/HireSuitLayout";
 import JacketsGallery from "../components/Customer/jacketsGallery";
 import PantsGallery from "../components/Customer/pantsGallery";
 import SuitDescription from "../components/Customer/suitDescription";
+import Cart from "../components/Customer/Cart";
 
 // TODO: complete the navigation routes
 const costumerRoutes = {
@@ -295,6 +296,10 @@ const costumerRoutes = {
 					element: <SuitDescription />,
 				},
 			],
+		},
+		{
+			path: "cart",
+			element: <Cart />,
 		},
 	],
 };

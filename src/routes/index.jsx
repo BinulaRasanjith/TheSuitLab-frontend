@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 
+
 import adminRoutes from "./adminRoutes";
 import assistantRoutes from "./assistantRoutes";
 import customerRoutes from "./customerRoutes";
@@ -15,5 +16,6 @@ const router = createBrowserRouter([
 	assistantRoutes,
 	managerRoutes,
 ]);
+
 
 export default router;

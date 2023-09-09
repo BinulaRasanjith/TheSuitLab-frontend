@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useState } from 'react';
 
 // Import the images for suits
@@ -98,11 +98,16 @@ import SuitImage91 from '../../assets/images/rentsuits/white palma suit/1.webp';
 //import SuitImage95 from '../../assets/images/rentsuits/white palma suit/5.webp';
 //import SuitImage96 from '../../assets/images/rentsuits/white palma suit/6.webp';
 
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { HiOutlineCalendar } from "react-icons/hi";
 
 const SuitDescription = () => {
     // Get the suitId from the route parameters
 
     const [quantity, setQuantity] = useState(1); // Initialize quantity with 1
+    const [fromDate, setFromDate] = useState(null);
+    const [toDate, setToDate] = useState(null);
 
     const handleDecrement = () => {
         if (quantity > 1) {
@@ -161,6 +166,17 @@ const SuitDescription = () => {
         );
     }
 
+    const handleAddToCart = () => {
+        const cartItem = {
+            id: suitDetails.id,
+            name: suitDetails.name,
+            price: suitDetails.price,
+            // Add other suit details as needed
+        };
+        Cart.addToCart(cartItem); // Call addToCart from Cart component
+    };
+
+
     return (
         <div className="flex items-start flex-wrap bg-white w-full h-screen overflow-auto">
             <section class=" bg-white my-10 w-full font-poppins">
@@ -179,6 +195,38 @@ const SuitDescription = () => {
                                             </a>
                                         </div>
                                     ))}
+                                </div>
+                                <div class="px-6 pb-6 mt-6 border-t border-gray-300 dark:border-gray-400">
+                                    <div class="flex flex-wrap items-center mt-6">
+                                        <h2 class="text-lg font-bold text-gray-700 mb-5 dark:text-gray-400">Renting Period</h2>
+                                    </div>
+
+                                    {/* From Date input */}
+                                    <div class="relative">
+                                        <HiOutlineCalendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600 " />
+                                        <DatePicker
+                                            selected={fromDate}
+                                            onChange={(date) => setFromDate(date)}
+                                            placeholderText="Select from date"
+                                            bgColor={"black"}
+                                            dateFormat="dd/MM/yyyy"
+                                            minDate={new Date()}
+                                            className="bg-gray-50 border border-gray-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 "
+                                        />
+                                    </div>
+
+                                    {/* To Date input */}
+                                    <div class="relative mt-4">
+                                        <HiOutlineCalendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600 " />
+                                        <DatePicker
+                                            selected={toDate}
+                                            onChange={(date) => setToDate(date)}
+                                            placeholderText="Select to date"
+                                            dateFormat="dd/MM/yyyy"
+                                            minDate={fromDate || new Date()} // Set the minimum date to be the selected "from date" or today
+                                            className="bg-gray-50 border border-gray-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5"
+                                        />
+                                    </div>
                                 </div>
                             </div>
 
@@ -261,9 +309,14 @@ const SuitDescription = () => {
                                     </div>
                                 </div>
                                 <div class="flex flex-wrap items-center gap-4">
-                                    <button
-                                        class="w-full p-4 bg-blue-500 rounded-md lg:w-2/5 dark:text-gray-200 text-gray-50 hover:bg-blue-600 dark:bg-blue-500 dark:hover:bg-blue-700">
-                                        Add to cart</button>
+
+                                    <button onClick={handleAddToCart} className="w-full p-4 bg-blue-500 rounded-md lg:w-2/5 dark:text-gray-200 text-gray-50 hover:bg-blue-600 dark:bg-blue-500 dark:hover:bg-blue-700">
+                                        Add to Cart
+                                    </button>
+                                    <Link to="/customer/cart" className="block mt-4 text-center text-blue-500 hover:text-blue-700">
+                                        View Cart
+                                    </Link> {/* Add a link to view the cart */}
+
                                     <button
                                         class="flex items-center justify-center w-full p-4 text-blue-500 border border-blue-500 rounded-md lg:w-2/5 dark:text-gray-200 dark:border-blue-600 hover:bg-blue-600 hover:border-blue-600 hover:text-gray-100 dark:bg-blue-500 dark:hover:bg-blue-700 dark:hover:border-blue-700 dark:hover:text-gray-300">
                                         Buy Now
