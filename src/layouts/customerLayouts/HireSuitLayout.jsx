@@ -12,7 +12,7 @@ const sidebarItems = [
         subItems: [
             {
                 label: 'Jacket',
-                to: '/customer/hire-suit/jackets',
+                to: '/customer/hire-suit',
             },
             {
                 label: 'Pant',
