@@ -284,7 +284,7 @@ const costumerRoutes = {
 			element: <HireSuitLayout />,
 			children: [
 				{
-					path: "jackets",
+					path: "",
 					element: <JacketsGallery />,
 				},
 				{
@@ -301,6 +301,7 @@ const costumerRoutes = {
 			path: "cart",
 			element: <Cart />,
 		},
+
 	],
 };
 
