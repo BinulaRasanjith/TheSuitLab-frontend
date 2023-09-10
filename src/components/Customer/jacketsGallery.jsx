@@ -25,7 +25,7 @@ const JacketsGallery = () => {
 			{jacketData.map((jacket) => (
 				<Link
 					key={jacket.hireCostumeId}
-					to={`${jacket.hireCostumeId}`}
+					to={`jacket/${jacket.hireCostumeId}`}
 					className="block"
 				>
 					<AccessoryCard image={jacket.images[0]} label={jacket.name} />
