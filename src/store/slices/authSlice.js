@@ -24,7 +24,7 @@ export const loginAsync = createAsyncThunk( // this thunk will make a POST reque
 	async (payload) => { // the payload is the data that is passed to the thunk when it is dispatched. In this case, the payload will be the data entered by the user in the login form.
 		try { // try to make the POST request to the /auth/login endpoint of the server.
 			const response = await loginAPI(payload);
-			const { accessToken, message } = response.data; // get the access token and the message from the response.
+			const { accessToken } = response.data; // get the access token and the message from the response.
 
 			api.defaults.headers.common.Authorization = `Bearer ${accessToken}`; // set the access token in the api module. This will be used to make authenticated requests to the server.
 			localStorage.setItem("accessToken", accessToken); // set the access token in the local storage. This will be used to persist the login state of the user.
@@ -65,10 +65,14 @@ const authSlice = createSlice({ // create the auth slice
 	initialState, // the initial state of the slice
 	reducers: { // the reducers of the slice
 		logout: (state) => { // this reducer will be used to logout the user. It will remove the access token from the local storage and the api module. It will also reset the user state.
-			logoutAPI(); // make a POST request to the /auth/logout endpoint of the server.
-			localStorage.removeItem("accessToken"); // remove the access token from the local storage
-			api.defaults.headers.common.Authorization = null; // remove the access token from the api module
-			state.user = initialState.user; // reset the user state
+			try {
+				logoutAPI(); // make a POST request to the /auth/logout endpoint of the server.
+				localStorage.removeItem("accessToken"); // remove the access token from the local storage
+				api.defaults.headers.common.Authorization = null; // remove the access token from the api module
+				state.user = initialState.user; // reset the user state
+			} catch (error) {
+				console.log(error);
+			}
 		},
 		setUser: (state, action) => { // this reducer will be used to set the user state of the slice. It will be used to persist the login state of the user.
 			state.user = action.payload; // set the user state to the user data passed to the reducer

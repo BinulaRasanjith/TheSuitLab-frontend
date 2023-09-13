@@ -24,8 +24,11 @@ api.interceptors.response.use( // this interceptor will be called every time a r
                 const response = await refreshToken(); // try to refresh the access token
 
                 const { accessToken } = response.data; // get the new access token from the response
+
                 localStorage.setItem("accessToken", accessToken); // set the new access token in the local storage
                 api.defaults.headers.common.Authorization = `Bearer ${accessToken}`; // set the new access token in the axios instance
+                originalRequest.headers.Authorization = `Bearer ${accessToken}`; // set the new access token in the original request
+
                 return api.request(originalRequest);  // retry the original request
             } catch (_error) {  // if the refresh token has expired
                 return Promise.reject(_error); // reject the promise with the error
