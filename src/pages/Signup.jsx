@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import loginImage from "../assets/images/LoginBackground.png";
 import TSL_LOGO_SM from "../assets/images/TSL_LOGO_SM.png";
-import googleIcon from "../assets/images/googleIcon.png";
+// import googleIcon from "../assets/images/googleIcon.png";
 import Input from "../components/Input/Input";
 import { IDLE, SIGNUP_SUCCESS } from "../constants";
 import {
@@ -189,7 +189,7 @@ const Signup = () => {
 								Sign Up
 							</Button>
 
-							<div className="flex item-center justify-center items-center float-left m-2 md:m-4 w-full md:w-3/4">
+							{/* <div className="flex item-center justify-center items-center float-left m-2 md:m-4 w-full md:w-3/4">
 								<hr className="w-full mx-2 border-2 rounded-sm" />
 								Or
 								<hr className="w-full mx-2 border-2 rounded-sm" />
@@ -199,7 +199,7 @@ const Signup = () => {
 							<Button mb={"10px"} width={{ base: "100%", md: "70%" }}>
 								<img alt="googleIcon" className="mr-2" src={googleIcon} />
 								<span className="text-stone-800">Signup with Google</span>
-							</Button>
+							</Button> */}
 						</div>
 					</form>
 				</div>

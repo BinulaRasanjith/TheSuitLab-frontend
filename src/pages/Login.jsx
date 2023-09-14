@@ -119,21 +119,22 @@ const Login = () => {
 								padding={{ base: "5px", lg: "20px" }}
 								type="submit"
 								width={{ base: "100%", md: "70%" }}
+								my={"4"}
 							>
 								Login
 							</Button>
 
-							<div className="flex item-center justify-center items-center float-left m-2 md:m-4 w-full md:w-3/4">
+							{/* <div className="flex item-center justify-center items-center float-left m-2 md:m-4 w-full md:w-3/4">
 								<hr className="w-full mx-2 border-2 rounded-sm" />
 								Or
 								<hr className="w-full mx-2 border-2 rounded-sm" />
-							</div>
+							</div> */}
 						</div>
 						<div className="flex flex-col items-center rounded-bl-3xl rounded-br-3xl float-left">
-							<Button mb={"10px"} width={{ base: "100%", md: "70%" }}>
+							{/* <Button mb={"10px"} width={{ base: "100%", md: "70%" }}>
 								<img alt="googleIcon" className="mr-2" src={googleIcon} />
 								<span className="text-stone-800">Signup with Google</span>
-							</Button>
+							</Button> */}
 							<div className="flex flex-col lg:flex-row justify-center align-center text-center float-left">
 								<div className="text-stone-500 md:mr-2">New Here?</div>
 								<Link
