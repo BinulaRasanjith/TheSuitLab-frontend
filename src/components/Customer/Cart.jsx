@@ -8,13 +8,17 @@ const Cart = () => {
 
 	useEffect(() => {
 		const getCartItems = async () => {
-			const cartItemsFromServer = await getCart();
-			setCartItems(cartItemsFromServer);
+			try {
+				const cartItemsFromServer = await getCart();
+				setCartItems(cartItemsFromServer.data);
+			} catch (err) {
+				console.log(err);
+			}
 		};
 
 		getCartItems();
 		console.log(cartItems);
-	});
+	}, [cartItems]);
 
 	const removeFromCart = (itemId) => {
 		setCartItems(cartItems.filter((item) => item.id !== itemId));
