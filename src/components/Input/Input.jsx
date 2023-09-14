@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 function Input({
 	type,
 	placeholder,
+	hint,
 	id,
 	name,
 	value,
@@ -25,7 +26,7 @@ function Input({
 				onBlur={onBlur}
 				onChange={onChange}
 				onFocus={onFocus}
-				placeholder=" "
+				placeholder={hint || ""}
 				type={type}
 				value={value}
 				max={type === "date" ? today : undefined}
@@ -46,6 +47,7 @@ function Input({
 Input.propTypes = {
 	type: PropTypes.string.isRequired,
 	placeholder: PropTypes.string.isRequired,
+	hint: PropTypes.string,
 	id: PropTypes.string,
 	name: PropTypes.string.isRequired,
 	value: PropTypes.string,

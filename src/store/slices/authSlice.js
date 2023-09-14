@@ -36,7 +36,9 @@ export const loginAsync = createAsyncThunk( // this thunk will make a POST reque
 			return { user }; // return the user data and the message
 		}
 		catch (error) {
-			return Promise.reject(error); // if the request fails, reject the promise with the error
+			const { message } = error.response.data;
+
+			return Promise.reject(message); // if the request fails, reject the promise with the error
 		}
 	}
 );
@@ -54,7 +56,9 @@ export const signupAsync = createAsyncThunk( // this thunk will make a POST requ
 			}
 		}
 		catch (error) { // if the request fails, reject the promise with the error
-			return Promise.reject(error);
+			const { message } = error.response.data;
+
+			return Promise.reject(message);
 		}
 	}
 );
@@ -97,6 +101,7 @@ const authSlice = createSlice({ // create the auth slice
 			})
 			.addCase(loginAsync.rejected, (state, action) => { // this reducer will be called when the loginAsync thunk is rejected. It will set the status state to idle and set the error state to the error message returned by the thunk.
 				state.status = IDLE;
+				console.log(action);
 				state.error = action.error.message;
 			})
 
@@ -110,6 +115,7 @@ const authSlice = createSlice({ // create the auth slice
 			})
 			.addCase(signupAsync.rejected, (state, action) => { // this reducer will be called when the signupAsync thunk is rejected. It will set the status state to idle and set the error state to the error message returned by the thunk.
 				state.status = IDLE;
+				console.log(action.error);
 				state.error = action.error.message;
 			})
 	}
