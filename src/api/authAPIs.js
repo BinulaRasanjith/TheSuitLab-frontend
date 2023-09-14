@@ -5,9 +5,9 @@ export const login = (data) => {
     return api.post("/auth/login", data); // make a POST request to the /auth/login endpoint of the server. Pass the data as the request body.
 };
 
-export const logout = () => {
+export const logout = async () => {
     // this function will make a POST request to the /auth/logout endpoint of the server. It will return a promise that will resolve to the response from the server.
-    return api.post("/auth/logout"); // make a POST request to the /auth/logout endpoint of the server.
+    return await api.post("/auth/logout"); // make a POST request to the /auth/logout endpoint of the server.
 };
 
 export const signup = (data) => {
@@ -28,4 +28,8 @@ export const changePassword = (data) => {
 export const updateProfile = (data) => {
     // this function will make a POST request to the /auth/update-profile endpoint of the server. It will return a promise that will resolve to the response from the server.
     return api.post("/auth/update-profile", data); // make a POST request to the /auth/update-profile endpoint of the server. Pass the data as the request body.
+}
+
+export const testAuth = async () => {
+    return await api.get("/auth/test");
 }
