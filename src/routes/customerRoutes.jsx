@@ -41,6 +41,8 @@ import Home from "../pages/customer/Home";
 import LookBook from "../pages/customer/LookBook";
 import MeasurementDashboard from "../pages/customer/MeasurementDashboard";
 import SuitCustomizationLanding from "../pages/customer/SuitCustomizationLanding";
+import Payment from '../components/Payment';
+
 
 // TODO: complete the navigation routes
 const costumerRoutes = {
@@ -301,6 +303,12 @@ const costumerRoutes = {
 			path: "cart",
 			element: <Cart />,
 		},
+		{
+			path: "payment",
+			element: <Payment />,
+		},
+
+
 	],
 };
 
