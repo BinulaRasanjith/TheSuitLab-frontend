@@ -1,13 +1,12 @@
 import { Button } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import SuitImage1 from '../../assets/images/rentsuits/caremal suit/1.webp';
-import SuitImage7 from '../../assets/images/rentsuits/black paisley suit/1.webp';
-import SuitImage13 from '../../assets/images/rentsuits/burgandy strech/1.webp';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 import { getCart } from "../../api/customerAPI";
 
 const Cart = () => {
+	const navigate = useNavigate();
+
 	const [cartItems, setCartItems] = useState([]);
 
 	useEffect(() => {
@@ -19,18 +18,14 @@ const Cart = () => {
 				console.log(err);
 			}
 		};
-    const navigate = useNavigate();
-
-    const handleCheckout = () => {
-        navigate('/customer/payment');
-    };
-
-    // Sample data for cart items (you can replace this with your data)
-    //const [cartItemsArray, setCartItems] = useState([]);
 
 		getCartItems();
 		console.log(cartItems);
-	}, [cartItems]);
+	}, [cartItems, navigate]);
+
+	const handleCheckout = () => {
+		navigate("/customer/payment");
+	};
 
 	const removeFromCart = (itemId) => {
 		setCartItems(cartItems.filter((item) => item.id !== itemId));
@@ -101,7 +96,7 @@ const Cart = () => {
 							))}
 					</div>
 
-                                    {/* }}
+					{/* }}
                                     onClick={() => removeItemFromCart(item.id)}
                                 >
                                     X
@@ -129,41 +124,40 @@ const Cart = () => {
                         ))}
                     </div> */}
 
-                    <div className="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
-                        <div className="mb-2 flex justify-between">
-                            <p className="text-gray-700">Subtotal</p>
-                            <p className="text-gray-700">Rs 134980</p>
-                        </div>
-                        <hr className="my-4" />
-                        <div className="flex justify-between">
-                            <p className="text-lg font-bold">Total</p>
-                            <div className="">
-                                <p className="mb-1 text-lg font-bold">Rs 134980</p>
-                                <p className="text-sm text-gray-700">including VAT</p>
-                            </div>
-                        </div>
-                       
-                        <Button
-                         className="block w-full p-5 mt-4"
-                         rounded={"md"}
-                         color={"white"}
-                         bgColor={"black"}
-                         size="sm"
-                         _hover={{
-                             bg: "blue",
-                             color: "blue-50",
+					<div className="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
+						<div className="mb-2 flex justify-between">
+							<p className="text-gray-700">Subtotal</p>
+							<p className="text-gray-700">Rs 134980</p>
+						</div>
+						<hr className="my-4" />
+						<div className="flex justify-between">
+							<p className="text-lg font-bold">Total</p>
+							<div className="">
+								<p className="mb-1 text-lg font-bold">Rs 134980</p>
+								<p className="text-sm text-gray-700">including VAT</p>
+							</div>
+						</div>
 
-                         }}
-                         onClick={handleCheckout()}
-                         //onClick={() => navigate("/customer/payment")}
-                        >
-                            Check out
-                        </Button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+						<Button
+							className="block w-full p-5 mt-4"
+							rounded={"md"}
+							color={"white"}
+							bgColor={"black"}
+							size="sm"
+							_hover={{
+								bg: "blue",
+								color: "blue-50",
+							}}
+							onClick={handleCheckout()}
+							//onClick={() => navigate("/customer/payment")}
+						>
+							Check out
+						</Button>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default Cart;

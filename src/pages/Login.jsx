@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import loginImage from "../assets/images/LoginBackground.png";
 import TSL_LOGO_SM from "../assets/images/TSL_LOGO_SM.png";
-import googleIcon from "../assets/images/googleIcon.png";
+// import googleIcon from "../assets/images/googleIcon.png";
 import Input from "../components/Input/Input";
 import {
 	loginAsync,
