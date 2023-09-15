@@ -26,7 +26,7 @@ const OrderRecord = ({
                             className="block"
                             rounded={"md"}
                             color={"white"}
-                            bgColor={"blue"}
+                            bgColor={"black"}
                             size="sm"
                             _hover={{
                                 bg: "blue",

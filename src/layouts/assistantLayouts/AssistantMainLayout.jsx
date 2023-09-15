@@ -1,12 +1,16 @@
-import { useEffect } from "react";
-import { BiSolidMessageAltEdit } from "react-icons/bi";
+import { useEffect } from "react"; // TODO
+// import { BiSolidMessageAltEdit } from "react-icons/bi";
+import { BiSolidPurchaseTag } from "react-icons/bi";
 import { BsBarChartFill } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
+import { FaUserTag } from "react-icons/fa";
 import { HiColorSwatch } from "react-icons/hi";
 import { HiCalendarDays, HiShoppingCart } from "react-icons/hi2";
+import { IoIosBowtie } from "react-icons/io";
 import { TbArrowBackUp } from "react-icons/tb";
-import { useSelector } from "react-redux";
-import { Outlet, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux"; // TODO
+import { Outlet } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; // TODO
 
 import ContentWrapper from "../../components/ContentWrapper";
 import MainLayout from "../../components/MainLayout";
@@ -14,8 +18,8 @@ import MainLayout from "../../components/MainLayout";
 import Navbar from "../../components/Navbar";
 // import Sidebar from "../../components/AssistantSidebar"
 import Sidebar from "../../components/Sidebar/Sidebar";
-import { OPERATION_ASSISTANT } from "../../constants";
-import { selectUser } from "../../store/slices/authSlice";
+import { OPERATION_ASSISTANT } from "../../constants"; // TODO
+import { selectUser } from "../../store/slices/authSlice"; // TODO
 
 const assistantSidebarItems = [
 	{
@@ -29,9 +33,9 @@ const assistantSidebarItems = [
 		to: "/assistant/materials",
 	},
 	{
-		label: "Handover",
-		icon: <HiCalendarDays />,
-		to: "/assistant/handover",
+		label: "Customers",
+		icon: <FaUserTag />,
+		to: "/assistant/customers",
 	},
 	{
 		label: "Orders",
@@ -44,11 +48,20 @@ const assistantSidebarItems = [
 		to: "/assistant/returns",
 	},
 	{
-		label: "Notification",
-		icon: <BiSolidMessageAltEdit />,
-		to: "/assistant/notifications",
+		label: "Accessories",
+		icon: <IoIosBowtie />,
+		to: "/assistant/accessories",
 	},
-
+	{
+		label: "Hiring",
+		icon: <BiSolidPurchaseTag />,
+		to: "/assistant/hiring",
+	},
+	{
+		label: "Handover",
+		icon: <HiCalendarDays />,
+		to: "/assistant/handover",
+	},
 	{
 		label: "Profile",
 		icon: <FaUserCircle />,

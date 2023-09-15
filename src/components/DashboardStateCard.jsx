@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { FaArrowUp } from "react-icons/fa";
+import { FaArrowDown } from "react-icons/fa";
 
 const StateCard = ({ CardTitle, BigCount, Icon, PercentageValue }) => {
 	return (
@@ -14,14 +15,14 @@ const StateCard = ({ CardTitle, BigCount, Icon, PercentageValue }) => {
 				<div className="">{Icon}</div>
 			</div>
 
-			<div className=" flex justify-between">
-				<div className="flex flex-row gap-1 text-green-500">
-					<div className=" flex flex-col justify-center">
-						<FaArrowUp />
+			<div className="flex justify-between">
+				<div className={`flex flex-row gap-1 ${PercentageValue > 0 ? 'text-green-500' : PercentageValue < 0 ? 'text-orange-500' : 'text-gray-500'}`}>
+					<div className="flex flex-col justify-center">
+						{PercentageValue > 0 ? <FaArrowUp className="text-green-500" /> : PercentageValue < 0 ? <FaArrowDown className="text-orange-500" /> : ""}
 					</div>
-					<div>{PercentageValue}</div>
+					<div>{PercentageValue}%</div>
 				</div>
-				<div className=" text-sm font-regular text-zinc-400">
+				<div className="text-sm font-regular text-zinc-400">
 					Since last week
 				</div>
 			</div>
