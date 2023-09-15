@@ -14,43 +14,51 @@ import CardContainer from "../../components/Assistant/CardContainer"
 
 const accessories = [
 	{
-		buttonName: '10 mm Brass metal 4 hole',
-		supplierID: 'S009',
+		itemName: 'Luxe View leather belt',
+		brand: 'Luxe View',
+		price: 'Rs. 1000.00',
 		image: img1
 	},
 	{
-		buttonName: '10 mm Gold metal 2 hole',
-		supplierID: 'S142',
+		itemName: 'Luxe View leather belt',
+		brand: 'Luxe View',
+		price: 'Rs. 1000.00',
 		image: img2
 	},
 	{
-		buttonName: '8 mm black and silver 1 hole',
-		supplierID: 'S453',
+		itemName: 'Luxe View leather belt',
+		brand: 'Luxe View',
+		price: 'Rs. 1000.00',
 		image: img3
 	},
 	{
-		buttonName: '10 mm grey & black 4 hole',
-		supplierID: 'S654',
+		itemName: 'Luxe View leather belt',
+		brand: 'Luxe View',
+		price: 'Rs. 1000.00',
 		image: img4
 	},
 	{
-		buttonName: '8 mm black and metal 2 hole',
-		supplierID: 'S110',
+		itemName: 'Luxe View leather belt',
+		brand: 'Luxe View',
+		price: 'Rs. 1000.00',
 		image: img5
 	},
 	{
-		buttonName: '10 mm navy & white 2 hole',
-		supplierID: 'S354',
+		itemName: 'Luxe View leather belt',
+		brand: 'Luxe View',
+		price: 'Rs. 1000.00',
 		image: img6
 	},
 	{
-		buttonName: '10 mm matt grey 2 hole',
-		supplierID: 'S143',
+		itemName: 'Luxe View leather belt',
+		brand: 'Luxe View',
+		price: 'Rs. 1000.00',
 		image: img7
 	},
 	{
-		buttonName: '8 mm black and gold 1 hole',
-		supplierID: 'S001',
+		itemName: 'Luxe View leather belt',
+		brand: 'Luxe View',
+		price: 'Rs. 1000.00',
 		image: img8
 	},
 ]
@@ -85,8 +93,8 @@ const Accessories = () => {
 						<AccessoryCard
 							image={accessory.image}
 							key={index}
-							materialName={accessory.buttonName}
-							supplierID={accessory.supplierID}
+							materialName={accessory.itemName}
+							supplierID={accessory.brand}
 						/>
 					)
 				})}

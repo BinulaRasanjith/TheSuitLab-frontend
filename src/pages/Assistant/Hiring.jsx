@@ -1,56 +1,65 @@
 import { Button } from "@chakra-ui/react"
 import { AiFillPlusCircle } from 'react-icons/ai'
 
-import img1 from "../../assets/images/buttons/button1.jpg"
-import img2 from "../../assets/images/buttons/button2.jpg"
-import img3 from "../../assets/images/buttons/button3.jpg"
-import img4 from "../../assets/images/buttons/button4.jpg"
-import img5 from "../../assets/images/buttons/button5.jpg"
-import img6 from "../../assets/images/buttons/button6.jpg"
-import img7 from "../../assets/images/buttons/button7.jpg"
-import img8 from "../../assets/images/buttons/button8.gif"
+import img1 from "../../assets/images/rentsuits/black paisley suit/1.webp"
+import img2 from "../../assets/images/rentsuits/black suit/1.webp"
+import img3 from "../../assets/images/rentsuits/cafe brown suit/1.webp"
+import img8 from "../../assets/images/rentsuits/cobolt blue suit/1.webp"
+import img6 from "../../assets/images/rentsuits/green suit/1.webp"
+import img5 from "../../assets/images/rentsuits/maroon suit/1.webp"
+import img4 from "../../assets/images/rentsuits/pants/dark blue.webp"
+import img7 from "../../assets/images/rentsuits/white palma suit/1.webp"
+"/Users/bhanuka/Documents/Group Project II/SYSTEM/TheSuitLab-frontend/src/assets/images/rentsuits/black paisley suit/1.webp"
 import CardContainer from "../../components/Assistant/CardContainer"
 import HiringItemCard from "../../components/Assistant/HiringItemCard"
 
 const hiringcostumes = [
 	{
-		buttonName: '10 mm Brass metal 4 hole',
-		supplierID: 'S009',
+		costumeName: 'Black two-piece suit',
+		designType: 'Coat',
+		rentalPrice: 'Rs. 1000.00',
 		image: img1
 	},
 	{
-		buttonName: '10 mm Gold metal 2 hole',
-		supplierID: 'S142',
+		costumeName: 'Navy two-piece stretch suit',
+		designType: 'Coat',
+		rentalPrice: 'Rs. 1000.00',
 		image: img2
 	},
 	{
-		buttonName: '8 mm black and silver 1 hole',
-		supplierID: 'S453',
+		costumeName: 'Dark gray two-piece suit',
+		designType: 'Coat',
+		rentalPrice: 'Rs. 1000.00',
 		image: img3
 	},
 	{
-		buttonName: '10 mm grey & black 4 hole',
-		supplierID: 'S654',
+		costumeName: 'Cinnamon stretch chinos',
+		designType: 'Trouser',
+		rentalPrice: 'Rs. 1000.00',
 		image: img4
 	},
 	{
-		buttonName: '8 mm black and metal 2 hole',
-		supplierID: 'S110',
+		costumeName: 'Gray stretch suit pants',
+		designType: 'Trouser',
+		rentalPrice: 'Rs. 1000.00',
 		image: img5
 	},
 	{
-		buttonName: '10 mm navy & white 2 hole',
-		supplierID: 'S354',
+		costumeName: 'Black stretch suit pants',
+		designType: 'Trouser',
+		rentalPrice: 'Rs. 1000.00',
 		image: img6
 	},
 	{
-		buttonName: '10 mm matt grey 2 hole',
-		supplierID: 'S143',
+		costumeName: 'Gray stretch suit pants',
+		designType: 'Trouser',
+		rentalPrice: 'Rs. 1000.00',
 		image: img7
 	},
 	{
-		buttonName: '8 mm black and gold 1 hole',
-		supplierID: 'S001',
+		costumeName: 'Navy blue three-piece suit',
+		designType: 'Trouser',
+		rentalPrice: 'Rs. 1000.00',
 		image: img8
 	},
 ]
@@ -85,8 +94,8 @@ const Hiring = () => {
 						<HiringItemCard
 							image={costume.image}
 							key={index}
-							materialName={costume.buttonName}
-							supplierID={costume.supplierID}
+							materialName={costume.costumeName}
+							supplierID={costume.designType}
 						/>
 					)
 				})}
