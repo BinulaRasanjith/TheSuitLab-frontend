@@ -110,7 +110,7 @@ const Dashboard = () => {
 				Chart.destroy(canvas);
 			}
 		};
-	}, []);
+	}, [canvas]);
 
 	// DATA
 	const dataChartBarDoubleDatasetsExample = {
