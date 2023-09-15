@@ -1,6 +1,4 @@
-import { Button } from "@chakra-ui/react"
 import Customers from "../../components/Customer/ViewCustomers"
-
 
 const ViewCustomers = () => {
 

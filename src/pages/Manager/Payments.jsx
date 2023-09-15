@@ -58,6 +58,7 @@ const payments = [
 ];
 
 const Payments = () => {
+
 	return (
 
 		<div>

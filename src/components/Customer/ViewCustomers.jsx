@@ -1,32 +1,47 @@
-import { Button } from "@chakra-ui/react"
+import {
+    Modal,
+    ModalBody,
+    ModalCloseButton,
+    ModalContent,
+    ModalFooter,
+    ModalHeader,
+    ModalOverlay,
+} from '@chakra-ui/react'
+import { Button, useDisclosure } from "@chakra-ui/react"
+import { useState } from "react";
 import { AiFillPlusCircle } from 'react-icons/ai'
-import { useNavigate } from "react-router"
 import { BiSearch } from 'react-icons/bi'
-import SearchBox from "../../components/Assistant/HeaderSearchBox"
-import DropDownFilter from "../../components/Assistant/HeaderDropDown"
-import Pagination from "../../components/Assistant/Pagination"
-import { Link } from 'react-router-dom';
-import { selectUser } from "../../store/slices/authSlice"
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router"
+import { Link } from 'react-router-dom';
+
+import DropDownFilter from "../../components/Assistant/HeaderDropDown"
+import SearchBox from "../../components/Assistant/HeaderSearchBox"
+import Pagination from "../../components/Assistant/Pagination"
+import { PRODUCT_MANAGER } from "../../constants";
 import { OPERATION_ASSISTANT } from "../../constants";
-import { MANAger } from "../../constants";
+import { selectUser } from "../../store/slices/authSlice"
 
 const ViewCustomers = () => {
 
+    const { isOpen, onOpen, onClose } = useDisclosure()
     const navigate = useNavigate()
     const user = useSelector(selectUser)
 
     const handleAddCustomerClick = () => {
-        navigate('/manager/add-customer')
+        navigate('/sign-up')
     }
 
+    const handleOptionClick = () => {
+        onOpen()
+    }
 
     const customers = [
         {
             id: "1",
             name: 'Jane Cooper',
             phoneNumber: '+91 9876543210',
-            email: 'jane@gmail.com',
+            orderCount: '3',
             lastOrder: '2023-07-07',
             status: 'Active',
         },
@@ -34,7 +49,7 @@ const ViewCustomers = () => {
             id: "2",
             name: 'Floyd Miles',
             phoneNumber: ' +91 3376443210',
-            email: 'floyd@yahoo.com',
+            orderCount: '1',
             lastOrder: '2023-03-17',
             status: 'Active',
         },
@@ -42,7 +57,7 @@ const ViewCustomers = () => {
             id: "3",
             name: 'Jane Cooper',
             phoneNumber: '+91 9876543210',
-            email: 'jane@gmail.com',
+            orderCount: '2',
             lastOrder: '2023-07-07',
             status: 'Inactive',
         },
@@ -50,7 +65,7 @@ const ViewCustomers = () => {
             id: "4",
             name: 'Ronald Richards',
             phoneNumber: '+91 987654256',
-            email: 'ronald@gmail.com',
+            orderCount: '5',
             lastOrder: '2023-06-27',
             status: 'Active',
         },
@@ -58,7 +73,7 @@ const ViewCustomers = () => {
             id: "5",
             name: 'Marvin Mackiney',
             phoneNumber: '+94 9876577210',
-            email: 'marvin@gmail.com',
+            orderCount: '1',
             lastOrder: '2023-05-11',
             status: 'Inactive',
         },
@@ -66,7 +81,7 @@ const ViewCustomers = () => {
             id: "6",
             name: 'Jacob Janes',
             phoneNumber: '+94 983343210',
-            email: 'jane@gmail.com',
+            orderCount: '2',
             lastOrder: '2023-07-07',
             status: 'Active',
         }
@@ -74,6 +89,7 @@ const ViewCustomers = () => {
 
     return (
         <div>
+
             <div className=" flex flex-col justify-between mx-10 my-8 p-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg">
                 <div className=" flex justify-between align-middle pb-5">
                     <div className='flex flex-col'>
@@ -87,8 +103,6 @@ const ViewCustomers = () => {
                             <DropDownFilter />
                         </div>
 
-
-
                         {user.role === OPERATION_ASSISTANT && <Button
                             _hover={
                                 {
@@ -99,7 +113,7 @@ const ViewCustomers = () => {
                             bgColor={"black"}
                             leftIcon={<AiFillPlusCircle />}
                             ml={3}
-                            //onClick={(handleAddSupplierClick)}
+                            //onClick={(handleAddCustomerClick)}
                             rounded={'full'}
                         >
                             Add Customer
@@ -123,29 +137,31 @@ const ViewCustomers = () => {
                                     Phone Number
                                 </th>
                                 <th className=" w-40">
-                                    Email
+                                    Order Count
                                 </th>
                                 <th className=" w-40">
                                     Status
                                 </th>
-                                <th className="w-40 px-10">
-                                    Option
-                                </th>
+                                {user.role === PRODUCT_MANAGER &&
+                                    <th className="w-40 px-10">
+                                        Option
+                                    </th>
+                                }
                             </tr>
                         </thead>
                         <tbody>
                             <div className="flex flex-col gap-1">
                                 {customers.map((item, index) => (
 
-                                    <tr className="flex items-center text-center border hover:bg-gray-300 text-black whitespace-nowrap font-medium">
+                                    <tr className="flex items-center text-center border hover:bg-gray-300 text-black whitespace-nowrap font-medium py-3">
                                         <td className="w-40"> <Link to={`${item.id}`}>{item.id}</Link></td>
                                         <td className="w-40">{item.name}</td>
                                         <td className="w-40">{item.phoneNumber}</td>
-                                        <td className="w-40">{item.email}</td>
+                                        <td className="w-40">{item.orderCount}</td>
                                         <td className="w-40"> {item.status}</td>
                                         <td className="w-40 py-2">
-
-                                            {<Link to={`${item.id}`}>
+                                            {user.role === PRODUCT_MANAGER && (item.status === "Active" ? (
+                                                // <Link to={`${item.id}`}>
                                                 <Button
                                                     className="block"
                                                     rounded={"md"}
@@ -156,16 +172,32 @@ const ViewCustomers = () => {
                                                         bg: "blue",
                                                         color: "blue-50",
                                                     }}
+                                                    onClick={() => handleOptionClick()}
                                                 >
-                                                    View
+                                                    Deactivate
                                                 </Button>
-                                            </Link>}
+                                            ) : (
+                                                <Button
+                                                    className="block  w-24"
+                                                    rounded={"md"}
+                                                    color={"white"}
+                                                    bgColor={"black"}
+                                                    size="sm"
+                                                    _hover={{
+                                                        bg: "blue",
+                                                        color: "blue-50",
+                                                    }}
+                                                //onClick={() => handleOptionClick()}
+                                                >
+                                                    Activate
+                                                </Button>
+                                                //{/* </Link> */}
+                                            ))}
                                         </td>
                                     </tr>
                                 ))}
                             </div>
                         </tbody>
-
                     </table>
                     <div className=" w-full border h-0 mt-3 mb-6 border-gray-200"></div>
 
@@ -177,6 +209,24 @@ const ViewCustomers = () => {
                     </div>
                 </div>
             </div>
+            <Modal isOpen={isOpen} onClose={onClose}>
+                <ModalOverlay />
+                <ModalContent>
+                    <ModalHeader>Customer Deactivation</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                        <p>Are you sure you want to deactivate this customer?</p>
+                    </ModalBody>
+
+                    <ModalFooter>
+                        <Button colorScheme='blue' mr={3} onClick={onClose}>
+                            Close
+                        </Button>
+                        <Button variant='ghost'>Confirm</Button>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
+
         </div>
     );
 };
