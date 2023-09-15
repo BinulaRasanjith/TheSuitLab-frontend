@@ -27,6 +27,10 @@ export const BUTTON = 'button';
 export const PRE_DESIGNED = 'pre-designed';
 export const CUSTOMIZED = 'customized';
 
+// measurement unit types
+export const INCH = 'inch';
+export const CM = 'cm';
+
 // sizes
 export const S = 'S';
 export const M = 'M';

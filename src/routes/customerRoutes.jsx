@@ -12,6 +12,7 @@ import TiesGallery from "../components/Customer/TiesGallery";
 import JacketsGallery from "../components/Customer/jacketsGallery";
 import PantsGallery from "../components/Customer/pantsGallery";
 import SuitDescription from "../components/Customer/suitDescription";
+import Payment from "../components/Payment";
 import ChooseBeltLoop from "../components/customer/ChooseBeltLoop";
 import ChooseBottom from "../components/customer/ChooseBottom";
 import ChooseButtonContrast from "../components/customer/ChooseButtonContrast";
@@ -41,8 +42,6 @@ import Home from "../pages/customer/Home";
 import LookBook from "../pages/customer/LookBook";
 import MeasurementDashboard from "../pages/customer/MeasurementDashboard";
 import SuitCustomizationLanding from "../pages/customer/SuitCustomizationLanding";
-import Payment from '../components/Payment';
-
 
 // TODO: complete the navigation routes
 const costumerRoutes = {
@@ -307,8 +306,6 @@ const costumerRoutes = {
 			path: "payment",
 			element: <Payment />,
 		},
-
-
 	],
 };
 
