@@ -9,6 +9,8 @@ import CollectedOrders from "../pages/tailor/Orders/CollectedOrders";
 import CompletedOrders from "../pages/tailor/Orders/CompletedOrders";
 import TobeCollectedOrders from "../pages/tailor/Orders/TobeCollectedOrders";
 import Strings from "../pages/tailor/Strings";
+import OrderDetails from "../components/OrderDetails";
+
 
 const tailorRoutes = {
 	path: "/tailor",
@@ -37,6 +39,10 @@ const tailorRoutes = {
 				{
 					path: "to-be-collected",
 					element: <TobeCollectedOrders />,
+				},
+				{
+					path: ":status/:orderId",
+					element: <OrderDetails />,
 				},
 			],
 		},

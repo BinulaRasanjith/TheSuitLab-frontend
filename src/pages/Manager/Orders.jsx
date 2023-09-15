@@ -2,145 +2,70 @@ import React from 'react'
 import { BiSearch } from 'react-icons/bi'
 import { Link } from 'react-router-dom';
 import { Button } from "@chakra-ui/react";
-
-const orders = [
-    {
-        orderId: '1',
-        phoneNumber: '(225) 555-0118',
-        customer: 'Heshan Cooray',
-        OrderedDate: '2023-07-07',
-        status: 'Collected',
-    },
-    {
-        orderId: '2',
-        phoneNumber: '(205) 555-0100',
-        customer: 'Janaka Ishan',
-        OrderedDate: '2023-03-17',
-        status: 'Collected',
-    },
-    {
-        orderId: '3',
-        phoneNumber: '(302) 555-0107',
-        customer: 'Kushan Dias',
-        OrderedDate: '2023-07-07',
-        status: 'Collected',
-    },
-    {
-        orderId: '4',
-        phoneNumber: '(252) 555-0126',
-        customer: 'Malin Perera',
-        OrderedDate: '2023-06-27',
-        status: 'Collected',
-    },
-    {
-        orderId: '5',
-        phoneNumber: '(208) 555-0112',
-        customer: 'Shyam Fernando',
-        OrderedDate: '2023-05-11',
-        status: 'Collected',
-    },
-    {
-        orderId: '6',
-        phoneNumber: '(704) 555-0127',
-        customer: 'Gihan Nawagamuwa',
-        OrderedDate: '2023-07-07',
-        status: 'Collected',
-    }
-
-];
+import Records from "../../components/OrderItems/ViewOrders"
+import SearchBox from "../../components/Assistant/HeaderSearchBox"
+import DropDownFilter from "../../components/Assistant/HeaderDropDown"
+import Pagination from "../../components/Assistant/Pagination"
 
 
 const Orders = () => {
 
     return (
-        <div className="w-full p-5">
-            <div className='shadow-xl rounded-2xl mx-2 mt-8'>
-                <div className="flex flex-row m-4 justify-between">
-                    <div>
-                        <span className=' text-xl font-bold text-black p-1'>All Orders</span>
+        <div>
+            {/* <div className=" flex flex-col justify-between mx-10 my-8 p-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg">
+                <div className=" flex justify-between align-middle pb-5">
+                    <div className='flex flex-col'>
+                        <div className=' text-2xl font-semibold'>All orders</div>
+                        <div className=' text-sm font-regular text-blue-400'>Recent orders</div>
                     </div>
-
-                    <div className="flex items-center gap-4">
-                        <label className="sr-only">Search</label>
-                        <div className="relative">
-                            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                <BiSearch />
-                            </div>
-                            <input type="text" className="block p-2 pl-10 text-sm text-black border border-gray-300 rounded-3xl w-52
-                                     focus:border-gray-400 " placeholder="Search" />
+                    <div className=" flex gap-4 align-middle">
+                        <div>
+                            <SearchBox />
                         </div>
-
-                        <select id="Sort" className="block p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
-                            <option selected>Sort By</option>
-                            <option value="US">All</option>
-                            <option value="CA">ASC</option>
-                            <option value="FR">DSC</option>
-                        </select>
+                        <div>
+                            <DropDownFilter />
+                        </div>
                     </div>
                 </div>
-
-                <div className="m-4">
-                    <table className=" w-full text-sm text-left text-gray-400 ">
-                        <thead className="text-xs text-gray-500 uppercase bg-gray-100">
+                <div className=" flex flex-col">
+                    <table className=' flex justify-between text-sm font-medium text-gray-500'>
+                        <thead className=" uppercase bg-gray-100 py-4 w-full">
                             <tr>
-                                <th scope="col" className="px-6 py-3">
+                                <th className=" w-40">
                                     Order Id
                                 </th>
-                                <th scope="col" className="px-6 py-3">
-                                    Phone Number
-                                </th>
-                                <th scope="col" className="px-6 py-3">
+                                <th className=" w-40">
                                     Customer
                                 </th>
-                                <th scope="col" className="px-6 py-3">
-                                    Ordered Date
+                                <th className=" w-40">
+                                    Item Count
                                 </th>
-                                <th scope="col" className="px-6 py-3">
+                                <th className=" w-40">
+                                    Total Amount
+                                </th>
+                                <th className=" w-40">
                                     Status
                                 </th>
-                                <th scope="col" className="px-6 py-3">
+                                <th className="w-40 px-10">
                                     Option
                                 </th>
 
                             </tr>
                         </thead>
-                        <tbody>
-                            {orders.map((order, index) => (
-                                <tr
-                                    key={index}
-                                    className=" border hover:bg-gray-300 text-black whitespace-nowrap font-medium"
-                                >
-                                    <td className="px-6 py-4"> <Link to={`${order.orderId}`}>{order.orderId}</Link></td>
-                                    <td className="px-6 py-4">{order.phoneNumber}</td>
-                                    <td className="px-6 py-4">{order.customer}</td>
-                                    <td className="px-6 py-4">{order.OrderedDate}</td>
-                                    <td className="px-6 py-4">{order.status}</td>
-                                    <td className="px-6 py-2">
-                                       
-                                        <Link to={`${order.orderId}`}>
-                                         <Button
-                                        className="block"
-                                        rounded={"md"}
-                                        color={"white"}
-                                        bgColor={"blue"}
-                                        size="sm"
-                                        _hover={{
-                                            bg: "blue",
-                                            color: "blue-50",
-                                        }}
-                                    >
-                                        View
-                                    </Button>
-                                    </Link>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
                     </table>
-                </div>
-            </div>
-        </div>
+                    <div className=" w-full border h-0 mt-3 mb-6 border-gray-200"></div>
 
+                </div>
+                <div><Records /></div>
+                <div className=" flex justify-between">
+                    <div className=" py-3 text-sm font-medium text-neutral-400">Showing data 1 to 8 of 256K entries</div>
+                    <div className=" py-3">
+                        <Pagination />
+                    </div>
+                </div>
+            </div> */}
+            <Records />
+        </div>
     )
 }
 

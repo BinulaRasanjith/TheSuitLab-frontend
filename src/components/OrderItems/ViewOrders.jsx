@@ -3,7 +3,7 @@ import SearchBox from "../Assistant/HeaderSearchBox"
 import DropDownFilter from "../Assistant/HeaderDropDown"
 import Pagination from "../Assistant/Pagination"
 
-const Records = () => {
+const ViewOrders = () => {
     const records = [
         {
             orderId: "1",
@@ -117,4 +117,4 @@ const Records = () => {
     );
 };
 
-export default Records;
+export default ViewOrders;
