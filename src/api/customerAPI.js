@@ -9,9 +9,9 @@ export const getCart = async () => {
 }
 
 export const setTrouserMeasurements = async (measurements) => {
-    return api.post("/customer/set-trouser-measurements", measurements);
+    return api.post("/customer/set-trouser-measurements", { measurements });
 }
 
 export const setCoatMeasurements = async (measurements) => {
-    return api.post("/customer/set-coat-measurements", measurements);
+    return api.post("/customer/set-coat-measurements", { measurements });
 }

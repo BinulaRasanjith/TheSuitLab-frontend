@@ -71,7 +71,7 @@ const Profile = () => {
 		} catch (error) {
 			toast({
 				title: "Error",
-				description: error.message,
+				description: "Something went wrong",
 				status: "error",
 				duration: 5000,
 				isClosable: true,

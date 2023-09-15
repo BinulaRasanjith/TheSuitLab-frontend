@@ -1,8 +1,12 @@
-import { Select } from "@chakra-ui/react";
+import { Select, useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import { IoArrowBackCircle } from "react-icons/io5";
 import { useLocation, useNavigate } from "react-router-dom";
 
+import {
+	setCoatMeasurements,
+	setTrouserMeasurements,
+} from "../../api/customerAPI";
 import FullShoulderWidth from "../../assets/images/measurements/men_size_1 (1).jpg";
 import Sleeves from "../../assets/images/measurements/men_size_2.jpg";
 import FullChest from "../../assets/images/measurements/men_size_3.jpg";
@@ -27,6 +31,7 @@ import {
 const StandardSizes = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
+	const toast = useToast();
 
 	const [selectedSize, setSelectedSize] = useState("S");
 	const [selectedUnit, setSelectedUnit] = useState("inch");
@@ -44,7 +49,7 @@ const StandardSizes = () => {
 				: "/customer/customize-measurements"
 		);
 
-	const handleSave = () => {
+	const handleSave = async () => {
 		let courtMeasurementObject;
 		let trouserMeasurementObject;
 
@@ -82,6 +87,35 @@ const StandardSizes = () => {
 				},
 				selectedUnit
 			);
+		}
+
+		try {
+			if (courtMeasurementObject) {
+				await setCoatMeasurements(courtMeasurementObject);
+			}
+
+			if (trouserMeasurementObject) {
+				await setTrouserMeasurements(trouserMeasurementObject);
+			}
+
+			toast({
+				title: "Measurements Saved.",
+				description: "Your measurements have been saved.",
+				status: "success",
+				duration: 5000,
+				isClosable: true,
+				position: "top",
+			});
+		} catch (err) {
+			console.log(err);
+			toast({
+				title: "Error.",
+				description: "Something went wrong.",
+				status: "error",
+				duration: 5000,
+				isClosable: true,
+				position: "top",
+			});
 		}
 	};
 
