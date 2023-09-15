@@ -156,7 +156,7 @@ const Login = () => {
 							<Alert
 								className="w-full mt-2"
 								status="error"
-								variant="solid"
+								variant="subtle"
 								sx={{ borderRadius: "10px" }}
 							>
 								<AlertIcon />

@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
 
 function Input({
 	type,
@@ -7,6 +8,7 @@ function Input({
 	id,
 	name,
 	value,
+	maxLength,
 	onChange,
 	onFocus,
 	onBlur,
@@ -14,6 +16,17 @@ function Input({
 	className,
 }) {
 	const today = new Date().toISOString().split("T")[0];
+	const [hintReal, setHintReal] = useState("");
+
+	const onCustomFocus = (e) => {
+		setHintReal(hint);
+		if (onFocus) onFocus(e);
+	};
+
+	const onCustomBlur = (e) => {
+		setHintReal("");
+		if (onBlur) onBlur(e);
+	};
 	return (
 		<div className={"relative z-0 " + className}>
 			<input
@@ -23,13 +36,14 @@ function Input({
 				}
 				id={id}
 				name={name}
-				onBlur={onBlur}
+				onBlur={onCustomBlur}
 				onChange={onChange}
-				onFocus={onFocus}
-				placeholder={hint || ""}
+				onFocus={onCustomFocus}
+				placeholder={hintReal}
 				type={type}
 				value={value}
 				max={type === "date" ? today : undefined}
+				maxLength={maxLength}
 			/>
 			<label
 				className={
@@ -51,6 +65,7 @@ Input.propTypes = {
 	id: PropTypes.string,
 	name: PropTypes.string.isRequired,
 	value: PropTypes.string,
+	maxLength: PropTypes.number,
 	onBlur: PropTypes.func,
 	onChange: PropTypes.func,
 	onFocus: PropTypes.func,

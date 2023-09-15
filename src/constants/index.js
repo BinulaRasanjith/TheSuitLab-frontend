@@ -11,6 +11,7 @@ export const ACTIVE = 'ACTIVE';
 // authSlice statuses
 export const IDLE = 'idle';
 export const LOADING = 'loading';
+export const ERROR = 'error';
 export const SIGNUP_SUCCESS = 'signup-success';
 
 // costume types
