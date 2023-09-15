@@ -199,7 +199,7 @@ const Navbar = () => {
 											<NavLink
 												className="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-black"
 												onClick={() => setUserDropdownOpen(!isUserDropdownOpen)}
-												to="/assistant/profile"
+												to={`/${user.role}/profile`}
 											>
 												Profile
 											</NavLink>

@@ -7,3 +7,11 @@ export const addToCart = async (cartItem) => {
 export const getCart = async () => {
     return api.get("/customer/cart");
 }
+
+export const setTrouserMeasurements = async (measurements) => {
+    return api.post("/customer/set-trouser-measurements", { measurements });
+}
+
+export const setCoatMeasurements = async (measurements) => {
+    return api.post("/customer/set-coat-measurements", { measurements });
+}
