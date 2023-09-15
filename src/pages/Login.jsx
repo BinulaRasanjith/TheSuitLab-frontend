@@ -50,9 +50,9 @@ const Login = () => {
 		}
 	};
 
-	const handleInputChange = (e) => {
-		const { name, value } = e.target;
-		setLoginCredentials({ ...loginCredentials, [name]: value });
+	const handlePasswordChange = (e) => {
+		const { value } = e.target;
+		setLoginCredentials({ ...loginCredentials, password: value });
 	};
 
 	const handleSubmit = async (e) => {
@@ -92,7 +92,7 @@ const Login = () => {
 						onSubmit={handleSubmit}
 					>
 						<Input
-							error={error || !isMobileNoValid.valid}
+							error={error || isMobileNoValid.msg}
 							id="mobile-no"
 							name="mobileNo"
 							onChange={handleMobileNoChange}
@@ -115,7 +115,7 @@ const Login = () => {
 							error={error}
 							id="password"
 							name="password"
-							onChange={handleInputChange}
+							onChange={handlePasswordChange}
 							onFocus={() => dispatch(setError(null))}
 							placeholder="Password"
 							type="password"

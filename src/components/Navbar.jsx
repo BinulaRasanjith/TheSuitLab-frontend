@@ -9,7 +9,7 @@ import TSL_LOGO_SM from "../assets/images/TSL_LOGO_SM.png";
 import defaultPhoto from "../assets/images/avatar.png";
 import { PROFILE_PICTURE_URL } from "../config/config";
 import { CUSTOMER } from "../constants";
-import { logout } from "../store/slices/authSlice";
+import { logoutAsync } from "../store/slices/authSlice";
 import { selectUser } from "../store/slices/authSlice";
 import { toggleSidebar } from "../store/slices/sidebarSlice";
 import displayRoleName from "../utils/displayRoleName";
@@ -35,7 +35,7 @@ const Navbar = () => {
 	// handle logout click
 	const handleLogoutClick = () => {
 		navigate("/", { replace: true });
-		dispatch(logout());
+		dispatch(logoutAsync());
 	};
 
 	const [open, setOpen] = useState(false);
