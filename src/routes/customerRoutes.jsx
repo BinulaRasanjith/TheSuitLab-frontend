@@ -42,6 +42,7 @@ import Home from "../pages/customer/Home";
 import LookBook from "../pages/customer/LookBook";
 import MeasurementDashboard from "../pages/customer/MeasurementDashboard";
 import SuitCustomizationLanding from "../pages/customer/SuitCustomizationLanding";
+import Profile from "../pages/Profile";
 
 // TODO: complete the navigation routes
 const costumerRoutes = {
@@ -70,7 +71,7 @@ const costumerRoutes = {
 		},
 		{
 			path: "profile",
-			element: <div>Profile</div>,
+			element: <Profile />,
 		},
 		{
 			path: "customize-measurements",
