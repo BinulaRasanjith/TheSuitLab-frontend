@@ -1,44 +1,46 @@
 import React from 'react'
 import { BiSearch } from 'react-icons/bi'
+import { Link } from 'react-router-dom';
+import { Button } from "@chakra-ui/react";
 
-const customers = [
+const orders = [
     {
-        orderId: '#007324786345',
+        orderId: '1',
         phoneNumber: '(225) 555-0118',
         customer: 'Heshan Cooray',
         OrderedDate: '2023-07-07',
         status: 'Collected',
     },
     {
-        orderId: '#007783264383',
+        orderId: '2',
         phoneNumber: '(205) 555-0100',
         customer: 'Janaka Ishan',
         OrderedDate: '2023-03-17',
         status: 'Collected',
     },
     {
-        orderId: '#007373652345',
+        orderId: '3',
         phoneNumber: '(302) 555-0107',
         customer: 'Kushan Dias',
         OrderedDate: '2023-07-07',
         status: 'Collected',
     },
     {
-        orderId: '#007376876554',
+        orderId: '4',
         phoneNumber: '(252) 555-0126',
         customer: 'Malin Perera',
         OrderedDate: '2023-06-27',
         status: 'Collected',
     },
     {
-        orderId: '#007908322342',
+        orderId: '5',
         phoneNumber: '(208) 555-0112',
         customer: 'Shyam Fernando',
         OrderedDate: '2023-05-11',
         status: 'Collected',
     },
     {
-        orderId: '#007083473634',
+        orderId: '6',
         phoneNumber: '(704) 555-0127',
         customer: 'Gihan Nawagamuwa',
         OrderedDate: '2023-07-07',
@@ -103,23 +105,33 @@ const Orders = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {customers.map((customer, index) => (
+                            {orders.map((order, index) => (
                                 <tr
                                     key={index}
                                     className=" border hover:bg-gray-300 text-black whitespace-nowrap font-medium"
                                 >
-                                    <td className="px-6 py-4">{customer.orderId}</td>
-                                    <td className="px-6 py-4">{customer.phoneNumber}</td>
-                                    <td className="px-6 py-4">{customer.customer}</td>
-                                    <td className="px-6 py-4">{customer.OrderedDate}</td>
-                                    <td className="px-6 py-4">{customer.status}</td>
-                                    <td className="px-6 py-4">
-                                        <a
-                                            href="#"
-                                            className="px-4 py-2 text-blue-100 no-underline bg-blue-500 rounded hover:bg-blue-600 hover:underline hover:text-blue-200"
-                                        >
-                                            Edit
-                                        </a>
+                                    <td className="px-6 py-4"> <Link to={`${order.orderId}`}>{order.orderId}</Link></td>
+                                    <td className="px-6 py-4">{order.phoneNumber}</td>
+                                    <td className="px-6 py-4">{order.customer}</td>
+                                    <td className="px-6 py-4">{order.OrderedDate}</td>
+                                    <td className="px-6 py-4">{order.status}</td>
+                                    <td className="px-6 py-2">
+                                       
+                                        <Link to={`${order.orderId}`}>
+                                         <Button
+                                        className="block"
+                                        rounded={"md"}
+                                        color={"white"}
+                                        bgColor={"blue"}
+                                        size="sm"
+                                        _hover={{
+                                            bg: "blue",
+                                            color: "blue-50",
+                                        }}
+                                    >
+                                        View
+                                    </Button>
+                                    </Link>
                                     </td>
                                 </tr>
                             ))}
