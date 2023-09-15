@@ -1,4 +1,4 @@
-import { Alert, AlertIcon, Button, useToast } from "@chakra-ui/react";
+import { Alert, AlertIcon, Button, Collapse, useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { BiArrowBack } from "react-icons/bi";
 import { PiCheckCircleFill, PiWarningFill } from "react-icons/pi";
@@ -52,6 +52,7 @@ const Signup = () => {
 		valid: true,
 		msg: "",
 	});
+	const [passwordValidation, setpasswordValidation] = useState(false)
 	const [passwordLengthValid, setPasswordLengthValid] = useState(false);
 
 	const [passwordContainsLowercaseLetter, setPasswordContainsLowercaseLetter] =
@@ -123,7 +124,12 @@ const Signup = () => {
 		} else {
 			setPasswordError("");
 		}
+		setpasswordValidation(false)
 	};
+
+	const handlePasswordValidationFocus = () => {
+		setpasswordValidation(true)
+	}
 
 	// confirm user details & send OTP
 	const handleNextSubmit = async (e) => {
@@ -278,55 +284,56 @@ const Signup = () => {
 									name="password"
 									onBlur={handlePasswordChange}
 									onChange={handlePasswordInputChange}
+									onFocus={handlePasswordValidationFocus}
 									placeholder="Password"
 									type="password"
 									value={signupCredentials.password}
 									className={"col-span-2"}
 								/>
-
-								<div className="flex flex-col justify-start col-span-2">
-									<p className="font-bold">Password must contain:</p>
-									<div className="flex items-center gap-3 pl-3">
-										{passwordLengthValid ? (
-											<PiCheckCircleFill className="text-green-600" />
-										) : (
-											<PiWarningFill className="text-yellow-600" />
-										)}
-										<span className="ml-1">At least 8 characters</span>
-									</div>
-									<div className="flex items-center gap-3 pl-3">
-										{passwordContainsLowercaseLetter ? (
-											<PiCheckCircleFill className="text-green-600" />
-										) : (
-											<PiWarningFill className="text-yellow-600" />
-										)}
-										<span className="ml-1">At least 1 lowercase letter</span>
-									</div>
-									<div className="flex items-center gap-3 pl-3">
-										{passwordContainsUppercaseLetter ? (
-											<PiCheckCircleFill className="text-green-600" />
-										) : (
-											<PiWarningFill className="text-yellow-600" />
-										)}
-										<span className="ml-1">At least 1 uppercase letter</span>
-									</div>
-									<div className="flex items-center gap-3 pl-3">
-										{passwordContainsDigit ? (
-											<PiCheckCircleFill className="text-green-600" />
-										) : (
-											<PiWarningFill className="text-yellow-600" />
-										)}
-										<span className="ml-1">At least 1 digit</span>
-									</div>
-									<div className="flex items-center gap-3 pl-3">
-										{passwordContainsSpecialCharacter ? (
-											<PiCheckCircleFill className="text-green-600" />
-										) : (
-											<PiWarningFill className="text-yellow-600" />
-										)}
-										<span className="ml-1">At least 1 special character</span>
-									</div>
-								</div>
+								<Collapse className="col-span-2" animateOpacity in={passwordValidation} unmountOnExit>
+									<div className="flex flex-col justify-start">
+										<p className="font-bold">Password must contain:</p>
+										<div className="flex items-center gap-3 pl-3">
+											{passwordLengthValid ? (
+												<PiCheckCircleFill className="text-green-600" />
+											) : (
+												<PiWarningFill className="text-yellow-600" />
+											)}
+											<span className="ml-1">At least 8 characters</span>
+										</div>
+										<div className="flex items-center gap-3 pl-3">
+											{passwordContainsLowercaseLetter ? (
+												<PiCheckCircleFill className="text-green-600" />
+											) : (
+												<PiWarningFill className="text-yellow-600" />
+											)}
+											<span className="ml-1">At least 1 lowercase letter</span>
+										</div>
+										<div className="flex items-center gap-3 pl-3">
+											{passwordContainsUppercaseLetter ? (
+												<PiCheckCircleFill className="text-green-600" />
+											) : (
+												<PiWarningFill className="text-yellow-600" />
+											)}
+											<span className="ml-1">At least 1 uppercase letter</span>
+										</div>
+										<div className="flex items-center gap-3 pl-3">
+											{passwordContainsDigit ? (
+												<PiCheckCircleFill className="text-green-600" />
+											) : (
+												<PiWarningFill className="text-yellow-600" />
+											)}
+											<span className="ml-1">At least 1 digit</span>
+										</div>
+										<div className="flex items-center gap-3 pl-3">
+											{passwordContainsSpecialCharacter ? (
+												<PiCheckCircleFill className="text-green-600" />
+											) : (
+												<PiWarningFill className="text-yellow-600" />
+											)}
+											<span className="ml-1">At least 1 special character</span>
+										</div>
+									</div></Collapse>
 
 								<Input
 									error={passwordError}

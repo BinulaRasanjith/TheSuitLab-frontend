@@ -3,7 +3,7 @@
 import { BiSolidPurchaseTag } from "react-icons/bi";
 import { BsBarChartFill } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
-import { HiColorSwatch } from "react-icons/hi";
+import { HiColorSwatch,HiUserGroup } from "react-icons/hi";
 import { HiCalendarDays, HiShoppingCart } from "react-icons/hi2";
 import { IoIosBowtie } from "react-icons/io";
 import { TbArrowBackUp } from "react-icons/tb";
@@ -17,8 +17,9 @@ import MainLayout from "../../components/MainLayout";
 import Navbar from "../../components/Navbar";
 // import Sidebar from "../../components/AssistantSidebar"
 import Sidebar from "../../components/Sidebar/Sidebar";
-// import { OPERATION_ASSISTANT } from "../../constants"; // TODO
-// import { selectUser } from "../../store/slices/authSlice"; // TODO
+import { OPERATION_ASSISTANT } from "../../constants";
+import { selectUser } from "../../store/slices/authSlice";
+ 
 
 const assistantSidebarItems = [
 	{
@@ -40,6 +41,11 @@ const assistantSidebarItems = [
 		label: "Orders",
 		icon: <HiShoppingCart />,
 		to: "/assistant/orders",
+	},
+	{
+		label: "Customers",
+		icon: <HiUserGroup />,
+		to: "/assistant/customers",
 	},
 	{
 		label: "Returns",

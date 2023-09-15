@@ -1,7 +1,7 @@
 import { Button } from "@chakra-ui/react"
 import { AiFillPlusCircle } from 'react-icons/ai'
 import { BiSearch } from 'react-icons/bi'
-
+import ViewCustomers from "../../components/Customer/ViewCustomers"
 
 const customers = [
     {
@@ -46,14 +46,16 @@ const customers = [
         lastOrder: '2023-07-07',
         status: 'Active',
     }
-
 ];
 
 
-const ViewCustomers = () => {
+const Customers = () => {
 
     return (
-        <div className="w-full p-5">
+        <div>
+            <ViewCustomers />
+
+        {/* <div className="w-full p-5">
             <div className='shadow-xl rounded-2xl mx-2 mt-8'>
 
                 <div className="flex flex-row m-4 justify-between">
@@ -159,14 +161,10 @@ const ViewCustomers = () => {
                     </div>
                 </div>
             </div>
+        </div > */}
 
-
-
-
-        </div >
-
-
+        </div>
     )
 }
 
-export default ViewCustomers
+export default Customers

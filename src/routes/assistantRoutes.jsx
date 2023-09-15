@@ -8,16 +8,17 @@ import Materials from "../pages/Assistant/Materials";
 import Orders from "../pages/Assistant/Orders";
 import Returns from "../pages/Assistant/Returns";
 import Profile from "../pages/Profile";
+import Customers from "../pages/Assistant/Customers";
 
 const AssistantRoutes = {
   path: "/assistant",
   element: <AssistantMainLayout />,
   children: [
-    // { path: "dashboard", element: <div>Dashboard</div> },
     { path: "", element: <Dashboard /> },
     { path: "materials", element: <Materials /> },
     { path: "handover", element: <Handover /> },
     { path: "orders", element: <Orders /> },
+    { path: "customers", element: <Customers /> },
     { path: "returns", element: <Returns /> },
     { path: "accessories", element: <Accessories /> },
     { path: "hiring", element: <Hiring /> },
