@@ -1,7 +1,7 @@
 import React from 'react'
 import { BiSearch } from 'react-icons/bi'
 import { Link } from 'react-router-dom';
-
+import { Button } from "@chakra-ui/react";
 
 const orders = [
     {
@@ -115,13 +115,23 @@ const Orders = () => {
                                     <td className="px-6 py-4">{order.customer}</td>
                                     <td className="px-6 py-4">{order.OrderedDate}</td>
                                     <td className="px-6 py-4">{order.status}</td>
-                                    <td className="px-6 py-4">
-                                        <a
-                                            href="#"
-                                            className="px-4 py-2 text-blue-100 no-underline bg-blue-500 rounded hover:bg-blue-600 hover:underline hover:text-blue-200"
-                                        >
-                                            Edit
-                                        </a>
+                                    <td className="px-6 py-2">
+                                       
+                                        <Link to={`${order.orderId}`}>
+                                         <Button
+                                        className="block"
+                                        rounded={"md"}
+                                        color={"white"}
+                                        bgColor={"blue"}
+                                        size="sm"
+                                        _hover={{
+                                            bg: "blue",
+                                            color: "blue-50",
+                                        }}
+                                    >
+                                        View
+                                    </Button>
+                                    </Link>
                                     </td>
                                 </tr>
                             ))}
