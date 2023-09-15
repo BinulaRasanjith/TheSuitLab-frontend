@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom';
 import DropDownFilter from "../../components/Assistant/HeaderDropDown"
 import SearchBox from "../../components/Assistant/HeaderSearchBox"
 import Pagination from "../../components/Assistant/Pagination"
-import { PRODUCT_MANAGER } from "../../constants";
+import { L, PRODUCT_MANAGER } from "../../constants";
 import { OPERATION_ASSISTANT } from "../../constants";
 import { selectUser } from "../../store/slices/authSlice"
 
@@ -159,41 +159,44 @@ const ViewCustomers = () => {
                                         <td className="w-40">{item.phoneNumber}</td>
                                         <td className="w-40">{item.orderCount}</td>
                                         <td className="w-40"> {item.status}</td>
-                                        <td className="w-40 py-2">
-                                            {user.role === PRODUCT_MANAGER && (item.status === "Active" ? (
-                                                // <Link to={`${item.id}`}>
-                                                <Button
-                                                    className="block"
-                                                    rounded={"md"}
-                                                    color={"white"}
-                                                    bgColor={"black"}
-                                                    size="sm"
-                                                    _hover={{
-                                                        bg: "blue",
-                                                        color: "blue-50",
-                                                    }}
-                                                    onClick={() => handleOptionClick()}
-                                                >
-                                                    Deactivate
-                                                </Button>
-                                            ) : (
-                                                <Button
-                                                    className="block  w-24"
-                                                    rounded={"md"}
-                                                    color={"white"}
-                                                    bgColor={"black"}
-                                                    size="sm"
-                                                    _hover={{
-                                                        bg: "blue",
-                                                        color: "blue-50",
-                                                    }}
-                                                //onClick={() => handleOptionClick()}
-                                                >
-                                                    Activate
-                                                </Button>
-                                                //{/* </Link> */}
-                                            ))}
-                                        </td>
+                                        {user.role === PRODUCT_MANAGER && (
+                                            <td className="w-40 ">
+
+                                                {item.status === "Active" ? (
+                                                    <Button
+                                                        className="block"
+                                                        rounded={"md"}
+                                                        color={"white"}
+                                                        bgColor={"black"}
+                                                        size="sm"
+                                                        _hover={{
+                                                            bg: "blue",
+                                                            color: "blue-50",
+                                                        }}
+                                                        onClick={() => handleOptionClick()}
+                                                    >
+                                                        Deactivate
+                                                    </Button>
+                                                ) : (
+                                                    <Button
+                                                        className="block  w-24"
+                                                        rounded={"md"}
+                                                        color={"white"}
+                                                        bgColor={"black"}
+                                                        size="sm"
+                                                        _hover={{
+                                                            bg: "blue",
+                                                            color: "blue-50",
+                                                        }}
+                                                    //onClick={() => handleOptionClick()}
+                                                    >
+                                                        Activate
+                                                    </Button>
+                                                )}
+
+                                            </td>
+                                        )
+                                        }
                                     </tr>
                                 ))}
                             </div>
