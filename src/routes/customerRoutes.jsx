@@ -1,6 +1,8 @@
 import BeltsGallery from "../components/Customer/BeltsGallery";
 import BowsGallery from "../components/Customer/BowsGallery";
 import Cart from "../components/Customer/Cart";
+import ChooseButtonColor from "../components/Customer/ChooseButtonColor";
+import ChoosePocketColor from "../components/Customer/ChoosePocketColor";
 import CurrentSizes from "../components/Customer/CurrentSizes";
 import CustomSizes from "../components/Customer/CustomSizes";
 import CustomizeMeasurements from "../components/Customer/CustomizeMeasurements";
@@ -12,21 +14,14 @@ import TiesGallery from "../components/Customer/TiesGallery";
 import JacketsGallery from "../components/Customer/jacketsGallery";
 import PantsGallery from "../components/Customer/pantsGallery";
 import SuitDescription from "../components/Customer/suitDescription";
-import ChooseBeltLoop from "../components/customer/ChooseBeltLoop";
-import ChooseBottom from "../components/customer/ChooseBottom";
-import ChooseButtonContrast from "../components/customer/ChooseButtonContrast";
+import Payment from '../components/Payment';
+import ChooseBackPocket from "../components/customer/ChooseBackPocket";
 import ChooseButtons from "../components/customer/ChooseButtons";
-import ChooseCuff from "../components/customer/ChooseCuff";
-import ChooseJacketContrast from "../components/customer/ChooseJacketContrast";
 import ChooseLapel from "../components/customer/ChooseLapels";
 import ChoosePant from "../components/customer/ChoosePant";
 import ChoosePantContrast from "../components/customer/ChoosePantContrast";
-import ChoosePantPleat from "../components/customer/ChoosePantPleat";
-import ChoosePantPocket from "../components/customer/ChoosePantPocket";
-import ChooseBackPocket from "../components/customer/ChoosePocket";
 import ChoosePockets from "../components/customer/ChoosePocket";
 import ChooseSleeveButtons from "../components/customer/ChooseSleeveButtons";
-import ChooseVents from "../components/customer/ChooseVent";
 import SingleOutletLayout from "../layouts/SingleOutletLayout";
 import AccessoriesLayout from "../layouts/customerLayouts/AccessoriesLayout";
 import AddMeasurementsLayout from "../layouts/customerLayouts/AddMeasurementsLayout";
@@ -41,7 +36,6 @@ import Home from "../pages/customer/Home";
 import LookBook from "../pages/customer/LookBook";
 import MeasurementDashboard from "../pages/customer/MeasurementDashboard";
 import SuitCustomizationLanding from "../pages/customer/SuitCustomizationLanding";
-import Payment from '../components/Payment';
 
 
 // TODO: complete the navigation routes
@@ -130,10 +124,6 @@ const costumerRoutes = {
 							element: <ChooseLapel />,
 						},
 						{
-							path: "bottom",
-							element: <ChooseBottom />,
-						},
-						{
 							path: "pocket",
 							element: <ChoosePockets />,
 						},
@@ -141,10 +131,7 @@ const costumerRoutes = {
 							path: "sleeve-button",
 							element: <ChooseSleeveButtons />,
 						},
-						{
-							path: "vent",
-							element: <ChooseVents />,
-						},
+
 					],
 				},
 				{
@@ -152,12 +139,12 @@ const costumerRoutes = {
 					element: <SingleOutletLayout />,
 					children: [
 						{
-							path: "jacket-contrast",
-							element: <ChooseJacketContrast />,
+							path: "pocket",
+							element: <ChoosePocketColor />,
 						},
 						{
 							path: "button",
-							element: <ChooseButtonContrast />,
+							element: <ChooseButtonColor />,
 						},
 					],
 				},
@@ -212,25 +199,10 @@ const costumerRoutes = {
 							element: <ChoosePant />,
 						},
 						{
-							path: "pleat",
-							element: <ChoosePantPleat />,
-						},
-						{
-							path: "pant-pocket",
-							element: <ChoosePantPocket />,
-						},
-						{
 							path: "back-pocket",
 							element: <ChooseBackPocket />,
 						},
-						{
-							path: "belt-loop",
-							element: <ChooseBeltLoop />,
-						},
-						{
-							path: "cuff",
-							element: <ChooseCuff />,
-						},
+
 					],
 				},
 				{
@@ -238,12 +210,12 @@ const costumerRoutes = {
 					element: <SingleOutletLayout />,
 					children: [
 						{
-							path: "pant-contrast",
-							element: <ChoosePantContrast />,
+							path: "back-pocket-color",
+							element: <ChoosePocketColor />,
 						},
 						{
-							path: "button-color",
-							element: <ChooseButtonContrast />,
+							path: "back-button-color",
+							element: <ChooseButtonColor />,
 						},
 					],
 				},
@@ -256,6 +228,18 @@ const costumerRoutes = {
 				{
 					path: "",
 					element: <CustomizeMeasurements />,
+				},
+				{
+					path: "current-sizes",
+					element: <CurrentSizes />,
+				},
+				{
+					path: "standard-sizes",
+					element: <StandardSizes />,
+				},
+				{
+					path: "custom-sizes",
+					element: <CustomSizes />,
 				},
 			],
 		},

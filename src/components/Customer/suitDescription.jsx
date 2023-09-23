@@ -17,10 +17,12 @@ const SuitDescription = () => {
 	const [suitDetails, setSuitDetails] = useState({
 		images: [],
 		name: "",
+		size: [],
 		price: 0,
 	}); // Create state variable for suit details
 	const [selectedImage, setSelectedImage] = useState("");
-	const [quantity, setQuantity] = useState(1); // Initialize quantity with 1
+	const [selectedItems, setSelectedItems] = useState([]); // [{size: quantity}]
+	// const [quantity, setQuantity] = useState([]);
 	const [fromDate, setFromDate] = useState(null);
 	const [toDate, setToDate] = useState(null);
 
@@ -28,6 +30,7 @@ const SuitDescription = () => {
 		getHireCostume(suitId)
 			.then((response) => {
 				setSuitDetails(response.data);
+				console.log(response.data);
 				setSelectedImage(response.data.images[0]);
 			})
 			.catch((error) => {
@@ -35,32 +38,70 @@ const SuitDescription = () => {
 			});
 	}, [suitId]);
 
-	const handleDecrement = () => {
-		if (quantity > 1) {
-			setQuantity(quantity - 1);
-		}
-	};
+	// const handleDecrement = () => {
+	// 	if (quantity > 1) {
+	// 		setQuantity(quantity - 1);
+	// 	}
+	// };
 
-	const handleIncrement = () => {
-		setQuantity(quantity + 1);
-	};
+	// const handleIncrement = () => {
+	// 	setQuantity(quantity + 1);
+	// };
 
-	const [selectedSize, setSelectedSize] = useState("Medium"); // Initialize with the default size
+	// const [selectedSize, setSelectedSize] = useState("Medium"); // Initialize with the default size
 
-	const handleSizeClick = (size) => {
-		setSelectedSize(size);
-	};
+	// const handleSizeClick = (size) => {
+	// 	setSelectedSize(size);
+	// };
 
 	const handleImageClick = (image) => {
 		setSelectedImage(image);
+	};
+
+	const handleAddToItems = (size) => {
+		// [{size1: quantity1}, {size2: quantity2}, {size3: quantity3}]
+		// increase item quantity if already in cart else add 1 to quantity
+		const item = selectedItems.find((item) => item.size === size);
+		if (item) { // if item exists in items
+			// increase quantity
+			if (item.quantity < suitDetails.size.find((item) => item.size === size).quantity) {
+				item.quantity += 1;
+			} else if (item.quantity === suitDetails.size.find((item) => item.size === size).quantity) {
+				toast({
+					title: "Out of Stock",
+					status: "info",
+					duration: 3000,
+					isClosable: true,
+				});
+			}
+		} else {
+			// add new item to cart
+			setSelectedItems([...selectedItems, { size, quantity: 1 }]);
+		}
+	};
+
+	const handleRemoveFromItems = (size) => {
+		// [{size1: quantity1}, {size2: quantity2}, {size3: quantity3}]
+		// decrease item quantity if already in cart
+		const item = selectedItems.find((item) => item.size === size);
+		if (item) { // if item exists in cart
+			// decrease quantity
+			if (item.quantity > 1) {
+				item.quantity -= 1;
+			} else {
+				// remove item from cart
+				console.log("remove item from cart");
+				setSelectedItems(selectedItems.filter((item) => item.size !== size));
+			}
+		}
 	};
 
 	const handleAddToCart = () => {
 		addToCartAPI({
 			itemId: suitId,
 			description: suitDetails.name,
-			quantity,
-			size: selectedSize,
+			// quantity,
+			// size: selectedSize,
 		})
 			.then((response) => {
 				if (response.status === 201) {
@@ -174,77 +215,52 @@ const SuitDescription = () => {
 
 								<div className="mb-8 ">
 									<h2 className="w-16 pb-1 mb-4 text-xl font-semibold border-b border-blue-300 dark:border-gray-600 dark:text-gray-400">
-										Size
+										Sizes
 									</h2>
 									<div>
 										<div className="flex flex-wrap -mb-2">
-											<button
-												className={`px-4 py-2 mb-2 mr-4 font-semibold border rounded-md hover:border-blue-400 ${
-													selectedSize === "Medium"
-														? " text-white bg-black"
-														: "dark:border-gray-400 dark:text-gray-400"
-												}`}
-												onClick={() => handleSizeClick("Medium")}
-											>
-												Medium
-											</button>
-											<button
-												className={`px-4 py-2 mb-2 mr-4 font-semibold border rounded-md hover:border-blue-400 ${
-													selectedSize === "Large"
-														? "text-white bg-black"
-														: "dark:border-gray-400 dark:text-gray-400"
-												}`}
-												onClick={() => handleSizeClick("Large")}
-											>
-												Large
-											</button>
-											<button
-												className={`px-4 py-2 mb-2 mr-4 font-semibold border rounded-md hover:border-blue-400 ${
-													selectedSize === "XL"
-														? "text-white bg-black"
-														: "dark:border-gray-400 dark:text-gray-400"
-												}`}
-												onClick={() => handleSizeClick("XL")}
-											>
-												XL
-											</button>
-											<button
-												className={`px-4 py-2 mb-2 font-semibold border rounded-md hover:border-blue-400 ${
-													selectedSize === "XXL"
-														? "text-white bg-black"
-														: "dark:border-gray-400 dark:text-gray-400"
-												}`}
-												onClick={() => handleSizeClick("XXL")}
-											>
-												XXL
-											</button>
+
+											{suitDetails.size && suitDetails.size.map((size, index) => (
+												<div className='p-5 flex flex-col justify-center items-center border border-black-2 rounded' key={index}>
+													<button
+														className={`px-4 py-2 mb-2 mr-4 font-semibold border rounded}`}
+													// onClick={() => handleSizeClick(size)}
+													>
+														{size.size}
+
+													</button>
+													<div>
+														{size.quantity === 0 ? <p className='text-red-500'>Out of Stock</p> : <p className='text-green-500'>{size.quantity} In Stock</p>}
+													</div>
+
+
+												</div>
+											))}
+
+
 										</div>
+
 									</div>
 								</div>
 								<div className="w-32 mb-8">
 									<label className="w-full pb-1 text-xl font-semibold text-gray-700 border-b border-blue-300 dark:border-gray-600 dark:text-gray-400">
 										Quantity
 									</label>
-									<div className="relative flex flex-row w-full h-10 mt-6 bg-transparent rounded-lg">
-										<button
-											onClick={handleDecrement}
-											className="w-20 h-full text-gray-600 bg-gray-300 rounded-l outline-none cursor-pointer dark:hover:bg-gray-700 dark:text-gray-400 hover:text-gray-700 dark:bg-gray-900 hover:bg-gray-400"
-										>
-											<span className="m-auto text-2xl font-thin">-</span>
-										</button>
-										<input
-											type="number"
-											className="flex items-center w-full font-semibold text-center text-gray-700 placeholder-gray-700 bg-gray-300 outline-none dark:text-gray-400 dark:placeholder-gray-400 dark:bg-gray-900 focus:outline-none text-md hover:text-black"
-											placeholder="1"
-											value={quantity}
-											onChange={(e) => setQuantity(parseInt(e.target.value))}
-										/>
-										<button
-											onClick={handleIncrement}
-											className="w-20 h-full text-gray-600 bg-gray-300 rounded-r outline-none cursor-pointer dark:hover:bg-gray-700 dark:text-gray-400 dark:bg-gray-900 hover:text-gray-700 hover:bg-gray-400"
-										>
-											<span className="m-auto text-2xl font-thin">+</span>
-										</button>
+									<div className="flex flex-col">
+										{suitDetails.size && suitDetails.size.map((size, index) => (
+
+											<div className="flex flex-col p-3" key={index}>
+												<label>{size.size}</label>
+												<div className="flex">
+													<button onClick={() => handleRemoveFromItems(size.size)}>-</button>
+													<p>{
+														selectedItems.find((item) => item.size === size.size)?.quantity || 0
+													}</p>
+													<button onClick={() => handleAddToItems(size.size)}>+</button>
+
+												</div>
+
+											</div>))}
 									</div>
 								</div>
 								<div className="flex flex-wrap items-center gap-4">

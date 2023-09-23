@@ -38,20 +38,12 @@ const sidebarItems = [
 				to: "/customer/customize-suit/jacket/style/lapel",
 			},
 			{
-				label: "Bottom",
-				to: "/customer/customize-suit/jacket/style/bottom",
-			},
-			{
 				label: "Pocket",
 				to: "/customer/customize-suit/jacket/style/pocket",
 			},
 			{
 				label: "Sleeve button",
 				to: "/customer/customize-suit/jacket/style/sleeve-button",
-			},
-			{
-				label: "Vent",
-				to: "/customer/customize-suit/jacket/style/vent",
 			},
 		],
 	},
@@ -61,8 +53,8 @@ const sidebarItems = [
 		to: "/customer/customize-suit/jacket/color-contrast",
 		subItems: [
 			{
-				label: "Jacket Contrast",
-				to: "/customer/customize-suit/jacket/color-contrast/jacket-contrast",
+				label: "Pocket",
+				to: "/customer/customize-suit/jacket/color-contrast/pocket",
 			},
 			{
 				label: "Button",

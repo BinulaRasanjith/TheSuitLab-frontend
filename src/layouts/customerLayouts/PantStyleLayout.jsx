@@ -13,6 +13,16 @@ const sidebarItems = [
         label: 'Fabric',
         icon: <GiRolledCloth />,
         to: '/customer/customize-suit/pant/fabric',
+        subItems: [
+            {
+                label: 'Solid',
+                to: '/customer/customize-suit/pant/fabric/solid'
+            },
+            {
+                label: 'Pattern',
+                to: '/customer/customize-suit/pant/fabric/pattern'
+            },
+        ]
     },
     {
         label: 'Style',
@@ -24,24 +34,8 @@ const sidebarItems = [
                 to: '/customer/customize-suit/pant/style/pant-style'
             },
             {
-                label: 'Pleat',
-                to: '/customer/customize-suit/pant/style/pleat'
-            },
-            {
-                label: 'Pant Pocket',
-                to: '/customer/customize-suit/pant/style/pant-pocket'
-            },
-            {
                 label: 'Back Pocket',
                 to: '/customer/customize-suit/pant/style/back-pocket'
-            },
-            {
-                label: 'Belt Loop',
-                to: '/customer/customize-suit/pant/style/belt-loop'
-            },
-            {
-                label: 'Cuff',
-                to: '/customer/customize-suit/pant/style/cuff'
             },
         ]
     },
@@ -51,12 +45,12 @@ const sidebarItems = [
         to: '/customer/customize-suit/pant/color-contrast',
         subItems: [
             {
-                label: 'Pant Contrast',
-                to: '/customer/customize-suit/pant/color-contrast/pant-contrast'
+                label: 'Back Pocket Color',
+                to: '/customer/customize-suit/pant/color-contrast/back-pocket-color'
             },
             {
-                label: 'Button Contrast',
-                to: '/customer/customize-suit/pant/color-contrast/button-color'
+                label: 'Back Button Color',
+                to: '/customer/customize-suit/pant/color-contrast/back-button-color'
             },
         ]
     },

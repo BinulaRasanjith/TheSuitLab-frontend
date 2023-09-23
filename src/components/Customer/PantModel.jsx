@@ -6,7 +6,7 @@ import { useState } from "react";
 import CamControl from "../utilComp/CamControl";
 import ControlPanel from "../utilComp/ControlPanel";
 import BackNext from "./BackNext";
-import NewPant from "./NewPant";
+import { NewPant } from "./NewPant";
 
 const PantModel = () => {
 	const [control, setControl] = useState({
@@ -20,8 +20,8 @@ const PantModel = () => {
 
 	return (
 		<div className="w-1/2 h-[calc(100vh-4rem)] flex items-center relative">
-			{/* <ControlPanel control={control} setControl={setControl} />
-            <CamControl camCont={camCont} setCamCont={setCamCont} /> */}
+			<ControlPanel control={control} setControl={setControl} />
+			<CamControl camCont={camCont} setCamCont={setCamCont} />
 			<Canvas camera={{ position: [0, 0, 10], fov: 30 }}>
 				<Suspense fallback={false}>
 					<NewPant camCont={camCont} control={control} />

@@ -5,7 +5,8 @@ import { FABRIC_PATTERN, FABRIC_SOLID, IDLE, LOADING } from "../../constants";
 
 const initialState = {
     materials: {
-        fabric: [],
+        [FABRIC_SOLID]: [],
+        [FABRIC_PATTERN]: [],
     },
     status: IDLE,
     error: null,

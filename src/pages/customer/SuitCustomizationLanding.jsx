@@ -8,15 +8,15 @@ const SuitCustomizationLanding = () => {
 	const navigate = useNavigate();
 
 	const goToJacketCustomization = () => {
-		navigate("/customer/customize-suit/jacket/fabric");
+		navigate("/customer/customize-suit/jacket/fabric/solid");
 	};
 
 	const goToPantCustomization = () => {
-		navigate("/customer/customize-suit/pant/fabric");
+		navigate("/customer/customize-suit/pant/fabric/solid");
 	};
 
 	const goToJacketAndPantCustomization = () => {
-		navigate("/customer/customize-suit/shirt");
+		navigate("/customer/customize-suit/full-costume/solid");
 	};
 
 	return (
