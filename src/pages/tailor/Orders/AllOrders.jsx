@@ -28,7 +28,7 @@ const AllOrders = () => {
                         <div className=" w-32 text-">Customer</div>
                         <div className=" w-32 text-">Phone number</div>
                         <div className=" w-32 text-">Ordered Date</div>
-                        <div className=" w-40 px-10">Status</div>
+                        <div className=" w-40 px-10">Option</div>
                     </div>
                     <div className=" w-full border h-0 mt-3 mb-6 border-gray-200"></div>
 

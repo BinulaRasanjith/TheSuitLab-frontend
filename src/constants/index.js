@@ -11,6 +11,7 @@ export const ACTIVE = 'ACTIVE';
 // authSlice statuses
 export const IDLE = 'idle';
 export const LOADING = 'loading';
+export const ERROR = 'error';
 export const SIGNUP_SUCCESS = 'signup-success';
 
 // costume types
@@ -25,6 +26,10 @@ export const BUTTON = 'button';
 // design types
 export const PRE_DESIGNED = 'pre-designed';
 export const CUSTOMIZED = 'customized';
+
+// measurement unit types
+export const INCH = 'inch';
+export const CM = 'cm';
 
 // sizes
 export const S = 'S';

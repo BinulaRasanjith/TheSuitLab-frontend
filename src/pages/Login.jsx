@@ -1,4 +1,4 @@
-import { Button } from "@chakra-ui/react";
+import { Alert, AlertIcon, Button } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -14,6 +14,7 @@ import {
 	selectUser,
 	setError,
 } from "../store/slices/authSlice";
+import isValidMobileNo from "../utils/isValidMobileNo";
 
 const Login = () => {
 	const navigate = useNavigate();
@@ -23,8 +24,12 @@ const Login = () => {
 	const status = useSelector(selectAuthStatus);
 	const error = useSelector(selectAuthError);
 	const [loginCredentials, setLoginCredentials] = useState({
-		email: "",
+		mobileNo: "",
 		password: "",
+	});
+	const [isMobileNoValid, setIsMobileNoValid] = useState({
+		valid: true,
+		msg: "",
 	});
 
 	useEffect(() => {
@@ -33,9 +38,21 @@ const Login = () => {
 		}
 	}, [navigate, user]);
 
-	const handleInputChange = (e) => {
-		const { name, value } = e.target;
-		setLoginCredentials({ ...loginCredentials, [name]: value });
+	const handleMobileNoChange = (e) => {
+		const { value } = e.target;
+		if (value.length === 0) {
+			setIsMobileNoValid({ valid: true, msg: "" });
+		} else if (isValidMobileNo(value).valid) {
+			setIsMobileNoValid({ valid: true, msg: "" });
+			setLoginCredentials({ ...loginCredentials, mobileNo: value });
+		} else {
+			setIsMobileNoValid(isValidMobileNo(value));
+		}
+	};
+
+	const handlePasswordChange = (e) => {
+		const { value } = e.target;
+		setLoginCredentials({ ...loginCredentials, password: value });
 	};
 
 	const handleSubmit = async (e) => {
@@ -71,41 +88,46 @@ const Login = () => {
 					</h1>
 
 					<form
-						className="flex flex-col align-center justify-center md:px-5 lg:px-10 pl-2 pr-2 mt-4"
+						className="flex flex-col gap-2 align-center justify-center md:px-5 lg:px-10 pl-2 pr-2 mt-4"
 						onSubmit={handleSubmit}
 					>
-						{/* <div className="font-semibold text-sm lg:text-base text-red-600 text-center mb-1 md:mb-3">
-              Account does not exist or Password is incorrect
-            </div> */}
-
 						<Input
-							className={"mb-5 lg:mb-8"}
-							error={error}
-							id="email"
-							name="email"
-							onChange={handleInputChange}
+							error={error || isMobileNoValid.msg}
+							id="mobile-no"
+							name="mobileNo"
+							onChange={handleMobileNoChange}
 							onFocus={() => {
 								dispatch(setError(null));
 							}}
-							placeholder="Email"
-							type="email"
+							placeholder="Mobile Number"
+							hint="Ex: 0712345678"
+							type="text"
 							value={loginCredentials.email}
 						/>
+						{!isMobileNoValid.valid && (
+							<div className="text-red-600 text-sm mb-2">
+								{isMobileNoValid.msg}
+							</div>
+						)}
+
 						<Input
 							className={"mb-2 lg:mb-3"}
 							error={error}
 							id="password"
 							name="password"
-							onChange={handleInputChange}
+							onChange={handlePasswordChange}
 							onFocus={() => dispatch(setError(null))}
 							placeholder="Password"
 							type="password"
 							value={loginCredentials.password}
 						/>
 
-						<div className="text-sm lg:text-base text-stone-500 mb-2">
+						<Link
+							to={"/forgot-password"}
+							className="text-sm lg:text-base underline text-stone-500 hover:text-stone-700 mb-2"
+						>
 							Forgot Password?
-						</div>
+						</Link>
 						<div className="flex items-center flex-col">
 							<div className="flex flex-col items-start px-1"></div>
 							<Button
@@ -130,6 +152,17 @@ const Login = () => {
 								<hr className="w-full mx-2 border-2 rounded-sm" />
 							</div> */}
 						</div>
+						{error && (
+							<Alert
+								className="w-full mt-2"
+								status="error"
+								variant="subtle"
+								sx={{ borderRadius: "10px" }}
+							>
+								<AlertIcon />
+								{error}
+							</Alert>
+						)}
 						<div className="flex flex-col items-center rounded-bl-3xl rounded-br-3xl float-left">
 							{/* <Button mb={"10px"} width={{ base: "100%", md: "70%" }}>
 								<img alt="googleIcon" className="mr-2" src={googleIcon} />

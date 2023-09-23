@@ -6,7 +6,7 @@ import Pagination from "../../../components/Assistant/Pagination"
 const AllOrders = () => {
     return (
         <div>
-            <div className=" flex flex-col justify-between mx-10 my-8 p-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg">
+            {/* <div className=" flex flex-col justify-between mx-10 my-8 p-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg">
                 <div className=" flex justify-between align-middle pb-5">
                     <div className='flex flex-col'>
                         <div className=' text-2xl font-semibold'>Collected orders</div>
@@ -40,7 +40,7 @@ const AllOrders = () => {
                         <Pagination />
                     </div>
                 </div>
-            </div>
+            </div> */}
 
 
             {/* <div className=" flex justify-center w-full">
@@ -48,6 +48,7 @@ const AllOrders = () => {
                         <div className=" text-4xl font-semibold text-zinc-400">This materials page is under development :(</div>
                     </div>
                 </div> */}
+                <div><Records /></div>
         </div>
     )
 }
