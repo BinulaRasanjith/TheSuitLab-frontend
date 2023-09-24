@@ -20,14 +20,14 @@ const ChoosePocket = () => {
 				</span>
 				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-5">
 					<div onClick={() => dispatch(setJacket({ pocket: "2-straight-flaps" }))}
-						className="flex p-2 flex-col justify-center items-center"
+						className="flex p-2 flex-col justify-center items-center cursor-pointer rounded-lg border border-black-2  shadow"
 					>
 						<img alt="" className="pb-2" src={PKOne} />
 						<label className="text-sm">
 							2 STRAIGHT <br /> POCKETS
 						</label>
 					</div>
-					<div onClick={() => dispatch(setJacket({ pocket: "2-straight-flaps-1-ticket" }))} className="flex p-2 flex-col justify-center items-center">
+					<div onClick={() => dispatch(setJacket({ pocket: "2-straight-flaps-1-ticket" }))} className="flex p-2 flex-col justify-center items-center cursor-pointer rounded-lg border border-black-2  shadow">
 						<img alt="" className="pb-2" src={PKTwo} />
 						<label className="text-sm">
 							2 STRAIGHT POCKETS & <br /> 1 TICKET POCKET
@@ -35,7 +35,7 @@ const ChoosePocket = () => {
 					</div>
 
 					<div onClick={() => dispatch(setJacket({ pocket: "2-straight" }))}
-						className="flex p-2 flex-col justify-center items-center"
+						className="flex p-2 flex-col justify-center items-center cursor-pointer rounded-lg border border-black-2  shadow"
 					>
 						<img alt="" className="pb-2" src={PKFive} />
 						<label className="text-sm">
@@ -44,7 +44,7 @@ const ChoosePocket = () => {
 							(NO FLAPS)
 						</label>
 					</div>
-					<div onClick={() => dispatch(setJacket({ pocket: "2-straight-1-ticket" }))} className="flex p-2 flex-col justify-center items-center">
+					<div onClick={() => dispatch(setJacket({ pocket: "2-straight-1-ticket" }))} className="flex p-2 flex-col justify-center items-center cursor-pointer rounded-lg border border-black-2  shadow">
 						<img alt="" className="pb-2" src={PKSix} />
 						<label className="text-sm">
 							2 STRAIGHT POCKETS

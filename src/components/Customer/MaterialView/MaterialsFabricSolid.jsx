@@ -20,27 +20,34 @@ const MaterialsFabricSolid = () => {
 	}, [dispatch]);
 
 	return (
-		<Container>
-			{materials &&
-				materials.map((material, index) => {
-					return (
-						<div
-							key={index}
-							onClick={() =>
-								dispatch(setJacket({ fabric: material.materialCode }))
-							}
-						>
-							<img
-								className="h-24"
-								src={`${MATERIAL_IMAGES_URL}/${material.image}`}
-								alt={material.materialCode}
-							/>
-							<p>{material.materialName}</p>
-							<p>Rs. {material.unitPrice}</p> {/* TODO: Add currency */}
-						</div>
-					);
-				})}
-		</Container>
+		<div className="flex flex-col">
+			<span className="flex text-3xl font-bold p-5">Choose Material</span>
+			<Container>
+				{materials &&
+					materials.map((material, index) => {
+						return (
+							<div
+								key={index}
+								onClick={() =>
+									dispatch(setJacket({ fabric: material.materialCode }))
+								}
+								className="flex border border-black-2 rounded-lg flex-col items-center justify-center gap-y-2 cursor-pointer relative"
+							>
+								<img
+									className="h-24 w-full rounded-lg"
+									src={`${MATERIAL_IMAGES_URL}/${material.image}`}
+									alt={material.materialCode}
+								/>
+								<div className="absolute text-white font-bold">
+									<p >{material.materialName}</p>
+									<p>Len: Rs. {material.unitPrice}</p> {/* TODO: Add currency */}
+
+								</div>
+							</div>
+						);
+					})}
+			</Container>
+		</div>
 	);
 };
 

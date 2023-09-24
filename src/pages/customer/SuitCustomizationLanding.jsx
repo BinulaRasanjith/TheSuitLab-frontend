@@ -16,7 +16,7 @@ const SuitCustomizationLanding = () => {
 	};
 
 	const goToJacketAndPantCustomization = () => {
-		navigate("/customer/customize-suit/full-costume/solid");
+		navigate("/customer/customize-suit/costume/fabric/solid");
 	};
 
 	return (
