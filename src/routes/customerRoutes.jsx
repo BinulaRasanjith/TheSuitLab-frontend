@@ -344,6 +344,10 @@ const costumerRoutes = {
 			],
 		},
 		{
+			path: "cart",
+			element: <Cart />,
+		},
+		{
 			path: "accessories",
 			element: <AccessoriesLayout />,
 			children: [
