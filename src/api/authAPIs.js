@@ -5,9 +5,9 @@ export const login = (data) => {
     return api.post("/auth/login", data); // make a POST request to the /auth/login endpoint of the server. Pass the data as the request body.
 };
 
-export const logout = async () => {
+export const logout = async (userId) => {
     // this function will make a POST request to the /auth/logout endpoint of the server. It will return a promise that will resolve to the response from the server.
-    return await api.post("/auth/logout"); // make a POST request to the /auth/logout endpoint of the server.
+    return await api.post(`/auth/logout/${userId}`); // make a POST request to the /auth/logout endpoint of the server.
 };
 
 export const signup = (data) => {

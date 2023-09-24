@@ -35,7 +35,7 @@ const Navbar = () => {
 	// handle logout click
 	const handleLogoutClick = () => {
 		navigate("/", { replace: true });
-		dispatch(logoutAsync());
+		dispatch(logoutAsync(user.id));
 	};
 
 	const [open, setOpen] = useState(false);
