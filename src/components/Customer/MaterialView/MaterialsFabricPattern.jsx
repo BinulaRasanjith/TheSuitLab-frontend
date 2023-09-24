@@ -31,7 +31,7 @@ const MaterialsFabricPattern = () => {
 								onClick={() =>
 									dispatch(setJacket({ fabric: material.materialCode }))
 								}
-								className="flex flex-col border-black-2 border rounded-lg items-center justify-center gap-y-2 cursor-pointer"
+								className="flex flex-col border-black-2 border rounded-lg items-center justify-center gap-y-2 cursor-pointer shadow-lg relative"
 							>
 								<img
 									className="h-24 w-full rounded-lg"

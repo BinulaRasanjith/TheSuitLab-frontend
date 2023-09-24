@@ -31,7 +31,7 @@ const MaterialsFabricSolid = () => {
 								onClick={() =>
 									dispatch(setJacket({ fabric: material.materialCode }))
 								}
-								className="flex border border-black-2 rounded-lg flex-col items-center justify-center gap-y-2 cursor-pointer relative"
+								className="flex border border-black-2 rounded-lg flex-col items-center justify-center gap-y-2 cursor-pointer relative shadow-lg"
 							>
 								<img
 									className="h-24 w-full rounded-lg"
