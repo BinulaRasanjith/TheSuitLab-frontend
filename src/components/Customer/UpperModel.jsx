@@ -1,8 +1,10 @@
 import { Environment, OrbitControls } from '@react-three/drei'
 import { Canvas } from "@react-three/fiber"
-import { Suspense } from 'react'
 import { useState } from 'react'
+import { Suspense } from 'react'
+import { useSelector } from 'react-redux'
 
+import { selectComponentHide } from '../../store/slices/componentHideSlice'
 import CamControl from "../utilComp/CamControl"
 import ControlPanel from "../utilComp/ControlPanel"
 import BackNext from './BackNext'
@@ -13,10 +15,10 @@ import { NewSuit } from './NewSuit'
 
 const UpperModel = () => {
 
-
+    const hide = useSelector(selectComponentHide)
     const [control, setControl] = useState({
         x: 0,
-        y: -5.2,
+        y: hide.OnlyJacketInitialPosition,
         z: 0
     })
     const [camCont, setCamCont] = useState({

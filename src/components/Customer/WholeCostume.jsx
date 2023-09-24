@@ -10,18 +10,25 @@ import { useSelector } from "react-redux";
 import * as THREE from 'three'
 
 import colors from '../../constants/colors.js'
+import { selectComponentHide } from "../../store/slices/componentHideSlice.js";
 import { selectJacket } from "../../store/slices/jacketCustomizationSlice.js";
 
 
-export function NewSuit(props) {
+export function WholeCostume(props) {
+
   const { nodes, materials } = useGLTF('/models/NewSuit.gltf')
+  const hide = useSelector(selectComponentHide);
+
   const material = useSelector(selectJacket).fabric;
+  const backPocket = useSelector(selectJacket).backPocket;
+  const trouser = useSelector(selectJacket).trouser;
   const jacketButtons = useSelector(selectJacket).button;
   const lapel = useSelector(selectJacket).lapel;
   const pocket = useSelector(selectJacket).pocket;
   const pocketColor = useSelector(selectJacket).pocketColor;
   const sleeveButtons = useSelector(selectJacket).sleeveButtons;
   const buttonColor = useSelector(selectJacket).buttonColor;
+
 
   const TextureProps = {
 
@@ -61,7 +68,7 @@ export function NewSuit(props) {
       // roughnessMap: "/textures/Fabric_011_SD/Fabric_011_ROUGH.jpg",
       aoMap: "/textures/Fabric_011_SD/Fabric_011_OCC.jpg",
     }),
-    Fabric_Burlap_003_SD: useTexture({
+    MAT0000000006: useTexture({
       map: "/textures/Fabric_Burlap_003_SD/Fabric_Burlap_003_basecolor.jpg",
       normalMap: "/textures/Fabric_Burlap_003_SD/Fabric_Burlap_003_normal.jpg",
       roughnessMap:
@@ -136,8 +143,6 @@ export function NewSuit(props) {
   TextureProps[material].aoMap.wrapS = TextureProps[material].aoMap.wrapT =
     THREE.RepeatWrapping;
 
-
-
   const pocketTextureProps = {
     MAT0000000001: useTexture({
       // MEKA MATERIAL CODE EKA WENAS KARALA WENA NAME DANNA EPA!!
@@ -175,7 +180,7 @@ export function NewSuit(props) {
       // roughnessMap: "/textures/Fabric_011_SD/Fabric_011_ROUGH.jpg",
       aoMap: "/textures/Fabric_011_SD/Fabric_011_OCC.jpg",
     }),
-    Fabric_Burlap_003_SD: useTexture({
+    MAT0000000006: useTexture({
       map: "/textures/Fabric_Burlap_003_SD/Fabric_Burlap_003_basecolor.jpg",
       normalMap: "/textures/Fabric_Burlap_003_SD/Fabric_Burlap_003_normal.jpg",
       roughnessMap:
@@ -234,33 +239,31 @@ export function NewSuit(props) {
   };
 
 
-
-
   return (
     <group {...props} dispose={null} position={[props.control.x, props.control.y, props.control.z]}
       scale={props.camCont.scale}>
-      <mesh geometry={nodes.Jacket_Suit_Notch_Vents.geometry} material={materials.Suit_DarkBrownPlaid} position={[0, 0.021, 0.001]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={lapel === 'notch-lapel' ? true : false} ><meshStandardMaterial {...TextureProps[material]} /></mesh>
-      <mesh geometry={nodes.Jacket_Suit_Peak_NoVents.geometry} material={materials['b0b0b0.001']} position={[0.004, 0.013, 0.003]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={lapel === 'peak-lapel' ? true : false}><meshStandardMaterial {...TextureProps[material]} /></mesh>
-      {/* <mesh geometry={nodes.jacket_single_extra_Button.geometry} material={materials['Button.002']} position={[-1.183, 0.799, -0.276]} rotation={[-0.737, 0.962, 1.749]} scale={0.025} ></mesh> */}
-      <mesh geometry={nodes.Jacket_6_button.geometry} material={materials.Button} position={[0, 0, 0.018]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={jacketButtons === '6D3' ? true : false}><meshStandardMaterial color={colors[buttonColor]} /></mesh>
-      <mesh geometry={nodes.Jacket_Front_1_Button.geometry} material={materials['Button.005']} position={[0, 0, 0.005]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={jacketButtons === '1S' || jacketButtons === '2S' || jacketButtons === '4D2' ? true : false}> <meshStandardMaterial color={colors[buttonColor]} /></mesh>
-      {/* <mesh geometry={nodes.PantsSlim_Suit.geometry} material={materials['b0b0b0.002']} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} ></mesh> */}
-      {/* <mesh geometry={nodes.Pants_Button.geometry} material={materials['Button.006']} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} ></mesh> */}
-      {/* <mesh geometry={nodes.Jacket_Suit_2_Button_Holes.geometry} material={materials['Suit_WineVelvetSolid.003']} position={[0, 0, 0.003]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={jacketButtons === '2S' || jacketButtons === '4D2' ? true : false} ><meshStandardMaterial {...TextureProps[material]} /></mesh> */}
-      {/* <mesh geometry={nodes.Jacket_6_Button_Holes.geometry} material={materials['b0b0b0.003']} position={[0, 0, 0.021]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={jacketButtons === '6D3' ? true : false}><meshStandardMaterial {...TextureProps[material]} /></mesh> */}
-      <mesh geometry={nodes.Jacket_Suit_PocketFlaps.geometry} material={materials['Suit_NavyWindowpane.003']} position={[0, 0, 0.023]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={pocket === '2-straight-flaps' || pocket === '2-straight-flaps-1-ticket' ? true : false}><meshStandardMaterial {...(pocketColor === null ? TextureProps[material] : pocketTextureProps[pocketColor])} /></mesh>
-      <mesh geometry={nodes.Jacket_Suit_PocketLine.geometry} material={materials['Suit_WineVelvetSolid.004']} position={[0, 0, 0.025]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={pocket === '2-straight' || pocket === '2-straight-1-ticket' ? true : false} ><meshStandardMaterial {...(pocketColor === null ? TextureProps[material] : pocketTextureProps[pocketColor])} /></mesh>
-      {/* <mesh geometry={nodes.Vest_Back_Strap.geometry} material={materials['b0b0b0.004']} position={[0, 0, -0.033]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} ></mesh> */}
-      {/* <mesh geometry={nodes.Vest_withColar.geometry} material={materials['Suit_NavyWindowpane.004']} position={[-0.001, -0.029, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} ></mesh> */}
-      {/* <mesh geometry={nodes.Pants_Back_PocketLine.geometry} material={materials['b0b0b0.005']} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} ></mesh> */}
-      {/* <mesh geometry={nodes.Vest_WithNoColar.geometry} material={materials['b0b0b0.006']} position={[0.001, -0.022, -0.006]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} ></mesh> */}
-      {/* <mesh geometry={nodes.Pants_Normal.geometry} material={materials.Suit_OlivieSolidBrushedTwill} position={[-0.002, 0.008, 0.009]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} ></mesh> */}
-      <mesh geometry={nodes.jacket_2_Button.geometry} material={materials['Button.007']} position={[-0.024, -0.084, -0.002]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={jacketButtons === '4D2' ? true : false} ><meshStandardMaterial color={colors[buttonColor]} /></mesh>
-      <mesh geometry={nodes.Jacket_ChestPocket.geometry} material={materials['Suit_WineVelvetSolid.005']} position={[0, 0, 0.009]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={pocket === '2-straight' || pocket === '2-straight-flaps' || pocket === null ? false : true} ><meshStandardMaterial {...(pocketColor === null ? TextureProps[material] : pocketTextureProps[pocketColor])} /></mesh>
-      <mesh geometry={nodes.jacket_Sleve_3_Button.geometry} material={materials['Button.001']} position={[0, 0, -0.001]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={sleeveButtons === '3-standard' ? true : false}><meshStandardMaterial color={colors[buttonColor]} /></mesh>
-      <mesh geometry={nodes.jacket_Sleve_2_Button.geometry} material={materials['Button.003']} position={[0, 0, 0.001]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={sleeveButtons === '2-standard' ? true : false}><meshStandardMaterial color={colors[buttonColor]} /></mesh>
-      <mesh geometry={nodes.Jacket_Sleve_4_Button.geometry} material={materials['Button.008']} position={[0, 0, 0.001]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={sleeveButtons === '4-standard' ? true : false}></mesh>
-      <mesh geometry={nodes.Jacket_Front_1_Button001.geometry} material={materials['Button.004']} position={[0, -0.087, 0.005]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={jacketButtons === '2S' || jacketButtons === '4D2' ? true : false} ><meshStandardMaterial color={colors[buttonColor]} /></mesh>
+      <mesh geometry={nodes.Jacket_Suit_Notch_Vents.geometry} material={materials.Suit_DarkBrownPlaid} position={[0, 0.021, 0.001]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={lapel === 'notch-lapel' && hide.Jacket ? true : false} ><meshStandardMaterial {...TextureProps[material]} /></mesh>
+      <mesh geometry={nodes.Jacket_Suit_Peak_NoVents.geometry} material={materials['b0b0b0.001']} position={[0.004, 0.013, 0.003]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={lapel === 'peak-lapel' && hide.Jacket ? true : false}><meshStandardMaterial {...TextureProps[material]} /></mesh>
+      {/* <mesh geometry={nodes.jacket_single_extra_Button.geometry} material={materials['Button.002']} position={[-1.183, 0.799, -0.276]} rotation={[-0.737, 0.962, 1.749]} scale={0.025} /> */}
+      <mesh geometry={nodes.Jacket_6_button.geometry} material={materials.Button} position={[0, 0, 0.018]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={jacketButtons === '6D3' && hide.Jacket ? true : false}><meshStandardMaterial color={colors[buttonColor]} /></mesh>
+      <mesh geometry={nodes.Jacket_Front_1_Button.geometry} material={materials['Button.005']} position={[0, 0, 0.005]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={(jacketButtons === '1S' || jacketButtons === '2S' || jacketButtons === '4D2') && hide.Jacket ? true : false}> <meshStandardMaterial color={colors[buttonColor]} /></mesh>
+      <mesh geometry={nodes.PantsSlim_Suit.geometry} material={materials['b0b0b0.002']} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={(trouser === 'no-vent' || trouser === null) && hide.Trouser ? true : false} ><meshStandardMaterial {...TextureProps[material]} /></mesh>
+      <mesh geometry={nodes.Pants_Button.geometry} material={materials['Button.006']} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={backPocket === 'with-btn' && hide.Trouser ? true : false}><meshStandardMaterial color={colors[buttonColor]} /></mesh>
+      {/* <mesh geometry={nodes.Jacket_Suit_2_Button_Holes.geometry} material={materials['Suit_WineVelvetSolid.003']} position={[0, 0, 0.003]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} /> */}
+      {/* <mesh geometry={nodes.Jacket_6_Button_Holes.geometry} material={materials['b0b0b0.003']} position={[0, 0, 0.021]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} /> */}
+      <mesh geometry={nodes.Jacket_Suit_PocketFlaps.geometry} material={materials['Suit_NavyWindowpane.003']} position={[0, 0, 0.023]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={(pocket === '2-straight-flaps' || pocket === '2-straight-flaps-1-ticket') && hide.Jacket ? true : false}><meshStandardMaterial {...(pocketColor === null ? TextureProps[material] : pocketTextureProps[pocketColor])} /></mesh>
+      <mesh geometry={nodes.Jacket_Suit_PocketLine.geometry} material={materials['Suit_WineVelvetSolid.004']} position={[0, 0, 0.025]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={(pocket === '2-straight' || pocket === '2-straight-1-ticket') && hide.Jacket ? true : false} ><meshStandardMaterial {...(pocketColor === null ? TextureProps[material] : pocketTextureProps[pocketColor])} /></mesh>
+      {/* <mesh geometry={nodes.Vest_Back_Strap.geometry} material={materials['b0b0b0.004']} position={[0, 0, -0.033]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} /> */}
+      {/* <mesh geometry={nodes.Vest_withColar.geometry} material={materials['Suit_NavyWindowpane.004']} position={[-0.001, -0.029, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} /> */}
+      <mesh geometry={nodes.Pants_Back_PocketLine.geometry} material={materials['b0b0b0.005']} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={(backPocket === 'no-btn' || backPocket === 'with-btn') && hide.Trouser ? true : false}><meshStandardMaterial {...(pocketColor === null ? TextureProps[material] : pocketTextureProps[pocketColor])} /></mesh>
+      {/* <mesh geometry={nodes.Vest_WithNoColar.geometry} material={materials['b0b0b0.006']} position={[0.001, -0.022, -0.006]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} /> */}
+      <mesh geometry={nodes.Pants_Normal.geometry} material={materials.Suit_OlivieSolidBrushedTwill} position={[-0.002, 0.008, 0.009]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={trouser === 'center-vent' && hide.Trouser ? true : false}><meshStandardMaterial {...TextureProps[material]} /></mesh>
+      <mesh geometry={nodes.jacket_2_Button.geometry} material={materials['Button.007']} position={[-0.024, -0.084, -0.002]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={jacketButtons === '4D2' && hide.Jacket ? true : false} ><meshStandardMaterial color={colors[buttonColor]} /></mesh>
+      <mesh geometry={nodes.Jacket_ChestPocket.geometry} material={materials['Suit_WineVelvetSolid.005']} position={[0, 0, 0.009]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={(pocket === '2-straight' || pocket === '2-straight-flaps' || pocket === null) ? false : (hide.Jacket) ? true : false} ><meshStandardMaterial {...(pocketColor === null ? TextureProps[material] : pocketTextureProps[pocketColor])} /></mesh>
+      <mesh geometry={nodes.jacket_Sleve_3_Button.geometry} material={materials['Button.001']} position={[0, 0, -0.001]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={sleeveButtons === '3-standard' && hide.Jacket ? true : false}><meshStandardMaterial color={colors[buttonColor]} /></mesh>
+      <mesh geometry={nodes.jacket_Sleve_2_Button.geometry} material={materials['Button.003']} position={[0, 0, 0.001]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={sleeveButtons === '2-standard' && hide.Jacket ? true : false}><meshStandardMaterial color={colors[buttonColor]} /></mesh>
+      <mesh geometry={nodes.Jacket_Sleve_4_Button.geometry} material={materials['Button.008']} position={[0, 0, 0.001]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={sleeveButtons === '4-standard' && hide.Jacket ? true : false}></mesh>
+      <mesh geometry={nodes.Jacket_Front_1_Button001.geometry} material={materials['Button.004']} position={[0, -0.087, 0.005]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={(jacketButtons === '2S' || jacketButtons === '4D2') && hide.Jacket ? true : false} ><meshStandardMaterial color={colors[buttonColor]} /></mesh>
     </group>
   )
 }
