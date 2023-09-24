@@ -116,19 +116,11 @@ const Profile = () => {
 	};
 
 	return (
-		<div>
+		<div className="w-full">
 			{/* <div className=" flex flex-col justify-between w-full p-10 gap-6"> */}
 			<div className=" flex flex-col justify-between gap-12 mx-10 my-8 p-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg">
 				<div className=" flex justify-start">
 					<div>
-						{/* <div className="text-center">
-                            <img
-                                src={AVATAR}
-                                className="mx-auto mb-4 w-28 border border-zinc-500 rounded-lg"
-                                alt="Avatar" />
-                            <h5 className="mb-2 text-xl font-medium leading-tight">Bhanuka Rajakaruna</h5>
-                            <p className="text-neutral-500 dark:text-neutral-400">Operation Assistant</p>
-                        </div> */}
 						<div className=" flex justify-center gap-12 mx-5">
 							<div className=" ">
 								<img
