@@ -16,6 +16,7 @@ import Navbar from "../../components/Navbar";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import { PRODUCT_MANAGER } from "../../constants";
 import { selectUser } from "../../store/slices/authSlice";
+import UpperModel from "../../components/Customer/UpperModel";
 
 const sidebarItems = [
 	{
