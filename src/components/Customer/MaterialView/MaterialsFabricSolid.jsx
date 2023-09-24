@@ -21,7 +21,7 @@ const MaterialsFabricSolid = () => {
 
 	return (
 		<div className="flex flex-col">
-			<span className="flex text-3xl font-bold p-5">Choose Material</span>
+			<span className="flex text-2xl font-bold p-5">Choose Material</span>
 			<Container>
 				{materials &&
 					materials.map((material, index) => {
