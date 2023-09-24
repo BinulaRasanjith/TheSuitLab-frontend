@@ -60,7 +60,7 @@ export function NewPant(props) {
       // roughnessMap: "/textures/Fabric_011_SD/Fabric_011_ROUGH.jpg",
       aoMap: "/textures/Fabric_011_SD/Fabric_011_OCC.jpg",
     }),
-    Fabric_Burlap_003_SD: useTexture({
+    MAT0000000006: useTexture({
       map: "/textures/Fabric_Burlap_003_SD/Fabric_Burlap_003_basecolor.jpg",
       normalMap: "/textures/Fabric_Burlap_003_SD/Fabric_Burlap_003_normal.jpg",
       roughnessMap:
@@ -68,7 +68,7 @@ export function NewPant(props) {
       aoMap:
         "/textures/Fabric_Burlap_003_SD/Fabric_Burlap_003_ambientOcclusion.jpg",
     }),
-    Fabric_Lace_004: useTexture({
+    MAT0000000005: useTexture({
       map: "/textures/Fabric_Lace_004/Fabric_Lace_004_basecolor.jpg",
       normalMap: "/textures/Fabric_Lace_004/Fabric_Lace_004_normal.jpg",
       roughnessMap: "/textures/Fabric_Lace_004/Fabric_Lace_004_roughness.jpg",
@@ -172,7 +172,7 @@ export function NewPant(props) {
       // roughnessMap: "/textures/Fabric_011_SD/Fabric_011_ROUGH.jpg",
       aoMap: "/textures/Fabric_011_SD/Fabric_011_OCC.jpg",
     }),
-    Fabric_Burlap_003_SD: useTexture({
+    MAT0000000006: useTexture({
       map: "/textures/Fabric_Burlap_003_SD/Fabric_Burlap_003_basecolor.jpg",
       normalMap: "/textures/Fabric_Burlap_003_SD/Fabric_Burlap_003_normal.jpg",
       roughnessMap:
@@ -180,7 +180,7 @@ export function NewPant(props) {
       aoMap:
         "/textures/Fabric_Burlap_003_SD/Fabric_Burlap_003_ambientOcclusion.jpg",
     }),
-    Fabric_Lace_004: useTexture({
+    MAT0000000005: useTexture({
       map: "/textures/Fabric_Lace_004/Fabric_Lace_004_basecolor.jpg",
       normalMap: "/textures/Fabric_Lace_004/Fabric_Lace_004_normal.jpg",
       roughnessMap: "/textures/Fabric_Lace_004/Fabric_Lace_004_roughness.jpg",

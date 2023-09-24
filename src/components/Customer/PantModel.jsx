@@ -2,16 +2,22 @@ import { Environment, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
+import { selectComponentHide } from "../../store/slices/componentHideSlice";
 import CamControl from "../utilComp/CamControl";
 import ControlPanel from "../utilComp/ControlPanel";
 import BackNext from "./BackNext";
 import { NewPant } from "./NewPant";
 
 const PantModel = () => {
+
+	const hide = useSelector(selectComponentHide);
+
+
 	const [control, setControl] = useState({
 		x: 0,
-		y: -1.4,
+		y: hide.OnlyTrouserInitialPosition,
 		z: 0,
 	});
 	const [camCont, setCamCont] = useState({

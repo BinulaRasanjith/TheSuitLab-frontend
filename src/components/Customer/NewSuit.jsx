@@ -69,7 +69,7 @@ export function NewSuit(props) {
       aoMap:
         "/textures/Fabric_Burlap_003_SD/Fabric_Burlap_003_ambientOcclusion.jpg",
     }),
-    Fabric_Lace_004: useTexture({
+    MAT0000000005: useTexture({
       map: "/textures/Fabric_Lace_004/Fabric_Lace_004_basecolor.jpg",
       normalMap: "/textures/Fabric_Lace_004/Fabric_Lace_004_normal.jpg",
       roughnessMap: "/textures/Fabric_Lace_004/Fabric_Lace_004_roughness.jpg",
@@ -175,7 +175,7 @@ export function NewSuit(props) {
       // roughnessMap: "/textures/Fabric_011_SD/Fabric_011_ROUGH.jpg",
       aoMap: "/textures/Fabric_011_SD/Fabric_011_OCC.jpg",
     }),
-    MAT0000000005: useTexture({
+    Fabric_Burlap_003_SD: useTexture({
       map: "/textures/Fabric_Burlap_003_SD/Fabric_Burlap_003_basecolor.jpg",
       normalMap: "/textures/Fabric_Burlap_003_SD/Fabric_Burlap_003_normal.jpg",
       roughnessMap:
@@ -183,7 +183,7 @@ export function NewSuit(props) {
       aoMap:
         "/textures/Fabric_Burlap_003_SD/Fabric_Burlap_003_ambientOcclusion.jpg",
     }),
-    Fabric_Lace_004: useTexture({
+    MAT0000000005: useTexture({
       map: "/textures/Fabric_Lace_004/Fabric_Lace_004_basecolor.jpg",
       normalMap: "/textures/Fabric_Lace_004/Fabric_Lace_004_normal.jpg",
       roughnessMap: "/textures/Fabric_Lace_004/Fabric_Lace_004_roughness.jpg",
@@ -259,10 +259,10 @@ export function NewSuit(props) {
       <mesh geometry={nodes.Jacket_ChestPocket.geometry} material={materials['Suit_WineVelvetSolid.005']} position={[0, 0, 0.009]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={pocket === '2-straight' || pocket === '2-straight-flaps' || pocket === null ? false : true} ><meshStandardMaterial {...(pocketColor === null ? TextureProps[material] : pocketTextureProps[pocketColor])} /></mesh>
       <mesh geometry={nodes.jacket_Sleve_3_Button.geometry} material={materials['Button.001']} position={[0, 0, -0.001]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={sleeveButtons === '3-standard' ? true : false}><meshStandardMaterial color={colors[buttonColor]} /></mesh>
       <mesh geometry={nodes.jacket_Sleve_2_Button.geometry} material={materials['Button.003']} position={[0, 0, 0.001]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={sleeveButtons === '2-standard' ? true : false}><meshStandardMaterial color={colors[buttonColor]} /></mesh>
-      <mesh geometry={nodes.Jacket_Sleve_4_Button.geometry} material={materials['Button.008']} position={[0, 0, 0.001]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={sleeveButtons === '4-standard' ? true : false}><meshStandardMaterial color={colors[buttonColor]} /></mesh>
+      <mesh geometry={nodes.Jacket_Sleve_4_Button.geometry} material={materials['Button.008']} position={[0, 0, 0.001]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={sleeveButtons === '4-standard' ? true : false}></mesh>
       <mesh geometry={nodes.Jacket_Front_1_Button001.geometry} material={materials['Button.004']} position={[0, -0.087, 0.005]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={jacketButtons === '2S' || jacketButtons === '4D2' ? true : false} ><meshStandardMaterial color={colors[buttonColor]} /></mesh>
     </group>
   )
 }
 
-useGLTF.preload('/models//NewSuit.gltf')
+useGLTF.preload('/models/NewSuit.gltf')
