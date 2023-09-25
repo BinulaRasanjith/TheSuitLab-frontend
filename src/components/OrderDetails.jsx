@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { Button } from "@chakra-ui/react";
-import { WholeCostume } from "../components/Customer/WholeCostume";
+import { OrderedDesign } from "../components/OrderedDesign";
 import { Canvas } from "@react-three/fiber";
 import { Environment, OrbitControls } from "@react-three/drei";
 import { Suspense } from "react";
@@ -180,7 +180,7 @@ function OrderDetails() {
 
                     <Canvas camera={{ position: [0, 0, 10], fov: 30 }}>
                         <Suspense fallback={false}>
-                            <WholeCostume camCont={camCont} control={control} />
+                            <OrderedDesign camCont={camCont} control={control} />
                         </Suspense>
                         <OrbitControls
                             enableZoom={true}
