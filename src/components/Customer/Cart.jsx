@@ -50,54 +50,75 @@ const Cart = () => {
 				<div className="flex flex-col flex-wrap items-center rounded-2xl shadow-xl absolute my-10 w-full">
 					<span className="text-xl font-bold text-black p-1">Cart Items</span>
 					<div className="flex mx-auto py-4 max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0 w-full">
-						<div>
-							<table className=" flex flex-col  text-sm font-medium text-gray-500">
-								<thead className=" uppercase bg-gray-100 py-4 w-full">
-									<tr>
-										<th className=" w-40">Item Id</th>
-										<th className=" w-40">Description</th>
-										<th className=" w-40">Price</th>
-										<th className=" w-40">Qty</th>
-										<th className=" w-40">Remove</th>
-										<th className=" w-40">Total</th>
-									</tr>
-								</thead>
-								<tbody>
-									<div className="flex flex-col gap-1">
-										{cartItems.map((item) => (
-											<tr
-												key={item.id}
-												className="flex items-center text-center border hover:bg-gray-300 text-black whitespace-nowrap font-medium py-3"
-											>
-												<td className="w-40">{item.id}</td>
-												<td className="w-40">{item.name}</td>
-												<td className="w-40">
-													{item.price === MEASUREMENTS_TO_BE_ADDED
-														? "Measurement to be added"
-														: item.price}
-												</td>
-												<td className="w-40">{item.quantity}</td>
-												<td className="w-40">
-													<Button
-														rounded={"lg"}
-														color={"white"}
-														bgColor={"black"}
-														size="sm"
-														_hover={{
-															bg: "red",
-															color: "black",
-														}}
-														onClick={() => removeFromCart(item.id)}
-													>
-														X
-													</Button>
-												</td>
-												<td className="w-40">{item.price * item.quantity}</td>
-											</tr>
-										))}
-									</div>
-								</tbody>
-							</table>
+<div>
+						<table className=' flex flex-col  text-sm font-medium text-gray-500'>
+							<thead className=" uppercase bg-gray-100 py-4 w-full">
+								<tr>
+									<th className=" w-40">
+										Item Id
+									</th>
+									<th className=" w-40">
+										Description
+									</th>
+									<th className=" w-40">
+										Price
+									</th>
+									<th className=" w-40">
+										Qty
+									</th>
+									<th className=" w-40">
+										Remove
+									</th>
+									<th className=" w-40">
+										Total
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<div className="flex flex-col gap-1 flex-wrap ">
+									{cartItems.map((item) => (
+										<tr key={item.id} className="flex items-center text-center border hover:bg-gray-300 text-black font-medium py-3">
+											<td className="w-40">{item.id}</td>
+											<td className="w-40 text-left"><p>{item.description}</p></td>
+											<td className="w-40">{item.price}</td>
+											<td className="w-40">{item.quantity}</td>
+											<td className="w-40">
+												<Button
+													rounded={"lg"}
+													color={"white"}
+													bgColor={"black"}
+													size="sm"
+													_hover={{
+														bg: "red",
+														color: "black",
+													}}
+													onClick={() => removeFromCart(item.id)}
+												>
+													X
+												</Button>
+											</td>
+											<td className="w-40">{item.price * item.quantity}</td>
+										</tr>
+									))}
+								</div>
+							</tbody>
+						</table>
+
+						<Button
+							className=" justify-start w-40 p-5 mt-4"
+							rounded={"md"}
+							color={"white"}
+							bgColor={"black"}
+							size="sm"
+							_hover={{
+								bg: "blue",
+								color: "blue-50",
+							}}
+							
+							onClick={() => navigate("/customer")}
+						>
+							Continue Shopping
+						</Button>
 
 							<Button
 								className=" justify-start w-40 p-5 mt-4"
@@ -138,7 +159,7 @@ const Cart = () => {
 									bg: "blue",
 									color: "blue-50",
 								}}
-								onClick={handleCheckout}
+								onClick={() => navigate("/customer/payment")}
 							>
 								Check out
 							</Button>
