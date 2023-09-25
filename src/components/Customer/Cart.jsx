@@ -119,6 +119,21 @@ const Cart = () => {
 						>
 							Continue Shopping
 						</Button>
+
+							{/* <Button
+								className=" justify-start w-40 p-5 mt-4"
+								rounded={"md"}
+								color={"white"}
+								bgColor={"black"}
+								size="sm"
+								_hover={{
+									bg: "blue",
+									color: "blue-50",
+								}}
+								onClick={handleCheckout}
+							>
+								Continue Shopping
+							</Button> */}
 						</div>
 						<div className="mt-6  h-full rounded-lg border bg-slate-500 p-4 shadow-md md:mt-0 md:w-1/3">
 							<div className="mb-2 flex justify-between">
