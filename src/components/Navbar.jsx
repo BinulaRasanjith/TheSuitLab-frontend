@@ -57,12 +57,11 @@ const Navbar = () => {
 						</div>
 					)
 				}
-
 				{
 					// sidebar toggle burger button
 					user.id &&
 					(user.role !== CUSTOMER ||
-						pathname.includes("/customer/customize-suit")) && (
+						pathname.includes("/customer/customize-suit/") || pathname.includes("/customer/hire-suit") || pathname.includes("/customer/accessories/")  ) && (
 						<div>
 							<button
 								className="flex items-center px-3 py-2 text-secondary text-2xl"
@@ -71,7 +70,7 @@ const Navbar = () => {
 								<FaBars />
 							</button>
 						</div>
-					)
+					) 
 				}
 				<div className="h-full flex items-center pr-2">
 					<div className="flex align-center h-14 overflow-hidden">
@@ -139,15 +138,15 @@ const Navbar = () => {
 					{user.id ? (
 						<>
 							<div className="flex items-center gap-3 relative">
-								<div className="text-secondary cursor-pointer ">
+								{user.role === CUSTOMER && <div className="text-secondary cursor-pointer ">
 									<HiShoppingCart onClick={() => navigate("/customer/cart")}
-									style={{ fontSize: "1.5rem" }}/>								
-								</div>
-								{user.id && user.role !== CUSTOMER && (
+										style={{ fontSize: "1.5rem" }} />
+								</div>}
+								{/* {user.id && user.role !== CUSTOMER && (
 									<div className={`text-gray-400 text-xs text-end`}>
 										{displayRoleName(user.role)}
 									</div>
-								)}
+								)} */}
 
 								<div
 									className="flex flex-col cursor-pointer"
