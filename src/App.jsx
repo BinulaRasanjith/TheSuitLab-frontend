@@ -20,6 +20,8 @@ const App = () => {
 			const user = setUserObject(decodedToken.user);
 			dispatch(setUser(user));
 			setIsLoading(false);
+		} else {
+			setIsLoading(false);
 		}
 	}, [dispatch]);
 
