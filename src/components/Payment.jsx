@@ -1,10 +1,12 @@
 import { Button } from "@chakra-ui/react";
 import { HiCreditCard } from "react-icons/hi";
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 
 
 const PaymentPage = () => {
+    const navigate = useNavigate();
     const [selectedOption, setSelectedOption] = useState('type1'); // Initialize the selected option
 
     const handleOptionChange = (event) => {
@@ -103,6 +105,20 @@ const PaymentPage = () => {
                          }}
                         >
                             PAY NOW
+                        </Button>
+                        <Button
+                         className="mt-4 block w-full p-5"
+                         rounded={"md"}
+                         color={"white"}
+                         bgColor={"black"}
+                         size="sm"
+                         _hover={{
+                             bg: "blue",
+                             color: "blue-50",
+                         }}
+                         onClick={() => navigate("/customer")}
+                        >
+                            DONE
                         </Button>
                     </div>
                 </div>

@@ -73,11 +73,11 @@ const Cart = () => {
 								</tr>
 							</thead>
 							<tbody>
-								<div className="flex flex-col gap-1">
+								<div className="flex flex-col gap-1 flex-wrap ">
 									{cartItems.map((item) => (
-										<tr key={item.id} className="flex items-center text-center border hover:bg-gray-300 text-black whitespace-nowrap font-medium py-3">
+										<tr key={item.id} className="flex items-center text-center border hover:bg-gray-300 text-black font-medium py-3">
 											<td className="w-40">{item.id}</td>
-											<td className="w-40">{item.name}</td>
+											<td className="w-40 text-left"><p>{item.description}</p></td>
 											<td className="w-40">{item.price}</td>
 											<td className="w-40">{item.quantity}</td>
 											<td className="w-40">
@@ -112,7 +112,8 @@ const Cart = () => {
 								bg: "blue",
 								color: "blue-50",
 							}}
-							onClick={handleCheckout}
+							
+							onClick={() => navigate("/customer")}
 						>
 							Continue Shopping
 						</Button>
@@ -142,7 +143,7 @@ const Cart = () => {
 									bg: "blue",
 									color: "blue-50",
 								}}
-								onClick={handleCheckout}
+								onClick={() => navigate("/customer/payment")}
 							>
 								Check out
 							</Button>
