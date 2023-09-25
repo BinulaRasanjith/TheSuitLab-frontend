@@ -43,6 +43,7 @@ const Cart = () => {
 		);
 
 		if (isMeasurementToBeAdded) {
+
 			toast({
 				title: "Error",
 				description: "Please give your measurements",
@@ -60,7 +61,6 @@ const Cart = () => {
 		//setCartItems(cartItems.filter((item) => item.id !== id));
 		onOpen();
 	};
-
 
 	return (
 		<div>
@@ -95,7 +95,8 @@ const Cart = () => {
 								<tbody>
 									<div className="flex flex-col gap-1 flex-wrap ">
 										{cartItems.map((item) => (
-											<tr key={item.id} className="flex items-center text-center border hover:bg-gray-300 text-black font-medium py-3">
+											<tr key={item.id} 
+											className="flex items-center text-center border hover:bg-gray-300 text-black font-medium py-3">
 												<td className="w-40">{item.id}</td>
 												<td className="w-40 text-left"><p>{item.description}</p></td>
 												<td className="w-40">{
@@ -119,7 +120,7 @@ const Cart = () => {
 												</td>
 												<td className="w-40">{
 													item.price * item.quantity === -1 ? "Need Measurements" : item.price * item.quantity
-												
+
 												}</td>
 											</tr>
 										))}
