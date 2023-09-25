@@ -47,13 +47,13 @@ const CustomizeMeasurements = () => {
 
 	return (
 		<div className="relative flex justify-center">
-			<img
+			{/* <img
 				src={measurement_bg}
 				alt=""
 				className="relative w-screen h-screen max-h-[calc(100vh-4rem)]"
-			/>
+			/> */}
 			<div className="flex flex-col absolute z-10">
-				<span className="text-3xl p-5 text-white font-bold">Choose One</span>
+				<span className="text-3xl p-5 text-black font-bold">Give Your Measurements</span>
 				<div className="flex flex-wrap gap-4 justify-around my-20">
 					<div
 						onClick={handleChooseLater}

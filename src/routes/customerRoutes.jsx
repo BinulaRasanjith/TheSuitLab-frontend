@@ -39,6 +39,7 @@ import Home from "../pages/customer/Home";
 import LookBook from "../pages/customer/LookBook";
 import MeasurementDashboard from "../pages/customer/MeasurementDashboard";
 import SuitCustomizationLanding from "../pages/customer/SuitCustomizationLanding";
+import CostumeCustomizationLayout from "../layouts/customerLayouts/CostumeCustomizationLayout";
 
 
 // TODO: complete the navigation routes
@@ -227,6 +228,100 @@ const costumerRoutes = {
 		},
 		{
 			path: "customize-suit/pant/measurements",
+			element: <AddMeasurementsLayout />,
+			children: [
+				{
+					path: "",
+					element: <CustomizeMeasurements />,
+				},
+				{
+					path: "current-sizes",
+					element: <CurrentSizes />,
+				},
+				{
+					path: "standard-sizes",
+					element: <StandardSizes />,
+				},
+				{
+					path: "custom-sizes",
+					element: <CustomSizes />,
+				},
+			],
+		},
+		{
+			path: "customize-suit/costume",
+			element: <CostumeCustomizationLayout />,
+			children: [
+				{
+					path: "fabric",
+					element: <SingleOutletLayout />,
+					children: [
+						{
+							path: "solid",
+							element: <MaterialsFabricSolid />,
+						},
+						{
+							path: "pattern",
+							element: <MaterialsFabricPattern />,
+						},
+					],
+				}, {
+					path: "jacket",
+					element: <SingleOutletLayout />,
+					children: [
+						{
+							path: "buttons",
+							element: <ChooseButtons />,
+						},
+						{
+							path: "lapel",
+							element: <ChooseLapel />,
+						},
+						{
+							path: "pocket",
+							element: <ChoosePockets />,
+						},
+						{
+							path: "sleeve-button",
+							element: <ChooseSleeveButtons />,
+						},
+
+					],
+				},
+
+				{
+					path: "pant",
+					element: <SingleOutletLayout />,
+					children: [
+						{
+							path: "pant-style",
+							element: <ChoosePant />,
+						},
+						{
+							path: "back-pocket",
+							element: <ChooseBackPocket />,
+						},
+
+					],
+				},
+				{
+					path: "color-contrast",
+					element: <SingleOutletLayout />,
+					children: [
+						{
+							path: "pocket",
+							element: <ChoosePocketColor />,
+						},
+						{
+							path: "button",
+							element: <ChooseButtonColor />,
+						},
+					],
+				},
+			],
+		},
+		{
+			path: "customize-suit/costume/measurements",
 			element: <AddMeasurementsLayout />,
 			children: [
 				{
