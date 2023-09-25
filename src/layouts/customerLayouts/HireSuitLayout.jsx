@@ -18,14 +18,6 @@ const sidebarItems = [
 				label: "Pant",
 				to: "/customer/hire-suit/pants",
 			},
-			// {
-			//     label: 'Bow Ties',
-			//     to: '/customer/accessories/bow-ties',
-			// },
-			// {
-			//     label: 'Neck Ties',
-			//     to: '/customer/accessories/neck-ties',
-			// },
 		],
 	},
 ];
@@ -33,6 +25,7 @@ const sidebarItems = [
 const HireSuitLayout = () => {
 	return (
 		<>
+			
 			<Sidebar items={sidebarItems} />
 			<ContentWrapper customizeLayout>
 				<Outlet />
