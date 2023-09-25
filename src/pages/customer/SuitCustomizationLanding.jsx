@@ -21,7 +21,7 @@ const SuitCustomizationLanding = () => {
 
 	return (
 		<div>
-			<img alt="" className="h-screen w-screen relative" src={Handsome} />
+			<img alt="" className="max-h-[calc(100vh-4rem)] w-screen relative" src={Handsome} />
 			<div className="flex flex-col items-start absolute top-20 left-2 md:left-10">
 				<h1 className="text-4xl md:text-6xl text-white font-bold pb-3 md:p-10">
 					Custom Suits

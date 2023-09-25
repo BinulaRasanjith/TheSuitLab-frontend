@@ -16,7 +16,7 @@ const HomeFunctionality = () => {
 				<div className="flex items-start justify-start relative">
 					<img
 						alt=""
-						className="w-screen h-[calc(100vh-128px)]"
+						className="w-screen h-[calc(100vh-90px)]"
 						src={Accessories1}
 					/>
 				</div>

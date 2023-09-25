@@ -9,7 +9,7 @@ const initialState = {
     sleeveButtons: null,
     pocketColor: null,
     buttonColor: "none",
-    trouser: null,
+    trouser: "no-vent",
     backPocket: null,
   },
   status: "idle",
