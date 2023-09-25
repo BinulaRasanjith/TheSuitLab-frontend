@@ -4,6 +4,12 @@ export const addToCart = async (cartItem) => {
     return api.post("/customer/add-to-cart", cartItem);
 }
 
+export const addCustomSuitToCart = async (cartItem) => {
+    return api.post("/customer/add-custom-suit-to-cart", cartItem);
+}
+
+// export const removeFromCart = async (cartItem) => { }
+
 export const getCart = async () => {
     return api.get("/customer/cart");
 }

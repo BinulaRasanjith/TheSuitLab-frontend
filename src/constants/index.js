@@ -42,6 +42,8 @@ export const XXL = 'XXL';
 export const AVAILABLE = 'available';
 export const UNAVAILABLE = 'unavailable';
 
+// MEASUREMENTS TO BE ADDED
+export const MEASUREMENTS_TO_BE_ADDED = -1;
 
 export const STANDARD_MEASUREMENTS = {
   XS: {
