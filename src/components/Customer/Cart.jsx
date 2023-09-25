@@ -1,8 +1,5 @@
-import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { getCart } from "../../api/customerAPI";
 import {
+	Button,
 	Modal,
 	ModalBody,
 	ModalCloseButton,
@@ -10,12 +7,17 @@ import {
 	ModalFooter,
 	ModalHeader,
 	ModalOverlay,
-	Button,
 	useDisclosure,
-} from '@chakra-ui/react'
+} from "@chakra-ui/react";
+import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { getCart } from "../../api/customerAPI";
+import { MEASUREMENTS_TO_BE_ADDED } from "../../constants";
 
 const Cart = () => {
-	const { isOpen, onOpen, onClose } = useDisclosure()
+	const { isOpen, onOpen, onClose } = useDisclosure();
 	const navigate = useNavigate();
 
 	const [cartItems, setCartItems] = useState([]);
@@ -39,7 +41,7 @@ const Cart = () => {
 
 	const removeFromCart = (id) => {
 		//setCartItems(cartItems.filter((item) => item.id !== id));
-		onOpen()
+		onOpen();
 	};
 
 	return (
@@ -118,6 +120,20 @@ const Cart = () => {
 							Continue Shopping
 						</Button>
 
+							<Button
+								className=" justify-start w-40 p-5 mt-4"
+								rounded={"md"}
+								color={"white"}
+								bgColor={"black"}
+								size="sm"
+								_hover={{
+									bg: "blue",
+									color: "blue-50",
+								}}
+								onClick={handleCheckout}
+							>
+								Continue Shopping
+							</Button>
 						</div>
 						<div className="mt-6  h-full rounded-lg border bg-slate-500 p-4 shadow-md md:mt-0 md:w-1/3">
 							<div className="mb-2 flex justify-between">
@@ -161,19 +177,15 @@ const Cart = () => {
 					</ModalBody>
 
 					<ModalFooter>
-						<Button colorScheme='blue' mr={3} onClick={onClose}>
+						<Button colorScheme="blue" mr={3} onClick={onClose}>
 							No
 						</Button>
-						<Button variant='ghost'>Yes</Button>
+						<Button variant="ghost">Yes</Button>
 					</ModalFooter>
 				</ModalContent>
 			</Modal>
-
-
 		</div>
-
 	);
 };
 
 export default Cart;
-

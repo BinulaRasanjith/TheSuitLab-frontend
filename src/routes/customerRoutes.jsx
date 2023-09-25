@@ -1,5 +1,3 @@
-// import ChooseBeltLoop from "../components/customer/ChooseBeltLoop";
-
 import BeltsGallery from "../components/Customer/BeltsGallery";
 import BowsGallery from "../components/Customer/BowsGallery";
 import Cart from "../components/Customer/Cart";
@@ -16,9 +14,10 @@ import TiesGallery from "../components/Customer/TiesGallery";
 import JacketsGallery from "../components/Customer/jacketsGallery";
 import PantsGallery from "../components/Customer/pantsGallery";
 import SuitDescription from "../components/Customer/suitDescription";
+import ChooseBackPocket from "../components/customer/ChooseBackPocket";
+// import ChooseBeltLoop from "../components/customer/ChooseBeltLoop";
 // import ChooseBottom from "../components/customer/ChooseBottom";
 import Payment from '../components/Payment';
-import ChooseBackPocket from "../components/customer/ChooseBackPocket";
 // import ChooseButtonContrast from "../components/customer/ChooseButtonContrast";
 import ChooseButtons from "../components/customer/ChooseButtons";
 import ChooseLapel from "../components/customer/ChooseLapels";
@@ -29,14 +28,12 @@ import ChooseSleeveButtons from "../components/customer/ChooseSleeveButtons";
 import SingleOutletLayout from "../layouts/SingleOutletLayout";
 import AccessoriesLayout from "../layouts/customerLayouts/AccessoriesLayout";
 import AddMeasurementsLayout from "../layouts/customerLayouts/AddMeasurementsLayout";
-import CostumeCustomizationLayout from "../layouts/customerLayouts/CostumeCustomizationLayout";
 import CustomerMainLayout from "../layouts/customerLayouts/CustomerMainLayout";
 import HireSuitLayout from "../layouts/customerLayouts/HireSuitLayout";
 import JacketStyleLayout from "../layouts/customerLayouts/JacketStyleLayout";
 import PantStyleLayout from "../layouts/customerLayouts/PantStyleLayout";
 import AboutUs from "../pages/Aboutus";
 import ContactUs from "../pages/Contactus";
-import Profile from "../pages/Profile";
 import Services from "../pages/Services";
 import Home from "../pages/customer/Home";
 import LookBook from "../pages/customer/LookBook";
@@ -71,7 +68,8 @@ const costumerRoutes = {
 		},
 		{
 			path: "profile",
-			element: <Profile />,
+			element: <div>Profile</div>,
+			// element: <Profile />,
 		},
 		{
 			path: "customize-measurements",
@@ -248,104 +246,6 @@ const costumerRoutes = {
 					element: <CustomSizes />,
 				},
 			],
-		},
-		{
-			path: "customize-suit/costume",
-			element: <CostumeCustomizationLayout />,
-			children: [
-				{
-					path: "fabric",
-					element: <SingleOutletLayout />,
-					children: [
-						{
-							path: "solid",
-							element: <MaterialsFabricSolid />,
-						},
-						{
-							path: "pattern",
-							element: <MaterialsFabricPattern />,
-						},
-					],
-				}, {
-					path: "jacket",
-					element: <SingleOutletLayout />,
-					children: [
-						{
-							path: "buttons",
-							element: <ChooseButtons />,
-						},
-						{
-							path: "lapel",
-							element: <ChooseLapel />,
-						},
-						{
-							path: "pocket",
-							element: <ChoosePockets />,
-						},
-						{
-							path: "sleeve-button",
-							element: <ChooseSleeveButtons />,
-						},
-
-					],
-				},
-
-				{
-					path: "pant",
-					element: <SingleOutletLayout />,
-					children: [
-						{
-							path: "pant-style",
-							element: <ChoosePant />,
-						},
-						{
-							path: "back-pocket",
-							element: <ChooseBackPocket />,
-						},
-
-					],
-				},
-				{
-					path: "color-contrast",
-					element: <SingleOutletLayout />,
-					children: [
-						{
-							path: "pocket",
-							element: <ChoosePocketColor />,
-						},
-						{
-							path: "button",
-							element: <ChooseButtonColor />,
-						},
-					],
-				},
-			],
-		},
-		{
-			path: "customize-suit/costume/measurements",
-			element: <AddMeasurementsLayout />,
-			children: [
-				{
-					path: "",
-					element: <CustomizeMeasurements />,
-				},
-				{
-					path: "current-sizes",
-					element: <CurrentSizes />,
-				},
-				{
-					path: "standard-sizes",
-					element: <StandardSizes />,
-				},
-				{
-					path: "custom-sizes",
-					element: <CustomSizes />,
-				},
-			],
-		},
-		{
-			path: "cart",
-			element: <Cart />,
 		},
 		{
 			path: "accessories",

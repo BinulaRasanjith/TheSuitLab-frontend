@@ -1,5 +1,6 @@
 import { Button } from '@chakra-ui/react'
 import PropTypes from "prop-types";
+import { useState } from 'react';
 
 
 const MaterialRecord = ({
@@ -9,6 +10,12 @@ const MaterialRecord = ({
     BorrowedDate,
     HandoverDate,
 }) => {
+    const [, updateMatStock] = useState(false);
+
+	const handleFormOpen = () => {
+		updateMatStock(true); // Set isNewReturnForm to false to close the form
+	};
+
     return (
         <>
             <div className=" flex flex-row justify-between w-full">
@@ -27,7 +34,7 @@ const MaterialRecord = ({
                         border={'1px'}
                         borderColor={'#6B9DCA'}
                         height={'2rem'}
-                        // onClick={handleLoginClick}
+                        onClick={handleFormOpen} 
                         textColor={'#6B9DCA'}
                         width={'5.5rem'}>Update</Button>
                 </div>
