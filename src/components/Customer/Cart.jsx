@@ -108,7 +108,7 @@ const Cart = () => {
 									</th>
 								</tr>
 							</thead>
-							<tbody className="max-h-[calc(100vh-4rem)] overflow-scroll">
+							<tbody className="max-h-[calc(100vh-4rem)] overflow-y-scroll ">
 								<div className="flex flex-col gap-1 flex-wrap ">
 									{cartItems.map((item) => (
 										<tr key={item.id}
