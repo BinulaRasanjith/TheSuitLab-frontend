@@ -154,7 +154,7 @@ const ViewCustomers = () => {
                             <div className="flex flex-col gap-1">
                                 {customers.map((item, index) => (
 
-                                    <tr className="flex items-center text-center border hover:bg-gray-300 text-black whitespace-nowrap font-medium py-3">
+                                    <tr key={index} className="flex items-center text-center border hover:bg-gray-300 text-black whitespace-nowrap font-medium py-3">
                                         <td className="w-40"> <Link to={`${item.id}`}>{item.id}</Link></td>
                                         <td className="w-40">{item.name}</td>
                                         <td className="w-40">{item.phoneNumber}</td>
@@ -204,8 +204,8 @@ const ViewCustomers = () => {
                         </tbody>
                     </table>
                     <div className=" w-full border h-0 mt-3 mb-6 border-gray-200"></div>
-
                 </div>
+
                 <div className=" flex justify-between">
                     <div className=" py-3 text-sm font-medium text-neutral-400">Showing data 1 to 8 of 256K entries</div>
                     <div className=" py-3">
@@ -213,6 +213,7 @@ const ViewCustomers = () => {
                     </div>
                 </div>
             </div>
+            
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
