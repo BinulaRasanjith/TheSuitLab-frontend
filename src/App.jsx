@@ -1,5 +1,6 @@
+import { Spinner } from "@chakra-ui/react";
 import jwtDecode from "jwt-decode";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { RouterProvider } from "react-router-dom";
 
@@ -9,6 +10,7 @@ import { setUser, setUserObject } from "./store/slices/authSlice";
 
 const App = () => {
 	const dispatch = useDispatch();
+	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		const accessToken = localStorage.getItem("accessToken");
@@ -17,10 +19,17 @@ const App = () => {
 			const decodedToken = jwtDecode(accessToken);
 			const user = setUserObject(decodedToken.user);
 			dispatch(setUser(user));
+			setIsLoading(false);
 		}
 	}, [dispatch]);
 
-	return <RouterProvider router={router} />;
+	return isLoading ? (
+		<div className="flex h-screen w-screen justify-center items-center">
+			<Spinner size="xl" />
+		</div>
+	) : (
+		<RouterProvider router={router} />
+	);
 };
 
 export default App;
