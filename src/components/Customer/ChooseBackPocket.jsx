@@ -17,26 +17,14 @@ const ChooseBackPocket = () => {
             <span className='p-5 text-2xl font-bold'>Choose Your back pocket style</span>
             <div className='grid grid-cols-3 gap-5 mt-5'>
 
-                <div onClick={() => dispatch(setJacket({ backPocket: "no-btn" }))} className='flex flex-col items-center p-3 justify-center'>
+                <div onClick={() => dispatch(setJacket({ backPocket: "no-btn" }))} className='flex flex-col items-center p-3 justify-center cursor-pointer rounded-lg border border-black-2  shadow'>
                     <img alt="Single Opening" className='pb-5' src={Single} />
                     <label className='text-sm'>SINGLE OPENING</label>
                 </div>
-                <div onClick={() => dispatch(setJacket({ backPocket: "with-btn" }))} className='flex flex-col items-center p-3 justify-center'>
+                <div onClick={() => dispatch(setJacket({ backPocket: "with-btn" }))} className='flex flex-col items-center p-3 justify-center cursor-pointer rounded-lg border border-black-2  shadow'>
                     <img alt="Double Opening" className='pb-5' src={Double} />
                     <label className='text-sm'>DOUBLE OPENING</label>
                 </div>
-                {/* <div className='flex flex-col items-center p-3 justify-center'>
-                    <img alt="Modern" className='pb-5' src={Modern} />
-                    <label className='text-sm'>MODERN FLAP <br />WITH BUTTON</label>
-                </div>
-                <div className='flex flex-col items-center p-3 justify-center'>
-                    <img alt="Curved" className='pb-5' src={Curved} />
-                    <label className='text-sm'>CURVED FLAP <br />WITH  BUTTON</label>
-                </div>
-                <div className='flex flex-col items-center p-3 justify-center'>
-                    <img alt="Squard" className='pb-5' src={Square} />
-                    <label className='text-sm'>SQUARED FLAP <br />WITH BUTTON</label>
-                </div> */}
 
             </div>
 

@@ -51,13 +51,13 @@ const sidebarItems = [
         subItems: [
             {
                 label: "Jacket Contrast",
-                to: "/customer/customize-suit/jacket/color-contrast/jacket-contrast",
+                to: "/customer/customize-suit/jacket/color-contrast/pocket",
             },
             {
                 label: "Button",
                 to: "/customer/customize-suit/jacket/color-contrast/button",
             },
-        ],
+        ]
     },
     {
         label: "Measurements",

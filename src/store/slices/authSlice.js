@@ -45,9 +45,9 @@ export const loginAsync = createAsyncThunk( // this thunk will make a POST reque
 
 export const logoutAsync = createAsyncThunk( // this thunk will make a POST request to the /auth/logout endpoint of the server. It will return a promise that will resolve to the response from the server.
 	'auth/logout',
-	async () => {
+	async (payload) => {
 		try {
-			const response = await logoutAPI(); // try to make the POST request to the /auth/logout endpoint of the server.
+			const response = await logoutAPI(payload); // try to make the POST request to the /auth/logout endpoint of the server.
 			const { message } = response.data; // get the message from the response.
 
 			return { message }; // return the message

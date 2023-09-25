@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  jacket: {
+  costume: {
     fabric: "MAT0000000001",
     button: "1S",
     lapel: "peak-lapel",
@@ -9,31 +9,31 @@ const initialState = {
     sleeveButtons: null,
     pocketColor: null,
     buttonColor: "none",
-    trouser: "no-vent",
+    trouser: null,
     backPocket: null,
   },
   status: "idle",
   error: null,
 };
 
-const jacketCustomizationSlice = createSlice({
-  name: "jacketCustomization",
+const costumeCustomizationSlice = createSlice({
+  name: "costumeCustomization",
   initialState,
   reducers: {
-    setJacket: (state, action) => {
+    setCostume: (state, action) => {
       // this reducer will be used to set the jacket property of the state to the value passed to it.
       for (const [key, value] of Object.entries(action.payload)) {
         // loop through the object passed to the reducer
-        state.jacket[key] = value; // set the jacket property of the state to the value passed to it.
+        state.costume[key] = value; // set the jacket property of the state to the value passed to it.
       }
     },
   },
 });
 
-// jacket selector
-export const selectJacket = (state) => state.jacketCustomization.jacket;
+// costume selector
+export const selectJacket = (state) => state.costumeCustomization.costume;
 
-// jacketCustomization actions
-export const { setJacket } = jacketCustomizationSlice.actions;
+// costumeCustomization actions
+export const { setCostume } = costumeCustomizationSlice.actions;
 
-export default jacketCustomizationSlice.reducer;
+export default costumeCustomizationSlice.reducer;
