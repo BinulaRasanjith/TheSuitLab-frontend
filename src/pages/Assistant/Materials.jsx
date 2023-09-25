@@ -1,9 +1,18 @@
+import { useState } from 'react'
+
 import DropDownFilter from '../../components/Assistant/HeaderDropDown'
 import SearchBox from '../../components/Assistant/HeaderSearchBox'
 import MaterialItems from '../../components/Assistant/MaterialItemSet'
+import MaterialStockUpdateForm from "../../components/Assistant/MaterialUpdateForm"
 import Pagination from '../../components/Assistant/Pagination'
 
 const Materials = () => {
+    const [isStockUpdate, updateMatStock] = useState(false);
+
+	const handleFormClose = () => {
+		updateMatStock(false); // Set isNewReturnForm to false to close the form
+	};
+
     return (
         <div>
             <div className=" flex flex-col justify-between mx-10 my-8 p-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg">
@@ -41,6 +50,10 @@ const Materials = () => {
                     </div>
                 </div>
             </div>
+
+            <div className={`relative  ${isStockUpdate ? "block" : "hidden"}`}>
+				<MaterialStockUpdateForm isOpen={isStockUpdate} onClose={handleFormClose} />
+			</div>
 
 
             {/* <div className=" flex justify-center w-full">
