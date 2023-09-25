@@ -120,7 +120,7 @@ const Cart = () => {
 							Continue Shopping
 						</Button>
 
-							{/* <Button
+							<Button
 								className=" justify-start w-40 p-5 mt-4"
 								rounded={"md"}
 								color={"white"}
@@ -133,7 +133,7 @@ const Cart = () => {
 								onClick={handleCheckout}
 							>
 								Continue Shopping
-							</Button> */}
+							</Button>
 						</div>
 						<div className="mt-6  h-full rounded-lg border bg-slate-500 p-4 shadow-md md:mt-0 md:w-1/3">
 							<div className="mb-2 flex justify-between">
