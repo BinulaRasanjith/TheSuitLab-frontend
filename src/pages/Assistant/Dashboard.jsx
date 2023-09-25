@@ -124,8 +124,7 @@ const Dashboard = () => {
 		console.log("This week performance:", thisWeekOrderCounts);
 		console.log("Last week performance:", lastWeekOrderCounts);
 	} else {
-		console.log("Weekly performance data is not available in the JSON response.");
-		// console.error("Weekly performance data is not available in the JSON response.");
+		console.error("Weekly performance data is not available in the JSON response.");
 	}
 
 
@@ -165,20 +164,6 @@ const Dashboard = () => {
 			},
 		},
 	};
-
-
-	// const [] = useMemo(() => {
-	// 	if (chartdata.weeklyPerformance) {
-	// 		const thisWeek = chartdata.weeklyPerformance.thisWeekPerformance.map(
-	// 			(entry) => entry.orderCount
-	// 		);
-	// 		const lastWeek = chartdata.weeklyPerformance.lastWeekPerformance.map(
-	// 			(entry) => entry.orderCount
-	// 		);
-	// 		return [thisWeek, lastWeek];
-	// 	}
-	// 	return [[], []]; // Default values when data is not available
-	// }, [chartdata]);
 
 
 	const assistantStateBoxItems = [

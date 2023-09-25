@@ -1,14 +1,14 @@
 import AssistantMainLayout from "../layouts/assistantLayouts/AssistantMainLayout";
 import Accessories from "../pages/Assistant/Accessories";
-import Customers from "../pages/Assistant/Customers";
 import Dashboard from "../pages/Assistant/Dashboard";
 import Handover from "../pages/Assistant/Handover";
 import Hiring from "../pages/Assistant/Hiring";
 import Materials from "../pages/Assistant/Materials";
-import Notifications from "../pages/Assistant/Notifications";
+// import Notifications from "../pages/Assistant/Notifications";
 import Orders from "../pages/Assistant/Orders";
 import Returns from "../pages/Assistant/Returns";
 import Profile from "../pages/Profile";
+import Customers from "../pages/Assistant/Customers";
 
 const AssistantRoutes = {
   path: "/assistant",
@@ -22,7 +22,7 @@ const AssistantRoutes = {
     { path: "returns", element: <Returns /> },
     { path: "accessories", element: <Accessories /> },
     { path: "hiring", element: <Hiring /> },
-    { path: "notifications", element: <Notifications /> },
+    // { path: "notifications", element: <Notifications /> },
     { path: "profile", element: <Profile /> },
   ],
 };

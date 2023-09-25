@@ -34,7 +34,7 @@ StateCard.propTypes = {
 	CardTitle: PropTypes.string.isRequired,
 	BigCount: PropTypes.number.isRequired,
 	Icon: PropTypes.object.isRequired,
-	PercentageValue: PropTypes.any.isRequired,
+	PercentageValue: PropTypes.number.isRequired,
 };
 
 export default StateCard;
