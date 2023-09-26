@@ -36,7 +36,7 @@ function OrderDetails() {
                 <p className="text-base font-medium leading-6 text-gray-800">21st Mart 2021 at 10:34 PM</p>
             </div>
             <div className="max-h-[calc(100vh-4rem)] mt-20 flex flex-col xl:flex-row items-stretch w-full xl:space-x-8 space-y-8 md:space-y-6 xl:space-y-0">
-                {user.role === (PRODUCT_MANAGER || TAILOR) && (
+                {(user.role === PRODUCT_MANAGER || user.role === TAILOR || user.role === OPERATION_ASSISTANT) && (
                     <div className=" flex flex-col w-full space-y-4 md:space-y-6 xl:space-y-8 overflow-scroll">
                         <div className="flex flex-col bg-gray-200 px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full">
                             <p className="text-lg md:text-xl  font-semibold leading-6 xl:leading-5 text-gray-800">Design Style</p>
@@ -62,9 +62,7 @@ function OrderDetails() {
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-
 
                         <div className="flex flex-col justify-start items-start  bg-gray-200 px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full">
                             <p className="text-lg md:text-xl  font-semibold leading-6 xl:leading-5 text-gray-800">Measurements</p>
@@ -81,48 +79,47 @@ function OrderDetails() {
                                     </div>
                                 </div>
                             </div>
-
                         </div>
 
-                        {user.role === PRODUCT_MANAGER && (
-                        <div className="flex justify-center flex-col md:flex-row  items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
-                            <div className="flex flex-col px-4 py-6 md:p-6 xl:p-8 w-full bg-gray-300 space-y-6">
-                                <h3 className="text-xl  font-semibold leading-5 text-gray-800">Summary</h3>
-                                <div className="flex justify-center items-center w-full space-y-4 flex-col border-gray-200 border-b pb-4">
-                                    <div className="flex justify-between w-full">
-                                        <p className="text-base  leading-4 text-gray-800">Subtotal</p>
-                                        <p className="text-base  leading-4 text-gray-800">$56.00</p>
+                        {(user.role === PRODUCT_MANAGER || user.role === OPERATION_ASSISTANT) && (
+                            <div className="flex justify-center flex-col md:flex-row  items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
+                                <div className="flex flex-col px-4 py-6 md:p-6 xl:p-8 w-full bg-gray-300 space-y-6">
+                                    <h3 className="text-xl  font-semibold leading-5 text-gray-800">Summary</h3>
+                                    <div className="flex justify-center items-center w-full space-y-4 flex-col border-gray-200 border-b pb-4">
+                                        <div className="flex justify-between w-full">
+                                            <p className="text-base  leading-4 text-gray-800">Subtotal</p>
+                                            <p className="text-base  leading-4 text-gray-800">$56.00</p>
+                                        </div>
+                                        <div className="flex justify-between items-center w-full">
+                                            <p className="text-base  leading-4 text-gray-800">Discount <span className="bg-gray-200 p-1 text-xs font-medium dark:bg-white dark:text-gray-800 leading-3 text-gray-800">STUDENT</span></p>
+                                            <p className="text-base  leading-4 text-gray-800">-$28.00 (50%)</p>
+                                        </div>
+                                        <div className="flex justify-between items-center w-full">
+                                            <p className="text-base  leading-4 text-gray-800">Shipping</p>
+                                            <p className="text-base  leading-4 text-gray-800">$8.00</p>
+                                        </div>
                                     </div>
                                     <div className="flex justify-between items-center w-full">
-                                        <p className="text-base  leading-4 text-gray-800">Discount <span className="bg-gray-200 p-1 text-xs font-medium dark:bg-white dark:text-gray-800 leading-3 text-gray-800">STUDENT</span></p>
-                                        <p className="text-base  leading-4 text-gray-800">-$28.00 (50%)</p>
-                                    </div>
-                                    <div className="flex justify-between items-center w-full">
-                                        <p className="text-base  leading-4 text-gray-800">Shipping</p>
-                                        <p className="text-base  leading-4 text-gray-800">$8.00</p>
+                                        <p className="text-base  font-semibold leading-4 text-gray-800">Total</p>
+                                        <p className="text-base  font-semibold leading-4 text-gray-800">$36.00</p>
                                     </div>
                                 </div>
-                                <div className="flex justify-between items-center w-full">
-                                    <p className="text-base  font-semibold leading-4 text-gray-800">Total</p>
-                                    <p className="text-base  font-semibold leading-4 text-gray-800">$36.00</p>
-                                </div>
-                            </div>
-                            <div className="flex flex-col justify-center p-2 md:p-6 xl:p-4 w-full bg-gray-300 space-y-6">
-                                <h3 className="text-xl  font-semibold leading-5 text-gray-800">Dates</h3>
-                                <div className="flex justify-between items-start w-full">
-                                    <div className="flex flex-col justify-center items-center space-x-4">
-                                        <div className="flex justify-start items-center">
-                                            <p className="text-lg leading-6  font-semibold text-gray-800">Fit-On: <span className="font-normal">2023-10-12</span></p>
+                                <div className="flex flex-col justify-center p-2 md:p-6 xl:p-4 w-full bg-gray-300 space-y-6">
+                                    <h3 className="text-xl  font-semibold leading-5 text-gray-800">Dates</h3>
+                                    <div className="flex justify-between items-start w-full">
+                                        <div className="flex flex-col justify-center items-center space-x-4">
+                                            <div className="flex justify-start items-center">
+                                                <p className="text-lg leading-6  font-semibold text-gray-800">Fit-On: <span className="font-normal">2023-10-12</span></p>
+                                            </div>
+                                            <div className="flex  justify-start items-center">
+                                                <p className="text-lg leading-6  font-semibold text-gray-800">Delivery: <span className="font-normal">2023-11-12</span></p>
+                                            </div>
                                         </div>
-                                        <div className="flex  justify-start items-center">
-                                            <p className="text-lg leading-6  font-semibold text-gray-800">Delivery: <span className="font-normal">2023-11-12</span></p>
-                                        </div>
+
                                     </div>
 
                                 </div>
-
                             </div>
-                        </div>
                         )}
                     </div>
                 )}

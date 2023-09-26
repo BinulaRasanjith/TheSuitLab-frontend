@@ -61,7 +61,7 @@ const Navbar = () => {
 					// sidebar toggle burger button
 					user.id &&
 					(user.role !== CUSTOMER ||
-						pathname.includes("/customer/customize-suit/") || pathname.includes("/customer/hire-suit") || pathname.includes("/customer/accessories/")  ) && (
+						pathname.includes("/customer/customize-suit/") || pathname.includes("/customer/hire-suit") || pathname.includes("/customer/accessories/")) && (
 						<div>
 							<button
 								className="flex items-center px-3 py-2 text-secondary text-2xl"
@@ -70,7 +70,7 @@ const Navbar = () => {
 								<FaBars />
 							</button>
 						</div>
-					) 
+					)
 				}
 				<div className="h-full flex items-center pr-2">
 					<div className="flex align-center h-14 overflow-hidden">
@@ -138,10 +138,10 @@ const Navbar = () => {
 					{user.id ? (
 						<>
 							<div className="flex items-center gap-3 relative">
-								{user.role === CUSTOMER && <div className="text-secondary cursor-pointer ">
+								{/* {user.role === CUSTOMER && <div className="text-secondary cursor-pointer ">
 									<HiShoppingCart onClick={() => navigate("/customer/cart")}
 										style={{ fontSize: "1.5rem" }} />
-								</div>}
+								</div>} */}
 								{/* {user.id && user.role !== CUSTOMER && (
 									<div className={`text-gray-400 text-xs text-end`}>
 										{displayRoleName(user.role)}
@@ -201,6 +201,23 @@ const Navbar = () => {
 												</NavLink>
 											</li>
 										)}
+										{user.role === CUSTOMER && <li>
+											<NavLink
+												className="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-black"
+												onClick={() => setUserDropdownOpen(!isUserDropdownOpen)}
+												to={`/${user.role}/my-orders`}
+											>
+												My Orders
+											</NavLink>
+											<NavLink
+												className="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-black"
+												onClick={() => setUserDropdownOpen(!isUserDropdownOpen)}
+												to={`/${user.role}/cart`}
+											>
+												{/* <HiShoppingCart style={{ fontSize: "1.5rem" }} /> */}
+												View Cart
+											</NavLink>
+										</li>}
 										<li>
 											<NavLink
 												className="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-black"
