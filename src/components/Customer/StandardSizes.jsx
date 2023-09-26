@@ -1,15 +1,20 @@
+import { useDisclosure } from '@chakra-ui/react';
+import { Button, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from "@chakra-ui/react"
 import { Select, useToast } from "@chakra-ui/react";
+import React from 'react';
 import { useEffect, useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { IoArrowBackCircle } from "react-icons/io5";
+import { MdOutlineArrowBackIosNew } from 'react-icons/md';
+import { MdNavigateNext } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import { addCustomSuitToCart as addCustomSuitToCartAPI } from "../../api/customerAPI";
 import {
 	setCoatMeasurements,
 	setTrouserMeasurements,
 } from "../../api/customerAPI";
+import { addCustomSuitToCart as addCustomSuitToCartAPI } from "../../api/customerAPI";
 import FullShoulderWidth from "../../assets/images/measurements/men_size_1 (1).jpg";
 import Sleeves from "../../assets/images/measurements/men_size_2.jpg";
 import FullChest from "../../assets/images/measurements/men_size_3.jpg";
@@ -31,11 +36,26 @@ import {
 	getCourtMeasurementObject,
 	getTrouserMeasurementObject,
 } from "../../utils/measurements";
-
 const StandardSizes = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
 	const toast = useToast();
+
+	const { isOpen, onOpen, onClose } = useDisclosure()
+	const initialRef = React.useRef()
+	const finalRef = React.useRef()
+	const [inputValue, setInputValue] = useState('');
+	const [isAddButtonDisabled, setIsAddButtonDisabled] = useState(true);
+	const handleInputChange = (e) => {
+		const value = e.target.value;
+
+		if (value === '' || (value >= 1 && value <= 10)) {
+			setInputValue(value);
+			setIsAddButtonDisabled(false);
+		} else {
+			setIsAddButtonDisabled(true);
+		}
+	};
 
 	const jacket = useSelector(selectJacket);
 
@@ -61,10 +81,10 @@ const StandardSizes = () => {
 			location.pathname.includes("/customize-suit/jacket")
 				? "/customer/customize-suit/jacket/measurements"
 				: location.pathname.includes("/customize-suit/pant")
-				? "/customer/customize-suit/pant/measurements"
-				: location.pathname.includes("/customize-suit/all")
-				? "/customer/customize-suit/all/measurements"
-				: "/customer/customize-measurements"
+					? "/customer/customize-suit/pant/measurements"
+					: location.pathname.includes("/customize-suit/all")
+						? "/customer/customize-suit/all/measurements"
+						: "/customer/customize-measurements"
 		);
 
 	const handleSave = async () => {
@@ -374,17 +394,57 @@ const StandardSizes = () => {
 					type="button"
 					className="m-5 flex items-center justify-center w-48 rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
 				>
+					<MdOutlineArrowBackIosNew className="mr-2 text-md" />
 					Back to design
 				</button>
 
-				<button
+				{/* <button
 					onClick={handleGoToCart}
 					type="button"
 					className="m-5 flex items-center justify-center w-48 rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
 				>
 					<span>Go to Cart</span>
 					<FaShoppingCart className="ml-2 text-xl" />
+				</button> */}
+				<button
+					onClick={onOpen}
+					type="button"
+					className="m-5 flex items-center justify-center w-48 rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+				>
+					<span>Next</span>
+					<MdNavigateNext className="ml-2 text-xl" />
 				</button>
+				<Modal
+					initialFocusRef={initialRef}
+					finalFocusRef={finalRef}
+					isOpen={isOpen}
+					onClose={onClose}
+				>
+					<ModalOverlay />
+					<ModalContent>
+						<ModalHeader>Enter the quantity</ModalHeader>
+						<ModalCloseButton />
+						<ModalBody pb={6}>
+							<FormControl>
+								<FormLabel>Quantity</FormLabel>
+								<Input type="number" ref={initialRef}
+									value={inputValue}
+									onChange={handleInputChange}
+									min={0}
+									max={10} required />
+							</FormControl>
+						</ModalBody>
+
+						<ModalFooter>
+							<Button onClick={handleGoToCart} colorScheme="blue" mr={3} disabled={isAddButtonDisabled}>
+								<FaShoppingCart className="mr-2 text-xl" />
+								Add to cart
+							</Button>
+
+						</ModalFooter>
+					</ModalContent>
+				</Modal>
+
 			</div>
 		</div>
 	);
