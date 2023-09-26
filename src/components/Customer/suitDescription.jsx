@@ -221,20 +221,21 @@ const SuitDescription = () => {
 									<div>
 										<div className="flex flex-wrap -mb-2">
 
-											{suitDetails.size && suitDetails.size.map((size, index) => (
-												<div className='p-5 flex flex-col justify-center items-center border border-black-2 rounded' key={index}>
-													<button
-														className={`px-4 py-2 mb-2 mr-4 font-semibold border rounded}`}
-													// onClick={() => handleSizeClick(size)}
-													>
-														{size.size}
-
-													</button>
-													<div>
-														{size.quantity === 0 ? <p className='text-red-500'>Out of Stock</p> : <p className='text-green-500'>{size.quantity} In Stock</p>}
+											{suitDetails.size &&
+												Object.entries(suitDetails.size).map(([key, value], index) => (
+													<div className='p-5 flex flex-col justify-center items-center border border-black-2 rounded' key={index}>
+														<button
+															className={`px-4 py-2 mb-2 mr-4 font-semibold border rounded`}
+														// onClick={() => handleSizeClick(size)}
+														>
+															{key} {value}
+														</button>
+														<div>
+															{/* {size.quantity === 0 ? <p className='text-red-500'>Out of Stock</p> : <p className='text-green-500'>{size.quantity} In Stock</p>} */}
+														</div>
 													</div>
-												</div>
-											))}
+												))
+											}
 										</div>
 									</div>
 								</div>
@@ -243,7 +244,7 @@ const SuitDescription = () => {
 										Quantity
 									</label>
 									<div className="flex flex-col">
-										{suitDetails.size && suitDetails.size.map((size, index) => (
+										{/* {suitDetails.size && suitDetails.size.map((size, index) => (
 
 											<div className="flex flex-col p-3" key={index}>
 												<label>{size.size}</label>
@@ -254,7 +255,7 @@ const SuitDescription = () => {
 													}</p>
 													<button onClick={() => handleAddToItems(size.size)}>+</button>
 												</div>
-											</div>))}
+											</div>))} */}
 									</div>
 								</div>
 								<div className="flex flex-wrap items-center gap-4">

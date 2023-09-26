@@ -116,10 +116,12 @@ const CurrentSizes = () => {
 		// TODO: check if selected all jacket options
 
 		await addCustomSuitToCartAPI({
+			customerId: user.id,
+			itemId: jacket.id,
 			description: "Custom Suit",
 			price: 1000, // TODO: calculate price
-			type: CUSTOM,
 			quantity: 1,
+			type: CUSTOM,
 			selection: jacket,
 		});
 		navigate("/customer/cart");
