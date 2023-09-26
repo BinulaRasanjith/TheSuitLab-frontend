@@ -8,7 +8,7 @@ const ContentWrapper = ({ children, customizeLayout }) => {
     const sidebarIsOpen = useSelector(selectSidebarIsOpen) // get sidebar state from redux store
 
     return (
-        <div className={`${customizeLayout ? 'flex max-h-[calc(100vh-4rem)] overflow-hidden' : 'block'} w-full transition-all ease-in-out duration-300 ${sidebarIsOpen ? 'ml-60' : 'ml-14'}`} id="main-left">
+        <div className={`${customizeLayout ? 'flex max-h-[calc(100vh-4rem)] flex-wrap overflow-hidden' : 'block'} w-full transition-all ease-in-out duration-300 ${sidebarIsOpen ? 'ml-60' : 'ml-14'}`} id="main-left">
             {children}
         </div>
     )

@@ -4,8 +4,7 @@ import StandardOne from '../../assets/images/sleeve_button_styles/standard (1).p
 import StandardTwo from '../../assets/images/sleeve_button_styles/standard (2).png'
 import Standard from '../../assets/images/sleeve_button_styles/standard.png'
 import { setJacket } from "../../store/slices/jacketCustomizationSlice"
-
-
+import { setRotation } from "../../store/slices/rotationHandleSlice"
 const ChooseSleeveButtons = () => {
     const dispatch = useDispatch();
     return (
@@ -13,7 +12,10 @@ const ChooseSleeveButtons = () => {
             <span className='p-5 text-2xl font-bold'>Choose your sleeve button</span>
             <div className='grid grid-cols-3 gap-6 mt-10'>
 
-                <div onClick={() => dispatch(setJacket({ sleeveButtons: "2-standard" }))} className='flex flex-col items-center p-8 justify-center cursor-pointer rounded-lg border border-black-2  shadow'>
+                <div onClick={() => {
+                    dispatch(setJacket({ sleeveButtons: "2-standard" }))
+                    dispatch(setRotation(Math.PI));
+                }} className='flex flex-col items-center p-8 justify-center cursor-pointer rounded-lg border border-black-2  shadow'>
                     <img alt="" className="pb-3" src={StandardTwo} />
                     <label>5 STANDARD <br />BUTTONS</label>
                 </div>

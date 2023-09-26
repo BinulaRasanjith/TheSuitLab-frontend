@@ -9,6 +9,8 @@ const MeasurementBlock = ({
 	value,
 	selectedUnit,
 	unchangeable,
+	onChange,
+	name,
 }) => {
 	return (
 		<div
@@ -24,7 +26,14 @@ const MeasurementBlock = ({
 					placeholder={selectedUnit === "cm" ? "cm" : "inch"}
 					className="w-full text-center m-4"
 					value={value}
+					name={name}
+					onChange={onChange}
 				/>
+			)}
+			{unchangeable && (
+				<p className="p-3 text-secondary font-bold text-2xl bg-primary rounded-lg">
+					{value} {selectedUnit}
+				</p>
 			)}
 		</div>
 	);
@@ -37,5 +46,7 @@ MeasurementBlock.propTypes = {
 	value: PropTypes.number.isRequired,
 	selectedUnit: PropTypes.string.isRequired,
 	unchangeable: PropTypes.bool,
+	onChange: PropTypes.func,
+	name: PropTypes.string,
 };
 export default MeasurementBlock;

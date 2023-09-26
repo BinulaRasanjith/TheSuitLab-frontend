@@ -14,23 +14,22 @@ import TiesGallery from "../components/Customer/TiesGallery";
 import JacketsGallery from "../components/Customer/jacketsGallery";
 import PantsGallery from "../components/Customer/pantsGallery";
 import SuitDescription from "../components/Customer/suitDescription";
-import ChooseBackPocket from "../components/customer/ChooseBackPocket";
-// import ChooseBeltLoop from "../components/customer/ChooseBeltLoop";
-// import ChooseBottom from "../components/customer/ChooseBottom";
 import Payment from '../components/Payment';
-// import ChooseButtonContrast from "../components/customer/ChooseButtonContrast";
+import ChooseBackPocket from "../components/customer/ChooseBackPocket";
 import ChooseButtons from "../components/customer/ChooseButtons";
 import ChooseLapel from "../components/customer/ChooseLapels";
 import ChoosePant from "../components/customer/ChoosePant";
-// import ChoosePantContrast from "../components/customer/ChoosePantContrast";
 import ChoosePockets from "../components/customer/ChoosePocket";
 import ChooseSleeveButtons from "../components/customer/ChooseSleeveButtons";
 import SingleOutletLayout from "../layouts/SingleOutletLayout";
 import AccessoriesLayout from "../layouts/customerLayouts/AccessoriesLayout";
-import AddMeasurementsLayout from "../layouts/customerLayouts/AddMeasurementsLayout";
+import CostumeCustomizationLayout from "../layouts/customerLayouts/CostumeCustomizationLayout";
 import CustomerMainLayout from "../layouts/customerLayouts/CustomerMainLayout";
+import FullCostumeMeasurementLayout from "../layouts/customerLayouts/FullCostumeMeasurementLayout";
 import HireSuitLayout from "../layouts/customerLayouts/HireSuitLayout";
+import JacketMeasurementLayout from "../layouts/customerLayouts/JacketMeasurementLayout";
 import JacketStyleLayout from "../layouts/customerLayouts/JacketStyleLayout";
+import PantMeasurementLayout from "../layouts/customerLayouts/PantMeasurementLayout";
 import PantStyleLayout from "../layouts/customerLayouts/PantStyleLayout";
 import AboutUs from "../pages/Aboutus";
 import ContactUs from "../pages/Contactus";
@@ -168,7 +167,7 @@ const costumerRoutes = {
 		},
 		{
 			path: "customize-suit/jacket/measurements",
-			element: <AddMeasurementsLayout />,
+			element: <JacketMeasurementLayout />,
 			children: [
 				{
 					path: "",
@@ -239,7 +238,7 @@ const costumerRoutes = {
 		},
 		{
 			path: "customize-suit/pant/measurements",
-			element: <AddMeasurementsLayout />,
+			element: <PantMeasurementLayout />,
 			children: [
 				{
 					path: "",
@@ -333,7 +332,7 @@ const costumerRoutes = {
 		},
 		{
 			path: "customize-suit/costume/measurements",
-			element: <AddMeasurementsLayout />,
+			element: <FullCostumeMeasurementLayout />,
 			children: [
 				{
 					path: "",

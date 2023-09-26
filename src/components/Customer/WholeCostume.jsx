@@ -6,19 +6,21 @@ Command: npx gltfjsx@6.2.3 public/models/NewSuit.gltf
 */
 
 import { useGLTF, useTexture } from '@react-three/drei'
+// import { useEffect, useRef, useState } from 'react';
 import { useSelector } from "react-redux";
 import * as THREE from 'three'
 
 import colors from '../../constants/colors.js'
 import { selectComponentHide } from "../../store/slices/componentHideSlice.js";
 import { selectJacket } from "../../store/slices/jacketCustomizationSlice.js";
-
+import { selectRotation } from '../../store/slices/rotationHandleSlice.js';
 
 export function WholeCostume(props) {
 
   const { nodes, materials } = useGLTF('/models/NewSuit.gltf')
   const hide = useSelector(selectComponentHide);
-
+  const propsRotation = useSelector(selectRotation);
+  // console.log(propsRotation);
   const material = useSelector(selectJacket).fabric;
   const backPocket = useSelector(selectJacket).backPocket;
   const trouser = useSelector(selectJacket).trouser;
@@ -239,9 +241,10 @@ export function WholeCostume(props) {
   };
 
 
+
   return (
     <group {...props} dispose={null} position={[props.control.x, props.control.y, props.control.z]}
-      scale={props.camCont.scale}>
+      scale={props.camCont.scale} rotation={[0, propsRotation, 0]} rotationSpeed={Math.PI / 1140}>
       <mesh geometry={nodes.Jacket_Suit_Notch_Vents.geometry} material={materials.Suit_DarkBrownPlaid} position={[0, 0.021, 0.001]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={lapel === 'notch-lapel' && hide.Jacket ? true : false} ><meshStandardMaterial {...TextureProps[material]} /></mesh>
       <mesh geometry={nodes.Jacket_Suit_Peak_NoVents.geometry} material={materials['b0b0b0.001']} position={[0.004, 0.013, 0.003]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} visible={lapel === 'peak-lapel' && hide.Jacket ? true : false}><meshStandardMaterial {...TextureProps[material]} /></mesh>
       {/* <mesh geometry={nodes.jacket_single_extra_Button.geometry} material={materials['Button.002']} position={[-1.183, 0.799, -0.276]} rotation={[-0.737, 0.962, 1.749]} scale={0.025} /> */}

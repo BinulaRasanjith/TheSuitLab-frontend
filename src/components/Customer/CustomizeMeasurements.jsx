@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { addCustomSuitToCart as addCustomSuitToCartAPI } from "../../api/customerAPI";
-import measurement_bg from "../../assets/images/measurement_bg.jpg";
+// import measurement_bg from "../../assets/images/measurement_bg.jpg";
 import { MEASUREMENTS_TO_BE_ADDED } from "../../constants";
 import { selectJacket } from "../../store/slices/jacketCustomizationSlice";
 
@@ -53,7 +53,9 @@ const CustomizeMeasurements = () => {
 				className="relative w-screen h-screen max-h-[calc(100vh-4rem)]"
 			/> */}
 			<div className="flex flex-col absolute z-10">
-				<span className="text-3xl p-5 text-black font-bold">Give Your Measurements</span>
+				<span className="text-3xl p-5 text-black font-bold">
+					Give Your Measurements
+				</span>
 				<div className="flex flex-wrap gap-4 justify-around my-20">
 					<div
 						onClick={handleChooseLater}

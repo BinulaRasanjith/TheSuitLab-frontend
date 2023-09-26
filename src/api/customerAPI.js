@@ -21,3 +21,11 @@ export const setTrouserMeasurements = async (measurements) => {
 export const setCoatMeasurements = async (measurements) => {
     return api.post("/customer/set-coat-measurements", { measurements });
 }
+
+export const getTrouserMeasurements = async (userId) => {
+    return api.get("/customer/trouser-measurements/" + userId);
+}
+
+export const getCoatMeasurements = async (userId) => {
+    return api.get("/customer/coat-measurements/" + userId);
+}
