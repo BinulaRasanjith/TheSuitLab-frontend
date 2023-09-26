@@ -38,7 +38,6 @@ import Home from "../pages/customer/Home";
 import LookBook from "../pages/customer/LookBook";
 import MeasurementDashboard from "../pages/customer/MeasurementDashboard";
 import SuitCustomizationLanding from "../pages/customer/SuitCustomizationLanding";
-import CostumeCustomizationLayout from "../layouts/customerLayouts/CostumeCustomizationLayout";
 import MyOrders from "../pages/customer/MyOrders";
 import OrderDetails from "../components/OrderDetails";
 
