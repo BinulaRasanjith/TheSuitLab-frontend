@@ -10,7 +10,7 @@ const JacketsGallery = () => {
 	const [jacketData, setJacketData] = useState([]); // Create state variable for jacket data
 
 	useEffect(() => {
-		getHireCostumes({ costumeType: JACKET, status: AVAILABLE })
+		getHireCostumes({ costumeType: JACKET, rentStatus: AVAILABLE })
 			.then((response) => {
 				setJacketData(response.data.map((jacket) => jacket));
 			})
@@ -24,8 +24,8 @@ const JacketsGallery = () => {
 		<div className="flex items-start flex-wrap gap-4 bg-gray-100 p-5 w-full overflow-y-auto h-screen">
 			{jacketData.map((jacket) => (
 				<Link
-					key={jacket.hireCostumeId}
-					to={`${jacket.hireCostumeId}`}
+					key={jacket.itemId}
+					to={`${jacket.itemId}`}
 					className="block"
 				>
 					<AccessoryCard image={jacket.images[0]} label={jacket.name} />
