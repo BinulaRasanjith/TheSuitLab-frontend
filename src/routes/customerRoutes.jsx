@@ -38,6 +38,8 @@ import Home from "../pages/customer/Home";
 import LookBook from "../pages/customer/LookBook";
 import MeasurementDashboard from "../pages/customer/MeasurementDashboard";
 import SuitCustomizationLanding from "../pages/customer/SuitCustomizationLanding";
+import MyOrders from "../pages/customer/MyOrders";
+import OrderDetails from "../components/OrderDetails";
 
 // TODO: complete the navigation routes
 const costumerRoutes = {
@@ -68,6 +70,16 @@ const costumerRoutes = {
 			path: "profile",
 			element: <div>Profile</div>,
 			// element: <Profile />,
+		},
+		{
+			path: "my-orders",
+			element: <MyOrders/>,
+			children: [
+				{
+					path: ":orderId",
+					element: <OrderDetails />,
+				},
+			],
 		},
 		{
 			path: "customize-measurements",
