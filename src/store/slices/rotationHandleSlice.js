@@ -13,6 +13,9 @@ const rotationSlice = createSlice({
     rotateByAngle: (state, action) => {
       state.rotationAngle += action.payload;
     },
+    // setCostumeScale: (state, action) => {
+    //   state.costumeScale = action.payload;
+    // },
   },
 });
 
