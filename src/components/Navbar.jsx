@@ -1,6 +1,12 @@
 import { Button } from "@chakra-ui/react";
 import { useState } from "react";
+import { CgProfile } from "react-icons/cg";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { PiNewspaperBold } from "react-icons/pi";
+// import { HiShoppingCart } from "react-icons/hi";
+import { PiShoppingCartSimpleBold } from "react-icons/pi";
+import { RiLogoutCircleRLine } from "react-icons/ri";
+import { RxDashboard } from "react-icons/rx";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
@@ -9,11 +15,10 @@ import TSL_LOGO_SM from "../assets/images/TSL_LOGO_SM.png";
 import defaultPhoto from "../assets/images/avatar.png";
 import { PROFILE_PICTURE_URL } from "../config/config";
 import { CUSTOMER } from "../constants";
-import { logoutAsync } from "../store/slices/authSlice";
 import { selectUser } from "../store/slices/authSlice";
+import { logoutAsync } from "../store/slices/authSlice";
 import { toggleSidebar } from "../store/slices/sidebarSlice";
 import displayRoleName from "../utils/displayRoleName";
-import { HiShoppingCart } from "react-icons/hi";
 
 const Navbar = () => {
 	const navigate = useNavigate();
@@ -197,7 +202,10 @@ const Navbar = () => {
 													}
 													to={`/${user.role}}`}
 												>
-													Dashboard
+													<div className="flex gap-x-4 items-center">
+														<RxDashboard style={{ fontSize: "1.5rem" }} />
+														<label>Dahboard</label>
+													</div>
 												</NavLink>
 											</li>
 										)}
@@ -206,16 +214,22 @@ const Navbar = () => {
 												className="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-black"
 												onClick={() => setUserDropdownOpen(!isUserDropdownOpen)}
 												to={`/${user.role}/my-orders`}
-											>
-												My Orders
+											><div className="flex gap-x-4 items-center">
+													<PiNewspaperBold style={{ fontSize: "1.5rem" }} />
+													<label>My Orders</label>
+												</div>
 											</NavLink>
 											<NavLink
-												className="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-black"
+												className="block justify-center px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-black"
 												onClick={() => setUserDropdownOpen(!isUserDropdownOpen)}
 												to={`/${user.role}/cart`}
 											>
 												{/* <HiShoppingCart style={{ fontSize: "1.5rem" }} /> */}
-												View Cart
+												<div className="flex gap-x-4 items-center">
+													<PiShoppingCartSimpleBold style={{ fontSize: "1.5rem" }} />
+													<label>View Cart</label>
+												</div>
+
 											</NavLink>
 										</li>}
 										<li>
@@ -224,7 +238,10 @@ const Navbar = () => {
 												onClick={() => setUserDropdownOpen(!isUserDropdownOpen)}
 												to={`/${user.role}/profile`}
 											>
-												Profile
+												<div className="flex gap-x-4 items-center">
+													<CgProfile style={{ fontSize: "1.5rem" }} />
+													<label>Profile</label>
+												</div>
 											</NavLink>
 										</li>
 									</ul>
@@ -233,7 +250,10 @@ const Navbar = () => {
 											onClick={() => setUserDropdownOpen(!isUserDropdownOpen)}
 											className="block px-4 py-2 text-sm text-white hover:bg-gray-100 cursor-pointer hover:text-black"
 										>
-											Log Out
+											<div className="flex gap-x-4 items-center">
+												<RiLogoutCircleRLine style={{ fontSize: "1.5rem" }} />
+												<label>Log Out</label>
+											</div>
 										</div>
 									</div>
 								</div>
