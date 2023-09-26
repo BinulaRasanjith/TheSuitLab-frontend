@@ -66,7 +66,7 @@ const sidebarItems = [
     },
 ];
 
-const AddMeasurementsLayout = () => {
+const JacketMeasurementLayout = () => {
     return (
         <>
             <Sidebar items={sidebarItems} />
@@ -78,4 +78,4 @@ const AddMeasurementsLayout = () => {
     )
 }
 
-export default AddMeasurementsLayout
+export default JacketMeasurementLayout
