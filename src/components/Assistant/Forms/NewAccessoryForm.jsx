@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
 
-import { addNewAccessory } from "../../api/accessoryAPI";
-import Input from "../../components/Input/Input";
+import { addNewAccessory } from "../../../api/accessoryAPI";
+import Input from "../../Input/Input";
 
 const NewAccessoryForm = ({ isOpen, onClose }) => {
     const [newAccessoryData, setNewAccessoryData] = useState({
@@ -230,47 +230,6 @@ const NewAccessoryForm = ({ isOpen, onClose }) => {
                                         className="mb-6"
                                     />
                                 </div>
-
-                                {/* Render input field(s) specific to 'Belt' */}
-                                {/* {showBeltInput && (
-                                    <div>
-                                        <input
-                                            type="text"
-                                            placeholder="Belt Input"
-                                            name="beltInput"
-                                            value={newAccessoryData.beltInput}
-                                            onChange={handleInputChange}
-                                        />
-                                    </div>
-                                )} */}
-
-
-                                {/* Render input field(s) specific to 'Tie' */}
-                                {/* {showTieInput && (
-                                    <div>
-                                        <input
-                                            type="text"
-                                            placeholder="Tie Input"
-                                            name="tieInput"
-                                            value={newAccessoryData.tieInput}
-                                            onChange={handleInputChange}
-                                        />
-                                    </div>
-                                )} */}
-
-
-                                {/* Render input field(s) specific to 'Shoe' */}
-                                {/* {showShoeInput && (
-                                    <div>
-                                        <input
-                                            type="text"
-                                            placeholder="Shoe Input"
-                                            name="shoeInput"
-                                            value={newAccessoryData.shoeInput}
-                                            onChange={handleInputChange}
-                                        />
-                                    </div>
-                                )} */}
 
                             </div>
 

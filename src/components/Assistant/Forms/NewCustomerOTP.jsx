@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
 
-import { sendOTP } from "../../api/otpAPIs";
-import Input from "../../components/Input/Input";
+import { sendOTP } from "../../../api/otpAPIs";
+import Input from "../../Input/Input";
 
 const OTPForm = ({ isOpen, onClose }) => {
 	const [newCustomer, setNewCustomer] = useState({

@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
 
-import { addMaterialQuantity } from "../../api/materialAPI";
-import Input from "../../components/Input/Input";
+import { addMaterialQuantity } from "../../../api/materialAPI";
+import Input from "../../Input/Input";
 
 const MaterialStockUpdateFrom = ({ isOpen, onClose }) => {
     const [newStock, setNewStock] = useState({

@@ -1,10 +1,10 @@
 import { useState } from 'react'
 
-import DropDownFilter from '../../components/Assistant/HeaderDropDown'
-import SearchBox from '../../components/Assistant/HeaderSearchBox'
+import DropDownFilter from '../../components/Assistant/Controls/HeaderDropDown'
+import SearchBox from '../../components/Assistant/Controls/HeaderSearchBox'
+import Pagination from '../../components/Assistant/Controls/Pagination'
+import MaterialStockUpdateForm from "../../components/Assistant/Forms/MaterialUpdateForm"
 import MaterialItems from '../../components/Assistant/MaterialItemSet'
-import MaterialStockUpdateForm from "../../components/Assistant/MaterialUpdateForm"
-import Pagination from '../../components/Assistant/Pagination'
 
 const Materials = () => {
     const [isStockUpdate, updateMatStock] = useState(false);

@@ -1,7 +1,7 @@
+import DropDownFilter from "../../components/Assistant/Controls/HeaderDropDown";
+import SearchBox from "../../components/Assistant/Controls/HeaderSearchBox";
+import Pagination from "../../components/Assistant/Controls/Pagination";
 import Handovers from "../../components/Assistant/HandoveredItemSet";
-import DropDownFilter from "../../components/Assistant/HeaderDropDown";
-import SearchBox from "../../components/Assistant/HeaderSearchBox";
-import Pagination from "../../components/Assistant/Pagination";
 
 const Handover = () => {
 	return (

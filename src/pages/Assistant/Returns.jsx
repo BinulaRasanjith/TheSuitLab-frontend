@@ -1,11 +1,12 @@
 import { Button } from "@chakra-ui/react"
 import { useState } from "react"
 
-import DropDownFilter from "../../components/Assistant/HeaderDropDown"
-import SearchBox from "../../components/Assistant/HeaderSearchBox"
-import NewReturnForm from "../../components/Assistant/NewReturnForm"
-import Pagination from "../../components/Assistant/Pagination"
-import Returnset from "../../components/Assistant/ReturnedItemSet"
+import ReturnFixConfForm from "../../components/Assistant/Confirmations/ReturnFixConfForm";
+import DropDownFilter from "../../components/Assistant/Controls/HeaderDropDown";
+import SearchBox from "../../components/Assistant/Controls/HeaderSearchBox";
+import Pagination from "../../components/Assistant/Controls/Pagination";
+import NewReturnForm from "../../components/Assistant/Forms/NewReturnForm";
+import Returnset from "../../components/Assistant/ReturnedItemSet";
 
 const Returns = () => {
 	const [isNewReturnForm, addNewReturn] = useState(false);
@@ -68,6 +69,10 @@ const Returns = () => {
 
 			<div className={`relative  ${isNewReturnForm ? "block" : "hidden"}`}>
 				<NewReturnForm isOpen={isNewReturnForm} onClose={handleFormClose} />
+			</div>
+
+			<div className={`relative  hidden`}>
+				<ReturnFixConfForm />
 			</div>
 			{/* <div className={`relative  ${isNewReturnForm ? 'block' : 'hidden'}`}><NewReturnForm onClose={handleFormClose} /></div> */}
 

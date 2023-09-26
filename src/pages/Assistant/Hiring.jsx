@@ -9,7 +9,6 @@ import img6 from "../../assets/images/rentsuits/green suit/1.webp"
 import img5 from "../../assets/images/rentsuits/maroon suit/1.webp"
 import img4 from "../../assets/images/rentsuits/pants/dark blue.webp"
 import img7 from "../../assets/images/rentsuits/white palma suit/1.webp"
-"/Users/bhanuka/Documents/Group Project II/SYSTEM/TheSuitLab-frontend/src/assets/images/rentsuits/black paisley suit/1.webp"
 import CardContainer from "../../components/Assistant/CardContainer"
 import HiringItemCard from "../../components/Assistant/HiringItemCard"
 

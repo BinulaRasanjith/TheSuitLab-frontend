@@ -1,7 +1,7 @@
 import Records from "../../../components/OrderItems/Records"
-import SearchBox from "../../../components/Assistant/HeaderSearchBox"
-import DropDownFilter from "../../../components/Assistant/HeaderDropDown"
-import Pagination from "../../../components/Assistant/Pagination"
+import SearchBox from "../../../components/Assistant/Controls/HeaderSearchBox"
+import DropDownFilter from "../../../components/Assistant/Controls/HeaderDropDown"
+import Pagination from "../../../components/Assistant/Controls/Pagination"
 
 const AllOrders = () => {
     return (
@@ -13,13 +13,13 @@ const AllOrders = () => {
                         <div className=' text-sm font-regular text-blue-400'>Recent orders</div>
                     </div>
                     <div className=" flex gap-4 align-middle">
-                            <div>
-                                <SearchBox />
-                            </div>
-                            <div>
-                                <DropDownFilter />
-                            </div>
+                        <div>
+                            <SearchBox />
                         </div>
+                        <div>
+                            <DropDownFilter />
+                        </div>
+                    </div>
                 </div>
                 <div className=" flex flex-col">
                     <div className=' flex justify-between text-sm font-medium text-gray-400'>

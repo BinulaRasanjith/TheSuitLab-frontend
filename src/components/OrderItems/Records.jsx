@@ -1,7 +1,7 @@
 import OrderRecord from "./OrderRecord";
-import SearchBox from "../Assistant/HeaderSearchBox"
-import DropDownFilter from "../Assistant/HeaderDropDown"
-import Pagination from "../Assistant/Pagination"
+import SearchBox from "../Assistant/Controls/HeaderSearchBox"
+import DropDownFilter from "../Assistant/Controls/HeaderDropDown"
+import Pagination from "../Assistant/Controls/Pagination"
 
 const Records = () => {
     const records = [

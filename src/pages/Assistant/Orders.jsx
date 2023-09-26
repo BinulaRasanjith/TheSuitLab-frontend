@@ -1,7 +1,8 @@
-import DropDownFilter from "../../components/Assistant/HeaderDropDown";
-import SearchBox from "../../components/Assistant/HeaderSearchBox";
+import OrderConfForm from "../../components/Assistant/Confirmations/OrderConfForm";
+import DropDownFilter from "../../components/Assistant/Controls/HeaderDropDown";
+import SearchBox from "../../components/Assistant/Controls/HeaderSearchBox";
+import Pagination from "../../components/Assistant/Controls/Pagination";
 import OrderedItems from "../../components/Assistant/OrderedItemSet";
-import Pagination from "../../components/Assistant/Pagination";
 
 const Orders = () => {
 	return (
@@ -45,6 +46,10 @@ const Orders = () => {
 						<Pagination />
 					</div>
 				</div>
+			</div>
+
+			<div className={`relative  hidden`}>
+				<OrderConfForm />
 			</div>
 
 			{/* <div className=" flex justify-center w-full">

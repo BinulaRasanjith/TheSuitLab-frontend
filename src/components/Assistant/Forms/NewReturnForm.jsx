@@ -2,28 +2,27 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
 
-import { addReturn } from "../../api/returnAPI";
-import Input from "../../components/Input/Input";
+import { addReturn } from "../../../api/returnAPI";
+import Input from "../../Input/Input";
 
 const NewReturnForm = ({ isOpen, onClose }) => {
-	const [newCustomer, setNewCustomer] = useState({
-		firstName: "",
-		lastName: "",
-		// orderedDate: null,
-		// itemCount: null,
-		mobileNo: "",
+	const [returnData, setReturnData] = useState({
+		referenceNo: "",
+		orderedDate: null,
+		itemCount: null,
+		reason: "",
 	});
 
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;
-		setNewCustomer({ ...newCustomer, [name]: value });
+		setReturnData({ ...returnData, [name]: value });
 	};
 
 	const handleAddUserClick = async (e) => {
 		e.preventDefault();
 
 		try {
-			await addReturn(newCustomer);
+			await addReturn(returnData);
 			onClose();
 		} catch (error) {
 			console.error(error);
@@ -48,10 +47,10 @@ const NewReturnForm = ({ isOpen, onClose }) => {
 						<div className="relative mb-6" data-te-input-wrapper-init>
 							<Input
 								type="text"
-								placeholder="First Name"
-								id="firstname"
-								name="firstName"
-								value={newCustomer.firstName}
+								placeholder="Order Id"
+								id="order-id"
+								name="referenceNo"
+								value={returnData.referenceNo}
 								onChange={handleInputChange}
 								className="mb-6"
 							/>
@@ -59,10 +58,10 @@ const NewReturnForm = ({ isOpen, onClose }) => {
 						<div>
 							<Input
 								type="date"
-								placeholder="Last Name"
-								id="lastname"
-								name="lastName"
-								value={newCustomer.lastName}
+								placeholder="Ordered Date"
+								id="ordered-date"
+								name="orderedDate"
+								value={returnData.orderedDate}
 								onChange={handleInputChange}
 								className="mb-6"
 							/>
@@ -72,10 +71,10 @@ const NewReturnForm = ({ isOpen, onClose }) => {
 						<div className="relative mb-6" data-te-input-wrapper-init>
 							<Input
 								type="number"
-								placeholder="Mobile Number"
-								id="mobile"
-								name="mobileNo"
-								value={newCustomer.mobileNo}
+								placeholder="Item count"
+								id="item-count"
+								name="itemCount"
+								value={returnData.itemCount}
 								onChange={handleInputChange}
 								className="mb-6"
 							/>
@@ -88,7 +87,7 @@ const NewReturnForm = ({ isOpen, onClose }) => {
 								placeholder="Reason for returning"
 								id="reason"
 								name="reason"
-								value={newCustomer.reason}
+								value={returnData.reason}
 								onChange={handleInputChange}
 								className="mb-6"
 							/>
@@ -101,7 +100,7 @@ const NewReturnForm = ({ isOpen, onClose }) => {
 							data-te-ripple-init
 							data-te-ripple-color="light"
 						>
-							Add Customer
+							Add Inquery
 						</button>
 					</form>
 				</div>

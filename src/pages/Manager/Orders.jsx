@@ -1,11 +1,12 @@
+import { Button } from "@chakra-ui/react";
 import React from 'react'
 import { BiSearch } from 'react-icons/bi'
 import { Link } from 'react-router-dom';
-import { Button } from "@chakra-ui/react";
+
+import DropDownFilter from '../../components/Assistant/Controls/HeaderDropDown'
+import SearchBox from '../../components/Assistant/Controls/HeaderSearchBox'
+import Pagination from '../../components/Assistant/Controls/Pagination'
 import Records from "../../components/OrderItems/ViewOrders"
-import SearchBox from "../../components/Assistant/HeaderSearchBox"
-import DropDownFilter from "../../components/Assistant/HeaderDropDown"
-import Pagination from "../../components/Assistant/Pagination"
 
 
 const Orders = () => {

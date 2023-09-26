@@ -1,7 +1,7 @@
 import { useState } from "react"
 
-import NewCustomerForm from "../../components/Assistant/NewCustomerForm"
-import NewCustomerOTPForm from "../../components/Assistant/NewCustomerOTP"
+import NewCustomerForm from "../../components/Assistant/Forms/NewCustomerForm"
+import NewCustomerOTPForm from "../../components/Assistant/Forms/NewCustomerOTP"
 import Customers from "../../components/Customer/ViewCustomers"
 
 const ViewCustomers = () => {
