@@ -21,7 +21,7 @@ const JacketsGallery = () => {
 	}, [jacketData]);
 
 	return (
-		<div className="flex items-start flex-wrap gap-4 bg-gray-200 p-5 overflow-y-auto h-screen">
+		<div className="flex items-start flex-wrap gap-4 bg-gray-100 p-5 w-full overflow-y-auto h-screen">
 			{jacketData.map((jacket) => (
 				<Link
 					key={jacket.hireCostumeId}

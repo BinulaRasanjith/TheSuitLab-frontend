@@ -27,6 +27,10 @@ export const BUTTON = 'button';
 export const PRE_DESIGNED = 'pre-designed';
 export const CUSTOMIZED = 'customized';
 
+// measurement types
+export const STANDARD = 'standard';
+export const CUSTOM = 'custom';
+
 // measurement unit types
 export const INCH = 'inch';
 export const CM = 'cm';
@@ -42,6 +46,8 @@ export const XXL = 'XXL';
 export const AVAILABLE = 'available';
 export const UNAVAILABLE = 'unavailable';
 
+// MEASUREMENTS TO BE ADDED
+export const MEASUREMENTS_TO_BE_ADDED = -1;
 
 export const STANDARD_MEASUREMENTS = {
   XS: {

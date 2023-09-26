@@ -1,9 +1,9 @@
-import { useToast } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useToast, Button } from "@chakra-ui/react";
+import { useEffect, useState, useNa } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { HiOutlineCalendar } from "react-icons/hi";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { addToCart as addToCartAPI } from "../../api/customerAPI";
 import { getHireCostume } from "../../api/hireCostumesAPI";
@@ -13,6 +13,7 @@ const SuitDescription = () => {
 	// Get the suitId from the route parameters
 	const { suitId } = useParams();
 	const toast = useToast();
+	const navigate = useNavigate();
 
 	const [suitDetails, setSuitDetails] = useState({
 		images: [],
@@ -130,8 +131,8 @@ const SuitDescription = () => {
 
 	return (
 		<div className="flex items-start flex-wrap bg-white w-full h-screen overflow-auto">
-			<section className=" bg-white my-10 w-full font-poppins">
-				<div className="max-w-6xl px-4 py-4 mx-auto lg:py-8 md:px-6">
+			<div className=" bg-white mb-16 w-full font-poppins">
+				<div className=" px-4 py-4 mx-auto md:px-6">
 					<div className="flex flex-wrap -mx-4">
 						<div className="w-full mb-8 md:w-1/2 md:mb-0">
 							<div className="sticky top-0 z-50 overflow-hidden">
@@ -232,14 +233,9 @@ const SuitDescription = () => {
 													<div>
 														{size.quantity === 0 ? <p className='text-red-500'>Out of Stock</p> : <p className='text-green-500'>{size.quantity} In Stock</p>}
 													</div>
-
-
 												</div>
 											))}
-
-
 										</div>
-
 									</div>
 								</div>
 								<div className="w-32 mb-8">
@@ -257,35 +253,60 @@ const SuitDescription = () => {
 														selectedItems.find((item) => item.size === size.size)?.quantity || 0
 													}</p>
 													<button onClick={() => handleAddToItems(size.size)}>+</button>
-
 												</div>
-
 											</div>))}
 									</div>
 								</div>
 								<div className="flex flex-wrap items-center gap-4">
-									<button
+									<Button
+										className="flex flex-col justify-center w-1/3 py-6"
+										rounded={"md"}
+										color={"white"}
+										bgColor={"black"}
+										size="sm"
+										_hover={{
+											bg: "blue",
+											color: "blue-50",
+										}}
 										onClick={handleAddToCart}
-										className="w-full p-4 bg-blue-500 rounded-md lg:w-2/5 dark:text-gray-200 text-gray-50 hover:bg-blue-600 dark:bg-blue-500 dark:hover:bg-blue-700"
 									>
 										Add to Cart
-									</button>
-									<Link
-										to="/customer/cart"
-										className="block mt-4 text-center text-blue-500 hover:text-blue-700"
+									</Button>
+
+									<Button
+										className="flex flex-col justify-center w-1/3 py-6"
+										rounded={"md"}
+										color={"white"}
+										bgColor={"black"}
+										size="sm"
+										_hover={{
+											bg: "blue",
+											color: "blue-50",
+										}}
+										onClick={() => navigate("/customer/cart")}
 									>
 										View Cart
-									</Link>{" "}
-									{/* Add a link to view the cart */}
-									<button className="flex items-center justify-center w-full p-4 text-blue-500 border border-blue-500 rounded-md lg:w-2/5 dark:text-gray-200 dark:border-blue-600 hover:bg-blue-600 hover:border-blue-600 hover:text-gray-100 dark:bg-blue-500 dark:hover:bg-blue-700 dark:hover:border-blue-700 dark:hover:text-gray-300">
+									</Button>
+									{/* <Button
+										className="justify-center w-1/2 py-6"
+										rounded={"md"}
+										color={"white"}
+										bgColor={"black"}
+										size="sm"
+										_hover={{
+											bg: "blue",
+											color: "blue-50",
+										}}
+										//onClick={}
+									>
 										Buy Now
-									</button>
+									</Button> */}
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</section>
+			</div>
 		</div>
 	);
 };

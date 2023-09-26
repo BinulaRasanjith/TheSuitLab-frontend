@@ -1,4 +1,3 @@
-
 import BeltsGallery from "../components/Customer/BeltsGallery";
 import BowsGallery from "../components/Customer/BowsGallery";
 import Cart from "../components/Customer/Cart";
@@ -34,7 +33,6 @@ import PantMeasurementLayout from "../layouts/customerLayouts/PantMeasurementLay
 import PantStyleLayout from "../layouts/customerLayouts/PantStyleLayout";
 import AboutUs from "../pages/Aboutus";
 import ContactUs from "../pages/Contactus";
-import Profile from "../pages/Profile";
 import Services from "../pages/Services";
 import Home from "../pages/customer/Home";
 import LookBook from "../pages/customer/LookBook";
@@ -68,7 +66,8 @@ const costumerRoutes = {
 		},
 		{
 			path: "profile",
-			element: <Profile />,
+			element: <div>Profile</div>,
+			// element: <Profile />,
 		},
 		{
 			path: "customize-measurements",

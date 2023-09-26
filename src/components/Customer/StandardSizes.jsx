@@ -1,9 +1,11 @@
 import { Select, useToast } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { IoArrowBackCircle } from "react-icons/io5";
+import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
+import { addCustomSuitToCart as addCustomSuitToCartAPI } from "../../api/customerAPI";
 import {
 	setCoatMeasurements,
 	setTrouserMeasurements,
@@ -23,7 +25,8 @@ import THIGH from "../../assets/images/measurements/men_size_12.jpg";
 import TROUSER_LENGTH from "../../assets/images/measurements/men_size_13.jpg";
 import CUFF from "../../assets/images/measurements/men_size_14.jpg";
 import MeasurementBlock from "../../components/Customer/MeasurementBlock";
-import { INCH, STANDARD_MEASUREMENTS } from "../../constants/index";
+import { INCH, STANDARD, STANDARD_MEASUREMENTS } from "../../constants/index";
+import { selectJacket } from "../../store/slices/jacketCustomizationSlice";
 import {
 	getCourtMeasurementObject,
 	getTrouserMeasurementObject,
@@ -34,9 +37,23 @@ const StandardSizes = () => {
 	const navigate = useNavigate();
 	const toast = useToast();
 
+	const jacket = useSelector(selectJacket);
+
 	const [selectedSize, setSelectedSize] = useState("S");
 	const [selectedUnit, setSelectedUnit] = useState("inch");
 	const [selectedCategory, setSelectedCategory] = useState("jacket");
+
+	useEffect(() => {
+		if (location.pathname.includes("/customize-suit/jacket")) {
+			setSelectedCategory("jacket");
+		}
+		if (location.pathname.includes("/customize-suit/pant")) {
+			setSelectedCategory("pant");
+		}
+		if (location.pathname.includes("/customize-suit/all")) {
+			setSelectedCategory("all");
+		}
+	}, [location.pathname]);
 
 	// back button
 	const handleBack = () =>
@@ -44,10 +61,10 @@ const StandardSizes = () => {
 			location.pathname.includes("/customize-suit/jacket")
 				? "/customer/customize-suit/jacket/measurements"
 				: location.pathname.includes("/customize-suit/pant")
-					? "/customer/customize-suit/pant/measurements"
-					: location.pathname.includes("/customize-suit/all")
-						? "/customer/customize-suit/all/measurements"
-						: "/customer/customize-measurements"
+				? "/customer/customize-suit/pant/measurements"
+				: location.pathname.includes("/customize-suit/all")
+				? "/customer/customize-suit/all/measurements"
+				: "/customer/customize-measurements"
 		);
 
 	const handleSave = async () => {
@@ -120,6 +137,21 @@ const StandardSizes = () => {
 		}
 	};
 
+	const handleGoToCart = async () => {
+		// TODO: check if options all selected
+
+		await addCustomSuitToCartAPI({
+			description: "Custom Suit",
+			price: 1000, // TODO: calculate price
+			type: STANDARD,
+			size: selectedSize,
+			quantity: 1,
+			selection: jacket,
+		});
+
+		navigate("/customer/cart");
+	};
+
 	return (
 		<div className={`flex flex-col flex-wrap`}>
 			<div
@@ -144,15 +176,17 @@ const StandardSizes = () => {
 						<option value="cm">Centimeters</option>
 					</Select>
 
-					<Select
-						width="250px"
-						value={selectedCategory}
-						onChange={(event) => setSelectedCategory(event.target.value)}
-					>
-						<option value="jacket">Jacket</option>
-						<option value="pant">Pant</option>
-						<option value="all">All</option>
-					</Select>
+					{!location.pathname.includes("customize-suit") && (
+						<Select
+							width="250px"
+							value={selectedCategory}
+							onChange={(event) => setSelectedCategory(event.target.value)}
+						>
+							<option value="jacket">Jacket</option>
+							<option value="pant">Pant</option>
+							<option value="all">All</option>
+						</Select>
+					)}
 
 					<Select
 						width="250px"
@@ -180,6 +214,7 @@ const StandardSizes = () => {
 									?.FullShoulderWidth
 							}
 							selectedUnit={selectedUnit}
+							unchangeable
 						/>
 						<MeasurementBlock
 							image={Sleeves}
@@ -190,6 +225,7 @@ const StandardSizes = () => {
 									?.Sleeves
 							}
 							selectedUnit={selectedUnit}
+							unchangeable
 						/>
 						<MeasurementBlock
 							image={FullChest}
@@ -200,6 +236,7 @@ const StandardSizes = () => {
 									?.FullChest
 							}
 							selectedUnit={selectedUnit}
+							unchangeable
 						/>
 						<MeasurementBlock
 							image={Waist}
@@ -210,6 +247,7 @@ const StandardSizes = () => {
 									?.Waist
 							}
 							selectedUnit={selectedUnit}
+							unchangeable
 						/>
 						<MeasurementBlock
 							image={Hips}
@@ -220,6 +258,7 @@ const StandardSizes = () => {
 									?.Hips
 							}
 							selectedUnit={selectedUnit}
+							unchangeable
 						/>
 						<MeasurementBlock
 							image={FrontShoulderWidth}
@@ -230,6 +269,7 @@ const StandardSizes = () => {
 									?.FrontShoulderWidth
 							}
 							selectedUnit={selectedUnit}
+							unchangeable
 						/>
 						<MeasurementBlock
 							image={BackShoulderWidth}
@@ -240,6 +280,7 @@ const StandardSizes = () => {
 									?.BackShoulderWidth
 							}
 							selectedUnit={selectedUnit}
+							unchangeable
 						/>
 						<MeasurementBlock
 							image={FrontJacketLength}
@@ -250,6 +291,7 @@ const StandardSizes = () => {
 									?.FrontJacketLength
 							}
 							selectedUnit={selectedUnit}
+							unchangeable
 						/>
 						<MeasurementBlock
 							image={Neck}
@@ -260,6 +302,7 @@ const StandardSizes = () => {
 									?.Neck
 							}
 							selectedUnit={selectedUnit}
+							unchangeable
 						/>
 					</>
 				)}
@@ -274,6 +317,7 @@ const StandardSizes = () => {
 									?.TrouserWaist
 							}
 							selectedUnit={selectedUnit}
+							unchangeable
 						/>
 						<MeasurementBlock
 							image={CROTCH}
@@ -284,6 +328,7 @@ const StandardSizes = () => {
 									?.Crotch
 							}
 							selectedUnit={selectedUnit}
+							unchangeable
 						/>
 						<MeasurementBlock
 							image={THIGH}
@@ -294,6 +339,7 @@ const StandardSizes = () => {
 									?.Thigh
 							}
 							selectedUnit={selectedUnit}
+							unchangeable
 						/>
 						<MeasurementBlock
 							image={TROUSER_LENGTH}
@@ -304,6 +350,7 @@ const StandardSizes = () => {
 									?.TrouserLength
 							}
 							selectedUnit={selectedUnit}
+							unchangeable
 						/>
 						<MeasurementBlock
 							image={CUFF}
@@ -314,21 +361,28 @@ const StandardSizes = () => {
 									?.Cuff
 							}
 							selectedUnit={selectedUnit}
+							unchangeable
 						/>
 					</>
 				)}
+			</div>
+			<div className="flex m-5 z-20 top-10 p-2 justify-between">
 				<button
-					type="button"
-					className="m-5 hidden w-full rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-				>
-					Save
-				</button>
-				<button
-					onClick={() => navigate("/customer/cart")}
+					onClick={() =>
+						navigate("/customer/customize-suit/jacket/color-contrast/button")
+					}
 					type="button"
 					className="m-5 flex items-center justify-center w-48 rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
 				>
-					<span>Add to Cart</span>
+					Back to design
+				</button>
+
+				<button
+					onClick={handleGoToCart}
+					type="button"
+					className="m-5 flex items-center justify-center w-48 rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+				>
+					<span>Go to Cart</span>
 					<FaShoppingCart className="ml-2 text-xl" />
 				</button>
 			</div>
