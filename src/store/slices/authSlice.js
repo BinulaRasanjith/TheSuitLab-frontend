@@ -125,6 +125,9 @@ const authSlice = createSlice({ // create the auth slice
 			})
 			.addCase(logoutAsync.rejected, (state, action) => { // this reducer will be called when the logoutAsync thunk is rejected. It will set the status state to idle and set the error state to the error message returned by the thunk.
 				state.status = IDLE;
+				localStorage.removeItem("accessToken");
+				api.defaults.headers.common.Authorization = null;
+				state.user = initialState.user;
 				state.error = action.error.message;
 			})
 
