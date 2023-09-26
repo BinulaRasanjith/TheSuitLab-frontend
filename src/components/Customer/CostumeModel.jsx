@@ -3,13 +3,14 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { selectComponentHide } from "../../store/slices/componentHideSlice";
+// import RotateControl from "../utilComp/RotateControl";
+// import { selectCostumeScale } from "../../store/slices/rotationHandleSlice";
 import CamControl from "../utilComp/CamControl";
 import ControlPanel from "../utilComp/ControlPanel";
-// import RotateControl from "../utilComp/RotateControl";
 // import BackNext from "./BackNext";
 import ComponentHide from "./ComponentHide";
 import { WholeCostume } from "./WholeCostume";
@@ -73,9 +74,11 @@ const CostumeModel = () => {
         z: 0,
     });
 
+
     const [camCont, setCamCont] = useState({
         scale: 3,
     });
+
 
     // const [rotation, setRotation] = useState({
     //     x: 0,
@@ -98,6 +101,7 @@ const CostumeModel = () => {
                     makeDefault
                     maxPolarAngle={Math.PI / 2}
                     minPolarAngle={Math.PI / 2}
+                    rotateSpeed={0.5}
                 />
                 <Environment preset="city" />
                 {/* <ContactShadows rotation-x={Math.PI / 2} position={[0, -4.5, 0]} opacity={0.25} width={10} height={10} blur={1} far={4.5} /> */}

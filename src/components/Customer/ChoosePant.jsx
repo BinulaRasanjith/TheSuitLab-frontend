@@ -4,6 +4,8 @@ import BootCut from '../../assets/images/pant_styles/BootCut 1.png'
 // import Dave from '../../assets/images/pant_styles/Dave 1.png'
 import Normal from '../../assets/images/pant_styles/Normal 1.png'
 import { setJacket } from '../../store/slices/jacketCustomizationSlice'
+import { setRotation } from "../../store/slices/rotationHandleSlice"
+
 
 const ChoosePant = () => {
     const dispatch = useDispatch()
@@ -11,7 +13,10 @@ const ChoosePant = () => {
         <div className='my-5 px-10'>
             <span className='p-5 text-2xl font-bold'>Choose Pant</span>
             <div className='grid grid-cols-3 gap-5 mt-5'>
-                <div onClick={() => dispatch(setJacket({ trouser: 'center-vent' }))} className='flex flex-col items-center p-6 justify-center cursor-pointer rounded-lg border border-black-2  shadow'>
+                <div onClick={() => {
+                    dispatch(setJacket({ trouser: 'center-vent' }))
+                    dispatch(setRotation(Math.PI / 2));
+                }} className='flex flex-col items-center p-6 justify-center cursor-pointer rounded-lg border border-black-2  shadow'>
                     <img alt="Center Vent" className='pb-5' src={BootCut} />
                     <label className='text-sm'>CENTER VENT</label>
                 </div>
@@ -19,7 +24,10 @@ const ChoosePant = () => {
                     <img alt="SIDE VENT" className='pb-5' src={Dave} />
                     <label className='text-sm'>SIDE VENT</label>
                 </div> */}
-                <div onClick={() => dispatch(setJacket({ trouser: 'no-vent' }))} className='flex flex-col items-center p-6 justify-center cursor-pointer rounded-lg border border-black-2  shadow'>
+                <div onClick={() => {
+                    dispatch(setJacket({ trouser: 'no-vent' }))
+                    dispatch(setRotation(Math.PI / 2));
+                }} className='flex flex-col items-center p-6 justify-center cursor-pointer rounded-lg border border-black-2  shadow'>
                     <img alt="NO VENT" className='pb-5' src={Normal} />
                     <label className='text-sm'>NO VENT</label>
                 </div>
