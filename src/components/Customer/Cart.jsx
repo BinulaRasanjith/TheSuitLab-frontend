@@ -131,13 +131,21 @@ const Cart = () => {
 														const description = item.description;
 
 														if (description.type === CUSTOM) {
-															return Object.entries(
+															const customizationKeys = Object.keys(
 																description.customization
-															).map(([key, value]) => (
-																<p key={key}>
-																	{key}: {value}
-																</p>
-															));
+															);
+															const firstFourKeys = customizationKeys.slice(
+																0,
+																4
+															);
+
+															return firstFourKeys.map((key) => {
+																return (
+																	<p key={key}>
+																		{key}: {description.customization[key]}
+																	</p>
+																);
+															});
 														} else {
 															return description.name;
 														}
