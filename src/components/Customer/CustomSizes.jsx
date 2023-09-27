@@ -1,21 +1,33 @@
-import { Button, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from "@chakra-ui/react"
 import { Select, useToast } from "@chakra-ui/react";
-import { useDisclosure } from '@chakra-ui/react';
+import {
+	Button,
+	FormControl,
+	FormLabel,
+	Input,
+	Modal,
+	ModalBody,
+	ModalCloseButton,
+	ModalContent,
+	ModalFooter,
+	ModalHeader,
+	ModalOverlay,
+} from "@chakra-ui/react";
+import { useDisclosure } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import React from 'react';
+import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { IoArrowBackCircle } from "react-icons/io5";
-import { LuSave } from 'react-icons/lu';
-import { MdOutlineArrowBackIosNew } from "react-icons/md";
+import { LuSave } from "react-icons/lu";
 import { MdNavigateNext } from "react-icons/md";
+import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import {
 	addCustomSuitToCart as addCustomSuitToCartAPI,
+	addNewCostumeToItemModel,
 	setCoatMeasurements as setCoatMeasurementsAPI,
 	setTrouserMeasurements as setTrouserMeasurementsAPI,
-	addNewCostumeToItemModel
 } from "../../api/customerAPI";
 import FullShoulderWidth from "../../assets/images/measurements/men_size_1 (1).jpg";
 import Sleeves from "../../assets/images/measurements/men_size_2.jpg";
@@ -33,12 +45,12 @@ import TROUSER_LENGTH from "../../assets/images/measurements/men_size_13.jpg";
 import CUFF from "../../assets/images/measurements/men_size_14.jpg";
 import MeasurementBlock from "../../components/Customer/MeasurementBlock";
 import { CUSTOM } from "../../constants";
+import { selectUser } from "../../store/slices/authSlice";
 import { selectJacket } from "../../store/slices/jacketCustomizationSlice";
 import {
 	getCourtMeasurementObject,
 	getTrouserMeasurementObject,
 } from "../../utils/measurements";
-import { selectUser } from "../../store/slices/authSlice";
 
 const CustomSizes = () => {
 	const navigate = useNavigate();
@@ -46,22 +58,21 @@ const CustomSizes = () => {
 	const toast = useToast();
 	const user = useSelector(selectUser);
 
-	const { isOpen, onOpen, onClose } = useDisclosure()
-	const initialRef = React.useRef()
-	const finalRef = React.useRef()
-	const [inputValue, setInputValue] = useState('');
+	const { isOpen, onOpen, onClose } = useDisclosure();
+	const initialRef = React.useRef();
+	const finalRef = React.useRef();
+	const [inputValue, setInputValue] = useState("");
 	const [isAddButtonDisabled, setIsAddButtonDisabled] = useState(true);
 	const handleInputChange = (e) => {
 		const value = e.target.value;
 
-		if (value === '' || (value >= 1 && value <= 10)) {
+		if (value === "" || (value >= 1 && value <= 10)) {
 			setInputValue(value);
 			setIsAddButtonDisabled(false);
 		} else {
 			setIsAddButtonDisabled(true);
 		}
 	};
-
 
 	const jacket = useSelector(selectJacket);
 
@@ -114,9 +125,6 @@ const CustomSizes = () => {
 		});
 	};
 
-	const [coatMeasurementsInInch, setCoatMeasurementsInInch] = useState({});
-	const [pantMeasurementsInInch, setPantMeasurementsInInch] = useState({});
-
 	// handle save button
 	const handleSave = () => {
 		// check if all fields filled
@@ -151,12 +159,11 @@ const CustomSizes = () => {
 		// save in the backend
 		if (selectedCategory === "jacket" || selectedCategory === "all") {
 			// save coat measurements
-			setCoatMeasurementsInInch(
-				getCourtMeasurementObject(
-					coatMeasurements,
-					selectedUnit
-				)
-			)
+			const coatMeasurementsInInch = getCourtMeasurementObject(
+				coatMeasurements,
+				selectedUnit
+			);
+
 			setCoatMeasurementsAPI(coatMeasurementsInInch)
 				.then((res) => {
 					console.log(res);
@@ -192,12 +199,10 @@ const CustomSizes = () => {
 
 		if (selectedCategory === "pant" || selectedCategory === "all") {
 			// save pant measurements
-			setPantMeasurementsInInch(
-				getTrouserMeasurementObject(
-					pantMeasurements,
-					selectedUnit
-				)
-			)
+			const pantMeasurementsInInch = getTrouserMeasurementObject(
+				pantMeasurements,
+				selectedUnit
+			);
 			setTrouserMeasurementsAPI(pantMeasurementsInInch)
 				.then((res) => {
 					if (res.status === 200 || res.status === 201) {
@@ -237,32 +242,43 @@ const CustomSizes = () => {
 			price: 1000,
 			quantity: inputValue,
 			status: "available",
-		}).then((res) => {
-			console.log(res.data);
-			addCustomSuitToCartAPI({
-				description: {
-					type: CUSTOM,
-					customization: jacket,
-				},
-				measurement: {
-					coatMeasurementsInInch,
-					pantMeasurementsInInch
-				},
-				customerId: user.id,
-				itemId: res.data.itemId,
-				price: 1000, // TODO: calculate price
-				quantity: inputValue,
-				status: "available",
-
-			}).then((res) => {
-
-				navigate("/customer/cart");
-			}).catch((err) => {
+		})
+			.then((res) => {
+				console.log(res.data);
+				const coatMeasurementsInInch = getCourtMeasurementObject(
+					coatMeasurements,
+					selectedUnit
+				);
+				const pantMeasurementsInInch = getTrouserMeasurementObject(
+					pantMeasurements,
+					selectedUnit
+				);
+				addCustomSuitToCartAPI({
+					description: {
+						type: CUSTOM,
+						customization: jacket,
+					},
+					measurement: {
+						coatMeasurementsInInch,
+						pantMeasurementsInInch,
+					},
+					customerId: user.id,
+					itemId: res.data.itemId,
+					price: 1000, // TODO: calculate price
+					quantity: inputValue,
+					status: "available",
+				})
+					.then((res) => {
+						console.log(res.data);
+						navigate("/customer/cart");
+					})
+					.catch((err) => {
+						console.log(err);
+					});
+			})
+			.catch((err) => {
 				console.log(err);
 			});
-		}).catch((err) => {
-			console.log(err);
-		});
 	};
 
 	// back button
@@ -271,10 +287,10 @@ const CustomSizes = () => {
 			location.pathname.includes("/customize-suit/jacket")
 				? "/customer/customize-suit/jacket/measurements"
 				: location.pathname.includes("/customize-suit/pant")
-					? "/customer/customize-suit/pant/measurements"
-					: location.pathname.includes("/customize-suit/all")
-						? "/customer/customize-suit/all/measurements"
-						: "/customer/customize-measurements"
+				? "/customer/customize-suit/pant/measurements"
+				: location.pathname.includes("/customize-suit/all")
+				? "/customer/customize-suit/all/measurements"
+				: "/customer/customize-measurements"
 		);
 
 	return (
@@ -463,7 +479,6 @@ const CustomSizes = () => {
 					<FaShoppingCart className="ml-2 text-xl" />
 				</button> */}
 				<button
-					
 					onClick={onOpen}
 					type="button"
 					className="m-5 flex items-center justify-center w-48 rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
@@ -484,21 +499,28 @@ const CustomSizes = () => {
 						<ModalBody pb={6}>
 							<FormControl>
 								<FormLabel>Quantity</FormLabel>
-								<Input type="number" ref={initialRef}
+								<Input
+									type="number"
+									ref={initialRef}
 									value={inputValue}
 									onChange={handleInputChange}
 									min={0}
-									max={10} required />
+									max={10}
+									required
+								/>
 							</FormControl>
 						</ModalBody>
 
 						<ModalFooter>
-							<Button onClick={handleGoToCart} colorScheme="blue" mr={3} disabled={isAddButtonDisabled}>
+							<Button
+								onClick={handleGoToCart}
+								colorScheme="blue"
+								mr={3}
+								disabled={isAddButtonDisabled}
+							>
 								<FaShoppingCart className="mr-2 text-xl" />
 								Add to cart
-
 							</Button>
-
 						</ModalFooter>
 					</ModalContent>
 				</Modal>
