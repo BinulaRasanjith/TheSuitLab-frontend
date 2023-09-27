@@ -11,14 +11,14 @@ import {
 	useToast,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { CiShoppingCart } from "react-icons/ci";
+import { ImBin } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
-import { ImBin } from 'react-icons/im'
-import { getCart,removeCartItem } from "../../api/customerAPI";
+
+import { getCart, removeCartItem } from "../../api/customerAPI";
 import { CUSTOM, MEASUREMENTS_TO_BE_ADDED } from "../../constants";
-import { CiShoppingCart } from 'react-icons/ci'
 
 const Cart = () => {
-
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const navigate = useNavigate();
 	const toast = useToast();
@@ -30,6 +30,8 @@ const Cart = () => {
 			try {
 				const cartItemsFromServer = await getCart();
 				setCartItems(cartItemsFromServer.data);
+
+				console.log(cartItemsFromServer.data);
 			} catch (err) {
 				console.log(err);
 			}
@@ -44,7 +46,6 @@ const Cart = () => {
 		);
 
 		if (isMeasurementToBeAdded) {
-
 			toast({
 				title: "Error",
 				description: "Please give your measurements",
@@ -58,28 +59,29 @@ const Cart = () => {
 	};
 
 	const [deleteItemId, setDeleteItemId] = useState(null);
-	
+
 	const removeFromCart = () => {
 		removeCartItem(deleteItemId)
-		.then((res) => {
-			if (res.status === 200){
-			onClose();
-			toast({
-				title: "Item removed from cart",
-				status: "success",
-				duration: 3000,
-				isClosable: true,
+			.then((res) => {
+				if (res.status === 200) {
+					onClose();
+					toast({
+						title: "Item removed from cart",
+						status: "success",
+						duration: 3000,
+						isClosable: true,
+					});
+				}
+			})
+			.catch((err) => {
+				console.log(err);
+				toast({
+					title: "Something went wrong",
+					status: "error",
+					duration: 3000,
+					isClosable: true,
+				});
 			});
-		}
-		})
-		.catch((err) => {
-			toast({
-				title: "Something went wrong",
-				status: "error",
-				duration: 3000,
-				isClosable: true,
-			});
-		})
 	};
 
 	const calculateTotalPrice = () => {
@@ -97,7 +99,6 @@ const Cart = () => {
 	return (
 		<>
 			<div className="flex flex-col items-center flex-wrap shadow-xl my-2 w-full ">
-
 				<div className="flex flex-row items-center gap-3 mt-3">
 					<CiShoppingCart style={{ fontSize: "2rem" }} />
 					<span className="text-xl font-bold text-black p-1">Cart Items</span>
@@ -105,62 +106,69 @@ const Cart = () => {
 
 				<div className="flex  justify-center items-start p-4 gap-x-10">
 					<div className="flex flex-col ">
-						<table className='flex flex-col  text-sm font-medium text-gray-500'>
+						<table className="flex flex-col  text-sm font-medium text-gray-500">
 							<thead className=" uppercase bg-gray-100 py-4 w-full rounded-xl mb-4">
 								<tr>
-									<th className=" w-32">
-										Item Id
-									</th>
-									<th className=" w-40">
-										Description
-									</th>
-									<th className=" w-32">
-										Price
-									</th>
-									<th className=" w-32">
-										Qty
-									</th>
-									<th className=" w-32">
-										Total
-									</th>
-									<th className=" w-28">
-										Remove
-									</th>
+									<th className=" w-32">Item Id</th>
+									<th className=" w-40">Description</th>
+									<th className=" w-32">Price</th>
+									<th className=" w-32">Qty</th>
+									<th className=" w-32">Total</th>
+									<th className=" w-28">Remove</th>
 								</tr>
 							</thead>
 							<tbody className="max-h-[calc(100vh-4rem)] overflow-y-scroll ">
 								<div className="flex flex-col gap-1 flex-wrap ">
 									{cartItems.map((item) => (
-										<tr key={item.id}
-											className="flex items-center text-center border hover:bg-gray-300 text-black font-medium py-3 rounded-lg">
+										<tr
+											key={item.id}
+											className="flex items-center text-center border hover:bg-gray-300 text-black font-medium py-3 rounded-lg"
+										>
 											<td className="w-32">{item.id}</td>
 											<td className="w-40 text-left">
-												{/* <p>{(() => {
-													try {
-														const description = JSON.parse(item.description);
-														console.log(description);
+												<p>
+													{(() => {
+														const description = item.description;
 
 														if (description.type === CUSTOM) {
-															return Object.entries(description.customization).map(([key, value]) => (
-																<p key={key}>{key}: {value}</p>
+															return Object.entries(
+																description.customization
+															).map(([key, value]) => (
+																<p key={key}>
+																	{key}: {value}
+																</p>
 															));
+														} else {
+															return description.name;
 														}
-													} catch (error) {
-														console.error("JSON Parsing Error:", error)
-														return 'Invalid JSON';
-													}
-												})()}</p> */}
+													})()}
+												</p>
 												{item.measurement.con}
 											</td>
-											<td className="w-32">{
-												item.price === MEASUREMENTS_TO_BE_ADDED ? "To be added" : item.price
-											}</td>
+											<td className="w-32">
+												{item.price === MEASUREMENTS_TO_BE_ADDED
+													? "To be added"
+													: item.price}
+											</td>
 											<td className="w-32">{item.quantity}</td>
-											<td className="w-32">{
-												item.price * item.quantity === -1 ? "Need Measurements" : item.price * item.quantity
-											}</td>
+											<td className="w-32">
+												{item.price * item.quantity === -1
+													? "Need Measurements"
+													: item.price * item.quantity}
+											</td>
 											<td className="w-28">
-												<ImBin style={{ fontSize: "1rem", cursor: 'pointer', color: 'red' }} className=" w-full" onClick={() => {setDeleteItemId(item.id); onOpen()}} />
+												<ImBin
+													style={{
+														fontSize: "1rem",
+														cursor: "pointer",
+														color: "red",
+													}}
+													className=" w-full"
+													onClick={() => {
+														setDeleteItemId(item.id);
+														onOpen();
+													}}
+												/>
 											</td>
 										</tr>
 									))}
@@ -192,7 +200,9 @@ const Cart = () => {
 						<div className="flex justify-between">
 							<p className="text-lg font-bold">Total</p>
 							<div className="">
-								<p className="mb-1 text-lg font-bold">Rs {calculateTotalPrice()}</p>
+								<p className="mb-1 text-lg font-bold">
+									Rs {calculateTotalPrice()}
+								</p>
 								<p className="text-sm text-gray-700">including VAT</p>
 							</div>
 						</div>
@@ -228,9 +238,9 @@ const Cart = () => {
 						<Button colorScheme="blue" mr={3} onClick={onClose}>
 							No
 						</Button>
-						<Button 
-						onClick={removeFromCart}
-						variant="ghost">Yes</Button>
+						<Button onClick={removeFromCart} variant="ghost">
+							Yes
+						</Button>
 					</ModalFooter>
 				</ModalContent>
 			</Modal>
