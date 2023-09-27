@@ -1,7 +1,7 @@
 import api from "./api";
 
-export const addToCart = async (cartItem) => {
-    return api.post("/customer/add-to-cart", cartItem);
+export const addHireCostumeToCart = async (cartItem) => {
+    return api.post("/customer/add-hire-costume-to-cart", cartItem);
 }
 
 export const addCustomSuitToCart = async (cartItem) => {
@@ -19,7 +19,7 @@ export const getCart = async () => {
 }
 
 export const removeCartItem = async (id) => {
-    return api.delete("/customer/remove-cart-item/"+id);
+    return api.delete("/customer/remove-cart-item/" + id);
 }
 
 export const setTrouserMeasurements = async (measurements) => {

@@ -2,45 +2,65 @@ import OrderRecord from "./OrderRecord";
 import SearchBox from "../Assistant/HeaderSearchBox"
 import DropDownFilter from "../Assistant/HeaderDropDown"
 import Pagination from "../Assistant/Pagination"
+import { getPurchaseOrders } from "../../api/purchaseOrdersAPI";
+import { useState, useEffect } from "react";
 
 const ViewOrders = () => {
-    const records = [
-        {
-            orderId: "1",
-            customerId: "Malini Fonseka",
-            itemCount: "5",
-            totalAmount: "60000",
-            status: "completed",
-        },
-        {
-            orderId: "2",
-            customerId: "Siril Piyadasa",
-            itemCount: "2",
-            totalAmount: "25000",
-            status: "Pending",
-        },
-        {
-            orderId: "3",
-            customerId: "Anne Perera",
-            itemCount: "3",
-            totalAmount: "56000",
-            status: "Processing",
-        },
-        {
-            orderId: "4",
-            customerId: "James Peiris",
-            itemCount: "8",
-            totalAmount: "250000",
-            status: "Completed",
-        },
-        {
-            orderId: "5",
-            customerId: "Rakisa Jayaweera",
-            itemCount: "1",
-            totalAmount: "15750",
-            status: "Pending",
-        },
-    ];
+
+    const [records, setRecords] = useState([]);
+
+    useEffect(() => {
+        const getRecords = async () => {
+            try {
+                const recordsFromServer = await getPurchaseOrders();
+                setRecords(recordsFromServer.data);
+                console.log(recordsFromServer.data);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+
+        getRecords();
+    }, []);
+
+
+    // const records = [
+    //     {
+    //         orderId: "1",
+    //         customerId: "Malini Fonseka",
+    //         itemCount: "5",
+    //         totalAmount: "60000",
+    //         status: "completed",
+    //     },
+    //     {
+    //         orderId: "2",
+    //         customerId: "Siril Piyadasa",
+    //         itemCount: "2",
+    //         totalAmount: "25000",
+    //         status: "Pending",
+    //     },
+    //     {
+    //         orderId: "3",
+    //         customerId: "Anne Perera",
+    //         itemCount: "3",
+    //         totalAmount: "56000",
+    //         status: "Processing",
+    //     },
+    //     {
+    //         orderId: "4",
+    //         customerId: "James Peiris",
+    //         itemCount: "8",
+    //         totalAmount: "250000",
+    //         status: "Completed",
+    //     },
+    //     {
+    //         orderId: "5",
+    //         customerId: "Rakisa Jayaweera",
+    //         itemCount: "1",
+    //         totalAmount: "15750",
+    //         status: "Pending",
+    //     },
+    // ];
 
     return (
         <div>
@@ -89,8 +109,8 @@ const ViewOrders = () => {
                                 {records.map((item, index) => (
                                     <OrderRecord
                                         OrderId={item.orderId}
-                                        CustomerId={item.customerId}
-                                        ItemCount={item.itemCount}
+                                        CustomerId={item.customerName}
+                                        ItemCount={item.quantity}
                                         Amount={item.totalAmount}
                                         Status={item.status}
                                         key={index}
@@ -103,7 +123,6 @@ const ViewOrders = () => {
                     <div className=" w-full border h-0 mt-3 mb-6 border-gray-200"></div>
 
                 </div>
-                {/* <div><Records /></div> */}
                 <div className=" flex justify-between">
                     <div className=" py-3 text-sm font-medium text-neutral-400">Showing data 1 to 8 of 256K entries</div>
                     <div className=" py-3">
