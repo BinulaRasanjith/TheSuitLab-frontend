@@ -22,7 +22,7 @@ const SuitDescription = () => {
 		price: 0,
 	}); // Create state variable for suit details
 	const [selectedImage, setSelectedImage] = useState("");
-	const [selectedItems, setSelectedItems] = useState([]); // [{size: quantity}]
+	const [selectedItems, setSelectedItems] = useState({}); // [{size: quantity}]
 	// const [quantity, setQuantity] = useState([]);
 	const [fromDate, setFromDate] = useState(null);
 	const [toDate, setToDate] = useState(null);
@@ -39,68 +39,49 @@ const SuitDescription = () => {
 			});
 	}, [suitId]);
 
-	// const handleDecrement = () => {
-	// 	if (quantity > 1) {
-	// 		setQuantity(quantity - 1);
-	// 	}
-	// };
-
-	// const handleIncrement = () => {
-	// 	setQuantity(quantity + 1);
-	// };
-
-	// const [selectedSize, setSelectedSize] = useState("Medium"); // Initialize with the default size
-
-	// const handleSizeClick = (size) => {
-	// 	setSelectedSize(size);
-	// };
-
 	const handleImageClick = (image) => {
 		setSelectedImage(image);
 	};
 
 	const handleAddToItems = (size) => {
-		// [{size1: quantity1}, {size2: quantity2}, {size3: quantity3}]
+		// {size1: quantity1, size2: quantity2, size3: quantity3}
 		// increase item quantity if already in cart else add 1 to quantity
-		const item = selectedItems.find((item) => item.size === size);
+		const item = selectedItems[size];
+
 		if (item) {
-			// if item exists in items
-			// increase quantity
-			if (
-				item.quantity <
-				suitDetails.size.find((item) => item.size === size).quantity
-			) {
-				item.quantity += 1;
-			} else if (
-				item.quantity ===
-				suitDetails.size.find((item) => item.size === size).quantity
-			) {
+			// item already in cart & does not exceed the available quantity
+			if (item < suitDetails.size[size]) {
+				setSelectedItems({ ...selectedItems, [size]: item + 1 });
+			} else {
 				toast({
-					title: "Out of Stock",
-					status: "info",
+					title: "Error",
+					description: "Item quantity exceeds the available quantity",
+					status: "warning",
 					duration: 3000,
 					isClosable: true,
 				});
 			}
 		} else {
-			// add new item to cart
-			setSelectedItems([...selectedItems, { size, quantity: 1 }]);
+			setSelectedItems({ ...selectedItems, [size]: 1 });
 		}
 	};
 
 	const handleRemoveFromItems = (size) => {
-		// [{size1: quantity1}, {size2: quantity2}, {size3: quantity3}]
-		// decrease item quantity if already in cart
-		const item = selectedItems.find((item) => item.size === size);
+		// decrease item quantity if already in cart else do nothing
+		const item = selectedItems[size];
+
 		if (item) {
-			// if item exists in cart
-			// decrease quantity
-			if (item.quantity > 1) {
-				item.quantity -= 1;
+			// item already in cart & does not exceed the available quantity
+			if (item > 0) {
+				setSelectedItems({ ...selectedItems, [size]: item - 1 });
 			} else {
-				// remove item from cart
-				console.log("remove item from cart");
-				setSelectedItems(selectedItems.filter((item) => item.size !== size));
+				toast({
+					title: "Error",
+					description: "Item quantity cannot be less than 0",
+					status: "warning",
+					duration: 3000,
+					isClosable: true,
+				});
 			}
 		}
 	};
@@ -266,10 +247,7 @@ const SuitDescription = () => {
 															>
 																-
 															</button>
-															<p>
-																{selectedItems.find((item) => item.size === key)
-																	?.quantity || 0}
-															</p>
+															<p>{selectedItems[key]}</p>
 															<button onClick={() => handleAddToItems(key)}>
 																+
 															</button>
