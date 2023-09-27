@@ -38,13 +38,13 @@ import {
 	getCourtMeasurementObject,
 	getTrouserMeasurementObject,
 } from "../../utils/measurements";
-
+import { selectUser } from "../../store/slices/authSlice";
 
 const CustomSizes = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const toast = useToast();
-
+	const user = useSelector(selectUser);
 
 	const { isOpen, onOpen, onClose } = useDisclosure()
 	const initialRef = React.useRef()
@@ -114,6 +114,9 @@ const CustomSizes = () => {
 		});
 	};
 
+	const [coatMeasurementsInInch, setCoatMeasurementsInInch] = useState({});
+	const [pantMeasurementsInInch, setPantMeasurementsInInch] = useState({});
+
 	// handle save button
 	const handleSave = () => {
 		// check if all fields filled
@@ -148,10 +151,12 @@ const CustomSizes = () => {
 		// save in the backend
 		if (selectedCategory === "jacket" || selectedCategory === "all") {
 			// save coat measurements
-			const coatMeasurementsInInch = getCourtMeasurementObject(
-				coatMeasurements,
-				selectedCategory
-			);
+			setCoatMeasurementsInInch(
+				getCourtMeasurementObject(
+					coatMeasurements,
+					selectedUnit
+				)
+			)
 			setCoatMeasurementsAPI(coatMeasurementsInInch)
 				.then((res) => {
 					console.log(res);
@@ -187,10 +192,12 @@ const CustomSizes = () => {
 
 		if (selectedCategory === "pant" || selectedCategory === "all") {
 			// save pant measurements
-			const pantMeasurementsInInch = getTrouserMeasurementObject(
-				pantMeasurements,
-				selectedCategory
-			);
+			setPantMeasurementsInInch(
+				getTrouserMeasurementObject(
+					pantMeasurements,
+					selectedUnit
+				)
+			)
 			setTrouserMeasurementsAPI(pantMeasurementsInInch)
 				.then((res) => {
 					if (res.status === 200 || res.status === 201) {
@@ -224,28 +231,38 @@ const CustomSizes = () => {
 	const handleGoToCart = async () => {
 		// TODO: check if options all selected
 
+		handleSave();
 		await addNewCostumeToItemModel({
-			itemType:"CustomSuit",
+			itemType: "CustomSuit",
 			price: 1000,
-			quantity: 1,
+			quantity: inputValue,
 			status: "available",
 		}).then((res) => {
-			// console.log(res.data);
-            addCustomSuitToCartAPI({
-				description:{
+			console.log(res.data);
+			addCustomSuitToCartAPI({
+				description: {
 					type: CUSTOM,
 					customization: jacket,
+				},
+				measurement: {
+					coatMeasurementsInInch,
+					pantMeasurementsInInch
 				},
 				customerId: user.id,
 				itemId: res.data.itemId,
 				price: 1000, // TODO: calculate price
-				quantity: 1,
+				quantity: inputValue,
 				status: "available",
+
+			}).then((res) => {
+
+				navigate("/customer/cart");
+			}).catch((err) => {
+				console.log(err);
 			});
 		}).catch((err) => {
 			console.log(err);
 		});
-		 navigate("/customer/cart");
 	};
 
 	// back button
@@ -429,14 +446,14 @@ const CustomSizes = () => {
 					<MdOutlineArrowBackIosNew className="mr-2 text-md" />
 					Back to design
 				</button>
-				<button
+				{/* <button
 					type="button"
 					onClick={handleSave}
 					className="m-5 flex items-center justify-center w-48 rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
 				>
 					<LuSave className="mr-2 text-xl" />
 					Save
-				</button>
+				</button> */}
 				{/* <button
 					onClick={handleGoToCart}
 					type="button"
@@ -446,6 +463,7 @@ const CustomSizes = () => {
 					<FaShoppingCart className="ml-2 text-xl" />
 				</button> */}
 				<button
+					
 					onClick={onOpen}
 					type="button"
 					className="m-5 flex items-center justify-center w-48 rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
@@ -478,6 +496,7 @@ const CustomSizes = () => {
 							<Button onClick={handleGoToCart} colorScheme="blue" mr={3} disabled={isAddButtonDisabled}>
 								<FaShoppingCart className="mr-2 text-xl" />
 								Add to cart
+
 							</Button>
 
 						</ModalFooter>

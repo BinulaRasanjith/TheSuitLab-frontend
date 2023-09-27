@@ -114,21 +114,24 @@ const Cart = () => {
 										<tr key={item.id}
 											className="flex items-center text-center border hover:bg-gray-300 text-black font-medium py-3 rounded-lg">
 											<td className="w-32">{item.id}</td>
-											<td className="w-40 text-left"><p>{(() => {
-												try {
-													const description = JSON.parse(item.description);
-													console.log(description);
+											<td className="w-40 text-left">
+												{/* <p>{(() => {
+													try {
+														const description = JSON.parse(item.description);
+														console.log(description);
 
-													if (description.type === CUSTOM) {
-														return Object.entries(description.customization).map(([key, value]) => (
-															<p key={key}>{key}: {value}</p>
-														));
+														if (description.type === CUSTOM) {
+															return Object.entries(description.customization).map(([key, value]) => (
+																<p key={key}>{key}: {value}</p>
+															));
+														}
+													} catch (error) {
+														console.error("JSON Parsing Error:", error)
+														return 'Invalid JSON';
 													}
-												} catch (error) {
-													console.error("JSON Parsing Error:", error)
-													return 'Invalid JSON';
-												}
-											})()}</p></td>
+												})()}</p> */}
+												{item.measurement.con}
+											</td>
 											<td className="w-32">{
 												item.price === MEASUREMENTS_TO_BE_ADDED ? "To be added" : item.price
 											}</td>
