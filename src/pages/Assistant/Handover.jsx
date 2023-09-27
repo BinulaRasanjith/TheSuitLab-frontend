@@ -1,6 +1,7 @@
 import DropDownFilter from "../../components/Assistant/Controls/HeaderDropDown";
 import SearchBox from "../../components/Assistant/Controls/HeaderSearchBox";
 import Pagination from "../../components/Assistant/Controls/Pagination";
+import NewHandoverForm from "../../components/Assistant/Forms/HandoverDamagesForm";
 import Handovers from "../../components/Assistant/HandoveredItemSet";
 
 const Handover = () => {
@@ -45,6 +46,10 @@ const Handover = () => {
 						<Pagination />
 					</div>
 				</div>
+			</div>
+
+			<div className={`relative `}>
+				<NewHandoverForm />
 			</div>
 
 			{/* <div className=" flex justify-center w-full">

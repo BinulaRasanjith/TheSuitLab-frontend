@@ -10,6 +10,7 @@ import img5 from "../../assets/images/rentsuits/maroon suit/1.webp"
 import img4 from "../../assets/images/rentsuits/pants/dark blue.webp"
 import img7 from "../../assets/images/rentsuits/white palma suit/1.webp"
 import CardContainer from "../../components/Assistant/CardContainer"
+import NewHireCostume from "../../components/Assistant/Forms/NewHireCostumeForm"
 import HiringItemCard from "../../components/Assistant/HiringItemCard"
 
 const hiringcostumes = [
@@ -65,40 +66,49 @@ const hiringcostumes = [
 
 const Hiring = () => {
 	return (
-		<div className=" flex flex-col justify-between mx-10 my-8 border border-solid border-zinc-950 border-opacity-0 rounded-lg">
-            <div className=" flex items-center justify-between my-4">
-				<div className="text-xl font-semibold">Hire costume</div>
-				<Button
-					_hover={
-						{
-							bgColor: 'primary.100',
-							color: 'primary.200'
+		<div>
+			<div className=" flex flex-col justify-between mx-10 my-8 border border-solid border-zinc-950 border-opacity-0 rounded-lg">
+				<div className=" flex items-center justify-between my-4">
+					<div className="text-xl font-semibold">Hire costume</div>
+					<Button
+						_hover={
+							{
+								bgColor: 'primary.100',
+								color: 'primary.200'
+							}
 						}
-					}
-					bgColor={'primary.100'}
-					color={'primary.200'}
-					leftIcon={<AiFillPlusCircle />}
-					m={0}
-					rounded={'full'}
+						bgColor={'primary.100'}
+						color={'primary.200'}
+						leftIcon={<AiFillPlusCircle />}
+						m={0}
+						rounded={'full'}
 
-				>
-					Add new
-				</Button>
+					>
+						Add new
+					</Button>
+				</div>
+
+
+				<CardContainer>
+					{hiringcostumes.map((costume, index) => {
+						return (
+							<HiringItemCard
+								image={costume.image}
+								key={index}
+								materialName={costume.costumeName}
+								supplierID={costume.designType}
+							/>
+						)
+					})}
+				</CardContainer>
 			</div>
 
-
-			<CardContainer>
-				{hiringcostumes.map((costume, index) => {
-					return (
-						<HiringItemCard
-							image={costume.image}
-							key={index}
-							materialName={costume.costumeName}
-							supplierID={costume.designType}
-						/>
-					)
-				})}
-			</CardContainer>
+			{/* <div className={`relative  ${isNewAccessoryForm ? "block" : "hidden"}`}> */}
+			<div className={`relative  block`}>
+				{/* <NewHireCostume isOpen={isNewAccessoryForm} onClose={handleFormClose} /> */}
+				<NewHireCostume />
+			</div>
+			
 		</div>
 	)
 }

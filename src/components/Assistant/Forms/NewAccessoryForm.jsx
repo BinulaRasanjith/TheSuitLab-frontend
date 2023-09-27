@@ -131,6 +131,7 @@ const NewAccessoryForm = ({ isOpen, onClose }) => {
                                     <Select
                                         placeholder='Accessory Type'
                                         size="lg"
+                                        fontSize="sm"
                                         id="accesory-type"
                                         name="accessoryType"
                                         value={newAccessoryData.accessoryType}
