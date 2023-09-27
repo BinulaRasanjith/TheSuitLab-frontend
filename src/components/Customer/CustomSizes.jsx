@@ -17,7 +17,7 @@ import { useEffect, useState } from "react";
 import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { IoArrowBackCircle } from "react-icons/io5";
-import { LuSave } from "react-icons/lu";
+// import { LuSave } from "react-icons/lu";
 import { MdNavigateNext } from "react-icons/md";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { useSelector } from "react-redux";
@@ -63,6 +63,7 @@ const CustomSizes = () => {
 	const finalRef = React.useRef();
 	const [inputValue, setInputValue] = useState("");
 	const [isAddButtonDisabled, setIsAddButtonDisabled] = useState(true);
+
 	const handleInputChange = (e) => {
 		const value = e.target.value;
 
@@ -287,10 +288,10 @@ const CustomSizes = () => {
 			location.pathname.includes("/customize-suit/jacket")
 				? "/customer/customize-suit/jacket/measurements"
 				: location.pathname.includes("/customize-suit/pant")
-				? "/customer/customize-suit/pant/measurements"
-				: location.pathname.includes("/customize-suit/all")
-				? "/customer/customize-suit/all/measurements"
-				: "/customer/customize-measurements"
+					? "/customer/customize-suit/pant/measurements"
+					: location.pathname.includes("/customize-suit/all")
+						? "/customer/customize-suit/all/measurements"
+						: "/customer/customize-measurements"
 		);
 
 	return (

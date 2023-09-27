@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { BiSolidColor } from "react-icons/bi";
 import { GiRolledCloth } from "react-icons/gi";
 import { PiPantsFill } from "react-icons/pi";
@@ -85,6 +86,36 @@ const sidebarItems = [
 ];
 
 const FullCostumeMeasurementLayout = () => {
+
+    // This function will be called when the user attempts to refresh the page
+    const handleBeforeUnload = (e) => {
+        e.preventDefault();
+        e.returnValue = ''; // This text will be displayed in the confirmation dialog
+
+        // You can customize the warning message here
+        const confirmationMessage = 'Are you sure you want to leave this page?';
+
+        // Display a confirmation dialog
+        if (window.confirm(confirmationMessage)) {
+            // The user clicked "OK," so allow the refresh
+            e.returnValue = undefined;
+        } else {
+            // The user clicked "Cancel," so prevent the refresh
+            e.returnValue = '';
+        }
+    };
+
+    useEffect(() => {
+        // Add the beforeunload event listener when the component mounts
+        window.addEventListener('beforeunload', handleBeforeUnload);
+
+        // Remove the beforeunload event listener when the component unmounts
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+    }, []);
+
+
     return (
         <>
             <Sidebar items={sidebarItems} />
