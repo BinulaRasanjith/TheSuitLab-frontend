@@ -158,19 +158,41 @@ const StandardSizes = () => {
 	};
 
 	const handleGoToCart = async () => {
-		// TODO: check if options all selected
-
-		await addCustomSuitToCartAPI({
-			description: "Custom Suit",
-			price: 1000, // TODO: calculate price
-			type: STANDARD,
-			size: selectedSize,
+		await addNewCostumeToItemModel({
+			itemType:"CustomSuit",
+			price: 1000,
 			quantity: 1,
-			selection: jacket,
+			status: "available",
+		}).then((res) => {
+			// console.log(res.data);
+            addCustomSuitToCartAPI({
+				description:{
+					type: CUSTOM,
+					customization: jacket,
+				},
+				customerId: user.id,
+				itemId: res.data.itemId,
+				price: 2000, // TODO: calculate price
+				quantity: 1,
+				status: "available",
+			});
+		}).catch((err) => {
+			console.log(err);
 		});
+		 navigate("/customer/cart");
+	// 	// TODO: check if options all selected
 
-		navigate("/customer/cart");
-	};
+	// 	await addCustomSuitToCartAPI({
+	// 		description: "Custom Suit",
+	// 		price: 1000, // TODO: calculate price
+	// 		type: STANDARD,
+	// 		size: selectedSize,
+	// 		quantity: 1,
+	// 		selection: jacket,
+	// 	});
+
+	// 	navigate("/customer/cart");
+	 };
 
 	return (
 		<div className={`flex flex-col flex-wrap`}>

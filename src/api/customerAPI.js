@@ -8,10 +8,18 @@ export const addCustomSuitToCart = async (cartItem) => {
     return api.post("/customer/add-custom-suit-to-cart", cartItem);
 }
 
+export const addNewCostumeToItemModel = async ({ itemType, price, quantity, status }) => {
+    return api.post("/customer/add-new-costume-to-item-model", { itemType, price, quantity, status });
+}
+
 // export const removeFromCart = async (cartItem) => { }
 
 export const getCart = async () => {
     return api.get("/customer/cart");
+}
+
+export const removeCartItem = async (id) => {
+    return api.delete("/customer/remove-cart-item/"+id);
 }
 
 export const setTrouserMeasurements = async (measurements) => {

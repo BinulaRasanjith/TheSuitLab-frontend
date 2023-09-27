@@ -9,6 +9,7 @@ import { addCustomSuitToCart as addCustomSuitToCartAPI } from "../../api/custome
 import {
 	getCoatMeasurements,
 	getTrouserMeasurements,
+	addNewCostumeToItemModel
 } from "../../api/customerAPI";
 import FullShoulderWidth from "../../assets/images/measurements/men_size_1 (1).jpg";
 import Sleeves from "../../assets/images/measurements/men_size_2.jpg";
@@ -114,17 +115,29 @@ const CurrentSizes = () => {
 
 	const handleAddToCart = async () => {
 		// TODO: check if selected all jacket options
-
-		await addCustomSuitToCartAPI({
-			customerId: user.id,
-			itemId: jacket.id,
-			description: "Custom Suit",
-			price: 1000, // TODO: calculate price
+		// console.log(jacket);
+		await addNewCostumeToItemModel({
+			itemType:"CustomSuit",
+			price: 1000,
 			quantity: 1,
-			type: CUSTOM,
-			selection: jacket,
+			status: "available",
+		}).then((res) => {
+			// console.log(res.data);
+            addCustomSuitToCartAPI({
+				description:{
+					type: CUSTOM,
+					customization: jacket,
+				},
+				customerId: user.id,
+				itemId: res.data.itemId,
+				price: 1000, // TODO: calculate price
+				quantity: 1,
+				status: "available",
+			});
+		}).catch((err) => {
+			console.log(err);
 		});
-		navigate("/customer/cart");
+		 navigate("/customer/cart");
 	};
 
 	return (
