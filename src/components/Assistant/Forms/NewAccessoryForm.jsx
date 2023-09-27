@@ -94,16 +94,17 @@ const NewAccessoryForm = ({ isOpen, onClose }) => {
 
             <div className="fixed top-16 bottom-0 right-0 left-0 z-40 flex flex-col items-center justify-center">
                 <div className=" z-50 m-8 rounded-lg bg-white p-8 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
-                    <div className="relative flex justify-end mb-3" onClick={onClose}>
-                        <AiFillCloseCircle size={24} />
+                    <div className="flex justify-between gap-x-4">
+                        <div className="mb-12 text-2xl font-bold">
+                            New Accessory
+                        </div>
+                        <div className="mt-1"><AiFillCloseCircle onClick={onClose} size={24} /></div>
                     </div>
-                    {/* <form> */}
-                    <form onSubmit={handleAddUserClick}>
 
+                    <form onSubmit={handleAddUserClick}>
                         <div className=' flex gap-x-10'>
 
                             <div className='w-64'>
-                                {/* <!--Name input--> */}
                                 <div className="relative mb-6" data-te-input-wrapper-init>
                                     <Input
                                         type="text"
@@ -126,7 +127,6 @@ const NewAccessoryForm = ({ isOpen, onClose }) => {
                                         className="mb-6"
                                     />
                                 </div>
-                                {/* <!--Message textarea--> */}
                                 <div className="relative mb-6" data-te-input-wrapper-init>
                                     <Select
                                         placeholder='Accessory Type'
@@ -233,7 +233,6 @@ const NewAccessoryForm = ({ isOpen, onClose }) => {
                                 </div>
 
                             </div>
-
                         </div>
 
 

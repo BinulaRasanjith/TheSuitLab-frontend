@@ -9,8 +9,6 @@ const NewReturnForm = ({ isOpen, onClose }) => {
 	const [newCustomer, setNewCustomer] = useState({
 		firstName: "",
 		lastName: "",
-		// orderedDate: null,
-		// itemCount: null,
 		mobileNo: "",
 	});
 
@@ -32,19 +30,19 @@ const NewReturnForm = ({ isOpen, onClose }) => {
 
 	return (
 		<div className={`relative  ${isOpen ? "block" : "hidden"}`}>
-			{/* <div className={`relative  ${isOpen ? 'block' : 'hidden'}`} onClick={onClose}> */}
-			{/* <div className="relative"> */}
 
 			<div className="fixed left-0 right-0 bottom-0 top-0 z-40 opacity-30 bg-black"></div>
 
 			<div className="fixed top-16 bottom-0 right-0 left-0 z-40 flex flex-col items-center justify-center">
 				<div className=" z-50 m-8 max-w-md w-96 rounded-lg bg-white p-8 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
-					<div className="relative flex justify-end mb-3" onClick={onClose}>
-						<AiFillCloseCircle size={24} />
-					</div>
+					<div className="flex justify-between gap-x-4">
+                        <div className="mb-12 text-2xl font-bold">
+                            New Customer
+                        </div>
+                        <div className="mt-1"><AiFillCloseCircle onClick={onClose} size={24} /></div>
+                    </div>
 					{/* <form> */}
 					<form onSubmit={handleAddUserClick}>
-						{/* <!--Name input--> */}
 						<div className="relative mb-6" data-te-input-wrapper-init>
 							<Input
 								type="text"
@@ -58,7 +56,7 @@ const NewReturnForm = ({ isOpen, onClose }) => {
 						</div>
 						<div>
 							<Input
-								type="date"
+								type="text"
 								placeholder="Last Name"
 								id="lastname"
 								name="lastName"
@@ -67,11 +65,9 @@ const NewReturnForm = ({ isOpen, onClose }) => {
 								className="mb-6"
 							/>
 						</div>
-
-						{/* <!--Email input--> */}
 						<div className="relative mb-6" data-te-input-wrapper-init>
 							<Input
-								type="number"
+								type="text"
 								placeholder="Mobile Number"
 								id="mobile"
 								name="mobileNo"
@@ -81,20 +77,6 @@ const NewReturnForm = ({ isOpen, onClose }) => {
 							/>
 						</div>
 
-						{/* <!--Message textarea--> */}
-						<div className="relative mb-6" data-te-input-wrapper-init>
-							<Input
-								type="text"
-								placeholder="Reason for returning"
-								id="reason"
-								name="reason"
-								value={newCustomer.reason}
-								onChange={handleInputChange}
-								className="mb-6"
-							/>
-						</div>
-
-						{/* <!--Submit button--> */}
 						<button
 							type="submit"
 							className="dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]] inline-block w-full rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"

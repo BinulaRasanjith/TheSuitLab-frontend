@@ -1,5 +1,6 @@
 import { Button } from "@chakra-ui/react"
 import { useState } from "react"
+import { AiFillPlusCircle } from "react-icons/ai"
 
 import ReturnFixConfForm from "../../components/Assistant/Confirmations/ReturnFixConfForm";
 import DropDownFilter from "../../components/Assistant/Controls/HeaderDropDown";
@@ -12,11 +13,11 @@ const Returns = () => {
 	const [isNewReturnForm, addNewReturn] = useState(false);
 
 	const handleFormClose = () => {
-		addNewReturn(false); // Set isNewReturnForm to false to close the form
+		addNewReturn(false);
 	};
 
 	const handleFormOpen = () => {
-		addNewReturn(true); // Set isNewReturnForm to false to close the form
+		addNewReturn(true);
 	};
 
 	return (
@@ -36,6 +37,25 @@ const Returns = () => {
 						<div>
 							<DropDownFilter />
 						</div>
+						<div>
+							<Button
+								_hover={
+									{
+										bgColor: 'primary.200',
+										color: 'primary.100'
+									}
+								}
+								bgColor={'primary.100'}
+								color={'primary.200'}
+								leftIcon={<AiFillPlusCircle />}
+								rounded={'full'}
+								height={'36px'}
+								onClick={handleFormOpen}
+
+							>
+								New Inquery
+							</Button>
+						</div>
 					</div>
 				</div>
 				<div className=" flex flex-col">
@@ -52,9 +72,6 @@ const Returns = () => {
 					<Returnset />
 				</div>
 				<div className=" flex my-4 justify-center">
-					<Button colorScheme="gray" onClick={handleFormOpen} size="md">
-						New Inquery
-					</Button>
 					{/* <Button colorScheme='gray' onClick={() => addNewReturn(!isNewReturnForm)} size='md'>New Inquery</Button> */}
 				</div>
 				<div className=" flex justify-between">
@@ -74,13 +91,7 @@ const Returns = () => {
 			<div className={`relative  hidden`}>
 				<ReturnFixConfForm />
 			</div>
-			{/* <div className={`relative  ${isNewReturnForm ? 'block' : 'hidden'}`}><NewReturnForm onClose={handleFormClose} /></div> */}
 
-			{/* <div className=" flex justify-center w-full">
-                <div className=" flex flex-col justify-center h-screen">
-                    <div className=" text-4xl font-semibold text-zinc-400">This returns page is under development :(</div>
-                </div>
-            </div> */}
 		</div>
 	);
 };

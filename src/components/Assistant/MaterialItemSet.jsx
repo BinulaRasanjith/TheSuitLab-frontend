@@ -1,6 +1,8 @@
+import PropTypes from "prop-types";
+
 import MaterialRecord from "./MaterialRecord";
 
-const RentedItems = () => {
+const MaterialsRecords = ({ onOpen }) => {
     const records = [
         {
             mat_name: "Linen",
@@ -42,10 +44,15 @@ const RentedItems = () => {
                     CustomerMobile={item.sup_id}
                     BorrowedDate={item.sup_mobile}
                     HandoverDate={item.last_order}
+                    onOpen={() => onOpen(item.mat_code, item.mat_name)}
                 />
             ))}
         </div>
     );
 };
 
-export default RentedItems;
+MaterialsRecords.propTypes = {
+    onOpen: PropTypes.func.isRequired,
+};
+
+export default MaterialsRecords;

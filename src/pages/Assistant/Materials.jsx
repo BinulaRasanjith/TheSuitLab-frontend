@@ -8,10 +8,29 @@ import MaterialItems from '../../components/Assistant/MaterialItemSet'
 
 const Materials = () => {
     const [isStockUpdate, updateMatStock] = useState(false);
+    const [selectedMaterial, setSelectedMaterial] = useState({
+        code: null,
+        name: null,
+    });
 
-	const handleFormClose = () => {
-		updateMatStock(false); // Set isNewReturnForm to false to close the form
-	};
+    const handleFormOpen = (materialCode, materialName) => {
+        setSelectedMaterial({ code: materialCode, name: materialName });
+        updateMatStock(true);
+    };
+
+    const handleFormClose = () => {
+        setSelectedMaterial({ code: null, name: null });
+        updateMatStock(false);
+    };
+
+
+	// const handleFormOpen = () => {
+	// 	updateMatStock(true);
+	// };
+
+    // const handleFormClose = () => {
+	// 	updateMatStock(false);
+	// };
 
     return (
         <div>
@@ -42,7 +61,7 @@ const Materials = () => {
                     <div className=" w-full border h-0 mt-3 mb-6 border-gray-200"></div>
 
                 </div>
-                <div><MaterialItems /></div>
+                <div><MaterialItems onOpen={handleFormOpen} /></div>
                 <div className=" flex justify-between">
                     <div className=" py-3 text-sm font-medium text-neutral-400">Showing data 1 to 8 of 256K entries</div>
                     <div className=" py-3">
@@ -52,7 +71,12 @@ const Materials = () => {
             </div>
 
             <div className={`relative  ${isStockUpdate ? "block" : "hidden"}`}>
-				<MaterialStockUpdateForm isOpen={isStockUpdate} onClose={handleFormClose} />
+				<MaterialStockUpdateForm
+                    isOpen={isStockUpdate}
+                    onClose={handleFormClose}
+                    materialCode={selectedMaterial.code}
+                    materialName={selectedMaterial.name}
+                    />
 			</div>
 
 

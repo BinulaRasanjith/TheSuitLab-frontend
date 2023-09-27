@@ -1,4 +1,5 @@
 import { Button } from "@chakra-ui/react"
+import { useState } from "react"
 import { AiFillPlusCircle } from 'react-icons/ai'
 
 import img1 from "../../assets/images/rentsuits/black paisley suit/1.webp"
@@ -65,8 +66,19 @@ const hiringcostumes = [
 ]
 
 const Hiring = () => {
+
+	const [isNewCostumeForm, addNewCostume] = useState(false);
+
+	const handleFormClose = () => {
+		addNewCostume(false); // SET `isNewCostumeForm` TO FALSE TO CLOSE THE FORM
+	};
+
+	const handleFormOpen = () => {
+		addNewCostume(true); // SET `isNewCostumeForm` TO TRUE TO OPEN THE FORM
+	};
+
 	return (
-		<div>
+		<div className="relative">
 			<div className=" flex flex-col justify-between mx-10 my-8 border border-solid border-zinc-950 border-opacity-0 rounded-lg">
 				<div className=" flex items-center justify-between my-4">
 					<div className="text-xl font-semibold">Hire costume</div>
@@ -82,6 +94,7 @@ const Hiring = () => {
 						leftIcon={<AiFillPlusCircle />}
 						m={0}
 						rounded={'full'}
+						onClick={handleFormOpen}
 
 					>
 						Add new
@@ -103,10 +116,9 @@ const Hiring = () => {
 				</CardContainer>
 			</div>
 
-			{/* <div className={`relative  ${isNewAccessoryForm ? "block" : "hidden"}`}> */}
-			<div className={`relative  block`}>
-				{/* <NewHireCostume isOpen={isNewAccessoryForm} onClose={handleFormClose} /> */}
-				<NewHireCostume />
+			<div className={`relative  ${isNewCostumeForm ? "block" : "hidden"}`}>
+				{/* PASS `isNewCostumeForm` VARIABLE AND `handleFormClose` FUNCTION TO THE FORM TO OPEN/CLOSE IT */}
+				<NewHireCostume isOpen={isNewCostumeForm} onClose={handleFormClose} />
 			</div>
 			
 		</div>

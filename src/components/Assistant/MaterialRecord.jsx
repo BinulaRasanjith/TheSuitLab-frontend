@@ -1,6 +1,6 @@
 import { Button } from '@chakra-ui/react'
 import PropTypes from "prop-types";
-import { useState } from 'react';
+// import { useState } from 'react';
 
 
 const MaterialRecord = ({
@@ -9,12 +9,13 @@ const MaterialRecord = ({
     CustomerMobile,
     BorrowedDate,
     HandoverDate,
+    onOpen,
 }) => {
-    const [, updateMatStock] = useState(false);
+    // const [, updateMatStock] = useState(false);
 
-	const handleFormOpen = () => {
-		updateMatStock(true); // Set isNewReturnForm to false to close the form
-	};
+	// const handleFormOpen = () => {
+	// 	updateMatStock(true); // Set isNewReturnForm to false to close the form
+	// };
 
     return (
         <>
@@ -34,7 +35,7 @@ const MaterialRecord = ({
                         border={'1px'}
                         borderColor={'#6B9DCA'}
                         height={'2rem'}
-                        onClick={handleFormOpen} 
+                        onClick={onOpen} 
                         textColor={'#6B9DCA'}
                         width={'5.5rem'}>Update</Button>
                 </div>
@@ -50,6 +51,7 @@ MaterialRecord.propTypes = {
     CustomerMobile: PropTypes.object.isRequired,
     BorrowedDate: PropTypes.object.isRequired,
     HandoverDate: PropTypes.number.isRequired,
+    onOpen: PropTypes.func.isRequired,
 };
 
 export default MaterialRecord;
