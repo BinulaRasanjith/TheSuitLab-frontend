@@ -1,7 +1,6 @@
-const calculateFabricAmount = (measurements, unit, costumeType) => {
+export const calculateFabricAmount = (measurements, unit, costumeType) => {
   // Conversion factors for inch and centimeter
   const inchToCm = 2.54;
-  //---------------------------------------------------------------------------------------------------
 
   // Convert measurements to a consistent unit (e.g., inch)
   const convertedMeasurements = {};
@@ -10,6 +9,7 @@ const calculateFabricAmount = (measurements, unit, costumeType) => {
     convertedMeasurements[measurement] =
       unit === "inch" ? value : value * inchToCm; // Convert to inches if in cm
   }
+  //---------------------------------------------------------------------------------------------------
 
   // Define fabric requirements for each type of costume (in square units)
   const fabricRequirements = {
@@ -75,12 +75,35 @@ const calculateFabricAmount = (measurements, unit, costumeType) => {
   //----------------------------------------------------------------------------------------------------------
 
   // Calculate the fabric amount based on the costume type
-  const fabricAmount = fabricRequirements[costumeType].fabricAmount;
+  const fabricAmount = fabricRequirements[costumeType].fabricAmount(
+    convertedMeasurements
+  );
 
   return unit === "inch" ? fabricAmount : fabricAmount / inchToCm; // Convert back to cm if needed
 };
 
-export default calculateFabricAmount;
+export const calculateTotalFabricPrice = (
+  unitPriceOfWhole,
+  unitPriceOfPocket,
+  wholeFabricAmount,
+  costumeType
+) => {
+  // Define fabric prices for each type of costume (in square units)
+  let totalFabricPrice = 0;
+
+  if (costumeType === "jacket") {
+    totalFabricPrice =
+      unitPriceOfWhole * wholeFabricAmount + unitPriceOfPocket * 30;
+  } else if (costumeType === "pant") {
+    totalFabricPrice =
+      unitPriceOfWhole * wholeFabricAmount + unitPriceOfPocket * 20;
+  } else if (costumeType === "both") {
+    totalFabricPrice =
+      unitPriceOfWhole * wholeFabricAmount + unitPriceOfPocket * 50;
+  }
+
+  return totalFabricPrice;
+};
 
 // //me widiyt thma meka wada karanne ballo.
 // // Example usage:
