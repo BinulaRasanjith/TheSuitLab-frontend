@@ -123,7 +123,6 @@ const ViewOrders = () => {
                     <div className=" w-full border h-0 mt-3 mb-6 border-gray-200"></div>
 
                 </div>
-                {/* <div><Records /></div> */}
                 <div className=" flex justify-between">
                     <div className=" py-3 text-sm font-medium text-neutral-400">Showing data 1 to 8 of 256K entries</div>
                     <div className=" py-3">
