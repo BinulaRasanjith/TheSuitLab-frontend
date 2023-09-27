@@ -1,9 +1,9 @@
-import { useToast, Button } from "@chakra-ui/react";
-import { useEffect, useState, useNa } from "react";
+import { Button, useToast } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { HiOutlineCalendar } from "react-icons/hi";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { addToCart as addToCartAPI } from "../../api/customerAPI";
 import { getHireCostume } from "../../api/hireCostumesAPI";
@@ -63,11 +63,18 @@ const SuitDescription = () => {
 		// [{size1: quantity1}, {size2: quantity2}, {size3: quantity3}]
 		// increase item quantity if already in cart else add 1 to quantity
 		const item = selectedItems.find((item) => item.size === size);
-		if (item) { // if item exists in items
+		if (item) {
+			// if item exists in items
 			// increase quantity
-			if (item.quantity < suitDetails.size.find((item) => item.size === size).quantity) {
+			if (
+				item.quantity <
+				suitDetails.size.find((item) => item.size === size).quantity
+			) {
 				item.quantity += 1;
-			} else if (item.quantity === suitDetails.size.find((item) => item.size === size).quantity) {
+			} else if (
+				item.quantity ===
+				suitDetails.size.find((item) => item.size === size).quantity
+			) {
 				toast({
 					title: "Out of Stock",
 					status: "info",
@@ -85,7 +92,8 @@ const SuitDescription = () => {
 		// [{size1: quantity1}, {size2: quantity2}, {size3: quantity3}]
 		// decrease item quantity if already in cart
 		const item = selectedItems.find((item) => item.size === size);
-		if (item) { // if item exists in cart
+		if (item) {
+			// if item exists in cart
 			// decrease quantity
 			if (item.quantity > 1) {
 				item.quantity -= 1;
@@ -220,22 +228,25 @@ const SuitDescription = () => {
 									</h2>
 									<div>
 										<div className="flex flex-wrap -mb-2">
-
 											{suitDetails.size &&
-												Object.entries(suitDetails.size).map(([key, value], index) => (
-													<div className='p-5 flex flex-col justify-center items-center border border-black-2 rounded' key={index}>
-														<button
-															className={`px-4 py-2 mb-2 mr-4 font-semibold border rounded`}
-														// onClick={() => handleSizeClick(size)}
+												Object.entries(suitDetails.size).map(
+													([key, value], index) => (
+														<div
+															className="p-5 flex flex-col justify-center items-center border border-black-2 rounded"
+															key={index}
 														>
-															{key} {value}
-														</button>
-														<div>
-															{/* {size.quantity === 0 ? <p className='text-red-500'>Out of Stock</p> : <p className='text-green-500'>{size.quantity} In Stock</p>} */}
+															<button
+																className={`px-4 py-2 mb-2 mr-4 font-semibold border rounded`}
+																// onClick={() => handleSizeClick(size)}
+															>
+																{key} {value}
+															</button>
+															<div>
+																{/* {size.quantity === 0 ? <p className='text-red-500'>Out of Stock</p> : <p className='text-green-500'>{size.quantity} In Stock</p>} */}
+															</div>
 														</div>
-													</div>
-												))
-											}
+													)
+												)}
 										</div>
 									</div>
 								</div>
@@ -244,18 +255,28 @@ const SuitDescription = () => {
 										Quantity
 									</label>
 									<div className="flex flex-col">
-										{/* {suitDetails.size && suitDetails.size.map((size, index) => (
-
-											<div className="flex flex-col p-3" key={index}>
-												<label>{size.size}</label>
-												<div className="flex">
-													<button onClick={() => handleRemoveFromItems(size.size)}>-</button>
-													<p>{
-														selectedItems.find((item) => item.size === size.size)?.quantity || 0
-													}</p>
-													<button onClick={() => handleAddToItems(size.size)}>+</button>
-												</div>
-											</div>))} */}
+										{suitDetails.size &&
+											Object.entries(suitDetails.size).map(
+												([key, value], index) => (
+													<div className="flex flex-col p-3" key={index}>
+														<label>{key}</label>
+														<div className="flex">
+															<button
+																onClick={() => handleRemoveFromItems(key)}
+															>
+																-
+															</button>
+															<p>
+																{selectedItems.find((item) => item.size === key)
+																	?.quantity || 0}
+															</p>
+															<button onClick={() => handleAddToItems(key)}>
+																+
+															</button>
+														</div>
+													</div>
+												)
+											)}
 									</div>
 								</div>
 								<div className="flex flex-wrap items-center gap-4">
