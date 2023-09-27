@@ -13,6 +13,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import {
 	setCoatMeasurements,
 	setTrouserMeasurements,
+	addNewCostumeToItemModel
 } from "../../api/customerAPI";
 import { addCustomSuitToCart as addCustomSuitToCartAPI } from "../../api/customerAPI";
 import FullShoulderWidth from "../../assets/images/measurements/men_size_1 (1).jpg";
@@ -36,10 +37,14 @@ import {
 	getCourtMeasurementObject,
 	getTrouserMeasurementObject,
 } from "../../utils/measurements";
+import { selectUser } from "../../store/slices/authSlice";
+
+
 const StandardSizes = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
 	const toast = useToast();
+	const user = useSelector(selectUser);
 
 	const { isOpen, onOpen, onClose } = useDisclosure()
 	const initialRef = React.useRef()
@@ -62,6 +67,9 @@ const StandardSizes = () => {
 	const [selectedSize, setSelectedSize] = useState("S");
 	const [selectedUnit, setSelectedUnit] = useState("inch");
 	const [selectedCategory, setSelectedCategory] = useState("jacket");
+
+	const [coatMeasurementsInInch, setCoatMeasurementsInInch] = useState({});
+	const [pantMeasurementsInInch, setPantMeasurementsInInch] = useState({});
 
 	useEffect(() => {
 		if (location.pathname.includes("/customize-suit/jacket")) {
@@ -158,40 +166,38 @@ const StandardSizes = () => {
 	};
 
 	const handleGoToCart = async () => {
+
 		await addNewCostumeToItemModel({
 			itemType:"CustomSuit",
 			price: 1000,
-			quantity: 1,
+			quantity: inputValue,
 			status: "available",
 		}).then((res) => {
 			// console.log(res.data);
             addCustomSuitToCartAPI({
 				description:{
-					type: CUSTOM,
+					type: STANDARD,
 					customization: jacket,
+				},
+				measurement: {
+					coatMeasurementsInInch,
+					pantMeasurementsInInch
 				},
 				customerId: user.id,
 				itemId: res.data.itemId,
 				price: 2000, // TODO: calculate price
-				quantity: 1,
+				quantity: inputValue,
 				status: "available",
+			}).then((res) => {
+
+				navigate("/customer/cart");
+			}).catch((err) => {
+				console.log(err);
 			});
 		}).catch((err) => {
 			console.log(err);
 		});
-		 navigate("/customer/cart");
-	// 	// TODO: check if options all selected
-
-	// 	await addCustomSuitToCartAPI({
-	// 		description: "Custom Suit",
-	// 		price: 1000, // TODO: calculate price
-	// 		type: STANDARD,
-	// 		size: selectedSize,
-	// 		quantity: 1,
-	// 		selection: jacket,
-	// 	});
-
-	// 	navigate("/customer/cart");
+		
 	 };
 
 	return (

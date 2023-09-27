@@ -151,7 +151,6 @@ const Cart = () => {
 														}
 													})()}
 												</p>
-												{item.measurement.con}
 											</td>
 											<td className="w-32">
 												{item.price === MEASUREMENTS_TO_BE_ADDED
