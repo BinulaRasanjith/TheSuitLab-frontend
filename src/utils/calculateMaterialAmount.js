@@ -1,4 +1,4 @@
-function calculateFabricAmount(measurements, unit, costumeType) {
+const calculateFabricAmount = (measurements, unit, costumeType) => {
   // Conversion factors for inch and centimeter
   const inchToCm = 2.54;
   //---------------------------------------------------------------------------------------------------
@@ -78,37 +78,39 @@ function calculateFabricAmount(measurements, unit, costumeType) {
   const fabricAmount = fabricRequirements[costumeType].fabricAmount;
 
   return unit === "inch" ? fabricAmount : fabricAmount / inchToCm; // Convert back to cm if needed
-}
-
-//me widiyt thma meka wada karanne ballo.
-// Example usage:
-const measurementsInInches = {
-  FullShoulderWidth: 20,
-  JacketSleevesLength: 24,
-  // Add other measurements in inches
 };
 
-const measurementsInCm = {
-  FullShoulderWidth: 50,
-  JacketSleevesLength: 60,
-  // Add other measurements in centimeters
-};
+export default calculateFabricAmount;
 
-const unitInInches = "inch";
-const unitInCm = "cm";
+// //me widiyt thma meka wada karanne ballo.
+// // Example usage:
+// const measurementsInInches = {
+//   FullShoulderWidth: 20,
+//   JacketSleevesLength: 24,
+//   // Add other measurements in inches
+// };
 
-const costumeType = "both"; // or 'jacket', 'pant'
+// const measurementsInCm = {
+//   FullShoulderWidth: 50,
+//   JacketSleevesLength: 60,
+//   // Add other measurements in centimeters
+// };
 
-const fabricAmountInInches = calculateFabricAmount(
-  measurementsInInches,
-  unitInInches,
-  costumeType
-);
-console.log(`Fabric Required: ${fabricAmountInInches} square inches`);
+// const unitInInches = "inch";
+// const unitInCm = "cm";
 
-const fabricAmountInCm = calculateFabricAmount(
-  measurementsInCm,
-  unitInCm,
-  costumeType
-);
-console.log(`Fabric Required: ${fabricAmountInCm} square centimeters`);
+// const costumeType = "both"; // or 'jacket', 'pant'
+
+// const fabricAmountInInches = calculateFabricAmount(
+//   measurementsInInches,
+//   unitInInches,
+//   costumeType
+// );
+// console.log(`Fabric Required: ${fabricAmountInInches} square inches`);
+
+// const fabricAmountInCm = calculateFabricAmount(
+//   measurementsInCm,
+//   unitInCm,
+//   costumeType
+// );
+// console.log(`Fabric Required: ${fabricAmountInCm} square centimeters`);
