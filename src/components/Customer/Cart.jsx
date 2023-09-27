@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ImBin } from 'react-icons/im'
 import { getCart } from "../../api/customerAPI";
-import { MEASUREMENTS_TO_BE_ADDED } from "../../constants";
+import { CUSTOM, MEASUREMENTS_TO_BE_ADDED } from "../../constants";
 import { CiShoppingCart } from 'react-icons/ci'
 
 const Cart = () => {
@@ -64,22 +64,22 @@ const Cart = () => {
 
 	const calculateTotalPrice = () => {
 		let totalPrice = 0;
-	
+
 		cartItems.forEach((item) => {
-		  if (item.price !== MEASUREMENTS_TO_BE_ADDED) {
-			totalPrice += item.price * item.quantity;
-		  }
+			if (item.price !== MEASUREMENTS_TO_BE_ADDED) {
+				totalPrice += item.price * item.quantity;
+			}
 		});
-	
+
 		return totalPrice;
-	  };
+	};
 
 	return (
 		<>
 			<div className="flex flex-col items-center flex-wrap shadow-xl my-2 w-full ">
 
 				<div className="flex flex-row items-center gap-3 mt-3">
-				<CiShoppingCart  style={{ fontSize: "2rem" }}/>
+					<CiShoppingCart style={{ fontSize: "2rem" }} />
 					<span className="text-xl font-bold text-black p-1">Cart Items</span>
 				</div>
 
@@ -114,7 +114,21 @@ const Cart = () => {
 										<tr key={item.id}
 											className="flex items-center text-center border hover:bg-gray-300 text-black font-medium py-3 rounded-lg">
 											<td className="w-32">{item.id}</td>
-											<td className="w-40 text-left"><p>{item.description}</p></td>
+											<td className="w-40 text-left"><p>{(() => {
+												try {
+													const description = JSON.parse(item.description);
+													console.log(description);
+
+													if (description.type === CUSTOM) {
+														return Object.entries(description.customization).map(([key, value]) => (
+															<p key={key}>{key}: {value}</p>
+														));
+													}
+												} catch (error) {
+													console.error("JSON Parsing Error:", error)
+													return 'Invalid JSON';
+												}
+											})()}</p></td>
 											<td className="w-32">{
 												item.price === MEASUREMENTS_TO_BE_ADDED ? "To be added" : item.price
 											}</td>
@@ -123,7 +137,7 @@ const Cart = () => {
 												item.price * item.quantity === -1 ? "Need Measurements" : item.price * item.quantity
 											}</td>
 											<td className="w-28">
-												<ImBin style={{ fontSize: "1rem" ,cursor: 'pointer',color: 'red' }} className=" w-full" onClick={() => removeFromCart(item.id)} />
+												<ImBin style={{ fontSize: "1rem", cursor: 'pointer', color: 'red' }} className=" w-full" onClick={() => removeFromCart(item.id)} />
 											</td>
 										</tr>
 									))}
