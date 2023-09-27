@@ -13,7 +13,7 @@ import {
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ImBin } from 'react-icons/im'
-import { getCart } from "../../api/customerAPI";
+import { getCart,removeCartItem } from "../../api/customerAPI";
 import { CUSTOM, MEASUREMENTS_TO_BE_ADDED } from "../../constants";
 import { CiShoppingCart } from 'react-icons/ci'
 
@@ -57,9 +57,29 @@ const Cart = () => {
 		}
 	};
 
-	const removeFromCart = (id) => {
-		//setCartItems(cartItems.filter((item) => item.id !== id));
-		onOpen();
+	const [deleteItemId, setDeleteItemId] = useState(null);
+	
+	const removeFromCart = () => {
+		removeCartItem(deleteItemId)
+		.then((res) => {
+			if (res.status === 200){
+			onClose();
+			toast({
+				title: "Item removed from cart",
+				status: "success",
+				duration: 3000,
+				isClosable: true,
+			});
+		}
+		})
+		.catch((err) => {
+			toast({
+				title: "Something went wrong",
+				status: "error",
+				duration: 3000,
+				isClosable: true,
+			});
+		})
 	};
 
 	const calculateTotalPrice = () => {
@@ -140,7 +160,7 @@ const Cart = () => {
 												item.price * item.quantity === -1 ? "Need Measurements" : item.price * item.quantity
 											}</td>
 											<td className="w-28">
-												<ImBin style={{ fontSize: "1rem", cursor: 'pointer', color: 'red' }} className=" w-full" onClick={() => removeFromCart(item.id)} />
+												<ImBin style={{ fontSize: "1rem", cursor: 'pointer', color: 'red' }} className=" w-full" onClick={() => {setDeleteItemId(item.id); onOpen()}} />
 											</td>
 										</tr>
 									))}
@@ -208,7 +228,9 @@ const Cart = () => {
 						<Button colorScheme="blue" mr={3} onClick={onClose}>
 							No
 						</Button>
-						<Button variant="ghost">Yes</Button>
+						<Button 
+						onClick={removeFromCart}
+						variant="ghost">Yes</Button>
 					</ModalFooter>
 				</ModalContent>
 			</Modal>

@@ -18,6 +18,10 @@ export const getCart = async () => {
     return api.get("/customer/cart");
 }
 
+export const removeCartItem = async (id) => {
+    return api.delete("/customer/remove-cart-item/"+id);
+}
+
 export const setTrouserMeasurements = async (measurements) => {
     return api.post("/customer/set-trouser-measurements", { measurements });
 }
