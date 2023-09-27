@@ -3,11 +3,13 @@ import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { HiOutlineCalendar } from "react-icons/hi";
+import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { addToCart as addToCartAPI } from "../../api/customerAPI";
+import { addHireCostumeToCart as addHireCostumeToCartAPI } from "../../api/customerAPI";
 import { getHireCostume } from "../../api/hireCostumesAPI";
 import { HIRE_COSTUME_IMAGES_URL } from "../../config/config";
+import { selectUser } from "../../store/slices/authSlice";
 
 const SuitDescription = () => {
 	// Get the suitId from the route parameters
@@ -15,6 +17,7 @@ const SuitDescription = () => {
 	const toast = useToast();
 	const navigate = useNavigate();
 
+	const user = useSelector(selectUser);
 	const [suitDetails, setSuitDetails] = useState({
 		images: [],
 		name: "",
@@ -22,8 +25,13 @@ const SuitDescription = () => {
 		price: 0,
 	}); // Create state variable for suit details
 	const [selectedImage, setSelectedImage] = useState("");
-	const [selectedItems, setSelectedItems] = useState([]); // [{size: quantity}]
-	// const [quantity, setQuantity] = useState([]);
+	// const [selectedItems, setSelectedItems] = useState({}); // {size: quantity}
+	const [selectedSize, setSelectedSize] = useState("L");
+	const [quantity, setQuantity] = useState(0);
+	const [enabled, setEnabled] = useState({
+		increment: true,
+		decrement: false,
+	}); // Disable the buttons
 	const [fromDate, setFromDate] = useState(null);
 	const [toDate, setToDate] = useState(null);
 
@@ -39,78 +47,107 @@ const SuitDescription = () => {
 			});
 	}, [suitId]);
 
-	// const handleDecrement = () => {
-	// 	if (quantity > 1) {
-	// 		setQuantity(quantity - 1);
-	// 	}
-	// };
-
-	// const handleIncrement = () => {
-	// 	setQuantity(quantity + 1);
-	// };
-
-	// const [selectedSize, setSelectedSize] = useState("Medium"); // Initialize with the default size
-
-	// const handleSizeClick = (size) => {
-	// 	setSelectedSize(size);
-	// };
-
 	const handleImageClick = (image) => {
 		setSelectedImage(image);
 	};
 
-	const handleAddToItems = (size) => {
-		// [{size1: quantity1}, {size2: quantity2}, {size3: quantity3}]
-		// increase item quantity if already in cart else add 1 to quantity
-		const item = selectedItems.find((item) => item.size === size);
-		if (item) {
-			// if item exists in items
-			// increase quantity
-			if (
-				item.quantity <
-				suitDetails.size.find((item) => item.size === size).quantity
-			) {
-				item.quantity += 1;
-			} else if (
-				item.quantity ===
-				suitDetails.size.find((item) => item.size === size).quantity
-			) {
-				toast({
-					title: "Out of Stock",
-					status: "info",
-					duration: 3000,
-					isClosable: true,
-				});
-			}
+	// const handleAddToItems = (size) => {
+	// 	// {size1: quantity1, size2: quantity2, size3: quantity3}
+	// 	// increase item quantity if already in cart else add 1 to quantity
+	// 	const item = selectedItems[size];
+
+	// 	if (item) {
+	// 		// item already in cart & does not exceed the available quantity
+	// 		if (item < suitDetails.size[size]) {
+	// 			setSelectedItems({ ...selectedItems, [size]: item + 1 });
+	// 		} else {
+	// 			toast({
+	// 				title: "Error",
+	// 				description: "Item quantity exceeds the available quantity",
+	// 				status: "warning",
+	// 				duration: 3000,
+	// 				isClosable: true,
+	// 			});
+	// 		}
+	// 	} else {
+	// 		setSelectedItems({ ...selectedItems, [size]: 1 });
+	// 	}
+	// };
+
+	// const handleRemoveFromItems = (size) => {
+	// 	// decrease item quantity if already in cart else do nothing
+	// 	const item = selectedItems[size];
+
+	// 	if (item) {
+	// 		// item already in cart & does not exceed the available quantity
+	// 		if (item > 0) {
+	// 			setSelectedItems({ ...selectedItems, [size]: item - 1 });
+	// 		} else {
+	// 			toast({
+	// 				title: "Error",
+	// 				description: "Item quantity cannot be less than 0",
+	// 				status: "warning",
+	// 				duration: 3000,
+	// 				isClosable: true,
+	// 			});
+	// 		}
+	// 	}
+	// };
+
+	const incrementQuantity = () => {
+		if (quantity < suitDetails.size[selectedSize]) {
+			setQuantity(quantity + 1);
 		} else {
-			// add new item to cart
-			setSelectedItems([...selectedItems, { size, quantity: 1 }]);
+			setEnabled({ ...enabled, increment: false });
 		}
 	};
 
-	const handleRemoveFromItems = (size) => {
-		// [{size1: quantity1}, {size2: quantity2}, {size3: quantity3}]
-		// decrease item quantity if already in cart
-		const item = selectedItems.find((item) => item.size === size);
-		if (item) {
-			// if item exists in cart
-			// decrease quantity
-			if (item.quantity > 1) {
-				item.quantity -= 1;
-			} else {
-				// remove item from cart
-				console.log("remove item from cart");
-				setSelectedItems(selectedItems.filter((item) => item.size !== size));
-			}
+	const decrementQuantity = () => {
+		if (quantity > 0) {
+			setQuantity(quantity - 1);
+		} else {
+			setEnabled({ ...enabled, decrement: false });
 		}
 	};
 
 	const handleAddToCart = () => {
-		addToCartAPI({
+		// check if size and quantity are selected
+		if (selectedSize === "" && quantity === 0) {
+			toast({
+				title: "Error",
+				description: "Please select a size and quantity",
+				status: "warning",
+				duration: 3000,
+				isClosable: true,
+			});
+			return;
+		}
+
+		// check if renting period is selected
+		if (!fromDate && !toDate) {
+			toast({
+				title: "Error",
+				description: "Please select a renting period",
+				status: "warning",
+				duration: 3000,
+				isClosable: true,
+			});
+			return;
+		}
+
+		addHireCostumeToCartAPI({
+			customerId: user.id,
 			itemId: suitId,
-			description: suitDetails.name,
-			// quantity,
-			// size: selectedSize,
+			price: suitDetails.price,
+			quantity,
+			status: "available",
+			description: {
+				type: "hire",
+				name: suitDetails.name,
+				size: selectedSize,
+				fromDate,
+				toDate,
+			},
 		})
 			.then((response) => {
 				if (response.status === 201) {
@@ -121,7 +158,7 @@ const SuitDescription = () => {
 						isClosable: true,
 					});
 				}
-				console.log(response);
+				console.log(response.data);
 			})
 			.catch((error) => {
 				console.log(error);
@@ -254,30 +291,47 @@ const SuitDescription = () => {
 									<label className="w-full pb-1 text-xl font-semibold text-gray-700 border-b border-blue-300 dark:border-gray-600 dark:text-gray-400">
 										Quantity
 									</label>
-									<div className="flex flex-col">
-										{suitDetails.size &&
-											Object.entries(suitDetails.size).map(
-												([key, value], index) => (
-													<div className="flex flex-col p-3" key={index}>
-														<label>{key}</label>
-														<div className="flex">
-															<button
-																onClick={() => handleRemoveFromItems(key)}
-															>
-																-
-															</button>
-															<p>
-																{selectedItems.find((item) => item.size === key)
-																	?.quantity || 0}
-															</p>
-															<button onClick={() => handleAddToItems(key)}>
-																+
-															</button>
-														</div>
-													</div>
-												)
-											)}
+
+									<div className="flex items-center justify-between w-full mt-4">
+										<button
+											className="px-4 py-2 font-semibold text-gray-700 border rounded"
+											onClick={decrementQuantity}
+											disabled={enabled.decrement}
+										>
+											-
+										</button>
+										<p className="px-4 py-2 font-semibold text-gray-700 border rounded">
+											{quantity}
+										</p>
+										<button
+											className="px-4 py-2 font-semibold text-gray-700 border rounded"
+											onClick={incrementQuantity}
+											disabled={enabled.increment}
+										>
+											+
+										</button>
 									</div>
+									{/* <div className="flex flex-col">
+										{suitDetails.size &&
+											Object.entries(suitDetails.size).map(([key], index) => (
+												<div className="flex flex-col p-3" key={index}>
+													<label>{key}</label>
+													<div className="flex">
+														<button onClick={() => handleRemoveFromItems(key)}>
+															-
+														</button>
+														<p>
+															{selectedItems[key] === undefined
+																? 0
+																: selectedItems[key]}
+														</p>
+														<button onClick={() => handleAddToItems(key)}>
+															+
+														</button>
+													</div>
+												</div>
+											))}
+									</div> */}
 								</div>
 								<div className="flex flex-wrap items-center gap-4">
 									<Button
