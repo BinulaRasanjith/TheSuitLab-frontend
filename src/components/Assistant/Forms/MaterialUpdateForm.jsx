@@ -1,3 +1,4 @@
+import { useToast } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
@@ -11,24 +12,46 @@ const MaterialStockUpdateFrom = ({
     materialCode,
     materialName,
 }) => {
+    const toast = useToast();
     const [newStock, setNewStock] = useState({
         materialCode: materialCode,
-        incCount: null,
+        quantity: null,
     });
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
         setNewStock({ ...newStock, [name]: value });
     };
 
-    const handleAddUserClick = async (e) => {
-        e.preventDefault();
+    const handleAddUserClick = async (event) => {
+        event.preventDefault();
 
-        try {
-            await addMaterialQuantity(newStock);
-            onClose();
-        } catch (error) {
-            console.error(error);
+        if (newStock.quantity === "" || newStock.quantity === null) {
+            toast({
+                title: "Quantity is required!",
+                status: "error",
+                duration: 3000,
+                isClosable: true,
+            });
+        } else {
+            try {
+                await addMaterialQuantity(newStock);
+                toast({
+                    title: "Quantity Updated Successfully",
+                    status: "success",
+                    duration: 3000,
+                    isClosable: true,
+                });
+                onClose();
+            } catch (error) {
+                console.error(error);
+                toast({
+                    title: "Quantity Update Failed: " + error.response.data.message + "!",
+                    status: "error",
+                    duration: 3000,
+                    isClosable: true,
+                });
+            }
         }
     };
 
@@ -53,14 +76,14 @@ const MaterialStockUpdateFrom = ({
                         <div>
                             <b>Material Name:</b> {materialName}
                         </div>
-                        
+
                         <div className="relative my-6" data-te-input-wrapper-init>
                             <Input
                                 type="number"
-                                placeholder="Arrived Stock Count"
+                                placeholder="Arrived Stock Quantity"
                                 id="arrived-count"
-                                name="incCount"
-                                value={newStock.incCount}
+                                name="quantity"
+                                value={newStock.quantity}
                                 onChange={handleInputChange}
                                 className="mb-6"
                             />
