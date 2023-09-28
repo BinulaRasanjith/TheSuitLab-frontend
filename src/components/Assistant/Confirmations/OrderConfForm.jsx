@@ -1,16 +1,10 @@
 import { Button } from '@chakra-ui/react'
 import PropTypes from "prop-types";
-// import { useState } from "react";
-
-// import { addNewAccessory } from "../../api/accessoryAPI";
-// import Input from "../../components/Input/Input";
 
 const OrderConfForm = ({ isOpen, onClose }) => {
 
     return (
-        <div className={`relative  ${!isOpen ? "block" : "hidden"}`}>
-            {/* <div className={`relative  ${isOpen ? 'block' : 'hidden'}`} onClick={onClose}> */}
-            {/* <div className="relative"> */}
+        <div className={`relative  ${isOpen ? "block" : "hidden"}`}>
 
             <div className="fixed left-0 right-0 bottom-0 top-0 z-40 opacity-30 bg-black"></div>
 
@@ -58,7 +52,6 @@ const OrderConfForm = ({ isOpen, onClose }) => {
                                         // onClick={handleLoginClick}
                                         textColor={'white'}
                                         shadow={'md'}
-                                        // width={'5rem'}>{Status}</Button>
                                         width={'7rem'}>Confirm</Button>
                                 </div>
 

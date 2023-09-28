@@ -1,6 +1,5 @@
 import { Button } from '@chakra-ui/react'
 import PropTypes from "prop-types";
-// import { useState } from 'react';
 
 
 const MaterialRecord = ({
@@ -11,11 +10,6 @@ const MaterialRecord = ({
     HandoverDate,
     onOpen,
 }) => {
-    // const [, updateMatStock] = useState(false);
-
-	// const handleFormOpen = () => {
-	// 	updateMatStock(true); // Set isNewReturnForm to false to close the form
-	// };
 
     return (
         <>

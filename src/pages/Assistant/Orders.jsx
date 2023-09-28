@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import OrderConfForm from "../../components/Assistant/Confirmations/OrderConfForm";
 import DropDownFilter from "../../components/Assistant/Controls/HeaderDropDown";
 import SearchBox from "../../components/Assistant/Controls/HeaderSearchBox";
@@ -5,6 +7,18 @@ import Pagination from "../../components/Assistant/Controls/Pagination";
 import OrderedItems from "../../components/Assistant/OrderedItemSet";
 
 const Orders = () => {
+    const [isOrderUpdate, updateOrder] = useState(false);
+    const [selectedOrder, setSelectedOrder] = useState(null);
+
+    const handleFormOpen = (orderId) => {
+        setSelectedOrder(orderId);
+        updateOrder(true);
+    }; 
+
+    const handleFormClose = () => {
+        setSelectedOrder(null);
+        updateOrder(false);
+    };
 	return (
 		<div>
 			<div className=" flex flex-col justify-between mx-10 my-8 p-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg">
@@ -36,7 +50,7 @@ const Orders = () => {
 					<div className=" w-full border h-0 mt-3 mb-6 border-gray-200"></div>
 				</div>
 				<div>
-					<OrderedItems />
+					<OrderedItems onOpen={handleFormOpen} />
 				</div>
 				<div className=" flex justify-between">
 					<div className=" py-3 text-sm font-medium text-neutral-400">
@@ -48,15 +62,13 @@ const Orders = () => {
 				</div>
 			</div>
 
-			<div className={`relative  hidden`}>
-				<OrderConfForm />
+			<div className={`relative  ${isOrderUpdate ? "block" : "hidden"}`}>
+				<OrderConfForm 
+                    isOpen={isOrderUpdate}
+                    onClose={handleFormClose}
+                    orderId={selectedOrder} 
+					/>
 			</div>
-
-			{/* <div className=" flex justify-center w-full">
-                <div className=" flex flex-col justify-center h-screen">
-                    <div className=" text-4xl font-semibold text-zinc-400">This orders page is under development :(</div>
-                </div>
-            </div> */}
 		</div>
 	);
 };

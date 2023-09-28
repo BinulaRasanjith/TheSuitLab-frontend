@@ -14,7 +14,7 @@ const MaterialStockUpdateFrom = ({
 }) => {
     const toast = useToast();
     const [newStock, setNewStock] = useState({
-        materialCode: materialCode,
+        material_id: materialCode,
         quantity: null,
     });
 
@@ -77,6 +77,15 @@ const MaterialStockUpdateFrom = ({
                             <b>Material Name:</b> {materialName}
                         </div>
 
+                        <div className="hidden" data-te-input-wrapper-init>
+                            <Input
+                                type="text"
+                                id="material-id"
+                                name="material_id"
+                                value={materialCode}
+                                className="hidden"
+                            />
+                        </div>
                         <div className="relative my-6" data-te-input-wrapper-init>
                             <Input
                                 type="number"

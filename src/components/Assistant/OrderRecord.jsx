@@ -9,6 +9,7 @@ const OrderRecord = ({
     Customer,
     OrderedDate,
     Status,
+    onOpen,
 }) => {
 
     return (
@@ -29,7 +30,7 @@ const OrderRecord = ({
                         bg={'black'}
                         border={'1px'}
                         height={'2rem'}
-                        // onClick={handleLoginClick}
+                        onClick={onOpen}
                         textColor={'white'}
                         width={'7rem'}>{Status}</Button>
                 </div>
@@ -46,6 +47,7 @@ OrderRecord.propTypes = {
     Customer: PropTypes.string.isRequired,
     OrderedDate: PropTypes.object.isRequired,
     Status: PropTypes.string.isRequired,
+    onOpen: PropTypes.func.isRequired,
 };
 
 export default OrderRecord;

@@ -1,4 +1,3 @@
-// import React from "react";
 import { Button } from '@chakra-ui/react'
 import PropTypes from "prop-types";
 
@@ -9,7 +8,9 @@ const RentalRecord = ({
     CustomerMobile,
     BorrowedDate,
     HandoverDate,
+    onOpen,
 }) => {
+
     return (
         <>
             <div className=" flex flex-row justify-between w-full">
@@ -27,7 +28,7 @@ const RentalRecord = ({
                         bg={'black'}
                         border={'1px'}
                         height={'2rem'}
-                        // onClick={handleLoginClick}
+                        onClick={onOpen}
                         textColor={'white'}
                         width={'5.5rem'}>Mark</Button>
                 </div>
@@ -39,10 +40,11 @@ const RentalRecord = ({
 
 RentalRecord.propTypes = {
     CustomerId: PropTypes.string.isRequired,
-    SuitId: PropTypes.number.isRequired,
-    CustomerMobile: PropTypes.object.isRequired,
+    SuitId: PropTypes.string.isRequired,
+    CustomerMobile: PropTypes.string.isRequired,
     BorrowedDate: PropTypes.object.isRequired,
-    HandoverDate: PropTypes.number.isRequired,
+    HandoverDate: PropTypes.object.isRequired,
+    onOpen: PropTypes.func.isRequired,
 };
 
 export default RentalRecord;

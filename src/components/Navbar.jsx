@@ -1,6 +1,7 @@
 import { Button } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+// import { HiShoppingCart } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
@@ -9,11 +10,10 @@ import TSL_LOGO_SM from "../assets/images/TSL_LOGO_SM.png";
 import defaultPhoto from "../assets/images/avatar.png";
 import { PROFILE_PICTURE_URL } from "../config/config";
 import { CUSTOMER } from "../constants";
-import { logoutAsync } from "../store/slices/authSlice";
 import { selectUser } from "../store/slices/authSlice";
+import { logoutAsync } from "../store/slices/authSlice";
 import { toggleSidebar } from "../store/slices/sidebarSlice";
 import displayRoleName from "../utils/displayRoleName";
-import { HiShoppingCart } from "react-icons/hi";
 
 const Navbar = () => {
 	const navigate = useNavigate();
@@ -139,7 +139,7 @@ const Navbar = () => {
 					{user.id ? (
 						<>
 							<div className="flex items-center gap-3 relative">
-								<div className="text-secondary cursor-pointer ">
+								{/* <div className="text-secondary cursor-pointer ">
 									<HiShoppingCart onClick={() => navigate("/customer/cart")}
 									style={{ fontSize: "1.5rem" }}/>								
 								</div>
@@ -147,7 +147,7 @@ const Navbar = () => {
 									<div className={`text-gray-400 text-xs text-end`}>
 										{displayRoleName(user.role)}
 									</div>
-								)}
+								)} */}
 
 								<div
 									className="flex flex-col cursor-pointer"

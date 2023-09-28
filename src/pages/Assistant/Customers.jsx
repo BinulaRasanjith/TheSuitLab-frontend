@@ -1,9 +1,10 @@
 import { Button } from '@chakra-ui/react'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { AiFillPlusCircle } from 'react-icons/ai'
 // import Customers from "../../components/Assistant/CustomersView"
 import { Link } from 'react-router-dom';
 
+import { getCustomers } from "../../api/customerAPI";
 import DropDownFilter from "../../components/Assistant/Controls/HeaderDropDown"
 import SearchBox from "../../components/Assistant/Controls/HeaderSearchBox"
 import Pagination from "../../components/Assistant/Controls/Pagination"
@@ -11,70 +12,35 @@ import NewCustomerForm from "../../components/Assistant/Forms/NewCustomerForm"
 import NewCustomerOTPForm from "../../components/Assistant/Forms/NewCustomerOTP"
 
 const ViewCustomers = () => {
-    const customers = [
-        {
-            id: "1",
-            name: 'Jane Cooper',
-            phoneNumber: '+91 9876543210',
-            orderCount: '3',
-            lastOrder: '2023-07-07',
-            status: 'Active',
-        },
-        {
-            id: "2",
-            name: 'Floyd Miles',
-            phoneNumber: ' +91 3376443210',
-            orderCount: '1',
-            lastOrder: '2023-03-17',
-            status: 'Active',
-        },
-        {
-            id: "3",
-            name: 'Jane Cooper',
-            phoneNumber: '+91 9876543210',
-            orderCount: '2',
-            lastOrder: '2023-07-07',
-            status: 'Inactive',
-        },
-        {
-            id: "4",
-            name: 'Ronald Richards',
-            phoneNumber: '+91 987654256',
-            orderCount: '5',
-            lastOrder: '2023-06-27',
-            status: 'Active',
-        },
-        {
-            id: "5",
-            name: 'Marvin Mackiney',
-            phoneNumber: '+94 9876577210',
-            orderCount: '1',
-            lastOrder: '2023-05-11',
-            status: 'Inactive',
-        },
-        {
-            id: "6",
-            name: 'Jacob Janes',
-            phoneNumber: '+94 983343210',
-            orderCount: '2',
-            lastOrder: '2023-07-07',
-            status: 'Active',
-        }
-    ];
+
+	const [customers, setReturns] = useState([]);
+
+	useEffect(() => {
+		const fetchReturns = async () => {
+			try {
+				const response = await getCustomers();
+				setReturns(response.data.customers);
+			} catch (error) {
+				console.error(error);
+			}
+		};
+
+		fetchReturns();
+	}, []);
+
     const [isNewCustomerForm, addNewCustomer] = useState(false);
 
     const handleFormClose = () => {
-        addNewCustomer(false); // Set isNewReturnForm to false to close the form
+        addNewCustomer(false); // SET isNewReturnForm TO FALSE TO CLOSE THE FORM
     };
 
     const handleFormOpen = () => {
-        addNewCustomer(true); // Set isNewReturnForm to false to close the form
+        addNewCustomer(true); // SET isNewReturnForm TO FALSE TO CLOSE THE FORM
     };
 
     return (
         <div>
             <div>
-                {/* <Customers /> */}
                 <div className=" flex flex-col justify-between mx-10 my-8 p-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg">
                     <div className=" flex justify-between align-middle pb-5">
                         <div className="flex flex-col">
@@ -112,42 +78,35 @@ const ViewCustomers = () => {
                         </div>
                     </div>
                     <div className="">
-                        <table className=''>
-                            <thead className=" text-left text-md font-medium text-gray-400 py-4 w-full">
-                                <tr>
-                                    <th className=" w-40">
+                        <table className="">
+                            <thead className=" text-left text-sm font-medium border-b-2 border-gray-200 text-gray-400 w-full">
+                                <tr className="py-4">
+                                    <th className="py-3 w-72">
                                         Customer Id
                                     </th>
-                                    <th className=" w-40">
+                                    <th className="py-3 w-72">
                                         Customer Name
                                     </th>
-                                    <th className=" w-40">
+                                    <th className="py-3 w-60">
                                         Phone Number
                                     </th>
-                                    <th className=" w-40">
-                                        Order Count
+                                    <th className="py-3 w-60">
+                                        Email
+                                        {/* Order Count */}
                                     </th>
-                                    <th className=" w-40">
+                                    <th className="py-3 w-60">
                                         Status
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody className=" text-left text-md font-medium text-gray-400 py-4 w-full">
+                            <tbody className=" text-left text-md font-medium text-gray-400 w-full">
                                 {customers.map((item, index) => (
-                                    // <CustomerData
-                                    //     key={index}
-                                    //     CustomerId={item.id}
-                                    //     CustomerName={item.name}
-                                    //     CustomerMobile={item.phoneNumber}
-                                    //     OrderCount={item.orderCount}
-                                    //     Status={item.status}
-                                    // />
-                                    <tr key={index} className="flex items-center text-center border hover:bg-gray-300 text-black whitespace-nowrap font-medium py-3 w-full">
-                                        <td className="w-40"> <Link to={`${item.id}`}>{item.id}</Link></td>
-                                        <td className="w-40">{item.name}</td>
-                                        <td className="w-40">{item.phoneNumber}</td>
-                                        <td className="w-40">{item.orderCount}</td>
-                                        <td className="w-40"> {item.status}</td>
+                                    <tr key={index} className="items-center text-centers border-b-2 hover:bg-gray-300 text-black whitespace-nowrap font-medium w-full">
+                                        <td className="py-4 w-72"> <Link to={`${item.userId}`}>{item.userId}</Link></td>
+                                        <td className="py-4 w-72">{item.firstName} {item.lastName}</td>
+                                        <td className="py-4 w-60">{item.mobileNo}</td>
+                                        <td className="py-4 w-60">{item.email}</td>
+                                        <td className="py-4 w-60"> {item.progress ? "Working" : "Blocked"}</td>
                                     </tr>
                                 ))}
                             </tbody>
