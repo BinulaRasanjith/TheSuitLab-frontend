@@ -1,19 +1,19 @@
+import { Select, useToast } from "@chakra-ui/react";
 import { useDisclosure } from '@chakra-ui/react';
 import { Button, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from "@chakra-ui/react"
-import { Select, useToast } from "@chakra-ui/react";
-import React from 'react';
 import { useEffect, useState } from "react";
+import React from 'react';
 import { FaShoppingCart } from "react-icons/fa";
 import { IoArrowBackCircle } from "react-icons/io5";
-import { MdOutlineArrowBackIosNew } from 'react-icons/md';
 import { MdNavigateNext } from "react-icons/md";
+import { MdOutlineArrowBackIosNew } from 'react-icons/md';
 import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import {
+	addNewCostumeToItemModel,
 	setCoatMeasurements,
-	setTrouserMeasurements,
-	addNewCostumeToItemModel
+	setTrouserMeasurements
 } from "../../api/customerAPI";
 import { addCustomSuitToCart as addCustomSuitToCartAPI } from "../../api/customerAPI";
 import FullShoulderWidth from "../../assets/images/measurements/men_size_1 (1).jpg";
@@ -32,12 +32,12 @@ import TROUSER_LENGTH from "../../assets/images/measurements/men_size_13.jpg";
 import CUFF from "../../assets/images/measurements/men_size_14.jpg";
 import MeasurementBlock from "../../components/Customer/MeasurementBlock";
 import { INCH, STANDARD, STANDARD_MEASUREMENTS } from "../../constants/index";
+import { selectUser } from "../../store/slices/authSlice";
 import { selectJacket } from "../../store/slices/jacketCustomizationSlice";
 import {
 	getCourtMeasurementObject,
 	getTrouserMeasurementObject,
 } from "../../utils/measurements";
-import { selectUser } from "../../store/slices/authSlice";
 
 
 const StandardSizes = () => {
@@ -168,14 +168,14 @@ const StandardSizes = () => {
 	const handleGoToCart = async () => {
 
 		await addNewCostumeToItemModel({
-			itemType:"CustomSuit",
+			itemType: "CustomSuit",
 			price: 1000,
 			quantity: inputValue,
 			status: "available",
 		}).then((res) => {
 			// console.log(res.data);
-            addCustomSuitToCartAPI({
-				description:{
+			addCustomSuitToCartAPI({
+				description: {
 					type: STANDARD,
 					customization: jacket,
 				},
@@ -197,8 +197,8 @@ const StandardSizes = () => {
 		}).catch((err) => {
 			console.log(err);
 		});
-		
-	 };
+
+	};
 
 	return (
 		<div className={`flex flex-col flex-wrap`}>

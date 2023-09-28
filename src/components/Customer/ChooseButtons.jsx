@@ -17,14 +17,14 @@ const ChooseButtons = () => {
                 <div onClick={() => {
                     dispatch(setJacket({ button: '1S' }))
                     dispatch(setRotation(2 * Math.PI));
-                }} className="flex flex-col p-3 items-center cursor-pointer rounded-lg border border-black-2 shadow">
+                }} className="flex flex-col p-3 items-center cursor-pointer rounded-lg border border-black-2 shadow ">
                     <img alt="" className="pb-3" src={oneButton} />
                     <label className="text-sm">1 BUTTON,SINGLE <br />BREASTED</label>
                 </div>
                 <div onClick={() => {
                     dispatch(setJacket({ button: '2S' }))
                     dispatch(setRotation(2 * Math.PI));
-                }} className="flex flex-col p-3 items-center cursor-pointer rounded-lg border border-black-2 shadow">
+                }} className="flex flex-col p-3 items-center cursor-pointer rounded-lg border border-black-2 shadow ">
                     <img alt="" className="pb-3" src={twoButton} />
                     <label className="text-sm">2 BUTTONS,SINGLE <br />BREASTED</label>
                 </div>
@@ -33,7 +33,7 @@ const ChooseButtons = () => {
                     dispatch(setJacket({ button: '4D2' }))
                     dispatch(setRotation(2 * Math.PI));
                 }
-                } className="flex flex-col p-3 items-center cursor-pointer rounded-lg border border-black-2 shadow">
+                } className="flex flex-col p-3 items-center cursor-pointer rounded-lg border border-black-2 shadow ">
                     <img alt="" className="pb-3" src={fourDTwo} />
                     <label className="text-sm">4 BUTTONs,DOUBLE <br />BREASTED (2 TO)</label>
                 </div>
@@ -42,7 +42,7 @@ const ChooseButtons = () => {
                     dispatch(setJacket({ button: '6D3' }))
                     dispatch(setRotation(2 * Math.PI));
                 }
-                } className="flex flex-col p-3 items-center cursor-pointer rounded-lg border border-black-2  shadow">
+                } className="flex flex-col p-3 items-center cursor-pointer rounded-lg border border-black-2  shadow ">
                     <img alt="" className="pb-3" src={sixDThree} />
                     <label className="text-sm">6 BUTTONs,DOUBLE <br />BREASTED (3 TO)</label>
                 </div>

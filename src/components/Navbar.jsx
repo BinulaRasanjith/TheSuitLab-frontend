@@ -1,5 +1,4 @@
 import { Button } from "@chakra-ui/react";
-import { useEffect } from "react";
 import { useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import { FaBars, FaTimes } from "react-icons/fa";
@@ -46,10 +45,6 @@ const Navbar = () => {
 	};
 
 	const [open, setOpen] = useState(false);
-
-
-
-
 
 	return (
 		<>
