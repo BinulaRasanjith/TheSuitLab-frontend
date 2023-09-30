@@ -23,45 +23,6 @@ const ViewOrders = () => {
         getRecords();
     }, []);
 
-
-    // const records = [
-    //     {
-    //         orderId: "1",
-    //         customerId: "Malini Fonseka",
-    //         itemCount: "5",
-    //         totalAmount: "60000",
-    //         status: "completed",
-    //     },
-    //     {
-    //         orderId: "2",
-    //         customerId: "Siril Piyadasa",
-    //         itemCount: "2",
-    //         totalAmount: "25000",
-    //         status: "Pending",
-    //     },
-    //     {
-    //         orderId: "3",
-    //         customerId: "Anne Perera",
-    //         itemCount: "3",
-    //         totalAmount: "56000",
-    //         status: "Processing",
-    //     },
-    //     {
-    //         orderId: "4",
-    //         customerId: "James Peiris",
-    //         itemCount: "8",
-    //         totalAmount: "250000",
-    //         status: "Completed",
-    //     },
-    //     {
-    //         orderId: "5",
-    //         customerId: "Rakisa Jayaweera",
-    //         itemCount: "1",
-    //         totalAmount: "15750",
-    //         status: "Pending",
-    //     },
-    // ];
-
     return (
         <div>
             <div className=" flex flex-col justify-between mx-10 my-8 p-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg">

@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 
 import { getPurchaseOrder as getPurchaseOrderAPI } from "../api/purchaseOrdersAPI";
 import { OrderedDesign } from "../components/OrderedDesign";
-import { OPERATION_ASSISTANT, PRODUCT_MANAGER, TAILOR } from "../constants";
+import { OPERATION_ASSISTANT, PRODUCT_MANAGER, TAILOR,CUSTOMER } from "../constants";
 import { selectUser } from "../store/slices/authSlice";
 import { selectComponentHide } from "../store/slices/componentHideSlice";
 
@@ -57,6 +57,7 @@ function OrderDetails() {
 				<div className="max-h-[calc(100vh-4rem)] mt-20 flex flex-col xl:flex-row items-stretch w-full xl:space-x-8 space-y-8 md:space-y-6 xl:space-y-0">
 					{(user.role === PRODUCT_MANAGER ||
 						user.role === TAILOR ||
+						user.role === CUSTOMER ||
 						user.role === OPERATION_ASSISTANT) && (
 						<div className=" flex flex-col w-full space-y-4 md:space-y-6 xl:space-y-8 overflow-scroll">
 							<div className="flex flex-col bg-gray-200 px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full">

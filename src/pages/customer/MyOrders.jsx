@@ -44,9 +44,9 @@ const MyOrders = () => {
     ];
 
     const navigate = useNavigate();
-    const handleNavigate = (id) => {
-        navigate(`/customer/my-orders/${id}`)
-    }
+    // const handleNavigate = (id) => {
+    //     navigate(`/customer/my-orders/${id}`)
+    // }
 
     
     return (
@@ -61,7 +61,7 @@ const MyOrders = () => {
                         </div>
                         <div className='flex gap-4'>
                             <SearchBox />
-                            <DropDownFilter />
+                            {/* <DropDownFilter /> */}
                         </div>
                     </div>
                     <div className=" flex items-center gap-4 align-middle">
@@ -70,7 +70,7 @@ const MyOrders = () => {
                 <div className="flex flex-col w-3/4 justify-center p-4 mb-4 ">
 
                     {orders.map((order, index) => (
-                        <Link to={`/customer/my-orders/${order.orderId}`} key={index} className='flex flex-col p-4 ml-3 cursor-pointer bg-slate-300 w-full h-full mt-4 rounded-2xl'>
+                        <Link to={`${order.orderId}`} key={index} className='flex flex-col p-4 ml-3 cursor-pointer bg-slate-300 w-full h-full mt-4 rounded-2xl'>
                                         <h3 className="text-lg md:text-md font-semibold text-gray-800">OrderId: {order.orderId}</h3>
                             <div className="flex flex-col md:flex-row justify-start items-start h-full md:items-center md:space-x-6 xl:space-x-8 w-full">
                                 <div className="w-32 h-full items-center ">

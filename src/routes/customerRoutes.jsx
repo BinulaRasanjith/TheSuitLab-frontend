@@ -14,7 +14,6 @@ import TiesGallery from "../components/Customer/TiesGallery";
 import JacketsGallery from "../components/Customer/jacketsGallery";
 import PantsGallery from "../components/Customer/pantsGallery";
 import SuitDescription from "../components/Customer/suitDescription";
-import OrderDetails from "../components/OrderDetails";
 import Payment from '../components/Payment';
 import ChooseBackPocket from "../components/customer/ChooseBackPocket";
 import ChooseButtons from "../components/customer/ChooseButtons";
@@ -40,6 +39,7 @@ import LookBook from "../pages/customer/LookBook";
 import MeasurementDashboard from "../pages/customer/MeasurementDashboard";
 import MyOrders from "../pages/customer/MyOrders";
 import SuitCustomizationLanding from "../pages/customer/SuitCustomizationLanding";
+import OrderDetails from "../components/OrderDetails";
 
 // TODO: complete the navigation routes
 const costumerRoutes = {
