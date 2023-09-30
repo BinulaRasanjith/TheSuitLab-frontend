@@ -9,7 +9,7 @@ import suite3 from "../../assets/images/rentsuits/maroon suit/2.webp"
 const MyOrders = () => {
     const orders = [
         {
-            orderId: "Order001",
+            orderId: "001",
             productName: "New suit 1",
             style: "Italic Minimal Design",
             size: "Small",
@@ -20,7 +20,7 @@ const MyOrders = () => {
             image: suite1,
         },
         {
-            orderId: "Order002",
+            orderId: "002",
             productName: "New suit 2",
             style: "Italic Minimal Design",
             size: "Small",
@@ -31,7 +31,7 @@ const MyOrders = () => {
             image: suite2,
         },
         {
-            orderId: "Order003",
+            orderId: "003",
             productName: "New pant 2",
             style: "Italic Minimal Design",
             size: "large",
@@ -70,14 +70,14 @@ const MyOrders = () => {
                 <div className="flex flex-col w-3/4 justify-center p-4 mb-4 ">
 
                     {orders.map((order, index) => (
-                        <Link to={`/customer/my-orders/${order.orderId}`} key={index} className='flex flex-col p-4 ml-3 cursor-pointer bg-slate-400 w-full h-full mt-4'>
+                        <Link to={`/customer/my-orders/${order.orderId}`} key={index} className='flex flex-col p-4 ml-3 cursor-pointer bg-slate-300 w-full h-full mt-4 rounded-2xl'>
+                                        <h3 className="text-lg md:text-md font-semibold text-gray-800">OrderId: {order.orderId}</h3>
                             <div className="flex flex-col md:flex-row justify-start items-start h-full md:items-center md:space-x-6 xl:space-x-8 w-full">
                                 <div className="w-32 h-full items-center ">
                                     <img className="object-cover" src={order.image} alt={order.productName} />
                                 </div>
                                 <div className="md:flex-row flex-col flex w-full">
                                     <div className="w-full flex flex-col space-y-2">
-                                        <h3 className="text-xl md:text-md font-semibold text-gray-800">OrderId: {order.orderId}</h3>
                                         <div className="flex justify-start items-start flex-col">
                                             <h3 className="text-xl md:text-md font-semibold text-gray-800">{order.productName}</h3>
                                             <div className="text-sm text-gray-800">
@@ -87,10 +87,9 @@ const MyOrders = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="flex justify-between space-x-8 items-start w-full">
-                                        <p className="text-base xl:text-lg">{order.status}</p>
-                                        <p className="text-base xl:text-lg text-gray-800">{order.quantity}</p>
-                                        <p className="text-base xl:text-lg font-semibold text-gray-800">Rs.{order.price.toFixed(2)}</p>
+                                    <div className="flex flex-col justify-between items-start w-full">
+                                        <span className="text-base xl:text-lg">Order Status: {order.status}</span>
+                                        <span className="text-base xl:text-lg font-semibold ">Total Amount: Rs.{order.price.toFixed(2)}</span>
                                     </div>
                                 </div>
                             </div>
