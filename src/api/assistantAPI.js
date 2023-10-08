@@ -23,3 +23,7 @@ export const gro = () => {
 export const gwp = () => {
     return api.get('/odb/gwp/');
 }
+
+export const dashboard = () => {
+    return api.get('/dashboard/');
+}
