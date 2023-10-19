@@ -1,9 +1,11 @@
 import api from './api';
 
-export const getMaterials = async (type) => { // get materials from API based on the payload (type of material)
+// VIEW MATERIALS BASED ON THE TYPE
+export const getMaterials = async (type) => {
     return api.get('/material', { type });
 }
 
+// ADD NEW MATERIAL
 export const addMaterial = async (material) => {
     return api.post('/material/add', material, {
         headers: {
@@ -12,14 +14,17 @@ export const addMaterial = async (material) => {
     });
 }
 
+// REMOVE EXISTING MATERIAL
 export const removeMaterial = async (material) => {
     return api.post('/material/remove', material);
 }
 
-export const addMaterialQuantity = async (material) => {
-    return api.patch('/material/add-quantity', material);
+// STOCK UPDATE FOR MATERIAL
+export const addMaterialQuantity = async (updates) => {
+    return api.put('/material/', updates);
 }
 
+// USE MATERIAL QUANTITY
 export const useMaterialQuantity = async (material) => {
     return api.patch('/material/use-quantity', material);
 }
