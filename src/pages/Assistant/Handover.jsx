@@ -1,9 +1,29 @@
+import { useState } from "react";
+
+import ReturnFixConfForm from "../../components/Assistant/Confirmations/ReturnFixConfForm";
+import DropDownFilter from "../../components/Assistant/Controls/HeaderDropDown";
+import SearchBox from "../../components/Assistant/Controls/HeaderSearchBox";
+import Pagination from "../../components/Assistant/Controls/Pagination";
+// import NewHandoverForm from "../../components/Assistant/Forms/HandoverDamagesForm";
 import Handovers from "../../components/Assistant/HandoveredItemSet";
-import DropDownFilter from "../../components/Assistant/HeaderDropDown";
-import SearchBox from "../../components/Assistant/HeaderSearchBox";
-import Pagination from "../../components/Assistant/Pagination";
 
 const Handover = () => {
+    const [isHandoverUpdate, updateHandover] = useState(false);
+    const [selectedHire, setSelectedHire] = useState({
+        customer: "",
+        suit: "",
+    });
+
+    const handleFormOpen = (cus_id, suit_id) => {
+        setSelectedHire({ customer: cus_id, suit: suit_id });
+        updateHandover(true);
+    }; 
+
+    const handleFormClose = () => {
+        setSelectedHire({ customer: null, suit: null });
+        updateHandover(false);
+    };
+
 	return (
 		<div>
 			<div className=" flex flex-col justify-between mx-10 my-8 p-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg">
@@ -35,7 +55,7 @@ const Handover = () => {
 					<div className=" w-full border h-0 mt-3 mb-6 border-gray-300"></div>
 				</div>
 				<div>
-					<Handovers />
+					<Handovers onOpen={handleFormOpen} />
 				</div>
 				<div className=" flex justify-between">
 					<div className=" py-3 text-sm font-medium text-neutral-400">
@@ -47,11 +67,17 @@ const Handover = () => {
 				</div>
 			</div>
 
-			{/* <div className=" flex justify-center w-full">
-                <div className=" flex flex-col justify-center h-screen">
-                    <div className=" text-4xl font-semibold text-zinc-400">This handover page is under development :(</div>
-                </div>
-            </div> */}
+			{/* <div className={`relative  ${isHandoverUpdate ? "hidden" : "hidden"}`}>
+				<NewHandoverForm />
+			</div> */}
+			<div className={`relative  ${isHandoverUpdate ? "block" : "hidden"}`}>
+				<ReturnFixConfForm
+                    isOpen={isHandoverUpdate}
+                    onClose={handleFormClose}
+                    cus_id={selectedHire.customer}
+                    suit_id={selectedHire.suit}
+                    />
+			</div>
 		</div>
 	);
 };

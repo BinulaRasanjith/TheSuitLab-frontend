@@ -1,3 +1,4 @@
+// ASSISTANT DASHBOARD MANAGEMENT API
 import api from "./api";
 
 export const cpoc = () => {
@@ -22,4 +23,8 @@ export const gro = () => {
 
 export const gwp = () => {
     return api.get('/odb/gwp/');
+}
+
+export const dashboard = () => {
+    return api.get('/dashboard/');
 }

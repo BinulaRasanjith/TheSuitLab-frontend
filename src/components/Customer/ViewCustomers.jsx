@@ -6,7 +6,7 @@ import {
     ModalFooter,
     ModalHeader,
     ModalOverlay,
-    Button, 
+    Button,
     useDisclosure,
 } from '@chakra-ui/react'
 import { useState } from "react";
@@ -16,9 +16,9 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router"
 import { Link } from 'react-router-dom';
 
-import DropDownFilter from "../../components/Assistant/HeaderDropDown"
-import SearchBox from "../../components/Assistant/HeaderSearchBox"
-import Pagination from "../../components/Assistant/Pagination"
+import DropDownFilter from "../../components/Assistant/Controls/HeaderDropDown"
+import SearchBox from "../../components/Assistant/Controls/HeaderSearchBox"
+import Pagination from "../../components/Assistant/Controls/Pagination"
 import { PRODUCT_MANAGER } from "../../constants";
 import { OPERATION_ASSISTANT } from "../../constants";
 import { selectUser } from "../../store/slices/authSlice"
@@ -213,7 +213,7 @@ const ViewCustomers = () => {
                     </div>
                 </div>
             </div>
-            
+
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>

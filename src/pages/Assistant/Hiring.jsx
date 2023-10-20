@@ -1,4 +1,5 @@
 import { Button } from "@chakra-ui/react"
+import { useState } from "react"
 import { AiFillPlusCircle } from 'react-icons/ai'
 
 import img1 from "../../assets/images/rentsuits/black paisley suit/1.webp"
@@ -9,8 +10,8 @@ import img6 from "../../assets/images/rentsuits/green suit/1.webp"
 import img5 from "../../assets/images/rentsuits/maroon suit/1.webp"
 import img4 from "../../assets/images/rentsuits/pants/dark blue.webp"
 import img7 from "../../assets/images/rentsuits/white palma suit/1.webp"
-"/Users/bhanuka/Documents/Group Project II/SYSTEM/TheSuitLab-frontend/src/assets/images/rentsuits/black paisley suit/1.webp"
 import CardContainer from "../../components/Assistant/CardContainer"
+import NewHireCostume from "../../components/Assistant/Forms/NewHireCostumeForm"
 import HiringItemCard from "../../components/Assistant/HiringItemCard"
 
 const hiringcostumes = [
@@ -65,41 +66,61 @@ const hiringcostumes = [
 ]
 
 const Hiring = () => {
-	return (
-		<div className=" flex flex-col justify-between mx-10 my-8 border border-solid border-zinc-950 border-opacity-0 rounded-lg">
-            <div className=" flex items-center justify-between my-4">
-				<div className="text-xl font-semibold">Hire costume</div>
-				<Button
-					_hover={
-						{
-							bgColor: 'primary.100',
-							color: 'primary.200'
-						}
-					}
-					bgColor={'primary.100'}
-					color={'primary.200'}
-					leftIcon={<AiFillPlusCircle />}
-					m={0}
-					rounded={'full'}
 
-				>
-					Add new
-				</Button>
+	const [isNewCostumeForm, addNewCostume] = useState(false);
+
+	const handleFormClose = () => {
+		addNewCostume(false); // SET `isNewCostumeForm` TO FALSE TO CLOSE THE FORM
+	};
+
+	const handleFormOpen = () => {
+		addNewCostume(true); // SET `isNewCostumeForm` TO TRUE TO OPEN THE FORM
+	};
+
+	return (
+		<div className="relative">
+			<div className=" flex flex-col justify-between mx-10 my-8 border border-solid border-zinc-950 border-opacity-0 rounded-lg">
+				<div className=" flex items-center justify-between my-4">
+					<div className="text-xl font-semibold">Hire costume</div>
+					<Button
+						_hover={
+							{
+								bgColor: 'primary.100',
+								color: 'primary.200'
+							}
+						}
+						bgColor={'primary.100'}
+						color={'primary.200'}
+						leftIcon={<AiFillPlusCircle />}
+						m={0}
+						rounded={'full'}
+						onClick={handleFormOpen}
+
+					>
+						Add new
+					</Button>
+				</div>
+
+
+				<CardContainer>
+					{hiringcostumes.map((costume, index) => {
+						return (
+							<HiringItemCard
+								image={costume.image}
+								key={index}
+								materialName={costume.costumeName}
+								supplierID={costume.designType}
+							/>
+						)
+					})}
+				</CardContainer>
 			</div>
 
-
-			<CardContainer>
-				{hiringcostumes.map((costume, index) => {
-					return (
-						<HiringItemCard
-							image={costume.image}
-							key={index}
-							materialName={costume.costumeName}
-							supplierID={costume.designType}
-						/>
-					)
-				})}
-			</CardContainer>
+			<div className={`relative  ${isNewCostumeForm ? "block" : "hidden"}`}>
+				{/* PASS `isNewCostumeForm` VARIABLE AND `handleFormClose` FUNCTION TO THE FORM TO OPEN/CLOSE IT */}
+				<NewHireCostume isOpen={isNewCostumeForm} onClose={handleFormClose} />
+			</div>
+			
 		</div>
 	)
 }
