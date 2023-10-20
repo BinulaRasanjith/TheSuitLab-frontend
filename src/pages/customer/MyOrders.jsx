@@ -1,10 +1,10 @@
 import { HiShoppingBag } from 'react-icons/hi2'
-import DropDownFilter from "../../components/Assistant/HeaderDropDown"
-import SearchBox from "../../components/Assistant/HeaderSearchBox"
 import { Link, useNavigate } from "react-router-dom";
+
 import suite1 from "../../assets/images/rentsuits/black paisley suit/1.webp"
 import suite2 from "../../assets/images/rentsuits/caremal suit/1.webp"
 import suite3 from "../../assets/images/rentsuits/maroon suit/2.webp"
+import SearchBox from "../../components/Assistant/Controls/HeaderSearchBox";
 
 const MyOrders = () => {
     const orders = [

@@ -1,10 +1,10 @@
-import OrderRecord from "./OrderRecord";
-
-import SearchBox from "../Assistant/HeaderSearchBox"
-import DropDownFilter from "../Assistant/HeaderDropDown"
-import Pagination from "../Assistant/Pagination"
-import { getPurchaseOrders } from "../../api/purchaseOrdersAPI";
 import { useState, useEffect } from "react";
+
+import { getPurchaseOrders } from "../../api/purchaseOrdersAPI";
+import DropDownFilter from "../Assistant/Controls/HeaderDropDown"
+import SearchBox from "../Assistant/Controls/HeaderSearchBox"
+import Pagination from "../Assistant/Controls/Pagination"
+import OrderRecord from "./OrderRecord";
 
 const ViewOrders = () => {
 
