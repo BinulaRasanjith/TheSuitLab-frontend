@@ -2,6 +2,7 @@ import { Button } from "@chakra-ui/react";
 import { useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import { FaBars, FaTimes } from "react-icons/fa";
+
 import { PiNewspaperBold } from "react-icons/pi";
 // import { HiShoppingCart } from "react-icons/hi";
 import { PiShoppingCartSimpleBold } from "react-icons/pi";
@@ -15,8 +16,8 @@ import TSL_LOGO_SM from "../assets/images/TSL_LOGO_SM.png";
 import defaultPhoto from "../assets/images/avatar.png";
 import { PROFILE_PICTURE_URL } from "../config/config";
 import { CUSTOMER } from "../constants";
-import { logoutAsync } from "../store/slices/authSlice";
 import { selectUser } from "../store/slices/authSlice";
+import { logoutAsync } from "../store/slices/authSlice";
 import { toggleSidebar } from "../store/slices/sidebarSlice";
 import displayRoleName from "../utils/displayRoleName";
 
@@ -143,7 +144,9 @@ const Navbar = () => {
 					{user.id ? (
 						<>
 							<div className="flex items-center gap-3 relative">
+
 								{/* {user.role === CUSTOMER && <div className="text-secondary cursor-pointer ">
+
 									<HiShoppingCart onClick={() => navigate("/customer/cart")}
 										style={{ fontSize: "1.5rem" }} />
 								</div>} */}

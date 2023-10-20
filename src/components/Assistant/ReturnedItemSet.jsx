@@ -11,8 +11,7 @@ const ReturnedItems = () => {
 		const fetchReturns = async () => {
 			try {
 				const response = await getReturns();
-				console.log(response.data);
-				setReturns(response.data);
+				setReturns(response.data.returns);
 			} catch (error) {
 				console.error(error);
 			}

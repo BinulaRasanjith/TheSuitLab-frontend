@@ -1,17 +1,22 @@
+// RETURN MANAGEMENT API
 import api from "./api";
 
+// ADD NEW RETURN INQUIRY
 export const addReturn = (data) => {
-    return api.post('/returns/add-return', data);
+    return api.post('/returns/', data);
 }
 
+// VIEW ALL RETURN INQUIRIES
 export const getReturns = () => {
-    return api.get('/returns/get-returns');
+    return api.get('/returns/');
 }
 
-export const updateReturn = (new_data) => {
-    return api.post('/returns/update-return', new_data);
+// UPDATE EXISTING RETURN INQUIRY
+export const updateReturn = (updates) => {
+    return api.put('/returns/', updates);
 }
 
+// REMOVE EXISTING RETURN INQUIRY
 export const removeReturn = (id) => {
-    return api.delete(`/returns/remove-return/${id}`);
+    return api.delete(`/returns/${id}`);
 }

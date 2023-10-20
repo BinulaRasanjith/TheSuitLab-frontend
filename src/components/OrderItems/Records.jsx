@@ -1,9 +1,10 @@
-import OrderRecord from "./OrderRecord";
-import SearchBox from "../Assistant/HeaderSearchBox"
-import DropDownFilter from "../Assistant/HeaderDropDown"
-import Pagination from "../Assistant/Pagination"
-import { selectUser } from "../../store/slices/authSlice"
 import { PRODUCT_MANAGER, TAILOR, OPERATION_ASSISTANT } from "../../constants";
+import { selectUser } from "../../store/slices/authSlice"
+import DropDownFilter from "../Assistant/Controls/HeaderDropDown"
+import SearchBox from "../Assistant/Controls/HeaderSearchBox"
+import Pagination from "../Assistant/Controls/Pagination"
+import OrderRecord from "./OrderRecord";
+
 
 const Records = () => {
     const records = [

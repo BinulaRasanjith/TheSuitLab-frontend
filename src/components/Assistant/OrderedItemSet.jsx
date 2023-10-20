@@ -1,9 +1,11 @@
+import PropTypes from "prop-types";
+
 import OrderRecord from "./OrderRecord";
 
-const OrderedItems = () => {
+const OrderedItems = ({ onOpen }) => {
     const records = [
         {
-            order_id: "#007324786345",
+            order_id: "PO007324786345",
             item_count: 1,
             mobile: "(225) 555-0118",
             customer: "Malin Perera",
@@ -11,7 +13,7 @@ const OrderedItems = () => {
             status: "Collected",
         },
         {
-            order_id: "#007908322342",
+            order_id: "PO007908322342",
             item_count: 2,
             mobile: "(208) 555-0112",
             customer: "Janaka Ishan",
@@ -19,7 +21,7 @@ const OrderedItems = () => {
             status: "Collected",
         },
         {
-            order_id: "#007373652783",
+            order_id: "PO007373652783",
             item_count: 1,
             mobile: "(302) 321-0107",
             customer: "Chameera Dilshan",
@@ -27,7 +29,7 @@ const OrderedItems = () => {
             status: "Collected",
         },
         {
-            order_id: "#007765876554",
+            order_id: "PO007765876554",
             item_count: 3,
             mobile: "(252) 533-0120",
             customer: "Kalana Perera",
@@ -48,11 +50,16 @@ const OrderedItems = () => {
                         Customer={item.customer}
                         OrderedDate={item.ordered_date}
                         Status={item.status}
+                        onOpen={() => onOpen(item.order_id)}
                     />
                 ))}
             </div>
         </>
     );
+};
+
+OrderedItems.propTypes = {
+    onOpen: PropTypes.func.isRequired,
 };
 
 export default OrderedItems;

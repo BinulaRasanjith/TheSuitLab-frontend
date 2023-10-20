@@ -1,5 +1,14 @@
 import api from "./api";
 
+
+export const getCustomers = (customerData) => {
+    return api.get('/customer/details', customerData);
+}
+
+export const addToCart = async (cartItem) => {
+    return api.post("/customer/add-to-cart", cartItem);
+}
+
 export const addHireCostumeToCart = async (cartItem) => {
     return api.post("/customer/add-hire-costume-to-cart", cartItem);
 }

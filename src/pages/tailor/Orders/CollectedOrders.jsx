@@ -1,7 +1,7 @@
+import DropDownFilter from "../../../components/Assistant/Controls/HeaderDropDown"
+import SearchBox from "../../../components/Assistant/Controls/HeaderSearchBox"
+import Pagination from "../../../components/Assistant/Controls/Pagination"
 import Records from "../../../components/OrderItems/Records"
-import SearchBox from "../../../components/Assistant/HeaderSearchBox"
-import DropDownFilter from "../../../components/Assistant/HeaderDropDown"
-import Pagination from "../../../components/Assistant/Pagination"
 
 const AllOrders = () => {
     return (
@@ -48,7 +48,7 @@ const AllOrders = () => {
                         <div className=" text-4xl font-semibold text-zinc-400">This materials page is under development :(</div>
                     </div>
                 </div> */}
-                <div><Records /></div>
+            <div><Records /></div>
         </div>
     )
 }

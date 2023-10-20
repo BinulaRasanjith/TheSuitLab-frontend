@@ -12,7 +12,7 @@ import img7 from "../../assets/images/buttons/button7.jpg"
 import img8 from "../../assets/images/buttons/button8.gif"
 import AccessoryCard from "../../components/Assistant/AccessoryCard"
 import CardContainer from "../../components/Assistant/CardContainer"
-import NewAccessoryForm from "../../components/Assistant/NewAccessoryForm"
+import NewAccessoryForm from "../../components/Assistant/Forms/NewAccessoryForm"
 
 const accessories = [
 	{

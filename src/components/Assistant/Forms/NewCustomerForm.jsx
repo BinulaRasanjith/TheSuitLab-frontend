@@ -2,10 +2,10 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
 
-import { sendOTP } from "../../api/otpAPIs";
-import Input from "../../components/Input/Input";
+import { addReturn } from "../../../api/returnAPI";
+import Input from "../../Input/Input";
 
-const OTPForm = ({ isOpen, onClose }) => {
+const NewReturnForm = ({ isOpen, onClose }) => {
 	const [newCustomer, setNewCustomer] = useState({
 		firstName: "",
 		lastName: "",
@@ -21,7 +21,7 @@ const OTPForm = ({ isOpen, onClose }) => {
 		e.preventDefault();
 
 		try {
-			await sendOTP(newCustomer.mobileNo);
+			await addReturn(newCustomer);
 			onClose();
 		} catch (error) {
 			console.error(error);
@@ -30,16 +30,18 @@ const OTPForm = ({ isOpen, onClose }) => {
 
 	return (
 		<div className={`relative  ${isOpen ? "block" : "hidden"}`}>
-			{/* <div className={`relative  ${isOpen ? 'block' : 'hidden'}`} onClick={onClose}> */}
-			{/* <div className="relative"> */}
 
-			<div className="fixed left-0 right-0 bottom-0 top-0 z-60 opacity-30 bg-black"></div>
+			<div className="fixed left-0 right-0 bottom-0 top-0 z-40 opacity-30 bg-black"></div>
 
-			<div className="fixed top-16 bottom-0 right-0 left-0 z-60 flex flex-col items-center justify-center">
+			<div className="fixed top-16 bottom-0 right-0 left-0 z-40 flex flex-col items-center justify-center">
 				<div className=" z-50 m-8 max-w-md w-96 rounded-lg bg-white p-8 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
-					<div className="relative flex justify-end mb-3" onClick={onClose}>
-						<AiFillCloseCircle size={24} />
-					</div>
+					<div className="flex justify-between gap-x-4">
+                        <div className="mb-12 text-2xl font-bold">
+                            New Customer
+                        </div>
+                        <div className="mt-1"><AiFillCloseCircle onClick={onClose} size={24} /></div>
+                    </div>
+					{/* <form> */}
 					<form onSubmit={handleAddUserClick}>
 						<div className="relative mb-6" data-te-input-wrapper-init>
 							<Input
@@ -54,13 +56,23 @@ const OTPForm = ({ isOpen, onClose }) => {
 						</div>
 						<div>
 							<Input
-								type="date"
-								placeholder="Enter One Time Password"
-								id="otp-code"
-								name="otpCode"
-								value={newCustomer.otpCode}
+								type="text"
+								placeholder="Last Name"
+								id="lastname"
+								name="lastName"
+								value={newCustomer.lastName}
 								onChange={handleInputChange}
-                                maxLength={6}
+								className="mb-6"
+							/>
+						</div>
+						<div className="relative mb-6" data-te-input-wrapper-init>
+							<Input
+								type="text"
+								placeholder="Mobile Number"
+								id="mobile"
+								name="mobileNo"
+								value={newCustomer.mobileNo}
+								onChange={handleInputChange}
 								className="mb-6"
 							/>
 						</div>
@@ -80,9 +92,9 @@ const OTPForm = ({ isOpen, onClose }) => {
 	);
 };
 
-OTPForm.propTypes = {
+NewReturnForm.propTypes = {
 	onClose: PropTypes.func.isRequired,
 	isOpen: PropTypes.bool.isRequired,
 };
 
-export default OTPForm;
+export default NewReturnForm;
