@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 import { BiSolidColor } from "react-icons/bi";
 import { GiRolledCloth } from "react-icons/gi";
 import { PiPantsFill } from "react-icons/pi";
@@ -7,9 +7,8 @@ import { TbRulerMeasure } from "react-icons/tb";
 import { Outlet } from "react-router-dom";
 
 import ContentWrapper from "../../components/ContentWrapper";
-import CostumeModel from "../../components/Customer/CostumeModel";
-// import WholeCostume from "../../components/Customer/WholeCostume";
 import Sidebar from "../../components/Sidebar/Sidebar";
+
 const sidebarItems = [
     {
         label: "Fabric",
@@ -86,7 +85,7 @@ const sidebarItems = [
     },
 ];
 
-const CostumeCustomizationLayout = () => {
+const FullCostumeMeasurementLayout = () => {
 
     // This function will be called when the user attempts to refresh the page
     const handleBeforeUnload = (e) => {
@@ -116,17 +115,16 @@ const CostumeCustomizationLayout = () => {
         };
     }, []);
 
+
     return (
         <>
             <Sidebar items={sidebarItems} />
-            <ContentWrapper customizeLayout>
-                <div className='w-1/2 h-full overflow-y-auto scroll-m-1'>
-                    <Outlet />
-                </div>
-                <CostumeModel />
+            <ContentWrapper>
+                <Outlet />
+
             </ContentWrapper>
         </>
     )
 }
 
-export default CostumeCustomizationLayout
+export default FullCostumeMeasurementLayout

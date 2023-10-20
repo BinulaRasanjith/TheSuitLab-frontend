@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux'
 
 // import Small from '../../assets/images/lapel_styles/Small 1.png'
 import { setJacket } from "../../store/slices/jacketCustomizationSlice"
+import { setRotation } from "../../store/slices/rotationHandleSlice"
 
 const ChooseLapels = () => {
     const dispatch = useDispatch()
@@ -18,17 +19,22 @@ const ChooseLapels = () => {
                 <div className='grid grid-cols-4 gap-x-5 mt-5'>
                     <div onClick={() => {
                         dispatch(setJacket({ lapel: 'peak-lapel' }))
+                        dispatch(setRotation(2 * Math.PI))
                     }} className='flex p-2 flex-col justify-center items-center cursor-pointer rounded-lg border border-black-2  shadow'>
                         <img alt="" className="pb-3" src={CLOne} />
                         <label className='text-sm'>PEAK LAPEL</label>
                     </div>
                     <div onClick={() => {
                         dispatch(setJacket({ lapel: 'notch-lapel' }))
+                        dispatch(setRotation(2 * Math.PI))
                     }} className='flex p-2 flex-col justify-center items-center cursor-pointer rounded-lg border border-black-2  shadow'>
                         <img alt="" className="pb-3" src={CLTwo} />
                         <label className='text-sm'>NOTCH LAPEL</label>
                     </div>
-                    <div className='flex p-2 flex-col justify-center items-center cursor-pointer rounded-lg border border-black-2  shadow'>
+                    <div onClick={() => {
+                        dispatch(setJacket({ lapel: 'peak-lapel' }))
+                        dispatch(setRotation(2 * Math.PI))
+                    }} className='flex p-2 flex-col justify-center items-center cursor-pointer rounded-lg border border-black-2  shadow'>
                         <img alt="" className="pb-3" src={CLFour} />
                         <label className='text-sm'>SHAWL LAPEL</label>
                     </div>

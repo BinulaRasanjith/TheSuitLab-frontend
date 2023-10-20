@@ -1,13 +1,21 @@
 import { Select, useToast } from "@chakra-ui/react";
-import { useState } from "react";
+import { useDisclosure } from '@chakra-ui/react';
+import { Button, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from "@chakra-ui/react"
+import { useEffect, useState } from "react";
+import React from 'react';
 import { FaShoppingCart } from "react-icons/fa";
 import { IoArrowBackCircle } from "react-icons/io5";
+import { MdNavigateNext } from "react-icons/md";
+import { MdOutlineArrowBackIosNew } from 'react-icons/md';
+import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import {
+	addNewCostumeToItemModel,
 	setCoatMeasurements,
-	setTrouserMeasurements,
+	setTrouserMeasurements
 } from "../../api/customerAPI";
+import { addCustomSuitToCart as addCustomSuitToCartAPI } from "../../api/customerAPI";
 import FullShoulderWidth from "../../assets/images/measurements/men_size_1 (1).jpg";
 import Sleeves from "../../assets/images/measurements/men_size_2.jpg";
 import FullChest from "../../assets/images/measurements/men_size_3.jpg";
@@ -23,20 +31,57 @@ import THIGH from "../../assets/images/measurements/men_size_12.jpg";
 import TROUSER_LENGTH from "../../assets/images/measurements/men_size_13.jpg";
 import CUFF from "../../assets/images/measurements/men_size_14.jpg";
 import MeasurementBlock from "../../components/Customer/MeasurementBlock";
-import { INCH, STANDARD_MEASUREMENTS } from "../../constants/index";
+import { INCH, STANDARD, STANDARD_MEASUREMENTS } from "../../constants/index";
+import { selectUser } from "../../store/slices/authSlice";
+import { selectJacket } from "../../store/slices/jacketCustomizationSlice";
 import {
 	getCourtMeasurementObject,
 	getTrouserMeasurementObject,
 } from "../../utils/measurements";
 
+
 const StandardSizes = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
 	const toast = useToast();
+	const user = useSelector(selectUser);
+
+	const { isOpen, onOpen, onClose } = useDisclosure()
+	const initialRef = React.useRef()
+	const finalRef = React.useRef()
+	const [inputValue, setInputValue] = useState('');
+	const [isAddButtonDisabled, setIsAddButtonDisabled] = useState(true);
+	const handleInputChange = (e) => {
+		const value = e.target.value;
+
+		if (value === '' || (value >= 1 && value <= 10)) {
+			setInputValue(value);
+			setIsAddButtonDisabled(false);
+		} else {
+			setIsAddButtonDisabled(true);
+		}
+	};
+
+	const jacket = useSelector(selectJacket);
 
 	const [selectedSize, setSelectedSize] = useState("S");
 	const [selectedUnit, setSelectedUnit] = useState("inch");
 	const [selectedCategory, setSelectedCategory] = useState("jacket");
+
+	const [coatMeasurementsInInch, setCoatMeasurementsInInch] = useState({});
+	const [pantMeasurementsInInch, setPantMeasurementsInInch] = useState({});
+
+	useEffect(() => {
+		if (location.pathname.includes("/customize-suit/jacket")) {
+			setSelectedCategory("jacket");
+		}
+		if (location.pathname.includes("/customize-suit/pant")) {
+			setSelectedCategory("pant");
+		}
+		if (location.pathname.includes("/customize-suit/all")) {
+			setSelectedCategory("all");
+		}
+	}, [location.pathname]);
 
 	// back button
 	const handleBack = () =>
@@ -120,6 +165,41 @@ const StandardSizes = () => {
 		}
 	};
 
+	const handleGoToCart = async () => {
+
+		await addNewCostumeToItemModel({
+			itemType: "CustomSuit",
+			price: 1000,
+			quantity: inputValue,
+			status: "available",
+		}).then((res) => {
+			// console.log(res.data);
+			addCustomSuitToCartAPI({
+				description: {
+					type: STANDARD,
+					customization: jacket,
+				},
+				measurement: {
+					coatMeasurementsInInch,
+					pantMeasurementsInInch
+				},
+				customerId: user.id,
+				itemId: res.data.itemId,
+				price: 2000, // TODO: calculate price
+				quantity: inputValue,
+				status: "available",
+			}).then((res) => {
+
+				navigate("/customer/cart");
+			}).catch((err) => {
+				console.log(err);
+			});
+		}).catch((err) => {
+			console.log(err);
+		});
+
+	};
+
 	return (
 		<div className={`flex flex-col flex-wrap`}>
 			<div
@@ -144,15 +224,17 @@ const StandardSizes = () => {
 						<option value="cm">Centimeters</option>
 					</Select>
 
-					<Select
-						width="250px"
-						value={selectedCategory}
-						onChange={(event) => setSelectedCategory(event.target.value)}
-					>
-						<option value="jacket">Jacket</option>
-						<option value="pant">Pant</option>
-						<option value="all">All</option>
-					</Select>
+					{!location.pathname.includes("customize-suit") && (
+						<Select
+							width="250px"
+							value={selectedCategory}
+							onChange={(event) => setSelectedCategory(event.target.value)}
+						>
+							<option value="jacket">Jacket</option>
+							<option value="pant">Pant</option>
+							<option value="all">All</option>
+						</Select>
+					)}
 
 					<Select
 						width="250px"
@@ -180,6 +262,7 @@ const StandardSizes = () => {
 									?.FullShoulderWidth
 							}
 							selectedUnit={selectedUnit}
+							unchangeable
 						/>
 						<MeasurementBlock
 							image={Sleeves}
@@ -190,6 +273,7 @@ const StandardSizes = () => {
 									?.Sleeves
 							}
 							selectedUnit={selectedUnit}
+							unchangeable
 						/>
 						<MeasurementBlock
 							image={FullChest}
@@ -200,6 +284,7 @@ const StandardSizes = () => {
 									?.FullChest
 							}
 							selectedUnit={selectedUnit}
+							unchangeable
 						/>
 						<MeasurementBlock
 							image={Waist}
@@ -210,6 +295,7 @@ const StandardSizes = () => {
 									?.Waist
 							}
 							selectedUnit={selectedUnit}
+							unchangeable
 						/>
 						<MeasurementBlock
 							image={Hips}
@@ -220,6 +306,7 @@ const StandardSizes = () => {
 									?.Hips
 							}
 							selectedUnit={selectedUnit}
+							unchangeable
 						/>
 						<MeasurementBlock
 							image={FrontShoulderWidth}
@@ -230,6 +317,7 @@ const StandardSizes = () => {
 									?.FrontShoulderWidth
 							}
 							selectedUnit={selectedUnit}
+							unchangeable
 						/>
 						<MeasurementBlock
 							image={BackShoulderWidth}
@@ -240,6 +328,7 @@ const StandardSizes = () => {
 									?.BackShoulderWidth
 							}
 							selectedUnit={selectedUnit}
+							unchangeable
 						/>
 						<MeasurementBlock
 							image={FrontJacketLength}
@@ -250,6 +339,7 @@ const StandardSizes = () => {
 									?.FrontJacketLength
 							}
 							selectedUnit={selectedUnit}
+							unchangeable
 						/>
 						<MeasurementBlock
 							image={Neck}
@@ -260,6 +350,7 @@ const StandardSizes = () => {
 									?.Neck
 							}
 							selectedUnit={selectedUnit}
+							unchangeable
 						/>
 					</>
 				)}
@@ -274,6 +365,7 @@ const StandardSizes = () => {
 									?.TrouserWaist
 							}
 							selectedUnit={selectedUnit}
+							unchangeable
 						/>
 						<MeasurementBlock
 							image={CROTCH}
@@ -284,6 +376,7 @@ const StandardSizes = () => {
 									?.Crotch
 							}
 							selectedUnit={selectedUnit}
+							unchangeable
 						/>
 						<MeasurementBlock
 							image={THIGH}
@@ -294,6 +387,7 @@ const StandardSizes = () => {
 									?.Thigh
 							}
 							selectedUnit={selectedUnit}
+							unchangeable
 						/>
 						<MeasurementBlock
 							image={TROUSER_LENGTH}
@@ -304,6 +398,7 @@ const StandardSizes = () => {
 									?.TrouserLength
 							}
 							selectedUnit={selectedUnit}
+							unchangeable
 						/>
 						<MeasurementBlock
 							image={CUFF}
@@ -314,27 +409,70 @@ const StandardSizes = () => {
 									?.Cuff
 							}
 							selectedUnit={selectedUnit}
+							unchangeable
 						/>
 					</>
 				)}
 			</div>
 			<div className="flex m-5 z-20 top-10 p-2 justify-between">
 				<button
-					onClick={() => navigate("/customer/customize-suit/jacket/color-contrast/button")}
+					onClick={() =>
+						navigate("/customer/customize-suit/jacket/color-contrast/button")
+					}
 					type="button"
 					className="m-5 flex items-center justify-center w-48 rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
 				>
+					<MdOutlineArrowBackIosNew className="mr-2 text-md" />
 					Back to design
 				</button>
-				
-				<button
-					onClick={() => navigate("/customer/cart")}
+
+				{/* <button
+					onClick={handleGoToCart}
 					type="button"
 					className="m-5 flex items-center justify-center w-48 rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
 				>
 					<span>Go to Cart</span>
 					<FaShoppingCart className="ml-2 text-xl" />
+				</button> */}
+				<button
+					onClick={onOpen}
+					type="button"
+					className="m-5 flex items-center justify-center w-48 rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+				>
+					<span>Next</span>
+					<MdNavigateNext className="ml-2 text-xl" />
 				</button>
+				<Modal
+					initialFocusRef={initialRef}
+					finalFocusRef={finalRef}
+					isOpen={isOpen}
+					onClose={onClose}
+				>
+					<ModalOverlay />
+					<ModalContent>
+						<ModalHeader>Enter the quantity</ModalHeader>
+						<ModalCloseButton />
+						<ModalBody pb={6}>
+							<FormControl>
+								<FormLabel>Quantity</FormLabel>
+								<Input type="number" ref={initialRef}
+									value={inputValue}
+									onChange={handleInputChange}
+									min={0}
+									max={10} required />
+							</FormControl>
+						</ModalBody>
+
+						<ModalFooter>
+							<Button onClick={handleGoToCart} colorScheme="blue" mr={3} disabled={isAddButtonDisabled}>
+								<FaShoppingCart className="mr-2 text-xl" />
+								Add to cart
+							</Button>
+
+						</ModalFooter>
+					</ModalContent>
+				</Modal>
+
 			</div>
 		</div>
 	);

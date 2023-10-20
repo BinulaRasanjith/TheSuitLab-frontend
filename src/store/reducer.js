@@ -5,6 +5,7 @@ import componentHideReducer from "./slices/componentHideSlice";
 import costumeCustomizationReducer from "./slices/costumeCustomizationSlice";
 import jacketCustomizationReducer from "./slices/jacketCustomizationSlice";
 import materialReducer from "./slices/materialSlice";
+import rotationReducer from "./slices/rotationHandleSlice";
 import sidebarReducer from "./slices/sidebarSlice";
 
 const reducer = combineReducers({
@@ -14,6 +15,7 @@ const reducer = combineReducers({
   jacketCustomization: jacketCustomizationReducer,
   costumeCustomization: costumeCustomizationReducer,
   componentHide: componentHideReducer,
+  rotation: rotationReducer,
 });
 
 export default reducer;

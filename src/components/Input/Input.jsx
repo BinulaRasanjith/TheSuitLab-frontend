@@ -14,6 +14,8 @@ function Input({
 	onBlur,
 	error,
 	className,
+	max,
+	min,
 }) {
 	const today = new Date().toISOString().split("T")[0];
 	const [hintReal, setHintReal] = useState("");
@@ -42,7 +44,8 @@ function Input({
 				placeholder={hintReal}
 				type={type}
 				value={value}
-				max={type === "date" ? today : undefined}
+				max={type === "date" ? today : type === "number" ? max : undefined}
+				min={type === "number" ? min : undefined}
 				maxLength={maxLength}
 			/>
 			<label
@@ -71,6 +74,8 @@ Input.propTypes = {
 	onFocus: PropTypes.func,
 	error: PropTypes.string,
 	className: PropTypes.string,
+	max: PropTypes.number,
+	min: PropTypes.number,
 };
 
 export default Input;

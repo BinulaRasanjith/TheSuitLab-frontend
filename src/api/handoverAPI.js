@@ -6,6 +6,10 @@ export const newHire = async (data) => {
     return api.post('/hiring/', data);
 }
 
+export const newHire = (data) => {
+    return api.post('/hiring/', data);
+}
+
 // VIEW ALL HIRED COSTUMES
 export const getHires = async () => {
     return api.get('/hiring/');

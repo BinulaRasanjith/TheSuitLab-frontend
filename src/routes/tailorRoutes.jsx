@@ -4,7 +4,7 @@ import Profile from "../pages/Profile";
 import TailorDashboard from "../pages/Tailor/Dashboard";
 import Buttons from "../pages/tailor/Buttons";
 import Fabrics from "../pages/tailor/Fabrics";
-import AllOrders from "../pages/tailor/Orders/AllOrders";
+import AllOrders from "../pages/Tailor/Orders/AllOrders";
 import CollectedOrders from "../pages/tailor/Orders/CollectedOrders";
 import CompletedOrders from "../pages/tailor/Orders/CompletedOrders";
 import TobeCollectedOrders from "../pages/tailor/Orders/TobeCollectedOrders";

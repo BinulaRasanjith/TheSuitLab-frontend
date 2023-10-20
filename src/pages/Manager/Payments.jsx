@@ -66,7 +66,7 @@ const Payments = () => {
 			<div className=" flex flex-col justify-between mx-10 my-8 p-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg">
 				<div className=" flex justify-between align-middle pb-5">
 					<div className='flex flex-col'>
-						<div className=' text-2xl font-semibold'>All Suppliers</div>
+						<div className=' text-2xl font-semibold'>Payments</div>
 					</div>
 					<div className=" flex gap-4 align-middle">
 						<div>

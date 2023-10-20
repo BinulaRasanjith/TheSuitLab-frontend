@@ -6,7 +6,7 @@ export const getHireCostumes = async ({ costumeType, status }) => {
     return api.get(`/costume-hiring`, {
         params: {
             costumeType,
-            status
+            rentStatus
         }
     })
 };

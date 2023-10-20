@@ -1,7 +1,15 @@
 import OrderRecord from "./OrderRecord";
+
 import SearchBox from "../Assistant/Controls/HeaderSearchBox"
 import DropDownFilter from "../Assistant/Controls/HeaderDropDown"
 import Pagination from "../Assistant/Controls/Pagination"
+
+import SearchBox from "../Assistant/HeaderSearchBox"
+import DropDownFilter from "../Assistant/HeaderDropDown"
+import Pagination from "../Assistant/Pagination"
+import { selectUser } from "../../store/slices/authSlice"
+import { PRODUCT_MANAGER, TAILOR, OPERATION_ASSISTANT } from "../../constants";
+
 
 const Records = () => {
     const records = [
@@ -81,7 +89,6 @@ const Records = () => {
                                 <th className="w-40 px-10">
                                     Option
                                 </th>
-
                             </tr>
                         </thead>
                         <tbody>
@@ -98,7 +105,6 @@ const Records = () => {
                                 ))}
                             </div>
                         </tbody>
-
                     </table>
                     <div className=" w-full border h-0 mt-3 mb-6 border-gray-200"></div>
 
@@ -111,8 +117,6 @@ const Records = () => {
                     </div>
                 </div>
             </div>
-
-
         </div>
     );
 };

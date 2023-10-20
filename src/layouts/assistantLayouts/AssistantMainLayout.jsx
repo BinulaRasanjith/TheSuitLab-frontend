@@ -80,6 +80,7 @@ const AssistantMainLayout = () => {
 	useEffect(() => {
 		if (user.role != OPERATION_ASSISTANT) navigate("/");
 	}, [navigate, user]);
+
 	return (
 		<>
 			<Navbar />

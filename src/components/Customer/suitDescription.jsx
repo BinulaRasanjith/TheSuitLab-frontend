@@ -1,19 +1,23 @@
-import { useToast } from "@chakra-ui/react";
+import { Button, useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { HiOutlineCalendar } from "react-icons/hi";
-import { Link, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 
-import { addToCart as addToCartAPI } from "../../api/customerAPI";
+import { addHireCostumeToCart as addHireCostumeToCartAPI } from "../../api/customerAPI";
 import { getHireCostume } from "../../api/hireCostumesAPI";
 import { HIRE_COSTUME_IMAGES_URL } from "../../config/config";
+import { selectUser } from "../../store/slices/authSlice";
 
 const SuitDescription = () => {
 	// Get the suitId from the route parameters
 	const { suitId } = useParams();
 	const toast = useToast();
+	const navigate = useNavigate();
 
+	const user = useSelector(selectUser);
 	const [suitDetails, setSuitDetails] = useState({
 		images: [],
 		name: "",
@@ -21,8 +25,13 @@ const SuitDescription = () => {
 		price: 0,
 	}); // Create state variable for suit details
 	const [selectedImage, setSelectedImage] = useState("");
-	const [selectedItems, setSelectedItems] = useState([]); // [{size: quantity}]
-	// const [quantity, setQuantity] = useState([]);
+	// const [selectedItems, setSelectedItems] = useState({}); // {size: quantity}
+	const [selectedSize, setSelectedSize] = useState("L");
+	const [quantity, setQuantity] = useState(0);
+	const [enabled, setEnabled] = useState({
+		increment: true,
+		decrement: false,
+	}); // Disable the buttons
 	const [fromDate, setFromDate] = useState(null);
 	const [toDate, setToDate] = useState(null);
 
@@ -38,70 +47,69 @@ const SuitDescription = () => {
 			});
 	}, [suitId]);
 
-	// const handleDecrement = () => {
-	// 	if (quantity > 1) {
-	// 		setQuantity(quantity - 1);
-	// 	}
-	// };
-
-	// const handleIncrement = () => {
-	// 	setQuantity(quantity + 1);
-	// };
-
-	// const [selectedSize, setSelectedSize] = useState("Medium"); // Initialize with the default size
-
-	// const handleSizeClick = (size) => {
-	// 	setSelectedSize(size);
-	// };
-
 	const handleImageClick = (image) => {
 		setSelectedImage(image);
 	};
 
-	const handleAddToItems = (size) => {
-		// [{size1: quantity1}, {size2: quantity2}, {size3: quantity3}]
-		// increase item quantity if already in cart else add 1 to quantity
-		const item = selectedItems.find((item) => item.size === size);
-		if (item) { // if item exists in items
-			// increase quantity
-			if (item.quantity < suitDetails.size.find((item) => item.size === size).quantity) {
-				item.quantity += 1;
-			} else if (item.quantity === suitDetails.size.find((item) => item.size === size).quantity) {
-				toast({
-					title: "Out of Stock",
-					status: "info",
-					duration: 3000,
-					isClosable: true,
-				});
-			}
+	const handleSelectSize = (size) => {
+		setSelectedSize(size);
+		setQuantity(0);
+	}
+
+	const incrementQuantity = () => {
+		if (quantity < suitDetails.size[selectedSize]) {
+			setQuantity(quantity + 1);
 		} else {
-			// add new item to cart
-			setSelectedItems([...selectedItems, { size, quantity: 1 }]);
+			setEnabled({ ...enabled, increment: false });
 		}
 	};
 
-	const handleRemoveFromItems = (size) => {
-		// [{size1: quantity1}, {size2: quantity2}, {size3: quantity3}]
-		// decrease item quantity if already in cart
-		const item = selectedItems.find((item) => item.size === size);
-		if (item) { // if item exists in cart
-			// decrease quantity
-			if (item.quantity > 1) {
-				item.quantity -= 1;
-			} else {
-				// remove item from cart
-				console.log("remove item from cart");
-				setSelectedItems(selectedItems.filter((item) => item.size !== size));
-			}
+	const decrementQuantity = () => {
+		if (quantity > 0) {
+			setQuantity(quantity - 1);
+		} else {
+			setEnabled({ ...enabled, decrement: false });
 		}
 	};
 
 	const handleAddToCart = () => {
-		addToCartAPI({
+		// check if size and quantity are selected
+		if (selectedSize === "" && quantity === 0) {
+			toast({
+				title: "Error",
+				description: "Please select a size and quantity",
+				status: "warning",
+				duration: 3000,
+				isClosable: true,
+			});
+			return;
+		}
+
+		// check if renting period is selected
+		if (!fromDate && !toDate) {
+			toast({
+				title: "Error",
+				description: "Please select a renting period",
+				status: "warning",
+				duration: 3000,
+				isClosable: true,
+			});
+			return;
+		}
+
+		addHireCostumeToCartAPI({
+			customerId: user.id,
 			itemId: suitId,
-			description: suitDetails.name,
-			// quantity,
-			// size: selectedSize,
+			price: suitDetails.price,
+			quantity,
+			status: "available",
+			description: {
+				type: "hire",
+				name: suitDetails.name,
+				size: selectedSize,
+				fromDate,
+				toDate,
+			},
 		})
 			.then((response) => {
 				if (response.status === 201) {
@@ -112,7 +120,7 @@ const SuitDescription = () => {
 						isClosable: true,
 					});
 				}
-				console.log(response);
+				console.log(response.data);
 			})
 			.catch((error) => {
 				console.log(error);
@@ -130,8 +138,8 @@ const SuitDescription = () => {
 
 	return (
 		<div className="flex items-start flex-wrap bg-white w-full h-screen overflow-auto">
-			<section className=" bg-white my-10 w-full font-poppins">
-				<div className="max-w-6xl px-4 py-4 mx-auto lg:py-8 md:px-6">
+			<div className=" bg-white mb-16 w-full font-poppins">
+				<div className=" px-4 py-4 mx-auto md:px-6">
 					<div className="flex flex-wrap -mx-4">
 						<div className="w-full mb-8 md:w-1/2 md:mb-0">
 							<div className="sticky top-0 z-50 overflow-hidden">
@@ -159,14 +167,14 @@ const SuitDescription = () => {
 										</div>
 									))}
 								</div>
-								<div className="px-6 pb-6 mt-6 border-t border-gray-300 dark:border-gray-400">
+								{/* <div className="px-6 pb-6 mt-6 border-t border-gray-300 dark:border-gray-400">
 									<div className="flex flex-wrap items-center mt-6">
 										<h2 className="text-lg font-bold text-gray-700 mb-5 dark:text-gray-400">
 											Renting Period
 										</h2>
 									</div>
 
-									{/* From Date input */}
+									
 									<div className="relative">
 										<HiOutlineCalendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600 " />
 										<DatePicker
@@ -180,7 +188,7 @@ const SuitDescription = () => {
 										/>
 									</div>
 
-									{/* To Date input */}
+									
 									<div className="relative mt-4">
 										<HiOutlineCalendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600 " />
 										<DatePicker
@@ -192,100 +200,165 @@ const SuitDescription = () => {
 											className="bg-gray-50 border border-gray-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5"
 										/>
 									</div>
-								</div>
+								</div> */}
 							</div>
 						</div>
 						<div className="w-full px-4 md:w-1/2 ">
 							<div className="lg:pl-20">
 								<div className="mb-8 ">
-									<h2 className="max-w-xl mb-6 text-2xl font-bold dark:text-gray-400 md:text-4xl">
+									<h2 className="max-w-xl mb-6 text-2xl font-bold md:text-4xl text-gray-600 ">
 										{suitDetails.name}
 									</h2>
-									<p className="inline-block mb-6 text-4xl font-bold text-gray-700 dark:text-gray-400 ">
+									<p className="inline-block mb-6 text-4xl font-bold text-gray-400 ">
 										<span>Rs {suitDetails.price}</span>
-										<span className="text-base font-normal text-gray-500 line-through dark:text-gray-400">
+										<span className="text-base font-normal text-gray-500 line-through ">
 											{" "}
 											Rs {suitDetails.price + 2150}
 										</span>
 									</p>
-									<p className="max-w-md text-gray-700 dark:text-gray-400">
+									<p className="max-w-md text-gray-700 ">
 										{suitDetails.description}
 									</p>
 								</div>
 
 								<div className="mb-8 ">
-									<h2 className="w-16 pb-1 mb-4 text-xl font-semibold border-b border-blue-300 dark:border-gray-600 dark:text-gray-400">
+									<h2 className="w-16 pb-1 mb-4 text-xl text-gray-600 font-semibold border-b border-blue-300 ">
 										Sizes
 									</h2>
 									<div>
 										<div className="flex flex-wrap -mb-2">
+											{suitDetails.size &&
+												Object.entries(suitDetails.size).map(
+													([key, value], index) => (
+														<div
 
-											{suitDetails.size && suitDetails.size.map((size, index) => (
-												<div className='p-5 flex flex-col justify-center items-center border border-black-2 rounded' key={index}>
-													<button
-														className={`px-4 py-2 mb-2 mr-4 font-semibold border rounded}`}
-													// onClick={() => handleSizeClick(size)}
-													>
-														{size.size}
-
-													</button>
-													<div>
-														{size.quantity === 0 ? <p className='text-red-500'>Out of Stock</p> : <p className='text-green-500'>{size.quantity} In Stock</p>}
-													</div>
-
-
-												</div>
-											))}
-
-
+															key={index}
+														>
+															<button
+																className={`px-4 py-2 mb-2 mr-4 font-semibold border rounded-md hover:bg-gray-400 ${selectedSize === key ? 'bg-black text-white' : ''} `}
+																onClick={() => handleSelectSize(key)}
+															>
+																{key} {value}
+															</button>
+															<div>
+																{/* {size.quantity === 0 ? <p className='text-red-500'>Out of Stock</p> : <p className='text-green-500'>{size.quantity} In Stock</p>} */}
+															</div>
+														</div>
+													)
+												)}
 										</div>
-
 									</div>
 								</div>
 								<div className="w-32 mb-8">
-									<label className="w-full pb-1 text-xl font-semibold text-gray-700 border-b border-blue-300 dark:border-gray-600 dark:text-gray-400">
+									<label className="w-full pb-1 text-xl font-semibold text-gray-600 border-b border-blue-300 ">
 										Quantity
 									</label>
-									<div className="flex flex-col">
-										{suitDetails.size && suitDetails.size.map((size, index) => (
 
-											<div className="flex flex-col p-3" key={index}>
-												<label>{size.size}</label>
-												<div className="flex">
-													<button onClick={() => handleRemoveFromItems(size.size)}>-</button>
-													<p>{
-														selectedItems.find((item) => item.size === size.size)?.quantity || 0
-													}</p>
-													<button onClick={() => handleAddToItems(size.size)}>+</button>
-
-												</div>
-
-											</div>))}
+									<div className="flex items-center justify-between w-full mt-4">
+										<button
+											className="px-4 py-2 font-semibold text-gray-700 border rounded cursor-pointer hover:bg-gray-400"
+											onClick={decrementQuantity}
+										// disabled={enabled.decrement}
+										>
+											-
+										</button>
+										<p className="px-4 py-2 font-semibold text-gray-700 border rounded">
+											{quantity}
+										</p>
+										<button
+											className="px-4 py-2 font-semibold text-gray-700 border rounded cursor-pointer hover:bg-gray-400"
+											onClick={incrementQuantity}
+										// disabled={enabled.increment }
+										>
+											+
+										</button>
 									</div>
 								</div>
+
+								<div className="flex flex-col pb-6 mt-6  ">
+
+									<h2 className="text-lg font-bold text-gray-600 mb-5 ">
+										Renting Period
+									</h2>
+
+									<div className="flex items-center">
+										<div className="flex ">
+											<HiOutlineCalendar className="absolute left-3  text-gray-600 " />
+											<DatePicker
+												selected={fromDate}
+												onChange={(date) => setFromDate(date)}
+												placeholderText="Select from date"
+												bgColor={"black"}
+												dateFormat="dd/MM/yyyy"
+												minDate={new Date()}
+												className="bg-gray-50 border border-gray-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 w-3/4 "
+											/>
+										</div>
+
+										{/* To Date input */}
+										<div className=" flex ">
+											<HiOutlineCalendar className="absolute left-3  text-gray-600 " />
+											<DatePicker
+												selected={toDate}
+												onChange={(date) => setToDate(date)}
+												placeholderText="Select to date"
+												dateFormat="dd/MM/yyyy"
+												minDate={fromDate || new Date()} // Set the minimum date to be the selected "from date" or today
+												className="bg-gray-50 border border-gray-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 w-3/4 "
+											/>
+										</div>
+									</div>
+								</div>
+
+
 								<div className="flex flex-wrap items-center gap-4">
-									<button
+									<Button
+										className="flex flex-col justify-center w-1/3 py-6"
+										rounded={"md"}
+										color={"white"}
+										bgColor={"black"}
+										size="sm"
+										_hover={{
+											bg: "gray",
+										}}
 										onClick={handleAddToCart}
-										className="w-full p-4 bg-blue-500 rounded-md lg:w-2/5 dark:text-gray-200 text-gray-50 hover:bg-blue-600 dark:bg-blue-500 dark:hover:bg-blue-700"
 									>
 										Add to Cart
-									</button>
-									<Link
-										to="/customer/cart"
-										className="block mt-4 text-center text-blue-500 hover:text-blue-700"
+									</Button>
+
+									<Button
+										className="flex flex-col justify-center w-1/3 py-6"
+										rounded={"md"}
+										color={"white"}
+										bgColor={"black"}
+										size="sm"
+										_hover={{
+											bg: "gray",
+										}}
+										onClick={() => navigate("/customer/cart")}
 									>
 										View Cart
-									</Link>{" "}
-									{/* Add a link to view the cart */}
-									<button className="flex items-center justify-center w-full p-4 text-blue-500 border border-blue-500 rounded-md lg:w-2/5 dark:text-gray-200 dark:border-blue-600 hover:bg-blue-600 hover:border-blue-600 hover:text-gray-100 dark:bg-blue-500 dark:hover:bg-blue-700 dark:hover:border-blue-700 dark:hover:text-gray-300">
+									</Button>
+									{/* <Button
+										className="justify-center w-1/2 py-6"
+										rounded={"md"}
+										color={"white"}
+										bgColor={"black"}
+										size="sm"
+										_hover={{
+											bg: "blue",
+											color: "blue-50",
+										}}
+										//onClick={}
+									>
 										Buy Now
-									</button>
+									</Button> */}
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</section>
+			</div>
 		</div>
 	);
 };

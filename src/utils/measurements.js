@@ -55,7 +55,7 @@ export const getCourtMeasurementObject = (measurements, unit) => {
         }
     }
 
-    return CoatMeasurements(measurements);
+    return new CoatMeasurements(measurements);
 };
 
 export const getTrouserMeasurementObject = (measurements, unit) => {
@@ -65,7 +65,7 @@ export const getTrouserMeasurementObject = (measurements, unit) => {
         }
     }
 
-    return TrouserMeasurements(measurements);
+    return new TrouserMeasurements(measurements);
 };
 
 export function inchesToCm(inches) {

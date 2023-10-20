@@ -11,6 +11,7 @@ import * as THREE from 'three'
 
 import colors from '../../constants/colors.js'
 import { selectJacket } from "../../store/slices/jacketCustomizationSlice.js";
+import { selectRotation } from '../../store/slices/rotationHandleSlice.js';
 
 export function NewPant(props) {
   const { nodes, materials } = useGLTF('/models/NewSuit.gltf')
@@ -19,6 +20,9 @@ export function NewPant(props) {
   const trouser = useSelector(selectJacket).trouser;
   const pocketColor = useSelector(selectJacket).pocketColor;
   const buttonColor = useSelector(selectJacket).buttonColor;
+
+  const propsRotation = useSelector(selectRotation);
+
 
 
 
@@ -234,7 +238,7 @@ export function NewPant(props) {
 
   return (
     <group {...props} dispose={null} position={[props.control.x, props.control.y, props.control.z]}
-      scale={props.camCont.scale}>
+      scale={props.camCont.scale} rotation={[0, propsRotation, 0]}>
       {/* <mesh geometry={nodes.Jacket_Suit_Notch_Vents.geometry} material={materials.Suit_DarkBrownPlaid} position={[0, 0.021, 0.001]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} ></mesh>
       <mesh geometry={nodes.Jacket_Suit_Peak_NoVents.geometry} material={materials['b0b0b0.001']} position={[0.004, 0.013, 0.003]} rotation={[-Math.PI / 2, 0, 0]} scale={0.025} ></mesh>
       <mesh geometry={nodes.jacket_single_extra_Button.geometry} material={materials['Button.002']} position={[-1.183, 0.799, -0.276]} rotation={[-0.737, 0.962, 1.749]} scale={0.025} ></mesh>

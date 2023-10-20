@@ -9,6 +9,7 @@ import PKSix from "../../assets/images/pocket_styles/PK-6 1.png";
 import { useDispatch } from "react-redux";
 
 import { setJacket } from "../../store/slices/jacketCustomizationSlice";
+import { setRotation } from "../../store/slices/rotationHandleSlice"
 
 const ChoosePocket = () => {
 	const dispatch = useDispatch();
@@ -19,7 +20,10 @@ const ChoosePocket = () => {
 					Choose Your Pocket
 				</span>
 				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-5">
-					<div onClick={() => dispatch(setJacket({ pocket: "2-straight-flaps" }))}
+					<div onClick={() => {
+						dispatch(setJacket({ pocket: "2-straight-flaps" }))
+						dispatch(setRotation(2 * Math.PI));
+					}}
 						className="flex p-2 flex-col justify-center items-center cursor-pointer rounded-lg border border-black-2  shadow"
 					>
 						<img alt="" className="pb-2" src={PKOne} />
@@ -27,14 +31,20 @@ const ChoosePocket = () => {
 							2 STRAIGHT <br /> POCKETS
 						</label>
 					</div>
-					<div onClick={() => dispatch(setJacket({ pocket: "2-straight-flaps-1-ticket" }))} className="flex p-2 flex-col justify-center items-center cursor-pointer rounded-lg border border-black-2  shadow">
+					<div onClick={() => {
+						dispatch(setJacket({ pocket: "2-straight-flaps-1-ticket" }))
+						dispatch(setRotation(2 * Math.PI));
+					}} className="flex p-2 flex-col justify-center items-center cursor-pointer rounded-lg border border-black-2  shadow">
 						<img alt="" className="pb-2" src={PKTwo} />
 						<label className="text-sm">
 							2 STRAIGHT POCKETS & <br /> 1 TICKET POCKET
 						</label>
 					</div>
 
-					<div onClick={() => dispatch(setJacket({ pocket: "2-straight" }))}
+					<div onClick={() => {
+						dispatch(setJacket({ pocket: "2-straight" }))
+						dispatch(setRotation(2 * Math.PI))
+					}}
 						className="flex p-2 flex-col justify-center items-center cursor-pointer rounded-lg border border-black-2  shadow"
 					>
 						<img alt="" className="pb-2" src={PKFive} />
@@ -44,7 +54,10 @@ const ChoosePocket = () => {
 							(NO FLAPS)
 						</label>
 					</div>
-					<div onClick={() => dispatch(setJacket({ pocket: "2-straight-1-ticket" }))} className="flex p-2 flex-col justify-center items-center cursor-pointer rounded-lg border border-black-2  shadow">
+					<div onClick={() => {
+						dispatch(setJacket({ pocket: "2-straight-1-ticket" }))
+						dispatch(setRotation(2 * Math.PI));
+					}} className="flex p-2 flex-col justify-center items-center cursor-pointer rounded-lg border border-black-2  shadow">
 						<img alt="" className="pb-2" src={PKSix} />
 						<label className="text-sm">
 							2 STRAIGHT POCKETS

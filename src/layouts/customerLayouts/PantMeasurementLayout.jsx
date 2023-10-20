@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect } from 'react'
 import { BiSolidColor } from 'react-icons/bi'
 import { GiRolledCloth } from 'react-icons/gi'
 import { SiStylelint } from 'react-icons/si'
@@ -6,7 +6,6 @@ import { TbRulerMeasure } from 'react-icons/tb'
 import { Outlet } from 'react-router-dom'
 
 import ContentWrapper from '../../components/ContentWrapper'
-import PantModel from '../../components/Customer/PantModel'
 import Sidebar from '../../components/Sidebar/Sidebar'
 
 const sidebarItems = [
@@ -62,7 +61,7 @@ const sidebarItems = [
     },
 ]
 
-const PantStyleLayout = () => {
+const PantMeasurementLayout = () => {
 
     // This function will be called when the user attempts to refresh the page
     const handleBeforeUnload = (e) => {
@@ -95,14 +94,12 @@ const PantStyleLayout = () => {
     return (
         <>
             <Sidebar items={sidebarItems} />
-            <ContentWrapper customizeLayout>
-                <div className='w-1/2 h-full overflow-y-auto scroll-m-1'>
-                    <Outlet />
-                </div>
-                <PantModel />
+            <ContentWrapper>
+                <Outlet />
+
             </ContentWrapper>
         </>
     )
 }
 
-export default PantStyleLayout
+export default PantMeasurementLayout

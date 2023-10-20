@@ -4,7 +4,7 @@ import { HIRE_COSTUME_IMAGES_URL } from "../../config/config";
 
 const AccessoryCard = ({ image, label }) => {
 	return (
-		<div className="grid gap-5 p-3 rounded-xl shadow-md bg-white w-56 max-h-full">
+		<div className="grid gap-5 p-3 rounded-xl shadow-md bg-white w-56 max-h-full hover:scale-105 cursor-pointer">
 			<div className="flex items-center justify-center">
 				<img
 					alt="Shoe1"
