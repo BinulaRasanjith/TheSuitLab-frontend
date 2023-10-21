@@ -2,12 +2,12 @@ import api from './api';
 
 // VIEW MATERIALS BASED ON THE TYPE
 export const getMaterials = async (type) => {
-    return api.get('/material', { type });
+    return api.get('/material/', { type });
 }
 
 // ADD NEW MATERIAL
 export const addMaterial = async (material) => {
-    return api.post('/material/add', material, {
+    return api.post('/material/', material, {
         headers: {
             'Content-Type': 'multipart/form-data'
         }
@@ -16,15 +16,15 @@ export const addMaterial = async (material) => {
 
 // REMOVE EXISTING MATERIAL
 export const removeMaterial = async (material) => {
-    return api.post('/material/remove', material);
+    return api.delete('/material/', material);
 }
 
 // STOCK UPDATE FOR MATERIAL
 export const addMaterialQuantity = async (updates) => {
-    return api.put('/material/', updates);
+    return api.put('/material/add', updates);
 }
 
 // USE MATERIAL QUANTITY
-export const useMaterialQuantity = async (material) => {
-    return api.patch('/material/use-quantity', material);
+export const useMaterialQuantity = async (updates) => {
+    return api.put('/material/use', updates);
 }

@@ -25,6 +25,7 @@ export const gwp = () => {
     return api.get('/odb/gwp/');
 }
 
+// GET DASHBOARD DATA FOR ASSISTANT IN SINGLE REQUEST
 export const dashboard = () => {
     return api.get('/dashboard/');
 }

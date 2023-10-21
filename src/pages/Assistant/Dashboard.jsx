@@ -23,7 +23,6 @@ const Dashboard = () => {
 		const fetchChartData = async () => {
 			try {
 				const response = await gwp();
-				// console.log(response.data);
 				setChartData(response.data);
 			} catch (error) {
 				console.error(error);
@@ -37,7 +36,6 @@ const Dashboard = () => {
 		const fetchLowStocks = async () => {
 			try {
 				const response = await clmc();
-				// console.log(response.data);
 				setLowStocks(response.data);
 			} catch (error) {
 				console.error(error);
@@ -51,7 +49,6 @@ const Dashboard = () => {
 		const fetchOrders = async () => {
 			try {
 				const response = await coc();
-				// console.log(response.data);
 				setOrders(response.data);
 			} catch (error) {
 				console.error(error);
@@ -65,7 +62,6 @@ const Dashboard = () => {
 		const fetchProcessingOrders = async () => {
 			try {
 				const response = await cpoc();
-				// console.log(response.data);
 				setProcessingOrders(response.data);
 			} catch (error) {
 				console.error(error);
@@ -79,7 +75,6 @@ const Dashboard = () => {
 		const fetchIncome = async () => {
 			try {
 				const response = await cit();
-				// console.log(response.data);
 				setIncome(response.data);
 			} catch (error) {
 				console.error(error);
