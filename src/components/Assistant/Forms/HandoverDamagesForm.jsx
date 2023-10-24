@@ -1,8 +1,19 @@
+import { useToast } from "@chakra-ui/react";
 import PropTypes from "prop-types";
-import { AiFillCloseCircle } from "react-icons/ai"
+import { AiFillCloseCircle } from "react-icons/ai";
 
 
 const NewHandoverForm = ({ isOpen, onClose }) => {
+
+    // UPDATE THIS AFTERWARDS
+    const toast = useToast();
+    toast({
+        title: "Quantity is required!",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+    });
+
 
     return (
         <div className={`relative  ${isOpen ? 'block' : 'hidden'}`}>

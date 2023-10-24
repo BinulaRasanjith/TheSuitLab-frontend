@@ -1,8 +1,9 @@
+import { useToast } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
 
-import { addReturn } from "../../../api/returnAPI";
+import { addNewCustomer } from "../../../api/assistantAPI";
 import Input from "../../Input/Input";
 
 const NewReturnForm = ({ isOpen, onClose }) => {
@@ -12,19 +13,40 @@ const NewReturnForm = ({ isOpen, onClose }) => {
 		mobileNo: "",
 	});
 
-	const handleInputChange = (e) => {
-		const { name, value } = e.target;
+    const toast = useToast();
+	const regex = /^\+\d{11}$/;
+
+	const handleInputChange = (event) => {
+		const { name, value } = event.target;
 		setNewCustomer({ ...newCustomer, [name]: value });
 	};
 
-	const handleAddUserClick = async (e) => {
-		e.preventDefault();
+	const handleAddUserClick = async (event) => {
+		event.preventDefault();
+		if (newCustomer.firstName === "" || newCustomer.lastName === "" || newCustomer.mobileNo === "") {
+			toast({
+                title: "Please fill all the fields!",
+                status: "error",
+                duration: 3000,
+                isClosable: true,
+            });
 
-		try {
-			await addReturn(newCustomer);
-			onClose();
-		} catch (error) {
-			console.error(error);
+		// CHECK IF MOBILE NUMBER IS VALID
+		} else if (!regex.test(newCustomer.mobileNo)) {
+			console.log("Invalid mobile number");
+			toast({
+				title: "Invalid mobile number!",
+				status: "error",
+				duration: 3000,
+				isClosable: true,
+			});
+		} else {
+			try {
+				await addNewCustomer(newCustomer);
+				onClose();
+			} catch (error) {
+				console.error(error);
+			}
 		}
 	};
 
@@ -36,11 +58,11 @@ const NewReturnForm = ({ isOpen, onClose }) => {
 			<div className="fixed top-16 bottom-0 right-0 left-0 z-40 flex flex-col items-center justify-center">
 				<div className=" z-50 m-8 max-w-md w-96 rounded-lg bg-white p-8 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
 					<div className="flex justify-between gap-x-4">
-                        <div className="mb-12 text-2xl font-bold">
-                            New Customer
-                        </div>
-                        <div className="mt-1"><AiFillCloseCircle onClick={onClose} size={24} /></div>
-                    </div>
+						<div className="mb-12 text-2xl font-bold">
+							New Customer
+						</div>
+						<div className="mt-1"><AiFillCloseCircle onClick={onClose} size={24} /></div>
+					</div>
 					{/* <form> */}
 					<form onSubmit={handleAddUserClick}>
 						<div className="relative mb-6" data-te-input-wrapper-init>

@@ -29,3 +29,8 @@ export const gwp = () => {
 export const dashboard = () => {
     return api.get('/dashboard/');
 }
+
+// ADD NEW CUSTOMER BY ASSISTANT
+export const addNewCustomer = () => {
+    return api.post('/user/add-customer/');
+}
