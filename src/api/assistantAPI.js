@@ -31,6 +31,6 @@ export const dashboard = () => {
 }
 
 // ADD NEW CUSTOMER BY ASSISTANT
-export const addNewCustomer = () => {
-    return api.post('/user/add-customer/');
+export const addNewCustomer = (data) => {
+    return api.post('/user/add-customer/', data);
 }

@@ -42,10 +42,12 @@ const NewReturnForm = ({ isOpen, onClose }) => {
 			});
 		} else {
 			try {
-				await addNewCustomer(newCustomer);
+				console.log("--->" + addNewCustomer(newCustomer) + "<---");
+				console.log("line 46")
 				onClose();
 			} catch (error) {
 				console.error(error);
+				console.log("line 50")
 			}
 		}
 	};
