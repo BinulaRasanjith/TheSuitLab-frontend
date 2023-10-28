@@ -13,8 +13,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { addCustomSuitToCart as addCustomSuitToCartAPI } from "../../api/customerAPI";
 import {
 	addNewCostumeToItemModel,
-	setCoatMeasurements,
-	setTrouserMeasurements
 } from "../../api/customerAPI";
 import { calculatePrice } from "../../api/purchaseOrdersAPI";
 import FullShoulderWidth from "../../assets/images/measurements/men_size_1 (1).jpg";
@@ -32,9 +30,9 @@ import THIGH from "../../assets/images/measurements/men_size_12.jpg";
 import TROUSER_LENGTH from "../../assets/images/measurements/men_size_13.jpg";
 import CUFF from "../../assets/images/measurements/men_size_14.jpg";
 import MeasurementBlock from "../../components/Customer/MeasurementBlock";
-import { INCH, STANDARD, STANDARD_MEASUREMENTS } from "../../constants/index";
+import { STANDARD, STANDARD_MEASUREMENTS } from "../../constants/index";
 import { selectUser } from "../../store/slices/authSlice";
-import { selectJacket, setJacket } from '../../store/slices/jacketCustomizationSlice';
+import { selectJacket } from '../../store/slices/jacketCustomizationSlice';
 import {
 	getCourtMeasurementObject,
 	getTrouserMeasurementObject,
