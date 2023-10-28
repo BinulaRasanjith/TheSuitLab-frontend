@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  fabric: "MAT0000000001",
+  fabric: "MAT0000000000",
   button: "1S",
   lapel: "peak-lapel",
   pocket: null,
