@@ -64,6 +64,10 @@ const sidebarItems = [
 
 const PantStyleLayout = () => {
 
+
+
+
+
     // This function will be called when the user attempts to refresh the page
     const handleBeforeUnload = (e) => {
         e.preventDefault();

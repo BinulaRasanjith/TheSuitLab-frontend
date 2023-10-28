@@ -5,7 +5,7 @@ import {
 	FaRegUser,
 } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { addCustomSuitToCart as addCustomSuitToCartAPI } from "../../api/customerAPI";
 // import measurement_bg from "../../assets/images/measurement_bg.jpg";
@@ -13,6 +13,7 @@ import { MEASUREMENTS_TO_BE_ADDED } from "../../constants";
 import { selectJacket } from "../../store/slices/jacketCustomizationSlice";
 
 const CustomizeMeasurements = () => {
+	const { pathname } = useLocation();
 	const navigate = useNavigate();
 
 	const jacket = useSelector(selectJacket);
@@ -32,17 +33,32 @@ const CustomizeMeasurements = () => {
 
 	// CHOOSE CURRENT SIZES BUTTON HANDLER
 	const handleChooseCurrentSizes = () => {
-		navigate("/customer/customize-suit/jacket/measurements/current-sizes");
+		if (pathname.includes("jacket"))
+			navigate("/customer/customize-suit/jacket/measurements/current-sizes");
+		else if (pathname.includes("pant"))
+			navigate("/customer/customize-suit/pant/measurements/current-sizes");
+		else if (pathname.includes("costume"))
+			navigate("/customer/customize-suit/costume/measurements/current-sizes");
 	};
 
 	// CHOOSE STANDARD SIZES BUTTON HANDLER
 	const handleChooseStandardSizes = () => {
-		navigate("/customer/customize-suit/jacket/measurements/standard-sizes");
+		if (pathname.includes("jacket"))
+			navigate("/customer/customize-suit/jacket/measurements/standard-sizes");
+		else if (pathname.includes("pant"))
+			navigate("/customer/customize-suit/pant/measurements/standard-sizes");
+		else if (pathname.includes("costume"))
+			navigate("/customer/customize-suit/costume/measurements/standard-sizes");
 	};
 
 	// CHOOSE CUSTOM SIZES BUTTON HANDLER
 	const handleChooseCustomSizes = () => {
-		navigate("/customer/customize-suit/jacket/measurements/custom-sizes");
+		if (pathname.includes("jacket"))
+			navigate("/customer/customize-suit/jacket/measurements/custom-sizes");
+		else if (pathname.includes("pant"))
+			navigate("/customer/customize-suit/pant/measurements/custom-sizes");
+		else if (pathname.includes("costume"))
+			navigate("/customer/customize-suit/costume/measurements/custom-sizes");
 	};
 
 	return (
