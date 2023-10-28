@@ -27,11 +27,12 @@ const MaterialsRecords = ({ onOpen }) => {
             {materials.map((item, index) => (
                 <MaterialRecord
                     key={index}
-                    CustomerId={item.materialName}
-                    SuitId={item.materialCode}
-                    CustomerMobile={item.unitPrice}
-                    BorrowedDate={item.color}
-                    HandoverDate={item.colorCode}
+                    MaterialImage={item.image}
+                    MaterialName={item.materialName}
+                    // MaterialCode={item.materialCode}
+                    UnitPrice={item.unitPrice}
+                    Color={item.color}
+                    ColorCode={item.colorCode}
                     onOpen={() => onOpen(item.materialCode, item.materialName)}
                 />
             ))}

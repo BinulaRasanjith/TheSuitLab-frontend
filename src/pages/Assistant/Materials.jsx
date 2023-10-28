@@ -42,9 +42,9 @@ const Materials = () => {
                 </div>
                 <div className=" flex flex-col">
                     <div className=' flex justify-between text-sm font-medium text-gray-400'>
-                        <div className=" w-40 text-">Material Name</div>
-                        <div className=" w-32 text-">Material Code</div>
-                        <div className=" w-32 text-">Unit Price</div>
+                        <div className=" w-40 text-">Material</div>
+                        <div className=" w-32 text-">Material Name</div>
+                        <div className=" w-32 text-">Unit Price (per Yard)</div>
                         <div className=" w-32 text-">Color</div>
                         <div className=" w-32 text-">Color code</div>
                         <div className=" w-40 px-10">Quantity Update</div>
