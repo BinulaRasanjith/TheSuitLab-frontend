@@ -11,6 +11,8 @@ const MeasurementBlock = ({
 	unchangeable,
 	onChange,
 	name,
+	min,
+	max,
 }) => {
 	return (
 		<div
@@ -28,6 +30,8 @@ const MeasurementBlock = ({
 					value={value}
 					name={name}
 					onChange={onChange}
+					min={min}
+					max={max}
 				/>
 			)}
 			{unchangeable && (
@@ -48,5 +52,7 @@ MeasurementBlock.propTypes = {
 	unchangeable: PropTypes.bool,
 	onChange: PropTypes.func,
 	name: PropTypes.string,
+	min: PropTypes.number,
+	max: PropTypes.number,
 };
 export default MeasurementBlock;
