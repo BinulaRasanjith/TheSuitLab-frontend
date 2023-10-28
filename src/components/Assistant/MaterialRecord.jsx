@@ -16,7 +16,7 @@ const MaterialRecord = ({
     return (
         <>
             <div className=" flex flex-row justify-between w-full">
-                <div className=" w-40 text-sm font-medium text-black ml-3">
+                <div className=" w-40 text-sm font-medium text-black">
                     <img className=" w-16 h-8 rounded-md" src={`${MATERIAL_IMAGES_URL}/${MaterialImage}`} alt="material" />
                 </div>
                 <div className="hidden">{MaterialCode}</div>

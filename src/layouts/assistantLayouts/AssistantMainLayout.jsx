@@ -67,11 +67,11 @@ const assistantSidebarItems = [
 		icon: <FaUserCircle />,
 		to: "/assistant/profile",
 	},
-	// {
-	//     label: 'Log Out',
-	//     icon: <TbLogout />,
-	//     to: '/',
-	// }
+	{
+		label: "Test",	// TODO: Remove this
+		icon: <HiCalendarDays />,
+		to: '/assistant/test',
+	}
 ];
 
 const AssistantMainLayout = () => {

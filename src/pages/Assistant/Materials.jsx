@@ -9,17 +9,18 @@ import MaterialItems from '../../components/Assistant/MaterialItemSet'
 const Materials = () => {
     const [isStockUpdate, updateMatStock] = useState(false);
     const [selectedMaterial, setSelectedMaterial] = useState({
+        image: null,
         code: null,
         name: null,
     });
 
-    const handleFormOpen = (materialCode, materialName) => {
-        setSelectedMaterial({ code: materialCode, name: materialName });
+    const handleFormOpen = (image, materialCode, materialName) => {
+        setSelectedMaterial({image:image, code: materialCode, name: materialName });
         updateMatStock(true);
     };
 
     const handleFormClose = () => {
-        setSelectedMaterial({ code: null, name: null });
+        setSelectedMaterial({ image:null, code: null, name: null });
         updateMatStock(false);
     };
 
@@ -47,14 +48,14 @@ const Materials = () => {
                         <div className=" w-32 text-">Unit Price (per Yard)</div>
                         <div className=" w-32 text-">Color</div>
                         <div className=" w-32 text-">Color code</div>
-                        <div className=" w-40 px-10">Quantity Update</div>
+                        <div className=" w-40">Quantity Update</div>
                     </div>
                     <div className=" w-full border h-0 mt-3 mb-6 border-gray-200"></div>
 
                 </div>
                 <div><MaterialItems onOpen={handleFormOpen} /></div>
                 <div className=" flex justify-between">
-                    <div className=" py-3 text-sm font-medium text-neutral-400">Showing data 1 to 8 of 256K entries</div>
+                    <div className="opacity-0 py-3 text-sm font-medium text-neutral-400">Showing data 1 to 8 of 256K entries</div>
                     <div className=" py-3">
                         <Pagination />
                     </div>
@@ -65,6 +66,7 @@ const Materials = () => {
 				<MaterialStockUpdateForm
                     isOpen={isStockUpdate}
                     onClose={handleFormClose}
+                    image={selectedMaterial.image}
                     materialCode={selectedMaterial.code}
                     materialName={selectedMaterial.name}
                     />

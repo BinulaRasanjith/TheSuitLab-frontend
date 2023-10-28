@@ -3,6 +3,7 @@ import Accessories from "../pages/Assistant/Accessories";
 import Customers from "../pages/Assistant/Customers";
 import Dashboard from "../pages/Assistant/Dashboard";
 import Handover from "../pages/Assistant/Handover";
+import TEST from "../pages/Assistant/HireCostumeInfo"; // TODO: Remove this
 import Hiring from "../pages/Assistant/Hiring";
 import Materials from "../pages/Assistant/Materials";
 import Notifications from "../pages/Assistant/Notifications";
@@ -24,6 +25,7 @@ const AssistantRoutes = {
     { path: "hiring", element: <Hiring /> },
     { path: "notifications", element: <Notifications /> },
     { path: "profile", element: <Profile /> },
+    { path: "test", element: <TEST /> },
   ],
 };
 

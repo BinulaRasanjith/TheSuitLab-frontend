@@ -23,6 +23,7 @@ const MaterialsRecords = ({ onOpen }) => {
 
 
     return (
+        <>
         <div className="flex flex-col gap-6">
             {materials.map((item, index) => (
                 <MaterialRecord
@@ -33,10 +34,12 @@ const MaterialsRecords = ({ onOpen }) => {
                     UnitPrice={item.unitPrice}
                     Color={item.color}
                     ColorCode={item.colorCode}
-                    onOpen={() => onOpen(item.materialCode, item.materialName)}
+                    onOpen={() => onOpen(item.image, item.materialCode, item.materialName)}
                 />
             ))}
         </div>
+        <div className=" py-3 text-sm font-medium text-neutral-400">Showing data up to {materials.length} from {materials.length} entries</div>
+        </>
     );
 };
 
