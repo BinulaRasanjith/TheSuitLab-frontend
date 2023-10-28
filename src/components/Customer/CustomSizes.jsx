@@ -1,12 +1,12 @@
-import { Button, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from "@chakra-ui/react"
 import { Select, useDisclosure, useToast } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { Button, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from "@chakra-ui/react"
 import React from "react";
+import { useEffect, useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { IoArrowBackCircle } from "react-icons/io5";
+import { MdOutlineArrowBackIosNew } from "react-icons/md";
 // import { LuSave } from "react-icons/lu";
 import { MdNavigateNext } from "react-icons/md";
-import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -16,6 +16,7 @@ import {
 	setCoatMeasurements as setCoatMeasurementsAPI,
 	setTrouserMeasurements as setTrouserMeasurementsAPI,
 } from "../../api/customerAPI";
+import { calculatePrice } from "../../api/purchaseOrdersAPI";
 import FullShoulderWidth from "../../assets/images/measurements/men_size_1 (1).jpg";
 import Sleeves from "../../assets/images/measurements/men_size_2.jpg";
 import FullChest from "../../assets/images/measurements/men_size_3.jpg";
@@ -63,6 +64,7 @@ const CustomSizes = () => {
 	};
 
 	const jacket = useSelector(selectJacket);
+	const { fabric, pocketColor } = jacket;
 
 	const [selectedUnit, setSelectedUnit] = useState("inch");
 	const [selectedCategory, setSelectedCategory] = useState("jacket");
@@ -225,22 +227,37 @@ const CustomSizes = () => {
 		// TODO: check if options all selected
 
 		handleSave();
+
+		const coatMeasurementsInInch = getCourtMeasurementObject(
+			coatMeasurements,
+			selectedUnit
+		);
+		const pantMeasurementsInInch = getTrouserMeasurementObject(
+			pantMeasurements,
+			selectedUnit
+		);
+
+		const res = await calculatePrice({
+			measurement: {
+				coatMeasurements: coatMeasurementsInInch,
+				pantMeasurements: pantMeasurementsInInch,
+			},
+			fabric,
+			pocketColor,
+			selectedCategory,
+		});
+		// console.log(res);
+
+		const price = res.data.price;
+
 		await addNewCostumeToItemModel({
 			itemType: "CustomSuit",
-			price: 1000,
+			price,
 			quantity: inputValue,
 			status: "available",
 		})
 			.then((res) => {
-				console.log(res.data);
-				const coatMeasurementsInInch = getCourtMeasurementObject(
-					coatMeasurements,
-					selectedUnit
-				);
-				const pantMeasurementsInInch = getTrouserMeasurementObject(
-					pantMeasurements,
-					selectedUnit
-				);
+
 				addCustomSuitToCartAPI({
 					description: {
 						type: CUSTOM,
@@ -252,7 +269,7 @@ const CustomSizes = () => {
 					},
 					customerId: user.id,
 					itemId: res.data.itemId,
-					price: 1000, // TODO: calculate price
+					price,
 					quantity: inputValue,
 					status: "available",
 				})
@@ -327,6 +344,8 @@ const CustomSizes = () => {
 							selectedUnit={selectedUnit}
 							name={"fullShoulderWidth"}
 							onChange={handleCoatMeasurementsChange}
+							min={selectedUnit === "inch" ? 6 : 14}
+							max={selectedUnit === "inch" ? 7 : 17}
 						/>
 						<MeasurementBlock
 							image={Sleeves}
@@ -335,6 +354,8 @@ const CustomSizes = () => {
 							selectedUnit={selectedUnit}
 							name={"sleeves"}
 							onChange={handleCoatMeasurementsChange}
+							min={selectedUnit === "inch" ? 32 : 81}
+							max={selectedUnit === "inch" ? 36 : 91}
 						/>
 						<MeasurementBlock
 							image={FullChest}
@@ -343,6 +364,8 @@ const CustomSizes = () => {
 							selectedUnit={selectedUnit}
 							name={"fullChest"}
 							onChange={handleCoatMeasurementsChange}
+							min={selectedUnit === "inch" ? 34 : 86}
+							max={selectedUnit === "inch" ? 42 : 106}
 						/>
 						<MeasurementBlock
 							image={Waist}
@@ -351,6 +374,8 @@ const CustomSizes = () => {
 							selectedUnit={selectedUnit}
 							name={"waist"}
 							onChange={handleCoatMeasurementsChange}
+							min={selectedUnit === "inch" ? 28 : 71}
+							max={selectedUnit === "inch" ? 36 : 91}
 						/>
 						<MeasurementBlock
 							image={Hips}
@@ -359,6 +384,8 @@ const CustomSizes = () => {
 							selectedUnit={selectedUnit}
 							name={"hips"}
 							onChange={handleCoatMeasurementsChange}
+							min={selectedUnit === "inch" ? 35 : 88}
+							max={selectedUnit === "inch" ? 43 : 109}
 						/>
 						<MeasurementBlock
 							image={FrontShoulderWidth}
@@ -367,6 +394,8 @@ const CustomSizes = () => {
 							selectedUnit={selectedUnit}
 							name={"frontShoulderWidth"}
 							onChange={handleCoatMeasurementsChange}
+							min={selectedUnit === "inch" ? 16 : 40}
+							max={selectedUnit === "inch" ? 18 : 45}
 						/>
 						<MeasurementBlock
 							image={BackShoulderWidth}
@@ -375,6 +404,8 @@ const CustomSizes = () => {
 							selectedUnit={selectedUnit}
 							name={"backShoulderWidth"}
 							onChange={handleCoatMeasurementsChange}
+							min={selectedUnit === "inch" ? 15 : 38}
+							max={selectedUnit === "inch" ? 17 : 43}
 						/>
 						<MeasurementBlock
 							image={FrontJacketLength}
@@ -383,6 +414,8 @@ const CustomSizes = () => {
 							selectedUnit={selectedUnit}
 							name={"frontJacketLength"}
 							onChange={handleCoatMeasurementsChange}
+							min={selectedUnit === "inch" ? 28 : 71}
+							max={selectedUnit === "inch" ? 30 : 76}
 						/>
 						<MeasurementBlock
 							image={Neck}
@@ -391,6 +424,8 @@ const CustomSizes = () => {
 							selectedUnit={selectedUnit}
 							name={"neck"}
 							onChange={handleCoatMeasurementsChange}
+							min={selectedUnit === "inch" ? 14 : 35}
+							max={selectedUnit === "inch" ? 16 : 40}
 						/>
 					</>
 				)}
@@ -403,6 +438,8 @@ const CustomSizes = () => {
 							selectedUnit={selectedUnit}
 							name={"waist"}
 							onChange={handlePantMeasurementsChange}
+							min={selectedUnit === "inch" ? 28 : 71}
+							max={selectedUnit === "inch" ? 36 : 91}
 						/>
 						<MeasurementBlock
 							image={CROTCH}
@@ -411,6 +448,8 @@ const CustomSizes = () => {
 							selectedUnit={selectedUnit}
 							name={"crotch"}
 							onChange={handlePantMeasurementsChange}
+							min={selectedUnit === "inch" ? 20 : 50}
+							max={selectedUnit === "inch" ? 24 : 61}
 						/>
 						<MeasurementBlock
 							image={THIGH}
@@ -419,6 +458,8 @@ const CustomSizes = () => {
 							selectedUnit={selectedUnit}
 							name={"thigh"}
 							onChange={handlePantMeasurementsChange}
+							min={selectedUnit === "inch" ? 20 : 50}
+							max={selectedUnit === "inch" ? 24 : 61}
 						/>
 						<MeasurementBlock
 							image={TROUSER_LENGTH}
@@ -427,6 +468,8 @@ const CustomSizes = () => {
 							selectedUnit={selectedUnit}
 							name={"length"}
 							onChange={handlePantMeasurementsChange}
+							min={selectedUnit === "inch" ? 29 : 73}
+							max={selectedUnit === "inch" ? 33 : 84}
 						/>
 						<MeasurementBlock
 							image={CUFF}
@@ -435,6 +478,8 @@ const CustomSizes = () => {
 							selectedUnit={selectedUnit}
 							name={"cuff"}
 							onChange={handlePantMeasurementsChange}
+							min={selectedUnit === "inch" ? 14 : 35}
+							max={selectedUnit === "inch" ? 18 : 45}
 						/>
 					</>
 				)}
