@@ -105,7 +105,6 @@ export const calculateTotalFabricPrice = (
   return totalFabricPrice;
 };
 
-// //me widiyt thma meka wada karanne ballo.
 // // Example usage:
 // const measurementsInInches = {
 //   FullShoulderWidth: 20,

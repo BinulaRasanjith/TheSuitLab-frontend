@@ -338,8 +338,8 @@ const CurrentSizes = () => {
 							header="Trouser Waist"
 							value={
 								selectedUnit === "inch"
-									? trouserMeasurements?.trouserWaist
-									: trouserMeasurementsCM?.trouserWaist
+									? trouserMeasurements?.waist
+									: trouserMeasurementsCM?.waist
 							}
 							selectedUnit={selectedUnit}
 							unchangeable
@@ -374,8 +374,8 @@ const CurrentSizes = () => {
 							header="Trouser Length"
 							value={
 								selectedUnit === "inch"
-									? trouserMeasurements?.trouserLength
-									: trouserMeasurementsCM?.trouserLength
+									? trouserMeasurements?.length
+									: trouserMeasurementsCM?.length
 							}
 							selectedUnit={selectedUnit}
 							unchangeable
