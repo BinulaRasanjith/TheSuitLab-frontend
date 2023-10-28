@@ -16,7 +16,7 @@ import { ImBin } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
 
 import { getCart, removeCartItem } from "../../api/customerAPI";
-import { CUSTOM, MEASUREMENTS_TO_BE_ADDED } from "../../constants";
+import { CUSTOM, MEASUREMENTS_TO_BE_ADDED, STANDARD } from "../../constants";
 
 const Cart = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -130,7 +130,7 @@ const Cart = () => {
 													{(() => {
 														const description = item.description;
 
-														if (description.type === CUSTOM) {
+														if (description.type === CUSTOM || description.type === STANDARD) {
 															const customizationKeys = Object.keys(
 																description.customization
 															);
@@ -155,13 +155,13 @@ const Cart = () => {
 											<td className="w-32">
 												{item.price === MEASUREMENTS_TO_BE_ADDED
 													? "To be added"
-													: item.price}
+													: "Rs. " + item.price + " /="}
 											</td>
 											<td className="w-32">{item.quantity}</td>
 											<td className="w-32">
 												{item.price * item.quantity === -1
 													? "Need Measurements"
-													: item.price * item.quantity}
+													: "Rs. " + item.price * item.quantity + " /="}
 											</td>
 											<td className="w-28">
 												<ImBin
@@ -198,19 +198,23 @@ const Cart = () => {
 							Continue Shopping
 						</Button>
 					</div>
-					<div className="flex flex-col rounded-lg border bg-slate-200 p-4 shadow-md md:mt-0 md:w-56">
-						<div className="mb-2 flex justify-between">
+					<div className="flex flex-col justify-center items-center rounded-lg border bg-slate-200 p-4 shadow-md md:mt-0 md:w-68">
+						<p className="text-2xl font-bold border-black border-b-2 my-4">Summary</p>
+						<div className="mb-2 flex justify-between gap-x-2">
 							<p className="text-gray-700">Subtotal</p>
-							<p className="text-gray-700">Rs {calculateTotalPrice()}</p>
+							<p className="text-gray-700 font-semibold">Rs. {calculateTotalPrice()} /=</p>
 						</div>
-						<hr className="my-4" />
-						<div className="flex justify-between">
-							<p className="text-lg font-bold">Total</p>
-							<div className="">
-								<p className="mb-1 text-lg font-bold">
-									Rs {calculateTotalPrice()}
+						<div className="flex flex-col gap-y-2">
+							<div className="flex flex-col items-center gap-y-4 rounded">
+								<p className="text-2xl font-bold">Total Price </p>
+								<p className="mb-1 text-4xl font-bold">
+									Rs. {calculateTotalPrice() + 1000} /=
 								</p>
-								<p className="text-sm text-gray-700">including VAT</p>
+
+							</div>
+							<div className="flex items-center justify-center gap-x-2">
+								<p className="text-sm text-gray-700">Including VAT</p>
+								<p className="text-sm text-gray-700 font-semibold">Rs.1000/=</p>
 							</div>
 						</div>
 
