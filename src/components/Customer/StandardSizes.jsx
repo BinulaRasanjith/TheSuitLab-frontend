@@ -23,11 +23,7 @@ import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { addCustomSuitToCart as addCustomSuitToCartAPI } from "../../api/customerAPI";
-import {
-	addNewCostumeToItemModel,
-	setCoatMeasurements,
-	setTrouserMeasurements,
-} from "../../api/customerAPI";
+import { addNewCostumeToItemModel } from "../../api/customerAPI";
 import { calculatePrice } from "../../api/purchaseOrdersAPI";
 import FullShoulderWidth from "../../assets/images/measurements/men_size_1 (1).jpg";
 import Sleeves from "../../assets/images/measurements/men_size_2.jpg";

@@ -1,25 +1,27 @@
 import {
-	Select,
-	useDisclosure,
-	useToast, Button,
+	Button,
 	FormControl,
-	FormLabel,
-	Input,
-	Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay
+	FormLabel, Input,
+	Modal,
+	ModalBody,
+	ModalCloseButton,
+	ModalContent, ModalFooter, ModalHeader, ModalOverlay, Select, useDisclosure, useToast
 } from "@chakra-ui/react";
+import React from 'react';
 import { useEffect, useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { IoArrowBackCircle } from "react-icons/io5";
+import { MdNavigateNext } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { MdNavigateNext } from "react-icons/md";
 
-import { addCustomSuitToCart as addCustomSuitToCartAPI } from "../../api/customerAPI";
 import {
+	addNewCostumeToItemModel,
 	getCoatMeasurements,
-	getTrouserMeasurements,
-	addNewCostumeToItemModel
+	getTrouserMeasurements
 } from "../../api/customerAPI";
+import { addCustomSuitToCart as addCustomSuitToCartAPI } from "../../api/customerAPI";
+import { calculatePrice } from "../../api/purchaseOrdersAPI";
 import FullShoulderWidth from "../../assets/images/measurements/men_size_1 (1).jpg";
 import Sleeves from "../../assets/images/measurements/men_size_2.jpg";
 import FullChest from "../../assets/images/measurements/men_size_3.jpg";
@@ -38,10 +40,11 @@ import MeasurementBlock from "../../components/Customer/MeasurementBlock";
 import { CUSTOM } from "../../constants";
 import { selectUser } from "../../store/slices/authSlice";
 import { selectJacket } from "../../store/slices/jacketCustomizationSlice";
+import { getCourtMeasurementObject, getTrouserMeasurementObject } from "../../utils/measurements";
 import { inchesToCm } from "../../utils/measurements";
-import React from 'react';
 
 const CurrentSizes = () => {
+	const jacket = useSelector(selectJacket);
 
 	const location = useLocation();
 	const navigate = useNavigate();
@@ -64,7 +67,7 @@ const CurrentSizes = () => {
 		}
 	};
 
-	const jacket = useSelector(selectJacket);
+	const { fabric, pocketColor } = useSelector(selectJacket);
 
 	const [selectedCategory, setSelectedCategory] = useState("jacket");
 	const [selectedUnit, setSelectedUnit] = useState("inch");
@@ -142,22 +145,45 @@ const CurrentSizes = () => {
 
 	const handleGoToCart = async () => {
 		// TODO: check if selected all jacket options
-		// console.log(jacket);
+
+		let coatMeasurementsInInch = {};
+		let pantMeasurementsInInch = {};
+
+		if (selectedCategory === "jacket" || selectedCategory === "all") {
+			coatMeasurementsInInch = getCourtMeasurementObject(
+				coatMeasurements,
+				selectedUnit
+			);
+		}
+
+		if (selectedCategory === "pant" || selectedCategory === "all") {
+			pantMeasurementsInInch = getTrouserMeasurementObject(
+				trouserMeasurements,
+				selectedUnit
+			);
+		}
+
+		// selectedCategory
+		const res = await calculatePrice({
+			measurement: {
+				coatMeasurements: coatMeasurementsInInch,
+				pantMeasurements: pantMeasurementsInInch,
+			},
+			fabric,
+			pocketColor,
+			selectedCategory,
+		});
+		// console.log(res);
+
+		const price = res.data.price;
+
 		await addNewCostumeToItemModel({
 			itemType: "CustomSuit",
-			price: 1000,
+			price,
 			quantity: inputValue,
 			status: "available",
 		}).then((res) => {
 			// console.log(res.data);
-			const coatMeasurementsInInch = getCourtMeasurementObject(
-				coatMeasurements,
-				selectedUnit
-			);
-			const pantMeasurementsInInch = getTrouserMeasurementObject(
-				pantMeasurements,
-				selectedUnit
-			);
 			addCustomSuitToCartAPI({
 				description: {
 					type: CUSTOM,
@@ -168,7 +194,7 @@ const CurrentSizes = () => {
 				},
 				customerId: user.id,
 				itemId: res.data.itemId,
-				price: 1000, // TODO: calculate price
+				price, // TODO: calculate price
 				quantity: inputValue,
 				status: "available",
 			}).then((res) => {
