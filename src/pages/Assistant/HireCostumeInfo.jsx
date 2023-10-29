@@ -1,6 +1,35 @@
-const Handover = () => {
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
+import { getHireCostume } from "../../api/hireCostumesAPI";
+
+
+const Costume = () => {
+
+    const { id } = useParams();
+
+    const [costumeInfo, setCostume] = useState({});
+
+    useEffect(() => {
+        const fetchCostumeData = async () => {
+            try {
+                const response = await getHireCostume(id);
+                setCostume(response.data);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        
+        fetchCostumeData();
+    }, [id]);
 
     return (
+        <>
+        <div className="2xl:px-20 md:px-6 px-4 pt-5">
+            <a href="/assistant/hiring" className="text-gray-200 bg-black hover:bg-gray-500 py-2 px-5 rounded-md">
+                Back
+            </a>
+        </div>
         <div className="md:flex items-start justify-center py-12 2xl:px-20 md:px-6 px-4">
 
             <div className="xl:w-2/6 lg:w-2/5 w-80 md:block hidden">
@@ -78,7 +107,8 @@ const Handover = () => {
                 </button>
             </div>
         </div>
+        </>
     );
 };
 
-export default Handover;
+export default Costume;

@@ -17,48 +17,56 @@ import NewAccessoryForm from "../../components/Assistant/Forms/NewAccessoryForm"
 
 const accessories = [
 	{
+		itemId: 'ITM0001',
 		itemName: 'Luxe View leather belt',
 		brand: 'Luxe View',
 		price: 'Rs. 1000.00',
 		image: img1
 	},
 	{
+		itemId: 'ITM0002',
 		itemName: 'Luxe View leather belt',
 		brand: 'Luxe View',
 		price: 'Rs. 1000.00',
 		image: img2
 	},
 	{
+		itemId: 'ITM0003',
 		itemName: 'Luxe View leather belt',
 		brand: 'Luxe View',
 		price: 'Rs. 1000.00',
 		image: img3
 	},
 	{
+		itemId: 'ITM0004',
 		itemName: 'Luxe View leather belt',
 		brand: 'Luxe View',
 		price: 'Rs. 1000.00',
 		image: img4
 	},
 	{
+		itemId: 'ITM0005',
 		itemName: 'Luxe View leather belt',
 		brand: 'Luxe View',
 		price: 'Rs. 1000.00',
 		image: img5
 	},
 	{
+		itemId: 'ITM0006',
 		itemName: 'Luxe View leather belt',
 		brand: 'Luxe View',
 		price: 'Rs. 1000.00',
 		image: img6
 	},
 	{
+		itemId: 'ITM0007',
 		itemName: 'Luxe View leather belt',
 		brand: 'Luxe View',
 		price: 'Rs. 1000.00',
 		image: img7
 	},
 	{
+		itemId: 'ITM0008',
 		itemName: 'Luxe View leather belt',
 		brand: 'Luxe View',
 		price: 'Rs. 1000.00',
@@ -116,7 +124,7 @@ const Accessories = () => {
 								accessoryName={accessory.itemName}
 								brand={accessory.brand}
 								unitPrice={accessory.price}
-								onClick={() => handleClick(index)}
+								onClick={() => handleClick(accessory.itemId)}
 							/>
 						)
 					})}
