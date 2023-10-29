@@ -214,9 +214,6 @@ const StandardSizes = () => {
 			);
 		}
 
-
-
-
 		const res = await calculatePrice({
 			measurement: {
 				coatMeasurements: coatMeasurementsInInch,
@@ -236,7 +233,7 @@ const StandardSizes = () => {
 			quantity: inputValue,
 			status: "available",
 		}).then((res) => {
-			// console.log(res.data);
+			// console.log(res);
 			addCustomSuitToCartAPI({
 				description: {
 					type: STANDARD,
@@ -252,6 +249,12 @@ const StandardSizes = () => {
 				quantity: inputValue,
 				status: "available",
 			}).then(() => {
+				toast({
+					title: "Item added to cart",
+					status: "success",
+					duration: 3000,
+					isClosable: true,
+				});
 				navigate("/customer/cart");
 			}).catch((err) => {
 				console.log(err);

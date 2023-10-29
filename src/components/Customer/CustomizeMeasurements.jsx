@@ -1,7 +1,7 @@
+import rightArrow from "/fast-forward.gif";
 import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import rightArrow from "../../../public/fast-forward.gif";
 import { addCustomSuitToCart as addCustomSuitToCartAPI } from "../../api/customerAPI";
 // import measurement_bg from "../../assets/images/measurement_bg.jpg";
 import { MEASUREMENTS_TO_BE_ADDED } from "../../constants";
@@ -106,6 +106,7 @@ const CustomizeMeasurements = () => {
 				</div>
 			</div>
 			<div
+				onClick={handleChooseLater}
 				className="md:fixed flex items-center right-10 bottom-10 max-w-[18rem] rounded-xl bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] transform transition-transform hover:scale-105 cursor-pointer"
 			>
 

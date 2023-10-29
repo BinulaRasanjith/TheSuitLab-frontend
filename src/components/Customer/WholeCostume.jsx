@@ -287,4 +287,4 @@ export function WholeCostume(props) {
   )
 }
 
-useGLTF.preload('/models/NewSuit.gltf')
+useGLTF.preload('/models/NewSuit.gltf') 

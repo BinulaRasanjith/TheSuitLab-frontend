@@ -194,11 +194,17 @@ const CurrentSizes = () => {
 				},
 				customerId: user.id,
 				itemId: res.data.itemId,
-				price, // TODO: calculate price
+				price,
 				quantity: inputValue,
 				status: "available",
-			}).then((res) => {
-				console.log(res.data);
+			}).then(() => {
+				// console.log(res.data);
+				toast({
+					title: "Item added to cart",
+					status: "success",
+					duration: 3000,
+					isClosable: true,
+				});
 				navigate("/customer/cart");
 			})
 				.catch((err) => {
