@@ -14,7 +14,7 @@ import TiesGallery from "../components/Customer/TiesGallery";
 import JacketsGallery from "../components/Customer/jacketsGallery";
 import PantsGallery from "../components/Customer/pantsGallery";
 import SuitDescription from "../components/Customer/suitDescription";
-import Payment from '../components/Payment';
+import Payment from "../components/Payment";
 import ChooseBackPocket from "../components/customer/ChooseBackPocket";
 import ChooseButtons from "../components/customer/ChooseButtons";
 import ChooseLapel from "../components/customer/ChooseLapels";
@@ -145,7 +145,6 @@ const costumerRoutes = {
 							path: "sleeve-button",
 							element: <ChooseSleeveButtons />,
 						},
-
 					],
 				},
 				{
@@ -216,7 +215,6 @@ const costumerRoutes = {
 							path: "back-pocket",
 							element: <ChooseBackPocket />,
 						},
-
 					],
 				},
 				{
@@ -274,7 +272,8 @@ const costumerRoutes = {
 							element: <MaterialsFabricPattern />,
 						},
 					],
-				}, {
+				},
+				{
 					path: "jacket",
 					element: <SingleOutletLayout />,
 					children: [
@@ -294,7 +293,6 @@ const costumerRoutes = {
 							path: "sleeve-button",
 							element: <ChooseSleeveButtons />,
 						},
-
 					],
 				},
 
@@ -310,7 +308,6 @@ const costumerRoutes = {
 							path: "back-pocket",
 							element: <ChooseBackPocket />,
 						},
-
 					],
 				},
 				{
@@ -396,7 +393,7 @@ const costumerRoutes = {
 			element: <Cart />,
 		},
 		{
-			path: "payment",
+			path: "payment/:amount",
 			element: <Payment />,
 		},
 	],
