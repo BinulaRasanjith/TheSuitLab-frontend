@@ -7,3 +7,7 @@ export const getPurchaseOrders = async () => {
 export const getPurchaseOrder = async (id) => {
     return api.get(`/purchase-order/${id}`);
 }
+
+export const updateToCollected = async (id) => {
+    return api.patch("/purchase-order/to-collected", id);
+}

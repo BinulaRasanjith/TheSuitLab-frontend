@@ -67,11 +67,6 @@ const assistantSidebarItems = [
 		icon: <FaUserCircle />,
 		to: "/assistant/profile",
 	},
-	{
-		label: "Test",	// TODO: Remove this
-		icon: <HiCalendarDays />,
-		to: '/assistant/test',
-	}
 ];
 
 const AssistantMainLayout = () => {

@@ -1,28 +1,4 @@
-import { useState } from "react";
-
-import ReturnFixConfForm from "../../components/Assistant/Confirmations/ReturnFixConfForm";
-import DropDownFilter from "../../components/Assistant/Controls/HeaderDropDown";
-import SearchBox from "../../components/Assistant/Controls/HeaderSearchBox";
-import Pagination from "../../components/Assistant/Controls/Pagination";
-// import NewHandoverForm from "../../components/Assistant/Forms/HandoverDamagesForm";
-import Handovers from "../../components/Assistant/HandoveredItemSet";
-
 const Handover = () => {
-    const [isHandoverUpdate, updateHandover] = useState(false);
-    const [selectedHire, setSelectedHire] = useState({
-        customer: "",
-        suit: "",
-    });
-
-    const handleFormOpen = (cus_id, suit_id) => {
-        setSelectedHire({ customer: cus_id, suit: suit_id });
-        updateHandover(true);
-    };
-
-    const handleFormClose = () => {
-        setSelectedHire({ customer: null, suit: null });
-        updateHandover(false);
-    };
 
     return (
         <div className="md:flex items-start justify-center py-12 2xl:px-20 md:px-6 px-4">

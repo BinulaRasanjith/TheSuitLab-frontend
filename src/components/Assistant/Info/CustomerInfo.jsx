@@ -10,17 +10,14 @@ import Input from "../../Input/Input";
 const CustomerInfo = ({
     isOpen,
     onClose,
-    image,
-    materialCode,
-    materialName,
 
+    image,
     CustomerName,
     Mobile,
     Orders,
 }) => {
     const toast = useToast();
     const [newStock, setNewStock] = useState({
-        material_id: materialCode,
         quantity: null,
     });
 
@@ -81,10 +78,10 @@ const CustomerInfo = ({
                             <img src={`${MATERIAL_IMAGES_URL}/${image}`} alt="material" className="w-64 h-32 rounded-xl" />
                         </div>
                         <div className="mb-1">
-                            <b>Material Code: </b>{materialCode}
+                            <b>Material Code: </b>{}
                         </div>
                         <div>
-                            <b>Material Name:</b> {materialName}
+                            <b>Material Name:</b> {}
                         </div>
 
                         <div className="hidden" data-te-input-wrapper-init>
@@ -92,7 +89,6 @@ const CustomerInfo = ({
                                 type="text"
                                 id="material-id"
                                 name="material_id"
-                                value={materialCode}
                                 className="hidden"
                             />
                         </div>
@@ -141,14 +137,11 @@ const CustomerInfo = ({
 CustomerInfo.propTypes = {
     onClose: PropTypes.func.isRequired,
     isOpen: PropTypes.bool.isRequired,
-    image: PropTypes.string.isRequired,
-    materialCode: PropTypes.string.isRequired,
-    materialName: PropTypes.string.isRequired,
 
+    image: PropTypes.string.isRequired,
     CustomerName: PropTypes.string.isRequired,
     Mobile: PropTypes.string.isRequired,
     Orders: PropTypes.number.isRequired,
-
 };
 
 export default CustomerInfo;

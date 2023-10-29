@@ -1,6 +1,7 @@
 import { Button } from "@chakra-ui/react"
 import { useState } from "react"
 import { AiFillPlusCircle } from 'react-icons/ai'
+import { useNavigate } from "react-router-dom"
 
 import img1 from "../../assets/images/rentsuits/black paisley suit/1.webp"
 import img2 from "../../assets/images/rentsuits/black suit/1.webp"
@@ -66,7 +67,7 @@ const hiringcostumes = [
 ]
 
 const Hiring = () => {
-
+	const navigate = useNavigate();
 	const [isNewCostumeForm, addNewCostume] = useState(false);
 
 	const handleFormClose = () => {
@@ -76,6 +77,10 @@ const Hiring = () => {
 	const handleFormOpen = () => {
 		addNewCostume(true); // SET `isNewCostumeForm` TO TRUE TO OPEN THE FORM
 	};
+
+	const handleClick = (id) => {
+		navigate(`/assistant/hiring/${id}`)
+	}
 
 	return (
 		<div className="relative">
@@ -108,8 +113,10 @@ const Hiring = () => {
 							<HiringItemCard
 								image={costume.image}
 								key={index}
-								materialName={costume.costumeName}
-								supplierID={costume.designType}
+								costumeName={costume.costumeName}
+								costumeType={costume.designType}
+								rentalPrice={costume.rentalPrice}
+								onClick={() => handleClick(index)}
 							/>
 						)
 					})}
@@ -120,7 +127,7 @@ const Hiring = () => {
 				{/* PASS `isNewCostumeForm` VARIABLE AND `handleFormClose` FUNCTION TO THE FORM TO OPEN/CLOSE IT */}
 				<NewHireCostume isOpen={isNewCostumeForm} onClose={handleFormClose} />
 			</div>
-			
+
 		</div>
 	)
 }

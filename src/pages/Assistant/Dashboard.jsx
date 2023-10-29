@@ -20,19 +20,6 @@ const Dashboard = () => {
 
 
 	useEffect(() => {
-		const fetchChartData = async () => {
-			try {
-				const response = await gwp();
-				setChartData(response.data);
-			} catch (error) {
-				console.error(error);
-			}
-		};
-
-		fetchChartData();
-	}, []);
-
-	useEffect(() => {
 		const fetchLowStocks = async () => {
 			try {
 				const response = await clmc();
@@ -84,6 +71,41 @@ const Dashboard = () => {
 		fetchIncome();
 	}, []);
 
+
+	// useEffect(() => {
+	// 	const fetchChartData = async () => {
+	// 		try {
+	// 			const response = await gwp();
+	// 			setChartData(response.data);
+	// 		} catch (error) {
+	// 			console.error(error);
+	// 		}
+	// 	};
+
+	// 	fetchChartData();
+	// }, []);
+
+	const currentLocation = window.location.href;
+
+	useEffect(() => {
+		const fetchChartData = async () => {
+			try {
+				const storedData = localStorage.getItem('chartData');
+				if (storedData) {
+					setChartData(JSON.parse(storedData));
+				} else {
+					const response = await gwp();
+					setChartData(response.data);
+					localStorage.setItem('chartData', JSON.stringify(response.data));
+				}
+			} catch (error) {
+				console.error(error);
+			}
+		};
+		fetchChartData();
+	}, [currentLocation]);
+
+
 	initTE({ Chart });
 	const [canvas, setCanvas] = useState(null);
 	let chartInstance;
@@ -104,9 +126,10 @@ const Dashboard = () => {
 		return () => {
 			if (canvas && chartInstance) {
 				chartInstance.destroy(canvas);
+				console.log("Chart destroyed");
 			}
 		};
-	}, [chartInstance, canvas]);
+	}, [currentLocation, chartInstance, canvas]);
 
 
 	var thisWeekOrderCounts;
@@ -115,9 +138,6 @@ const Dashboard = () => {
 	if (chartdata.weeklyPerformance) {
 		thisWeekOrderCounts = chartdata.weeklyPerformance.thisWeekPerformance.map((entry) => entry.orderCount);
 		lastWeekOrderCounts = chartdata.weeklyPerformance.lastWeekPerformance.map((entry) => entry.orderCount);
-
-		console.log("This week performance:", thisWeekOrderCounts);
-		console.log("Last week performance:", lastWeekOrderCounts);
 	} else {
 		console.log("Weekly performance data is not available in the JSON response.");
 		// console.error("Weekly performance data is not available in the JSON response.");
@@ -176,6 +196,16 @@ const Dashboard = () => {
 	// }, [chartdata]);
 
 
+	// document.addEventListener("DOMContentLoaded", function () {
+	// 	new Chart(
+	// 		document.getElementById("chart-bar-double-datasets-example"),
+	// 		dataChartBarDoubleDatasetsExample,
+	// 		optionsChartBarDoubleDatasetsExample,
+	// 	);
+
+	// });
+
+	
 	const assistantStateBoxItems = [
 		{
 			cardtitle: "ORDERS",
@@ -204,14 +234,6 @@ const Dashboard = () => {
 	];
 
 
-	// document.addEventListener("DOMContentLoaded", function () {
-	// 	new Chart(
-	// 		document.getElementById("chart-bar-double-datasets-example"),
-	// 		dataChartBarDoubleDatasetsExample,
-	// 		optionsChartBarDoubleDatasetsExample,
-	// 	);
-
-	// });
 
 	return (
 		<div className=" flex flex-col justify-between mx-10 my-8 gap-7">

@@ -1,6 +1,7 @@
 import { Button } from "@chakra-ui/react"
 import { useState } from "react"
 import { AiFillPlusCircle } from 'react-icons/ai'
+import { useNavigate } from "react-router-dom"
 
 import img1 from "../../assets/images/buttons/button1.jpg"
 import img2 from "../../assets/images/buttons/button2.jpg"
@@ -66,6 +67,7 @@ const accessories = [
 ]
 
 const Accessories = () => {
+	const navigate = useNavigate();
 	const [isNewAccessoryForm, addNewAccessory] = useState(false);
 
 	const handleFormClose = () => {
@@ -75,6 +77,10 @@ const Accessories = () => {
 	const handleFormOpen = () => {
 		addNewAccessory(true); // Set isNewReturnForm to false to close the form
 	};
+
+	const handleClick = (id) => {
+		navigate(`/assistant/accessories/${id}`)
+	}
 
 	return (
 		<div className="relative">
@@ -107,8 +113,10 @@ const Accessories = () => {
 							<AccessoryCard
 								image={accessory.image}
 								key={index}
-								materialName={accessory.itemName}
-								supplierID={accessory.brand}
+								accessoryName={accessory.itemName}
+								brand={accessory.brand}
+								unitPrice={accessory.price}
+								onClick={() => handleClick(index)}
 							/>
 						)
 					})}
