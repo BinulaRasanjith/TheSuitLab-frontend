@@ -46,3 +46,11 @@ export const getTrouserMeasurements = async (userId) => {
 export const getCoatMeasurements = async (userId) => {
     return api.get("/customer/coat-measurements/" + userId);
 }
+
+export const getPaymentInfo = async () => {
+    return api.get("/customer/payment-info");
+}
+
+export const setPaymentInfo = async (paymentInfo) => {
+    return api.post("/customer/set-payment-info", paymentInfo);
+}

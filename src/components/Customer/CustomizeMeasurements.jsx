@@ -1,7 +1,7 @@
+import rightArrow from "/fast-forward.gif";
 import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import rightArrow from "../../../public/fast-forward.gif";
 import { addCustomSuitToCart as addCustomSuitToCartAPI } from "../../api/customerAPI";
 // import measurement_bg from "../../assets/images/measurement_bg.jpg";
 import { MEASUREMENTS_TO_BE_ADDED } from "../../constants";
@@ -63,18 +63,14 @@ const CustomizeMeasurements = () => {
 					Give Your Measurements
 				</span>
 				<div className="flex flex-wrap gap-4 justify-around my-20">
-
-
 					<div
 						onClick={handleChooseCurrentSizes}
 						className="block max-w-[18rem] rounded-lg bg-neutral-800 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] transform transition-transform hover:scale-105 cursor-pointer"
 					>
-
 						<div className="p-6">
 							<h5 className="mb-2 text-4xl font-medium leading-tight text-white dark:text-neutral-50">
 								Current Measurements
 							</h5>
-
 						</div>
 					</div>
 
@@ -82,12 +78,10 @@ const CustomizeMeasurements = () => {
 						onClick={handleChooseStandardSizes}
 						className="block max-w-[18rem] rounded-lg  shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] bg-neutral-600 transform transition-transform hover:scale-105 cursor-pointer"
 					>
-
 						<div className="p-6">
 							<h5 className="mb-2 text-4xl font-medium leading-tight text-white dark:text-neutral-50">
 								Standard Measurements
 							</h5>
-
 						</div>
 					</div>
 
@@ -95,28 +89,24 @@ const CustomizeMeasurements = () => {
 						onClick={handleChooseCustomSizes}
 						className="block max-w-[18rem] rounded-lg bg-neutral-800 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] transform transition-transform hover:scale-105 cursor-pointer"
 					>
-
 						<div className="p-6">
 							<h5 className="mb-2 text-4xl font-medium leading-tight text-white dark:text-neutral-50">
 								Custom Measurements
 							</h5>
-
 						</div>
 					</div>
 				</div>
 			</div>
 			<div
+				onClick={handleChooseLater}
 				className="md:fixed flex items-center right-10 bottom-10 max-w-[18rem] rounded-xl bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] transform transition-transform hover:scale-105 cursor-pointer"
 			>
-
 				<h5 className="p-6 text-4xl font-medium leading-tight text-black">
 					Skip
 				</h5>
 				<label>
 					<img className="h-14" src={rightArrow} alt="My GIF" />
-
 				</label>
-
 			</div>
 		</div>
 	);

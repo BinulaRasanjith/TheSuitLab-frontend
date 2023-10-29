@@ -14,3 +14,11 @@ export const createHash = (order_id, amount, currency, merchant_id) => {
         .toUpperCase();
     return hash;
 };
+
+export const formatPrice = (price) => {
+    return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'LKR',
+        minimumFractionDigits: 2,
+    }).format(price);
+}

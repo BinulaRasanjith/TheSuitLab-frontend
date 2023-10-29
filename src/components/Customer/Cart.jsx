@@ -17,6 +17,7 @@ import { useNavigate } from "react-router-dom";
 
 import { getCart, removeCartItem } from "../../api/customerAPI";
 import { CUSTOM, MEASUREMENTS_TO_BE_ADDED, STANDARD } from "../../constants";
+import { formatPrice } from "../../utils/paymentUtils";
 
 const Cart = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -24,6 +25,7 @@ const Cart = () => {
 	const toast = useToast();
 
 	const [cartItems, setCartItems] = useState([]);
+	const [vat, setVat] = useState(800);
 
 	useEffect(() => {
 		const getCartItems = async () => {
@@ -54,7 +56,7 @@ const Cart = () => {
 				isClosable: true,
 			});
 		} else {
-			navigate("/customer/payment");
+			navigate("/customer/payment/" + (calculateTotalPrice() + vat));
 		}
 	};
 
@@ -130,7 +132,10 @@ const Cart = () => {
 													{(() => {
 														const description = item.description;
 
-														if (description.type === CUSTOM || description.type === STANDARD) {
+														if (
+															description.type === CUSTOM ||
+															description.type === STANDARD
+														) {
 															const customizationKeys = Object.keys(
 																description.customization
 															);
@@ -198,23 +203,29 @@ const Cart = () => {
 							Continue Shopping
 						</Button>
 					</div>
+					{/*  TODO: Calculate VAT */}
 					<div className="flex flex-col justify-center items-center rounded-lg border bg-slate-200 p-4 shadow-md md:mt-0 md:w-68">
-						<p className="text-2xl font-bold border-black border-b-2 my-4">Summary</p>
+						<p className="text-2xl font-bold border-black border-b-2 my-4">
+							Summary
+						</p>
 						<div className="mb-2 flex justify-between gap-x-2">
 							<p className="text-gray-700">Subtotal</p>
-							<p className="text-gray-700 font-semibold">Rs. {calculateTotalPrice()} /=</p>
+							<p className="text-gray-700 font-semibold">
+								{formatPrice(calculateTotalPrice())}
+							</p>
 						</div>
 						<div className="flex flex-col gap-y-2">
 							<div className="flex flex-col items-center gap-y-4 rounded">
 								<p className="text-2xl font-bold">Total Price </p>
 								<p className="mb-1 text-4xl font-bold">
-									Rs. {calculateTotalPrice() + 1000} /=
+									{formatPrice(calculateTotalPrice() + vat)}
 								</p>
-
 							</div>
 							<div className="flex items-center justify-center gap-x-2">
 								<p className="text-sm text-gray-700">Including VAT</p>
-								<p className="text-sm text-gray-700 font-semibold">Rs.1000/=</p>
+								<p className="text-sm text-gray-700 font-semibold">
+									{formatPrice(vat)}
+								</p>
 							</div>
 						</div>
 
