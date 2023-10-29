@@ -1,12 +1,24 @@
-import { Button, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from "@chakra-ui/react"
+import {
+	Button,
+	FormControl,
+	FormLabel,
+	Input,
+	Modal,
+	ModalBody,
+	ModalCloseButton,
+	ModalContent,
+	ModalFooter,
+	ModalHeader,
+	ModalOverlay,
+} from "@chakra-ui/react";
 import { Select, useToast } from "@chakra-ui/react";
-import { useDisclosure } from '@chakra-ui/react';
+import { useDisclosure } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import React from 'react';
+import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { IoArrowBackCircle } from "react-icons/io5";
 import { MdNavigateNext } from "react-icons/md";
-import { MdOutlineArrowBackIosNew } from 'react-icons/md';
+import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -14,7 +26,7 @@ import { addCustomSuitToCart as addCustomSuitToCartAPI } from "../../api/custome
 import {
 	addNewCostumeToItemModel,
 	setCoatMeasurements,
-	setTrouserMeasurements
+	setTrouserMeasurements,
 } from "../../api/customerAPI";
 import { calculatePrice } from "../../api/purchaseOrdersAPI";
 import FullShoulderWidth from "../../assets/images/measurements/men_size_1 (1).jpg";
@@ -32,14 +44,13 @@ import THIGH from "../../assets/images/measurements/men_size_12.jpg";
 import TROUSER_LENGTH from "../../assets/images/measurements/men_size_13.jpg";
 import CUFF from "../../assets/images/measurements/men_size_14.jpg";
 import MeasurementBlock from "../../components/Customer/MeasurementBlock";
-import { INCH, STANDARD, STANDARD_MEASUREMENTS } from "../../constants/index";
+import { STANDARD, STANDARD_MEASUREMENTS } from "../../constants/index";
 import { selectUser } from "../../store/slices/authSlice";
-import { selectJacket, setJacket } from '../../store/slices/jacketCustomizationSlice';
+import { selectJacket } from "../../store/slices/jacketCustomizationSlice";
 import {
 	getCourtMeasurementObject,
 	getTrouserMeasurementObject,
 } from "../../utils/measurements";
-
 
 const StandardSizes = () => {
 	const location = useLocation();
@@ -48,15 +59,15 @@ const StandardSizes = () => {
 	const user = useSelector(selectUser);
 	const { fabric, pocketColor } = useSelector(selectJacket);
 
-	const { isOpen, onOpen, onClose } = useDisclosure()
-	const initialRef = React.useRef()
-	const finalRef = React.useRef()
-	const [inputValue, setInputValue] = useState('');
+	const { isOpen, onOpen, onClose } = useDisclosure();
+	const initialRef = React.useRef();
+	const finalRef = React.useRef();
+	const [inputValue, setInputValue] = useState("");
 	const [isAddButtonDisabled, setIsAddButtonDisabled] = useState(true);
 	const handleInputChange = (e) => {
 		const value = e.target.value;
 
-		if (value === '' || (value >= 1 && value <= 10)) {
+		if (value === "" || (value >= 1 && value <= 10)) {
 			setInputValue(value);
 			setIsAddButtonDisabled(false);
 		} else {
@@ -72,8 +83,6 @@ const StandardSizes = () => {
 
 	// const [coatMeasurementsInInch, setCoatMeasurementsInInch] = useState({});
 	// const [pantMeasurementsInInch, setPantMeasurementsInInch] = useState({});
-
-
 
 	useEffect(() => {
 		if (location.pathname.includes("/customize-suit/jacket")) {
@@ -93,10 +102,10 @@ const StandardSizes = () => {
 			location.pathname.includes("/customize-suit/jacket")
 				? "/customer/customize-suit/jacket/measurements"
 				: location.pathname.includes("/customize-suit/pant")
-					? "/customer/customize-suit/pant/measurements"
-					: location.pathname.includes("/customize-suit/all")
-						? "/customer/customize-suit/all/measurements"
-						: "/customer/customize-measurements"
+				? "/customer/customize-suit/pant/measurements"
+				: location.pathname.includes("/customize-suit/all")
+				? "/customer/customize-suit/all/measurements"
+				: "/customer/customize-measurements"
 		);
 
 	// const handleSave = async () => {
@@ -170,54 +179,61 @@ const StandardSizes = () => {
 	// };
 
 	const handleGoToCart = async () => {
-
 		let coatMeasurementsInInch;
 		let pantMeasurementsInInch;
 
 		if (selectedCategory === "jacket" || selectedCategory === "all") {
 			coatMeasurementsInInch = getCourtMeasurementObject(
 				{
-					fullShoulderWidth: STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.jacket
-						?.FullShoulderWidth,
-					sleeves: STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.jacket
-						?.Sleeves,
-					fullChest: STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.jacket
-						?.FullChest,
-					waist: STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.jacket
-						?.Waist,
+					fullShoulderWidth:
+						STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.jacket
+							?.FullShoulderWidth,
+					sleeves:
+						STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.jacket
+							?.Sleeves,
+					fullChest:
+						STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.jacket
+							?.FullChest,
+					waist:
+						STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.jacket?.Waist,
 					hips: STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.jacket
 						?.Hips,
-					frontShoulderWidth: STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.jacket
-						?.FrontShoulderWidth,
-					backShoulderWidth: STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.jacket
-						?.BackShoulderWidth,
-					frontJacketLength: STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.jacket
-						?.FrontJacketLength,
+					frontShoulderWidth:
+						STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.jacket
+							?.FrontShoulderWidth,
+					backShoulderWidth:
+						STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.jacket
+							?.BackShoulderWidth,
+					frontJacketLength:
+						STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.jacket
+							?.FrontJacketLength,
 					neck: STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.jacket
 						?.Neck,
-				}, selectedUnit
+				},
+				selectedUnit
 			);
 		}
 
 		if (selectedCategory === "pant" || selectedCategory === "all") {
 			pantMeasurementsInInch = getTrouserMeasurementObject(
 				{
-					waist: STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.trouser
-						?.TrouserWaist,
-					crotch: STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.trouser
-						?.Crotch,
-					thigh: STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.trouser
-						?.Thigh,
-					length: STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.trouser
-						?.TrouserLength,
+					waist:
+						STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.trouser
+							?.TrouserWaist,
+					crotch:
+						STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.trouser
+							?.Crotch,
+					thigh:
+						STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.trouser?.Thigh,
+					length:
+						STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.trouser
+							?.TrouserLength,
 					cuff: STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.trouser
 						?.Cuff,
-				}, selectedUnit
+				},
+				selectedUnit
 			);
 		}
-
-
-
 
 		const res = await calculatePrice({
 			measurement: {
@@ -237,31 +253,34 @@ const StandardSizes = () => {
 			price,
 			quantity: inputValue,
 			status: "available",
-		}).then((res) => {
-			// console.log(res.data);
-			addCustomSuitToCartAPI({
-				description: {
-					type: STANDARD,
-					customization: jacket,
-				},
-				measurement: {
-					coatMeasurementsInInch,
-					pantMeasurementsInInch
-				},
-				customerId: user.id,
-				itemId: res.data.itemId,
-				price,
-				quantity: inputValue,
-				status: "available",
-			}).then(() => {
-				navigate("/customer/cart");
-			}).catch((err) => {
+		})
+			.then((res) => {
+				// console.log(res.data);
+				addCustomSuitToCartAPI({
+					description: {
+						type: STANDARD,
+						customization: jacket,
+					},
+					measurement: {
+						coatMeasurementsInInch,
+						pantMeasurementsInInch,
+					},
+					customerId: user.id,
+					itemId: res.data.itemId,
+					price,
+					quantity: inputValue,
+					status: "available",
+				})
+					.then(() => {
+						navigate("/customer/cart");
+					})
+					.catch((err) => {
+						console.log(err);
+					});
+			})
+			.catch((err) => {
 				console.log(err);
 			});
-		}).catch((err) => {
-			console.log(err);
-		});
-
 	};
 
 	return (
@@ -519,24 +538,31 @@ const StandardSizes = () => {
 						<ModalBody pb={6}>
 							<FormControl>
 								<FormLabel>Quantity</FormLabel>
-								<Input type="number" ref={initialRef}
+								<Input
+									type="number"
+									ref={initialRef}
 									value={inputValue}
 									onChange={handleInputChange}
 									min={0}
-									max={10} required />
+									max={10}
+									required
+								/>
 							</FormControl>
 						</ModalBody>
 
 						<ModalFooter>
-							<Button onClick={handleGoToCart} colorScheme="blue" mr={3} disabled={isAddButtonDisabled}>
+							<Button
+								onClick={handleGoToCart}
+								colorScheme="blue"
+								mr={3}
+								disabled={isAddButtonDisabled}
+							>
 								<FaShoppingCart className="mr-2 text-xl" />
 								Add to cart
 							</Button>
-
 						</ModalFooter>
 					</ModalContent>
 				</Modal>
-
 			</div>
 		</div>
 	);
