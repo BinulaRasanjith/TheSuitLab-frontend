@@ -9,6 +9,7 @@ import Notifications from "../pages/Assistant/Notifications";
 import Orders from "../pages/Assistant/Orders";
 import Returns from "../pages/Assistant/Returns";
 import Profile from "../pages/Profile";
+import Reviews from "../components/Reviews";
 
 const AssistantRoutes = {
   path: "/assistant",
@@ -24,6 +25,7 @@ const AssistantRoutes = {
     { path: "hiring", element: <Hiring /> },
     { path: "notifications", element: <Notifications /> },
     { path: "profile", element: <Profile /> },
+    { path: "reviews", element: <Reviews /> },
   ],
 };
 
