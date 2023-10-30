@@ -157,9 +157,7 @@ const AddEmployee = () => {
 										</div>
 									)}
 								</Dropzone>
-								<div className="flex">
-									<p>Double tap to add profile photo</p>
-								</div>
+								<p className="flex text-sm text-blue-500">Double tap to add profile photo</p>
 							</div>
 							<div className="flex flex-col gap-3 w-96">
 								<div className="flex flex-row ">
@@ -176,17 +174,8 @@ const AddEmployee = () => {
 										<option value={TAILOR}>Tailoring Supervisor</option>
 									</select>
 								</div>
-								<div className="flex flex-row justify-between">
-									{/* <label className="text-md font-semibold ">First Name</label> */}
-									{/* <input
-										id="firstName"
-										name="firstName"
-										className="border px-1 py-0.5  border-gray-400 rounded-md  focus:outline-none focus:border-gray-500"
-										type="text"
-										value={firstName}
-										onChange={(e) => setFirstName(e.target.value)}
-									/> */}
 
+								<div className="flex flex-row justify-between">
 									<Input
 
 										id="firstName"
@@ -202,15 +191,6 @@ const AddEmployee = () => {
 									/>
 								</div>
 								<div className="flex flex-row justify-between">
-									{/* <label className="text-md font-semibold">Last Name</label> */}
-									{/* <input
-										id="lastName"
-										name="lastName"
-										className="border px-1 py-0.5  border-gray-400 rounded-md  focus:outline-none focus:border-gray-500"
-										type="text"
-										value={lastName}
-										onChange={(e) => setLastName(e.target.value)}
-									/> */}
 									<Input
 
 										id="lastName"
@@ -228,15 +208,6 @@ const AddEmployee = () => {
 								</div>
 
 								<div className="flex flex-row justify-between">
-									{/* <label className="text-md font-semibold">Contact</label> */}
-									{/* <input
-										id="mobileNumber"
-										name="mobileNumber"
-										className="border px-1 py-0.5 border-gray-400 rounded-md  focus:outline-none focus:border-gray-500"
-										type="text"
-										value={mobileNumber}
-										onChange={(e) => setMobileNumber(e.target.value)}
-									/> */}
 									<Input
 
 										id="mobileNumber"
@@ -253,61 +224,49 @@ const AddEmployee = () => {
 
 									{" "}
 								</div>
+								<div className="grid grid-cols-1 sm:grid-cols-2 grid-rows-1 gap-3 my-3">
 
-								<div className="flex flex-row justify-between">
-									{/* <label className="text-md font-semibold">Password</label>
-									<input
-										id="password"
-										name="password"
-										className="border px-1 py-0.5 border-gray-400 rounded-md  focus:outline-none focus:border-gray-500"
-										type="password"
-										value={password}
-										onChange={(e) => setPassword(e.target.value)}
-									/> */}
-									<Input
-										id="password"
-										name="password"
-										onChange={(e) => setPassword(e.target.value)}
-										onFocus={() => {
-											dispatch(setError(null));
-										}}
-										placeholder="Password"
-										//hint="Ex: 0712345678"
-										type="password"
-										value={password}
-									/>{" "}
-								</div>
-								<div className="flex flex-row justify-between">
-									{/* <label className="text-md font-semibold">Confirm Password</label> */}
-									{/* <input
-										id="re-password"
-										name="re-password"
-										className="border px-1 py-0.5 border-gray-400 rounded-md  focus:outline-none focus:border-gray-500"
-										type="password"
-										value={confirmPassword}
-										onChange={(e) => setConfirmPassword(e.target.value)}
-									/> */}
-									<Input
-										id="re-password"
-										name="re-password"
-										onChange={(e) => setConfirmPassword(e.target.value)}
-										placeholder="Confirm Password"
-										type="password"
-										value={confirmPassword}
-										className={"col-span-2"}
-									/>
-									{" "}
+									<div className="flex flex-row justify-between">
+										<Input
+											id="password"
+											name="password"
+											onChange={(e) => setPassword(e.target.value)}
+											onFocus={() => {
+												dispatch(setError(null));
+											}}
+											placeholder="Password"
+											type="password"
+											value={password}
+										/>{" "}
+									</div>
+									<div className="flex flex-row justify-between">
+										<Input
+											id="re-password"
+											name="re-password"
+											onChange={(e) => setConfirmPassword(e.target.value)}
+											placeholder="Confirm Password"
+											type="password"
+											value={confirmPassword}
+											className={"col-span-2"}
+										/>
+										{" "}
+									</div>
 								</div>
 
-								<div className="flex flex-row justify-between">
+								<div className="flex">
 									<Button
 										onClick={handleAddUserClick}
 										rounded={"md"}
 										color={"white"}
-										bgColor={"black"}
-										_hover={{
-											bg: "gray.700",
-										}}
+										_hover={{ bg: "gray.800", }}
+										_active={{ bg: "black" }}
+										bg={"gray.700"}
+										fontSize={{ base: "l", lg: "md" }}
+										isLoading={status === "loading"}
+										loadingText="Logging in"
+										padding={{ base: "5px", lg: "20px" }}
+										type="submit"
+										width={{ base: "100%", md: "50%" }}
 									>
 										SAVE
 									</Button>
