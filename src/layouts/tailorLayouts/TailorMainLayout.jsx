@@ -21,24 +21,24 @@ const sidebarItems = [
 		label: "Orders",
 		icon: <HiShoppingCart />,
 		to: "/tailor/orders",
-		subItems: [
-			{
-				label: "All",
-				to: "/tailor/orders/all",
-			},
-			{
-				label: "Collected",
-				to: "/tailor/orders/collected",
-			},
-			{
-				label: "Completed",
-				to: "/tailor/orders/completed",
-			},
-			{
-				label: "To be collected",
-				to: "/tailor/orders/to-be-collected",
-			},
-		],
+		// subItems: [
+		// 	{
+		// 		label: "All",
+		// 		to: "/tailor/orders/all",
+		// 	},
+		// 	{
+		// 		label: "Collected",
+		// 		to: "/tailor/orders/collected",
+		// 	},
+		// 	{
+		// 		label: "Completed",
+		// 		to: "/tailor/orders/completed",
+		// 	},
+		// 	{
+		// 		label: "To be collected",
+		// 		to: "/tailor/orders/to-be-collected",
+		// 	},
+		// ],
 	},
 	{
 		label: "Materials",

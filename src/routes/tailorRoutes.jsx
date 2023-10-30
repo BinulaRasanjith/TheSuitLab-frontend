@@ -22,7 +22,8 @@ const tailorRoutes = {
 		},
 		{
 			path: "orders",
-			element: <SingleOutletLayout />,
+			element: <AllOrders />,
+			//element: <SingleOutletLayout />,
 			children: [
 				{
 					path: "all",

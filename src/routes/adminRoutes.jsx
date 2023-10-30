@@ -13,7 +13,7 @@ const costumerRoutes = {
 	children: [
 		{ path: "", element: <AdminDashboard /> },
 		{ path: "employees", element: <Employees /> },
-		{ path: "customer", element: <Customers /> },
+		// { path: "customer", element: <Customers /> },
 		{ path: "orders", element: <Orders /> },
 		{ path: "profile", element: <Profile /> },
 		{

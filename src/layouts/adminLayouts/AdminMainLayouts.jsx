@@ -25,16 +25,16 @@ const sidebarItems = [
 		icon: <BiSolidBookReader />,
 		to: "/admin/employees",
 	},
-	{
-		label: "Customers",
-		icon: <PiShirtFoldedFill />,
-		to: "/admin/customer",
-	},
-	{
-		label: "Orders",
-		icon: <IoMdBowtie />,
-		to: "/admin/orders",
-	},
+	// {
+	// 	label: "Customers",
+	// 	icon: <PiShirtFoldedFill />,
+	// 	to: "/admin/customer",
+	// },
+	// {
+	// 	label: "Orders",
+	// 	icon: <IoMdBowtie />,
+	// 	to: "/admin/orders",
+	// },
 	{
 		label: "Reviews",
 		icon: <BsFillCartFill />,
