@@ -22,15 +22,16 @@ const JacketsGallery = () => {
 
 	return (
 		<div className="flex items-start flex-wrap gap-4 bg-gray-100 p-5 w-full overflow-y-auto h-screen">
-			{jacketData.map((jacket) => (
+
+			{jacketData.length === 0 ? (<p className="flex items-center justify-center m-auto">No Available Data</p>) : (jacketData.map((jacket) => (
 				<Link
 					key={jacket.itemId}
 					to={`${jacket.itemId}`}
-					className="block"
+					className="block curser-pointer"
 				>
 					<AccessoryCard image={jacket.images[0]} label={jacket.name} />
 				</Link>
-			))}
+			)))}
 		</div>
 	);
 };

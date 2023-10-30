@@ -28,6 +28,13 @@ export function NewSuit(props) {
   const buttonColor = useSelector(selectJacket).buttonColor;
 
   const TextureProps = {
+    MAT0000000000: useTexture({
+      map: "/textures/default/default_basecolor.jpg",
+      normalMap: "/textures/default/default_normal.jpg",
+      roughnessMap: "/textures/default/default_roughness.jpg",
+      // roughnessMap: "/textures/default/default_ROUGH.jpg",
+      aoMap: "/textures/default/default_ambientOcclusion.jpg",
+    }),
 
     MAT0000000001: useTexture({
       // MEKA MATERIAL CODE EKA WENAS KARALA WENA NAME DANNA EPA!!
@@ -79,6 +86,8 @@ export function NewSuit(props) {
       roughnessMap: "/textures/Fabric_Lace_004/Fabric_Lace_004_roughness.jpg",
       aoMap: "/textures/Fabric_Lace_004/Fabric_Lace_004_ambientOcclusion.jpg",
     }),
+
+
     Fabric_015: useTexture({
       map: "/textures/Fabric_015/Fabric_015_COLOR.jpg",
       normalMap: "/textures/Fabric_015/Fabric_015_NORM.jpg",
@@ -143,6 +152,13 @@ export function NewSuit(props) {
 
 
   const pocketTextureProps = {
+    MAT0000000000: useTexture({
+      map: "/textures/default/default_basecolor.jpg",
+      normalMap: "/textures/default/default_normal.jpg",
+      roughnessMap: "/textures/default/default_roughness.jpg",
+      // roughnessMap: "/textures/default/default_ROUGH.jpg",
+      aoMap: "/textures/default/default_ambientOcclusion.jpg",
+    }),
     MAT0000000001: useTexture({
       // MEKA MATERIAL CODE EKA WENAS KARALA WENA NAME DANNA EPA!!
       map: "/textures/Poly - formal coat/color_map.jpg",
@@ -192,6 +208,13 @@ export function NewSuit(props) {
       normalMap: "/textures/Fabric_Lace_004/Fabric_Lace_004_normal.jpg",
       roughnessMap: "/textures/Fabric_Lace_004/Fabric_Lace_004_roughness.jpg",
       aoMap: "/textures/Fabric_Lace_004/Fabric_Lace_004_ambientOcclusion.jpg",
+    }),
+    MAT0000000006: useTexture({
+      map: "/textures/default/default_basecolor.jpg",
+      normalMap: "/textures/default/default_normal.jpg",
+      roughnessMap: "/textures/default/default_roughness.jpg",
+      // roughnessMap: "/textures/default/default_ROUGH.jpg",
+      aoMap: "/textures/default/default_ambientOcclusion.jpg",
     }),
     Fabric_015: useTexture({
       map: "/textures/Fabric_015/Fabric_015_COLOR.jpg",

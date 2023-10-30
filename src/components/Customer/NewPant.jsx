@@ -27,6 +27,13 @@ export function NewPant(props) {
 
 
   const TextureProps = {
+    MAT0000000000: useTexture({
+      map: "/textures/default/default_basecolor.jpg",
+      normalMap: "/textures/default/default_normal.jpg",
+      roughnessMap: "/textures/default/default_roughness.jpg",
+      // roughnessMap: "/textures/default/default_ROUGH.jpg",
+      aoMap: "/textures/default/default_ambientOcclusion.jpg",
+    }),
 
     MAT0000000001: useTexture({
       // MEKA MATERIAL CODE EKA WENAS KARALA WENA NAME DANNA EPA!!
@@ -78,6 +85,7 @@ export function NewPant(props) {
       roughnessMap: "/textures/Fabric_Lace_004/Fabric_Lace_004_roughness.jpg",
       aoMap: "/textures/Fabric_Lace_004/Fabric_Lace_004_ambientOcclusion.jpg",
     }),
+
     Fabric_015: useTexture({
       map: "/textures/Fabric_015/Fabric_015_COLOR.jpg",
       normalMap: "/textures/Fabric_015/Fabric_015_NORM.jpg",
@@ -140,6 +148,13 @@ export function NewPant(props) {
     THREE.RepeatWrapping;
 
   const pocketTextureProps = {
+    MAT0000000000: useTexture({
+      map: "/textures/default/default_basecolor.jpg",
+      normalMap: "/textures/default/default_normal.jpg",
+      roughnessMap: "/textures/default/default_roughness.jpg",
+      // roughnessMap: "/textures/default/default_ROUGH.jpg",
+      aoMap: "/textures/default/default_ambientOcclusion.jpg",
+    }),
     MAT0000000001: useTexture({
       // MEKA MATERIAL CODE EKA WENAS KARALA WENA NAME DANNA EPA!!
       map: "/textures/Poly - formal coat/color_map.jpg",

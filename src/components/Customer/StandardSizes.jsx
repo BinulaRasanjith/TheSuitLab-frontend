@@ -1,21 +1,30 @@
+import {
+	Button,
+	FormControl,
+	FormLabel,
+	Input,
+	Modal,
+	ModalBody,
+	ModalCloseButton,
+	ModalContent,
+	ModalFooter,
+	ModalHeader,
+	ModalOverlay,
+} from "@chakra-ui/react";
 import { Select, useToast } from "@chakra-ui/react";
-import { useDisclosure } from '@chakra-ui/react';
-import { Button, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from "@chakra-ui/react"
+import { useDisclosure } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import React from 'react';
+import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { IoArrowBackCircle } from "react-icons/io5";
 import { MdNavigateNext } from "react-icons/md";
-import { MdOutlineArrowBackIosNew } from 'react-icons/md';
+import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import {
-	addNewCostumeToItemModel,
-	setCoatMeasurements,
-	setTrouserMeasurements
-} from "../../api/customerAPI";
 import { addCustomSuitToCart as addCustomSuitToCartAPI } from "../../api/customerAPI";
+import { addNewCostumeToItemModel } from "../../api/customerAPI";
+import { calculatePrice } from "../../api/purchaseOrdersAPI";
 import FullShoulderWidth from "../../assets/images/measurements/men_size_1 (1).jpg";
 import Sleeves from "../../assets/images/measurements/men_size_2.jpg";
 import FullChest from "../../assets/images/measurements/men_size_3.jpg";
@@ -31,7 +40,7 @@ import THIGH from "../../assets/images/measurements/men_size_12.jpg";
 import TROUSER_LENGTH from "../../assets/images/measurements/men_size_13.jpg";
 import CUFF from "../../assets/images/measurements/men_size_14.jpg";
 import MeasurementBlock from "../../components/Customer/MeasurementBlock";
-import { INCH, STANDARD, STANDARD_MEASUREMENTS } from "../../constants/index";
+import { STANDARD, STANDARD_MEASUREMENTS } from "../../constants/index";
 import { selectUser } from "../../store/slices/authSlice";
 import { selectJacket } from "../../store/slices/jacketCustomizationSlice";
 import {
@@ -39,22 +48,22 @@ import {
 	getTrouserMeasurementObject,
 } from "../../utils/measurements";
 
-
 const StandardSizes = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
 	const toast = useToast();
 	const user = useSelector(selectUser);
+	const { fabric, pocketColor } = useSelector(selectJacket);
 
-	const { isOpen, onOpen, onClose } = useDisclosure()
-	const initialRef = React.useRef()
-	const finalRef = React.useRef()
-	const [inputValue, setInputValue] = useState('');
+	const { isOpen, onOpen, onClose } = useDisclosure();
+	const initialRef = React.useRef();
+	const finalRef = React.useRef();
+	const [inputValue, setInputValue] = useState("");
 	const [isAddButtonDisabled, setIsAddButtonDisabled] = useState(true);
 	const handleInputChange = (e) => {
 		const value = e.target.value;
 
-		if (value === '' || (value >= 1 && value <= 10)) {
+		if (value === "" || (value >= 1 && value <= 10)) {
 			setInputValue(value);
 			setIsAddButtonDisabled(false);
 		} else {
@@ -68,8 +77,8 @@ const StandardSizes = () => {
 	const [selectedUnit, setSelectedUnit] = useState("inch");
 	const [selectedCategory, setSelectedCategory] = useState("jacket");
 
-	const [coatMeasurementsInInch, setCoatMeasurementsInInch] = useState({});
-	const [pantMeasurementsInInch, setPantMeasurementsInInch] = useState({});
+	// const [coatMeasurementsInInch, setCoatMeasurementsInInch] = useState({});
+	// const [pantMeasurementsInInch, setPantMeasurementsInInch] = useState({});
 
 	useEffect(() => {
 		if (location.pathname.includes("/customize-suit/jacket")) {
@@ -95,85 +104,153 @@ const StandardSizes = () => {
 						: "/customer/customize-measurements"
 		);
 
-	const handleSave = async () => {
-		let courtMeasurementObject;
-		let trouserMeasurementObject;
+	// const handleSave = async () => {
+	// 	let courtMeasurementObject;
+	// 	let trouserMeasurementObject;
+
+	// 	if (selectedCategory === "jacket" || selectedCategory === "all") {
+	// 		courtMeasurementObject = getCourtMeasurementObject(
+	// 			{
+	// 				fullShoulderWidth:
+	// 					STANDARD_MEASUREMENTS[selectedSize].inch.jacket.FullShoulderWidth,
+	// 				sleeves: STANDARD_MEASUREMENTS[selectedSize].inch.jacket.Sleeves,
+	// 				fullChest: STANDARD_MEASUREMENTS[selectedSize].inch.jacket.FullChest,
+	// 				waist: STANDARD_MEASUREMENTS[selectedSize].inch.jacket.Waist,
+	// 				hips: STANDARD_MEASUREMENTS[selectedSize].inch.jacket.Hips,
+	// 				frontShoulderWidth:
+	// 					STANDARD_MEASUREMENTS[selectedSize].inch.jacket.FrontShoulderWidth,
+	// 				backShoulderWidth:
+	// 					STANDARD_MEASUREMENTS[selectedSize].inch.jacket.FrontShoulderWidth,
+	// 				frontJacketLength:
+	// 					STANDARD_MEASUREMENTS[selectedSize].inch.jacket.BackShoulderWidth,
+	// 				neck: STANDARD_MEASUREMENTS[selectedSize].inch.jacket
+	// 					.FrontJacketLength,
+	// 			},
+	// 			INCH
+	// 		);
+	// 	}
+
+	// 	if (selectedCategory === "pant" || selectedCategory === "all") {
+	// 		trouserMeasurementObject = getTrouserMeasurementObject(
+	// 			{
+	// 				waist: STANDARD_MEASUREMENTS[selectedSize].inch.trouser.TrouserWaist,
+	// 				crotch: STANDARD_MEASUREMENTS[selectedSize].inch.trouser.Crotch,
+	// 				thigh: STANDARD_MEASUREMENTS[selectedSize].inch.trouser.Thigh,
+	// 				length:
+	// 					STANDARD_MEASUREMENTS[selectedSize].inch.trouser.TrouserLength,
+	// 				cuff: STANDARD_MEASUREMENTS[selectedSize].inch.trouser.Cuff,
+	// 			},
+	// 			selectedUnit
+	// 		);
+	// 	}
+
+	// 	try {
+	// 		if (courtMeasurementObject) {
+	// 			await setCoatMeasurements(courtMeasurementObject);
+	// 		}
+
+	// 		if (trouserMeasurementObject) {
+	// 			await setTrouserMeasurements(trouserMeasurementObject);
+	// 		}
+
+	// 		toast({
+	// 			title: "Measurements Saved.",
+	// 			description: "Your measurements have been saved.",
+	// 			status: "success",
+	// 			duration: 5000,
+	// 			isClosable: true,
+	// 			position: "top",
+	// 		});
+	// 	} catch (err) {
+	// 		console.log(err);
+	// 		toast({
+	// 			title: "Error.",
+	// 			description: "Something went wrong.",
+	// 			status: "error",
+	// 			duration: 5000,
+	// 			isClosable: true,
+	// 			position: "top",
+	// 		});
+	// 	}
+	// };
+
+	const handleGoToCart = async () => {
+		let coatMeasurementsInInch;
+		let pantMeasurementsInInch;
 
 		if (selectedCategory === "jacket" || selectedCategory === "all") {
-			courtMeasurementObject = getCourtMeasurementObject(
+			coatMeasurementsInInch = getCourtMeasurementObject(
 				{
 					fullShoulderWidth:
-						STANDARD_MEASUREMENTS[selectedSize].inch.jacket.FullShoulderWidth,
-					sleeves: STANDARD_MEASUREMENTS[selectedSize].inch.jacket.Sleeves,
-					fullChest: STANDARD_MEASUREMENTS[selectedSize].inch.jacket.FullChest,
-					waist: STANDARD_MEASUREMENTS[selectedSize].inch.jacket.Waist,
-					hips: STANDARD_MEASUREMENTS[selectedSize].inch.jacket.Hips,
+						STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.jacket
+							?.FullShoulderWidth,
+					sleeves:
+						STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.jacket
+							?.Sleeves,
+					fullChest:
+						STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.jacket
+							?.FullChest,
+					waist:
+						STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.jacket?.Waist,
+					hips: STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.jacket
+						?.Hips,
 					frontShoulderWidth:
-						STANDARD_MEASUREMENTS[selectedSize].inch.jacket.FrontShoulderWidth,
+						STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.jacket
+							?.FrontShoulderWidth,
 					backShoulderWidth:
-						STANDARD_MEASUREMENTS[selectedSize].inch.jacket.FrontShoulderWidth,
+						STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.jacket
+							?.BackShoulderWidth,
 					frontJacketLength:
-						STANDARD_MEASUREMENTS[selectedSize].inch.jacket.BackShoulderWidth,
-					neck: STANDARD_MEASUREMENTS[selectedSize].inch.jacket
-						.FrontJacketLength,
-				},
-				INCH
-			);
-		}
-
-		if (selectedCategory === "pant" || selectedCategory === "all") {
-			trouserMeasurementObject = getTrouserMeasurementObject(
-				{
-					waist: STANDARD_MEASUREMENTS[selectedSize].inch.trouser.TrouserWaist,
-					crotch: STANDARD_MEASUREMENTS[selectedSize].inch.trouser.Crotch,
-					thigh: STANDARD_MEASUREMENTS[selectedSize].inch.trouser.Thigh,
-					length:
-						STANDARD_MEASUREMENTS[selectedSize].inch.trouser.TrouserLength,
-					cuff: STANDARD_MEASUREMENTS[selectedSize].inch.trouser.Cuff,
+						STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.jacket
+							?.FrontJacketLength,
+					neck: STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.jacket
+						?.Neck,
 				},
 				selectedUnit
 			);
 		}
 
-		try {
-			if (courtMeasurementObject) {
-				await setCoatMeasurements(courtMeasurementObject);
-			}
-
-			if (trouserMeasurementObject) {
-				await setTrouserMeasurements(trouserMeasurementObject);
-			}
-
-			toast({
-				title: "Measurements Saved.",
-				description: "Your measurements have been saved.",
-				status: "success",
-				duration: 5000,
-				isClosable: true,
-				position: "top",
-			});
-		} catch (err) {
-			console.log(err);
-			toast({
-				title: "Error.",
-				description: "Something went wrong.",
-				status: "error",
-				duration: 5000,
-				isClosable: true,
-				position: "top",
-			});
+		if (selectedCategory === "pant" || selectedCategory === "all") {
+			pantMeasurementsInInch = getTrouserMeasurementObject(
+				{
+					waist:
+						STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.trouser
+							?.TrouserWaist,
+					crotch:
+						STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.trouser
+							?.Crotch,
+					thigh:
+						STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.trouser?.Thigh,
+					length:
+						STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.trouser
+							?.TrouserLength,
+					cuff: STANDARD_MEASUREMENTS[selectedSize]?.[selectedUnit]?.trouser
+						?.Cuff,
+				},
+				selectedUnit
+			);
 		}
-	};
 
-	const handleGoToCart = async () => {
+		const res = await calculatePrice({
+			measurement: {
+				coatMeasurements: coatMeasurementsInInch,
+				pantMeasurements: pantMeasurementsInInch,
+			},
+			fabric,
+			pocketColor,
+			selectedCategory,
+		});
+		// console.log(res);
+
+		const price = res.data.price;
 
 		await addNewCostumeToItemModel({
 			itemType: "CustomSuit",
-			price: 1000,
+			price,
 			quantity: inputValue,
 			status: "available",
 		}).then((res) => {
-			// console.log(res.data);
+			// console.log(res);
 			addCustomSuitToCartAPI({
 				description: {
 					type: STANDARD,
@@ -185,19 +262,21 @@ const StandardSizes = () => {
 				},
 				customerId: user.id,
 				itemId: res.data.itemId,
-				price: 2000, // TODO: calculate price
+				price,
 				quantity: inputValue,
 				status: "available",
-			}).then((res) => {
-
+			}).then(() => {
+				toast({
+					title: "Item added to cart",
+					status: "success",
+					duration: 3000,
+					isClosable: true,
+				});
 				navigate("/customer/cart");
 			}).catch((err) => {
 				console.log(err);
 			});
-		}).catch((err) => {
-			console.log(err);
-		});
-
+		})
 	};
 
 	return (
@@ -455,24 +534,31 @@ const StandardSizes = () => {
 						<ModalBody pb={6}>
 							<FormControl>
 								<FormLabel>Quantity</FormLabel>
-								<Input type="number" ref={initialRef}
+								<Input
+									type="number"
+									ref={initialRef}
 									value={inputValue}
 									onChange={handleInputChange}
 									min={0}
-									max={10} required />
+									max={10}
+									required
+								/>
 							</FormControl>
 						</ModalBody>
 
 						<ModalFooter>
-							<Button onClick={handleGoToCart} colorScheme="blue" mr={3} disabled={isAddButtonDisabled}>
+							<Button
+								onClick={handleGoToCart}
+								colorScheme="blue"
+								mr={3}
+								disabled={isAddButtonDisabled}
+							>
 								<FaShoppingCart className="mr-2 text-xl" />
 								Add to cart
 							</Button>
-
 						</ModalFooter>
 					</ModalContent>
 				</Modal>
-
 			</div>
 		</div>
 	);
