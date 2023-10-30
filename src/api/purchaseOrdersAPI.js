@@ -11,3 +11,7 @@ export const getPurchaseOrder = async (id) => {
 export const calculatePrice = async (data) => {
   return api.post("/purchase-order/get-price", data);
 };
+
+export const createPurchaseOrder = async (data) => {
+  return api.post("/purchase-order", data);
+};

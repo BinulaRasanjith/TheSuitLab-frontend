@@ -1,16 +1,22 @@
 import { Button, useToast } from "@chakra-ui/react";
+import CryptoJS from "crypto-js";
 import { useEffect, useState } from "react";
 import { HiCreditCard } from "react-icons/hi";
-import { useNavigate, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { getPaymentInfo, setPaymentInfo } from "../api/customerAPI";
+import { startPayment } from "../api/paymentAPI";
+import { createPurchaseOrder } from "../api/purchaseOrdersAPI";
+import { PaymentType } from "../constants/payments";
+import { selectUser } from "../store/slices/authSlice";
 import { createHash, formatPrice } from "../utils/paymentUtils";
 
 const PaymentPage = () => {
 	const navigate = useNavigate();
 	const toast = useToast();
 
-	const { amount } = useParams();
+	const customerId = useSelector(selectUser).id;
 	const merchant_id = import.meta.env.VITE_MERCHANT_ID;
 
 	const [userData, setUserData] = useState({
@@ -20,6 +26,9 @@ const PaymentPage = () => {
 		phone: "",
 		address: "",
 	});
+	const [paymentDoneId, setPaymentDoneId] = useState("");
+
+	const [amount, setAmount] = useState(0);
 
 	useEffect(() => {
 		const getPayment = async () => {
@@ -27,25 +36,63 @@ const PaymentPage = () => {
 			console.log(paymentInfo.data);
 			setUserData(paymentInfo.data);
 		};
+
+		const amount = localStorage.getItem("amount");
+		const hash = localStorage.getItem("hash");
+		const items = localStorage.getItem("items");
+		console.log(JSON.parse(items));
+		if (amount && hash && items) {
+			const rehash = CryptoJS.SHA256(amount).toString();
+			if (hash === rehash) {
+				setAmount(amount);
+			} else {
+				navigate("/customer");
+			}
+		}
+
 		getPayment();
-	}, [amount]);
+	}, [amount, navigate]);
 
 	const handleInputChange = (e) => {
-		setUserData({ ...userData, [e.target.name]: e.target.value });
-		console.log(userData);
+		setUserData({ ...userData, [e.target.name]: e.target.value.trim() });
 	};
 
 	window.payhere.onCompleted = function onCompleted(orderId) {
 		console.log("Payment completed. OrderID:" + orderId);
 
-		toast({
-			title: "Order placed successfully!",
-			description: "Thank you for your purchase",
-			status: "success",
-			duration: 3000,
-			isClosable: true,
-		});
-		navigate("/customer");
+		const itemsString = localStorage.getItem("items");
+
+		if (!itemsString) {
+			toast({
+				title: "Payment failed! Please try again",
+				status: "error",
+				duration: 3000,
+				isClosable: true,
+			});
+			return;
+		}
+
+		const items = JSON.parse(itemsString);
+
+		createPurchaseOrder({
+			paymentDoneId,
+			customerId,
+			items,
+			amount,
+			method: PaymentType.CARD,
+		})
+			.then((res) => {
+				console.log(res.data);
+				toast({
+					title: "Order placed successfully!",
+					description: "Thank you for your purchase",
+					status: "success",
+					duration: 3000,
+					isClosable: true,
+				});
+				navigate("/customer");
+			})
+			.catch((err) => console.log(err));
 	};
 
 	window.payhere.onDismissed = function onDismissed() {
@@ -75,16 +122,29 @@ const PaymentPage = () => {
 		e.preventDefault();
 		setPaymentInfo(userData);
 
+		if (!userData.email || !userData.address) {
+			console.log(userData);
+			toast({
+				title: "Please fill all the fields!",
+				status: "error",
+				duration: 3000,
+				isClosable: true,
+			});
+			return;
+		}
+
 		const notifyURL = import.meta.env.VITE_NOTIFY_URL;
 		try {
-			const orderID = "123456"; // ! order id
+			const res = await startPayment();
+			const orderID = res.data.paymentDone.id;
+			setPaymentDoneId(orderID);
 
 			const data = {
 				sandbox: true,
 				merchant_id,
 				return_url: undefined,
 				cancel_url: undefined,
-				notify_url: `${notifyURL}/api/auth/test3`,
+				notify_url: `${notifyURL}/api/payment/notify/${orderID}`, // orderID == paymentDone.id
 				order_id: orderID,
 				items: "Total Bill",
 				amount: amount,
@@ -109,7 +169,7 @@ const PaymentPage = () => {
 
 	return (
 		<div className="flex flex-col justify-center w-full">
-			<div className=" bg-gray-200 flex flex-col items-center">
+			<div className=" bg-gray-200 flex flex-col items-center h-full justify-center">
 				<div className="m-14 px-12 py-4 rounded-lg bg-white shadow-lg text-gray-700">
 					<div className="w-full pt-1 pb-2">
 						<div className="bg-indigo-500 text-white overflow-hidden rounded-full w-20 h-20 -mt-16 mx-auto shadow-lg flex justify-center items-center">
