@@ -98,10 +98,10 @@ const StandardSizes = () => {
 			location.pathname.includes("/customize-suit/jacket")
 				? "/customer/customize-suit/jacket/measurements"
 				: location.pathname.includes("/customize-suit/pant")
-				? "/customer/customize-suit/pant/measurements"
-				: location.pathname.includes("/customize-suit/all")
-				? "/customer/customize-suit/all/measurements"
-				: "/customer/customize-measurements"
+					? "/customer/customize-suit/pant/measurements"
+					: location.pathname.includes("/customize-suit/all")
+						? "/customer/customize-suit/all/measurements"
+						: "/customer/customize-measurements"
 		);
 
 	// const handleSave = async () => {
@@ -249,34 +249,34 @@ const StandardSizes = () => {
 			price,
 			quantity: inputValue,
 			status: "available",
-		})
-			.then((res) => {
-				// console.log(res.data);
-				addCustomSuitToCartAPI({
-					description: {
-						type: STANDARD,
-						customization: jacket,
-					},
-					measurement: {
-						coatMeasurementsInInch,
-						pantMeasurementsInInch,
-					},
-					customerId: user.id,
-					itemId: res.data.itemId,
-					price,
-					quantity: inputValue,
-					status: "available",
-				})
-					.then(() => {
-						navigate("/customer/cart");
-					})
-					.catch((err) => {
-						console.log(err);
-					});
-			})
-			.catch((err) => {
+		}).then((res) => {
+			// console.log(res);
+			addCustomSuitToCartAPI({
+				description: {
+					type: STANDARD,
+					customization: jacket,
+				},
+				measurement: {
+					coatMeasurementsInInch,
+					pantMeasurementsInInch
+				},
+				customerId: user.id,
+				itemId: res.data.itemId,
+				price,
+				quantity: inputValue,
+				status: "available",
+			}).then(() => {
+				toast({
+					title: "Item added to cart",
+					status: "success",
+					duration: 3000,
+					isClosable: true,
+				});
+				navigate("/customer/cart");
+			}).catch((err) => {
 				console.log(err);
 			});
+		})
 	};
 
 	return (

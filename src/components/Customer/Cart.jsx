@@ -7,15 +7,18 @@ import {
 	ModalFooter,
 	ModalHeader,
 	ModalOverlay,
+	Text,
 	useDisclosure,
 	useToast,
 } from "@chakra-ui/react";
+import React from "react";
 import { useEffect, useState } from "react";
 import { CiShoppingCart } from "react-icons/ci";
+import { ImInfo } from 'react-icons/im';
 import { ImBin } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
 
-import { getCart, removeCartItem } from "../../api/customerAPI";
+import { getCart, getCartItemById, removeCartItem } from "../../api/customerAPI";
 import { CUSTOM, MEASUREMENTS_TO_BE_ADDED, STANDARD } from "../../constants";
 import { formatPrice } from "../../utils/paymentUtils";
 
@@ -25,6 +28,21 @@ const Cart = () => {
 	const toast = useToast();
 
 	const [cartItems, setCartItems] = useState([]);
+	const [viewCartItemId, setViewCartItemId] = useState("");
+
+	useEffect(() => {
+		const viewCartItem = async () => {
+			try {
+				const cartItemFromServer = await getCartItemById(viewCartItemId);
+				console.log(cartItemFromServer.data);
+			} catch (err) {
+				console.log(err);
+			}
+		};
+
+		viewCartItem();
+	}, [viewCartItemId]);
+
 	const [vat, setVat] = useState(800);
 
 	useEffect(() => {
@@ -32,8 +50,7 @@ const Cart = () => {
 			try {
 				const cartItemsFromServer = await getCart();
 				setCartItems(cartItemsFromServer.data);
-
-				console.log(cartItemsFromServer.data);
+				// console.log(cartItemsFromServer.data);
 			} catch (err) {
 				console.log(err);
 			}
@@ -99,7 +116,97 @@ const Cart = () => {
 		return totalPrice;
 	};
 
+
+
+	const [details, setDetails] = useState(
+		{
+			Material_Code: "",
+			Button_Style: "",
+			Lapel_Style: "",
+			Jacket_Pocket: null,
+			Sleeve_Buttons: null,
+			Pocket_Material_Code: null,
+			Button_Color: "",
+			Trouser_Style: "",
+			Back_Pocket: null,
+		}
+	);
+
+
+	const getDetails = ({ customization }) => {
+
+		for (let key in customization) {
+			if (key === "lapel") {
+				setDetails({ ...details, Lapel_Style: customization[key] });
+			} else if (key === "button") {
+				if (customization[key] === "1S") {
+					setDetails({ ...details, Button_Style: "1 Button" });
+				} else if (customization[key] === "2S") {
+					setDetails({ ...details, Button_Style: "2 Buttons" });
+				} else if (customization[key] === "4D2") {
+					setDetails({ ...details, Button_Style: "4 Buttons" });
+				} else if (customization[key] === "6D3") {
+					setDetails({ ...details, Button_Style: "6 Buttons" });
+				}
+
+			} else if (key === "fabric") {
+				setDetails({ ...details, Material_Code: customization[key] });
+			} else if (key === "pocket") {
+				if (customization[key] !== null) {
+					setDetails({ ...details, Jacket_Pocket: customization[key] });
+				} else {
+					setDetails({ ...details, Jacket_Pocket: "No Pocket" });
+				}
+			} else if (key === "trouser") {
+				setDetails({ ...details, Trouser_Style: customization[key] });
+			} else if (key === "backPocket") {
+				if (customization[key] !== null) {
+					setDetails({ ...details, Back_Pocket: customization[key] });
+				} else {
+					setDetails({ ...details, Back_Pocket: "No Pocket" });
+				}
+
+			} else if (key === "buttonColor") {
+				if (customization[key] !== "none") {
+
+					setDetails({ ...details, Button_Color: customization[key] });
+				} else {
+					setDetails({ ...details, Button_Color: "No Color" });
+				}
+
+			} else if (key === "pocketColor") {
+				if (customization[key] !== null) {
+					setDetails({ ...details, Pocket_Material_Code: customization[key] });
+				} else {
+					setDetails({ ...details, Pocket_Material_Code: "No Color" });
+				}
+
+			} else if (key === "sleeveButtons") {
+				if (customization[key] !== null) {
+					setDetails({ ...details, Sleeve_Buttons: customization[key] });
+				} else {
+					setDetails({ ...details, Sleeve_Buttons: "No Buttons" });
+				}
+			}
+
+			console.log(key);
+		}
+
+	};
+
+	const OverlayOne = () => (
+		<ModalOverlay
+			bg='blackAlpha.300'
+			backdropFilter='blur(10px) hue-rotate(90deg)'
+		/>
+	)
+
+	// const { isOpen, onOpen, onClose } = useDisclosure()
+	const [overlay, setOverlay] = React.useState(<OverlayOne />)
+	const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
+
 	return (
+
 		<>
 			<div className="flex flex-col items-center flex-wrap shadow-xl my-2 w-full ">
 				<div className="flex flex-row items-center gap-3 mt-3">
@@ -117,12 +224,15 @@ const Cart = () => {
 									<th className=" w-32">Price</th>
 									<th className=" w-32">Qty</th>
 									<th className=" w-32">Total</th>
+									<th className=" w-28">Date/Time</th>
+									<th className=" w-28">View</th>
 									<th className=" w-28">Remove</th>
 								</tr>
 							</thead>
 							<tbody className="max-h-[calc(100vh-4rem)] overflow-y-scroll ">
 								<div className="flex flex-col gap-1 flex-wrap ">
 									{cartItems.map((item) => (
+
 										<tr
 											key={item.id}
 											className="flex items-center text-center border hover:bg-gray-300 text-black font-medium py-3 rounded-lg"
@@ -131,6 +241,8 @@ const Cart = () => {
 											<td className="w-40 text-left">
 												<p>
 													{(() => {
+
+
 														const description = item.description;
 
 														if (
@@ -152,6 +264,8 @@ const Cart = () => {
 																	</p>
 																);
 															});
+
+
 														} else {
 															return description.name;
 														}
@@ -161,13 +275,34 @@ const Cart = () => {
 											<td className="w-32">
 												{item.price === MEASUREMENTS_TO_BE_ADDED
 													? "To be added"
-													: "Rs. " + item.price + " /="}
+													: "LKR " + item.price}
 											</td>
 											<td className="w-32">{item.quantity}</td>
 											<td className="w-32">
 												{item.price * item.quantity === -1
 													? "Need Measurements"
-													: "Rs. " + item.price * item.quantity + " /="}
+													: "LKR. " + item.price * item.quantity}
+											</td>
+											<td className="w-28">
+												{item.createdAt.slice(0, 10)}
+												<br />
+												{item.createdAt.slice(11, 19)}
+											</td>
+											<td className="w-28">
+												<ImInfo
+													style={{
+														fontSize: "1rem",
+														cursor: "pointer",
+														color: "blue",
+													}}
+													className=" w-full h-8"
+													onClick={() => {
+														setViewCartItemId(item.id);
+														setOverlay(<OverlayOne />)
+														setIsSecondModalOpen(true)
+													}}
+
+												/>
 											</td>
 											<td className="w-28">
 												<ImBin
@@ -176,7 +311,7 @@ const Cart = () => {
 														cursor: "pointer",
 														color: "red",
 													}}
-													className=" w-full"
+													className=" w-full h-8"
 													onClick={() => {
 														setDeleteItemId(item.id);
 														onOpen();
@@ -265,6 +400,35 @@ const Cart = () => {
 							Yes
 						</Button>
 					</ModalFooter>
+				</ModalContent>
+			</Modal>
+
+			<Modal isCentered isOpen={isSecondModalOpen} onClose={() => setIsSecondModalOpen(false)}>
+				{overlay}
+				<ModalContent>
+					<ModalHeader>Modal Title</ModalHeader>
+					<ModalCloseButton />
+					<ModalBody>
+						<Text>Custom backdrop filters!</Text>
+						<Text>Woot woot 😎</Text>
+						<Text>Woot woot 😎</Text>
+						<Text>Woot woot 😎</Text>
+						<Text>Woot woot 😎</Text>
+						<Text>Woot woot 😎</Text>
+						<Text>Woot woot 😎</Text>
+						<Text>Woot woot 😎</Text>
+						<Text>Woot woot 😎</Text>
+						<Text>Woot woot 😎</Text>
+						<Text>Woot woot 😎</Text>
+						<Text>Woot woot 😎</Text>
+						<Text>Woot woot 😎</Text>
+						<Text>Woot woot 😎</Text>
+						<Text>Woot woot 😎</Text>
+						<Text>Woot woot 😎</Text>
+						<Text>Woot woot 😎</Text>
+						<Text>Woot woot 😎</Text>
+						<Text>Woot woot 😎</Text>
+					</ModalBody>
 				</ModalContent>
 			</Modal>
 		</>
