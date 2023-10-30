@@ -94,7 +94,7 @@ const AddEmployee = () => {
 	return (
 		<>
 			<div className="h-full flex flex-row m-4 shadow-xl rounded-2xl p-2">
-				<div className="w-full border border-gray-200 m-10  rounded-lg shadow  p-6">
+				<div className="w-full border bg-slate-300 border-gray-200 m-10  rounded-lg shadow  p-6">
 					<div className=" border-b-2 border-gray-300">
 						<h2 className="mb-4 mt-3 text-2xl  justify-start font-medium text-gray-900">
 							Add New Employee
@@ -102,48 +102,52 @@ const AddEmployee = () => {
 					</div>
 					<form onSubmit={handleAddUserClick}>
 						<div className="flex flex-row justify-center items-center mt-8 gap-24">
-							<Dropzone
-								onDrop={(acceptedFiles) => {
-									// Handle the uploaded file here
-									setImage(acceptedFiles[0]);
-									console.log(acceptedFiles);
-									setSelectedImage(URL.createObjectURL(acceptedFiles[0]));
-								}}
-								accept="image/*"
-							>
-								{({ getRootProps, getInputProps }) => (
-									<div
-										{...getRootProps()}
-										className="w-52 h-52 object-cover mb-1 rounded-full shadow-lg dropzone"
-									>
-										<input {...getInputProps()} />
-										{/* {image && (
+							<div>
+								<Dropzone
+									onDrop={(acceptedFiles) => {
+										// Handle the uploaded file here
+										setImage(acceptedFiles[0]);
+										console.log(acceptedFiles);
+										setSelectedImage(URL.createObjectURL(acceptedFiles[0]));
+									}}
+									accept="image/*"
+								>
+									{({ getRootProps, getInputProps }) => (
+										<div
+											{...getRootProps()}
+											className="w-52 h-52 object-cover mb-1 rounded-full shadow-lg dropzone"
+										>
+											<input {...getInputProps()} />
+											{/* {image && (
 											<img
 												className="w-52 h-52 object-cover mb-1 rounded-full shadow-lg"
 												src={URL.createObjectURL(image)}
 												alt="uploaded"
 											/>
 										)} */}
-										{image ? (
-											<img
-												className="w-52 h-52 object-cover mb-1 rounded-full shadow-lg"
-												src={URL.createObjectURL(image)}
-												alt="uploaded"
-											/>
-										) : (
-											<img
-												className="w-52 h-52 object-cover mb-1 rounded-full shadow-lg"
-												src={selectedImage}
-												alt="default image"
-											/>
-										)}
-									</div>
-								)}
-							</Dropzone>
-
+											{image ? (
+												<img
+													className="w-52 h-52 object-cover mb-1 rounded-full shadow-lg"
+													src={URL.createObjectURL(image)}
+													alt="uploaded"
+												/>
+											) : (
+												<img
+													className="w-52 h-52 object-cover mb-1 rounded-full shadow-lg"
+													src={selectedImage}
+													alt="default image"
+												/>
+											)}
+										</div>
+									)}
+								</Dropzone>
+								<div className="flex">
+									<p>Double tap to add profile photo</p>
+								</div>
+							</div>
 							<div className="flex flex-col gap-3 w-96">
 								<div className="flex flex-row justify-between">
-									<label className="text-md text-gray-500">Role</label>
+									<label className="text-md font-semibold">Role</label>
 									<select
 										id="role"
 										name="role"
@@ -160,7 +164,7 @@ const AddEmployee = () => {
 									</select>
 								</div>
 								<div className="flex flex-row justify-between">
-									<label className="text-md text-gray-500">First Name</label>
+									<label className="text-md font-semibold ">First Name</label>
 									<input
 										id="firstName"
 										name="firstName"
@@ -171,7 +175,7 @@ const AddEmployee = () => {
 									/>
 								</div>
 								<div className="flex flex-row justify-between">
-									<label className="text-md text-gray-500">Last Name</label>
+									<label className="text-md font-semibold">Last Name</label>
 									<input
 										id="lastName"
 										name="lastName"
@@ -183,7 +187,7 @@ const AddEmployee = () => {
 								</div>
 
 								<div className="flex flex-row justify-between">
-									<label className="text-md text-gray-500">Contact</label>
+									<label className="text-md font-semibold">Contact</label>
 									<input
 										id="mobileNumber"
 										name="mobileNumber"
@@ -195,7 +199,7 @@ const AddEmployee = () => {
 								</div>
 
 								<div className="flex flex-row justify-between">
-									<label className="text-md text-gray-500">Password</label>
+									<label className="text-md font-semibold">Password</label>
 									<input
 										id="password"
 										name="password"
@@ -206,7 +210,7 @@ const AddEmployee = () => {
 									/>{" "}
 								</div>
 								<div className="flex flex-row justify-between">
-									<label className="text-md text-gray-500">
+									<label className="text-md font-semibold">
 										Confirm Password
 									</label>
 									<input
@@ -220,9 +224,6 @@ const AddEmployee = () => {
 								</div>
 
 								<div className="flex flex-row justify-between">
-									{/* <a href="#" className="inline-flex items-center px-10 py-2 text-sm font-medium text-center
-                                     text-white uppercase bg-black rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">Save</a> */}
-
 									<Button
 										onClick={handleAddUserClick}
 										rounded={"md"}
