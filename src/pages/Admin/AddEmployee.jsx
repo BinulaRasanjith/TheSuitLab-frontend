@@ -3,9 +3,9 @@ import { Alert, AlertIcon, Collapse, useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import Dropzone from "react-dropzone";
 import { useNavigate } from "react-router-dom";
-
 import { addUser } from "../../api/userAPI";
 import { OPERATION_ASSISTANT, PRODUCT_MANAGER, TAILOR } from "../../constants";
+import defaultProfileImage from "../../assets/images/avatar.png";
 
 const AddEmployee = () => {
 	const toast = useToast();
@@ -22,6 +22,7 @@ const AddEmployee = () => {
 
 	const [error, setError] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
+	const [selectedImage, setSelectedImage] = useState(defaultProfileImage);
 
 	const handleAddUserClick = async (e) => {
 		e.preventDefault();
@@ -50,12 +51,6 @@ const AddEmployee = () => {
 			return;
 		}
 
-		if (email === "") {
-			setError(true);
-			setErrorMessage("Email is required");
-			return;
-		}
-
 		if (password === "") {
 			setError(true);
 			setErrorMessage("Password is required");
@@ -73,9 +68,8 @@ const AddEmployee = () => {
 		user.append("firstName", firstName);
 		user.append("lastName", lastName);
 		user.append("role", role);
-		user.append("email", email);
 		user.append("password", password);
-		user.append("image", image);
+		user.append("image", image); // Use default URL if image is null
 
 		try {
 			await addUser(user);
@@ -113,6 +107,7 @@ const AddEmployee = () => {
 									// Handle the uploaded file here
 									setImage(acceptedFiles[0]);
 									console.log(acceptedFiles);
+									setSelectedImage(URL.createObjectURL(acceptedFiles[0]));
 								}}
 								accept="image/*"
 							>
@@ -122,11 +117,24 @@ const AddEmployee = () => {
 										className="w-52 h-52 object-cover mb-1 rounded-full shadow-lg dropzone"
 									>
 										<input {...getInputProps()} />
-										{image && (
+										{/* {image && (
 											<img
 												className="w-52 h-52 object-cover mb-1 rounded-full shadow-lg"
 												src={URL.createObjectURL(image)}
 												alt="uploaded"
+											/>
+										)} */}
+										{image ? (
+											<img
+												className="w-52 h-52 object-cover mb-1 rounded-full shadow-lg"
+												src={URL.createObjectURL(image)}
+												alt="uploaded"
+											/>
+										) : (
+											<img
+												className="w-52 h-52 object-cover mb-1 rounded-full shadow-lg"
+												src={selectedImage}
+												alt="default image"
 											/>
 										)}
 									</div>
@@ -186,17 +194,6 @@ const AddEmployee = () => {
 									/>{" "}
 								</div>
 
-								<div className="flex flex-row justify-between">
-									<label className="text-md text-gray-500">Email</label>
-									<input
-										id="email"
-										name="email"
-										className="border border-gray-400 rounded-md  focus:outline-none focus:border-gray-500"
-										type="text"
-										value={email}
-										onChange={(e) => setEmail(e.target.value)}
-									/>{" "}
-								</div>
 								<div className="flex flex-row justify-between">
 									<label className="text-md text-gray-500">Password</label>
 									<input

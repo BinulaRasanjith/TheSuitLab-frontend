@@ -35,11 +35,11 @@ const sidebarItems = [
 	// 	icon: <IoMdBowtie />,
 	// 	to: "/admin/orders",
 	// },
-	{
-		label: "Reviews",
-		icon: <BsFillCartFill />,
-		to: "/admin/test",
-	},
+	// {
+	// 	label: "Reviews",
+	// 	icon: <BsFillCartFill />,
+	// 	to: "/admin/test",
+	// },
 	{
 		label: "Profile",
 		icon: <HiUserCircle />,

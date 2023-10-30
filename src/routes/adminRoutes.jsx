@@ -16,10 +16,10 @@ const costumerRoutes = {
 		// { path: "customer", element: <Customers /> },
 		{ path: "orders", element: <Orders /> },
 		{ path: "profile", element: <Profile /> },
-		{
-			path: "test",
-			element: <h1 className="text-center text-4xl">Still in development</h1>,
-		},
+		// {
+		// 	path: "test",
+		// 	element: <h1 className="text-center text-4xl">Still in development</h1>,
+		// },
 		{ path: "add-employee", element: <AddEmployee /> },
 	],
 };

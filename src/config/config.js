@@ -7,3 +7,4 @@ export const PROFILE_PICTURE_URL = `${SERVER_URL}/uploads/profile-pics`;
 export const MATERIAL_IMAGES_URL = `${SERVER_URL}/uploads/material-images`;
 
 export const HIRE_COSTUME_IMAGES_URL = `${SERVER_URL}/uploads/hire-costumes-images`;
+
