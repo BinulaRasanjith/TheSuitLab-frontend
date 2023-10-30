@@ -15,50 +15,65 @@ const buttonData = [
         color: 'Brown',
         quantity: 20,
         material: 'Plastic',
-        price: '$5',
+        price: 40,
         updatedate: '2023/08/15',
     },
     {
-        id: 1,
+        id: 2,
         image: button2,
         size: 'Medium',
         color: 'Gold',
         quantity: 34,
         material: 'Plastic',
-        price: '$5',
+        price: 50,
         updatedate: '2023/10/22',
     },
     {
-        id: 1,
+        id: 3,
         image: button3,
         size: 'Small',
         color: 'Black-Silver',
         quantity: 40,
         material: 'Plastic',
-        price: '$5',
+        price: 25,
         updatedate: '2023/10/20',
     },
     {
-        id: 1,
+        id: 4,
         image: button4,
         size: 'Small',
         color: 'Black',
         quantity: 23,
         material: 'Plastic',
-        price: '$5',
+        price: 34,
         updatedate: '2023/09/20',
     },
 ];
 
+const ButtonListComponent = ({ sortByPrice }) => {
 
-const ButtonListComponent = () => {
+    const [quantityValues, setQuantityValues] = useState(buttonData.map((item) => 0));
+    const [sortedButtonData, setButtonData] = useState([...buttonData]);
 
-    const [quantityValues, setQuantityValues] = useState(
-        buttonData.map((item) => 0)
-    );
     const toast = useToast();
     const [isSaveDisabled, setIsSaveDisabled] = useState(true);
     const [originalQuantities, setOriginalQuantities] = useState([]);
+
+    useEffect(() => {
+        const sortedData = [...buttonData].sort((a, b) => {
+            const priceA = parseFloat(a.price);
+            const priceB = parseFloat(b.price);
+            if (sortByPrice === 'ASC') {
+                return priceA - priceB;
+            } else if (sortByPrice === 'DSC') {
+                return priceB - priceA;
+            }
+            return 0;
+        });
+        console.log(sortedData);
+        setButtonData(sortedData);
+    }, [sortByPrice]);
+
 
     // Store original quantities on component mount
     useEffect(() => {
@@ -89,7 +104,7 @@ const ButtonListComponent = () => {
             const modifiedQuantity = originalQuantities[index] - value;
             return modifiedQuantity < 0;
         });
-    
+
         if (isNegativeQuantity) {
             // Show error toast message if any final quantity becomes negative
             toast({
@@ -102,11 +117,11 @@ const ButtonListComponent = () => {
         } else {
             // Implement save logic here, for example, send data to an API
             console.log('Saved Changes:', quantityValues);
-                        setQuantityValues(buttonData.map((item) => 0));
+            setQuantityValues(buttonData.map((item) => 0));
 
         }
     };
-    
+
 
     return (
         <div className="min-h-screen bg-white m-5">
@@ -119,7 +134,6 @@ const ButtonListComponent = () => {
                             </th>
                             <th scope="col" className="px-3 py-3">
                                 Size
-
                             </th>
                             <th scope="col" className="px-3 py-3">
                                 Color
@@ -130,9 +144,9 @@ const ButtonListComponent = () => {
                             <th scope="col" className="px-3 py-3">
                                 Material
                             </th>
-                            <th scope="col" className="px-3 py-3">
+                            {/* <th scope="col" className="px-3 py-3">
                                 Unit Price
-                            </th>
+                            </th> */}
                             <th scope="col" className="px-1 py-3">
                                 Last updated
                             </th>
@@ -142,7 +156,7 @@ const ButtonListComponent = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {buttonData.map((item, index) => (
+                        {sortedButtonData.map((item, index) => (
                             <tr
                                 key={index}
                                 className="bg-white items-center border rounded-3xl hover:bg-gray-300 text-black whitespace-nowrap font-medium"
@@ -157,7 +171,7 @@ const ButtonListComponent = () => {
                                     {quantityValues[index] || quantityValues[index] === 0 ? item.quantity - quantityValues[index] : item.quantity}
                                 </td>
                                 <td className="px-4 py-4">{item.material}</td>
-                                <td className="px-4 py-4">{item.price}</td>
+                                {/* <td className="px-4 py-4">{item.price}</td> */}
                                 <td className="px-4 py-2">{item.updatedate}</td>
                                 <td className="px-4 py-4">
                                     <input

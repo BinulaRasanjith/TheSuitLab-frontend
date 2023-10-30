@@ -8,65 +8,65 @@ import { HiHandThumbUp, HiUserCircle } from "react-icons/hi2";
 
 const Dashboard = () => {
 
-  initTE({ Chart });
-  const [canvas, setCanvas] = useState(null);
+  // initTE({ Chart });
+  // const [canvas, setCanvas] = useState(null);
 
-  window.onload = function () {
-    new Chart(
-      document.getElementById("chart-bar-double-datasets-example"),
-      dataChartBarDoubleDatasetsExample,
-      optionsChartBarDoubleDatasetsExample,
-    );
-  };
+  // window.onload = function () {
+  //   new Chart(
+  //     document.getElementById("chart-bar-double-datasets-example"),
+  //     dataChartBarDoubleDatasetsExample,
+  //     optionsChartBarDoubleDatasetsExample,
+  //   );
+  // };
 
-  useEffect(() => {
-    const canvasElement = document.getElementById("chart-bar-double-datasets-example");
-    setCanvas(canvasElement);
+  // useEffect(() => {
+  //   const canvasElement = document.getElementById("chart-bar-double-datasets-example");
+  //   setCanvas(canvasElement);
 
-    // Destroy the canvas when the component unmounts
-    return () => {
-      if (canvas) {
-        Chart.destroy(canvas);
-      }
-    };
-  }, []);
+  //   // Destroy the canvas when the component unmounts
+  //   return () => {
+  //     if (canvas) {
+  //       Chart.destroy(canvas);
+  //     }
+  //   };
+  // }, []);
 
-  // DATA
-  const dataChartBarDoubleDatasetsExample = {
-    type: "bar",
-    data: {
-      labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-      datasets: [
-        {
-          label: "Last week",
-          data: [22, 19, 23, 19, 25, 18, 23],
-          backgroundColor: "#111111",
-        },
-        {
-          label: "This week",
-          data: [25, 21, 23, 24, 22, 20, 26],
-          backgroundColor: "#D3D3D4",
-        },
-      ],
-    },
-  };
+  // // DATA
+  // const dataChartBarDoubleDatasetsExample = {
+  //   type: "bar",
+  //   data: {
+  //     labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+  //     datasets: [
+  //       {
+  //         label: "Last week",
+  //         data: [22, 19, 23, 19, 25, 18, 23],
+  //         backgroundColor: "#111111",
+  //       },
+  //       {
+  //         label: "This week",
+  //         data: [25, 21, 23, 24, 22, 20, 26],
+  //         backgroundColor: "#D3D3D4",
+  //       },
+  //     ],
+  //   },
+  // };
 
-  // OPTIONS
-  const optionsChartBarDoubleDatasetsExample = {
-    options: {
-      scales: {
-        y: {
-          stacked: false,
-          ticks: {
-            beginAtZero: true,
-          },
-        },
-        x: {
-          stacked: false,
-        },
-      },
-    },
-  };
+  // // OPTIONS
+  // const optionsChartBarDoubleDatasetsExample = {
+  //   options: {
+  //     scales: {
+  //       y: {
+  //         stacked: false,
+  //         ticks: {
+  //           beginAtZero: true,
+  //         },
+  //       },
+  //       x: {
+  //         stacked: false,
+  //       },
+  //     },
+  //   },
+  // };
 
 
   return (
@@ -87,7 +87,7 @@ const Dashboard = () => {
                 </div>
               </Link>
 
-              <Link to={`/tailor/materials/fabric`}>
+              <Link to={`/tailor/materials`}>
                 <div className="block max-w-[18rem] rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] bg-neutral-500 transform transition-transform hover:scale-105 cursor-pointer">
                   <div className="p-6 flex gap-5">
                     <HiColorSwatch className="text-white text-4xl" />
@@ -107,7 +107,7 @@ const Dashboard = () => {
                   </div>
                 </div>
               </Link>
-              <Link to={`/tailor/profile`}>
+              {/* <Link to={`/tailor/profile`}>
                 <div className="block max-w-[18rem] rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] bg-neutral-500 transform transition-transform hover:scale-105 cursor-pointer">
                   <div className="p-6 flex gap-5">
                     <HiUserCircle className="text-white text-4xl" />
@@ -116,7 +116,7 @@ const Dashboard = () => {
                     </h5>
                   </div>
                 </div>
-              </Link>
+              </Link> */}
             </div>
           </div>
 
