@@ -73,6 +73,7 @@ const Cart = () => {
 						duration: 3000,
 						isClosable: true,
 					});
+					window.location.reload();
 				}
 			})
 			.catch((err) => {
@@ -111,7 +112,7 @@ const Cart = () => {
 						<table className="flex flex-col  text-sm font-medium text-gray-500">
 							<thead className=" uppercase bg-gray-100 py-4 w-full rounded-xl mb-4">
 								<tr>
-									<th className=" w-32">Item Id</th>
+									{/* <th className=" w-32">Item Id</th> */}
 									<th className=" w-40">Description</th>
 									<th className=" w-32">Price</th>
 									<th className=" w-32">Qty</th>
@@ -126,7 +127,7 @@ const Cart = () => {
 											key={item.id}
 											className="flex items-center text-center border hover:bg-gray-300 text-black font-medium py-3 rounded-lg"
 										>
-											<td className="w-32">{item.id}</td>
+											{/* <td className="w-32">{item.id}</td> */}
 											<td className="w-40 text-left">
 												<p>
 													{(() => {
