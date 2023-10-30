@@ -7,6 +7,9 @@ import pic2 from '../assets/images/rentsuits/black suit/1.webp'
 import pic3 from '../assets/images/rentsuits/cobolt blue suit/1.webp'
 import CardContainer from "../components/ReviewCard/CardContainer";
 import ReviewCard from "../components/ReviewCard/ReviewCard";
+import useSetUserState from "../hooks/useSetUserState";
+import { selectUser } from "../store/slices/authSlice";
+import { useSelector } from "react-redux";
 import { ADMIN, CUSTOMER, OPERATION_ASSISTANT, PRODUCT_MANAGER, TAILOR } from "../constants";
 
 const reviewsData = [
@@ -39,6 +42,8 @@ const reviewsData = [
 
 const Reviews = () => {
 
+	const setUserState = useSetUserState();
+    const user = useSelector(selectUser);
     const navigate = useNavigate();
     const handleBack = () => {
         if (user.role === TAILOR) {
