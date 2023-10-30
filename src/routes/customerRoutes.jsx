@@ -393,7 +393,7 @@ const costumerRoutes = {
 			element: <Cart />,
 		},
 		{
-			path: "payment/:amount",
+			path: "payment",
 			element: <Payment />,
 		},
 	],
