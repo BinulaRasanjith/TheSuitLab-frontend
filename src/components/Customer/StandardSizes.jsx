@@ -47,6 +47,7 @@ import {
 	getCourtMeasurementObject,
 	getTrouserMeasurementObject,
 } from "../../utils/measurements";
+import ItemType from "../../constants/ItemType";
 
 const StandardSizes = () => {
 	const location = useLocation();
@@ -98,10 +99,10 @@ const StandardSizes = () => {
 			location.pathname.includes("/customize-suit/jacket")
 				? "/customer/customize-suit/jacket/measurements"
 				: location.pathname.includes("/customize-suit/pant")
-					? "/customer/customize-suit/pant/measurements"
-					: location.pathname.includes("/customize-suit/all")
-						? "/customer/customize-suit/all/measurements"
-						: "/customer/customize-measurements"
+				? "/customer/customize-suit/pant/measurements"
+				: location.pathname.includes("/customize-suit/all")
+				? "/customer/customize-suit/all/measurements"
+				: "/customer/customize-measurements"
 		);
 
 	// const handleSave = async () => {
@@ -249,34 +250,43 @@ const StandardSizes = () => {
 			price,
 			quantity: inputValue,
 			status: "available",
+			costumeType: selectedCategory,
+			measurementType: STANDARD,
+			measurements: {
+				coatMeasurements: coatMeasurementsInInch,
+				pantMeasurements: pantMeasurementsInInch,
+			},
+			customization: jacket,
 		}).then((res) => {
 			// console.log(res);
 			addCustomSuitToCartAPI({
 				description: {
-					type: STANDARD,
+					type: ItemType.CUSTOM_SUIT,
 					customization: jacket,
 				},
 				measurement: {
-					coatMeasurementsInInch,
-					pantMeasurementsInInch
+					coatMeasurements: coatMeasurementsInInch,
+					pantMeasurements: pantMeasurementsInInch,
 				},
 				customerId: user.id,
 				itemId: res.data.itemId,
 				price,
 				quantity: inputValue,
 				status: "available",
-			}).then(() => {
-				toast({
-					title: "Item added to cart",
-					status: "success",
-					duration: 3000,
-					isClosable: true,
+			})
+				.then(() => {
+					toast({
+						title: "Item added to cart",
+						status: "success",
+						duration: 3000,
+						isClosable: true,
+					});
+					navigate("/customer/cart");
+				})
+				.catch((err) => {
+					console.log(err);
 				});
-				navigate("/customer/cart");
-			}).catch((err) => {
-				console.log(err);
-			});
-		})
+		});
 	};
 
 	return (
