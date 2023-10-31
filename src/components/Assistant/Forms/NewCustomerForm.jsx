@@ -33,21 +33,35 @@ const NewReturnForm = ({ isOpen, onClose }) => {
 
 		// CHECK IF MOBILE NUMBER IS VALID
 		} else if (!regex.test(newCustomer.mobileNo)) {
-			console.log("Invalid mobile number");
+			console.log("Invalid mobile number"); // TODO: REMOVE THIS LINE
 			toast({
 				title: "Invalid mobile number!",
+				description: "Please use +94XXXXXXXXX format!",
 				status: "error",
 				duration: 3000,
 				isClosable: true,
 			});
 		} else {
 			try {
-				console.log("--->" + addNewCustomer(newCustomer) + "<---");
-				console.log("line 46")
+				const response = await addNewCustomer(newCustomer);
+				console.log(response) // TODO: REMOVE THIS LINE
 				onClose();
+				toast({
+					title: "Success!",
+					description: "New customer added successfully!",
+					status: "success",
+					duration: 3000,
+					isClosable: true,
+				});
 			} catch (error) {
 				console.error(error);
-				console.log("line 50")
+				toast({
+					title: "Unsuccess!",
+					description: "Couldn't add new customer!",
+					status: "error",
+					duration: 3000,
+					isClosable: true,
+				});
 			}
 		}
 	};

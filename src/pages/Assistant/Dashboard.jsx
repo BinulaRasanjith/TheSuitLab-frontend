@@ -19,7 +19,7 @@ const Dashboard = () => {
 	const currentLocation = window.location.pathname;
 
 	let chartInstance;
-	
+
 
 	// TODO: FINAL DASHBOARD DATA FETCHING LOGIC
 	useEffect(() => {
@@ -42,7 +42,7 @@ const Dashboard = () => {
 	}, [currentLocation]);
 
 
-	// CHART DATA
+	// CHART METRICS
 	const dataChartBarDoubleDatasetsExample = {
 		type: "bar",
 		data: {
@@ -79,27 +79,34 @@ const Dashboard = () => {
 		},
 	};
 
-	window.onload = function () {
+	// CHART RENDERING
+	useEffect(() => {
+		// DESTROY THE CANVAS WHEN THE COMPONENT UNMOUNTS
+		if (canvas && chartInstance) {
+			chartInstance.destroy(canvas);
+			console.log("Chart destroyed");
+		}
+
+		// CREATE A NEW CHART INSTANCE
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 		chartInstance = new Chart(
 			document.getElementById("chart-bar-double-datasets-example"),
 			dataChartBarDoubleDatasetsExample,
-			optionsChartBarDoubleDatasetsExample,
+			optionsChartBarDoubleDatasetsExample
 		);
 		const canvasElement = document.getElementById("chart-bar-double-datasets-example");
 		setCanvas(canvasElement);
-	};
 
-	useEffect(() => {
-		// DESTROY THE CANVAS WHEN THE COMPONENT UNMOUNTS
+		// ENSURE TO RETURN A CLEANUP FUNCTION TO DESTROY THE CHART WHEN THE COMPONENT UNMOUNTS
 		return () => {
 			if (canvas && chartInstance) {
 				chartInstance.destroy(canvas);
 				console.log("Chart destroyed");
 			}
 		};
-	}, [currentLocation, canvas, chartInstance]);
+	}, [currentLocation]);
 
-
+	// CHART DATA
 	var thisWeekOrderCounts;
 	var lastWeekOrderCounts;
 
@@ -109,7 +116,6 @@ const Dashboard = () => {
 	} else {
 		console.error("Weekly performance data is not available in the JSON response.");
 	}
-
 
 
 	const assistantStateBoxItems = [

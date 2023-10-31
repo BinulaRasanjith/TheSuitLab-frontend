@@ -41,21 +41,27 @@ const Materials = () => {
                         </div>
                     </div>
                 </div>
-                <div className=" flex flex-col">
+                <div className=" flex flex-col"> {/* PARENT */}
+                    
                     <div className=' flex justify-between text-sm font-medium text-gray-400'>
-                        <div className=" w-40 text-">Material</div>
-                        <div className=" w-32 text-">Material Name</div>
-                        <div className=" w-32 text-">Unit Price (per Yard)</div>
-                        <div className=" w-32 text-">Color</div>
-                        <div className=" w-32 text-">Color code</div>
+                        <div className=" w-40 ">Material</div>
+                        <div className=" w-32 ">Material Name</div>
+                        <div className=" w-32 ">Color</div>
+                        <div className=" w-32 ">Unit Price (per Yard)</div>
+                        <div className=" w-32 hidden">Color code</div>
                         <div className=" w-40">Quantity Update</div>
                     </div>
                     <div className=" w-full border h-0 mt-3 mb-6 border-gray-200"></div>
 
                 </div>
-                <div><MaterialItems onOpen={handleFormOpen} /></div>
+                <div>
+                    <MaterialItems onOpen={handleFormOpen} />
+                </div>
+                
                 <div className=" flex justify-between">
-                    <div className="opacity-0 py-3 text-sm font-medium text-neutral-400">Showing data 1 to 8 of 256K entries</div>
+                    <div className="opacity-0 py-3 text-sm font-medium text-neutral-400">
+                        Showing data 1 to 8 of 256K entries
+                    </div>
                     <div className=" py-3">
                         <Pagination />
                     </div>

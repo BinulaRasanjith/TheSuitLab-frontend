@@ -1,89 +1,39 @@
 import { Button } from "@chakra-ui/react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { AiFillPlusCircle } from 'react-icons/ai'
 import { useNavigate } from "react-router-dom"
 
-import img1 from "../../assets/images/buttons/button1.jpg"
-import img2 from "../../assets/images/buttons/button2.jpg"
-import img3 from "../../assets/images/buttons/button3.jpg"
-import img4 from "../../assets/images/buttons/button4.jpg"
-import img5 from "../../assets/images/buttons/button5.jpg"
-import img6 from "../../assets/images/buttons/button6.jpg"
-import img7 from "../../assets/images/buttons/button7.jpg"
-import img8 from "../../assets/images/buttons/button8.gif"
+import { getAccessories } from "../../api/accessoryAPI"
 import AccessoryCard from "../../components/Assistant/AccessoryCard"
 import CardContainer from "../../components/Assistant/CardContainer"
 import NewAccessoryForm from "../../components/Assistant/Forms/NewAccessoryForm"
 
-const accessories = [
-	{
-		itemId: 'ITM0001',
-		itemName: 'Luxe View leather belt',
-		brand: 'Luxe View',
-		price: 'Rs. 1000.00',
-		image: img1
-	},
-	{
-		itemId: 'ITM0002',
-		itemName: 'Luxe View leather belt',
-		brand: 'Luxe View',
-		price: 'Rs. 1000.00',
-		image: img2
-	},
-	{
-		itemId: 'ITM0003',
-		itemName: 'Luxe View leather belt',
-		brand: 'Luxe View',
-		price: 'Rs. 1000.00',
-		image: img3
-	},
-	{
-		itemId: 'ITM0004',
-		itemName: 'Luxe View leather belt',
-		brand: 'Luxe View',
-		price: 'Rs. 1000.00',
-		image: img4
-	},
-	{
-		itemId: 'ITM0005',
-		itemName: 'Luxe View leather belt',
-		brand: 'Luxe View',
-		price: 'Rs. 1000.00',
-		image: img5
-	},
-	{
-		itemId: 'ITM0006',
-		itemName: 'Luxe View leather belt',
-		brand: 'Luxe View',
-		price: 'Rs. 1000.00',
-		image: img6
-	},
-	{
-		itemId: 'ITM0007',
-		itemName: 'Luxe View leather belt',
-		brand: 'Luxe View',
-		price: 'Rs. 1000.00',
-		image: img7
-	},
-	{
-		itemId: 'ITM0008',
-		itemName: 'Luxe View leather belt',
-		brand: 'Luxe View',
-		price: 'Rs. 1000.00',
-		image: img8
-	},
-]
-
 const Accessories = () => {
+
 	const navigate = useNavigate();
+	const [accessories, setAccessories] = useState([]);
 	const [isNewAccessoryForm, addNewAccessory] = useState(false);
 
+	useEffect(() => {
+		const fetchAccessories = async () => {
+			try {
+				const response = await getAccessories();
+				setAccessories(response.data);
+			} catch (error) {
+				console.error(error);
+			}
+		};
+
+		fetchAccessories();
+	}, []);
+
+
 	const handleFormClose = () => {
-		addNewAccessory(false); // Set isNewReturnForm to false to close the form
+		addNewAccessory(false);
 	};
 
 	const handleFormOpen = () => {
-		addNewAccessory(true); // Set isNewReturnForm to false to close the form
+		addNewAccessory(true);
 	};
 
 	const handleClick = (id) => {
@@ -119,11 +69,11 @@ const Accessories = () => {
 					{accessories.map((accessory, index) => {
 						return (
 							<AccessoryCard
-								image={accessory.image}
+								image={accessory.Accessory.image && accessory.Accessory.image[0]}
 								key={index}
-								accessoryName={accessory.itemName}
-								brand={accessory.brand}
-								unitPrice={accessory.price}
+								accessoryName={accessory.Accessory && accessory.Accessory.itemName}
+								brand={accessory.Accessory && accessory.Accessory.brand}
+								unitPrice={accessory.price && accessory.price.toFixed(2)}
 								onClick={() => handleClick(accessory.itemId)}
 							/>
 						)

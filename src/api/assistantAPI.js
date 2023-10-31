@@ -11,3 +11,7 @@ export const dashboardData = () => {
 export const addNewCustomer = (data) => {
     return api.post('/user/add-customer/', data);
 }
+
+export const removeThisItem = (data) => {
+    return api.delete('/assistant/remove-item/', data);
+}

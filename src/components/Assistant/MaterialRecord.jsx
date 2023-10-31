@@ -21,9 +21,9 @@ const MaterialRecord = ({
                 </div>
                 <div className="hidden">{MaterialCode}</div>
                 <div className=" w-32 text-sm font-medium text-black">{MaterialName}</div>
-                <div className=" w-32 text-sm font-medium text-black">Rs. {UnitPrice.toFixed(2)}</div>
                 <div className=" w-32 text-sm font-medium text-black">{Color}</div>
-                <div className=" w-32 text-sm font-medium text-black">{ColorCode}</div>
+                <div className=" w-32 text-sm font-medium text-black">Rs. {UnitPrice.toFixed(2)}</div>
+                <div className=" w-32 text-sm font-medium text-black hidden">{ColorCode}</div>
                 <div className=" w-40 text-sm font-medium text-gray-500">
                     <Button
                         _hover={{

@@ -223,9 +223,6 @@ const AddEmployee = () => {
 								</div>
 
 								<div className="flex flex-row justify-between">
-									{/* <a href="#" className="inline-flex items-center px-10 py-2 text-sm font-medium text-center
-                                     text-white uppercase bg-black rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">Save</a> */}
-
 									<Button
 										onClick={handleAddUserClick}
 										rounded={"md"}
