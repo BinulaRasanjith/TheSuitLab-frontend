@@ -15,39 +15,39 @@ import {
 	PRODUCT_MANAGER,
 	TAILOR,
 } from "../constants";
-import useSetUserState from "../hooks/useSetUserState";
 import { selectUser } from "../store/slices/authSlice";
+import { getReviews } from "../api/reviewAPI";
+import { format, formatDistance, formatDistanceToNow } from "date-fns";
 
-const reviewsData = [
-	{
-		image: pic1,
-		orderId: 123456789,
-		author: "John Doe",
-		comment: "This product is amazing!",
-		date: "2023-10-30",
-		ratings: 4,
-	},
-	{
-		image: pic2,
-		orderId: 1262334,
-		author: "Johnny",
-		comment: "This product is poor!",
-		date: "2023-9-30",
-		ratings: 2,
-	},
-	{
-		image: pic3,
-		orderId: 1234589,
-		author: "Johnny",
-		comment: "This product is poor!",
-		date: "2023-10-12",
-		ratings: 2,
-	},
-	// Add more review objects as needed
-];
+// const reviewsData = [
+// 	{
+// 		image: pic1,
+// 		orderId: 123456789,
+// 		author: "John Doe",
+// 		comment: "This product is amazing!",
+// 		date: "2023-10-30",
+// 		ratings: 4,
+// 	},
+// 	{
+// 		image: pic2,
+// 		orderId: 1262334,
+// 		author: "Johnny",
+// 		comment: "This product is poor!",
+// 		date: "2023-9-30",
+// 		ratings: 2,
+// 	},
+// 	{
+// 		image: pic3,
+// 		orderId: 1234589,
+// 		author: "Johnny",
+// 		comment: "This product is poor!",
+// 		date: "2023-10-12",
+// 		ratings: 2,
+// 	},
+// 	// Add more review objects as needed
+// ];
 
 const Reviews = () => {
-	const setUserState = useSetUserState();
 	const user = useSelector(selectUser);
 	const navigate = useNavigate();
 	const handleBack = () => {
@@ -67,8 +67,19 @@ const Reviews = () => {
 			navigate("/admin");
 		}
 	};
+	const [reviewsData, setReviewsData] = useState([]); // [reviewObject, reviewObject, ...
 	const [sortByDate, setSortByDate] = useState("relevant");
 	const [sortedByDate, setSortedByDate] = useState([]);
+
+	useEffect(() => {
+		const fetchReviews = async () => {
+			const response = await getReviews();
+			console.log(response.data);
+			setReviewsData(response.data);
+		};
+
+		fetchReviews();
+	}, []);
 
 	useEffect(() => {
 		const sortedData = [...reviewsData].sort((a, b) => {
@@ -80,7 +91,7 @@ const Reviews = () => {
 			return 0;
 		});
 		setSortedByDate(sortedData);
-	}, [sortByDate]);
+	}, [reviewsData, sortByDate]);
 
 	return (
 		<>
@@ -122,9 +133,9 @@ const Reviews = () => {
 												image={review.image}
 												author={review.author}
 												orderId={review.orderId}
-												comment={review.comment}
-												ratings={review.ratings}
-												date={review.date}
+												comment={review.description}
+												ratings={review.rating}
+												date={format(new Date(review.reviewedOn), "dd-MM-yyyy")}
 											/>
 										);
 									})}
