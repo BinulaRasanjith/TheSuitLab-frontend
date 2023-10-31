@@ -155,9 +155,6 @@ const ButtonListComponent = ({ sortByPrice, searchInput }) => {
                             <th scope="col" className="px-3 py-3">
                                 Material
                             </th>
-                            {/* <th scope="col" className="px-3 py-3">
-                                Unit Price
-                            </th> */}
                             <th scope="col" className="px-1 py-3">
                                 Last updated
                             </th>
