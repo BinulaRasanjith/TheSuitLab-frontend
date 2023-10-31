@@ -27,7 +27,7 @@ const ChooseBackPocket = () => {
                 }} className='flex relative flex-col items-center p-3 justify-center cursor-pointer rounded-lg border border-black-2  shadow'>
                     {backPocketSelected === 'no-btn' && (
                         <div className="absolute z-5 top-2 right-2">
-                            <MdDoneOutline size={24} color="white" />
+                            <MdDoneOutline size={24} color="black" />
                         </div>
                     )}
                     <img alt="Single Opening" className='pb-5' src={Single} />
@@ -39,7 +39,7 @@ const ChooseBackPocket = () => {
                 }} className='flex relative flex-col items-center p-3 justify-center cursor-pointer rounded-lg border border-black-2  shadow'>
                     {backPocketSelected === 'with-btn' && (
                         <div className="absolute z-5 top-2 right-2">
-                            <MdDoneOutline size={24} color="white" />
+                            <MdDoneOutline size={24} color="black" />
                         </div>
                     )}
                     <img alt="Double Opening" className='' src={Double} />
