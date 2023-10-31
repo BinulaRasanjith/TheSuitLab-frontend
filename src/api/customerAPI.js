@@ -25,12 +25,14 @@ export const addNewCostumeToItemModel = async ({
   price,
   quantity,
   status,
+  costumeType, measurementType, measurements, customization
 }) => {
   return api.post("/customer/add-new-costume-to-item-model", {
     itemType,
     price,
     quantity,
     status,
+    costumeType, measurementType, measurements, customization
   });
 };
 
