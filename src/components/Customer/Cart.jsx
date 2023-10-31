@@ -17,6 +17,7 @@ import { CiShoppingCart } from "react-icons/ci";
 import { ImBin } from "react-icons/im";
 import { ImInfo } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
+import { IoArrowBackCircle } from "react-icons/io5";
 
 import {
 	getCart,
@@ -202,12 +203,28 @@ const Cart = () => {
 	const [overlay, setOverlay] = useState(<OverlayOne />);
 	const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
 
+	const handleBack = () => {
+		navigate("/customer");
+
+	};
+
 	return (
 		<>
 			<div className="flex flex-col items-center flex-wrap shadow-xl my-2 w-full ">
-				<div className="flex flex-row items-center gap-3 mt-3">
-					<CiShoppingCart style={{ fontSize: "2rem" }} />
-					<span className="text-xl font-bold text-black p-1">Cart Items</span>
+
+				<div className="flex items-center justify-center w-full">
+					<div className="flex items-center gap-96 mt-4 justify-start ">
+						<button
+							onClick={handleBack}
+							className="flex items-center gap-2 text-primary"
+						>
+							<IoArrowBackCircle className="text-3xl cursor-pointer" />
+						</button>
+						<div className="flex gap-3">
+							<CiShoppingCart style={{ fontSize: "2rem" }} />
+							<span className="text-xl font-bold text-black p-1">Cart Items</span>
+						</div>
+					</div>
 				</div>
 
 				<div className="flex  justify-center items-start p-4 gap-x-10">

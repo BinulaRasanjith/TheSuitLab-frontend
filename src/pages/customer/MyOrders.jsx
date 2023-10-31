@@ -1,5 +1,6 @@
 import { HiShoppingBag } from 'react-icons/hi2'
 import { Link, useNavigate } from "react-router-dom";
+import { IoArrowBackCircle } from "react-icons/io5";
 
 import suite1 from "../../assets/images/rentsuits/black paisley suit/1.webp"
 import suite2 from "../../assets/images/rentsuits/caremal suit/1.webp"
@@ -47,14 +48,22 @@ const MyOrders = () => {
     // const handleNavigate = (id) => {
     //     navigate(`/customer/my-orders/${id}`)
     // }
+	const handleBack = () => {
+		navigate("/customer");
 
+	};
     
     return (
         <>
             <div className=" flex flex-col justify-between m-8 p-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg items-center flex-wrap shadow-xl w-full ">
                 <div className=" flex justify-center items-center w-full">
                     <div className='flex items-center gap-80 mt-4'>
-
+                    <button
+							onClick={handleBack}
+							className="flex items-center gap-2 text-primary"
+						>
+							<IoArrowBackCircle className="text-3xl cursor-pointer" />
+						</button>
                         <div className='flex gap-3'>
                             <HiShoppingBag style={{ fontSize: "2rem" }} />
                             <div className=' text-2xl font-semibold'>My Orders</div>
