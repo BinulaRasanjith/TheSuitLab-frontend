@@ -102,9 +102,10 @@ const Employees = () => {
 
 	return (
 		<>
-			<div className="flex items-center justify-between">
-				<h1 className="text-xl font-semibold p-7">Product Manager</h1>
 
+
+			<div className="flex flex-row mt-5 items-center justify-between">
+				<h1 className="text-xl font-semibold p-7">Tailors & Supervisors</h1>
 				<Button
 					leftIcon={<AiFillPlusCircle />}
 					m={3}
@@ -119,26 +120,6 @@ const Employees = () => {
 					Add User
 				</Button>
 			</div>
-
-			{/* cards*/}
-
-			<CardContainer>
-				{managers.map((employee, index) => {
-					return (
-						<EmployeeCard
-							key={index}
-							image={`${PROFILE_PICTURE_URL}/${employee.image}`}
-							EmpName={employee.firstName + " " + employee.lastName}
-							role={displayRoleName(employee.role)}
-						/>
-					);
-				})}
-			</CardContainer>
-
-			<div className="flex flex-row mt-5 justify-start">
-				<h1 className="text-xl font-semibold p-7">Tailors & Supervisors</h1>
-			</div>
-
 			<CardContainer>
 				{tailors.map((employee, index) => {
 					return (
@@ -168,6 +149,29 @@ const Employees = () => {
 					);
 				})}
 			</CardContainer>
+
+			<div className="flex items-center justify-between">
+				<h1 className="text-xl font-semibold p-7">Product Manager</h1>
+			</div>
+
+			{/* cards*/}
+
+			<CardContainer>
+				{managers.map((employee, index) => {
+					return (
+						<EmployeeCard
+							key={index}
+							image={`${PROFILE_PICTURE_URL}/${employee.image}`}
+							EmpName={employee.firstName + " " + employee.lastName}
+							role={displayRoleName(employee.role)}
+						/>
+					);
+				})}
+			</CardContainer>
+
+
+
+
 		</>
 	);
 };
