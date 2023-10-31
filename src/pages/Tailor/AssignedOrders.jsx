@@ -73,7 +73,7 @@ const AssignedOrders = () => {
 
     return (
         <>
-            <div className="flex flex-row">
+            <div className="flex flex-row w-full">
                 <div className="flex-auto">
                     <div className='flex flex-col '>
                         <div className='flex-col mt-3 shadow-lg sm:rounded-lg'>
