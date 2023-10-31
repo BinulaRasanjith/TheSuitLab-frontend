@@ -92,7 +92,7 @@ const Reviews = () => {
                                     >
                                         <IoArrowBackCircle className="text-3xl cursor-pointer" />
                                     </button>
-                                    <h1 className=' text-2xl font-semibold'>Reviews</h1>
+                                    <h1 className=' text-3xl font-semibold'>Reviews</h1>
 
                                     <div className="ml-32 flex w-52 ">
                                         <span className=" flex w-full items-center">Sort By</span>

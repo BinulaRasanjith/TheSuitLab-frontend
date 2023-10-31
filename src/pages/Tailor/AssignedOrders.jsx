@@ -84,7 +84,7 @@ const AssignedOrders = () => {
                                     >
                                         <IoArrowBackCircle className="text-3xl cursor-pointer" />
                                     </button>
-                                    <h1 className=' text-2xl font-semibold justify-start'>Assigned Orders</h1>
+                                    <h1 className=' text-3xl font-semibold justify-start'>Assigned Orders</h1>
                                     <div className=" ml-32 flex">
                                         <label className="sr-only">Search</label>
                                         <div className="relative">
