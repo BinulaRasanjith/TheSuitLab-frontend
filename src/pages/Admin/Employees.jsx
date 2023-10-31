@@ -15,51 +15,6 @@ import { PROFILE_PICTURE_URL } from "../../config/config";
 import { OPERATION_ASSISTANT, PRODUCT_MANAGER, TAILOR } from "../../constants";
 import displayRoleName from "../../utils/displayRoleName";
 
-const employees = [
-	{
-		name: "Chamindu Sandaruwan",
-		role: "Product Manager",
-		image: Costume1,
-	},
-	{
-		name: "Oshada Fernando",
-		role: "Product Manager",
-		image: Costume2,
-	},
-	{
-		name: "Ravindra Gamage",
-		role: "Product Manager",
-		image: Costume3,
-	},
-	{
-		name: "Kushan Liyanage",
-		role: "Product Manager",
-		image: Costume4,
-	},
-];
-
-const TailorData = [
-	{
-		name: "Shayma Dissanayake",
-		role: "Head Tailor",
-		image: Costume5,
-	},
-	{
-		name: "Dilahara Ranaweera",
-		role: "Tailoring Supervisor",
-		image: Costume5,
-	},
-	{
-		name: "Thushara Udayanga",
-		role: "Head Tailor",
-		image: Costume1,
-	},
-	{
-		name: "Jayanni Hemanthi",
-		role: "Tailoring Supervisor",
-		image: "",
-	},
-];
 
 const Employees = () => {
 	const navigate = useNavigate();
