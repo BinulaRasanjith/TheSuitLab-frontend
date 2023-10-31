@@ -16,10 +16,20 @@ const ViewCustomers = () => {
     const [customers, setCustomers] = useState([]);
 
     const [currentPage, setCurrentPage] = useState(1);
-    const recordsPerPage = 6;
+    const recordsPerPage = 5;
 
     const startIndex = (currentPage - 1) * recordsPerPage;
     const endIndex = startIndex + recordsPerPage;
+
+    const [isNewCustomerForm, addNewCustomer] = useState(false);
+
+    const handleFormClose = () => {
+        addNewCustomer(false); // SET isNewReturnForm TO FALSE TO CLOSE THE FORM
+    };
+
+    const handleFormOpen = () => {
+        addNewCustomer(true); // SET isNewReturnForm TO FALSE TO CLOSE THE FORM
+    };
 
     useEffect(() => {
         const fetchCustomers = async () => {
@@ -33,16 +43,6 @@ const ViewCustomers = () => {
 
         fetchCustomers();
     }, []);
-
-    const [isNewCustomerForm, addNewCustomer] = useState(false);
-
-    const handleFormClose = () => {
-        addNewCustomer(false); // SET isNewReturnForm TO FALSE TO CLOSE THE FORM
-    };
-
-    const handleFormOpen = () => {
-        addNewCustomer(true); // SET isNewReturnForm TO FALSE TO CLOSE THE FORM
-    };
 
     return (
         <div>
@@ -129,7 +129,7 @@ const ViewCustomers = () => {
 
                     <div className=" flex justify-between">
                         <div className=" py-3 text-sm font-medium text-neutral-400">
-                            Showing data 1 to {customers.length} from {customers.length} entries
+                            Showing data {startIndex+1} to {endIndex} of {customers.length} entries
                         </div>
                         <div className=" py-3">
                             <Pagination
@@ -153,4 +153,4 @@ const ViewCustomers = () => {
     )
 }
 
-export default ViewCustomers
+export default ViewCustomers;
