@@ -10,6 +10,8 @@ import TobeCollectedOrders from "../pages/tailor/Orders/TobeCollectedOrders";
 import Strings from "../components/StringData";
 import Materials  from "../pages/Tailor/Materials";
 import Reviews from "../components/Reviews";
+import AssignedOrders from "../pages/Tailor/AssignedOrders"
+
 
 const tailorRoutes = {
 	path: "/tailor",
@@ -21,30 +23,8 @@ const tailorRoutes = {
 		},
 		{
 			path: "orders",
-			element: <AllOrders />,
-			//element: <SingleOutletLayout />,
-			children: [
-				{
-					path: "all",
-					element: <AllOrders />,
-				},
-				{
-					path: "collected",
-					element: <CollectedOrders />,
-				},
-				{
-					path: "completed",
-					element: <CompletedOrders />,
-				},
-				{
-					path: "to-be-collected",
-					element: <TobeCollectedOrders />,
-				},
-				{
-					path: ":status/:orderId",
-					element: <OrderDetails />,
-				},
-			],
+			element: <AssignedOrders />,
+			
 		},
 		{
 			path: "materials",
