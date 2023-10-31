@@ -79,10 +79,8 @@ const Reviews = () => {
 
     return (
         <>
-            <div className="flex flex-row">
-                <div className="flex-auto">
-                    <div className='flex flex-col '>
-                        <div className='flex-col m-3 shadow-lg'>
+            
+                        <div className='flex-col m-3 shadow-lg w-full'>
                             <div className='flex flex-col p-4'>
                                 {/* back  button */}
                                 <div className="flex items-center gap-4 m-6">
@@ -123,9 +121,6 @@ const Reviews = () => {
                                 </CardContainer>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
 
         </>
     );
