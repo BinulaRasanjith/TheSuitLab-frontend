@@ -12,13 +12,14 @@ const JacketsGallery = () => {
 	useEffect(() => {
 		getHireCostumes({ costumeType: JACKET, rentStatus: AVAILABLE })
 			.then((response) => {
-				setJacketData(response.data.map((jacket) => jacket));
+				setJacketData(response.data);
+				console.log(response.data);
 			})
 			.catch((error) => {
 				// TODO: Handle error
 				console.log(error);
 			});
-	}, [jacketData]);
+	}, []);
 
 	return (
 		<div className="flex items-start flex-wrap gap-4 bg-gray-100 p-5 w-full overflow-y-auto h-screen">
@@ -29,7 +30,7 @@ const JacketsGallery = () => {
 					to={`${jacket.itemId}`}
 					className="block curser-pointer"
 				>
-					<AccessoryCard image={jacket.images[0]} label={jacket.name} />
+					<AccessoryCard image={jacket.image[0]} label={jacket.itemName} item="Hire-Costume" price={jacket.price} status={jacket.status} brand="" />
 				</Link>
 			)))}
 		</div>
