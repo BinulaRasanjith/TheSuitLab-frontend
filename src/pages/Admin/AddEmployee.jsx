@@ -3,9 +3,10 @@ import { Alert, AlertIcon, Collapse, useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import Dropzone from "react-dropzone";
 import { useNavigate } from "react-router-dom";
+
 import { addUser } from "../../api/userAPI";
-import { OPERATION_ASSISTANT, PRODUCT_MANAGER, TAILOR } from "../../constants";
 import defaultProfileImage from "../../assets/images/avatar.png";
+import { OPERATION_ASSISTANT, PRODUCT_MANAGER, TAILOR } from "../../constants";
 
 const AddEmployee = () => {
 	const toast = useToast();
@@ -15,7 +16,6 @@ const AddEmployee = () => {
 	const [lastName, setLastName] = useState("");
 	const [role, setRole] = useState("");
 	const [mobileNumber, setMobileNumber] = useState("");
-	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [image, setImage] = useState(null); // New state for the uploaded image
@@ -83,7 +83,7 @@ const AddEmployee = () => {
 		} catch (error) {
 			console.error(error);
 			toast({
-				title: "User Added Failed",
+				title: "User Adding Failed",
 				status: "error",
 				duration: 3000,
 				isClosable: true,
