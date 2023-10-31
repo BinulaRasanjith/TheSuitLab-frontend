@@ -2,9 +2,10 @@ import { Button } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 import { RxDotFilled } from "react-icons/rx";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Slideshow2 = () => {
+	const { pathname } = useLocation();
 	const navigate = useNavigate();
 	const [current, setCurrent] = useState(0);
 	const slides = [
@@ -32,6 +33,14 @@ const Slideshow2 = () => {
 			setCurrent(current === length - 1 ? 0 : current + 1);
 		}, 5000); // Delay in milliseconds (e.g., 3000 = 3 seconds)
 	}, [current, slides.length]);
+
+	const handleClick = () => {
+		if (pathname.includes("/customer")) {
+			navigate("/customer/lookbook");
+		} else {
+			navigate("/lookbook");
+		}
+	};
 
 	const nextSlide = () => {
 		setCurrent(current === length - 1 ? 0 : current + 1);
@@ -100,7 +109,7 @@ const Slideshow2 = () => {
 					bg={"transparent"}
 					border={"2px"}
 					textColor={"white"}
-					onClick={() => navigate("/customer/lookbook")}
+					onClick={handleClick}
 				>
 					Visit
 				</Button>
