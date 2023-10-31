@@ -209,11 +209,11 @@ const Cart = () => {
 		<>
 			<div className="flex flex-col items-center flex-wrap shadow-xl my-2 w-full ">
 				<div className="flex flex-row items-center gap-3 mt-3">
-					<CiShoppingCart style={{ fontSize: "2rem" }} />
-					<span className="text-xl font-bold text-black p-1">Cart Items</span>
+					<CiShoppingCart style={{ fontSize: "3rem" }} />
+					<span className="text-2xl font-bold text-black p-1">Cart Items</span>
 				</div>
 
-				<div className="flex  justify-center items-start p-4 gap-x-10">
+				<div className="flex flex-wrap flex-row-reverse md:flex-row  justify-center items-start p-4 gap-x-10">
 					<div className="flex flex-col ">
 						<table className="flex flex-col  text-sm font-medium text-gray-500">
 							<thead className=" uppercase bg-gray-100 py-4 w-full rounded-xl mb-4">
@@ -274,7 +274,7 @@ const Cart = () => {
 											<td className="w-32">
 												{item.price === MEASUREMENTS_TO_BE_ADDED
 													? "To be added"
-													: "LKR " + item.price}
+													: "LKR. " + item.price}
 											</td>
 											<td className="w-32">{item.quantity}</td>
 											<td className="w-32">
