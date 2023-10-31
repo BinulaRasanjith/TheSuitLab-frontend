@@ -8,22 +8,22 @@ router.patch("/update", updateSupplier);
 router.delete("/delete/:id", deleteSupplier);
 */
 
-export const addSupplier = (data) => {
-    return api.post('/user/add-supplier', data);
-}
-
 export const getSuppliers = () => {
-    return api.get('/user/get-suppliers');
+    return api.get('/supplier');
 }
 
 export const getSupplier = (id) => {
-    return api.get(`/user/get-supplier/${id}`);
+    return api.get(`/supplier/${id}`);
+}
+
+export const addSupplier = (data) => {
+    return api.post('/supplier', data);
 }
 
 export const updateSupplier = (data) => {
-    return api.patch('/user/update-supplier', data);
+    return api.patch('/supplier', data);
 }
 
 export const deleteSupplier = (id) => {
-    return api.delete(`/user/delete-supplier/${id}`);
+    return api.delete(`/supplier/${id}`);
 }

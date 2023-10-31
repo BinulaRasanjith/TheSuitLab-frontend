@@ -1,11 +1,10 @@
-import { Button } from "@chakra-ui/react"
+import { Button } from "@chakra-ui/react";
 import { BiSearch } from "react-icons/bi";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-import DropDownFilter from '../../components/Assistant/Controls/HeaderDropDown'
-import SearchBox from '../../components/Assistant/Controls/HeaderSearchBox'
-import Pagination from '../../components/Assistant/Controls/Pagination'
-
+import DropDownFilter from "../../components/Assistant/Controls/HeaderDropDown";
+import SearchBox from "../../components/Assistant/Controls/HeaderSearchBox";
+import Pagination from "../../components/Assistant/Controls/Pagination";
 
 const payments = [
 	{
@@ -59,14 +58,12 @@ const payments = [
 ];
 
 const Payments = () => {
-
 	return (
-
 		<div>
 			<div className=" flex flex-col justify-between mx-10 my-8 p-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg">
 				<div className=" flex justify-between align-middle pb-5">
-					<div className='flex flex-col'>
-						<div className=' text-2xl font-semibold'>Payments</div>
+					<div className="flex flex-col">
+						<div className=" text-2xl font-semibold">Payments</div>
 					</div>
 					<div className=" flex gap-4 align-middle">
 						<div>
@@ -78,90 +75,77 @@ const Payments = () => {
 					</div>
 				</div>
 				<div className=" flex flex-col">
-					<table className=' flex flex-col justify-between text-sm font-medium text-gray-500'>
+					<table className=" flex flex-col justify-between text-sm font-medium text-gray-500">
 						<thead className=" uppercase bg-gray-100 py-4 w-full">
 							<tr>
-								<th className=" w-40">
-									Supplier Id
-								</th>
-								<th className=" w-40">
-									Contact No
-								</th>
-								<th className=" w-40">
-									Order Id
-								</th>
-								<th className=" w-40">
-									Order Date
-								</th>
-								<th className="w-40 px-10">
-									Amount
-								</th>
-								<th className=" w-40">
-									Status
-								</th>
+								<th className=" w-40">Order Id</th>
+								<th className=" w-40">Contact No</th>
+								<th className=" w-40">Order Date</th>
+								<th className="w-40 px-10">Amount</th>
+								<th className=" w-40">Status</th>
 							</tr>
 						</thead>
 						<tbody>
 							<div className="flex flex-col gap-1">
 								{payments.map((item, index) => (
-
-									<tr className="flex items-center text-center border hover:bg-gray-300 text-black whitespace-nowrap font-medium">
-										<td className="w-40"> <Link to={`${item.supplierId}`}>{item.supplierId}</Link></td>
-										<td className="w-40">{item.contactNo}</td>
+									<tr
+										key={index}
+										className="flex items-center text-center border hover:bg-gray-300 text-black whitespace-nowrap font-medium"
+									>
 										<td className="w-40">{item.orderId}</td>
+										<td className="w-40">{item.contactNo}</td>
 										<td className="w-40">{item.orderDate}</td>
-										<td className="w-40">
-		 								{formatCurrency(item.amount)}
-									    </td>
+										<td className="w-40">{formatCurrency(item.amount)}</td>
 										<td className="w-40 py-2">
-										{item.status === "Pay" ? (
-											 <Button
-											 className="block"
-											 rounded={"md"}
-											 color={"white"}
-											 bgColor={"black"}
-											 size="sm"
-											 _hover={{
-												 bg: "green",
-												 color: "blue-50",
-											 }}
-										 >
-											 Pay Now
-										 </Button>
-											
-										) : (
-											 <Button
-											 className="block w-20"
-											 cursor={"not-allowed"}
-											 disabled="true"
-											 rounded={"md"}
-											 color={"white"}
-											 bgColor={"red"}
-											 size="sm"
-										 >
-											 Paid
-										 </Button>
-										)}
-									</td>
+											{item.status === "Pay" ? (
+												<Button
+													className="block"
+													rounded={"md"}
+													color={"white"}
+													bgColor={"gray.700"}
+													size="sm"
+													_hover={{
+														bg: "black",
+														color: "blue-50",
+													}}
+												>
+													Pay Now
+												</Button>
+											) : (
+												<Button
+													className="block w-20"
+													cursor={"not-allowed"}
+													disabled="true"
+													rounded={"md"}
+													color={"white"}
+													bgColor={"green"}
+													_hover={{
+														bg: "green",
+														color: "blue-50",
+													}}
+													size="sm"
+												>
+													Paid
+												</Button>
+											)}
+										</td>
 									</tr>
 								))}
 							</div>
 						</tbody>
-
 					</table>
 					<div className=" w-full border h-0 mt-3 mb-6 border-gray-200"></div>
-
 				</div>
 				<div className=" flex justify-between">
-					<div className=" py-3 text-sm font-medium text-neutral-400">Showing data 1 to 8 of 256K entries</div>
+					<div className=" py-3 text-sm font-medium text-neutral-400">
+						Showing data 1 to 8 of 256K entries
+					</div>
 					<div className=" py-3">
 						<Pagination />
 					</div>
 				</div>
 			</div>
 		</div>
-
-
 
 		// <div className="w-full p-5">
 		// 	<div className="shadow-xl rounded-2xl mx-2 mt-8">

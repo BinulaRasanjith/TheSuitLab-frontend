@@ -1,19 +1,17 @@
 import { Button } from "@chakra-ui/react";
-import React from 'react'
-import { BiSearch } from 'react-icons/bi'
-import { Link } from 'react-router-dom';
+import React from "react";
+import { BiSearch } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
-import DropDownFilter from '../../components/Assistant/Controls/HeaderDropDown'
-import SearchBox from '../../components/Assistant/Controls/HeaderSearchBox'
-import Pagination from '../../components/Assistant/Controls/Pagination'
-import Records from "../../components/OrderItems/ViewOrders"
-
+import DropDownFilter from "../../components/Assistant/Controls/HeaderDropDown";
+import SearchBox from "../../components/Assistant/Controls/HeaderSearchBox";
+import Pagination from "../../components/Assistant/Controls/Pagination";
+import Records from "../../components/OrderItems/ViewOrders";
 
 const Orders = () => {
-
-    return (
-        <div>
-            {/* <div className=" flex flex-col justify-between mx-10 my-8 p-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg">
+	return (
+		<div>
+			{/* <div className=" flex flex-col justify-between mx-10 my-8 p-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg">
                 <div className=" flex justify-between align-middle pb-5">
                     <div className='flex flex-col'>
                         <div className=' text-2xl font-semibold'>All orders</div>
@@ -65,9 +63,9 @@ const Orders = () => {
                     </div>
                 </div>
             </div> */}
-            <Records />
-        </div>
-    )
-}
+			<Records />
+		</div>
+	);
+};
 
-export default Orders
+export default Orders;

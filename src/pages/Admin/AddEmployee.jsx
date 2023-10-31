@@ -2,13 +2,14 @@ import { Button } from "@chakra-ui/button";
 import { Alert, AlertIcon, Collapse, useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import Dropzone from "react-dropzone";
-import { Link, useNavigate } from "react-router-dom";
+import { IoArrowBackCircle } from "react-icons/io5";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 import { addUser } from "../../api/userAPI";
-import { OPERATION_ASSISTANT, PRODUCT_MANAGER, TAILOR } from "../../constants";
 import defaultProfileImage from "../../assets/images/avatar.png";
 import Input from "../../components/Input/Input";
-import { useDispatch, useSelector } from "react-redux";
-import { IoArrowBackCircle } from "react-icons/io5";
+import { OPERATION_ASSISTANT, PRODUCT_MANAGER, TAILOR } from "../../constants";
 
 const AddEmployee = () => {
 	const toast = useToast();
@@ -19,7 +20,6 @@ const AddEmployee = () => {
 	const [lastName, setLastName] = useState("");
 	const [role, setRole] = useState("");
 	const [mobileNumber, setMobileNumber] = useState("");
-	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [image, setImage] = useState(null); // New state for the uploaded image
@@ -87,7 +87,7 @@ const AddEmployee = () => {
 		} catch (error) {
 			console.error(error);
 			toast({
-				title: "User Added Failed",
+				title: "User Adding Failed",
 				status: "error",
 				duration: 3000,
 				isClosable: true,
@@ -97,9 +97,7 @@ const AddEmployee = () => {
 
 	const handleBack = () => {
 		navigate("/admin/employees");
-
 	};
-
 
 	return (
 		<>
@@ -157,7 +155,9 @@ const AddEmployee = () => {
 										</div>
 									)}
 								</Dropzone>
-								<p className="flex text-sm text-blue-500">Double tap to add profile photo</p>
+								<p className="flex text-sm text-blue-500">
+									Double tap to add profile photo
+								</p>
 							</div>
 							<div className="flex flex-col gap-3 w-96">
 								<div className="flex flex-row ">
@@ -170,14 +170,15 @@ const AddEmployee = () => {
 									>
 										<option value="">Select a Role</option>
 										<option value={PRODUCT_MANAGER}>Product Manager</option>
-										<option value={OPERATION_ASSISTANT}>Operation Assistant</option>
+										<option value={OPERATION_ASSISTANT}>
+											Operation Assistant
+										</option>
 										<option value={TAILOR}>Tailoring Supervisor</option>
 									</select>
 								</div>
 
 								<div className="flex flex-row justify-between">
 									<Input
-
 										id="firstName"
 										name="firstName"
 										bo
@@ -192,7 +193,6 @@ const AddEmployee = () => {
 								</div>
 								<div className="flex flex-row justify-between">
 									<Input
-
 										id="lastName"
 										name="lastName"
 										onChange={(e) => setLastName(e.target.value)}
@@ -203,13 +203,11 @@ const AddEmployee = () => {
 										//hint="Ex: 0712345678"
 										type="text"
 										value={lastName}
-									/>
-									{" "}
+									/>{" "}
 								</div>
 
 								<div className="flex flex-row justify-between">
 									<Input
-
 										id="mobileNumber"
 										name="mobileNumber"
 										onChange={(e) => setMobileNumber(e.target.value)}
@@ -220,12 +218,9 @@ const AddEmployee = () => {
 										hint="Ex: 0712345678"
 										type="text"
 										value={mobileNumber}
-									/>
-
-									{" "}
+									/>{" "}
 								</div>
 								<div className="grid grid-cols-1 sm:grid-cols-2 grid-rows-1 gap-3 my-3">
-
 									<div className="flex flex-row justify-between">
 										<Input
 											id="password"
@@ -248,8 +243,7 @@ const AddEmployee = () => {
 											type="password"
 											value={confirmPassword}
 											className={"col-span-2"}
-										/>
-										{" "}
+										/>{" "}
 									</div>
 								</div>
 
@@ -258,7 +252,7 @@ const AddEmployee = () => {
 										onClick={handleAddUserClick}
 										rounded={"md"}
 										color={"white"}
-										_hover={{ bg: "gray.800", }}
+										_hover={{ bg: "gray.800" }}
 										_active={{ bg: "black" }}
 										bg={"gray.700"}
 										fontSize={{ base: "l", lg: "md" }}
