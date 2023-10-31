@@ -1,7 +1,8 @@
-import { GiRolledCloth } from "react-icons/gi";
-import { Outlet } from "react-router-dom";
-import { SiStylelint } from "react-icons/si";
+// import { GiRolledCloth } from "react-icons/gi";
 import { PiPantsFill } from "react-icons/pi";
+import { SiStylelint } from "react-icons/si";
+import { Outlet } from "react-router-dom";
+
 import ContentWrapper from "../../components/ContentWrapper";
 import Sidebar from "../../components/Sidebar/Sidebar";
 

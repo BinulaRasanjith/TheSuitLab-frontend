@@ -14,10 +14,10 @@ import {
 import crypto from "crypto-js";
 import { useEffect, useState } from "react";
 import { CiShoppingCart } from "react-icons/ci";
-import { ImBin } from "react-icons/im";
 import { ImInfo } from "react-icons/im";
-import { useNavigate } from "react-router-dom";
+import { ImBin } from "react-icons/im";
 import { IoArrowBackCircle } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 import {
 	getCart,
@@ -227,7 +227,7 @@ const Cart = () => {
 					</div>
 				</div>
 
-				<div className="flex  justify-center items-start p-4 gap-x-10">
+				<div className="flex flex-wrap flex-row-reverse md:flex-row  justify-center items-start p-4 gap-x-10">
 					<div className="flex flex-col ">
 						<table className="flex flex-col  text-sm font-medium text-gray-500">
 							<thead className=" uppercase bg-gray-100 py-4 w-full rounded-xl mb-4">

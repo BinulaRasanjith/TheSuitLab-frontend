@@ -1,5 +1,6 @@
+import AccessoryDescription from "../components/Customer/AccessoryDescription";
 import BeltsGallery from "../components/Customer/BeltsGallery";
-import BowsGallery from "../components/Customer/BowsGallery";
+// import BowsGallery from "../components/Customer/BowsGallery";
 import Cart from "../components/Customer/Cart";
 import ChooseButtonColor from "../components/Customer/ChooseButtonColor";
 import ChoosePocketColor from "../components/Customer/ChoosePocketColor";
@@ -14,6 +15,7 @@ import TiesGallery from "../components/Customer/TiesGallery";
 import JacketsGallery from "../components/Customer/jacketsGallery";
 import PantsGallery from "../components/Customer/pantsGallery";
 import SuitDescription from "../components/Customer/suitDescription";
+import OrderDetails from "../components/OrderDetails";
 import Payment from "../components/Payment";
 import ChooseBackPocket from "../components/customer/ChooseBackPocket";
 import ChooseButtons from "../components/customer/ChooseButtons";
@@ -33,14 +35,13 @@ import PantMeasurementLayout from "../layouts/customerLayouts/PantMeasurementLay
 import PantStyleLayout from "../layouts/customerLayouts/PantStyleLayout";
 import AboutUs from "../pages/Aboutus";
 import ContactUs from "../pages/Contactus";
+import Profile from "../pages/Profile"
 import Services from "../pages/Services";
 import Home from "../pages/customer/Home";
 import LookBook from "../pages/customer/LookBook";
 import MeasurementDashboard from "../pages/customer/MeasurementDashboard";
 import MyOrders from "../pages/customer/MyOrders";
 import SuitCustomizationLanding from "../pages/customer/SuitCustomizationLanding";
-import OrderDetails from "../components/OrderDetails";
-import Profile from "../pages/Profile"
 
 // TODO: complete the navigation routes
 const costumerRoutes = {
@@ -353,21 +354,22 @@ const costumerRoutes = {
 			element: <AccessoriesLayout />,
 			children: [
 				{
-					path: "neck-ties",
-					element: <TiesGallery />,
-				},
-				{
 					path: "shoes",
 					element: <ShoesGallery />,
+				},
+				{
+					path: "ties",
+					element: <TiesGallery />,
 				},
 				{
 					path: "belts",
 					element: <BeltsGallery />,
 				},
 				{
-					path: "bow-ties",
-					element: <BowsGallery />,
+					path: ":accessoryType/:accessoryId", // Dynamic route parameter for both suit type and suit ID
+					element: <AccessoryDescription />,
 				},
+
 			],
 		},
 		{

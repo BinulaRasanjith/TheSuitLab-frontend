@@ -3,7 +3,9 @@ import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 // import { HiOutlineCalendar } from "react-icons/hi";
+import { IoArrowBackCircle } from "react-icons/io5";
 import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { addHireCostumeToCart as addHireCostumeToCartAPI } from "../../api/customerAPI";
@@ -17,12 +19,21 @@ const SuitDescription = () => {
 	const toast = useToast();
 	const navigate = useNavigate();
 
+	const location = useLocation();
+	const pathname = location.pathname;
+	const segments = pathname.split('/');
+	const hireCostumeType = segments[segments.length - 2];
+
+
+
+
 	const user = useSelector(selectUser);
 	const [suitDetails, setSuitDetails] = useState({
 		images: [],
 		name: "",
 		size: [],
 		price: 0,
+		rentStatus: "",
 	}); // Create state variable for suit details
 	const [selectedImage, setSelectedImage] = useState("");
 	// const [selectedItems, setSelectedItems] = useState({}); // {size: quantity}
@@ -137,10 +148,9 @@ const SuitDescription = () => {
 	}
 
 	return (
+		<div className="grid grid-cols-1 lg:grid-cols-2 overflow-y-scroll h-full py-4 w-full">
+			<IoArrowBackCircle className="text-5xl absolute top-24 left-64 z-20" onClick={() => navigate(`/customer/hire-suit/${hireCostumeType}`)} />
 
-
-
-		<div className="grid grid-cols-1 lg:grid-cols-2 overflow-y-scroll h-screen p-5 w-full">
 			<div className="flex flex-col">
 				<div className="mb-6 lg:mb-10 h-60 flex justify-center items-center">
 					<img
@@ -167,25 +177,33 @@ const SuitDescription = () => {
 			</div>
 
 
-			<div className="lg:pl-20 w-full px-4">
-				<div className="mb-8 ">
+			<div className="pl-10 w-full border-l-2 border-gray-600 md:h-full md:overflow-y-scroll">
+				<div className="mb-6 ">
 					<h2 className="max-w-xl mb-6 text-2xl font-bold md:text-4xl text-gray-600 ">
 						{suitDetails.name}
 					</h2>
-					<p className="inline-block mb-6 text-4xl font-bold text-gray-400 ">
-						<span>Rs {suitDetails.price}</span>
-						<span className="text-base font-normal text-gray-500 line-through ">
-							{" "}
-							Rs {suitDetails.price + 2150}
-						</span>
+					<p className="flex flex-col text-4xl font-bold text-gray-400 ">
+						<span className="text-gray-600 text-xl font-semibold">Price</span>
+						<div className="inline-block">
+							<span>LKR. {suitDetails.price}</span>
+							<span className="text-base font-normal text-gray-500 line-through ">
+								{" "}
+								LKR. {suitDetails.price * (112 / 100)}
+							</span>
+							<span className="flex text-xl">
+								<p className="text-red-600">12%</p>
+								<p>OFF</p>
+							</span>
+
+						</div>
 					</p>
-					<p className="max-w-md text-gray-700 ">
-						{suitDetails.description}
+					<p className={`text-gray-700 font-semibold`}>
+						{suitDetails.rentStatus === "available" ? "Available for Rent" : "Not Available for Rent"}
 					</p>
 				</div>
 
-				<div className="mb-8 ">
-					<h2 className="w-16 pb-1 mb-4 text-xl text-gray-600 font-semibold  ">
+				<div className="mb-6 ">
+					<h2 className="w-16 mb-4 text-xl text-gray-600 font-semibold  ">
 						Sizes
 					</h2>
 					<div>
@@ -209,7 +227,7 @@ const SuitDescription = () => {
 						</div>
 					</div>
 				</div>
-				<div className="w-32 mb-8">
+				<div className="w-36 mb-6">
 					<label className="w-full pb-1 text-xl font-semibold text-gray-600 ">
 						Quantity
 					</label>
@@ -218,7 +236,6 @@ const SuitDescription = () => {
 						<button
 							className="px-4 py-2 font-semibold text-gray-700 border rounded cursor-pointer hover:bg-gray-400"
 							onClick={decrementQuantity}
-						// disabled={enabled.decrement}
 						>
 							-
 						</button>
@@ -228,16 +245,15 @@ const SuitDescription = () => {
 						<button
 							className="px-4 py-2 font-semibold text-gray-700 border rounded cursor-pointer hover:bg-gray-400"
 							onClick={incrementQuantity}
-						// disabled={enabled.increment }
 						>
 							+
 						</button>
 					</div>
 				</div>
 
-				<div className="flex flex-col pb-6 mt-6  ">
+				<div className="flex flex-col pb-4 mt-6  ">
 
-					<h2 className="text-lg font-bold text-gray-600 mb-5 ">
+					<h2 className="text-lg font-bold text-gray-600 mb-4 ">
 						Renting Period
 					</h2>
 
@@ -299,20 +315,7 @@ const SuitDescription = () => {
 					>
 						View Cart
 					</Button>
-					{/* <Button
-										className="justify-center w-1/2 py-6"
-										rounded={"md"}
-										color={"white"}
-										bgColor={"black"}
-										size="sm"
-										_hover={{
-											bg: "blue",
-											color: "blue-50",
-										}}
-										//onClick={}
-									>
-										Buy Now
-									</Button> */}
+
 				</div>
 			</div>
 
