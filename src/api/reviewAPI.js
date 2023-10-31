@@ -4,8 +4,8 @@ export const getReviews = () => {
     return api.get('/review');
 }
 
-export const createReview = (data) => {
-    return api.post('/review', data);
+export const createReview = (customerId, orderId, itemId, rating, description) => {
+    return api.post('/review', { customerId, orderId, itemId, rating, description });
 }
 
 export const deleteReview = (id) => {
