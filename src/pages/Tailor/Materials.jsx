@@ -12,6 +12,7 @@ const ViewMaterials = () => {
 
     const [sortByPrice, setSortByPrice] = useState(null);
     const navigate = useNavigate();
+    const [searchInput, setSearchInput] = useState('');
     const [selectedOption, setSelectedOption] = useState('fabrics');
     const handleBack = () => {
         navigate("/tailor");
@@ -48,8 +49,14 @@ const ViewMaterials = () => {
                                         <div className="relative">
                                             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                             </div>
-                                            <input type="text" id="table-search" className="block p-2 pl-10 text-sm text-black border border-gray-300 rounded-3xl w-60
-                                            focus:border-gray-400 " placeholder="Search" />
+                                            <input
+                                                type="text"
+                                                id="table-search"
+                                                className="block p-2 pl-10 text-sm text-black border border-gray-300 rounded-3xl w-60 focus:border-gray-400"
+                                                placeholder="Search"
+                                                value={searchInput}
+                                                onChange={(e) => setSearchInput(e.target.value)}
+                                            />
                                         </div>
                                     </div>
                                     <div className="ml-32 flex w-40 ">
@@ -67,9 +74,12 @@ const ViewMaterials = () => {
                                 </div>
 
                                 <div>
-                                    {selectedOption === 'fabrics' && <FabricListComponent sortByPrice={sortByPrice} />}
+                                    {/* {selectedOption === 'fabrics' && <FabricListComponent sortByPrice={sortByPrice} />}
                                     {selectedOption === 'buttons' && <ButtonListComponent sortByPrice={sortByPrice} />}
-                                    {selectedOption === 'strings' && <StringListComponent sortByPrice={sortByPrice} />}
+                                    {selectedOption === 'strings' && <StringListComponent sortByPrice={sortByPrice} />} */}
+                                    {selectedOption === 'fabrics' && <FabricListComponent searchInput={searchInput} sortByPrice={sortByPrice} />}
+                                    {selectedOption === 'buttons' && <ButtonListComponent searchInput={searchInput} sortByPrice={sortByPrice} />}
+                                    {selectedOption === 'strings' && <StringListComponent searchInput={searchInput} sortByPrice={sortByPrice} />}
                                 </div>
                             </div>
                         </div>
