@@ -1,13 +1,20 @@
 import {
 	Button,
 	FormControl,
-	FormLabel, Input,
+	FormLabel,
+	Input,
 	Modal,
 	ModalBody,
 	ModalCloseButton,
-	ModalContent, ModalFooter, ModalHeader, ModalOverlay, Select, useDisclosure, useToast
+	ModalContent,
+	ModalFooter,
+	ModalHeader,
+	ModalOverlay,
+	Select,
+	useDisclosure,
+	useToast,
 } from "@chakra-ui/react";
-import React from 'react';
+import React from "react";
 import { useEffect, useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { IoArrowBackCircle } from "react-icons/io5";
@@ -18,7 +25,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import {
 	addNewCostumeToItemModel,
 	getCoatMeasurements,
-	getTrouserMeasurements
+	getTrouserMeasurements,
 } from "../../api/customerAPI";
 import { addCustomSuitToCart as addCustomSuitToCartAPI } from "../../api/customerAPI";
 import { calculatePrice } from "../../api/purchaseOrdersAPI";
@@ -40,8 +47,12 @@ import MeasurementBlock from "../../components/Customer/MeasurementBlock";
 import { CUSTOM } from "../../constants";
 import { selectUser } from "../../store/slices/authSlice";
 import { selectJacket } from "../../store/slices/jacketCustomizationSlice";
-import { getCourtMeasurementObject, getTrouserMeasurementObject } from "../../utils/measurements";
+import {
+	getCourtMeasurementObject,
+	getTrouserMeasurementObject,
+} from "../../utils/measurements";
 import { inchesToCm } from "../../utils/measurements";
+import ItemType from "../../constants/ItemType";
 
 const CurrentSizes = () => {
 	const jacket = useSelector(selectJacket);
@@ -51,15 +62,15 @@ const CurrentSizes = () => {
 	const toast = useToast();
 	const user = useSelector(selectUser);
 
-	const { isOpen, onOpen, onClose } = useDisclosure()
-	const initialRef = React.useRef()
-	const finalRef = React.useRef()
-	const [inputValue, setInputValue] = useState('');
+	const { isOpen, onOpen, onClose } = useDisclosure();
+	const initialRef = React.useRef();
+	const finalRef = React.useRef();
+	const [inputValue, setInputValue] = useState("");
 	const [isAddButtonDisabled, setIsAddButtonDisabled] = useState(true);
 	const handleInputChange = (e) => {
 		const value = e.target.value;
 
-		if (value === '' || (value >= 1 && value <= 10)) {
+		if (value === "" || (value >= 1 && value <= 10)) {
 			setInputValue(value);
 			setIsAddButtonDisabled(false);
 		} else {
@@ -137,10 +148,10 @@ const CurrentSizes = () => {
 			location.pathname.includes("/customize-suit/jacket")
 				? "/customer/customize-suit/jacket/measurements"
 				: location.pathname.includes("/customize-suit/pant")
-					? "/customer/customize-suit/pant/measurements"
-					: location.pathname.includes("/customize-suit/all")
-						? "/customer/customize-suit/all/measurements"
-						: "/customer/customize-measurements"
+				? "/customer/customize-suit/pant/measurements"
+				: location.pathname.includes("/customize-suit/all")
+				? "/customer/customize-suit/all/measurements"
+				: "/customer/customize-measurements"
 		);
 
 	const handleGoToCart = async () => {
@@ -182,37 +193,47 @@ const CurrentSizes = () => {
 			price,
 			quantity: inputValue,
 			status: "available",
-		}).then((res) => {
-			// console.log(res.data);
-			addCustomSuitToCartAPI({
-				description: {
-					type: CUSTOM,
-					customization: jacket,
-				}, measurement: {
-					coatMeasurementsInInch,
-					pantMeasurementsInInch,
-				},
-				customerId: user.id,
-				itemId: res.data.itemId,
-				price,
-				quantity: inputValue,
-				status: "available",
-			}).then(() => {
+			costumeType: selectedCategory,
+			measurementType: CUSTOM,
+			measurement: {
+				coatMeasurements: coatMeasurementsInInch,
+				pantMeasurements: pantMeasurementsInInch,
+			},
+		})
+			.then((res) => {
 				// console.log(res.data);
-				toast({
-					title: "Item added to cart",
-					status: "success",
-					duration: 3000,
-					isClosable: true,
-				});
-				navigate("/customer/cart");
+				addCustomSuitToCartAPI({
+					description: {
+						type: ItemType.CUSTOM_SUIT,
+						customization: jacket,
+					},
+					measurements: {
+						coatMeasurements: coatMeasurementsInInch,
+						pantMeasurements: pantMeasurementsInInch,
+					},
+					customerId: user.id,
+					itemId: res.data.itemId,
+					price,
+					quantity: inputValue,
+					status: "available",
+				})
+					.then(() => {
+						// console.log(res.data);
+						toast({
+							title: "Item added to cart",
+							status: "success",
+							duration: 3000,
+							isClosable: true,
+						});
+						navigate("/customer/cart");
+					})
+					.catch((err) => {
+						console.log(err);
+					});
 			})
-				.catch((err) => {
-					console.log(err);
-				});
-		}).catch((err) => {
-			console.log(err);
-		});
+			.catch((err) => {
+				console.log(err);
+			});
 	};
 
 	return (
@@ -467,21 +488,28 @@ const CurrentSizes = () => {
 						<ModalBody pb={6}>
 							<FormControl>
 								<FormLabel>Quantity</FormLabel>
-								<Input type="number" ref={initialRef}
+								<Input
+									type="number"
+									ref={initialRef}
 									value={inputValue}
 									onChange={handleInputChange}
 									min={0}
-									max={10} required />
+									max={10}
+									required
+								/>
 							</FormControl>
 						</ModalBody>
 
 						<ModalFooter>
-							<Button onClick={handleGoToCart} colorScheme="blue" mr={3} disabled={isAddButtonDisabled}>
+							<Button
+								onClick={handleGoToCart}
+								colorScheme="blue"
+								mr={3}
+								disabled={isAddButtonDisabled}
+							>
 								<FaShoppingCart className="mr-2 text-xl" />
 								Add to cart
-
 							</Button>
-
 						</ModalFooter>
 					</ModalContent>
 				</Modal>

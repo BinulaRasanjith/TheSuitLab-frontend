@@ -1,5 +1,17 @@
 import { Select, useDisclosure, useToast } from "@chakra-ui/react";
-import { Button, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from "@chakra-ui/react"
+import {
+	Button,
+	FormControl,
+	FormLabel,
+	Input,
+	Modal,
+	ModalBody,
+	ModalCloseButton,
+	ModalContent,
+	ModalFooter,
+	ModalHeader,
+	ModalOverlay,
+} from "@chakra-ui/react";
 import React from "react";
 import { useEffect, useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
@@ -39,6 +51,7 @@ import {
 	getCourtMeasurementObject,
 	getTrouserMeasurementObject,
 } from "../../utils/measurements";
+import ItemType from "../../constants/ItemType";
 
 const CustomSizes = () => {
 	const navigate = useNavigate();
@@ -255,17 +268,22 @@ const CustomSizes = () => {
 			price,
 			quantity: inputValue,
 			status: "available",
+			costumeType: selectedCategory,
+			measurementType: CUSTOM,
+			measurements: {
+				coatMeasurements: coatMeasurementsInInch,
+				pantMeasurements: pantMeasurementsInInch,
+			},
 		})
 			.then((res) => {
-
 				addCustomSuitToCartAPI({
 					description: {
-						type: CUSTOM,
+						type: ItemType.CUSTOM_SUIT,
 						customization: jacket,
 					},
 					measurement: {
-						coatMeasurementsInInch,
-						pantMeasurementsInInch,
+						coatMeasurements: coatMeasurementsInInch,
+						pantMeasurements: pantMeasurementsInInch,
 					},
 					customerId: user.id,
 					itemId: res.data.itemId,
@@ -292,10 +310,10 @@ const CustomSizes = () => {
 			location.pathname.includes("/customize-suit/jacket")
 				? "/customer/customize-suit/jacket/measurements"
 				: location.pathname.includes("/customize-suit/pant")
-					? "/customer/customize-suit/pant/measurements"
-					: location.pathname.includes("/customize-suit/all")
-						? "/customer/customize-suit/all/measurements"
-						: "/customer/customize-measurements"
+				? "/customer/customize-suit/pant/measurements"
+				: location.pathname.includes("/customize-suit/all")
+				? "/customer/customize-suit/all/measurements"
+				: "/customer/customize-measurements"
 		);
 
 	return (

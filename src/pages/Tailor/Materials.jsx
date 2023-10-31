@@ -33,7 +33,7 @@ const ViewMaterials = () => {
                                     >
                                         <IoArrowBackCircle className="text-3xl cursor-pointer" />
                                     </button>
-                                    <h1 className=' text-2xl font-semibold justify-start'>Materials</h1>
+                                    <h1 className=' text-3xl font-semibold justify-start'>Materials</h1>
                                     <div className=" ml-9 flex">
                                         <select
                                             className=" p-3 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50"

@@ -84,9 +84,7 @@ const TailorMainLayout = () => {
 			<Navbar />
 			<MainLayout>
 				{/* <Sidebar items={sidebarItems} /> */}
-				<ContentWrapper>
 					<Outlet />
-				</ContentWrapper>
 			</MainLayout>
 		</>
 	);
