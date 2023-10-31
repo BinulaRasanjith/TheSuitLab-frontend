@@ -1,57 +1,62 @@
 // user roles
-export const ADMIN = 'admin';
-export const CUSTOMER = 'customer';
-export const PRODUCT_MANAGER = 'manager';
-export const OPERATION_ASSISTANT = 'assistant';
-export const TAILOR = 'tailor';
+export const ADMIN = "admin";
+export const CUSTOMER = "customer";
+export const PRODUCT_MANAGER = "manager";
+export const OPERATION_ASSISTANT = "assistant";
+export const TAILOR = "tailor";
 
 // user status
-export const ACTIVE = 'ACTIVE';
+export const ACTIVE = "ACTIVE";
 
 // authSlice statuses
-export const IDLE = 'idle';
-export const LOADING = 'loading';
-export const ERROR = 'error';
-export const SIGNUP_SUCCESS = 'signup-success';
+export const IDLE = "idle";
+export const LOADING = "loading";
+export const ERROR = "error";
+export const SIGNUP_SUCCESS = "signup-success";
 
 // costume types
-export const JACKET = 'jacket';
-export const PANT = 'pant';
+export const JACKET = "jacket";
+export const PANT = "pant";
+
+//Accessory types
+export const SHOE = "shoe";
+export const TIE = "tie";
+export const BELT = "belt";
 
 // material types
-export const FABRIC_SOLID = 'fabric-solid';
-export const FABRIC_PATTERN = 'fabric-pattern';
-export const BUTTON = 'button';
+export const FABRIC_SOLID = "fabric-solid";
+export const FABRIC_PATTERN = "fabric-pattern";
+export const BUTTON = "button";
 
 // design types
-export const PRE_DESIGNED = 'pre-designed';
-export const CUSTOMIZED = 'customized';
+export const PRE_DESIGNED = "pre-designed";
+export const CUSTOMIZED = "customized";
 
 // measurement types
-export const STANDARD = 'standard';
-export const CUSTOM = 'custom';
+export const STANDARD = "standard";
+export const CUSTOM = "custom";
 
 // measurement unit types
-export const INCH = 'inch';
-export const CM = 'cm';
+export const INCH = "inch";
+export const CM = "cm";
 
 // sizes
-export const S = 'S';
-export const M = 'M';
-export const L = 'L';
-export const XL = 'XL';
-export const XXL = 'XXL';
+export const S = "S";
+export const M = "M";
+export const L = "L";
+export const XL = "XL";
+export const XXL = "XXL";
 
 // hire availability types
-export const AVAILABLE = 'available';
-export const UNAVAILABLE = 'unavailable';
+export const AVAILABLE = "available";
+export const UNAVAILABLE = "unavailable";
 
 // MEASUREMENTS TO BE ADDED
 export const MEASUREMENTS_TO_BE_ADDED = -1;
 
 export const STANDARD_MEASUREMENTS = {
   XS: {
-    label: 'Extra Small',
+    label: "Extra Small",
     inch: {
       jacket: {
         FullShoulderWidth: 5.5,
@@ -94,7 +99,7 @@ export const STANDARD_MEASUREMENTS = {
     },
   },
   S: {
-    label: 'Small',
+    label: "Small",
     inch: {
       jacket: {
         FullShoulderWidth: 5.75,
@@ -137,7 +142,7 @@ export const STANDARD_MEASUREMENTS = {
     },
   },
   M: {
-    label: 'Medium',
+    label: "Medium",
     inch: {
       jacket: {
         FullShoulderWidth: 6,
@@ -151,8 +156,6 @@ export const STANDARD_MEASUREMENTS = {
         Neck: 15,
       },
       trouser: {
-
-
         TrouserWaist: 32,
         Crotch: 22,
         Thigh: 22,
@@ -182,7 +185,7 @@ export const STANDARD_MEASUREMENTS = {
     },
   },
   L: {
-    label: 'Large',
+    label: "Large",
     inch: {
       jacket: {
         FullShoulderWidth: 6.25,
@@ -225,7 +228,7 @@ export const STANDARD_MEASUREMENTS = {
     },
   },
   XL: {
-    label: 'Extra Large',
+    label: "Extra Large",
     inch: {
       jacket: {
         FullShoulderWidth: 6.5,
@@ -239,7 +242,6 @@ export const STANDARD_MEASUREMENTS = {
         Neck: 16,
       },
       trouser: {
-
         TrouserWaist: 36,
         Crotch: 24,
         Thigh: 24,
@@ -269,7 +271,7 @@ export const STANDARD_MEASUREMENTS = {
     },
   },
   XXL: {
-    label: 'Double Extra Large',
+    label: "Double Extra Large",
     inch: {
       jacket: {
         FullShoulderWidth: 6.75,
@@ -283,8 +285,6 @@ export const STANDARD_MEASUREMENTS = {
         Neck: 16.5,
       },
       trouser: {
-
-
         TrouserWaist: 38,
         Crotch: 25,
         Thigh: 25,
