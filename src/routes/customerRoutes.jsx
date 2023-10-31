@@ -35,6 +35,7 @@ import PantMeasurementLayout from "../layouts/customerLayouts/PantMeasurementLay
 import PantStyleLayout from "../layouts/customerLayouts/PantStyleLayout";
 import AboutUs from "../pages/Aboutus";
 import ContactUs from "../pages/Contactus";
+import Profile from "../pages/Profile"
 import Services from "../pages/Services";
 import Home from "../pages/customer/Home";
 import LookBook from "../pages/customer/LookBook";
@@ -69,8 +70,7 @@ const costumerRoutes = {
 		},
 		{
 			path: "profile",
-			element: <div>Profile</div>,
-			// element: <Profile />,
+			element: <Profile />,
 		},
 		{
 			path: "my-orders",
@@ -395,7 +395,7 @@ const costumerRoutes = {
 			element: <Cart />,
 		},
 		{
-			path: "payment/:amount",
+			path: "payment",
 			element: <Payment />,
 		},
 	],

@@ -11,14 +11,19 @@ import {
 	useDisclosure,
 	useToast,
 } from "@chakra-ui/react";
-import React from "react";
+import crypto from "crypto-js";
 import { useEffect, useState } from "react";
 import { CiShoppingCart } from "react-icons/ci";
-import { ImInfo } from 'react-icons/im';
+import { ImInfo } from "react-icons/im";
 import { ImBin } from "react-icons/im";
+import { IoArrowBackCircle } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 
-import { getCart, getCartItemById, removeCartItem } from "../../api/customerAPI";
+import {
+	getCart,
+	getCartItemById,
+	removeCartItem,
+} from "../../api/customerAPI";
 import { CUSTOM, MEASUREMENTS_TO_BE_ADDED, STANDARD } from "../../constants";
 import { formatPrice } from "../../utils/paymentUtils";
 
@@ -73,7 +78,13 @@ const Cart = () => {
 				isClosable: true,
 			});
 		} else {
-			navigate("/customer/payment/" + (calculateTotalPrice() + vat));
+			// if payment can be done
+			const hash = crypto.SHA256(calculateTotalPrice() + vat + "");
+			localStorage.setItem("amount", calculateTotalPrice() + vat);
+			localStorage.setItem("hash", hash);
+			localStorage.setItem("items", JSON.stringify(cartItems));
+
+			navigate("/customer/payment");
 		}
 	};
 
@@ -90,6 +101,7 @@ const Cart = () => {
 						duration: 3000,
 						isClosable: true,
 					});
+					window.location.reload();
 				}
 			})
 			.catch((err) => {
@@ -115,25 +127,19 @@ const Cart = () => {
 		return totalPrice;
 	};
 
-
-
-	const [details, setDetails] = useState(
-		{
-			Material_Code: "",
-			Button_Style: "",
-			Lapel_Style: "",
-			Jacket_Pocket: null,
-			Sleeve_Buttons: null,
-			Pocket_Material_Code: null,
-			Button_Color: "",
-			Trouser_Style: "",
-			Back_Pocket: null,
-		}
-	);
-
+	const [details, setDetails] = useState({
+		Material_Code: "",
+		Button_Style: "",
+		Lapel_Style: "",
+		Jacket_Pocket: null,
+		Sleeve_Buttons: null,
+		Pocket_Material_Code: null,
+		Button_Color: "",
+		Trouser_Style: "",
+		Back_Pocket: null,
+	});
 
 	const getDetails = ({ customization }) => {
-
 		for (let key in customization) {
 			if (key === "lapel") {
 				setDetails({ ...details, Lapel_Style: customization[key] });
@@ -147,7 +153,6 @@ const Cart = () => {
 				} else if (customization[key] === "6D3") {
 					setDetails({ ...details, Button_Style: "6 Buttons" });
 				}
-
 			} else if (key === "fabric") {
 				setDetails({ ...details, Material_Code: customization[key] });
 			} else if (key === "pocket") {
@@ -164,22 +169,18 @@ const Cart = () => {
 				} else {
 					setDetails({ ...details, Back_Pocket: "No Pocket" });
 				}
-
 			} else if (key === "buttonColor") {
 				if (customization[key] !== "none") {
-
 					setDetails({ ...details, Button_Color: customization[key] });
 				} else {
 					setDetails({ ...details, Button_Color: "No Color" });
 				}
-
 			} else if (key === "pocketColor") {
 				if (customization[key] !== null) {
 					setDetails({ ...details, Pocket_Material_Code: customization[key] });
 				} else {
 					setDetails({ ...details, Pocket_Material_Code: "No Color" });
 				}
-
 			} else if (key === "sleeveButtons") {
 				if (customization[key] !== null) {
 					setDetails({ ...details, Sleeve_Buttons: customization[key] });
@@ -190,27 +191,40 @@ const Cart = () => {
 
 			console.log(key);
 		}
-
 	};
 
 	const OverlayOne = () => (
 		<ModalOverlay
-			bg='blackAlpha.300'
-			backdropFilter='blur(10px) hue-rotate(90deg)'
+			bg="blackAlpha.300"
+			backdropFilter="blur(10px) hue-rotate(90deg)"
 		/>
-	)
+	);
 
-	// const { isOpen, onOpen, onClose } = useDisclosure()
-	const [overlay, setOverlay] = React.useState(<OverlayOne />)
+	const [overlay, setOverlay] = useState(<OverlayOne />);
 	const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
 
-	return (
+	const handleBack = () => {
+		navigate("/customer");
 
+	};
+
+	return (
 		<>
 			<div className="flex flex-col items-center flex-wrap shadow-xl my-2 w-full ">
-				<div className="flex flex-row items-center gap-3 mt-3">
-					<CiShoppingCart style={{ fontSize: "3rem" }} />
-					<span className="text-2xl font-bold text-black p-1">Cart Items</span>
+
+				<div className="flex items-center justify-center w-full">
+					<div className="flex items-center gap-96 mt-4 justify-start ">
+						<button
+							onClick={handleBack}
+							className="flex items-center gap-2 text-primary"
+						>
+							<IoArrowBackCircle className="text-3xl cursor-pointer" />
+						</button>
+						<div className="flex gap-3">
+							<CiShoppingCart style={{ fontSize: "2rem" }} />
+							<span className="text-xl font-bold text-black p-1">Cart Items</span>
+						</div>
+					</div>
 				</div>
 
 				<div className="flex flex-wrap flex-row-reverse md:flex-row  justify-center items-start p-4 gap-x-10">
@@ -218,7 +232,7 @@ const Cart = () => {
 						<table className="flex flex-col  text-sm font-medium text-gray-500">
 							<thead className=" uppercase bg-gray-100 py-4 w-full rounded-xl mb-4">
 								<tr>
-									<th className=" w-32">Item Id</th>
+									{/* <th className=" w-32">Item Id</th> */}
 									<th className=" w-40">Description</th>
 									<th className=" w-32">Price</th>
 									<th className=" w-32">Qty</th>
@@ -231,17 +245,14 @@ const Cart = () => {
 							<tbody className="max-h-[calc(100vh-4rem)] overflow-y-scroll ">
 								<div className="flex flex-col gap-1 flex-wrap ">
 									{cartItems.map((item) => (
-
 										<tr
 											key={item.id}
 											className="flex items-center text-center border hover:bg-gray-300 text-black font-medium py-3 rounded-lg"
 										>
-											<td className="w-32">{item.id}</td>
+											{/* <td className="w-32">{item.id}</td> */}
 											<td className="w-40 text-left">
 												<p>
 													{(() => {
-
-
 														const description = item.description;
 
 														if (
@@ -263,8 +274,6 @@ const Cart = () => {
 																	</p>
 																);
 															});
-
-
 														} else {
 															return description.name;
 														}
@@ -274,13 +283,13 @@ const Cart = () => {
 											<td className="w-32">
 												{item.price === MEASUREMENTS_TO_BE_ADDED
 													? "To be added"
-													: "LKR. " + item.price}
+													: formatPrice(item.price)}
 											</td>
 											<td className="w-32">{item.quantity}</td>
 											<td className="w-32">
 												{item.price * item.quantity === -1
 													? "Need Measurements"
-													: "LKR. " + item.price * item.quantity}
+													: formatPrice(item.price * item.quantity)}
 											</td>
 											<td className="w-28">
 												{item.createdAt.slice(0, 10)}
@@ -297,10 +306,9 @@ const Cart = () => {
 													className=" w-full h-8"
 													onClick={() => {
 														setViewCartItemId(item.id);
-														setOverlay(<OverlayOne />)
-														setIsSecondModalOpen(true)
+														setOverlay(<OverlayOne />);
+														setIsSecondModalOpen(true);
 													}}
-
 												/>
 											</td>
 											<td className="w-28">
@@ -402,31 +410,17 @@ const Cart = () => {
 				</ModalContent>
 			</Modal>
 
-			<Modal isCentered isOpen={isSecondModalOpen} onClose={() => setIsSecondModalOpen(false)}>
+			<Modal
+				isCentered
+				isOpen={isSecondModalOpen}
+				onClose={() => setIsSecondModalOpen(false)}
+			>
 				{overlay}
 				<ModalContent>
 					<ModalHeader>Modal Title</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody>
 						<Text>Custom backdrop filters!</Text>
-						<Text>Woot woot 😎</Text>
-						<Text>Woot woot 😎</Text>
-						<Text>Woot woot 😎</Text>
-						<Text>Woot woot 😎</Text>
-						<Text>Woot woot 😎</Text>
-						<Text>Woot woot 😎</Text>
-						<Text>Woot woot 😎</Text>
-						<Text>Woot woot 😎</Text>
-						<Text>Woot woot 😎</Text>
-						<Text>Woot woot 😎</Text>
-						<Text>Woot woot 😎</Text>
-						<Text>Woot woot 😎</Text>
-						<Text>Woot woot 😎</Text>
-						<Text>Woot woot 😎</Text>
-						<Text>Woot woot 😎</Text>
-						<Text>Woot woot 😎</Text>
-						<Text>Woot woot 😎</Text>
-						<Text>Woot woot 😎</Text>
 					</ModalBody>
 				</ModalContent>
 			</Modal>

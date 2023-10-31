@@ -2,7 +2,10 @@ import rightArrow from "/fast-forward.gif";
 import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import { addCustomSuitToCart as addCustomSuitToCartAPI } from "../../api/customerAPI";
+import {
+	addCustomSuitToCart as addCustomSuitToCartAPI,
+	addNewCostumeToItemModel,
+} from "../../api/customerAPI";
 // import measurement_bg from "../../assets/images/measurement_bg.jpg";
 import { MEASUREMENTS_TO_BE_ADDED } from "../../constants";
 import { selectJacket } from "../../store/slices/jacketCustomizationSlice";
@@ -13,18 +16,44 @@ const CustomizeMeasurements = () => {
 
 	const jacket = useSelector(selectJacket);
 
-	// CHOOSE LATER BUTTON HANDLER
-	const handleChooseLater = async () => {
-		console.log(jacket);
+	// // CHOOSE LATER BUTTON HANDLER
+	// const handleChooseLater = async () => {
+	// 	await addNewCostumeToItemModel({
+	// 		itemType: "CustomSuit",
+	// 		price,
+	// 		quantity: 1,
+	// 		status: "available",
+	// 	})
+	// 		.then((res) => {
+	// 			// console.log(res.data);
+	// 			addCustomSuitToCartAPI({
+	// 				description: {
+	// 					type: STANDARD,
+	// 					customization: jacket,
+	// 				},
+	// 				measurement: {
+	// 					coatMeasurementsInInch,
+	// 					pantMeasurementsInInch,
+	// 				},
+	// 				customerId: user.id,
+	// 				itemId: res.data.itemId,
+	// 				price,
+	// 				quantity: inputValue,
+	// 				status: "available",
+	// 			})
+	// 				.then(() => {
+	// 					navigate("/customer/cart");
+	// 				})
+	// 				.catch((err) => {
+	// 					console.log(err);
+	// 				});
+	// 		})
+	// 		.catch((err) => {
+	// 			console.log(err);
+	// 		});
 
-		await addCustomSuitToCartAPI({
-			description: "Custom Suit",
-			price: MEASUREMENTS_TO_BE_ADDED,
-			quantity: 1,
-			selection: jacket,
-		});
-		navigate("/customer/cart");
-	};
+	// 	navigate("/customer/cart");
+	// };
 
 	// CHOOSE CURRENT SIZES BUTTON HANDLER
 	const handleChooseCurrentSizes = () => {
@@ -97,7 +126,9 @@ const CustomizeMeasurements = () => {
 					</div>
 				</div>
 			</div>
-			<div
+
+			{/* SKIP BUTTON */}
+			{/* <div
 				onClick={handleChooseLater}
 				className="md:fixed flex items-center right-10 bottom-10 max-w-[18rem] rounded-xl bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] transform transition-transform hover:scale-105 cursor-pointer"
 			>
@@ -107,7 +138,7 @@ const CustomizeMeasurements = () => {
 				<label>
 					<img className="h-14" src={rightArrow} alt="My GIF" />
 				</label>
-			</div>
+			</div> */}
 		</div>
 	);
 };
