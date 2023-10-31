@@ -1,17 +1,24 @@
 import { Environment, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { useState } from "react";
 import { Suspense, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import { getPurchaseOrder as getPurchaseOrderAPI } from "../api/purchaseOrdersAPI";
 import { OrderedDesign } from "../components/OrderedDesign";
-import { OPERATION_ASSISTANT, PRODUCT_MANAGER, TAILOR,CUSTOMER } from "../constants";
+import {
+	CUSTOMER,
+	OPERATION_ASSISTANT,
+	PRODUCT_MANAGER,
+	TAILOR,
+} from "../constants";
+import ItemType from "../constants/ItemType";
 import { selectUser } from "../store/slices/authSlice";
 import { selectComponentHide } from "../store/slices/componentHideSlice";
 
 function OrderDetails() {
+	const dispatch = useDispatch();
 	const hide = useSelector(selectComponentHide);
 	const user = useSelector(selectUser);
 
@@ -34,6 +41,7 @@ function OrderDetails() {
 			getPurchaseOrderAPI(orderId).then((res) => {
 				console.log(res.data);
 				setPurchaseOrder(res.data);
+
 				setLoading(false);
 			});
 		};
@@ -60,99 +68,102 @@ function OrderDetails() {
 						user.role === CUSTOMER ||
 						user.role === OPERATION_ASSISTANT) && (
 						<div className=" flex flex-col w-full space-y-4 md:space-y-6 xl:space-y-8 overflow-scroll">
-							<div className="flex flex-col bg-gray-200 px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full">
-								<p className="text-lg md:text-xl  font-semibold leading-6 xl:leading-5 text-gray-800">
-									Design Style
-								</p>
+							{ItemType.CUSTOM_SUIT.toLowerCase() ===
+								purchaseOrder.ItemModels[0].itemType.toLowerCase() && (
+								<div className="flex flex-col bg-gray-200 px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full">
+									<p className="text-lg md:text-xl  font-semibold leading-6 xl:leading-5 text-gray-800">
+										Design Style
+									</p>
 
-								<div className="mt-4 md:mt-6 flex flex-col md:flex-row justify-start items-start md:items-center md:space-x-6 xl:space-x-8 w-full">
-									<div className="w-full flex flex-col justify-start items-start space-y-8">
-										<div className="flex justify-start items-start flex-col space-y-2">
-											<p className="text-sm  leading-none text-gray-800">
-												Fabric:
-												{
-													purchaseOrder.ItemModels[0].costume.customization
-														.fabric
-												}
-											</p>
-											<p className="text-sm  font-semibold leading-none text-gray-800">
-												Jacket
-											</p>
-											{/* <p className="text-sm  ml-2 leading-none text-gray-800">
+									<div className="mt-4 md:mt-6 flex flex-col md:flex-row justify-start items-start md:items-center md:space-x-6 xl:space-x-8 w-full">
+										<div className="w-full flex flex-col justify-start items-start space-y-8">
+											<div className="flex justify-start items-start flex-col space-y-2">
+												<p className="text-sm  leading-none text-gray-800">
+													Fabric:
+													{
+														purchaseOrder.ItemModels[0].costume.customization
+															.fabric
+													}
+												</p>
+												<p className="text-sm  font-semibold leading-none text-gray-800">
+													Jacket
+												</p>
+												{/* <p className="text-sm  ml-2 leading-none text-gray-800">
 											Jacket Style:{" "}
 											{
 												purchaseOrder.ItemModels[0].costume.customization
 													.jacketStyle
 											}
 										</p> */}
-											<p className="text-sm  ml-2 leading-none text-gray-800">
-												Button:{" "}
-												{
-													purchaseOrder.ItemModels[0].costume.customization
-														.button
-												}
-											</p>
-											<p className="text-sm  ml-2 leading-none text-gray-800">
-												Lapel:
-												{
-													purchaseOrder.ItemModels[0].costume.customization
-														.lapel
-												}
-											</p>
-											<p className="text-sm  ml-2 leading-none text-gray-800">
-												Pocket type:
-												{
-													purchaseOrder.ItemModels[0].costume.customization
-														.pocket
-												}
-											</p>
-											<p className="text-sm  ml-2 leading-none text-gray-800">
-												Sleeve Button:
-												{
-													purchaseOrder.ItemModels[0].costume.customization
-														.sleeveButton
-												}
-											</p>
+												<p className="text-sm  ml-2 leading-none text-gray-800">
+													Button:{" "}
+													{
+														purchaseOrder.ItemModels[0].costume.customization
+															.button
+													}
+												</p>
+												<p className="text-sm  ml-2 leading-none text-gray-800">
+													Lapel:
+													{
+														purchaseOrder.ItemModels[0].costume.customization
+															.lapel
+													}
+												</p>
+												<p className="text-sm  ml-2 leading-none text-gray-800">
+													Pocket type:
+													{
+														purchaseOrder.ItemModels[0].costume.customization
+															.pocket
+													}
+												</p>
+												<p className="text-sm  ml-2 leading-none text-gray-800">
+													Sleeve Button:
+													{
+														purchaseOrder.ItemModels[0].costume.customization
+															.sleeveButton
+													}
+												</p>
 
-											<p className="text-sm  font-semibold leading-none text-gray-800">
-												Pant
-											</p>
-											<p className="text-sm  ml-2 leading-none text-gray-800">
-												Style:{" "}
-												{
-													purchaseOrder.ItemModels[0].costume.customization
-														.trouser
-												}
-											</p>
-											<p className="text-sm  ml-2 leading-none text-gray-800">
-												Pocket style:
-												{
-													purchaseOrder.ItemModels[0].costume.customization
-														.pocket
-												}
-											</p>
+												<p className="text-sm  font-semibold leading-none text-gray-800">
+													Pant
+												</p>
+												<p className="text-sm  ml-2 leading-none text-gray-800">
+													Style:{" "}
+													{
+														purchaseOrder.ItemModels[0].costume.customization
+															.trouser
+													}
+												</p>
+												<p className="text-sm  ml-2 leading-none text-gray-800">
+													Pocket style:
+													{
+														purchaseOrder.ItemModels[0].costume.customization
+															.pocket
+													}
+												</p>
 
-											<p className="text-sm font-semibold leading-none text-gray-800">
-												Color Contrast
-											</p>
-											<p className="text-sm ml-2 leading-none text-gray-800">
-												Pocket:
-												{
-													purchaseOrder.ItemModels[0].costume.customization
-														.pocketColor
-												}
-											</p>
-											<p className="text-sm ml-2 leading-none text-gray-800">
-												Button:
-												{
-													purchaseOrder.ItemModels[0].costume.customization
-														.buttonColor
-												}
-											</p>
+												<p className="text-sm font-semibold leading-none text-gray-800">
+													Color Contrast
+												</p>
+												<p className="text-sm ml-2 leading-none text-gray-800">
+													Pocket:
+													{
+														purchaseOrder.ItemModels[0].costume.customization
+															.pocketColor
+													}
+												</p>
+												<p className="text-sm ml-2 leading-none text-gray-800">
+													Button:
+													{
+														purchaseOrder.ItemModels[0].costume.customization
+															.buttonColor
+													}
+												</p>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
+							)}
 
 							<div className="flex flex-col justify-start items-start  bg-gray-200 px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full">
 								<p className="text-lg md:text-xl  font-semibold leading-6 xl:leading-5 text-gray-800">

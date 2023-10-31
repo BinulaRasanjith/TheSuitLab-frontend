@@ -1,11 +1,10 @@
+import { format } from "date-fns";
 import { useEffect, useState } from "react";
 import { IoArrowBackCircle } from "react-icons/io5";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import pic2 from "../assets/images/rentsuits/black suit/1.webp";
-import pic1 from "../assets/images/rentsuits/caremal suit/1.webp";
-import pic3 from "../assets/images/rentsuits/cobolt blue suit/1.webp";
+import { getReviews } from "../api/reviewAPI";
 import CardContainer from "../components/ReviewCard/CardContainer";
 import ReviewCard from "../components/ReviewCard/ReviewCard";
 import {
@@ -16,36 +15,6 @@ import {
 	TAILOR,
 } from "../constants";
 import { selectUser } from "../store/slices/authSlice";
-import { getReviews } from "../api/reviewAPI";
-import { format, formatDistance, formatDistanceToNow } from "date-fns";
-
-// const reviewsData = [
-// 	{
-// 		image: pic1,
-// 		orderId: 123456789,
-// 		author: "John Doe",
-// 		comment: "This product is amazing!",
-// 		date: "2023-10-30",
-// 		ratings: 4,
-// 	},
-// 	{
-// 		image: pic2,
-// 		orderId: 1262334,
-// 		author: "Johnny",
-// 		comment: "This product is poor!",
-// 		date: "2023-9-30",
-// 		ratings: 2,
-// 	},
-// 	{
-// 		image: pic3,
-// 		orderId: 1234589,
-// 		author: "Johnny",
-// 		comment: "This product is poor!",
-// 		date: "2023-10-12",
-// 		ratings: 2,
-// 	},
-// 	// Add more review objects as needed
-// ];
 
 const Reviews = () => {
 	const user = useSelector(selectUser);
