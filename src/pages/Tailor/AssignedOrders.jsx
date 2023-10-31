@@ -1,11 +1,12 @@
-import { PRODUCT_MANAGER, TAILOR, OPERATION_ASSISTANT } from "../../constants";
-import { selectUser } from "../../store/slices/authSlice"
-import { useLocation, useNavigate } from "react-router-dom";
-import { IoArrowBackCircle } from "react-icons/io5";
-import OrderRecord from "../../components/OrderItems/OrderRecord";
-import { Link } from 'react-router-dom';
 import { Button } from '@chakra-ui/react'
 import { useState } from "react";
+import { IoArrowBackCircle } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
+
+// import OrderRecord from "../../components/OrderItems/OrderRecord";
+// import { OPERATION_ASSISTANT, PRODUCT_MANAGER, TAILOR } from "../../constants";
+// import { selectUser } from "../../store/slices/authSlice"
 
 const AssignedOrders = () => {
 
@@ -66,7 +67,7 @@ const AssignedOrders = () => {
         const statusMatch = order.status && order.status.toString().toLowerCase().includes(searchInput.toLowerCase());
         const orderedDateMatch = order.orderedDate && order.orderedDate.toString().toLowerCase().includes(searchInput.toLowerCase());
         const requiredDateMatch = order.requiredDate && order.requiredDate.toString().toLowerCase().includes(searchInput.toLowerCase());
-    
+
         return orderIdMatch || custnameMatch || quantityMatch || statusMatch || orderedDateMatch || requiredDateMatch;
     });
 
@@ -95,8 +96,8 @@ const AssignedOrders = () => {
                                                 id="table-search"
                                                 className="block p-2 pl-10 text-sm text-black border border-gray-300 rounded-3xl w-60 focus:border-gray-400"
                                                 placeholder="Search"
-                                            value={searchInput}
-                                            onChange={(e) => setSearchInput(e.target.value)}
+                                                value={searchInput}
+                                                onChange={(e) => setSearchInput(e.target.value)}
                                             />
                                         </div>
                                     </div>
@@ -134,7 +135,7 @@ const AssignedOrders = () => {
                                         <tbody>
                                             <div className="flex flex-col gap-1">
                                                 {filteredOrder.map((item, index) => (
-                                                    <tr className="flex items-center text-center border hover:bg-gray-300 text-black whitespace-nowrap font-medium">
+                                                    <tr key={index} className="flex items-center text-center border hover:bg-gray-300 text-black whitespace-nowrap font-medium">
                                                         <td className="w-40"> <Link to={`${item.orderId}`}>{item.orderId}</Link></td>
                                                         <td className="w-40">{item.custname}</td>
                                                         <td className="w-40">{item.itemCount}</td>
