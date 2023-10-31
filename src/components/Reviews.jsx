@@ -91,14 +91,15 @@ const Reviews = () => {
 			return 0;
 		});
 		setSortedByDate(sortedData);
+		console.log(sortedData);
 	}, [reviewsData, sortByDate]);
 
 	return (
 		<>
-			<div className="flex flex-row">
+			<div className="flex flex-row w-full">
 				<div className="flex-auto">
 					<div className="flex flex-col ">
-						<div className="flex-col m-3 shadow-lg">
+						<div className="flex-col m-3 ">
 							<div className="flex flex-col p-4">
 								{/* back  button */}
 								<div className="flex items-center gap-4 m-6">
