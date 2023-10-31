@@ -1,10 +1,11 @@
-import { PRODUCT_MANAGER, TAILOR, OPERATION_ASSISTANT } from "../../constants";
-import { selectUser } from "../../store/slices/authSlice"
-import { useLocation, useNavigate } from "react-router-dom";
-import { IoArrowBackCircle } from "react-icons/io5";
-import OrderRecord from "../../components/OrderItems/OrderRecord";
-import { Link } from 'react-router-dom';
 import { Button } from '@chakra-ui/react'
+import { IoArrowBackCircle } from "react-icons/io5";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
+
+import OrderRecord from "../../components/OrderItems/OrderRecord";
+import { OPERATION_ASSISTANT, PRODUCT_MANAGER, TAILOR } from "../../constants";
+import { selectUser } from "../../store/slices/authSlice"
 
 
 const Records = () => {
@@ -124,32 +125,32 @@ const Records = () => {
                                         <tbody>
                                             <div className="flex flex-col gap-1">
                                                 {records.map((item, index) => (
-                                                   <tr className="flex items-center text-center border hover:bg-gray-300 text-black whitespace-nowrap font-medium">
-                                                   <td className="w-40"> <Link to={`${item.orderId}`}>{item.orderId}</Link></td>
-                                                   <td className="w-40">{item.customerId}</td>
-                                                   <td className="w-40">{item.itemCount}</td>
-                                                   <td className="w-40">{item.orderedDate}</td>
-                                                   <td className="w-40">{item.requiredDate}</td>
-                                                   <td className="w-40"> {item.status}</td>
-                                                   <td className="w-40 py-2">
-                                   
-                                                       <Link to={`${item.orderId}`}>
-                                                           <Button
-                                                               className="block"
-                                                               rounded={"md"}
-                                                               color={"white"}
-                                                               bgColor={"black"}
-                                                               size="sm"
-                                                               _hover={{
-                                                                   bg: "blue",
-                                                                   color: "blue-50",
-                                                               }}
-                                                           >
-                                                               View
-                                                           </Button>
-                                                       </Link>
-                                                   </td>
-                                               </tr>
+                                                    <tr className="flex items-center text-center border hover:bg-gray-300 text-black whitespace-nowrap font-medium">
+                                                        <td className="w-40"> <Link to={`${item.orderId}`}>{item.orderId}</Link></td>
+                                                        <td className="w-40">{item.customerId}</td>
+                                                        <td className="w-40">{item.itemCount}</td>
+                                                        <td className="w-40">{item.orderedDate}</td>
+                                                        <td className="w-40">{item.requiredDate}</td>
+                                                        <td className="w-40"> {item.status}</td>
+                                                        <td className="w-40 py-2">
+
+                                                            <Link to={`${item.orderId}`}>
+                                                                <Button
+                                                                    className="block"
+                                                                    rounded={"md"}
+                                                                    color={"white"}
+                                                                    bgColor={"black"}
+                                                                    size="sm"
+                                                                    _hover={{
+                                                                        bg: "blue",
+                                                                        color: "blue-50",
+                                                                    }}
+                                                                >
+                                                                    View
+                                                                </Button>
+                                                            </Link>
+                                                        </td>
+                                                    </tr>
                                                 ))}
                                             </div>
                                         </tbody>
