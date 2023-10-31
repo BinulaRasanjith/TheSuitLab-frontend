@@ -11,11 +11,12 @@ const fabricData = [
     {
         id: 10,
         image: fabric1,
-        material: 'Cotton',
+        material: 'Poplin',
         color: 'Blue',
         updatedate: '2023-09-24',
         price: 420,
-        quantity: 500
+        quantity: 500,
+        name: 'Arg Blue'
     },
     {
         id: 13,
@@ -24,31 +25,35 @@ const fabricData = [
         color: 'Blue',
         updatedate: '2023-09-13',
         price: 768,
-        quantity: 340
+        quantity: 340,
+        name: 'Christ blue',
     },
     {
         id: 28,
         image: fabric3,
-        material: 'Cotton',
+        material: 'Velvet',
         color: 'Blue',
         updatedate: '2023-10-11',
         price: 890,
-        quantity: 770
+        quantity: 770,
+        name: 'Deco blue',
     },
     {
         id: 90,
         image: fabric4,
-        material: 'Cotton',
+        material: 'Silk',
         color: 'Blue',
         updatedate: '2023-10-18',
         price: 590,
-        quantity: 850
+        quantity: 850,
+        name: 'Indi blue',
     },
 ];
 
 
-const FabricListComponent = ({sortByPrice}) => {
+const FabricListComponent = ({ sortByPrice, searchInput }) => {
 
+    
     const [quantityValues, setQuantityValues] = useState(fabricData.map((item) => 0));
     const [sortedFabricData, setButtonData] = useState([...fabricData]);
 
@@ -118,6 +123,18 @@ const FabricListComponent = ({sortByPrice}) => {
         }
     };
 
+    const filteredFabrics = sortedFabricData.filter((fabric) => {
+        const nameMatch = fabric.name && fabric.name.toLowerCase().includes(searchInput.toLowerCase());
+        const materialMatch = fabric.material && fabric.material.toLowerCase().includes(searchInput.toLowerCase());
+        const colorMatch = fabric.color && fabric.color.toLowerCase().includes(searchInput.toLowerCase());
+        const idMatch = fabric.id && fabric.id.toString().includes(searchInput);
+        const priceMatch = fabric.price && fabric.price.toString().toLowerCase().includes(searchInput.toLowerCase());
+        const quantityMatch = fabric.quantity && fabric.quantity.toString().toLowerCase().includes(searchInput.toLowerCase());
+        const dateMatch = fabric.updatedate && fabric.updatedate.toLowerCase().includes(searchInput.toLowerCase());
+    
+        return nameMatch || materialMatch || colorMatch || idMatch || priceMatch || quantityMatch || dateMatch;
+    });
+
     return (
         <div className="min-h-screen bg-white m-5">
             <div className="relative overflow-x-hidden shadow-md">
@@ -151,7 +168,7 @@ const FabricListComponent = ({sortByPrice}) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {sortedFabricData.map((item, index) => (
+                        {filteredFabrics.map((item, index) => (
                             <tr
                                 key={index}
                                 className="bg-white border rounded-3xl hover:bg-gray-300 text-black whitespace-nowrap font-medium"

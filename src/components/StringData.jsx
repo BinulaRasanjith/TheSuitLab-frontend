@@ -86,11 +86,10 @@ const stringData = [
         updatedate: '2023/10/15',
 
     },
-
 ];
 
 
-const StringListComponent = ({ sortByPrice }) => {
+const StringListComponent = ({ sortByPrice, searchInput }) => {
 
     const [quantityValues, setQuantityValues] = useState(stringData.map((item) => 0));
     const [sortedStringData, setButtonData] = useState([...stringData]);
@@ -160,7 +159,18 @@ const StringListComponent = ({ sortByPrice }) => {
         }
     };
 
+    const filteredStrings = sortedStringData.filter((string) => {
+        const idMatch = string.id && string.id.toString().includes(searchInput);
+        const nameMatch = string.name && string.name.toLowerCase().includes(searchInput.toLowerCase());
+        const lengthMatch = string.size && string.size.toLowerCase().includes(searchInput.toLowerCase());
+        const colorMatch = string.color && string.color.toLowerCase().includes(searchInput.toLowerCase());
+        const quantityMatch = string.quantity && string.quantity.toString().toLowerCase().includes(searchInput.toLowerCase());
+        const materialMatch = string.material && string.material.toLowerCase().includes(searchInput.toLowerCase());
+        const priceMatch = string.price && string.price.toString().toLowerCase().includes(searchInput.toLowerCase());
+        const dateMatch = string.updatedate && string.updatedate.toLowerCase().includes(searchInput.toLowerCase());
 
+        return nameMatch || lengthMatch || materialMatch || colorMatch || idMatch || priceMatch || quantityMatch || dateMatch;
+    });
 
     return (
         <div className="min-h-screen bg-white m-5">
@@ -189,7 +199,7 @@ const StringListComponent = ({ sortByPrice }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {sortedStringData.map((item, index) => (
+                        {filteredStrings.map((item, index) => (
                             <tr
                                 key={index}
                                 className="bg-white border rounded-3xl hover:bg-gray-300 text-black whitespace-nowrap font-medium"

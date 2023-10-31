@@ -2,15 +2,19 @@ import { Button } from "@chakra-ui/button";
 import { Alert, AlertIcon, Collapse, useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import Dropzone from "react-dropzone";
+import { IoArrowBackCircle } from "react-icons/io5";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { addUser } from "../../api/userAPI";
 import defaultProfileImage from "../../assets/images/avatar.png";
+import Input from "../../components/Input/Input";
 import { OPERATION_ASSISTANT, PRODUCT_MANAGER, TAILOR } from "../../constants";
 
 const AddEmployee = () => {
 	const toast = useToast();
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	const [firstName, setFirstName] = useState("");
 	const [lastName, setLastName] = useState("");
@@ -91,63 +95,76 @@ const AddEmployee = () => {
 		}
 	};
 
+	const handleBack = () => {
+		navigate("/admin/employees");
+	};
+
 	return (
 		<>
-			<div className="h-full flex flex-row m-4 shadow-xl rounded-2xl p-2">
-				<div className="w-full border border-gray-200 m-10  rounded-lg shadow  p-6">
-					<div className=" border-b-2 border-gray-300">
+			<div className="h-full flex m-4 flex-row shadow-xl rounded-2xl p-1">
+				<div className="w-full border  border-gray-200 mx-10  rounded-lg shadow  p-4">
+					<div className=" border-b-2 border-gray-300 flex gap-4">
+						<button
+							onClick={handleBack}
+							className="flex items-center gap-2 text-primary"
+						>
+							<IoArrowBackCircle className="text-3xl cursor-pointer" />
+						</button>
 						<h2 className="mb-4 mt-3 text-2xl  justify-start font-medium text-gray-900">
 							Add New Employee
 						</h2>
 					</div>
 					<form onSubmit={handleAddUserClick}>
 						<div className="flex flex-row justify-center items-center mt-8 gap-24">
-							<Dropzone
-								onDrop={(acceptedFiles) => {
-									// Handle the uploaded file here
-									setImage(acceptedFiles[0]);
-									console.log(acceptedFiles);
-									setSelectedImage(URL.createObjectURL(acceptedFiles[0]));
-								}}
-								accept="image/*"
-							>
-								{({ getRootProps, getInputProps }) => (
-									<div
-										{...getRootProps()}
-										className="w-52 h-52 object-cover mb-1 rounded-full shadow-lg dropzone"
-									>
-										<input {...getInputProps()} />
-										{/* {image && (
+							<div>
+								<Dropzone
+									onDrop={(acceptedFiles) => {
+										// Handle the uploaded file here
+										setImage(acceptedFiles[0]);
+										console.log(acceptedFiles);
+										setSelectedImage(URL.createObjectURL(acceptedFiles[0]));
+									}}
+									accept="image/*"
+								>
+									{({ getRootProps, getInputProps }) => (
+										<div
+											{...getRootProps()}
+											className="w-52 h-52 object-cover mb-1 rounded-full shadow-lg dropzone"
+										>
+											<input {...getInputProps()} />
+											{/* {image && (
 											<img
 												className="w-52 h-52 object-cover mb-1 rounded-full shadow-lg"
 												src={URL.createObjectURL(image)}
 												alt="uploaded"
 											/>
 										)} */}
-										{image ? (
-											<img
-												className="w-52 h-52 object-cover mb-1 rounded-full shadow-lg"
-												src={URL.createObjectURL(image)}
-												alt="uploaded"
-											/>
-										) : (
-											<img
-												className="w-52 h-52 object-cover mb-1 rounded-full shadow-lg"
-												src={selectedImage}
-												alt="default image"
-											/>
-										)}
-									</div>
-								)}
-							</Dropzone>
-
+											{image ? (
+												<img
+													className="w-52 h-52 object-cover mb-1 rounded-full shadow-lg"
+													src={URL.createObjectURL(image)}
+													alt="uploaded"
+												/>
+											) : (
+												<img
+													className="w-52 h-52 object-cover mb-1 rounded-full shadow-lg"
+													src={selectedImage}
+													alt="default image"
+												/>
+											)}
+										</div>
+									)}
+								</Dropzone>
+								<p className="flex text-sm text-blue-500">
+									Double tap to add profile photo
+								</p>
+							</div>
 							<div className="flex flex-col gap-3 w-96">
-								<div className="flex flex-row justify-between">
-									<label className="text-md text-gray-500">Role</label>
+								<div className="flex flex-row ">
 									<select
 										id="role"
 										name="role"
-										className="border border-gray-200 rounded-xl focus:outline-none focus:border-gray-500"
+										className="block p-2 w-48 text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300P  focus:outline-none focus:ring-0 peer "
 										value={role}
 										onChange={(e) => setRole(e.target.value)}
 									>
@@ -159,78 +176,91 @@ const AddEmployee = () => {
 										<option value={TAILOR}>Tailoring Supervisor</option>
 									</select>
 								</div>
+
 								<div className="flex flex-row justify-between">
-									<label className="text-md text-gray-500">First Name</label>
-									<input
+									<Input
 										id="firstName"
 										name="firstName"
-										className="border  border-gray-400 rounded-md  focus:outline-none focus:border-gray-500"
+										bo
+										onChange={(e) => setFirstName(e.target.value)}
+										onFocus={() => {
+											dispatch(setError(null));
+										}}
+										placeholder="First Name "
 										type="text"
 										value={firstName}
-										onChange={(e) => setFirstName(e.target.value)}
 									/>
 								</div>
 								<div className="flex flex-row justify-between">
-									<label className="text-md text-gray-500">Last Name</label>
-									<input
+									<Input
 										id="lastName"
 										name="lastName"
-										className="border  border-gray-400 rounded-md  focus:outline-none focus:border-gray-500"
+										onChange={(e) => setLastName(e.target.value)}
+										onFocus={() => {
+											dispatch(setError(null));
+										}}
+										placeholder="Last Name "
+										//hint="Ex: 0712345678"
 										type="text"
 										value={lastName}
-										onChange={(e) => setLastName(e.target.value)}
 									/>{" "}
 								</div>
 
 								<div className="flex flex-row justify-between">
-									<label className="text-md text-gray-500">Contact</label>
-									<input
+									<Input
 										id="mobileNumber"
 										name="mobileNumber"
-										className="border border-gray-400 rounded-md  focus:outline-none focus:border-gray-500"
+										onChange={(e) => setMobileNumber(e.target.value)}
+										onFocus={() => {
+											dispatch(setError(null));
+										}}
+										placeholder="Mobile Number"
+										hint="Ex: 0712345678"
 										type="text"
 										value={mobileNumber}
-										onChange={(e) => setMobileNumber(e.target.value)}
 									/>{" "}
 								</div>
-
-								<div className="flex flex-row justify-between">
-									<label className="text-md text-gray-500">Password</label>
-									<input
-										id="password"
-										name="password"
-										className="border border-gray-400 rounded-md  focus:outline-none focus:border-gray-500"
-										type="password"
-										value={password}
-										onChange={(e) => setPassword(e.target.value)}
-									/>{" "}
+								<div className="grid grid-cols-1 sm:grid-cols-2 grid-rows-1 gap-3 my-3">
+									<div className="flex flex-row justify-between">
+										<Input
+											id="password"
+											name="password"
+											onChange={(e) => setPassword(e.target.value)}
+											onFocus={() => {
+												dispatch(setError(null));
+											}}
+											placeholder="Password"
+											type="password"
+											value={password}
+										/>{" "}
+									</div>
+									<div className="flex flex-row justify-between">
+										<Input
+											id="re-password"
+											name="re-password"
+											onChange={(e) => setConfirmPassword(e.target.value)}
+											placeholder="Confirm Password"
+											type="password"
+											value={confirmPassword}
+											className={"col-span-2"}
+										/>{" "}
+									</div>
 								</div>
-								<div className="flex flex-row justify-between">
-									<label className="text-md text-gray-500">
-										Confirm Password
-									</label>
-									<input
-										id="re-password"
-										name="re-password"
-										className="border border-gray-400 rounded-md  focus:outline-none focus:border-gray-500"
-										type="password"
-										value={confirmPassword}
-										onChange={(e) => setConfirmPassword(e.target.value)}
-									/>{" "}
-								</div>
 
-								<div className="flex flex-row justify-between">
-									{/* <a href="#" className="inline-flex items-center px-10 py-2 text-sm font-medium text-center
-                                     text-white uppercase bg-black rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">Save</a> */}
-
+								<div className="flex">
 									<Button
 										onClick={handleAddUserClick}
 										rounded={"md"}
 										color={"white"}
-										bgColor={"black"}
-										_hover={{
-											bg: "gray.700",
-										}}
+										_hover={{ bg: "gray.800" }}
+										_active={{ bg: "black" }}
+										bg={"gray.700"}
+										fontSize={{ base: "l", lg: "md" }}
+										isLoading={status === "loading"}
+										loadingText="Logging in"
+										padding={{ base: "5px", lg: "20px" }}
+										type="submit"
+										width={{ base: "100%", md: "50%" }}
 									>
 										SAVE
 									</Button>

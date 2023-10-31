@@ -50,7 +50,7 @@ const buttonData = [
     },
 ];
 
-const ButtonListComponent = ({ sortByPrice }) => {
+const ButtonListComponent = ({ sortByPrice, searchInput }) => {
 
     const [quantityValues, setQuantityValues] = useState(buttonData.map((item) => 0));
     const [sortedButtonData, setButtonData] = useState([...buttonData]);
@@ -118,10 +118,21 @@ const ButtonListComponent = ({ sortByPrice }) => {
             // Implement save logic here, for example, send data to an API
             console.log('Saved Changes:', quantityValues);
             setQuantityValues(buttonData.map((item) => 0));
-
         }
     };
 
+    const filteredButtons = sortedButtonData.filter((button) => {
+        const idMatch = button.id && button.id.toString().includes(searchInput);
+        const nameMatch = button.name && button.name.toLowerCase().includes(searchInput.toLowerCase());
+        const sizeMatch = button.size && button.size.toLowerCase().includes(searchInput.toLowerCase());
+        const colorMatch = button.color && button.color.toLowerCase().includes(searchInput.toLowerCase());
+        const quantityMatch = button.quantity && button.quantity.toString().toLowerCase().includes(searchInput.toLowerCase());
+        const materialMatch = button.material && button.material.toLowerCase().includes(searchInput.toLowerCase());
+        const priceMatch = button.price && button.price.toString().toLowerCase().includes(searchInput.toLowerCase());
+        const dateMatch = button.updatedate && button.updatedate.toLowerCase().includes(searchInput.toLowerCase());
+
+        return nameMatch || sizeMatch || materialMatch || colorMatch || idMatch || priceMatch || quantityMatch || dateMatch;
+    });
 
     return (
         <div className="min-h-screen bg-white m-5">
@@ -144,9 +155,6 @@ const ButtonListComponent = ({ sortByPrice }) => {
                             <th scope="col" className="px-3 py-3">
                                 Material
                             </th>
-                            {/* <th scope="col" className="px-3 py-3">
-                                Unit Price
-                            </th> */}
                             <th scope="col" className="px-1 py-3">
                                 Last updated
                             </th>
@@ -156,7 +164,7 @@ const ButtonListComponent = ({ sortByPrice }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {sortedButtonData.map((item, index) => (
+                        {filteredButtons.map((item, index) => (
                             <tr
                                 key={index}
                                 className="bg-white items-center border rounded-3xl hover:bg-gray-300 text-black whitespace-nowrap font-medium"
