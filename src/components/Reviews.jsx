@@ -81,7 +81,7 @@ const Reviews = () => {
 									<h1 className=" text-3xl font-semibold">Reviews</h1>
 
 									<div className="ml-32 flex w-52 ">
-										<span className=" flex w-full items-center">Sort By</span>
+										<span className=" flex w-full items-center">Sort By Date</span>
 										<select
 											id="Sort"
 											className="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
