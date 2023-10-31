@@ -1,5 +1,5 @@
 import { Button } from '@chakra-ui/react'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoArrowBackCircle } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
@@ -7,59 +7,74 @@ import { Link } from 'react-router-dom';
 // import OrderRecord from "../../components/OrderItems/OrderRecord";
 // import { OPERATION_ASSISTANT, PRODUCT_MANAGER, TAILOR } from "../../constants";
 // import { selectUser } from "../../store/slices/authSlice"
+const orders = [
+    {
+        orderId: 1,
+        custname: "Malini Fonseka",
+        itemCount: 5,
+        status: "completed",
+        orderedDate: '2023-10-22',
+        requiredDate: '2023-11-22',
+    },
+    {
+        orderId: 2,
+        custname: "Siril Piyadasa",
+        itemCount: 2,
+        status: "Pending",
+        orderedDate: '2023-10-22',
+        requiredDate: '2023-11-22',
+    },
+    {
+        orderId: 3,
+        custname: "Anne Perera",
+        itemCount: 3,
+        status: "Processing",
+        orderedDate: '2023-10-22',
+        requiredDate: '2023-11-22',
+    },
+    {
+        orderId: 4,
+        custname: "James Peiris",
+        itemCount: 8,
+        status: "Completed",
+        orderedDate: '2023-09-10',
+        requiredDate: '2023-10-22',
+    },
+    {
+        orderId: 5,
+        custname: "Rakisa Jayaweera",
+        itemCount: 1,
+        status: "Pending",
+        orderedDate: '2023-10-12',
+        requiredDate: '2023-11-28',
+    },
+];
 
 const AssignedOrders = () => {
 
     const [searchInput, setSearchInput] = useState('');
+    const [sortByDate, setSortByDate] = useState("relevant");
 
-    const orders = [
-        {
-            orderId: 1,
-            custname: "Malini Fonseka",
-            itemCount: 5,
-            status: "completed",
-            orderedDate: '2023/10/22',
-            requiredDate: '2023/11/22',
-        },
-        {
-            orderId: 2,
-            custname: "Siril Piyadasa",
-            itemCount: 2,
-            status: "Pending",
-            orderedDate: '2023/10/22',
-            requiredDate: '2023/11/22',
-        },
-        {
-            orderId: 3,
-            custname: "Anne Perera",
-            itemCount: 3,
-            status: "Processing",
-            orderedDate: '2023/10/22',
-            requiredDate: '2023/11/22',
-        },
-        {
-            orderId: 4,
-            custname: "James Peiris",
-            itemCount: 8,
-            status: "Completed",
-            orderedDate: '2023/09/10',
-            requiredDate: '2023/10/22',
-        },
-        {
-            orderId: 5,
-            custname: "Rakisa Jayaweera",
-            itemCount: 1,
-            status: "Pending",
-            orderedDate: '2023/10/12',
-            requiredDate: '2023/11/28',
-        },
-    ];
     const navigate = useNavigate();
     const handleBack = () => {
         navigate("/tailor");
     };
+    const [sortedOrderData, setSortedByDate] = useState([]);
 
-    const filteredOrder = orders.filter((order) => {
+    useEffect(() => {
+        const sortedData = [...orders].sort((a, b) => {
+            if (sortByDate === "recent") {
+                return new Date(b.orderedDate) - new Date(a.orderedDate);
+            } else if (sortByDate === "older") {
+                return new Date(a.orderedDate) - new Date(b.orderedDate);
+            }
+            return 0;
+        });
+        setSortedByDate(sortedData);
+    }, [sortByDate]);
+
+
+    const filteredOrder = sortedOrderData.filter((order) => {
 
         const orderIdMatch = order.orderId && order.orderId.toString().includes(searchInput.toLowerCase());
         const custnameMatch = order.custname && order.custname.toString().toLowerCase().includes(searchInput.toLowerCase());
@@ -73,12 +88,12 @@ const AssignedOrders = () => {
 
     return (
         <>
-            <div className="flex flex-row w-full">
+            <div className="flex flex-row w-full ">
                 <div className="flex-auto">
-                    <div className='flex flex-col '>
+                    <div className='flex flex-col  '>
                         <div className='flex-col mt-3 shadow-lg sm:rounded-lg'>
                             <div className='flex flex-col m-8'>
-                                <div className="flex flex-row items-center gap-52 w-full">
+                                <div className="flex flex-row items-center gap-10 w-full">
                                     <button
                                         onClick={handleBack}
                                         className="flex items-center gap-2 text-primary"
@@ -90,6 +105,9 @@ const AssignedOrders = () => {
                                         <label className="sr-only">Search</label>
                                         <div className="relative">
                                             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                                <svg aria-hidden="true" className="w-4 h-4 text-gray-500 dark:text-gray-400" fill="none" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+                                                </svg>
                                             </div>
                                             <input
                                                 type="text"
@@ -100,6 +118,19 @@ const AssignedOrders = () => {
                                                 onChange={(e) => setSearchInput(e.target.value)}
                                             />
                                         </div>
+                                    </div>
+                                    <div className="ml-32 flex w-52 ">
+                                        <span className=" flex w-full items-center">Sort By Date</span>
+                                        <select
+                                            id="Sort"
+                                            className="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+                                            onChange={(e) => setSortByDate(e.target.value)}
+                                            value={sortByDate}
+                                        >
+                                            <option value="">Relevant</option>
+                                            <option value="recent">Recent</option>
+                                            <option value="older">Older</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
