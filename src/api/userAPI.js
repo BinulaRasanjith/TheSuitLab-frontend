@@ -12,3 +12,7 @@ export const addUser = (data) => {
 export const getUsers = (data) => {
     return api.post('/user/get-users', data);
 }
+
+export const setUserProgress = (id, progress) => {
+    return api.patch('/user/set-progress', { id, progress });
+}

@@ -1,5 +1,9 @@
 import api from "./api";
 
+export const getCustomersPurchaseOrders = async (customerId) => {
+  return api.get(`/purchase-order/customer/${customerId}`);
+};
+
 export const getPurchaseOrders = async () => {
   return api.get("/purchase-order");
 };

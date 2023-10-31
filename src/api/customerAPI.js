@@ -4,6 +4,10 @@ export const getCustomers = (customerData) => {
   return api.get("/customer/details", customerData);
 };
 
+export const getAllCustomersWithOrderCount = () => {
+  return api.get("/customer/include-order-count");
+};
+
 export const addToCart = async (cartItem) => {
   return api.post("/customer/add-to-cart", cartItem);
 };
