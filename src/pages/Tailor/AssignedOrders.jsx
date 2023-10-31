@@ -5,51 +5,49 @@ import { IoArrowBackCircle } from "react-icons/io5";
 import OrderRecord from "../../components/OrderItems/OrderRecord";
 import { Link } from 'react-router-dom';
 import { Button } from '@chakra-ui/react'
+import { useState } from "react";
 
+const AssignedOrders = () => {
 
-const Records = () => {
-    const records = [
+    const [searchInput, setSearchInput] = useState('');
+
+    const orders = [
         {
-            orderId: "1",
-            customerId: "Malini Fonseka",
-            itemCount: "5",
-            totalAmount: "60000",
+            orderId: 1,
+            custname: "Malini Fonseka",
+            itemCount: 5,
             status: "completed",
             orderedDate: '2023/10/22',
             requiredDate: '2023/11/22',
         },
         {
-            orderId: "2",
-            customerId: "Siril Piyadasa",
-            itemCount: "2",
-            totalAmount: "25000",
+            orderId: 2,
+            custname: "Siril Piyadasa",
+            itemCount: 2,
             status: "Pending",
             orderedDate: '2023/10/22',
             requiredDate: '2023/11/22',
         },
         {
-            orderId: "3",
-            customerId: "Anne Perera",
-            itemCount: "3",
-            totalAmount: "56000",
+            orderId: 3,
+            custname: "Anne Perera",
+            itemCount: 3,
             status: "Processing",
             orderedDate: '2023/10/22',
             requiredDate: '2023/11/22',
         },
         {
-            orderId: "4",
-            customerId: "James Peiris",
-            itemCount: "8",
-            totalAmount: "250000",
+            orderId: 4,
+            custname: "James Peiris",
+            itemCount: 8,
             status: "Completed",
             orderedDate: '2023/09/10',
             requiredDate: '2023/10/22',
         },
         {
-            orderId: "5",
-            customerId: "Rakisa Jayaweera",
-            itemCount: "1",
-            totalAmount: "15750",
+            orderId: 5,
+            custname: "Rakisa Jayaweera",
+            itemCount: 1,
             status: "Pending",
             orderedDate: '2023/10/12',
             requiredDate: '2023/11/28',
@@ -59,6 +57,18 @@ const Records = () => {
     const handleBack = () => {
         navigate("/tailor");
     };
+
+    const filteredOrder = orders.filter((order) => {
+
+        const orderIdMatch = order.orderId && order.orderId.toString().includes(searchInput.toLowerCase());
+        const custnameMatch = order.custname && order.custname.toString().toLowerCase().includes(searchInput.toLowerCase());
+        const quantityMatch = order.itemCount && order.itemCount.toString().toLowerCase().includes(searchInput.toLowerCase());
+        const statusMatch = order.status && order.status.toString().toLowerCase().includes(searchInput.toLowerCase());
+        const orderedDateMatch = order.orderedDate && order.orderedDate.toString().toLowerCase().includes(searchInput.toLowerCase());
+        const requiredDateMatch = order.requiredDate && order.requiredDate.toString().toLowerCase().includes(searchInput.toLowerCase());
+    
+        return orderIdMatch || custnameMatch || quantityMatch || statusMatch || orderedDateMatch || requiredDateMatch;
+    });
 
     return (
         <>
@@ -85,8 +95,8 @@ const Records = () => {
                                                 id="table-search"
                                                 className="block p-2 pl-10 text-sm text-black border border-gray-300 rounded-3xl w-60 focus:border-gray-400"
                                                 placeholder="Search"
-                                            //value={searchInput}
-                                            //onChange={(e) => setSearchInput(e.target.value)}
+                                            value={searchInput}
+                                            onChange={(e) => setSearchInput(e.target.value)}
                                             />
                                         </div>
                                     </div>
@@ -123,33 +133,33 @@ const Records = () => {
                                         </thead>
                                         <tbody>
                                             <div className="flex flex-col gap-1">
-                                                {records.map((item, index) => (
-                                                   <tr className="flex items-center text-center border hover:bg-gray-300 text-black whitespace-nowrap font-medium">
-                                                   <td className="w-40"> <Link to={`${item.orderId}`}>{item.orderId}</Link></td>
-                                                   <td className="w-40">{item.customerId}</td>
-                                                   <td className="w-40">{item.itemCount}</td>
-                                                   <td className="w-40">{item.orderedDate}</td>
-                                                   <td className="w-40">{item.requiredDate}</td>
-                                                   <td className="w-40"> {item.status}</td>
-                                                   <td className="w-40 py-2">
-                                   
-                                                       <Link to={`${item.orderId}`}>
-                                                           <Button
-                                                               className="block"
-                                                               rounded={"md"}
-                                                               color={"white"}
-                                                               bgColor={"black"}
-                                                               size="sm"
-                                                               _hover={{
-                                                                   bg: "blue",
-                                                                   color: "blue-50",
-                                                               }}
-                                                           >
-                                                               View
-                                                           </Button>
-                                                       </Link>
-                                                   </td>
-                                               </tr>
+                                                {filteredOrder.map((item, index) => (
+                                                    <tr className="flex items-center text-center border hover:bg-gray-300 text-black whitespace-nowrap font-medium">
+                                                        <td className="w-40"> <Link to={`${item.orderId}`}>{item.orderId}</Link></td>
+                                                        <td className="w-40">{item.custname}</td>
+                                                        <td className="w-40">{item.itemCount}</td>
+                                                        <td className="w-40">{item.orderedDate}</td>
+                                                        <td className="w-40">{item.requiredDate}</td>
+                                                        <td className="w-40"> {item.status}</td>
+                                                        <td className="w-40 py-2">
+
+                                                            <Link to={`${item.orderId}`}>
+                                                                <Button
+                                                                    className="block"
+                                                                    rounded={"md"}
+                                                                    color={"white"}
+                                                                    bgColor={"black"}
+                                                                    size="sm"
+                                                                    _hover={{
+                                                                        bg: "blue",
+                                                                        color: "blue-50",
+                                                                    }}
+                                                                >
+                                                                    View
+                                                                </Button>
+                                                            </Link>
+                                                        </td>
+                                                    </tr>
                                                 ))}
                                             </div>
                                         </tbody>
@@ -173,4 +183,4 @@ const Records = () => {
     );
 };
 
-export default Records;
+export default AssignedOrders;
