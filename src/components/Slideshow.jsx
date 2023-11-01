@@ -23,7 +23,7 @@ const Slideshow = () => {
 			url: "https://images.pexels.com/photos/325876/pexels-photo-325876.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
 		},
 		{
-			url: "https://img.freepik.com/free-photo/confident-young-businessman-modern-luxury-office-generated-by-ai_188544-17326.jpg?t=st=1692209494~exp=1692213094~hmac=f43beaf0fc6108385bd0c96e33e5d3425af3e4dfd233af752d09be862b1ab9d7&w=1800",
+			url: "https://www.realmenrealstyle.com/wp-content/uploads/2021/07/Suit-Jacket-Details.jpg",
 		},
 		{
 			url: "https://cdn.pixabay.com/photo/2017/08/10/08/00/suit-2619784_1280.jpg",

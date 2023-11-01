@@ -205,25 +205,21 @@ const Cart = () => {
 
 	const handleBack = () => {
 		navigate("/customer");
-
 	};
 
 	return (
 		<>
 			<div className="flex flex-col items-center flex-wrap shadow-xl my-2 w-full ">
-
-				<div className="flex items-center justify-center w-full">
-					<div className="flex items-center gap-96 mt-4 justify-start ">
-						<button
-							onClick={handleBack}
-							className="flex items-center gap-2 text-primary"
-						>
-							<IoArrowBackCircle className="text-3xl cursor-pointer" />
-						</button>
-						<div className="flex gap-3">
-							<CiShoppingCart style={{ fontSize: "2rem" }} />
-							<span className="text-xl font-bold text-black p-1">Cart Items</span>
-						</div>
+				<div className="flex items-center mt-4 justify-around w-full">
+					<button
+						onClick={handleBack}
+						className="flex items-center gap-2 text-primary absolute top-20 left-56"
+					>
+						<IoArrowBackCircle className="text-4xl cursor-pointer" />
+					</button>
+					<div className="flex gap-3">
+						<CiShoppingCart style={{ fontSize: "2rem" }} />
+						<span className="text-xl font-bold text-black p-1">Cart Items</span>
 					</div>
 				</div>
 
@@ -351,23 +347,11 @@ const Cart = () => {
 						<p className="text-2xl font-bold border-black border-b-2 my-4">
 							Summary
 						</p>
-						<div className="mb-2 flex justify-between gap-x-2">
-							<p className="text-gray-700">Subtotal</p>
-							<p className="text-gray-700 font-semibold">
-								{formatPrice(calculateTotalPrice())}
-							</p>
-						</div>
 						<div className="flex flex-col gap-y-2">
 							<div className="flex flex-col items-center gap-y-4 rounded">
 								<p className="text-2xl font-bold">Total Price </p>
 								<p className="mb-1 text-4xl font-bold">
-									{formatPrice(calculateTotalPrice() + vat)}
-								</p>
-							</div>
-							<div className="flex items-center justify-center gap-x-2">
-								<p className="text-sm text-gray-700">Including VAT</p>
-								<p className="text-sm text-gray-700 font-semibold">
-									{formatPrice(vat)}
+									{formatPrice(calculateTotalPrice())}
 								</p>
 							</div>
 						</div>

@@ -12,6 +12,7 @@ import Orders from "../pages/Manager/Orders";
 import Payments from "../pages/Manager/Payments";
 import Suppliers from "../pages/Manager/Suppliers";
 import Profile from "../pages/Profile";
+import Notifications from "../components/Notification";
 
 const managerRoutes = {
 	path: "/manager",
@@ -48,6 +49,8 @@ const managerRoutes = {
 		{ path: "customer", element: <Customers /> },
 		{ path: "profile", element: <Profile /> },
 		{ path: "reviews", element: <Reviews /> },
+		{ path: "notifications", element: <Notifications /> },
+		
 	],
 };
 

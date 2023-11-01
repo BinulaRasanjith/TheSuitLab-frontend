@@ -1,15 +1,17 @@
+import Notifications from "../components/Notification";
+import Reviews from "../components/Reviews";
 import AssistantMainLayout from "../layouts/assistantLayouts/AssistantMainLayout";
 import Accessories from "../pages/Assistant/Accessories";
+import AccessoryInfo from "../pages/Assistant/AccessoryInfo";
 import Customers from "../pages/Assistant/Customers";
 import Dashboard from "../pages/Assistant/Dashboard";
 import Handover from "../pages/Assistant/Handover";
+import HiringCostume from "../pages/Assistant/HireCostumeInfo";
 import Hiring from "../pages/Assistant/Hiring";
 import Materials from "../pages/Assistant/Materials";
-import Notifications from "../pages/Assistant/Notifications";
 import Orders from "../pages/Assistant/Orders";
 import Returns from "../pages/Assistant/Returns";
 import Profile from "../pages/Profile";
-import Reviews from "../components/Reviews";
 
 const AssistantRoutes = {
   path: "/assistant",
@@ -23,9 +25,11 @@ const AssistantRoutes = {
     { path: "returns", element: <Returns /> },
     { path: "accessories", element: <Accessories /> },
     { path: "hiring", element: <Hiring /> },
-    { path: "notifications", element: <Notifications /> },
+    { path: "hiring/:id", element: <HiringCostume /> },
+    { path: "accessories/:id", element: <AccessoryInfo /> },
     { path: "profile", element: <Profile /> },
     { path: "reviews", element: <Reviews /> },
+    { path: "notifications", element: <Notifications /> }
   ],
 };
 

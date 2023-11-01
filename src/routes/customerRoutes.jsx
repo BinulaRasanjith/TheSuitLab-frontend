@@ -17,6 +17,7 @@ import TiesGallery from "../components/Customer/TiesGallery";
 import JacketsGallery from "../components/Customer/jacketsGallery";
 import PantsGallery from "../components/Customer/pantsGallery";
 import SuitDescription from "../components/Customer/suitDescription";
+import Notifications from "../components/Notification";
 import OrderDetails from "../components/OrderDetails";
 import Payment from "../components/Payment";
 import ChooseBackPocket from "../components/customer/ChooseBackPocket";
@@ -403,6 +404,10 @@ const costumerRoutes = {
 			path: "payment",
 			element: <Payment />,
 		},
+		{
+			path: "notifications",
+			element: <Notifications />
+		}
 	],
 };
 

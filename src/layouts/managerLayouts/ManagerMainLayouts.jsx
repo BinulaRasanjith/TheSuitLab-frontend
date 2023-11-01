@@ -53,11 +53,11 @@ const sidebarItems = [
 		icon: <HiUserGroup />,
 		to: "/manager/suppliers",
 	},
-	{
-		label: "Payments",
-		icon: <HiCreditCard />,
-		to: "/manager/payments",
-	},
+	// {
+	// 	label: "Payments",
+	// 	icon: <HiCreditCard />,
+	// 	to: "/manager/payments",
+	// },
 	{
 		label: "Customers",
 		icon: <HiUserGroup />,

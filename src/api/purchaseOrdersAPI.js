@@ -19,3 +19,8 @@ export const calculatePrice = async (data) => {
 export const createPurchaseOrder = async (data) => {
   return api.post("/purchase-order", data);
 };
+
+// MARK AS COSTUME IS READY TO COLLECT
+export const updateToCollected = async (id) => {
+    return api.patch("/purchase-order/to-collected", id);
+}

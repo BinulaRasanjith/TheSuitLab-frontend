@@ -1,19 +1,23 @@
-import { useToast } from '@chakra-ui/react';
 import { Button } from '@chakra-ui/react';
+import { useToast } from '@chakra-ui/react';
 import PropTypes from "prop-types";
+import { MdErrorOutline } from "react-icons/md";
 
-import { updateToCollected } from '../../../api/purchaseOrdersAPI';
+import { removeThisItem } from '../../../api/assistantAPI';
 
-const OrderConfForm = ({ isOpen, onClose, id }) => {
+const DeleteConfirmation = ({ isOpen, onClose, id }) => {
+
     const toast = useToast();
-    const handleCollection = async (event) => {
+
+    const handleDeletion = async (event) => {
         event.preventDefault();
 
         try {
-            const response = await updateToCollected(id);
+            const response = await removeThisItem(id);
             console.log(response.data); // TODO: REMOVE
             toast({
-                title: "Order has been marked as collected.",
+                title: "Successful!",
+                description: "The item has been removed.",
                 status: "success",
                 duration: 5000,
                 isClosable: true,
@@ -22,7 +26,7 @@ const OrderConfForm = ({ isOpen, onClose, id }) => {
             console.error(error);
             toast({
                 title: "An error occurred.",
-                description: "Unable to mark order as collected.",
+                description: "Unable to remove the item.",
                 status: "error",
                 duration: 5000,
                 isClosable: true,
@@ -34,18 +38,20 @@ const OrderConfForm = ({ isOpen, onClose, id }) => {
     return (
         <div className={`relative  ${isOpen ? "block" : "hidden"}`}>
 
-            <div className="fixed left-0 right-0 bottom-0 top-0 z-40 opacity-30 bg-black"></div>
+            <div className="fixed left-0 right-0 bottom-0 top-0 z-40 opacity-40 bg-black"></div>
 
             <div className="fixed top-16 bottom-0 right-0 left-0 z-40 flex flex-col items-center justify-center">
                 <div className=" z-50 m-8 rounded-lg bg-white p-8 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
 
-                    <form onSubmit={handleCollection}>
+                    <form onSubmit={handleDeletion}>
 
                         <div className=' flex flex-col gap-y-5'>
-                            <div className=' text-center text-md'>
-                                Please confirm if the customer has collected their order.<br />
-                                Click &apos;Confirm&apos; if the order has been collected, <br />
-                                or &apos;Cancel&apos; if it has not been collected yet.
+                            <div className="flex items-center justify-center text-red-700 gap-x-2">
+                                <MdErrorOutline size={48} />
+                                <p>
+                                    <b>Caution!</b> This will permanently remove this item <br />
+                                    from your stock. This action cannot be <b>undone.</b>
+                                </p>
                             </div>
                             <div className=' flex gap-5 justify-center'>
                                 <div className="">
@@ -68,25 +74,21 @@ const OrderConfForm = ({ isOpen, onClose, id }) => {
                                     <Button
                                         type='submit'
                                         _hover={{
-                                            bg: 'gray',
+                                            bg: 'red.900',
                                             textColor: 'white',
                                             border: '1px',
-                                            borderColor: 'gray'
+                                            borderColor: 'red.600'
                                         }}
-                                        bg={'black'}
+                                        bg={'red.600'}
                                         border={'1px'}
-                                        borderColor={'black'}
+                                        borderColor={'red.600'}
                                         height={'2rem'}
                                         textColor={'white'}
                                         shadow={'md'}
                                         width={'7rem'}>Confirm</Button>
                                 </div>
-
-
                             </div>
-
                         </div>
-
                     </form>
                 </div>
             </div>
@@ -94,10 +96,10 @@ const OrderConfForm = ({ isOpen, onClose, id }) => {
     );
 };
 
-OrderConfForm.propTypes = {
+DeleteConfirmation.propTypes = {
     onClose: PropTypes.func.isRequired,
     isOpen: PropTypes.bool.isRequired,
     id: PropTypes.string.isRequired,
 };
 
-export default OrderConfForm;
+export default DeleteConfirmation;
