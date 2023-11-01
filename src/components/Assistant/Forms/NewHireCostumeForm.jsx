@@ -34,6 +34,10 @@ const NewHireCostume = ({ isOpen, onClose }) => {
     });
     const [selectedFile, setSelectedFile] = useState(null);
 
+    // const [showBeltInput, setShowBeltInput] = useState(false);
+    // const [showTieInput, setShowTieInput] = useState(false);
+    // const [showShoeInput, setShowShoeInput] = useState(false);
+
     const [step, setStep] = useState(1);
 
     const handleNext = () => {
@@ -56,7 +60,32 @@ const NewHireCostume = ({ isOpen, onClose }) => {
 
         setNewCostumeData({ ...newCostumeData, image: fileset ? Array.from(fileset) : null });
     };
-    
+    // const handleFileChange = (event) => {
+    //     const fileset = event.target.file[0];
+    //     setSelectedFile(fileset);
+
+    //     setNewCostumeData({ ...newCostumeData, image: fileset ? fileset.name : null });
+    // };
+
+
+
+    // const handleAddUserClick = async (event) => {
+    //     event.preventDefault();
+
+    //     try {
+    //         await addNewAccessory(newAccessoryData);
+    //         onClose();
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // };
+
+    // const handleAddAccessory = async (event) => {
+    //     event.preventDefault();
+    //     // Handle the form submission logic here
+    //     // ...
+    // };
+
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 

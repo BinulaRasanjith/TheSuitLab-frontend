@@ -1,7 +1,6 @@
 import { Button } from '@chakra-ui/react'
 import { useEffect, useState } from "react";
 
-import { getPurchaseOrders } from "../../api/purchaseOrdersAPI";
 import OrderConfForm from "../../components/Assistant/Confirmations/OrderConfForm";
 import DropDownFilter from "../../components/Assistant/Controls/HeaderDropDown";
 import SearchBox from "../../components/Assistant/Controls/HeaderSearchBox";
@@ -107,8 +106,8 @@ const records = [
 ];
 
 const Orders = () => {
-	const [isOrderUpdate, updateOrder] = useState(false);
-	const [selectedOrder, setSelectedOrder] = useState(null);
+    const [isOrderUpdate, updateOrder] = useState(false);
+    const [selectedOrder, setSelectedOrder] = useState(null);
 
 	const [orders, setOrders] = useState([]);
 	const [filteredOrders, setFilteredOrders] = useState([]);
@@ -152,6 +151,10 @@ const Orders = () => {
 		setFilteredOrders(filtered);
 	};
 
+    const handleFormClose = () => {
+        setSelectedOrder(null);
+        updateOrder(false);
+    };
 	return (
 		<div>
 			<div className=" flex flex-col justify-between mx-10 my-8 p-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg">
@@ -164,7 +167,7 @@ const Orders = () => {
 					</div>
 					<div className=" flex gap-4 align-middle">
 						<div>
-							<SearchBox onSearch={handleSearch} />
+							<SearchBox />
 						</div>
 						<div>
 							<DropDownFilter />
@@ -230,24 +233,20 @@ const Orders = () => {
 				</div>
 				<div className=" flex justify-between">
 					<div className=" py-3 text-sm font-medium text-neutral-400">
-						Showing data {startIndex + 1} to {endIndex} of {filteredOrders.length} entries
+						Showing data 1 to 4 of 4 entries
 					</div>
 					<div className=" py-3">
-						<Pagination
-							currentPage={currentPage}
-							totalPages={Math.ceil(records.length / recordsPerPage)}
-							onPageChange={(newPage) => setCurrentPage(newPage)}
-						/>
+						<Pagination />
 					</div>
 				</div>
 			</div>
 
 			<div className={`relative  ${isOrderUpdate ? "block" : "hidden"}`}>
-				<OrderConfForm
-					isOpen={isOrderUpdate}
-					onClose={handleFormClose}
-					orderId={selectedOrder}
-				/>
+				<OrderConfForm 
+                    isOpen={isOrderUpdate}
+                    onClose={handleFormClose}
+                    orderId={selectedOrder} 
+					/>
 			</div>
 		</div>
 	);

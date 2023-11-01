@@ -1,7 +1,10 @@
 import { Button } from "@chakra-ui/react";
-import { useState } from "react";
+import { useToast } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { HiShoppingCart } from "react-icons/hi";
+import { IoNotificationsSharp } from "react-icons/io5";
 import { PiShoppingCartSimpleBold } from "react-icons/pi";
 import { PiNewspaperBold } from "react-icons/pi";
 import { RiLogoutCircleRLine } from "react-icons/ri";
@@ -13,9 +16,15 @@ import TSL_LOGO from "../assets/images/TSL_LOGO.png";
 import TSL_LOGO_SM from "../assets/images/TSL_LOGO_SM.png";
 import defaultPhoto from "../assets/images/avatar.png";
 import { PROFILE_PICTURE_URL } from "../config/config";
-import { CUSTOMER } from "../constants";
-import { logoutAsync } from "../store/slices/authSlice";
+import {
+	ADMIN,
+	CUSTOMER,
+	OPERATION_ASSISTANT,
+	PRODUCT_MANAGER,
+	TAILOR,
+} from "../constants";
 import { selectUser } from "../store/slices/authSlice";
+import { logoutAsync } from "../store/slices/authSlice";
 import { toggleSidebar } from "../store/slices/sidebarSlice";
 import displayRoleName from "../utils/displayRoleName";
 
@@ -24,6 +33,19 @@ const Navbar = () => {
 	const { pathname } = useLocation();
 	const dispatch = useDispatch();
 	const [isUserDropdownOpen, setUserDropdownOpen] = useState(false);
+	const [hasNewNotifications, setHasNewNotifications] = useState(false); // Set this based on your notification data
+
+	const toast = useToast();
+	useEffect(() => {
+		if (hasNewNotifications) {
+			toast({
+				title: "You have new notifications!",
+				status: "success",
+				duration: 4000,
+				isClosable: true,
+			});
+		}
+	}, [hasNewNotifications, toast]);
 
 	const user = useSelector(selectUser);
 
@@ -41,6 +63,23 @@ const Navbar = () => {
 	const handleLogoutClick = () => {
 		navigate("/", { replace: true });
 		dispatch(logoutAsync(user.id));
+	};
+	const handleNotificationClick = () => {
+		if (user.role === CUSTOMER) {
+			navigate("/customer/notifications");
+		}
+		if (user.role === ADMIN) {
+			navigate("/admin/notifications");
+		}
+		if (user.role === TAILOR) {
+			navigate("/tailor/notifications");
+		}
+		if (user.role === PRODUCT_MANAGER) {
+			navigate("/manager/notifications");
+		}
+		if (user.role === OPERATION_ASSISTANT) {
+			navigate("/assistant/notifications");
+		}
 	};
 
 	const [open, setOpen] = useState(false);
@@ -64,17 +103,19 @@ const Navbar = () => {
 				{
 					// sidebar toggle burger button
 					user.id &&
-					(user.role !== CUSTOMER ||
-						pathname.includes("/customer/customize-suit/") || pathname.includes("/customer/hire-suit") || pathname.includes("/customer/accessories/")) && (
-						<div>
-							<button
-								className="flex items-center px-3 py-2 text-secondary text-2xl"
-								onClick={() => dispatch(toggleSidebar())}
-							>
-								<FaBars />
-							</button>
-						</div>
-					)
+						(user.role !== CUSTOMER ||
+							pathname.includes("/customer/customize-suit/") ||
+							pathname.includes("/customer/hire-suit") ||
+							pathname.includes("/customer/accessories/")) && (
+							<div>
+								<button
+									className="flex items-center px-3 py-2 text-secondary text-2xl"
+									onClick={() => dispatch(toggleSidebar())}
+								>
+									<FaBars />
+								</button>
+							</div>
+						)
 				}
 				<div className="h-full flex items-center pr-2">
 					<div className="flex align-center h-14 overflow-hidden">
@@ -108,8 +149,9 @@ const Navbar = () => {
 									className={({ isActive }) => {
 										return `px-3 py-1 ${isActive ? "font-bold" : ""}`;
 									}}
-									to={`${user.role === CUSTOMER ? "/customer/services" : "/services"
-										}`}
+									to={`${
+										user.role === CUSTOMER ? "/customer/services" : "/services"
+									}`}
 								>
 									Services
 								</NavLink>
@@ -117,8 +159,9 @@ const Navbar = () => {
 									className={({ isActive }) => {
 										return `px-3 py-1 ${isActive ? "font-bold" : ""}`;
 									}}
-									to={`${user.role === CUSTOMER ? "/customer/about-us" : "/about-us"
-										}`}
+									to={`${
+										user.role === CUSTOMER ? "/customer/about-us" : "/about-us"
+									}`}
 								>
 									About Us
 								</NavLink>
@@ -126,10 +169,11 @@ const Navbar = () => {
 									className={({ isActive }) => {
 										return `px-3 py-1 ${isActive ? "font-bold" : ""}`;
 									}}
-									to={`${user.role === CUSTOMER
-										? "/customer/contact-us"
-										: "contact-us"
-										}`}
+									to={`${
+										user.role === CUSTOMER
+											? "/customer/contact-us"
+											: "contact-us"
+									}`}
 								>
 									Contact Us
 								</NavLink>
@@ -142,17 +186,30 @@ const Navbar = () => {
 					{user.id ? (
 						<>
 							<div className="flex items-center gap-3 relative">
+								{/* {user.role === CUSTOMER && (
+									<div className="text-secondary cursor-pointer ">
+										<HiShoppingCart
+											onClick={() => navigate("/customer/cart")}
+											style={{ fontSize: "1.5rem" }}
+										/>
+									</div>
+								)} */}
 
-								{/* {user.role === CUSTOMER && <div className="text-secondary cursor-pointer ">
+								{/*notification */}
+								<div className="text-secondary cursor-pointer ">
+									<IoNotificationsSharp
+										onClick={handleNotificationClick}
+										style={{
+											fontSize: "1.5rem",
+										}}
+									/>
+								</div>
 
-									<HiShoppingCart onClick={() => navigate("/customer/cart")}
-										style={{ fontSize: "1.5rem" }} />
-								</div>} */}
 								{/* {user.id && user.role !== CUSTOMER && (
 									<div className={`text-gray-400 text-xs text-end`}>
 										{displayRoleName(user.role)}
 									</div>
-								)} */}
+								)}  */}
 
 								<div
 									className="flex flex-col cursor-pointer"
@@ -183,8 +240,9 @@ const Navbar = () => {
 								{/*  Dropdown menu  */}
 								<div
 									id="userDropdown"
-									className={`z-10 fixed ${isUserDropdownOpen ? "block" : "hidden"
-										} bg-primary divide-y divide-gray-300 border border-gray-300 rounded-lg shadow w-44 top-20 right-2`}
+									className={`z-10 fixed ${
+										isUserDropdownOpen ? "block" : "hidden"
+									} bg-primary divide-y divide-gray-300 border border-gray-300 rounded-lg shadow w-44 top-20 right-2`}
 								>
 									<div className="px-4 py-3 text-sm text-white">
 										<div>{`${user.firstName} ${user.lastName}`}</div>
@@ -205,34 +263,42 @@ const Navbar = () => {
 												>
 													<div className="flex gap-x-4 items-center">
 														<RxDashboard style={{ fontSize: "1.5rem" }} />
-														<label>Dahboard</label>
+														<label>Dashboard</label>
 													</div>
 												</NavLink>
 											</li>
 										)}
-										{user.role === CUSTOMER && <li>
-											<NavLink
-												className="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-black"
-												onClick={() => setUserDropdownOpen(!isUserDropdownOpen)}
-												to={`/${user.role}/my-orders`}
-											><div className="flex gap-x-4 items-center">
-													<PiNewspaperBold style={{ fontSize: "1.5rem" }} />
-													<label>My Orders</label>
-												</div>
-											</NavLink>
-											<NavLink
-												className="block justify-center px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-black"
-												onClick={() => setUserDropdownOpen(!isUserDropdownOpen)}
-												to={`/${user.role}/cart`}
-											>
-												{/* <HiShoppingCart style={{ fontSize: "1.5rem" }} /> */}
-												<div className="flex gap-x-4 items-center">
-													<PiShoppingCartSimpleBold style={{ fontSize: "1.5rem" }} />
-													<label>View Cart</label>
-												</div>
-
-											</NavLink>
-										</li>}
+										{user.role === CUSTOMER && (
+											<li>
+												<NavLink
+													className="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-black"
+													onClick={() =>
+														setUserDropdownOpen(!isUserDropdownOpen)
+													}
+													to={`/${user.role}/my-orders`}
+												>
+													<div className="flex gap-x-4 items-center">
+														<PiNewspaperBold style={{ fontSize: "1.5rem" }} />
+														<label>My Orders</label>
+													</div>
+												</NavLink>
+												<NavLink
+													className="block justify-center px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-black"
+													onClick={() =>
+														setUserDropdownOpen(!isUserDropdownOpen)
+													}
+													to={`/${user.role}/cart`}
+												>
+													{/* <HiShoppingCart style={{ fontSize: "1.5rem" }} /> */}
+													<div className="flex gap-x-4 items-center">
+														<PiShoppingCartSimpleBold
+															style={{ fontSize: "1.5rem" }}
+														/>
+														<label>View Cart</label>
+													</div>
+												</NavLink>
+											</li>
+										)}
 										<li>
 											<NavLink
 												className="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-black"
@@ -334,8 +400,9 @@ const Navbar = () => {
 				<ul className="flex flex-col items-center p-2 text-sm text-gray-700 dark:text-gray-200">
 					<NavLink
 						className={({ isActive }) => {
-							return `px-3 py-1 ${isActive ? "border-2 rounded-md border-cyan-500" : ""
-								}`;
+							return `px-3 py-1 ${
+								isActive ? "border-2 rounded-md border-cyan-500" : ""
+							}`;
 						}}
 						to="/"
 					>
@@ -343,8 +410,9 @@ const Navbar = () => {
 					</NavLink>
 					<NavLink
 						className={({ isActive }) => {
-							return `px-3 py-1 ${isActive ? "border-2 rounded-md border-cyan-500" : ""
-								}`;
+							return `px-3 py-1 ${
+								isActive ? "border-2 rounded-md border-cyan-500" : ""
+							}`;
 						}}
 						to="/services"
 					>
@@ -352,8 +420,9 @@ const Navbar = () => {
 					</NavLink>
 					<NavLink
 						className={({ isActive }) => {
-							return `px-3 py-1 ${isActive ? "border-2 rounded-md border-cyan-500" : ""
-								}`;
+							return `px-3 py-1 ${
+								isActive ? "border-2 rounded-md border-cyan-500" : ""
+							}`;
 						}}
 						to="/about-us"
 					>
@@ -361,8 +430,9 @@ const Navbar = () => {
 					</NavLink>
 					<NavLink
 						className={({ isActive }) => {
-							return `px-3 py-1 ${isActive ? "border-2 rounded-md border-cyan-500" : ""
-								}`;
+							return `px-3 py-1 ${
+								isActive ? "border-2 rounded-md border-cyan-500" : ""
+							}`;
 						}}
 						to="/contact-us"
 					>

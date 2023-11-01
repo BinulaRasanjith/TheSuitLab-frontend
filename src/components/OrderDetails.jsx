@@ -20,6 +20,7 @@ import { selectUser } from "../store/slices/authSlice";
 import { selectComponentHide } from "../store/slices/componentHideSlice";
 import { formatPrice } from "../utils/paymentUtils";
 import { IoArrowBackCircle } from "react-icons/io5";
+import pic2 from "../assets/images/material bg.jpg"
 
 
 function OrderDetails() {
@@ -59,7 +60,7 @@ function OrderDetails() {
 	const handleBack = () => {
 		navigate("/manager/orders");
 	}
-
+	const trimmedOrderId = orderId.substring(15);
 	return (
 		<div className="flex py-4 px-2 max-h-[calc(100vh-4rem)]">
 			<div className="flex max-h-[calc(100vh-4rem)] z-10 bg-transparent absolute justify-start item-start space-y-2 flex-col">
@@ -69,15 +70,16 @@ function OrderDetails() {
 				>
 					<IoArrowBackCircle className="text-3xl cursor-pointer" />
 				</button>
-				<h1 className="text-3xl mt-4 lg:text-4xl font-semibold leading-7 lg:leading-9 text-gray-800">
-					OrderId: {orderId}
+
+				<h1 className="text-2xl mt-4  font-semibold leading-7 text-gray-800">
+					OrderId: #{trimmedOrderId}
 				</h1>
-				<p className="text-base font-medium leading-6 text-gray-800">
+				<p className="text-base font-medium text-gray-800">
 
 				</p>
 			</div>
 			{!loading && (
-				<div className="max-h-[calc(100vh-4rem)] mt-32 flex flex-col xl:flex-row items-stretch w-full xl:space-x-8 space-y-8 md:space-y-6 xl:space-y-0">
+				<div className="max-h-[calc(100vh-4rem)] mt-20 flex flex-col xl:flex-row items-stretch w-full xl:space-x-8 space-y-8 md:space-y-6 xl:space-y-0">
 					{(user.role === PRODUCT_MANAGER ||
 						user.role === TAILOR ||
 						user.role === CUSTOMER ||
@@ -86,224 +88,168 @@ function OrderDetails() {
 								{ItemType.CUSTOM_SUIT.toLowerCase() ===
 									purchaseOrder.ItemModels[0].itemType.toLowerCase() && (
 										<>
-											<div className="flex flex-col bg-gray-400 px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full rounded-3xl shadow-3xl">
-												<p className="text-lg md:text-xl  font-semibold leading-6 xl:leading-5 text-gray-800">
-													Design Style
+											<div className="flex flex-col bg-gray-200 px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full rounded-3xl shadow-3xl">
+												<p className="text-lg md:text-xl  pb-2 font-semibold leading-6 xl:leading-5 text-gray-500 border-b-2 border-gray-500">
+													Customize Suit Design Style
 												</p>
-												<div className="border-2 mt-3 border-gray-700 w-full"></div>
+												<div className="flex justify-around">
+													<div className="flex flex-col mt-5 text-lg">
 
-												<div className="mt-4 md:mt-6 flex flex-col md:flex-row justify-start items-start md:items-center md:space-x-6 xl:space-x-8 w-full">
-													<div className="w-full flex flex-col justify-start items-start space-y-8">
-														<div className="flex justify-between items-start gap-20 space-y-2">
+														<p className="text-md mb-3 text-gray-800">
+															Fabric Code: {purchaseOrder.ItemModels[0].costume.customization.fabric}
+														</p>
+														<p className="text-md pb-3 font-semibold text-black">
+															Jacket Style
+														</p>
+														<p className="text-md  py-0.5">
+															Button: {" "}{purchaseOrder.ItemModels[0].costume.customization.button}
+														</p>
+														<p className="text-md  py-0.5">
+															Lapel:{" "}{purchaseOrder.ItemModels[0].costume.customization.lapel}
+														</p>
+														<p className="text-md  py-0.5">
+															Pocket:{" "}{purchaseOrder.ItemModels[0].costume.customization.pocket}
+														</p>
+														<p className="text-md py-0.5">
+															Sleeve Button:{" "}{purchaseOrder.ItemModels[0].costume.customization.sleeveButton}
+														</p>
 
-															<div className="flex flex-col text-lg">
+													</div>
+													<div className="flex flex-col mt-5 text-lg">
 
-																<p className="text-md mb-3 leading-none text-gray-800">
-																	Fabric Code: {purchaseOrder.ItemModels[0].costume.customization.fabric}
-																</p>
-																<div className=" bg-red-600 p-3 rounded-xl shadow-2xl">
-																	<p className="text-md  font-semibold leading-none text-gray-800">
-																		Jacket
-																	</p>
-																	{/* <p className="text-md  ml-2 leading-none text-gray-800">
-																			Jacket Style:{" "}
-																			{
-																			purchaseOrder.ItemModels[0].costume.customization.jacketStyle
-																			}
-																		</p> */}
-																	<p className="text-md  ml-2 leading-none text-gray-800">
-																		Button:{" "}
-																		{
-																			purchaseOrder.ItemModels[0].costume.customization
-																				.button
-																		}
-																	</p>
-																	<p className="text-md  ml-2 leading-none text-gray-800">
-																		Lapel:
-																		{
-																			purchaseOrder.ItemModels[0].costume.customization
-																				.lapel
-																		}
-																	</p>
-																	<p className="text-md  ml-2 leading-none text-gray-800">
-																		Pocket type:
-																		{
-																			purchaseOrder.ItemModels[0].costume.customization
-																				.pocket
-																		}
-																	</p>
-																	<p className="text-md  ml-2 leading-none text-gray-800">
-																		Sleeve Button:
-																		{
-																			purchaseOrder.ItemModels[0].costume.customization
-																				.sleeveButton
-																		}
-																	</p>
-																</div>
-															</div>
-															{/* <div className="flex flex-col text-lg"> */}
-															<div className="flex flex-col text-lg bg-red-600 p-3 rounded-xl shadow-2xl">
-																<p className="text-md  font-semibold leading-none text-gray-800">
-																	Pant
-																</p>
-																<p className="text-md  ml-2 leading-none text-gray-800">
-																	Style:{" "}
-																	{
-																		purchaseOrder.ItemModels[0].costume.customization
-																			.trouser
-																	}
-																</p>
-																<p className="text-md  ml-2 leading-none text-gray-800">
-																	Pocket style:
-																	{
-																		purchaseOrder.ItemModels[0].costume.customization
-																			.pocket
-																	}
-																</p>
+														<p className="text-md pb-2 font-semibold text-black">
+															Trouser Style
+														</p>
+														<p className="text-md">
+															Style: {" "}{purchaseOrder.ItemModels[0].costume.customization.trouser}
+														</p>
+														<p className="text-md">
+															Pocket style: {purchaseOrder.ItemModels[0].costume.customization.pocket}
+														</p>
 
-																<p className="text-md font-semibold leading-none text-gray-800">
-																	Color Contrast
-																</p>
-																<p className="text-md ml-2 leading-none text-gray-800">
-																	Pocket:
-																	{
-																		purchaseOrder.ItemModels[0].costume.customization
-																			.pocketColor
-																	}
-																</p>
-																<p className="text-md ml-2 leading-none text-gray-800">
-																	Button:
-																	{
-																		purchaseOrder.ItemModels[0].costume.customization
-																			.buttonColor
-																	}
-																</p>
-															</div>
-															{/* </div> */}
-														</div>
+														<p className="text-md pb-2 mt-3 font-semibold text-black ">
+															Color Contrast
+														</p>
+														<p className="text-md  py-0.5">
+															Pocket: {purchaseOrder.ItemModels[0].costume.customization.pocketColor}
+														</p>
+														<p className="text-md  py-0.5">
+															Button: {purchaseOrder.ItemModels[0].costume.customization.buttonColor}
+														</p>
+
 													</div>
 												</div>
 											</div>
 
-											<div className="flex flex-col justify-start items-start  bg-gray-400 px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full rounded-3xl">
-												<p className="text-lg md:text-xl  font-semibold leading-6 xl:leading-5 text-gray-800">
+
+											<div className="flex flex-col  bg-gray-200 w-full rounded-3xl">
+												<p className="text-lg md:text-xl mx-4 p-4 font-semibold text-gray-500 border-b-2 border-gray-500">
 													Measurements
 												</p>
-												<div className="border-2 mt-3 border-gray-700 w-full"></div>
-												<div className="mt-4 md:mt-6 flex flex-col md:flex-row justify-start items-start md:items-center md:space-x-6 xl:space-x-8 w-full">
-													<div className="w-full flex flex-col justify-start items-start space-y-8">
-														<div className="flex justify-between items-start gap-20 space-y-2">
-															{(purchaseOrder.ItemModels[0].costume.costumeType ===
-																"jacket" ||
-																purchaseOrder.ItemModels[0].costume.costumeType ===
-																"all") && (
-																	<div className="flex flex-col text-lg">
-																		<p className="font-semibold leading-none text-gray-800">
-																			Jacket
-																		</p>
-																		<div className=" bg-green-600 p-3 rounded-xl shadow-2xl">
 
-																			<p className="text-md  ml-2 leading-none text-gray-800">
-																				Back shoulder width:{" "}
-																				{purchaseOrder &&
-																					purchaseOrder.ItemModels[0].costume
-																						.measurements.coatMeasurements
-																						.backShoulderWidth}
-																			</p>
-																			<p className="text-md  ml-2 leading-none text-gray-800">
-																				Front jacket length:{" "}
-																				{purchaseOrder.ItemModels[0].costume
-																					.measurements.coatMeasurements
-																					.frontJacketLength + " inch"}
-																			</p>
-																			<p className="text-md  ml-2 leading-none text-gray-800">
-																				Front shoulder width:{" "}
-																				{purchaseOrder.ItemModels[0].costume
-																					.measurements.coatMeasurements
-																					.frontShoulderWidth + " inch"}
-																			</p>
-																			<p className="text-md  ml-2 leading-none text-gray-800">
-																				Full chest:{" "}
-																				{purchaseOrder.ItemModels[0].costume
-																					.measurements.coatMeasurements.fullChest +
-																					" inch"}
-																			</p>
-																			<p className="text-md  ml-2 leading-none text-gray-800">
-																				Full shoulder width:{" "}
-																				{purchaseOrder.ItemModels[0].costume
-																					.measurements.coatMeasurements
-																					.fullShoulderWidth + " inch"}
-																			</p>
-																			<p className="text-md  ml-2 leading-none text-gray-800">
-																				Hips:{" "}
-																				{purchaseOrder.ItemModels[0].costume
-																					.measurements.coatMeasurements.hips + " inch"}
-																			</p>
-																			<p className="text-md  ml-2 leading-none text-gray-800">
-																				Neck:{" "}
-																				{purchaseOrder.ItemModels[0].costume
-																					.measurements.coatMeasurements.neck + " inch"}
-																			</p>
-																			<p className="text-md  ml-2 leading-none text-gray-800">
-																				Sleeves:{" "}
-																				{purchaseOrder.ItemModels[0].costume
-																					.measurements.coatMeasurements.sleeves +
-																					" inch"}
-																			</p>
-																			<p className="text-md  ml-2 leading-none text-gray-800">
-																				Waist:{" "}
-																				{purchaseOrder.ItemModels[0].costume
-																					.measurements.coatMeasurements.waist +
-																					" inch"}
-																			</p>
-																		</div>
-																	</div>
-																)}
+												<div className=" flex justify-around mt-3 ">
+													{(purchaseOrder.ItemModels[0].costume.costumeType ===
+														"jacket" ||
+														purchaseOrder.ItemModels[0].costume.costumeType ===
+														"all") && (
+															<div className="flex flex-col text-lg">
+																<p className="font-semibold text-black pb-1">
+																	Jacket
+																</p>
+																<ul className="">
+																	<li className="text-md py-0.5">
+																		Back shoulder width: {" "}
+																		{purchaseOrder &&
+																			purchaseOrder.ItemModels[0].costume
+																				.measurements.coatMeasurements
+																				.backShoulderWidth} inch
+																	</li>
+																	<li className="text-md py-0.5">
+																		Front jacket length:{" "}
+																		{purchaseOrder.ItemModels[0].costume
+																			.measurements.coatMeasurements.frontJacketLength} inch
+																	</li>
+																	<li className="text-md py-0.5">
+																		Front shoulder width:{" "}
+																		{purchaseOrder.ItemModels[0].costume
+																			.measurements.coatMeasurements.frontShoulderWidth} inch
+																	</li>
+																	<li className="text-md py-0.5">
+																		Full chest:{" "}
+																		{purchaseOrder.ItemModels[0].costume
+																			.measurements.coatMeasurements.fullChest} inch
+																	</li>
+																	<li className="text-md py-0.5">
+																		Full shoulder width:{" "}
+																		{purchaseOrder.ItemModels[0].costume
+																			.measurements.coatMeasurements.fullShoulderWidth} inch
+																	</li>
+																	<li className="text-md py-0.5">
+																		Hips:{" "}
+																		{purchaseOrder.ItemModels[0].costume
+																			.measurements.coatMeasurements.hips} inch
+																	</li>
+																	<li className="text-md py-0.5">
+																		Neck:{" "}
+																		{purchaseOrder.ItemModels[0].costume
+																			.measurements.coatMeasurements.neck} inch
+																	</li>
+																	<li className="text-md py-0.5">
+																		Sleeves:{" "}
+																		{purchaseOrder.ItemModels[0].costume
+																			.measurements.coatMeasurements.sleeves} inch
+																	</li>
+																	<li className="text-md py-0.5">
+																		Waist:{" "}
+																		{purchaseOrder.ItemModels[0].costume
+																			.measurements.coatMeasurements.waist} inch
+																	</li>
+																</ul>
+															</div>
+														)}
 
-															{(purchaseOrder.ItemModels[0].costume.costumeType ===
-																"pant" ||
-																purchaseOrder.ItemModels[0].costume.costumeType ===
-																"all") && (
-																	<div className="flex flex-col">
-																		<p className="font-semibold leading-none text-gray-800">
-																			Pant
-																		</p>
-																		<div className=" bg-green-600 p-3 rounded-xl text-lg shadow-2xl">
-																			<p className="text-md  ml-2 leading-none text-gray-800">
-																				Crotch:{" "}
-																				{purchaseOrder.ItemModels[0].costume
-																					.measurements.trouserMeasurements.crotch +
-																					" inch"}
-																			</p>
-																			<p className="text-md  ml-2 leading-none text-gray-800">
-																				Cuff:{" "}
-																				{purchaseOrder.ItemModels[0].costume
-																					.measurements.trouserMeasurements.cuff +
-																					" inch"}
-																			</p>
-																			<p className="text-md  ml-2 leading-none text-gray-800">
-																				Length:{" "}
-																				{purchaseOrder.ItemModels[0].costume
-																					.measurements.trouserMeasurements.length +
-																					" inch"}
-																			</p>
-																			<p className="text-md  ml-2 leading-none text-gray-800">
-																				Thigh:{" "}
-																				{purchaseOrder.ItemModels[0].costume
-																					.measurements.trouserMeasurements.thigh +
-																					" inch"}
-																			</p>
-																			<p className="text-md  ml-2 leading-none text-gray-800">
-																				Waist:{" "}
-																				{purchaseOrder.ItemModels[0].costume
-																					.measurements.trouserMeasurements.waist +
-																					" inch"}
-																			</p>
-																		</div>
-																	</div>
-																)}
-														</div>
-													</div>
+													{(purchaseOrder.ItemModels[0].costume.costumeType ===
+														"pant" ||
+														purchaseOrder.ItemModels[0].costume.costumeType ===
+														"all") && (
+															<div className="flex flex-col">
+
+																<p className="font-semibold pb-1 text-black">
+																	Pant
+																</p>
+																<p className="text-md py-0.5">
+																	Crotch:{" "}
+																	{purchaseOrder.ItemModels[0].costume
+																		.measurements.trouserMeasurements.crotch +
+																		" inch"}
+																</p>
+																<p className="text-md py-0.5">
+																	Cuff:{" "}
+																	{purchaseOrder.ItemModels[0].costume
+																		.measurements.trouserMeasurements.cuff +
+																		" inch"}
+																</p>
+																<p className="text-md py-0.5">
+																	Length:{" "}
+																	{purchaseOrder.ItemModels[0].costume
+																		.measurements.trouserMeasurements.length +
+																		" inch"}
+																</p>
+																<p className="text-md py-0.5">
+																	Thigh:{" "}
+																	{purchaseOrder.ItemModels[0].costume
+																		.measurements.trouserMeasurements.thigh +
+																		" inch"}
+																</p>
+																<p className="text-md py-0.5">
+																	Waist:{" "}
+																	{purchaseOrder.ItemModels[0].costume
+																		.measurements.trouserMeasurements.waist +
+																		" inch"}
+																</p>
+
+															</div>
+														)}
 												</div>
 											</div>
 										</>
@@ -312,7 +258,7 @@ function OrderDetails() {
 								{(user.role === PRODUCT_MANAGER ||
 									user.role === OPERATION_ASSISTANT) && (
 										<div className="flex justify-center flex-col md:flex-row  items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
-											<div className="flex flex-col px-4 py-6 md:p-6 xl:p-8 w-full bg-gray-300 space-y-6">
+											<div className="flex flex-col px-4 py-6 md:p-6 xl:p-8 w-full bg-gray-300 space-y-6 rounded-2xl shadow-2xl">
 												<h3 className="text-xl  font-semibold leading-5 text-gray-800">
 													Summary
 												</h3>
@@ -344,7 +290,7 @@ function OrderDetails() {
 													</p>
 												</div>
 											</div>
-											<div className="flex flex-col justify-center p-2 md:p-6 xl:p-4 w-full bg-gray-300 space-y-6">
+											<div className="flex flex-col justify-center p-2 md:p-6 xl:p-4 w-full bg-gray-300 space-y-6 rounded-2xl shadow-2xl">
 												<h3 className="text-xl  font-semibold leading-5 text-gray-800">
 													Dates
 												</h3>
@@ -375,7 +321,8 @@ function OrderDetails() {
 							</div>
 						)}
 				</div>
-			)}
+			)
+			}
 
 			<div className=" overflow-hidden w-1/2 max-h-[calc(100vh-4rem)] flex items-center relative">
 				{!loading &&
@@ -428,7 +375,7 @@ function OrderDetails() {
 						</Canvas>
 					)}
 			</div>
-		</div>
+		</div >
 	);
 }
 

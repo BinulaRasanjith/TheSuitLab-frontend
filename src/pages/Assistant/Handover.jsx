@@ -1,8 +1,6 @@
 import { Button } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
-// import NewHandoverForm from "../../components/Assistant/Forms/HandoverDamagesForm";
-import { getHandovers } from "../../api/handoverAPI";
 import ReturnFixConfForm from "../../components/Assistant/Confirmations/ReturnFixConfForm";
 import DropDownFilter from "../../components/Assistant/Controls/HeaderDropDown";
 import SearchBox from "../../components/Assistant/Controls/HeaderSearchBox";
@@ -69,9 +67,16 @@ const records = [
 ];
 
 const Handover = () => {
+    const [isHandoverUpdate, updateHandover] = useState(false);
+    const [selectedHire, setSelectedHire] = useState({
+        customer: "",
+        suit: "",
+    });
 
-	const [handovers, setHandovers] = useState([]);
-	const [filteredHandovers, setFilteredHandovers] = useState([]);
+    const handleFormOpen = (cus_id, suit_id) => {
+        setSelectedHire({ customer: cus_id, suit: suit_id });
+        updateHandover(true);
+    }; 
 
 	const [isHandoverUpdate, updateHandover] = useState(false);
 	const [selectedHire, setSelectedHire] = useState({
@@ -130,7 +135,7 @@ const Handover = () => {
 					</div>
 					<div className=" flex gap-4 align-middle">
 						<div>
-							<SearchBox onSearch={handleSearch} />
+							<SearchBox />
 						</div>
 						<div>
 							<DropDownFilter />
@@ -197,14 +202,10 @@ const Handover = () => {
 				</div>
 				<div className=" flex justify-between">
 					<div className=" py-3 text-sm font-medium text-neutral-400">
-						Showing data {startIndex + 1} to {endIndex} of {filteredHandovers.length} entries
+						Showing data 1 to 4 of 4 entries
 					</div>
 					<div className=" py-3">
-						<Pagination
-							currentPage={currentPage}
-							totalPages={Math.ceil(records.length / recordsPerPage)}
-							onPageChange={(newPage) => setCurrentPage(newPage)}
-						/>
+						<Pagination />
 					</div>
 				</div>
 			</div>
@@ -214,11 +215,11 @@ const Handover = () => {
 			</div> */}
 			<div className={`relative  ${isHandoverUpdate ? "block" : "hidden"}`}>
 				<ReturnFixConfForm
-					isOpen={isHandoverUpdate}
-					onClose={handleFormClose}
-					cus_id={selectedHire.customer}
-					suit_id={selectedHire.suit}
-				/>
+                    isOpen={isHandoverUpdate}
+                    onClose={handleFormClose}
+                    cus_id={selectedHire.customer}
+                    suit_id={selectedHire.suit}
+                    />
 			</div>
 		</div>
 	);

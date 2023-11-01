@@ -1,4 +1,5 @@
 import { useEffect } from "react"; // TODO
+// import { BiSolidMessageAltEdit } from "react-icons/bi";
 import { BiSolidPurchaseTag } from "react-icons/bi";
 import { BsBarChartFill } from "react-icons/bs";
 import { FaUserTag } from "react-icons/fa";
@@ -14,7 +15,9 @@ import { useNavigate } from "react-router-dom"; // TODO
 
 import ContentWrapper from "../../components/ContentWrapper";
 import MainLayout from "../../components/MainLayout";
+// import Navbar from "../../components/TopNavBar/Staffnavbar"
 import Navbar from "../../components/Navbar";
+// import Sidebar from "../../components/AssistantSidebar"
 import Sidebar from "../../components/Sidebar/Sidebar";
 import { OPERATION_ASSISTANT } from "../../constants"; // TODO
 import { selectUser } from "../../store/slices/authSlice"; // TODO

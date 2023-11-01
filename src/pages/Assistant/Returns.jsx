@@ -1,8 +1,7 @@
 import { Button } from "@chakra-ui/react"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { AiFillPlusCircle } from "react-icons/ai"
 
-import { getReturns } from "../../api/returnAPI"
 import ReturnFixConfForm from "../../components/Assistant/Confirmations/ReturnFixConfForm";
 import DropDownFilter from "../../components/Assistant/Controls/HeaderDropDown";
 import SearchBox from "../../components/Assistant/Controls/HeaderSearchBox";
@@ -65,7 +64,7 @@ const Returns = () => {
 					</div>
 					<div className=" flex gap-4 align-middle">
 						<div>
-							<SearchBox onSearch={handleSearch} />
+							<SearchBox />
 						</div>
 						<div>
 							<DropDownFilter />
@@ -134,14 +133,10 @@ const Returns = () => {
 				</div>
 				<div className=" flex justify-between">
 					<div className=" py-3 text-sm font-medium text-neutral-400">
-						Showing data {startIndex + 1} to {endIndex} of {filteredReturns.length} entries {/* TODO: CHANGE THIS TO WORKING WITH 0 */}
+						Showing data 1 to 8 of 256K entries
 					</div>
 					<div className=" py-3">
-						<Pagination
-							currentPage={currentPage}
-							totalPages={Math.ceil(returns.length / recordsPerPage)}
-							onPageChange={(newPage) => setCurrentPage(newPage)}
-						/>
+						<Pagination />
 					</div>
 				</div>
 			</div>

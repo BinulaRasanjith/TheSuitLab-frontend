@@ -6,6 +6,7 @@ import Employees from "../pages/Admin/Employees";
 import Orders from "../pages/Admin/Orders";
 import Reviews from "../pages/Admin/Test1";
 import Profile from "../pages/Profile";
+import Notifications from "../components/Notification";
 
 const costumerRoutes = {
 	path: "/admin",
@@ -21,7 +22,7 @@ const costumerRoutes = {
 		// 	element: <h1 className="text-center text-4xl">Still in development</h1>,
 		// },
 		{ path: "add-employee", element: <AddEmployee /> },
-	],
+		{ path: "notifications", element: <Notifications /> },	],
 };
 
 export default costumerRoutes;
