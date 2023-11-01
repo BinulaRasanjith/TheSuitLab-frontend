@@ -2,10 +2,10 @@ import api from "./api";
 
 // VIEW MATERIALS BASED ON THE TYPE
 export const getMaterials2 = async ({ materialType }) => {
-    return api.get('/material/', { 
+    return api.get('/material/', {
         params: {
             materialType,
-        } 
+        }
     });
 };
 
@@ -34,5 +34,9 @@ export const useMaterialQuantity = async (updates) => {
 };
 
 export const getMaterials = async (type) => {
-  return api.post("/material", { type });
+    return api.get("/material", {
+        params: {
+            materialType: type,
+        },
+    });
 };
