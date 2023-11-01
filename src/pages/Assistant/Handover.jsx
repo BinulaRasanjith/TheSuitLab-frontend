@@ -67,22 +67,12 @@ const records = [
 ];
 
 const Handover = () => {
+	const [handovers, setHandovers] = useState([]);
     const [isHandoverUpdate, updateHandover] = useState(false);
     const [selectedHire, setSelectedHire] = useState({
         customer: "",
         suit: "",
     });
-
-    const handleFormOpen = (cus_id, suit_id) => {
-        setSelectedHire({ customer: cus_id, suit: suit_id });
-        updateHandover(true);
-    }; 
-
-	const [isHandoverUpdate, updateHandover] = useState(false);
-	const [selectedHire, setSelectedHire] = useState({
-		customer: "",
-		suit: "",
-	});
 
 	const [currentPage, setCurrentPage] = useState(1);
 	const recordsPerPage = 4;
