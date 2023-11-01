@@ -1,8 +1,8 @@
 import { Button } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import { FaBars, FaTimes } from "react-icons/fa";
-
+import { useToast } from "@chakra-ui/react";
 import { PiNewspaperBold } from "react-icons/pi";
 // import { HiShoppingCart } from "react-icons/hi";
 import { PiShoppingCartSimpleBold } from "react-icons/pi";
@@ -15,17 +15,31 @@ import TSL_LOGO from "../assets/images/TSL_LOGO.png";
 import TSL_LOGO_SM from "../assets/images/TSL_LOGO_SM.png";
 import defaultPhoto from "../assets/images/avatar.png";
 import { PROFILE_PICTURE_URL } from "../config/config";
-import { CUSTOMER } from "../constants";
+import { CUSTOMER, OPERATION_ASSISTANT, PRODUCT_MANAGER, ADMIN, TAILOR } from "../constants";
 import { selectUser } from "../store/slices/authSlice";
 import { logoutAsync } from "../store/slices/authSlice";
 import { toggleSidebar } from "../store/slices/sidebarSlice";
 import displayRoleName from "../utils/displayRoleName";
+import { IoNotificationsSharp } from "react-icons/io5";
 
 const Navbar = () => {
 	const navigate = useNavigate();
 	const { pathname } = useLocation();
 	const dispatch = useDispatch();
 	const [isUserDropdownOpen, setUserDropdownOpen] = useState(false);
+	const [hasNewNotifications, setHasNewNotifications] = useState(true); // Set this based on your notification data
+
+	const toast = useToast();
+	useEffect(() => {
+		if (hasNewNotifications) {
+			toast({
+				title: "You have new notifications!",
+				status: "success",
+				duration: 5000,
+				isClosable: true,
+			});
+		}
+	}, [hasNewNotifications]);
 
 	const user = useSelector(selectUser);
 
@@ -44,6 +58,23 @@ const Navbar = () => {
 		navigate("/", { replace: true });
 		dispatch(logoutAsync(user.id));
 	};
+	const handleNotificationClick = () => {
+		if (user.role === CUSTOMER) {
+			navigate("/customer/notifications");
+		}
+		if (user.role === ADMIN) {
+			navigate("/admin/notifications");
+		}
+		if (user.role === TAILOR) {
+			navigate("/tailor/notifications");
+		}
+		if (user.role === PRODUCT_MANAGER) {
+			navigate("/manager/notifications");
+		}
+		if (user.role === OPERATION_ASSISTANT) {
+			navigate("/assistant/notifications");
+		}
+	}
 
 	const [open, setOpen] = useState(false);
 
@@ -145,16 +176,26 @@ const Navbar = () => {
 						<>
 							<div className="flex items-center gap-3 relative">
 
-								{/* {user.role === CUSTOMER && <div className="text-secondary cursor-pointer ">
+								{user.role === CUSTOMER && <div className="text-secondary cursor-pointer ">
 
 									<HiShoppingCart onClick={() => navigate("/customer/cart")}
 										style={{ fontSize: "1.5rem" }} />
-								</div>} */}
+								</div>}
+
+								{/*notification */}
+								<div className="text-secondary cursor-pointer ">
+									<IoNotificationsSharp
+										onClick={handleNotificationClick}
+										style={{
+											fontSize: "1.5rem",
+										}} />
+								</div>
+
 								{/* {user.id && user.role !== CUSTOMER && (
 									<div className={`text-gray-400 text-xs text-end`}>
 										{displayRoleName(user.role)}
 									</div>
-								)} */}
+								)}  */}
 
 								<div
 									className="flex flex-col cursor-pointer"
@@ -207,7 +248,7 @@ const Navbar = () => {
 												>
 													<div className="flex gap-x-4 items-center">
 														<RxDashboard style={{ fontSize: "1.5rem" }} />
-														<label>Dahboard</label>
+														<label>Dashboard</label>
 													</div>
 												</NavLink>
 											</li>

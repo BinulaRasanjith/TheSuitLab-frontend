@@ -10,7 +10,8 @@ import TobeCollectedOrders from "../pages/tailor/Orders/TobeCollectedOrders";
 import Strings from "../components/StringData";
 import Materials  from "../pages/Tailor/Materials";
 import Reviews from "../components/Reviews";
-import AssignedOrders from "../pages/Tailor/AssignedOrders"
+import AssignedOrders from "../pages/Tailor/AssignedOrders";
+import Notifications from "../components/Notification";
 
 
 const tailorRoutes = {
@@ -47,6 +48,10 @@ const tailorRoutes = {
 		{
 			path: "profile",
 			element: <Profile />,
+		},
+		{
+			path: "notifications",
+			element: <Notifications />,
 		},
 	],
 };

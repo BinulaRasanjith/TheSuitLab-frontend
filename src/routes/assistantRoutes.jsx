@@ -23,9 +23,9 @@ const AssistantRoutes = {
     { path: "returns", element: <Returns /> },
     { path: "accessories", element: <Accessories /> },
     { path: "hiring", element: <Hiring /> },
-    { path: "notifications", element: <Notifications /> },
     { path: "profile", element: <Profile /> },
     { path: "reviews", element: <Reviews /> },
+    { path: "notifications", element: <Notifications />}
   ],
 };
 
