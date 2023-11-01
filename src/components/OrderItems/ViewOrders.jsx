@@ -123,16 +123,15 @@ const ViewOrders = () => {
 						</div>
 					</tbody>
 				</table>
-				{/* <div className=" w-full border h-0 mt-3 mb-6 border-gray-200"></div> */}
 			</div>
-			<div className=" flex justify-between">
+			{/* <div className=" flex justify-between">
 				<div className=" py-3 text-sm font-medium text-neutral-400">
 					Showing data 1 to 8 of 256K entries
 				</div>
 				<div className=" py-3">
 					<Pagination />
 				</div>
-			</div>
+			</div> */}
 		</div>
 
 	);

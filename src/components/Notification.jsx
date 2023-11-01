@@ -19,32 +19,33 @@ import {
 	TAILOR,
 } from "../constants";
 import { selectUser } from "../store/slices/authSlice";
+import { tr } from "date-fns/locale";
 
 const Notifications = () => {
 	const [notifications, setNotifications] = useState([
 		{
 			id: 1,
-			subject: "This is Subject 1",
-			message: "This is Message 1",
-			isRead: false,
-		},
-		{
-			id: 2,
-			subject: "This is Subject 2",
-			message: "This is Message 2",
+			subject: "Order",
+			message: "Your order has been placed successfully",
 			isRead: true,
 		},
 		{
+			id: 2,
+			subject: "Order",
+			message: "Your order has completed successfully",
+			isRead: false,
+		},
+		{
 			id: 3,
-			subject: "This is Subject 3",
-			message: "This is Message 3",
+			subject: "Fit ON date",
+			message: "check your fit on date",
 			isRead: true,
 		},
 		{
 			id: 4,
-			subject: "This is Subject 4",
-			message: "This is Message 4",
-			isRead: false,
+			subject: "Message",
+			message: "You have a new message from shop",
+			isRead: true,
 		},
 	]);
 
