@@ -1,8 +1,9 @@
 import { Environment, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
+import { format } from "date-fns";
 import { Suspense, useEffect } from "react";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import { getPurchaseOrder as getPurchaseOrderAPI } from "../api/purchaseOrdersAPI";
@@ -17,7 +18,6 @@ import ItemType from "../constants/ItemType";
 import { selectUser } from "../store/slices/authSlice";
 import { selectComponentHide } from "../store/slices/componentHideSlice";
 import { formatPrice } from "../utils/paymentUtils";
-import { format } from "date-fns";
 
 function OrderDetails() {
 	const hide = useSelector(selectComponentHide);
@@ -354,48 +354,55 @@ function OrderDetails() {
 			)}
 
 			<div className=" overflow-hidden w-1/2 max-h-[calc(100vh-4rem)] flex items-center relative">
-				{!loading && (
-					<Canvas camera={{ position: [0, 0, 10], fov: 30 }}>
-						<Suspense fallback={false}>
-							<OrderedDesign
-								material={
-									purchaseOrder.ItemModels[0].costume.customization.fabric
-								}
-								backPocket={
-									purchaseOrder.ItemModels[0].costume.customization.pocket
-								}
-								trouser={
-									purchaseOrder.ItemModels[0].costume.customization.trouser
-								}
-								jacketButtons={
-									purchaseOrder.ItemModels[0].costume.customization.button
-								}
-								lapel={purchaseOrder.ItemModels[0].costume.customization.lapel}
-								pocket={
-									purchaseOrder.ItemModels[0].costume.customization.pocket
-								}
-								pocketColor={
-									purchaseOrder.ItemModels[0].costume.customization.pocketColor
-								}
-								sleeveButtons={
-									purchaseOrder.ItemModels[0].costume.customization.sleeveButton
-								}
-								buttonColor={
-									purchaseOrder.ItemModels[0].costume.customization.buttonColor
-								}
-								camCont={camCont}
-								control={control}
+				{!loading &&
+					ItemType.CUSTOM_SUIT.toLowerCase() ===
+						purchaseOrder.ItemModels[0].itemType.toLowerCase() && (
+						<Canvas camera={{ position: [0, 0, 10], fov: 30 }}>
+							<Suspense fallback={false}>
+								<OrderedDesign
+									material={
+										purchaseOrder.ItemModels[0].costume.customization.fabric
+									}
+									backPocket={
+										purchaseOrder.ItemModels[0].costume.customization.pocket
+									}
+									trouser={
+										purchaseOrder.ItemModels[0].costume.customization.trouser
+									}
+									jacketButtons={
+										purchaseOrder.ItemModels[0].costume.customization.button
+									}
+									lapel={
+										purchaseOrder.ItemModels[0].costume.customization.lapel
+									}
+									pocket={
+										purchaseOrder.ItemModels[0].costume.customization.pocket
+									}
+									pocketColor={
+										purchaseOrder.ItemModels[0].costume.customization
+											.pocketColor
+									}
+									sleeveButtons={
+										purchaseOrder.ItemModels[0].costume.customization
+											.sleeveButton
+									}
+									buttonColor={
+										purchaseOrder.ItemModels[0].costume.customization
+											.buttonColor
+									}
+									camCont={camCont}
+									control={control}
+								/>
+							</Suspense>
+							<OrbitControls
+								enableZoom={true}
+								makeDefault
+								maxPolarAngle={Math.PI / 2}
+								minPolarAngle={Math.PI / 2}
 							/>
-						</Suspense>
-						<OrbitControls
-							enableZoom={true}
-							makeDefault
-							maxPolarAngle={Math.PI / 2}
-							minPolarAngle={Math.PI / 2}
-						/>
-						<Environment preset="city" />{" "}
-					</Canvas>
-				)}
+							<Environment preset="city" />{" "}
+						</Canvas>
+					)}
 			</div>
 		</div>
 	);
