@@ -5,8 +5,8 @@ import { CgProfile } from "react-icons/cg";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { HiShoppingCart } from "react-icons/hi";
 import { IoNotificationsSharp } from "react-icons/io5";
-import { PiShoppingCartSimpleBold } from "react-icons/pi";
 import { PiNewspaperBold } from "react-icons/pi";
+import { PiShoppingCartSimpleBold } from "react-icons/pi";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { RxDashboard } from "react-icons/rx";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,6 +15,7 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import TSL_LOGO from "../assets/images/TSL_LOGO.png";
 import TSL_LOGO_SM from "../assets/images/TSL_LOGO_SM.png";
 import defaultPhoto from "../assets/images/avatar.png";
+import RedDot from "../components/RedDot";
 import { PROFILE_PICTURE_URL } from "../config/config";
 import {
 	ADMIN,
@@ -26,9 +27,8 @@ import {
 import { selectUser } from "../store/slices/authSlice";
 import { logoutAsync } from "../store/slices/authSlice";
 import { toggleSidebar } from "../store/slices/sidebarSlice";
-import displayRoleName from "../utils/displayRoleName";
-import RedDot from '../components/RedDot'; // Adjust the import path based on your project structure
-
+import displayRoleName from "../utils/displayRoleName"; // Adjust the import path based on your project structure
+import { getIfUnreadNotifications } from "../api/notificationAPI";
 
 const Navbar = () => {
 	const navigate = useNavigate();
@@ -41,11 +41,15 @@ const Navbar = () => {
 	const toast = useToast();
 
 	useEffect(() => {
-		if (hasNewNotifications) {
-			setHasNewNotifications(true);
-		}
-	}, []);
+		const fetchNotifications = async () => {
+			const response = await getIfUnreadNotifications();
+			setHasNewNotifications(response.data.unread);
+		};
 
+		if (user.id) {
+			fetchNotifications();
+		}
+	}, [user.id]);
 
 	// handle login click
 	const handleLoginClick = () => {
@@ -101,19 +105,19 @@ const Navbar = () => {
 				{
 					// sidebar toggle burger button
 					user.id &&
-					(user.role !== CUSTOMER ||
-						pathname.includes("/customer/customize-suit/") ||
-						pathname.includes("/customer/hire-suit") ||
-						pathname.includes("/customer/accessories/")) && (
-						<div>
-							<button
-								className="flex items-center px-3 py-2 text-secondary text-2xl"
-								onClick={() => dispatch(toggleSidebar())}
-							>
-								<FaBars />
-							</button>
-						</div>
-					)
+						(user.role !== CUSTOMER ||
+							pathname.includes("/customer/customize-suit/") ||
+							pathname.includes("/customer/hire-suit") ||
+							pathname.includes("/customer/accessories/")) && (
+							<div>
+								<button
+									className="flex items-center px-3 py-2 text-secondary text-2xl"
+									onClick={() => dispatch(toggleSidebar())}
+								>
+									<FaBars />
+								</button>
+							</div>
+						)
 				}
 				<div className="h-full flex items-center pr-2">
 					<div className="flex align-center h-14 overflow-hidden">
@@ -147,8 +151,9 @@ const Navbar = () => {
 									className={({ isActive }) => {
 										return `px-3 py-1 ${isActive ? "font-bold" : ""}`;
 									}}
-									to={`${user.role === CUSTOMER ? "/customer/services" : "/services"
-										}`}
+									to={`${
+										user.role === CUSTOMER ? "/customer/services" : "/services"
+									}`}
 								>
 									Services
 								</NavLink>
@@ -156,8 +161,9 @@ const Navbar = () => {
 									className={({ isActive }) => {
 										return `px-3 py-1 ${isActive ? "font-bold" : ""}`;
 									}}
-									to={`${user.role === CUSTOMER ? "/customer/about-us" : "/about-us"
-										}`}
+									to={`${
+										user.role === CUSTOMER ? "/customer/about-us" : "/about-us"
+									}`}
 								>
 									About Us
 								</NavLink>
@@ -165,10 +171,11 @@ const Navbar = () => {
 									className={({ isActive }) => {
 										return `px-3 py-1 ${isActive ? "font-bold" : ""}`;
 									}}
-									to={`${user.role === CUSTOMER
-										? "/customer/contact-us"
-										: "contact-us"
-										}`}
+									to={`${
+										user.role === CUSTOMER
+											? "/customer/contact-us"
+											: "contact-us"
+									}`}
 								>
 									Contact Us
 								</NavLink>
@@ -193,7 +200,10 @@ const Navbar = () => {
 								{/*notification */}
 								<div className="text-secondary cursor-pointer relative ">
 									{hasNewNotifications && <RedDot />}
-									<IoNotificationsSharp onClick={handleNotificationClick} style={{ fontSize: '1.5rem' }} />
+									<IoNotificationsSharp
+										onClick={handleNotificationClick}
+										style={{ fontSize: "1.5rem" }}
+									/>
 									{/* <IoNotificationsSharp
 										onClick={handleNotificationClick}
 										style={{
@@ -238,8 +248,9 @@ const Navbar = () => {
 								{/*  Dropdown menu  */}
 								<div
 									id="userDropdown"
-									className={`z-10 fixed ${isUserDropdownOpen ? "block" : "hidden"
-										} bg-primary divide-y divide-gray-300 border border-gray-300 rounded-lg shadow w-44 top-20 right-2`}
+									className={`z-10 fixed ${
+										isUserDropdownOpen ? "block" : "hidden"
+									} bg-primary divide-y divide-gray-300 border border-gray-300 rounded-lg shadow w-44 top-20 right-2`}
 								>
 									<div className="px-4 py-3 text-sm text-white">
 										<div>{`${user.firstName} ${user.lastName}`}</div>
@@ -397,8 +408,9 @@ const Navbar = () => {
 				<ul className="flex flex-col items-center p-2 text-sm text-gray-700 dark:text-gray-200">
 					<NavLink
 						className={({ isActive }) => {
-							return `px-3 py-1 ${isActive ? "border-2 rounded-md border-cyan-500" : ""
-								}`;
+							return `px-3 py-1 ${
+								isActive ? "border-2 rounded-md border-cyan-500" : ""
+							}`;
 						}}
 						to="/"
 					>
@@ -406,8 +418,9 @@ const Navbar = () => {
 					</NavLink>
 					<NavLink
 						className={({ isActive }) => {
-							return `px-3 py-1 ${isActive ? "border-2 rounded-md border-cyan-500" : ""
-								}`;
+							return `px-3 py-1 ${
+								isActive ? "border-2 rounded-md border-cyan-500" : ""
+							}`;
 						}}
 						to="/services"
 					>
@@ -415,8 +428,9 @@ const Navbar = () => {
 					</NavLink>
 					<NavLink
 						className={({ isActive }) => {
-							return `px-3 py-1 ${isActive ? "border-2 rounded-md border-cyan-500" : ""
-								}`;
+							return `px-3 py-1 ${
+								isActive ? "border-2 rounded-md border-cyan-500" : ""
+							}`;
 						}}
 						to="/about-us"
 					>
@@ -424,8 +438,9 @@ const Navbar = () => {
 					</NavLink>
 					<NavLink
 						className={({ isActive }) => {
-							return `px-3 py-1 ${isActive ? "border-2 rounded-md border-cyan-500" : ""
-								}`;
+							return `px-3 py-1 ${
+								isActive ? "border-2 rounded-md border-cyan-500" : ""
+							}`;
 						}}
 						to="/contact-us"
 					>
