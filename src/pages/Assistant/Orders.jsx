@@ -150,11 +150,6 @@ const Orders = () => {
 
 		setFilteredOrders(filtered);
 	};
-
-    const handleFormClose = () => {
-        setSelectedOrder(null);
-        updateOrder(false);
-    };
 	return (
 		<div>
 			<div className=" flex flex-col justify-between mx-10 my-8 p-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg">
