@@ -44,7 +44,7 @@ const Accessories = () => {
 		<div className="relative">
 			<div className=" flex flex-col justify-between mx-10 my-8 border border-solid border-zinc-950 border-opacity-0 rounded-lg">
 				<div className=" flex items-center justify-between my-4">
-					<div className="text-xl font-semibold">Accessories</div>
+					<div className="text-2xl font-semibold">Accessories</div>
 					<Button
 						_hover={
 							{

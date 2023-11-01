@@ -9,12 +9,12 @@ import SearchBox from "../../components/Assistant/Controls/HeaderSearchBox";
 import Pagination from "../../components/Assistant/Controls/Pagination";
 import NewReturnForm from "../../components/Assistant/Forms/NewReturnForm";
 import ReturnRecord from "../../components/Assistant/ReturnRecord";
-
 // import Returnset from "../../components/Assistant/ReturnedItemSet";
 
 
 const Returns = () => {
 	const [isNewReturnForm, addNewReturn] = useState(false);
+    const [filteredReturns, setFilteredReturns] = useState([]);
 
 	const [currentPage, setCurrentPage] = useState(1);
 	const recordsPerPage = 5;
@@ -45,6 +45,15 @@ const Returns = () => {
 		addNewReturn(true);
 	};
 
+	const handleSearch = (searchText) => {
+        const filtered = returns.filter((order) => {
+            const refNo = order.referenceNo;
+            return refNo.toLowerCase().includes(searchText.toLowerCase());
+        });
+
+        setFilteredReturns(filtered);
+    };
+
 	return (
 		<div className="relative">
 			<div className=" flex flex-col justify-between mx-10 my-8 p-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg">
@@ -57,7 +66,7 @@ const Returns = () => {
 					</div>
 					<div className=" flex gap-4 align-middle">
 						<div>
-							<SearchBox />
+							<SearchBox onSearch={handleSearch} />
 						</div>
 						<div>
 							<DropDownFilter />
@@ -96,12 +105,12 @@ const Returns = () => {
 				<div>
 					{/* <Returnset /> */}
 					<div className="flex flex-col gap-6">
-						{returns.length <= 0 ?
+						{filteredReturns.length <= 0 ?
 							<div>
 								<div className='text-center text-black font-bold text-xl' width={100} height={320} colSpan="6">No data</div>
 							</div>
 							:
-							returns.slice(startIndex, endIndex).map((item, index) => ( // SLICE CUSTOMERS ARRAY TO DISPLAY ONLY 6 RECORDS PER PAGE
+							filteredReturns.slice(startIndex, endIndex).map((item, index) => ( // SLICE CUSTOMERS ARRAY TO DISPLAY ONLY 6 RECORDS PER PAGE
 							// records.map((item, index) => (
 								<ReturnRecord
 									key={index}
@@ -116,7 +125,7 @@ const Returns = () => {
 				</div>
 				<div className=" flex justify-between">
 					<div className=" py-3 text-sm font-medium text-neutral-400">
-						Showing data {startIndex + 1} to {endIndex} of {returns.length} entries
+						Showing data {startIndex + 1} to {endIndex} of {filteredReturns.length} entries {/* TODO: CHANGE THIS TO WORKING WITH 0 */}
 					</div>
 					<div className=" py-3">
 						<Pagination

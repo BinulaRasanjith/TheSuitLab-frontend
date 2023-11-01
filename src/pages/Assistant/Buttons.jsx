@@ -1,19 +1,11 @@
-import { Button } from "@chakra-ui/react"
+// import { Button } from "@chakra-ui/react"
 import { useEffect, useState } from 'react'
-import { AiFillPlusCircle } from 'react-icons/ai'
+// import { AiFillPlusCircle } from 'react-icons/ai'
 
 import { getMaterials } from "../../api/materialAPI"
 import CardContainer from "../../components/MaterialCard/CardContainer"
 import MaterialCard from "../../components/MaterialCard/MaterialCard"
 
-
-// const buttons = [
-// 	{
-// 		buttonName: '10 mm Brass metal 4 hole',
-// 		supplierID: 'S009',
-// 		image: img1
-// 	},
-// ]
 
 const Buttons = () => {
 	const [buttons, setButtons] = useState([]);
@@ -21,9 +13,8 @@ const Buttons = () => {
 	useEffect(() => {
 		const fetchButtonData = async () => {
 			try {
-				const response = await getMaterials();
+				const response = await getMaterials({ materialType: "button" });
 				setButtons(response.data.materials);
-				console.log(response.data);
 			} catch (error) {
 				console.error("API Error:", error);
 			}
@@ -36,22 +27,6 @@ const Buttons = () => {
 		<>
 			<div className="flex items-center justify-between">
 				<h1 className="text-xl font-semibold p-7">Buttons</h1>
-				<Button
-					_hover={
-						{
-							bgColor: 'primary.100',
-							color: 'primary.200'
-						}
-					}
-					bgColor={'primary.100'}
-					color={'primary.200'}
-					leftIcon={<AiFillPlusCircle />}
-					m={7}
-					rounded={'full'}
-
-				>
-					Add new
-				</Button>
 			</div>
 
 

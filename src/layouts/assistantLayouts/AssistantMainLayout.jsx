@@ -30,10 +30,6 @@ const assistantSidebarItems = [
 		to: "/assistant/materials",
 		subItems: [
 			{
-				label: "All",
-				to: "/assistant/materials/all",
-			},
-			{
 				label: "Fabrics",
 				to: "/assistant/materials/fabric",
 			},

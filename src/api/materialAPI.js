@@ -1,8 +1,12 @@
 import api from './api';
 
 // VIEW MATERIALS BASED ON THE TYPE
-export const getMaterials = async (type) => {
-    return api.get('/material/', { type });
+export const getMaterials = async ({ materialType }) => {
+    return api.get('/material/', { 
+        params: {
+            materialType,
+        } 
+    });
 }
 
 // ADD NEW MATERIAL

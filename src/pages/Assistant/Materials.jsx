@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import DropDownFilter from '../../components/Assistant/Controls/HeaderDropDown'
-import SearchBox from '../../components/Assistant/Controls/HeaderSearchBox'
+// import SearchBox from '../../components/Assistant/Controls/HeaderSearchBox'
 import Pagination from '../../components/Assistant/Controls/Pagination'
 import MaterialStockUpdateForm from "../../components/Assistant/Forms/MaterialUpdateForm"
 import MaterialItems from '../../components/Assistant/MaterialItemSet'
@@ -34,7 +34,7 @@ const Materials = () => {
                     </div>
                     <div className=" flex gap-4 align-middle">
                         <div>
-                            <SearchBox />
+                            {/* <SearchBox /> */}
                         </div>
                         <div>
                             <DropDownFilter />

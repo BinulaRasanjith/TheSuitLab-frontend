@@ -7,13 +7,14 @@ import { getCustomers } from "../../api/customerAPI";
 import DropDownFilter from "../../components/Assistant/Controls/HeaderDropDown"
 import SearchBox from "../../components/Assistant/Controls/HeaderSearchBox"
 import Pagination from "../../components/Assistant/Controls/Pagination"
-// import Customer from "../../components/Assistant/CustomersView"
 import NewCustomerForm from "../../components/Assistant/Forms/NewCustomerForm"
 import NewCustomerOTPForm from "../../components/Assistant/Forms/NewCustomerOTP"
+// import Customer from "../../components/Assistant/CustomersView"
 
 const ViewCustomers = () => {
 
     const [customers, setCustomers] = useState([]);
+    const [filteredCustomers, setFilteredCustomers] = useState([]);
 
     const [currentPage, setCurrentPage] = useState(1);
     const recordsPerPage = 5;
@@ -44,6 +45,15 @@ const ViewCustomers = () => {
         fetchCustomers();
     }, []);
 
+    const handleSearch = (searchText) => {
+        const filtered = customers.filter((customer) => {
+            const customerName = `${customer.firstName} ${customer.lastName}`;
+            return customerName.toLowerCase().includes(searchText.toLowerCase());
+        });
+
+        setFilteredCustomers(filtered);
+    };
+
     return (
         <div>
             <div>
@@ -57,7 +67,7 @@ const ViewCustomers = () => {
                         </div>
                         <div className=" flex gap-4 align-middle">
                             <div>
-                                <SearchBox />
+                                <SearchBox onSearch={handleSearch} />
                             </div>
                             <div>
                                 <DropDownFilter />
@@ -106,12 +116,12 @@ const ViewCustomers = () => {
                                 </tr>
                             </thead>
                             <tbody className=" text-left text-md font-medium text-gray-400 w-full">
-                                {customers.length <= 0 ?
+                                {filteredCustomers.length <= 0 ?
                                     <tr>
                                         <td className='text-center text-black font-bold text-xl' width={100} height={320} colSpan="6">No data</td>
                                     </tr>
                                     :
-                                    customers.slice(startIndex, endIndex).map((item, index) => ( // SLICE CUSTOMERS ARRAY TO DISPLAY ONLY 6 RECORDS PER PAGE
+                                    filteredCustomers.slice(startIndex, endIndex).map((item, index) => ( // SLICE CUSTOMERS ARRAY TO DISPLAY ONLY 6 RECORDS PER PAGE
                                         // customers.map((item, index) => (
                                         <tr key={index} className="items-center text-centers border-b-2 hover:bg-gray-100 text-black whitespace-nowrap font-medium w-full">
                                             <td className="hidden"> <Link to={`${item.userId}`}>{item.userId}</Link></td>
@@ -129,7 +139,7 @@ const ViewCustomers = () => {
 
                     <div className=" flex justify-between">
                         <div className=" py-3 text-sm font-medium text-neutral-400">
-                            Showing data {startIndex+1} to {endIndex} of {customers.length} entries
+                            Showing data {startIndex + 1} to {endIndex} of {filteredCustomers.length} entries
                         </div>
                         <div className=" py-3">
                             <Pagination

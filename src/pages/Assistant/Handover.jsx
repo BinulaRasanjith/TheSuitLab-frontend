@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
+// import NewHandoverForm from "../../components/Assistant/Forms/HandoverDamagesForm";
+import { getHandovers } from "../../api/handoverAPI";
 import ReturnFixConfForm from "../../components/Assistant/Confirmations/ReturnFixConfForm";
 import DropDownFilter from "../../components/Assistant/Controls/HeaderDropDown";
 import SearchBox from "../../components/Assistant/Controls/HeaderSearchBox";
 import Pagination from "../../components/Assistant/Controls/Pagination";
-// import NewHandoverForm from "../../components/Assistant/Forms/HandoverDamagesForm";
 // import Handovers from "../../components/Assistant/HandoveredItemSet";
 import RentalRecord from "../../components/Assistant/HandoverRecord";
 
@@ -69,6 +70,10 @@ const records = [
 ];
 
 const Handover = () => {
+
+	const [handovers, setHandovers] = useState([]);
+	const [filteredHandovers, setFilteredHandovers] = useState([]);
+
 	const [isHandoverUpdate, updateHandover] = useState(false);
 	const [selectedHire, setSelectedHire] = useState({
 		customer: "",
@@ -91,6 +96,28 @@ const Handover = () => {
 		updateHandover(false);
 	};
 
+	useEffect(() => {
+		const fetchHandovers = async () => {
+			try {
+				const response = await getHandovers();
+				setHandovers(response.data.customers);
+			} catch (error) {
+				console.error(error);
+			}
+		};
+
+		fetchHandovers();
+	}, []);
+
+	const handleSearch = (searchText) => {
+		const filtered = records.filter((order) => {
+			const mobile = order.cus_mobile;
+			return mobile.toLowerCase().includes(searchText.toLowerCase());
+		});
+
+		setFilteredHandovers(filtered);
+	};
+
 	return (
 		<div>
 			<div className=" flex flex-col justify-between mx-10 my-8 p-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg">
@@ -103,7 +130,7 @@ const Handover = () => {
 					</div>
 					<div className=" flex gap-4 align-middle">
 						<div>
-							<SearchBox />
+							<SearchBox onSearch={handleSearch} />
 						</div>
 						<div>
 							<DropDownFilter />
@@ -124,13 +151,13 @@ const Handover = () => {
 				<div>
 					{/* <Handovers onOpen={handleFormOpen} /> */}
 					<div className="flex flex-col gap-6">
-						{records.length <= 0 ?
+						{filteredHandovers.length <= 0 ?
 							<div>
 								<div className='text-center text-black font-bold text-xl' width={100} height={320} colSpan="6">No data</div>
 							</div>
 							:
-							records.slice(startIndex, endIndex).map((item, index) => ( // SLICE CUSTOMERS ARRAY TO DISPLAY ONLY 6 RECORDS PER PAGE
-							// records.map((item, index) => (
+							filteredHandovers.slice(startIndex, endIndex).map((item, index) => ( // SLICE CUSTOMERS ARRAY TO DISPLAY ONLY 6 RECORDS PER PAGE
+								// records.map((item, index) => (
 								<RentalRecord
 									key={index}
 									CustomerId={item.cus_id}
@@ -145,7 +172,7 @@ const Handover = () => {
 				</div>
 				<div className=" flex justify-between">
 					<div className=" py-3 text-sm font-medium text-neutral-400">
-						Showing data {startIndex + 1} to {endIndex} of {records.length} entries
+						Showing data {startIndex + 1} to {endIndex} of {filteredHandovers.length} entries
 					</div>
 					<div className=" py-3">
 						<Pagination

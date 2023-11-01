@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
+import { getPurchaseOrders } from "../../api/purchaseOrdersAPI";
 import OrderConfForm from "../../components/Assistant/Confirmations/OrderConfForm";
 import DropDownFilter from "../../components/Assistant/Controls/HeaderDropDown";
 import SearchBox from "../../components/Assistant/Controls/HeaderSearchBox";
@@ -111,6 +112,9 @@ const Orders = () => {
 	const [isOrderUpdate, updateOrder] = useState(false);
 	const [selectedOrder, setSelectedOrder] = useState(null);
 
+	const [orders, setOrders] = useState([]);
+	const [filteredOrders, setFilteredOrders] = useState([]);
+
 	const [currentPage, setCurrentPage] = useState(1);
 	const recordsPerPage = 5;
 
@@ -126,6 +130,29 @@ const Orders = () => {
 		setSelectedOrder(null);
 		updateOrder(false);
 	};
+
+	useEffect(() => {
+		const fetchOrders = async () => {
+			try {
+				const response = await getPurchaseOrders();
+				setOrders(response.data);
+			} catch (error) {
+				console.error(error);
+			}
+		};
+
+		fetchOrders();
+	}, []);
+
+	const handleSearch = (searchText) => {
+		const filtered = records.filter((order) => {
+			const OrderId = order.order_id;
+			return OrderId.toLowerCase().includes(searchText.toLowerCase());
+		});
+
+		setFilteredOrders(filtered);
+	};
+
 	return (
 		<div>
 			<div className=" flex flex-col justify-between mx-10 my-8 p-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg">
@@ -138,7 +165,7 @@ const Orders = () => {
 					</div>
 					<div className=" flex gap-4 align-middle">
 						<div>
-							<SearchBox />
+							<SearchBox onSearch={handleSearch} />
 						</div>
 						<div>
 							<DropDownFilter />
@@ -159,13 +186,13 @@ const Orders = () => {
 				<div>
 					{/* <OrderedItems onOpen={handleFormOpen} /> */} {/* USE THIS IF ORDERS ITEMSET USING */}
 					<div className="flex flex-col gap-6">
-						{records.length <= 0 ?
+						{filteredOrders.length <= 0 ?
 							<div>
 								<div className='text-center text-black font-bold text-xl' width={100} height={320} colSpan="6">No data</div>
 							</div>
 							:
-							records.slice(startIndex, endIndex).map((item, index) => (
-							// records.map((item, index) => (  {/* USE THIS IF ORDERS ITEMSET USING */}
+							filteredOrders.slice(startIndex, endIndex).map((item, index) => (
+								// records.map((item, index) => (  {/* USE THIS IF ORDERS ITEMSET USING */}
 								<OrderRecord
 									key={index}
 									OrderId={item.order_id}
@@ -181,7 +208,7 @@ const Orders = () => {
 				</div>
 				<div className=" flex justify-between">
 					<div className=" py-3 text-sm font-medium text-neutral-400">
-						Showing data {startIndex + 1} to {endIndex} of {records.length} entries
+						Showing data {startIndex + 1} to {endIndex} of {filteredOrders.length} entries
 					</div>
 					<div className=" py-3">
 						<Pagination
