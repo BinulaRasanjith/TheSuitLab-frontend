@@ -62,7 +62,6 @@ const OrderConfForm = ({ isOpen, onClose, id }) => {
                                         onClick={onClose}
                                         textColor={'black'}
                                         shadow={'md'}
-                                        // width={'5rem'}>{Status}</Button>
                                         width={'7rem'}>Cancel</Button>
                                 </div>
                                 <div className="">
