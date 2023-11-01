@@ -2,11 +2,12 @@ import { useEffect } from "react"; // TODO
 // import { BiSolidMessageAltEdit } from "react-icons/bi";
 import { BiSolidPurchaseTag } from "react-icons/bi";
 import { BsBarChartFill } from "react-icons/bs";
-import { FaUserCircle } from "react-icons/fa";
 import { FaUserTag } from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
 import { HiColorSwatch } from "react-icons/hi";
 import { HiCalendarDays, HiShoppingCart } from "react-icons/hi2";
 import { IoIosBowtie } from "react-icons/io";
+import { MdReviews } from "react-icons/md";
 import { TbArrowBackUp } from "react-icons/tb";
 import { useSelector } from "react-redux"; // TODO
 import { Outlet } from "react-router-dom";
@@ -31,6 +32,28 @@ const assistantSidebarItems = [
 		label: "Materials",
 		icon: <HiColorSwatch />,
 		to: "/assistant/materials",
+		subItems: [
+			{
+				label: "Fabrics",
+				to: "/assistant/materials/fabric",
+			},
+			{
+				label: "Buttons",
+				to: "/assistant/materials/button",
+			},
+			{
+				label: "Strings",
+				to: "/assistant/materials/string",
+			},
+			// {
+			// 	label: "Interlinings",
+			// 	to: "/assistant/materials/interlining",
+			// },
+			// {
+			// 	label: "Zippers",
+			// 	to: "/assistant/materials/zipper",
+			// },
+		],
 	},
 	{
 		label: "Customers",
@@ -69,14 +92,9 @@ const assistantSidebarItems = [
 	},
 	{
 		label: "Reviews",
-		icon: <FaUserCircle />,
+		icon: <MdReviews />,
 		to: "/assistant/reviews",
 	},
-	// {
-	//     label: 'Log Out',
-	//     icon: <TbLogout />,
-	//     to: '/',
-	// }
 ];
 
 const AssistantMainLayout = () => {

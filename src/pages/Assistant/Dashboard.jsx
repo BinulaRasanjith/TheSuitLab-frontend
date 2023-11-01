@@ -22,9 +22,16 @@ const Dashboard = () => {
 	useEffect(() => {
 		const fetchChartData = async () => {
 			try {
-				const response = await gwp();
-				// console.log(response.data);
-				setChartData(response.data);
+				// GET DATA FROM LOCAL STORAGE
+				const storedData = localStorage.getItem('dbData');
+				console.log(storedData);
+				if (storedData) {
+					setDashboard(JSON.parse(storedData));
+				} else {
+					const response = await dashboardData();
+					setDashboard(response.data);
+					localStorage.setItem('dbData', JSON.stringify(response.data));
+				}
 			} catch (error) {
 				console.error(error);
 			}
@@ -113,6 +120,17 @@ const Dashboard = () => {
 		};
 	}, [chartInstance, canvas]);
 
+	// CHART DATA
+	var thisWeekOrderCounts;
+	var lastWeekOrderCounts;
+	
+	if (dashboardContent.weeklyPerformance) {
+		thisWeekOrderCounts = dashboardContent.weeklyPerformance.thisWeekPerformance.map((entry) => entry.orderCount);
+		lastWeekOrderCounts = dashboardContent.weeklyPerformance.lastWeekPerformance.map((entry) => entry.orderCount);
+	} else {
+		console.error("Weekly performance data is not available in the JSON response.");
+	}
+
 
 	var thisWeekOrderCounts;
 	var lastWeekOrderCounts;
@@ -149,7 +167,8 @@ const Dashboard = () => {
 		},
 	};
 
-	// OPTIONS
+
+	// CHART OPTIONS
 	const optionsChartBarDoubleDatasetsExample = {
 		options: {
 			scales: {
@@ -167,19 +186,24 @@ const Dashboard = () => {
 	};
 
 
-	// const [] = useMemo(() => {
-	// 	if (chartdata.weeklyPerformance) {
-	// 		const thisWeek = chartdata.weeklyPerformance.thisWeekPerformance.map(
-	// 			(entry) => entry.orderCount
-	// 		);
-	// 		const lastWeek = chartdata.weeklyPerformance.lastWeekPerformance.map(
-	// 			(entry) => entry.orderCount
-	// 		);
-	// 		return [thisWeek, lastWeek];
-	// 	}
-	// 	return [[], []]; // Default values when data is not available
-	// }, [chartdata]);
+		// CREATE A NEW CHART INSTANCE
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+		chartInstance = new Chart(
+			document.getElementById("chart-bar-double-datasets-example"),
+			dataChartBarDoubleDatasetsExample,
+			optionsChartBarDoubleDatasetsExample
+		);
+		const canvasElement = document.getElementById("chart-bar-double-datasets-example");
+		setCanvas(canvasElement);
 
+		// ENSURE TO RETURN A CLEANUP FUNCTION TO DESTROY THE CHART WHEN THE COMPONENT UNMOUNTS
+		return () => {
+			if (canvas && chartInstance) {
+				chartInstance.destroy(canvas);
+				console.log("Chart destroyed");
+			}
+		};
+	}, [currentLocation]);
 
 	const assistantStateBoxItems = [
 		{
@@ -207,6 +231,7 @@ const Dashboard = () => {
 			percentagevalue: income && income.result ? income.result.incomePercentage : 0,
 		},
 	];
+	console.log(dashboardContent);
 
 
 	// document.addEventListener("DOMContentLoaded", function () {
@@ -248,7 +273,7 @@ const Dashboard = () => {
 					<div className=" text-sm font-semibold text-zinc-400">
 						RECENT ORDERS
 					</div>
-					<RecentOrders />
+					<RecentOrders orderData={dashboardContent.recentOrders} />
 					<div className=" flex justify-center">
 						<div className=" flex flex-col justify-center">
 							<Link to="/assistant/orders">

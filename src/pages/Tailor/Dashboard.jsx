@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import button1 from '../../assets/images/o4.jpg';
+
 import pic2 from "../../assets/images/material bg.jpg"
+import button1 from '../../assets/images/o4.jpg';
 import button4 from "../../assets/images/r3.jpg"
 
 const Dashboard = () => {
