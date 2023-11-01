@@ -61,7 +61,7 @@ const HomeFunctionality = () => {
 							</p>
 							<p className="text-white">from the pre-made collections</p>
 						</div>
-						<Button onClick={() => navigate("/customer/	")}>Purchase Now</Button>
+						<Button onClick={() => navigate("/customer/purchase-suit/jacket")}>Purchase Now</Button>
 					</div>
 				</div>
 				<div className="flex flex-col md:flex-row">

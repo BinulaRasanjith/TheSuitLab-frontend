@@ -22,12 +22,12 @@ import { MdNavigateNext } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
+import { addCustomSuitToCart as addCustomSuitToCartAPI } from "../../api/customerAPI";
 import {
 	addNewCostumeToItemModel,
 	getCoatMeasurements,
 	getTrouserMeasurements,
 } from "../../api/customerAPI";
-import { addCustomSuitToCart as addCustomSuitToCartAPI } from "../../api/customerAPI";
 import { calculatePrice } from "../../api/purchaseOrdersAPI";
 import FullShoulderWidth from "../../assets/images/measurements/men_size_1 (1).jpg";
 import Sleeves from "../../assets/images/measurements/men_size_2.jpg";
@@ -45,6 +45,7 @@ import TROUSER_LENGTH from "../../assets/images/measurements/men_size_13.jpg";
 import CUFF from "../../assets/images/measurements/men_size_14.jpg";
 import MeasurementBlock from "../../components/Customer/MeasurementBlock";
 import { CUSTOM } from "../../constants";
+import ItemType from "../../constants/ItemType";
 import { selectUser } from "../../store/slices/authSlice";
 import { selectJacket } from "../../store/slices/jacketCustomizationSlice";
 import {
@@ -52,7 +53,6 @@ import {
 	getTrouserMeasurementObject,
 } from "../../utils/measurements";
 import { inchesToCm } from "../../utils/measurements";
-import ItemType from "../../constants/ItemType";
 
 const CurrentSizes = () => {
 	const jacket = useSelector(selectJacket);
@@ -148,10 +148,10 @@ const CurrentSizes = () => {
 			location.pathname.includes("/customize-suit/jacket")
 				? "/customer/customize-suit/jacket/measurements"
 				: location.pathname.includes("/customize-suit/pant")
-				? "/customer/customize-suit/pant/measurements"
-				: location.pathname.includes("/customize-suit/all")
-				? "/customer/customize-suit/all/measurements"
-				: "/customer/customize-measurements"
+					? "/customer/customize-suit/pant/measurements"
+					: location.pathname.includes("/customize-suit/all")
+						? "/customer/customize-suit/all/measurements"
+						: "/customer/customize-measurements"
 		);
 
 	const handleGoToCart = async () => {

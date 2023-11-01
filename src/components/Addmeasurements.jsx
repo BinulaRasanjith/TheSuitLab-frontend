@@ -20,8 +20,8 @@ const AddMeasurements = () => {
                     <p className='text-white'>succeed in their life.</p>
                 </div>
 
-                <Button className="p-3" onClick={() => navigate("/customer/customize-measurements")}>
-                    Add Measurements
+                <Button className="p-3" onClick={() => navigate("/customer/current-measurements")}>
+                    View Current Measurements
                 </Button>
 
             </div>

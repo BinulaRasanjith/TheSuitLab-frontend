@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const SearchBox = ({ onSearch }) => {
+const SearchBox = ({ onSearch, type }) => {
 
     const handleSearch = (e) => {
         const searchText = e.target.value;
@@ -30,7 +30,7 @@ const SearchBox = ({ onSearch }) => {
             <input
                 className="block w-60 p-2.5 pl-10 text-xs text-gray-700 rounded-lg bg-gray-100"
                 id="default-search"
-                placeholder="Search with customer name"
+                placeholder={`Search by ${type}`}
                 type="search"
                 onInput={handleSearch}
             />
@@ -39,7 +39,8 @@ const SearchBox = ({ onSearch }) => {
 };
 
 SearchBox.propTypes = {
-    onSearch: PropTypes.func.isRequired
+    onSearch: PropTypes.func.isRequired,
+    type: PropTypes.string.isRequired,
 };
 
 export default SearchBox;
