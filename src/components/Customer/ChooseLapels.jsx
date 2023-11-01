@@ -47,33 +47,6 @@ const ChooseLapels = () => {
 
                 </div>
             </div>
-            {/* <div>
-                <span className='text-2xl font-bold ml-5'>Buttonhole on Lapel</span>
-                <div className='flex flex-col justify-around mt-5'>
-                    <button className='bg-gray-200 rounded-lg py-3 px-5 m-1'>With Buttonhole</button>
-                    <button className='bg-gray-200 rounded-lg py-3 px-5 m-1'>Without Buttonhole</button>
-                </div>
-
-            </div>
-            <div>
-                <span className='text-2xl font-bold ml-5'>Choose Your Lapel Width</span>
-                <div className='grid grid-cols-3 grid-rows-1 gap-x-5 mt-5'>
-                    <div className='flex p-3 flex-col justify-center items-center'>
-                        <img alt="" className="pb-3" src={Larger} />
-                        <label>Larger</label>
-                    </div>
-                    <div className='flex p-3 flex-col justify-center items-center'>
-                        <img alt="" className="pb-3" src={Regular} />
-                        <label>Regular</label>
-                    </div>
-                    <div className='flex p-3 flex-col justify-center items-center'>
-                        <img alt="" className="pb-3" src={Small} />
-                        <label>Small</label>
-                    </div>
-
-                </div>
-
-            </div> */}
         </div>
     )
 }

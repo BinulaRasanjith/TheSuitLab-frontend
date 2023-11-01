@@ -7,16 +7,17 @@ import { addMaterialQuantity } from "../../../api/materialAPI";
 import { MATERIAL_IMAGES_URL } from "../../../config/config";
 import Input from "../../Input/Input";
 
-const MaterialStockUpdateFrom = ({
+const CustomerInfo = ({
     isOpen,
     onClose,
+
     image,
-    materialCode,
-    materialName,
+    CustomerName,
+    Mobile,
+    Orders,
 }) => {
     const toast = useToast();
     const [newStock, setNewStock] = useState({
-        material_id: materialCode,
         quantity: null,
     });
 
@@ -63,7 +64,8 @@ const MaterialStockUpdateFrom = ({
             <div className="fixed left-0 right-0 bottom-0 top-0 z-40 opacity-30 bg-black"></div>
 
             <div className="fixed top-16 bottom-0 right-0 left-0 z-40 flex flex-col items-center justify-center">
-                <div className=" z-50 m-8 max-w-md w-96 rounded-lg bg-white p-8 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+                
+                <div className="hidden z-50 m-8 max-w-md w-96 rounded-lg bg-white p-8 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
                     <div className="flex justify-between gap-x-4">
                         <div className="mb-12 text-2xl font-bold">
                             Stock Update
@@ -76,10 +78,10 @@ const MaterialStockUpdateFrom = ({
                             <img src={`${MATERIAL_IMAGES_URL}/${image}`} alt="material" className="w-64 h-32 rounded-xl" />
                         </div>
                         <div className="mb-1">
-                            <b>Material Code: </b>{materialCode}
+                            <b>Material Code: </b>{}
                         </div>
                         <div>
-                            <b>Material Name:</b> {materialName}
+                            <b>Material Name:</b> {}
                         </div>
 
                         <div className="hidden" data-te-input-wrapper-init>
@@ -87,7 +89,6 @@ const MaterialStockUpdateFrom = ({
                                 type="text"
                                 id="material-id"
                                 name="material_id"
-                                value={materialCode}
                                 className="hidden"
                             />
                         </div>
@@ -113,17 +114,34 @@ const MaterialStockUpdateFrom = ({
                         </button>
                     </form>
                 </div>
+
+                <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <div className="flex justify-end px-4 pt-4">
+                        <AiFillCloseCircle onClick={onClose} size={24} />
+                    </div>
+                    <div className="flex flex-col items-center pb-10">
+                        <img className="w-24 h-24 mb-3 rounded-full shadow-lg" src="/docs/images/people/profile-picture-3.jpg" alt="Bonnie image" />
+                        <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">{CustomerName}</h5>
+                        <span className="text-sm text-gray-500 dark:text-gray-400">{Mobile}</span>
+                        <span className="text-sm text-gray-500 dark:text-gray-400">Order Count: {Orders}</span>
+                        <div className="flex mt-4 space-x-3 md:mt-6">
+                            <a onClick={onClose} className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">Message</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
 };
 
-MaterialStockUpdateFrom.propTypes = {
+CustomerInfo.propTypes = {
     onClose: PropTypes.func.isRequired,
     isOpen: PropTypes.bool.isRequired,
+
     image: PropTypes.string.isRequired,
-    materialCode: PropTypes.string.isRequired,
-    materialName: PropTypes.string.isRequired,
+    CustomerName: PropTypes.string.isRequired,
+    Mobile: PropTypes.string.isRequired,
+    Orders: PropTypes.number.isRequired,
 };
 
-export default MaterialStockUpdateFrom;
+export default CustomerInfo;

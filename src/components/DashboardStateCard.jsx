@@ -32,9 +32,9 @@ const StateCard = ({ CardTitle, BigCount, Icon, PercentageValue }) => {
 
 StateCard.propTypes = {
 	CardTitle: PropTypes.string.isRequired,
-	BigCount: PropTypes.number.isRequired,
+	BigCount: PropTypes.any.isRequired,
 	Icon: PropTypes.object.isRequired,
-	PercentageValue: PropTypes.number.isRequired,
+	PercentageValue: PropTypes.any.isRequired,
 };
 
 export default StateCard;
