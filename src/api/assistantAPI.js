@@ -1,30 +1,17 @@
 // ASSISTANT DASHBOARD MANAGEMENT API
 import api from "./api";
 
-export const cpoc = () => {
-    return api.get('/odb/cpoc/');
+
+// GET DASHBOARD DATA FOR ASSISTANT IN SINGLE REQUEST // ! NOW WORKING
+export const dashboardData = () => {
+    return api.get('/assistant/');
 }
 
-export const clmc = () => {
-    return api.get('/odb/clmc/');
+// ADD NEW CUSTOMER BY ASSISTANT
+export const addNewCustomer = (data) => {
+    return api.post('/user/add-customer/', data);
 }
 
-export const coc = () => {
-    return api.get('/odb/coc/');
-}
-
-export const cit = () => {
-    return api.get('/odb/cit/');
-}
-
-export const gro = () => {
-    return api.get('/odb/gro/');
-}
-
-export const gwp = () => {
-    return api.get('/odb/gwp/');
-}
-
-export const dashboard = () => {
-    return api.get('/dashboard/');
+export const removeThisItem = (data) => {
+    return api.delete('/assistant/remove-item/', data);
 }
