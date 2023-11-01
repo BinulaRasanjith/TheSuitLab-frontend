@@ -4,8 +4,8 @@ export const addNewAccessory = (data) => {
   return api.post("/accessories/add-new", data);
 };
 
-export const getAccessoryById = (id) => {
-    return api.get(`/accessories/${id}`);
+export const getReturns = () => {
+  return api.get("/accessories/get-accessories");
 };
 
 export const updateReturn = (new_data) => {

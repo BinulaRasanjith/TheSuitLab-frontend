@@ -38,29 +38,6 @@ const ViewCustomers = () => {
         addNewCustomer(true); // SET isNewReturnForm TO FALSE TO CLOSE THE FORM
     };
 
-    useEffect(() => {
-        const fetchCustomers = async () => {
-            try {
-                const response = await getCustomers();
-                setCustomers(response.data.customers);
-                setFilteredCustomers(response.data.customers);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        fetchCustomers();
-    }, []);
-
-    const handleSearch = (searchText) => {
-        const filtered = customers.filter((customer) => {
-            const customerName = `${customer.firstName} ${customer.lastName}`;
-            return customerName.toLowerCase().includes(searchText.toLowerCase());
-        });
-
-        setFilteredCustomers(filtered);
-    };
-
     return (
         <div>
             <div>

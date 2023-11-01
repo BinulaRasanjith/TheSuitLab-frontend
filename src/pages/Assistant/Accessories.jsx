@@ -102,7 +102,7 @@ const Accessories = () => {
 
 
 				<CardContainer>
-					{ accessories && accessories.map((accessory, index) => {
+					{accessories.map((accessory, index) => {
 						return (
 							<AccessoryCard
 								image={accessory.image}

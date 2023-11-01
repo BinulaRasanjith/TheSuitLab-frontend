@@ -7,33 +7,10 @@ import DropDownFilter from "../../components/Assistant/Controls/HeaderDropDown";
 import SearchBox from "../../components/Assistant/Controls/HeaderSearchBox";
 import Pagination from "../../components/Assistant/Controls/Pagination";
 import NewReturnForm from "../../components/Assistant/Forms/NewReturnForm";
-
+import Returnset from "../../components/Assistant/ReturnedItemSet";
 
 const Returns = () => {
 	const [isNewReturnForm, addNewReturn] = useState(false);
-	const [filteredReturns, setFilteredReturns] = useState([]);
-
-	const [currentPage, setCurrentPage] = useState(1);
-	const recordsPerPage = 5;
-
-	const startIndex = (currentPage - 1) * recordsPerPage;
-	const endIndex = startIndex + recordsPerPage;
-
-	const [returns, setReturns] = useState([]);
-
-	useEffect(() => {
-		const fetchReturns = async () => {
-			try {
-				const response = await getReturns();
-				setReturns(response.data.returns);
-				setFilteredReturns(response.data.returns);
-			} catch (error) {
-				console.error(error);
-			}
-		};
-
-		fetchReturns();
-	}, []);
 
 	const handleFormClose = () => {
 		addNewReturn(false);
@@ -41,15 +18,6 @@ const Returns = () => {
 
 	const handleFormOpen = () => {
 		addNewReturn(true);
-	};
-
-	const handleSearch = (searchText) => {
-		const filtered = returns.filter((order) => {
-			const refNo = order.referenceNo;
-			return refNo.toLowerCase().includes(searchText.toLowerCase());
-		});
-
-		setFilteredReturns(filtered);
 	};
 
 	return (
@@ -90,46 +58,21 @@ const Returns = () => {
 						</div>
 					</div>
 				</div>
+				<div className=" flex flex-col">
+					<div className=" grid grid-cols-6 text-sm font-medium text-gray-400">
+						<div className=" w-48">Order Id</div>
+						<div className=" w-36">Return item Count</div>
+						<div className=" w-40">Ordered Date</div>
+						<div className=" w-40">Return Date</div>
+						<div className=" w-36">Reason for returning</div>
+					</div>
+					<div className=" w-full border h-0 mt-3 mb-6 border-gray-200"></div>
+				</div>
 				<div>
-					<table className="">
-						<thead className=" text-left text-sm font-medium border-b-2 border-gray-200 text-gray-400 w-full">
-							<tr className="py-4">
-								<th className="py-3 w-72">
-									Order
-								</th>
-								<th className="py-3 w-72 text-center">
-									Return item Count
-								</th>
-								<th className="py-3 w-60 text-center">
-									Ordered Date
-								</th>
-								<th className="py-3 w-60 text-center">
-									Return Date
-								</th>
-								<th className="py-3 w-60 text-center">
-									Reason for returning
-								</th>
-							</tr>
-						</thead>
-						<tbody className=" text-left text-md font-medium text-gray-400 w-full">
-							{returns.length <= 0 ?
-								<tr>
-									<td className='text-center text-black font-bold text-3xl' width={100} height={320} colSpan="6">No data</td>
-								</tr>
-								:
-								returns.slice(startIndex, endIndex).map((item, index) => ( // SLICE CUSTOMERS ARRAY TO DISPLAY ONLY 6 RECORDS PER PAGE
-								// returns.map((item, index) => (
-									<tr key={index} className="items-center text-centers border-b-2 hover:bg-gray-100 text-black whitespace-nowrap font-medium w-full">
-										<td className="hidden">{item.referenceNo}</td>
-										<td className="py-4 w-72">{item.referenceNo}</td>
-										<td className="py-4 w-60 text-center">{item.itemCount}</td>
-										<td className="py-4 w-60 text-center">{new Date(item.orderedDate).toLocaleDateString()}</td>
-										<td className="py-4 w-60 text-center">{new Date(item.returnedDate).toLocaleDateString()}</td>
-										<td className="py-4 w-60 text-center">{item.reason}</td>
-									</tr>
-								))}
-						</tbody>
-					</table>
+					<Returnset />
+				</div>
+				<div className=" flex my-4 justify-center">
+					{/* <Button colorScheme='gray' onClick={() => addNewReturn(!isNewReturnForm)} size='md'>New Inquery</Button> */}
 				</div>
 				<div className=" flex justify-between">
 					<div className=" py-3 text-sm font-medium text-neutral-400">

@@ -1,6 +1,5 @@
 import { Button } from "@chakra-ui/react"
 import { useState } from "react"
-nav
 import { AiFillPlusCircle } from 'react-icons/ai'
 
 import img1 from "../../assets/images/rentsuits/black paisley suit/1.webp"
@@ -77,10 +76,6 @@ const Hiring = () => {
 	const handleFormOpen = () => {
 		addNewCostume(true); // SET `isNewCostumeForm` TO TRUE TO OPEN THE FORM
 	};
-
-	const handleClick = (id) => {
-		navigate(`/assistant/hiring/${id}`)
-	}
 
 	return (
 		<div className="relative">
