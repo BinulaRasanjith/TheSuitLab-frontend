@@ -4,7 +4,7 @@ import { CgProfile } from "react-icons/cg";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useToast } from "@chakra-ui/react";
 import { PiNewspaperBold } from "react-icons/pi";
-// import { HiShoppingCart } from "react-icons/hi";
+ import { HiShoppingCart } from "react-icons/hi";
 import { PiShoppingCartSimpleBold } from "react-icons/pi";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { RxDashboard } from "react-icons/rx";
@@ -35,7 +35,7 @@ const Navbar = () => {
 			toast({
 				title: "You have new notifications!",
 				status: "success",
-				duration: 5000,
+				duration: 4000,
 				isClosable: true,
 			});
 		}
