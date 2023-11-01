@@ -15,3 +15,7 @@ export const addNewCustomer = (data) => {
 export const removeThisItem = (data) => {
     return api.delete('/assistant/remove-item/', data);
 }
+
+export const getPrManagerDashboardData = () => {
+    return api.get('/dashboard2/manager');
+}
