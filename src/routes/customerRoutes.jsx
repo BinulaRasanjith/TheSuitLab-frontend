@@ -10,6 +10,7 @@ import CustomSizes from "../components/Customer/CustomSizes";
 import CustomizeMeasurements from "../components/Customer/CustomizeMeasurements";
 import MaterialsFabricPattern from "../components/Customer/MaterialView/MaterialsFabricPattern";
 import MaterialsFabricSolid from "../components/Customer/MaterialView/MaterialsFabricSolid";
+import PreDesignedItemDescription from "../components/Customer/PreDesignedItemDescription";
 import PreDesignedJacketGallery from "../components/Customer/PreDesignedJacketGallery";
 import ShoesGallery from "../components/Customer/ShoesGallery";
 import StandardSizes from "../components/Customer/StandardSizes";
@@ -105,7 +106,7 @@ const costumerRoutes = {
 				},
 				{
 					path: ":suitType/:suitId", // Dynamic route parameter for both suit type and suit ID
-					element: <SuitDescription />,
+					element: <PreDesignedItemDescription />,
 				},
 			],
 		},

@@ -24,9 +24,6 @@ const SuitDescription = () => {
 	const segments = pathname.split('/');
 	const hireCostumeType = segments[segments.length - 2];
 
-
-
-
 	const user = useSelector(selectUser);
 	const [suitDetails, setSuitDetails] = useState({
 		images: [],
@@ -50,13 +47,13 @@ const SuitDescription = () => {
 		getHireCostume(suitId)
 			.then((response) => {
 				setSuitDetails(response.data);
-				// console.log(response.data);
+				console.log(response.data);
 				setSelectedImage(response.data.images[0]);
 			})
 			.catch((error) => {
 				console.log(error); // TODO: Handle error
 			});
-	}, [suitId]);
+	}, []);
 
 	const handleImageClick = (image) => {
 		setSelectedImage(image);
@@ -194,7 +191,6 @@ const SuitDescription = () => {
 								<p className="text-red-600">12%</p>
 								<p>OFF</p>
 							</span>
-
 						</div>
 					</p>
 					<p className={`text-gray-700 font-semibold`}>
@@ -259,7 +255,6 @@ const SuitDescription = () => {
 
 					<div className="flex items-center">
 						<div className="flex ">
-							{/* <HiOutlineCalendar className="absolute left-3  text-gray-600 " /> */}
 							<DatePicker
 								selected={fromDate}
 								onChange={(date) => setFromDate(date)}
@@ -273,7 +268,6 @@ const SuitDescription = () => {
 
 						{/* To Date input */}
 						<div className=" flex ">
-							{/* <HiOutlineCalendar className="absolute left-3  text-gray-600 " /> */}
 							<DatePicker
 								selected={toDate}
 								onChange={(date) => setToDate(date)}
