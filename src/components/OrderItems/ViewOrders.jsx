@@ -72,7 +72,7 @@ const ViewOrders = () => {
 								</svg>
 							</div>
 							<input
-								className="block p-2.5 pl-10 text-sm text-gray-900 rounded-lg bg-gray-50 border-2 border-gray-300 focus:ring-blue-500 focus:border-blue-500 " id="default-search" placeholder="Search" required type="search"
+								className="block p-2.5 pl-10 text-sm text-gray-900 rounded-lg bg-gray-50 border-2 border-gray-300 " id="default-search" placeholder="Search" required type="search"
 								value={searchInput}
 								onChange={(e) => setSearchInput(e.target.value)}
 							/>
