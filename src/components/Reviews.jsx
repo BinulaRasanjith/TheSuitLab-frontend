@@ -1,11 +1,10 @@
+import { format } from "date-fns";
 import { useEffect, useState } from "react";
 import { IoArrowBackCircle } from "react-icons/io5";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import pic2 from "../assets/images/rentsuits/black suit/1.webp";
-import pic1 from "../assets/images/rentsuits/caremal suit/1.webp";
-import pic3 from "../assets/images/rentsuits/cobolt blue suit/1.webp";
+import { getReviews } from "../api/reviewAPI";
 import CardContainer from "../components/ReviewCard/CardContainer";
 import ReviewCard from "../components/ReviewCard/ReviewCard";
 import {
@@ -15,39 +14,9 @@ import {
 	PRODUCT_MANAGER,
 	TAILOR,
 } from "../constants";
-import useSetUserState from "../hooks/useSetUserState";
 import { selectUser } from "../store/slices/authSlice";
 
-const reviewsData = [
-	{
-		image: pic1,
-		orderId: 123456789,
-		author: "John Doe",
-		comment: "This product is amazing!",
-		date: "2023-10-30",
-		ratings: 4,
-	},
-	{
-		image: pic2,
-		orderId: 1262334,
-		author: "Johnny",
-		comment: "This product is poor!",
-		date: "2023-9-30",
-		ratings: 2,
-	},
-	{
-		image: pic3,
-		orderId: 1234589,
-		author: "Johnny",
-		comment: "This product is poor!",
-		date: "2023-10-12",
-		ratings: 2,
-	},
-	// Add more review objects as needed
-];
-
 const Reviews = () => {
-	const setUserState = useSetUserState();
 	const user = useSelector(selectUser);
 	const navigate = useNavigate();
 	const handleBack = () => {
@@ -67,8 +36,19 @@ const Reviews = () => {
 			navigate("/admin");
 		}
 	};
+	const [reviewsData, setReviewsData] = useState([]); // [reviewObject, reviewObject, ...
 	const [sortByDate, setSortByDate] = useState("relevant");
 	const [sortedByDate, setSortedByDate] = useState([]);
+
+	useEffect(() => {
+		const fetchReviews = async () => {
+			const response = await getReviews();
+			console.log(response.data);
+			setReviewsData(response.data);
+		};
+
+		fetchReviews();
+	}, []);
 
 	useEffect(() => {
 		const sortedData = [...reviewsData].sort((a, b) => {
@@ -80,14 +60,15 @@ const Reviews = () => {
 			return 0;
 		});
 		setSortedByDate(sortedData);
-	}, [sortByDate]);
+		console.log(sortedData);
+	}, [reviewsData, sortByDate]);
 
 	return (
 		<>
-			<div className="flex flex-row">
+			<div className="flex flex-row w-full">
 				<div className="flex-auto">
 					<div className="flex flex-col ">
-						<div className="flex-col m-3 shadow-lg">
+						<div className="flex-col m-3 ">
 							<div className="flex flex-col p-4">
 								{/* back  button */}
 								<div className="flex items-center gap-4 m-6">
@@ -100,7 +81,7 @@ const Reviews = () => {
 									<h1 className=" text-3xl font-semibold">Reviews</h1>
 
 									<div className="ml-32 flex w-52 ">
-										<span className=" flex w-full items-center">Sort By</span>
+										<span className=" flex w-full items-center">Sort By Date</span>
 										<select
 											id="Sort"
 											className="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
@@ -122,9 +103,9 @@ const Reviews = () => {
 												image={review.image}
 												author={review.author}
 												orderId={review.orderId}
-												comment={review.comment}
-												ratings={review.ratings}
-												date={review.date}
+												comment={review.description}
+												ratings={review.rating}
+												date={format(new Date(review.reviewedOn), "dd-MM-yyyy")}
 											/>
 										);
 									})}

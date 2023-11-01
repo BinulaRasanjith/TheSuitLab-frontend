@@ -2,12 +2,16 @@ import { Button } from "@chakra-ui/button";
 import { useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { IoArrowBackCircle } from "react-icons/io5";
 
 import { addSupplier } from "../../api/supplierAPI";
 
 const AddSupplier = () => {
 	const toast = useToast();
 	const navigate = useNavigate();
+	const handleBack = () => {
+        navigate("/manager/suppliers");
+    };
 
 	const [formData, setFormData] = useState({
 		name: "",
@@ -54,7 +58,13 @@ const AddSupplier = () => {
 
 	return (
 		<div className="bg-white border border-gray-200 mt-10  rounded-lg shadow p-6 w-fit m-auto">
-			<div className=" border-b-2 border-gray-300">
+			<div className=" border-b-2 border-gray-300 flex items-center gap-3">
+				<button
+					onClick={handleBack}
+					className="flex items-center gap-2 text-primary"
+				>
+					<IoArrowBackCircle className="text-3xl cursor-pointer" />
+				</button>
 				<h2 className="mb-4 mt-3 text-2xl  justify-start font-medium text-gray-900">
 					Add New Supplier
 				</h2>

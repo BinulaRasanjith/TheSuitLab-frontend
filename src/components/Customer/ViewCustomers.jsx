@@ -29,6 +29,8 @@ const ViewCustomers = () => {
 	const toast = useToast();
 	const navigate = useNavigate();
 	const user = useSelector(selectUser);
+	const [searchInput, setSearchInput] = useState('');
+
 
 	const [customers, setCustomers] = useState([]);
 	const [modalStatus, setModalStatus] = useState({
@@ -88,13 +90,22 @@ const ViewCustomers = () => {
 	useEffect(() => {
 		const getCustomers = async () => {
 			const response = await getAllCustomersWithOrderCount();
-			// [{userId, mobileNo, name, orderCount, status}]
 
 			setCustomers([...response.data]);
 		};
 
 		getCustomers();
 	});
+
+	const filteredCustomers = customers.filter((customer) => {
+
+        const customerNameMatch = customer.name && customer.name.toString().toLowerCase().includes(searchInput.toString().toLowerCase());
+        const mobileNoMatch = customer.mobileNo && customer.mobileNo.toString().toLowerCase().includes(searchInput.toString().toLowerCase());
+        const orderCountMatch = customer.orderCount && customer.orderCount.toString().toLowerCase().includes(searchInput.toString().toLowerCase());
+		const statusMatch = customer.status && customer.status === (searchInput.toLowerCase() === "active");
+       
+        return customerNameMatch || mobileNoMatch || orderCountMatch || statusMatch;
+    });
 
 	return (
 		<div>
@@ -105,10 +116,21 @@ const ViewCustomers = () => {
 					</div>
 					<div className=" flex gap-4 align-middle">
 						<div>
-							<SearchBox />
+							{/* <SearchBox /> */}
+							<div className="relative">
+								<div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+									<svg aria-hidden="true" className="w-4 h-4 text-gray-500 dark:text-gray-400" fill="none" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+										<path d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+									</svg>
+								</div>
+								<input
+									className="block w-60 p-2.5 pl-10 text-xs text-gray-700 rounded-lg bg-gray-100 " id="default-search" placeholder="Search" required type="search"
+									value={searchInput}
+									onChange={(e) => setSearchInput(e.target.value)}
+								/>
+							</div>
 						</div>
 						<div>
-							<DropDownFilter />
 						</div>
 
 						{user.role === OPERATION_ASSISTANT && (
@@ -144,7 +166,7 @@ const ViewCustomers = () => {
 						</thead>
 						<tbody>
 							<div className="flex flex-col gap-1">
-								{customers.map((item, index) => (
+								{filteredCustomers.map((item, index) => (
 									<tr
 										key={index}
 										className="flex items-center text-center border hover:bg-gray-300 text-black whitespace-nowrap font-medium py-3"
