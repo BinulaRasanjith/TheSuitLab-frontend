@@ -30,7 +30,6 @@ const NewHireCostume = ({ isOpen, onClose }) => {
         backPocket: null, // BUTTON AVAILABLE OR NOT
 
         image: null,
-        // image: "./images/default.png",
     });
     const [selectedFile, setSelectedFile] = useState(null);
 
@@ -105,12 +104,11 @@ const NewHireCostume = ({ isOpen, onClose }) => {
                         </div>
                         <div className="mt-1"><AiFillCloseCircle onClick={onClose} size={24} /></div>
                     </div>
-                    {/* <form> */}
+                    {/* FORM */}
                     <form onSubmit={handleFormSubmit}>
                         {step === 1 && (
                             <>
-                                {/* <form> */}
-                                {/* Step 1 content */}
+                                {/* STEP 1 CONTENT */}
                                 <div className=' flex gap-x-10'>
 
                                     <div className='w-64'>
@@ -176,7 +174,6 @@ const NewHireCostume = ({ isOpen, onClose }) => {
                                             >
                                                 <option value='Jacket'>Jacket</option>
                                                 <option value='Trouser'>Trouser</option>
-                                                {/* <option value='Shirt'>Shirt</option> */}
                                             </Select>
                                         </div>
                                         <div className="relative mb-6" data-te-input-wrapper-init>
@@ -225,10 +222,8 @@ const NewHireCostume = ({ isOpen, onClose }) => {
                                     </div>
 
                                 </div>
-                                {/* Other input fields for step 1 */}
-                                {/* ... */}
 
-                                {/* Navigation buttons for step 1 */}
+                                {/* NAVIGATION BUTTONS FOR STEP 1 */}
                                 <div className="flex justify-between gap-8">
                                     <button
                                         type="button"
@@ -245,14 +240,12 @@ const NewHireCostume = ({ isOpen, onClose }) => {
                                         Next
                                     </button>
                                 </div>
-                                {/* </form> */}
                             </>
                         )}
 
                         {step === 2 && (
                             <>
-                                {/* <form onSubmit={handleAddAccessory}> */}
-                                {/* Step 2 content */}
+                                {/* STEP 2 CONTENT */}
                                 <div className=' flex gap-x-10'>
 
                                     <div className='w-64'>
@@ -360,7 +353,7 @@ const NewHireCostume = ({ isOpen, onClose }) => {
                                         />
                                     </div>
                                 </div>
-                                {/* Navigation buttons for step 2 */}
+                                {/* NAVIGATION BUTTONS FOR STEP 2 */}
                                 <div className="flex justify-between gap-8">
                                     <button
                                         type="button"
@@ -376,7 +369,7 @@ const NewHireCostume = ({ isOpen, onClose }) => {
                                         Add Accessory
                                     </button>
                                 </div>
-                                {/* </form> */}
+                                {/* END OF THE FORM */}
                             </>
                         )}
                     </form>

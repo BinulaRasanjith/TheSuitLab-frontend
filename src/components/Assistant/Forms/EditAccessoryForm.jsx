@@ -1,4 +1,4 @@
-import { Select } from '@chakra-ui/react'
+import { Button, Select, useToast } from '@chakra-ui/react'
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
@@ -6,18 +6,23 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { addNewAccessory } from "../../../api/accessoryAPI";
 import Input from "../../Input/Input";
 
-const NewAccessoryForm = ({ isOpen, onClose }) => {
+const EditAccessoryForm = ({ isOpen, onClose, thisItem }) => {
+
     const [newAccessoryData, setNewAccessoryData] = useState({
-        brand: "Unknown",
-        itemName: "",
-        materialType: "",
-        colorCode: "",
-        price: 0.00,
-        accessoryType: "",
-        pattern: "",
-        buckleType: "",
-        shoeStyle: "",
+        brand: thisItem.accessory && thisItem.accessory.brand,
+        itemName: thisItem.accessory && thisItem.accessory.itemName,
+        materialType: thisItem.accessory && thisItem.accessory.material,
+        colorCode: thisItem.accessory && thisItem.accessory.color,
+        price: thisItem.item && thisItem.accessory.price,
+        accessoryType: thisItem.accessory && thisItem.accessory.accessoryType,
+        pattern: thisItem.accessory && thisItem.accessory.accessoryType === "tie" ? thisItem.accessory.pattern : "",
+        buckleType: thisItem.accessory && thisItem.accessory.accessoryType === "belt" ? thisItem.accessory.buckleType : "",
+        shoeStyle: thisItem.accessory && thisItem.accessory.accessoryType === "shoe" ? thisItem.accessory.style : "",
+        image: "",
+        // image: "./images/default.png",
     });
+
+    const toast = useToast();
     const [selectedFile, setSelectedFile] = useState(null);
 
     const handleInputChange = (event) => {
@@ -25,50 +30,104 @@ const NewAccessoryForm = ({ isOpen, onClose }) => {
         setNewAccessoryData({ ...newAccessoryData, [name]: value });
     };
 
+
+    // const handleFileChange = (event) => {
+    //     const fileset = event.target.files;
+    //     setSelectedFile(fileset);
+
+    //     setNewAccessoryData({ ...newAccessoryData, image: fileset ? Array.from(fileset) : null });
+    // };
     const handleFileChange = (event) => {
-        const files = event.target.files;
-        setSelectedFile(files);
-        console.log("Selected files:", Array.from(files).map(file => file.name));
-    }
+        const fileset = event.target.file[0];
+        setSelectedFile(fileset);
 
-    const handleAddUserClick = async (event) => {
+        setNewAccessoryData({ ...newAccessoryData, image: fileset ? fileset.name : null });
+    };
+
+
+    // const handleAddUserClick = async (event) => {
+    //     event.preventDefault();
+
+    //     try {
+    //         await addNewAccessory(newAccessoryData);
+    //         onClose();
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // };
+    const handleUpdate = async (event) => {
         event.preventDefault();
+        if (
+            newAccessoryData.itemName === ""
+        ) {
+            toast({
+                title: "Please fill all the fields!",
+                status: "error",
+                duration: 3000,
+                isClosable: true,
+            });
 
-        try {
-            const formData = new FormData();
-            formData.append("brand", newAccessoryData.brand);
-            formData.append("itemName", newAccessoryData.itemName);
-            formData.append("materialType", newAccessoryData.materialType);
-            formData.append("colorCode", newAccessoryData.colorCode);
-            formData.append("price", newAccessoryData.price);
-            formData.append("accessoryType", newAccessoryData.accessoryType);
-            formData.append("pattern", newAccessoryData.pattern);
-            formData.append("buckleType", newAccessoryData.buckleType);
-            formData.append("shoeStyle", newAccessoryData.shoeStyle);
+        } else if (
+            newAccessoryData.brand === "" ||
+            newAccessoryData.itemName === "" ||
+            newAccessoryData.materialType === "" ||
+            newAccessoryData.colorCode === "" ||
+            newAccessoryData.price === "" ||
+            newAccessoryData.accessoryType === "" || (
+                newAccessoryData.pattern === "" &&
+                newAccessoryData.buckleType === "" &&
+                newAccessoryData.shoeStyle === "" ) ||
 
-            // if (selectedFile) {
-            //     if (Array.isArray(selectedFile)) {
-            //         for (const file of selectedFile) {
-            //             formData.append("image", file);
-            //         }
-            //     } else {
-            //         formData.append("image", selectedFile);
-            //     }
-            //     formData.append("image", selectedFile);
-            // }
+            newAccessoryData.image === null
+        ) {
+            toast({
+                title: "Please fill all the fields!",
+                status: "error",
+                duration: 3000,
+                isClosable: true,
+            });
 
-            if (selectedFile) {
-                formData.append("image", selectedFile);
-            } else {
-                formData.append("image", "/uploads/accessories-images/accessory-default.png");
+        } else {
+            try {
+                const formData = new FormData();
+                formData.append("brand", newAccessoryData.brand);
+                formData.append("itemName", newAccessoryData.itemName);
+                formData.append("materialType", newAccessoryData.materialType);
+                formData.append("colorCode", newAccessoryData.colorCode);
+                formData.append("price", newAccessoryData.price);
+                formData.append("accessoryType", newAccessoryData.accessoryType);
+                formData.append("pattern", newAccessoryData.pattern);
+                formData.append("buckleType", newAccessoryData.buckleType);
+                formData.append("shoeStyle", newAccessoryData.shoeStyle);
+
+                if (newAccessoryData.image) {
+                    for (const file of newAccessoryData.image) {
+                        formData.append("image", file);
+                    }
+                }
+
+                const response = await addNewAccessory(formData);
+                console.log(response.data);
+
+                toast({
+                    title: "Success!",
+                    description: "Accessory update completed!",
+                    status: "success",
+                    duration: 3000,
+                    isClosable: true,
+                });
+
+                onClose();
+            } catch (error) {
+                toast({
+                    title: "Error!",
+                    description: error.message,
+                    status: "error",
+                    duration: 3000,
+                    isClosable: true,
+                });
+                console.error(error);
             }
-            
-            console.log(selectedFile)
-            const response = await addNewAccessory(formData);
-            console.log(response.data);
-            
-        } catch (error) {
-            console.error(error);
         }
     };
 
@@ -81,12 +140,12 @@ const NewAccessoryForm = ({ isOpen, onClose }) => {
                 <div className=" z-50 m-8 rounded-lg bg-white p-8 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
                     <div className="flex justify-between gap-x-4">
                         <div className="mb-12 text-2xl font-bold">
-                            New Accessory
+                            Update Accessory
                         </div>
-                        <div className="mt-1"><AiFillCloseCircle onClick={onClose} size={24} /></div>
+                        <div className="mt-1"><AiFillCloseCircle onClick={onClose} cursor={'pointer'} size={24} /></div>
                     </div>
 
-                    <form onSubmit={handleAddUserClick}>
+                    <form onSubmit={handleUpdate}>
                         <div className=' flex gap-x-10'>
 
                             <div className='w-64'>
@@ -96,7 +155,7 @@ const NewAccessoryForm = ({ isOpen, onClose }) => {
                                         placeholder="Brand"
                                         id="brandname"
                                         name="brandName"
-                                        value={newAccessoryData.brandName}
+                                        value={newAccessoryData.brand}
                                         onChange={handleInputChange}
                                         className="mb-6"
                                     />
@@ -125,12 +184,12 @@ const NewAccessoryForm = ({ isOpen, onClose }) => {
                                             setNewAccessoryData({ ...newAccessoryData, accessoryType: selectedValue });
                                         }}
                                     >
-                                        <option value='Belt'>Belt</option>
-                                        <option value='Tie'>Tie</option>
-                                        <option value='Shoe'>Shoe</option>
+                                        <option value='belt'>Belt</option>
+                                        <option value='tie'>Tie</option>
+                                        <option value='shoe'>Shoe</option>
                                     </Select>
                                 </div>
-                                <div className={newAccessoryData.accessoryType == "Belt" ? "relative mb-6" : newAccessoryData.accessoryType == "Tie" ? "hidden" : newAccessoryData.accessoryType == "Shoe" ? "hidden" : "pointer-events-none"} data-te-input-wrapper-init>
+                                <div className={newAccessoryData.accessoryType == "belt" ? "relative mb-6" : newAccessoryData.accessoryType == "tie" ? "hidden" : newAccessoryData.accessoryType == "shoe" ? "hidden" : "pointer-events-none"} data-te-input-wrapper-init>
                                     <Input
                                         type="text"
                                         placeholder="Buckle Type"
@@ -141,7 +200,7 @@ const NewAccessoryForm = ({ isOpen, onClose }) => {
                                         className="mb-6"
                                     />
                                 </div>
-                                <div className={newAccessoryData.accessoryType == "Tie" ? "relative mb-6" : "hidden"} data-te-input-wrapper-init>
+                                <div className={newAccessoryData.accessoryType == "tie" ? "relative mb-6" : "hidden"} data-te-input-wrapper-init>
                                     <Input
                                         type="text"
                                         placeholder="Pattern"
@@ -152,7 +211,7 @@ const NewAccessoryForm = ({ isOpen, onClose }) => {
                                         className="mb-6"
                                     />
                                 </div>
-                                <div className={newAccessoryData.accessoryType == "Shoe" ? "relative mb-6" : "hidden"} data-te-input-wrapper-init>
+                                <div className={newAccessoryData.accessoryType == "shoe" ? "relative mb-6" : "hidden"} data-te-input-wrapper-init>
                                     <Input
                                         type="text"
                                         placeholder="Style"
@@ -199,10 +258,10 @@ const NewAccessoryForm = ({ isOpen, onClose }) => {
                                         className="mb-6"
                                     />
                                 </div>
-                                <div className="relative mb-6" data-te-input-wrapper-init>
+                                <div className={newAccessoryData.accessoryType || newAccessoryData.accessoryType == "tie" || newAccessoryData.accessoryType == "shoe" ? "relative mb-6" : "pointer-events-none"} data-te-input-wrapper-init>
                                     <Input
                                         type="number"
-                                        placeholder={newAccessoryData.accessoryType == "Tie" ? "Width" : "Size"}
+                                        placeholder={newAccessoryData.accessoryType == "tie" ? "Width" : "Size"}
                                         id="item-size"
                                         name="size"
                                         value={newAccessoryData.size}
@@ -220,9 +279,9 @@ const NewAccessoryForm = ({ isOpen, onClose }) => {
                                 <label htmlFor="image" className=''>Add Images Here</label><br /><br />
                                 <input
                                     type="file"
-                                    accept="image/*"
-                                    name="image"
-                                    id="image"
+                                    // accept="image/*"
+                                    // value={newAccessoryData.image[0]}
+                                    value={selectedFile}
                                     onChange={handleFileChange}
                                     multiple
                                 />
@@ -230,14 +289,21 @@ const NewAccessoryForm = ({ isOpen, onClose }) => {
                         </div>
 
                         {/* <!--SUBMIT BUTTON--> */}
-                        <button
+                        <Button
                             type="submit"
-                            className="dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]] inline-block w-full rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-                            data-te-ripple-init
-                            data-te-ripple-color="light"
+                            size="lg"
+                            width={'full'}
+                            bg="primary"
+                            color="white"
+                            _hover={{
+                                bg: 'primary.300',
+                            }}
+                            _active={{
+                                bg: 'primary.700',
+                            }}
                         >
                             Add Accessory
-                        </button>
+                        </Button>
                     </form>
                 </div>
             </div>
@@ -245,9 +311,10 @@ const NewAccessoryForm = ({ isOpen, onClose }) => {
     );
 };
 
-NewAccessoryForm.propTypes = {
+EditAccessoryForm.propTypes = {
     onClose: PropTypes.func.isRequired,
     isOpen: PropTypes.bool.isRequired,
+    thisItem: PropTypes.object.isRequired,
 };
 
-export default NewAccessoryForm;
+export default EditAccessoryForm;
