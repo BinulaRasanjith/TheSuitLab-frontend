@@ -15,15 +15,15 @@ import { ADMIN } from "../../constants";
 import { selectUser } from "../../store/slices/authSlice";
 
 const sidebarItems = [
-	{
-		label: "Dashboard",
-		icon: <HiHome />,
-		to: "/admin",
-	},
+	// {
+	// 	label: "Dashboard",
+	// 	icon: <HiHome />,
+	// 	to: "/admin",
+	// },
 	{
 		label: "Employees",
 		icon: <BiSolidBookReader />,
-		to: "/admin/employees",
+		to: "/admin",
 	},
 	// {
 	// 	label: "Customers",

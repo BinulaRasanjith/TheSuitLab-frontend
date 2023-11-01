@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { HiShoppingBag } from "react-icons/hi2";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { IoArrowBackCircle } from "react-icons/io5";
 
 import { getCustomersPurchaseOrders } from "../../api/purchaseOrdersAPI";
 import SearchBox from "../../components/Assistant/Controls/HeaderSearchBox";
@@ -22,6 +23,9 @@ const MyOrders = () => {
 	}, [customerId]);
 
 	const navigate = useNavigate();
+	const handleBack = () => {
+		navigate("/customer")
+	};
 
 	// const handleNavigate = (id) => {
 	//     navigate(`/customer/my-orders/${id}`)
@@ -32,6 +36,12 @@ const MyOrders = () => {
 			<div className=" flex flex-col justify-between m-8 p-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg items-center flex-wrap shadow-xl w-full ">
 				<div className=" flex justify-center items-center w-full">
 					<div className="flex items-center gap-80 mt-4">
+					<button
+						onClick={handleBack}
+						className="flex items-center gap-2 text-primary"
+					>
+						<IoArrowBackCircle className="text-3xl cursor-pointer" />
+					</button>
 						<div className="flex gap-3">
 							<HiShoppingBag style={{ fontSize: "2rem" }} />
 							<div className=" text-2xl font-semibold">My Orders</div>

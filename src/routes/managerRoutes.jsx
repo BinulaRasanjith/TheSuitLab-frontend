@@ -50,6 +50,7 @@ const managerRoutes = {
 		{ path: "profile", element: <Profile /> },
 		{ path: "reviews", element: <Reviews /> },
 		{ path: "notifications", element: <Notifications /> },
+		
 	],
 };
 

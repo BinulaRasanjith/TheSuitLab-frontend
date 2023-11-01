@@ -72,7 +72,7 @@ function OrderDetails() {
 				</button>
 
 				<h1 className="text-2xl mt-4  font-semibold leading-7 text-gray-800">
-					OrderId: #{trimmedOrderId}
+					OrderId: #{orderId}
 				</h1>
 				<p className="text-base font-medium text-gray-800">
 
@@ -270,24 +270,7 @@ function OrderDetails() {
 														<p className="text-base  leading-4 text-gray-800">
 															{formatPrice(purchaseOrder.ItemModels[0].price)}
 														</p>
-													</div>
-
-													<div className="flex justify-between items-center w-full">
-														<p className="text-base  leading-4 text-gray-800">
-															Shipping
-														</p>
-														<p className="text-base  leading-4 text-gray-800">
-															$8.00
-														</p>
-													</div>
-												</div>
-												<div className="flex justify-between items-center w-full">
-													<p className="text-base  font-semibold leading-4 text-gray-800">
-														Total
-													</p>
-													<p className="text-base  font-semibold leading-4 text-gray-800">
-														$36.00
-													</p>
+													</div>	
 												</div>
 											</div>
 											<div className="flex flex-col justify-center p-2 md:p-6 xl:p-4 w-full bg-gray-300 space-y-6 rounded-2xl shadow-2xl">
@@ -307,12 +290,7 @@ function OrderDetails() {
 																</span>
 															</p>
 														</div>
-														<div className="flex  justify-start items-center">
-															<p className="text-lg leading-6  font-semibold text-gray-800">
-																Delivery:{" "}
-																<span className="font-normal">2023-11-12</span>
-															</p>
-														</div>
+														
 													</div>
 												</div>
 											</div>

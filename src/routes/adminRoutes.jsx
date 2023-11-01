@@ -12,10 +12,10 @@ const costumerRoutes = {
 	path: "/admin",
 	element: <AdminMainLayout />,
 	children: [
-		{ path: "", element: <AdminDashboard /> },
-		{ path: "employees", element: <Employees /> },
+		//{ path: "", element: <AdminDashboard /> },
+		{ path: "", element: <Employees /> },
 		// { path: "customer", element: <Customers /> },
-		{ path: "orders", element: <Orders /> },
+		// { path: "orders", element: <Orders /> },
 		{ path: "profile", element: <Profile /> },
 		// {
 		// 	path: "test",

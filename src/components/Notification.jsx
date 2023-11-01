@@ -19,6 +19,7 @@ import {
 	TAILOR,
 } from "../constants";
 import { selectUser } from "../store/slices/authSlice";
+import { tr } from "date-fns/locale";
 
 const Notifications = () => {
 	const [notifications, setNotifications] = useState([]);

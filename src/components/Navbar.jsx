@@ -5,8 +5,8 @@ import { CgProfile } from "react-icons/cg";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { HiShoppingCart } from "react-icons/hi";
 import { IoNotificationsSharp } from "react-icons/io5";
-import { PiShoppingCartSimpleBold } from "react-icons/pi";
 import { PiNewspaperBold } from "react-icons/pi";
+import { PiShoppingCartSimpleBold } from "react-icons/pi";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { RxDashboard } from "react-icons/rx";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,6 +15,7 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import TSL_LOGO from "../assets/images/TSL_LOGO.png";
 import TSL_LOGO_SM from "../assets/images/TSL_LOGO_SM.png";
 import defaultPhoto from "../assets/images/avatar.png";
+import RedDot from "../components/RedDot";
 import { PROFILE_PICTURE_URL } from "../config/config";
 import {
 	ADMIN,
@@ -26,28 +27,29 @@ import {
 import { selectUser } from "../store/slices/authSlice";
 import { logoutAsync } from "../store/slices/authSlice";
 import { toggleSidebar } from "../store/slices/sidebarSlice";
-import displayRoleName from "../utils/displayRoleName";
+import displayRoleName from "../utils/displayRoleName"; // Adjust the import path based on your project structure
+import { getIfUnreadNotifications } from "../api/notificationAPI";
 
 const Navbar = () => {
 	const navigate = useNavigate();
 	const { pathname } = useLocation();
 	const dispatch = useDispatch();
 	const [isUserDropdownOpen, setUserDropdownOpen] = useState(false);
-	const [hasNewNotifications, setHasNewNotifications] = useState(false); // Set this based on your notification data
-
-	const toast = useToast();
-	useEffect(() => {
-		if (hasNewNotifications) {
-			toast({
-				title: "You have new notifications!",
-				status: "success",
-				duration: 4000,
-				isClosable: true,
-			});
-		}
-	}, [hasNewNotifications, toast]);
+	const [hasNewNotifications, setHasNewNotifications] = useState(true); // Set this based on your notification data
 
 	const user = useSelector(selectUser);
+	const toast = useToast();
+
+	useEffect(() => {
+		const fetchNotifications = async () => {
+			const response = await getIfUnreadNotifications();
+			setHasNewNotifications(response.data.unread);
+		};
+
+		if (user.id) {
+			fetchNotifications();
+		}
+	}, [user.id]);
 
 	// handle login click
 	const handleLoginClick = () => {
@@ -196,13 +198,19 @@ const Navbar = () => {
 								)} */}
 
 								{/*notification */}
-								<div className="text-secondary cursor-pointer ">
+								<div className="text-secondary cursor-pointer relative ">
+									{hasNewNotifications && <RedDot />}
 									<IoNotificationsSharp
+										onClick={handleNotificationClick}
+										style={{ fontSize: "1.5rem" }}
+									/>
+									{/* <IoNotificationsSharp
 										onClick={handleNotificationClick}
 										style={{
 											fontSize: "1.5rem",
 										}}
 									/>
+									<RedDot show={hasNewNotifications} /> */}
 								</div>
 
 								{/* {user.id && user.role !== CUSTOMER && (
