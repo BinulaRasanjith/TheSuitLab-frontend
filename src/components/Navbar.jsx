@@ -33,7 +33,7 @@ const Navbar = () => {
 	const { pathname } = useLocation();
 	const dispatch = useDispatch();
 	const [isUserDropdownOpen, setUserDropdownOpen] = useState(false);
-	const [hasNewNotifications, setHasNewNotifications] = useState(true); // Set this based on your notification data
+	const [hasNewNotifications, setHasNewNotifications] = useState(false); // Set this based on your notification data
 
 	const toast = useToast();
 	useEffect(() => {
@@ -45,7 +45,7 @@ const Navbar = () => {
 				isClosable: true,
 			});
 		}
-	}, [hasNewNotifications]);
+	}, [hasNewNotifications, toast]);
 
 	const user = useSelector(selectUser);
 
