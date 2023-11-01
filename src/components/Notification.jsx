@@ -22,32 +22,7 @@ import { selectUser } from "../store/slices/authSlice";
 import { tr } from "date-fns/locale";
 
 const Notifications = () => {
-	const [notifications, setNotifications] = useState([
-		{
-			id: 1,
-			subject: "Order",
-			message: "Your order has been placed successfully",
-			isRead: true,
-		},
-		{
-			id: 2,
-			subject: "Order",
-			message: "Your order has completed successfully",
-			isRead: false,
-		},
-		{
-			id: 3,
-			subject: "Fit ON date",
-			message: "check your fit on date",
-			isRead: true,
-		},
-		{
-			id: 4,
-			subject: "Message",
-			message: "You have a new message from shop",
-			isRead: true,
-		},
-	]);
+	const [notifications, setNotifications] = useState([]);
 
 	const user = useSelector(selectUser);
 	const navigate = useNavigate();
@@ -82,9 +57,9 @@ const Notifications = () => {
 
 	useEffect(() => {
 		const fetchNotifications = async () => {
-			const notifications = await getNotifications();
-			console.log(notifications);
-			setNotifications(notifications);
+			const response = await getNotifications();
+			console.log(response.data);
+			setNotifications(response.data);
 		};
 		fetchNotifications();
 	}, []);
@@ -118,8 +93,8 @@ const Notifications = () => {
 					</Button>
 				</div>
 				<div className="flex flex-col rounded-2xl shadow-xl mt-10 m-20">
-					{sortedNotifications ? (
-						sortedNotifications.map((notification) => (
+					{notifications ? (
+						notifications.map((notification) => (
 							<div
 								key={notification.id}
 								className={`m-2 py-2 px-5 border-l-4 flex items-center justify-between rounded-xl  ${
