@@ -8,11 +8,6 @@ export const getPurchaseOrders = async () => {
   return api.get("/purchase-order");
 };
 
-// MARK AS COSTUME IS READY TO COLLECT
-export const updateToCollected = async (id) => {
-    return api.patch("/purchase-order/to-collected", id);
-}
-
 export const getPurchaseOrder = async (id) => {
   return api.get(`/purchase-order/${id}`);
 };

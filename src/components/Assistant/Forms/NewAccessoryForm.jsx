@@ -12,24 +12,49 @@ const NewAccessoryForm = ({ isOpen, onClose }) => {
         itemName: "",
         materialType: "",
         colorCode: "",
-        price: 0.00,
-        accessoryType: "",
-        pattern: "",
-        buckleType: "",
-        shoeStyle: "",
+        price: "",
+        accessoryType: null,
+        pattern: null,
+        buckleType: null,
+        shoeStyle: null,
+        image: null,
+        // image: "./images/default.png",
     });
     const [selectedFile, setSelectedFile] = useState(null);
+
+    // const [showBeltInput, setShowBeltInput] = useState(false);
+    // const [showTieInput, setShowTieInput] = useState(false);
+    // const [showShoeInput, setShowShoeInput] = useState(false);
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setNewAccessoryData({ ...newAccessoryData, [name]: value });
     };
 
+    // const handleFileChange = (event) => {
+    //     const fileset = event.target.files;
+    //     setSelectedFile(fileset);
+
+    //     setNewAccessoryData({ ...newAccessoryData, image: fileset ? Array.from(fileset) : null });
+    // };
+
     const handleFileChange = (event) => {
-        const files = event.target.files;
-        setSelectedFile(files);
-        console.log("Selected files:", Array.from(files).map(file => file.name));
-    }
+        const fileset = event.target.file[0];
+        setSelectedFile(fileset);
+
+        setNewAccessoryData({ ...newAccessoryData, image: fileset ? fileset.name : null });
+    };
+
+    // const handleAddUserClick = async (event) => {
+    //     event.preventDefault();
+
+    //     try {
+    //         await addNewAccessory(newAccessoryData);
+    //         onClose();
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // };
 
     const handleAddUserClick = async (event) => {
         event.preventDefault();
@@ -46,27 +71,15 @@ const NewAccessoryForm = ({ isOpen, onClose }) => {
             formData.append("buckleType", newAccessoryData.buckleType);
             formData.append("shoeStyle", newAccessoryData.shoeStyle);
 
-            // if (selectedFile) {
-            //     if (Array.isArray(selectedFile)) {
-            //         for (const file of selectedFile) {
-            //             formData.append("image", file);
-            //         }
-            //     } else {
-            //         formData.append("image", selectedFile);
-            //     }
-            //     formData.append("image", selectedFile);
-            // }
-
-            if (selectedFile) {
-                formData.append("image", selectedFile);
-            } else {
-                formData.append("image", "/uploads/accessories-images/accessory-default.png");
+            if (newAccessoryData.image) {
+                for (const file of newAccessoryData.image) {
+                    formData.append("image", file);
+                }
             }
-            
-            console.log(selectedFile)
+
             const response = await addNewAccessory(formData);
+            // const response = await axios.post("/api/accessories", formData);
             console.log(response.data);
-            
         } catch (error) {
             console.error(error);
         }
@@ -74,6 +87,8 @@ const NewAccessoryForm = ({ isOpen, onClose }) => {
 
     return (
         <div className={`relative  ${isOpen ? "block" : "hidden"}`}>
+            {/* <div className={`relative  ${isOpen ? 'block' : 'hidden'}`} onClick={onClose}> */}
+            {/* <div className="relative"> */}
 
             <div className="fixed left-0 right-0 bottom-0 top-0 z-40 opacity-30 bg-black"></div>
 
@@ -123,6 +138,11 @@ const NewAccessoryForm = ({ isOpen, onClose }) => {
                                         onChange={(e) => {
                                             const selectedValue = e.target.value;
                                             setNewAccessoryData({ ...newAccessoryData, accessoryType: selectedValue });
+
+                                            // Update the state variables to control the visibility of input fields
+                                            // setShowBeltInput(selectedValue === 'Belt');
+                                            // setShowTieInput(selectedValue === 'Tie');
+                                            // setShowShoeInput(selectedValue === 'Shoe');
                                         }}
                                     >
                                         <option value='Belt'>Belt</option>
@@ -188,6 +208,7 @@ const NewAccessoryForm = ({ isOpen, onClose }) => {
                                         className="mb-6"
                                     />
                                 </div>
+                                {/* <!--Email input--> */}
                                 <div className="relative mb-6" data-te-input-wrapper-init>
                                     <Input
                                         type="float"
@@ -221,15 +242,15 @@ const NewAccessoryForm = ({ isOpen, onClose }) => {
                                 <input
                                     type="file"
                                     accept="image/*"
-                                    name="image"
-                                    id="image"
+                                    // value={newAccessoryData.image[0]}
+                                    value={selectedFile}
                                     onChange={handleFileChange}
                                     multiple
                                 />
                             </div>
                         </div>
 
-                        {/* <!--SUBMIT BUTTON--> */}
+                        {/* <!--Submit button--> */}
                         <button
                             type="submit"
                             className="dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]] inline-block w-full rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"

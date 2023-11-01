@@ -6,43 +6,130 @@ import { PiHandbag } from "react-icons/pi"
 import { Link } from "react-router-dom"
 import { Chart, initTE } from "tw-elements"
 
-import { dashboardData } from "../../api/assistantAPI";
+import { cit, clmc, coc, cpoc, gwp } from "../../api/assistantAPI";
 import RecentOrders from "../../components/Assistant/RecentOrderSet"
 import StateCard from "../../components/DashboardStateCard"
 
 const Dashboard = () => {
 
-	initTE({ Chart });
-	const [canvas, setCanvas] = useState(null);
-
-	const [dashboardContent, setDashboard] = useState([]); // TODO: FINAL DASHBOARD DATA FETCHING LOGIC
-	const currentLocation = window.location.pathname;
-
-	let chartInstance;
+	const [chartdata, setChartData] = useState([]);
+	const [lowstockmaterials, setLowStocks] = useState([]);
+	const [orders, setOrders] = useState([]);
+	const [processingorders, setProcessingOrders] = useState([]);
+	const [income, setIncome] = useState([]);
 
 
-	// TODO: FINAL DASHBOARD DATA FETCHING LOGIC
 	useEffect(() => {
-		const fetchDashboardData = async () => {
+		const fetchChartData = async () => {
 			try {
-				// GET DATA FROM LOCAL STORAGE
-				const storedData = localStorage.getItem('dbData');
-				if (storedData) {
-					setDashboard(JSON.parse(storedData));
-				} else {
-					const response = await dashboardData();
-					setDashboard(response.data);
-					localStorage.setItem('dbData', JSON.stringify(response.data));
-				}
+				const response = await gwp();
+				// console.log(response.data);
+				setChartData(response.data);
 			} catch (error) {
 				console.error(error);
 			}
 		};
-		fetchDashboardData();
-	}, [currentLocation]);
+
+		fetchChartData();
+	}, []);
+
+	useEffect(() => {
+		const fetchLowStocks = async () => {
+			try {
+				const response = await clmc();
+				// console.log(response.data);
+				setLowStocks(response.data);
+			} catch (error) {
+				console.error(error);
+			}
+		};
+
+		fetchLowStocks();
+	}, []);
+
+	useEffect(() => {
+		const fetchOrders = async () => {
+			try {
+				const response = await coc();
+				// console.log(response.data);
+				setOrders(response.data);
+			} catch (error) {
+				console.error(error);
+			}
+		};
+
+		fetchOrders();
+	}, []);
+
+	useEffect(() => {
+		const fetchProcessingOrders = async () => {
+			try {
+				const response = await cpoc();
+				// console.log(response.data);
+				setProcessingOrders(response.data);
+			} catch (error) {
+				console.error(error);
+			}
+		};
+
+		fetchProcessingOrders();
+	}, []);
+
+	useEffect(() => {
+		const fetchIncome = async () => {
+			try {
+				const response = await cit();
+				// console.log(response.data);
+				setIncome(response.data);
+			} catch (error) {
+				console.error(error);
+			}
+		};
+
+		fetchIncome();
+	}, []);
+
+	initTE({ Chart });
+	const [canvas, setCanvas] = useState(null);
+	let chartInstance;
+
+	window.onload = function () {
+		chartInstance = new Chart(
+			document.getElementById("chart-bar-double-datasets-example"),
+			dataChartBarDoubleDatasetsExample,
+			optionsChartBarDoubleDatasetsExample,
+		);
+	};
+
+	useEffect(() => {
+		const canvasElement = document.getElementById("chart-bar-double-datasets-example");
+		setCanvas(canvasElement);
+
+		// DESTROY THE CANVAS WHEN THE COMPONENT UNMOUNTS
+		return () => {
+			if (canvas && chartInstance) {
+				chartInstance.destroy(canvas);
+			}
+		};
+	}, [chartInstance, canvas]);
 
 
-	// CHART METRICS
+	var thisWeekOrderCounts;
+	var lastWeekOrderCounts;
+
+	if (chartdata.weeklyPerformance) {
+		thisWeekOrderCounts = chartdata.weeklyPerformance.thisWeekPerformance.map((entry) => entry.orderCount);
+		lastWeekOrderCounts = chartdata.weeklyPerformance.lastWeekPerformance.map((entry) => entry.orderCount);
+
+		console.log("This week performance:", thisWeekOrderCounts);
+		console.log("Last week performance:", lastWeekOrderCounts);
+	} else {
+		console.log("Weekly performance data is not available in the JSON response.");
+		// console.error("Weekly performance data is not available in the JSON response.");
+	}
+
+
+	// DATA
 	const dataChartBarDoubleDatasetsExample = {
 		type: "bar",
 		data: {
@@ -62,7 +149,7 @@ const Dashboard = () => {
 		},
 	};
 
-	// CHART OPTIONS
+	// OPTIONS
 	const optionsChartBarDoubleDatasetsExample = {
 		options: {
 			scales: {
@@ -79,78 +166,57 @@ const Dashboard = () => {
 		},
 	};
 
-	// CHART RENDERING
-	useEffect(() => {
-		// DESTROY THE CANVAS WHEN THE COMPONENT UNMOUNTS
-		if (canvas && chartInstance) {
-			chartInstance.destroy(canvas);
-			console.log("Chart destroyed");
-		}
 
-		// CREATE A NEW CHART INSTANCE
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-		chartInstance = new Chart(
-			document.getElementById("chart-bar-double-datasets-example"),
-			dataChartBarDoubleDatasetsExample,
-			optionsChartBarDoubleDatasetsExample
-		);
-		const canvasElement = document.getElementById("chart-bar-double-datasets-example");
-		setCanvas(canvasElement);
-
-		// ENSURE TO RETURN A CLEANUP FUNCTION TO DESTROY THE CHART WHEN THE COMPONENT UNMOUNTS
-		return () => {
-			if (canvas && chartInstance) {
-				chartInstance.destroy(canvas);
-				console.log("Chart destroyed");
-			}
-		};
-	}, [currentLocation]);
-
-	// CHART DATA
-	var thisWeekOrderCounts;
-	var lastWeekOrderCounts;
-
-	if (dashboardContent.weeklyPerformance) {
-		thisWeekOrderCounts = dashboardContent.weeklyPerformance.thisWeekPerformance.map((entry) => entry.orderCount);
-		lastWeekOrderCounts = dashboardContent.weeklyPerformance.lastWeekPerformance.map((entry) => entry.orderCount);
-	} else {
-		console.error("Weekly performance data is not available in the JSON response.");
-	}
+	// const [] = useMemo(() => {
+	// 	if (chartdata.weeklyPerformance) {
+	// 		const thisWeek = chartdata.weeklyPerformance.thisWeekPerformance.map(
+	// 			(entry) => entry.orderCount
+	// 		);
+	// 		const lastWeek = chartdata.weeklyPerformance.lastWeekPerformance.map(
+	// 			(entry) => entry.orderCount
+	// 		);
+	// 		return [thisWeek, lastWeek];
+	// 	}
+	// 	return [[], []]; // Default values when data is not available
+	// }, [chartdata]);
 
 
 	const assistantStateBoxItems = [
 		{
 			cardtitle: "ORDERS",
-			bigcount: dashboardContent && dashboardContent.orderCount ? dashboardContent.orderCount.thisWeekOrderCount : 0,
+			bigcount: orders && orders.result ? orders.result.thisWeekOrderCount : 0,
 			icon: <PiHandbag size={32} />,
-			percentagevalue: dashboardContent && dashboardContent.orderCount ? dashboardContent.orderCount.orderPresentage : 0,
+			percentagevalue: orders && orders.result ? orders.result.orderPresentage : 0,
 		},
 		{
 			cardtitle: "LOW STOCK MATERIALS",
-			bigcount: dashboardContent && dashboardContent.lowStockMaterials ? dashboardContent.lowStockMaterials.lowStockMaterials : 0,
+			bigcount: lowstockmaterials && lowstockmaterials.result ? lowstockmaterials.result.lowStockMaterials : 0,
 			icon: <HiOutlineSquare3Stack3D size={32} />,
-			percentagevalue: dashboardContent && dashboardContent.lowStockMaterials ? dashboardContent.lowStockMaterials.lowerPresentage : 0,
+			percentagevalue: lowstockmaterials && lowstockmaterials.result ? lowstockmaterials.result.lowerPresentage : 0,
 		},
 		{
 			cardtitle: "PROCESSING",
-			bigcount: dashboardContent && dashboardContent.processingOrders ? dashboardContent.processingOrders.processingCount : 0,
+			bigcount: processingorders && processingorders.result ? processingorders.result.processingCount : 0,
 			icon: <HiOutlineScissors size={32} />,
-			percentagevalue: dashboardContent && dashboardContent.processingOrders ? dashboardContent.processingOrders.percentageChange : 0,
+			percentagevalue: processingorders && processingorders.result ? processingorders.result.percentageChange : 0,
 		},
 		{
 			cardtitle: "INCOMES",
-			bigcount: "Rs. " + (dashboardContent && dashboardContent.income && dashboardContent.income.thisWeekIncome ? dashboardContent.income.thisWeekIncome : "0.00"),
+			bigcount: "Rs. " + (income && income.result && income.result.thisWeekIncome ? income.result.thisWeekIncome : "0.00"),
 			icon: <HiOutlineBanknotes size={32} />,
-			percentagevalue: dashboardContent && dashboardContent.income ? dashboardContent.income.incomePercentage : 0,
+			percentagevalue: income && income.result ? income.result.incomePercentage : 0,
 		},
-		// {
-		// 	cardtitle: "INCOMES",
-		// 	bigcount: "Rs. " + (income && income.result && income.result.thisWeekIncome ? income.result.thisWeekIncome : "0.00"),
-		// 	icon: <HiOutlineBanknotes size={32} />,
-		// 	percentagevalue: income && income.result ? income.result.incomePercentage : 0,
-		// },
 	];
 
+
+	// document.addEventListener("DOMContentLoaded", function () {
+	// 	new Chart(
+	// 		document.getElementById("chart-bar-double-datasets-example"),
+	// 		dataChartBarDoubleDatasetsExample,
+	// 		optionsChartBarDoubleDatasetsExample,
+	// 	);
+
+	// });
 
 	return (
 		<div className=" flex flex-col justify-between mx-10 my-8 gap-7">

@@ -4,13 +4,11 @@ import { useState } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
 
 import { addMaterialQuantity } from "../../../api/materialAPI";
-import { MATERIAL_IMAGES_URL } from "../../../config/config";
 import Input from "../../Input/Input";
 
 const MaterialStockUpdateFrom = ({
     isOpen,
     onClose,
-    image,
     materialCode,
     materialName,
 }) => {
@@ -72,9 +70,6 @@ const MaterialStockUpdateFrom = ({
                     </div>
 
                     <form onSubmit={handleAddUserClick}>
-                        <div className="mb-10 flex justify-center">
-                            <img src={`${MATERIAL_IMAGES_URL}/${image}`} alt="material" className="w-64 h-32 rounded-xl" />
-                        </div>
                         <div className="mb-1">
                             <b>Material Code: </b>{materialCode}
                         </div>
@@ -121,7 +116,6 @@ const MaterialStockUpdateFrom = ({
 MaterialStockUpdateFrom.propTypes = {
     onClose: PropTypes.func.isRequired,
     isOpen: PropTypes.bool.isRequired,
-    image: PropTypes.string.isRequired,
     materialCode: PropTypes.string.isRequired,
     materialName: PropTypes.string.isRequired,
 };

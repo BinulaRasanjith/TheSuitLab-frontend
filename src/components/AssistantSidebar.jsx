@@ -1,12 +1,17 @@
-import { useState } from 'react';
-import { BiSolidMessageAltEdit } from "react-icons/bi"
+/* eslint-disable perfectionist/sort-imports */
+/* eslint-disable no-unused-vars */
+/* eslint-disable perfectionist/sort-jsx-props */
+import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+
 import { BsBarChartFill } from "react-icons/bs"
-import { FaUserCircle } from "react-icons/fa"
 import { HiColorSwatch } from "react-icons/hi"
 import { HiCalendarDays, HiShoppingCart } from "react-icons/hi2"
 import { TbArrowBackUp, TbLogout } from "react-icons/tb"
+import { BiSolidMessageAltEdit } from "react-icons/bi"
+import { FaUserCircle } from "react-icons/fa"
+
 import { Link } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
 
 const AssistantSidebar = () => {
 
@@ -25,7 +30,7 @@ const AssistantSidebar = () => {
         }
     };
 
-    // const [selected, setSelected] = useState('');
+    const [selected, setSelected] = useState('');
 
     return (
         <div className=' flex flex-col justify-between bg-white max-w-max drop-shadow-xl px-4 py-4'>
