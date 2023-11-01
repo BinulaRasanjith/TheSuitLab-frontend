@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-// import React from "react";
 
 
 const RecentOrderRecord = ({ Image, ItemName, Attributes, Payment, Price }) => {
@@ -28,11 +27,11 @@ const RecentOrderRecord = ({ Image, ItemName, Attributes, Payment, Price }) => {
 };
 
 RecentOrderRecord.propTypes = {
-    Image: PropTypes.string.isRequired,
-    ItemName: PropTypes.number.isRequired,
-    Attributes: PropTypes.object.isRequired,
-    Payment: PropTypes.object.isRequired,
-    Price: PropTypes.number.isRequired,
+    Image: PropTypes.any.isRequired,
+    ItemName: PropTypes.any.isRequired,
+    Attributes: PropTypes.any.isRequired,
+    Payment: PropTypes.any.isRequired,
+    Price: PropTypes.any.isRequired,
 };
 
 export default RecentOrderRecord;

@@ -1,49 +1,59 @@
-const Pagination = () => {
-	return (
-		<>
-			<nav aria-label="Page navigation example">
-				<ul className="list-style-none flex gap-2.5">
-					<li>
-						<a className="pointer-events-none relative block rounded bg-stone-100 px-2.5 py-1 text-sm text-black transition-all duration-300 hover:bg-neutral-700 hover:text-white">
-							Previous
-						</a>
-					</li>
-					<li aria-current="page">
-						<a
-							className="relative block rounded bg-black px-2.5 py-1 text-sm text-neutral-100 transition-all duration-300"
-							href="#!"
-						>
-							1
-							<span className="absolute -m-px h-px w-px overflow-hidden whitespace-nowrap border-0 p-0 [clip:rect(0,0,0,0)]">
-								(current)
-							</span>
-						</a>
-					</li>
-					{/* <li>
-                        <a
-                            className="relative block rounded bg-stone-100 px-2.5 py-1 text-sm text-black transition-all duration-300 hover:bg-neutral-700 hover:text-white"
-                            href="#!"
-                        >2</a>
-                    </li>
+import PropTypes from "prop-types";
 
-                    <li>
-                        <a
-                            className="relative block rounded bg-stone-100 px-2.5 py-1 text-sm text-black transition-all duration-300 hover:bg-neutral-700 hover:text-white"
-                            href="#!"
-                        >3</a>
-                    </li> */}
-					<li>
-						<a
-							className=" relative block rounded bg-stone-100 px-2.5 py-1 text-sm text-black transition-all duration-300 hover:bg-neutral-700 hover:text-white"
-							href="#!"
+const Pagination = ({ currentPage, totalPages, onPageChange }) => {
+	const canGoPrevious = currentPage > 1;
+	const canGoNext = currentPage < totalPages;
+
+	return (
+		<nav aria-label="Page navigation">
+			<ul className="flex space-x-2">
+				<li>
+					<button
+						className={`relative block rounded px-2.5 py-1 text-sm ${canGoPrevious
+								? "bg-stone-100 text-black"
+								: "bg-neutral-200 text-neutral-400 pointer-events-none"
+							}`}
+						onClick={() => canGoPrevious && onPageChange(currentPage - 1)}
+						disabled={!canGoPrevious}
+					>
+						Previous
+					</button>
+				</li>
+				{[...Array(totalPages).keys()].map((page) => (
+					<li key={page} aria-current={page + 1 === currentPage ? "page" : null}>
+						<button
+							className={`relative block rounded px-2.5 py-1 text-sm ${page + 1 === currentPage
+									? "bg-black text-neutral-100"
+									: "bg-stone-100 text-black hover:bg-neutral-700 hover:text-white"
+								}`}
+							onClick={() => onPageChange(page + 1)}
 						>
-							Next
-						</a>
+							{page + 1}
+						</button>
 					</li>
-				</ul>
-			</nav>
-		</>
+				))}
+				<li>
+					<button
+						className={`relative block rounded px-2.5 py-1 text-sm ${canGoNext
+								? "bg-stone-100 text-black"
+								: "bg-neutral-200 text-neutral-400 pointer-events-none"
+							}`}
+						onClick={() => canGoNext && onPageChange(currentPage + 1)}
+						disabled={!canGoNext}
+					>
+						Next
+					</button>
+				</li>
+			</ul>
+		</nav>
 	);
+};
+
+
+Pagination.propTypes = {
+	currentPage: PropTypes.number.isRequired,
+	totalPages: PropTypes.number.isRequired,
+	onPageChange: PropTypes.func.isRequired
 };
 
 export default Pagination;

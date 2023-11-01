@@ -7,7 +7,7 @@ import { addMaterialQuantity } from "../../../api/materialAPI";
 import { MATERIAL_IMAGES_URL } from "../../../config/config";
 import Input from "../../Input/Input";
 
-const MaterialStockUpdateFrom = ({
+const ReturnInfo = ({
     isOpen,
     onClose,
     image,
@@ -118,7 +118,7 @@ const MaterialStockUpdateFrom = ({
     );
 };
 
-MaterialStockUpdateFrom.propTypes = {
+ReturnInfo.propTypes = {
     onClose: PropTypes.func.isRequired,
     isOpen: PropTypes.bool.isRequired,
     image: PropTypes.string.isRequired,
@@ -126,4 +126,4 @@ MaterialStockUpdateFrom.propTypes = {
     materialName: PropTypes.string.isRequired,
 };
 
-export default MaterialStockUpdateFrom;
+export default ReturnInfo;

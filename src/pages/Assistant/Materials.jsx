@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import DropDownFilter from '../../components/Assistant/Controls/HeaderDropDown'
-import SearchBox from '../../components/Assistant/Controls/HeaderSearchBox'
+// import SearchBox from '../../components/Assistant/Controls/HeaderSearchBox'
 import Pagination from '../../components/Assistant/Controls/Pagination'
 import MaterialStockUpdateForm from "../../components/Assistant/Forms/MaterialUpdateForm"
 import MaterialItems from '../../components/Assistant/MaterialItemSet'
@@ -9,17 +9,18 @@ import MaterialItems from '../../components/Assistant/MaterialItemSet'
 const Materials = () => {
     const [isStockUpdate, updateMatStock] = useState(false);
     const [selectedMaterial, setSelectedMaterial] = useState({
+        image: null,
         code: null,
         name: null,
     });
 
-    const handleFormOpen = (materialCode, materialName) => {
-        setSelectedMaterial({ code: materialCode, name: materialName });
+    const handleFormOpen = (image, materialCode, materialName) => {
+        setSelectedMaterial({image:image, code: materialCode, name: materialName });
         updateMatStock(true);
     };
 
     const handleFormClose = () => {
-        setSelectedMaterial({ code: null, name: null });
+        setSelectedMaterial({ image:null, code: null, name: null });
         updateMatStock(false);
     };
 
@@ -33,28 +34,34 @@ const Materials = () => {
                     </div>
                     <div className=" flex gap-4 align-middle">
                         <div>
-                            <SearchBox />
+                            {/* <SearchBox /> */}
                         </div>
                         <div>
                             <DropDownFilter />
                         </div>
                     </div>
                 </div>
-                <div className=" flex flex-col">
+                <div className=" flex flex-col"> {/* PARENT */}
+                    
                     <div className=' flex justify-between text-sm font-medium text-gray-400'>
-                        <div className=" w-40 text-">Material Name</div>
-                        <div className=" w-32 text-">Material Code</div>
-                        <div className=" w-32 text-">Unit Price</div>
-                        <div className=" w-32 text-">Color</div>
-                        <div className=" w-32 text-">Color code</div>
-                        <div className=" w-40 px-10">Quantity Update</div>
+                        <div className=" w-40 ">Material</div>
+                        <div className=" w-32 ">Material Name</div>
+                        <div className=" w-32 ">Color</div>
+                        <div className=" w-32 ">Unit Price (per Yard)</div>
+                        <div className=" w-32 hidden">Color code</div>
+                        <div className=" w-40">Quantity Update</div>
                     </div>
                     <div className=" w-full border h-0 mt-3 mb-6 border-gray-200"></div>
 
                 </div>
-                <div><MaterialItems onOpen={handleFormOpen} /></div>
+                <div>
+                    <MaterialItems onOpen={handleFormOpen} />
+                </div>
+                
                 <div className=" flex justify-between">
-                    <div className=" py-3 text-sm font-medium text-neutral-400">Showing data 1 to 8 of 256K entries</div>
+                    <div className="opacity-0 py-3 text-sm font-medium text-neutral-400">
+                        Showing data 1 to 8 of 256K entries
+                    </div>
                     <div className=" py-3">
                         <Pagination />
                     </div>
@@ -65,6 +72,7 @@ const Materials = () => {
 				<MaterialStockUpdateForm
                     isOpen={isStockUpdate}
                     onClose={handleFormClose}
+                    image={selectedMaterial.image}
                     materialCode={selectedMaterial.code}
                     materialName={selectedMaterial.name}
                     />
