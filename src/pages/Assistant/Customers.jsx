@@ -9,7 +9,6 @@ import SearchBox from "../../components/Assistant/Controls/HeaderSearchBox"
 import Pagination from "../../components/Assistant/Controls/Pagination"
 import NewCustomerForm from "../../components/Assistant/Forms/NewCustomerForm"
 import NewCustomerOTPForm from "../../components/Assistant/Forms/NewCustomerOTP"
-// import Customer from "../../components/Assistant/CustomersView"
 
 const ViewCustomers = () => {
 
@@ -37,6 +36,7 @@ const ViewCustomers = () => {
             try {
                 const response = await getCustomers();
                 setCustomers(response.data.customers);
+                setFilteredCustomers(response.data.customers);
             } catch (error) {
                 console.error(error);
             }

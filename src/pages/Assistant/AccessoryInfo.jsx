@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { getAccessory } from "../../api/accessoryAPI";
+import { getAccessoryById } from "../../api/accessoryAPI";
 import DeleteConfirmation from "../../components/Assistant/Confirmations/ItemDelete";
 import EditAccessory from "../../components/Assistant/Forms/EditAccessoryForm";
 import { ACCESSORY_IMAGES_URL } from "../../config/config";
@@ -9,6 +9,7 @@ import { ACCESSORY_IMAGES_URL } from "../../config/config";
 const Accessory = () => {
 
     const { id } = useParams();
+    console.log(id);
 
     const [accessoryInfo, setAccessory] = useState({}); // ACCESSORY DATA FROM THE API
     const [specificInfo, setType] = useState({});
@@ -24,7 +25,7 @@ const Accessory = () => {
     useEffect(() => {
         const fetchAccessoryData = async () => {
             try {
-                const response = await getAccessory(id);
+                const response = await getAccessoryById(id);
 
                 setEdit(response.data);
 
@@ -74,6 +75,7 @@ const Accessory = () => {
                         <img
                             className=" object-cover"
                             alt="Accessory main image"
+                            border="3"
                             src={selectedImage || (accessoryInfo.image && `${ACCESSORY_IMAGES_URL}/${accessoryInfo.image[0]}`)}
                         />
                     </div>

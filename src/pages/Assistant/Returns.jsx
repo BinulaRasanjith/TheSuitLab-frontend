@@ -8,13 +8,11 @@ import DropDownFilter from "../../components/Assistant/Controls/HeaderDropDown";
 import SearchBox from "../../components/Assistant/Controls/HeaderSearchBox";
 import Pagination from "../../components/Assistant/Controls/Pagination";
 import NewReturnForm from "../../components/Assistant/Forms/NewReturnForm";
-import ReturnRecord from "../../components/Assistant/ReturnRecord";
-// import Returnset from "../../components/Assistant/ReturnedItemSet";
 
 
 const Returns = () => {
 	const [isNewReturnForm, addNewReturn] = useState(false);
-    const [filteredReturns, setFilteredReturns] = useState([]);
+	const [filteredReturns, setFilteredReturns] = useState([]);
 
 	const [currentPage, setCurrentPage] = useState(1);
 	const recordsPerPage = 5;
@@ -29,6 +27,7 @@ const Returns = () => {
 			try {
 				const response = await getReturns();
 				setReturns(response.data.returns);
+				setFilteredReturns(response.data.returns);
 			} catch (error) {
 				console.error(error);
 			}
@@ -46,13 +45,13 @@ const Returns = () => {
 	};
 
 	const handleSearch = (searchText) => {
-        const filtered = returns.filter((order) => {
-            const refNo = order.referenceNo;
-            return refNo.toLowerCase().includes(searchText.toLowerCase());
-        });
+		const filtered = returns.filter((order) => {
+			const refNo = order.referenceNo;
+			return refNo.toLowerCase().includes(searchText.toLowerCase());
+		});
 
-        setFilteredReturns(filtered);
-    };
+		setFilteredReturns(filtered);
+	};
 
 	return (
 		<div className="relative">
@@ -92,36 +91,46 @@ const Returns = () => {
 						</div>
 					</div>
 				</div>
-				<div className=" flex flex-col">
-					<div className=" grid grid-cols-6 text-sm font-medium text-gray-400">
-						<div className=" w-48">Order Id</div>
-						<div className=" w-36">Return item Count</div>
-						<div className=" w-40">Ordered Date</div>
-						<div className=" w-40">Return Date</div>
-						<div className=" w-36">Reason for returning</div>
-					</div>
-					<div className=" w-full border h-0 mt-3 mb-6 border-gray-200"></div>
-				</div>
 				<div>
-					{/* <Returnset /> */}
-					<div className="flex flex-col gap-6">
-						{filteredReturns.length <= 0 ?
-							<div>
-								<div className='text-center text-black font-bold text-xl' width={100} height={320} colSpan="6">No data</div>
-							</div>
-							:
-							filteredReturns.slice(startIndex, endIndex).map((item, index) => ( // SLICE CUSTOMERS ARRAY TO DISPLAY ONLY 6 RECORDS PER PAGE
-							// records.map((item, index) => (
-								<ReturnRecord
-									key={index}
-									OrderId={item.referenceNo}
-									ItemCount={item.itemCount}
-									OrderedDate={new Date(item.orderedDate).toLocaleDateString()}
-									ReturnedDate={new Date(item.returnedDate).toLocaleDateString()}
-									Reason={item.reason}
-								/>
-							))}
-					</div>
+					<table className="">
+						<thead className=" text-left text-sm font-medium border-b-2 border-gray-200 text-gray-400 w-full">
+							<tr className="py-4">
+								<th className="py-3 w-72">
+									Order
+								</th>
+								<th className="py-3 w-72 text-center">
+									Return item Count
+								</th>
+								<th className="py-3 w-60 text-center">
+									Ordered Date
+								</th>
+								<th className="py-3 w-60 text-center">
+									Return Date
+								</th>
+								<th className="py-3 w-60 text-center">
+									Reason for returning
+								</th>
+							</tr>
+						</thead>
+						<tbody className=" text-left text-md font-medium text-gray-400 w-full">
+							{returns.length <= 0 ?
+								<tr>
+									<td className='text-center text-black font-bold text-3xl' width={100} height={320} colSpan="6">No data</td>
+								</tr>
+								:
+								returns.slice(startIndex, endIndex).map((item, index) => ( // SLICE CUSTOMERS ARRAY TO DISPLAY ONLY 6 RECORDS PER PAGE
+								// returns.map((item, index) => (
+									<tr key={index} className="items-center text-centers border-b-2 hover:bg-gray-100 text-black whitespace-nowrap font-medium w-full">
+										<td className="hidden">{item.referenceNo}</td>
+										<td className="py-4 w-72">{item.referenceNo}</td>
+										<td className="py-4 w-60 text-center">{item.itemCount}</td>
+										<td className="py-4 w-60 text-center">{new Date(item.orderedDate).toLocaleDateString()}</td>
+										<td className="py-4 w-60 text-center">{new Date(item.returnedDate).toLocaleDateString()}</td>
+										<td className="py-4 w-60 text-center">{item.reason}</td>
+									</tr>
+								))}
+						</tbody>
+					</table>
 				</div>
 				<div className=" flex justify-between">
 					<div className=" py-3 text-sm font-medium text-neutral-400">

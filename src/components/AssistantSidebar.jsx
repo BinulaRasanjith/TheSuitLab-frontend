@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { BiSolidMessageAltEdit } from "react-icons/bi"
 import { BsBarChartFill } from "react-icons/bs"
 import { FaUserCircle } from "react-icons/fa"
 import { HiColorSwatch } from "react-icons/hi"
@@ -87,17 +86,6 @@ const AssistantSidebar = () => {
                                 <div className='flex items-center'>
                                     <TbArrowBackUp size={20} />
                                     <span className='pl-2.5'>Returns</span>
-                                </div>
-                            </button>
-                        </Link>
-                    </li>
-
-                    <li>
-                        <Link to="/assistant/notifications">
-                            <button id="multiLevelDropdownButton" onClick={() => { handleToggleClick(6) }} className={`py-2 px-2 text-center w-56 mt-2 flex items-center justify-between rounded ${currentPath === "/assistant/notifications" ? 'text-white bg-black hover:bg-black' : 'text-bg hover:bg-gray-100'}`} type="button">
-                                <div className='flex items-center'>
-                                    <BiSolidMessageAltEdit size={20} />
-                                    <span className='pl-2.5'>Notifications</span>
                                 </div>
                             </button>
                         </Link>

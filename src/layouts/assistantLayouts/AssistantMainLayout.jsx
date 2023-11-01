@@ -1,11 +1,12 @@
 import { useEffect } from "react"; // TODO
 import { BiSolidPurchaseTag } from "react-icons/bi";
 import { BsBarChartFill } from "react-icons/bs";
-import { FaUserCircle } from "react-icons/fa";
 import { FaUserTag } from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
 import { HiColorSwatch } from "react-icons/hi";
 import { HiCalendarDays, HiShoppingCart } from "react-icons/hi2";
 import { IoIosBowtie } from "react-icons/io";
+import { MdReviews } from "react-icons/md";
 import { TbArrowBackUp } from "react-icons/tb";
 import { useSelector } from "react-redux"; // TODO
 import { Outlet } from "react-router-dom";
@@ -41,14 +42,14 @@ const assistantSidebarItems = [
 				label: "Strings",
 				to: "/assistant/materials/string",
 			},
-			{
-				label: "Interlinings",
-				to: "/assistant/materials/interlining",
-			},
-			{
-				label: "Zippers",
-				to: "/assistant/materials/zipper",
-			},
+			// {
+			// 	label: "Interlinings",
+			// 	to: "/assistant/materials/interlining",
+			// },
+			// {
+			// 	label: "Zippers",
+			// 	to: "/assistant/materials/zipper",
+			// },
 		],
 	},
 	{
@@ -88,14 +89,9 @@ const assistantSidebarItems = [
 	},
 	{
 		label: "Reviews",
-		icon: <FaUserCircle />,
+		icon: <MdReviews />,
 		to: "/assistant/reviews",
 	},
-	// {
-	//     label: 'Log Out',
-	//     icon: <TbLogout />,
-	//     to: '/',
-	// }
 ];
 
 const AssistantMainLayout = () => {

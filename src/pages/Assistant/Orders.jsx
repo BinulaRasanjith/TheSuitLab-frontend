@@ -1,3 +1,4 @@
+import { Button } from '@chakra-ui/react'
 import { useEffect, useState } from "react";
 
 import { getPurchaseOrders } from "../../api/purchaseOrdersAPI";
@@ -5,9 +6,6 @@ import OrderConfForm from "../../components/Assistant/Confirmations/OrderConfFor
 import DropDownFilter from "../../components/Assistant/Controls/HeaderDropDown";
 import SearchBox from "../../components/Assistant/Controls/HeaderSearchBox";
 import Pagination from "../../components/Assistant/Controls/Pagination";
-import OrderRecord from "../../components/assistant/OrderRecord";
-// import OrderedItems from "../../components/Assistant/OrderedItemSet"; {/* USE THIS IF ORDERS ITEMSET USING */}
-
 
 const records = [
 	{
@@ -136,6 +134,7 @@ const Orders = () => {
 			try {
 				const response = await getPurchaseOrders();
 				setOrders(response.data);
+				setFilteredOrders(response.data);
 			} catch (error) {
 				console.error(error);
 			}
@@ -172,39 +171,62 @@ const Orders = () => {
 						</div>
 					</div>
 				</div>
-				<div className=" flex flex-col">
-					<div className=" flex justify-between text-sm font-medium text-gray-400">
-						<div className=" w-40 text-">Order Id</div>
-						<div className=" w-32 text-">Item Count</div>
-						<div className=" w-32 text-">Phone Number</div>
-						<div className=" w-32 text-">Customer</div>
-						<div className=" w-32 text-">Ordered Date</div>
-						<div className=" w-32 px-5">Status</div>
-					</div>
-					<div className=" w-full border h-0 mt-3 mb-6 border-gray-200"></div>
-				</div>
 				<div>
-					{/* <OrderedItems onOpen={handleFormOpen} /> */} {/* USE THIS IF ORDERS ITEMSET USING */}
-					<div className="flex flex-col gap-6">
-						{filteredOrders.length <= 0 ?
-							<div>
-								<div className='text-center text-black font-bold text-xl' width={100} height={320} colSpan="6">No data</div>
-							</div>
-							:
-							filteredOrders.slice(startIndex, endIndex).map((item, index) => (
-								// records.map((item, index) => (  {/* USE THIS IF ORDERS ITEMSET USING */}
-								<OrderRecord
-									key={index}
-									OrderId={item.order_id}
-									ItemCount={item.item_count}
-									MobileNo={item.mobile}
-									Customer={item.customer}
-									OrderedDate={item.ordered_date}
-									Status={item.status}
-									onOpen={() => handleFormOpen(item.order_id)}
-								/>
-							))}
-					</div>
+					<table className="">
+						<thead className=" text-left text-sm font-medium border-b-2 border-gray-200 text-gray-400 w-full">
+							<tr className="py-4">
+								<th className="py-3 w-72">
+									Order
+								</th>
+								<th className="py-3 w-72 text-center">
+									No. of items
+								</th>
+								<th className="py-3 w-60 text-center">
+									Ordered Date
+								</th>
+								<th className="py-3 w-60 text-center">
+									Total Amount
+								</th>
+								<th className="py-3 w-60 text-center">
+									Customer
+								</th>
+								<th className="py-3 w-60 text-center">
+									Order Status
+								</th>
+							</tr>
+						</thead>
+						<tbody className=" text-left text-md font-medium text-gray-400 w-full">
+							{records.length <= 0 ?
+								<tr>
+									<td className='text-center text-black font-bold text-3xl' width={100} height={320} colSpan="6">No data</td>
+								</tr>
+								:
+								records.slice(startIndex, endIndex).map((item, index) => ( // SLICE CUSTOMERS ARRAY TO DISPLAY ONLY 6 RECORDS PER PAGE
+									// returns.map((item, index) => (
+									<tr key={index} className="items-center text-centers border-b-2 hover:bg-gray-100 text-black whitespace-nowrap font-medium w-full">
+										<td className="py-4 w-72">{item.orderId}</td>
+										<td className="py-4 w-72">{item.quantity}</td>
+										<td className="py-4 w-60 text-center">{new Date(item.orderedDate).toLocaleDateString()}</td>
+										<td className="py-4 w-60 text-center">{item.totalAmount}</td>
+										<td className="py-4 w-60 text-center">{item.customer}</td>
+										<td className="py-4 w-60 text-center">
+											<Button
+												_hover={{
+													bg: 'gray',
+													textColor: 'white'
+												}}
+												bg={'black'}
+												border={'1px'}
+												height={'2rem'}
+												// onClick={onOpen}
+												textColor={'white'}
+												width={'7rem'}>{item.status}
+											</Button>
+										</td>
+									</tr>
+								))}
+						</tbody>
+					</table>
 				</div>
 				<div className=" flex justify-between">
 					<div className=" py-3 text-sm font-medium text-neutral-400">

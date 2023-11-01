@@ -3,7 +3,7 @@ import api from "./api";
 
 // TO VIEW HIRE COSTUMES WITH FILTERS
 export const getHireCostumes = async ({ costumeType, rentStatus }) => {
-  return api.get(`/costume-hiring`, {
+  return api.get(`/costume-hiring/get`, {
     params: {
       costumeType,
       rentStatus,

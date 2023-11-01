@@ -39,6 +39,7 @@ const Hiring = () => {
 	const handleClick = (id) => {
 		navigate(`/assistant/hiring/${id}`)
 	}
+	console.log(hiringcostumes)
 
 	return (
 		<div className="relative">
@@ -66,7 +67,7 @@ const Hiring = () => {
 
 
 				<CardContainer>
-					{hiringcostumes.map((item, index) => {
+					{hiringcostumes && hiringcostumes.map((item, index) => {
 						return (
 							<HiringItemCard
 								image={item.HireCostume.images && item.HireCostume.images[0]}

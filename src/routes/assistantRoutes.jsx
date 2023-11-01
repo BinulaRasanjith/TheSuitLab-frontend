@@ -1,3 +1,4 @@
+import Reviews from "../components/Reviews";
 import AssistantMainLayout from "../layouts/assistantLayouts/AssistantMainLayout";
 import MaterialsLayout from "../layouts/assistantLayouts/MaterialsLayout";
 import Accessories from "../pages/Assistant/Accessories";
@@ -11,13 +12,11 @@ import HiringCostume from "../pages/Assistant/HireCostumeInfo";
 import Hiring from "../pages/Assistant/Hiring";
 import Interlinings from "../pages/Assistant/Interlinings";
 import Materials from "../pages/Assistant/Materials";
-import Notifications from "../pages/Assistant/Notifications";
 import Orders from "../pages/Assistant/Orders";
 import Returns from "../pages/Assistant/Returns";
 import String from "../pages/Assistant/Strings";
 import Zippers from "../pages/Assistant/Zippers";
 import Profile from "../pages/Profile";
-import Reviews from "../components/Reviews";
 
 const AssistantRoutes = {
   path: "/assistant",
@@ -44,7 +43,6 @@ const AssistantRoutes = {
     { path: "hiring", element: <Hiring /> },
     { path: "hiring/:id", element: <HiringCostume /> },
     { path: "accessories/:id", element: <AccessoryInfo /> },
-    { path: "notifications", element: <Notifications /> },
     { path: "profile", element: <Profile /> },
     { path: "reviews", element: <Reviews /> },
   ],

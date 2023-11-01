@@ -66,7 +66,7 @@ const Accessories = () => {
 
 
 				<CardContainer>
-					{accessories.map((accessory, index) => {
+					{ accessories && accessories.map((accessory, index) => {
 						return (
 							<AccessoryCard
 								image={accessory.Accessory.image && accessory.Accessory.image[0]}

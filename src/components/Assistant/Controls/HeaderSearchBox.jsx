@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
 
 const SearchBox = ({ onSearch }) => {
 
@@ -8,9 +7,6 @@ const SearchBox = ({ onSearch }) => {
         onSearch(searchText);
     };
 
-    useEffect(() => {
-        onSearch('');
-    }, [onSearch]);
 
     return (
         <div className="relative">
@@ -34,9 +30,9 @@ const SearchBox = ({ onSearch }) => {
             <input
                 className="block w-60 p-2.5 pl-10 text-xs text-gray-700 rounded-lg bg-gray-100"
                 id="default-search"
-                placeholder="Search"
+                placeholder="Search with customer name"
                 type="search"
-                onChange={handleSearch}
+                onInput={handleSearch}
             />
         </div>
     );

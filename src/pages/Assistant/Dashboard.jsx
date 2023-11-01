@@ -27,6 +27,7 @@ const Dashboard = () => {
 			try {
 				// GET DATA FROM LOCAL STORAGE
 				const storedData = localStorage.getItem('dbData');
+				console.log(storedData);
 				if (storedData) {
 					setDashboard(JSON.parse(storedData));
 				} else {
@@ -40,6 +41,17 @@ const Dashboard = () => {
 		};
 		fetchDashboardData();
 	}, [currentLocation]);
+
+	// CHART DATA
+	var thisWeekOrderCounts;
+	var lastWeekOrderCounts;
+	
+	if (dashboardContent.weeklyPerformance) {
+		thisWeekOrderCounts = dashboardContent.weeklyPerformance.thisWeekPerformance.map((entry) => entry.orderCount);
+		lastWeekOrderCounts = dashboardContent.weeklyPerformance.lastWeekPerformance.map((entry) => entry.orderCount);
+	} else {
+		console.error("Weekly performance data is not available in the JSON response.");
+	}
 
 
 	// CHART METRICS
@@ -61,6 +73,7 @@ const Dashboard = () => {
 			],
 		},
 	};
+
 
 	// CHART OPTIONS
 	const optionsChartBarDoubleDatasetsExample = {
@@ -106,18 +119,6 @@ const Dashboard = () => {
 		};
 	}, [currentLocation]);
 
-	// CHART DATA
-	var thisWeekOrderCounts;
-	var lastWeekOrderCounts;
-
-	if (dashboardContent.weeklyPerformance) {
-		thisWeekOrderCounts = dashboardContent.weeklyPerformance.thisWeekPerformance.map((entry) => entry.orderCount);
-		lastWeekOrderCounts = dashboardContent.weeklyPerformance.lastWeekPerformance.map((entry) => entry.orderCount);
-	} else {
-		console.error("Weekly performance data is not available in the JSON response.");
-	}
-
-
 	const assistantStateBoxItems = [
 		{
 			cardtitle: "ORDERS",
@@ -150,6 +151,7 @@ const Dashboard = () => {
 		// 	percentagevalue: income && income.result ? income.result.incomePercentage : 0,
 		// },
 	];
+	console.log(dashboardContent);
 
 
 	return (
@@ -182,7 +184,7 @@ const Dashboard = () => {
 					<div className=" text-sm font-semibold text-zinc-400">
 						RECENT ORDERS
 					</div>
-					<RecentOrders />
+					<RecentOrders orderData={dashboardContent.recentOrders} />
 					<div className=" flex justify-center">
 						<div className=" flex flex-col justify-center">
 							<Link to="/assistant/orders">

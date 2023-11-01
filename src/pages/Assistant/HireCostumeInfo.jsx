@@ -80,8 +80,8 @@ const Costume = () => {
                         <p className="text-lg py-4 leading-none text-gray-600 ">Accessory type:
                             <b>
                                 {
-                                    costumeInfo.HireCostume && costumeInfo.HireCostume.costumeType === 'Jacket' ? " Jacket" :
-                                        costumeInfo.HireCostume && costumeInfo.HireCostume.costumeType === 'Pant' ? " Trouser" : "Unknown"
+                                    costumeInfo.HireCostume && costumeInfo.HireCostume.costumeType === 'jacket' ? " Jacket" :
+                                        costumeInfo.HireCostume && costumeInfo.HireCostume.costumeType === 'pant' ? " Trouser" : "Unknown"
                                 }
                             </b>
                         </p>

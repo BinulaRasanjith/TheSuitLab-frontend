@@ -1,3 +1,4 @@
+import { Button } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
 // import NewHandoverForm from "../../components/Assistant/Forms/HandoverDamagesForm";
@@ -6,8 +7,6 @@ import ReturnFixConfForm from "../../components/Assistant/Confirmations/ReturnFi
 import DropDownFilter from "../../components/Assistant/Controls/HeaderDropDown";
 import SearchBox from "../../components/Assistant/Controls/HeaderSearchBox";
 import Pagination from "../../components/Assistant/Controls/Pagination";
-// import Handovers from "../../components/Assistant/HandoveredItemSet";
-import RentalRecord from "../../components/Assistant/HandoverRecord";
 
 
 const records = [
@@ -101,6 +100,7 @@ const Handover = () => {
 			try {
 				const response = await getHandovers();
 				setHandovers(response.data.customers);
+				setFilteredHandovers(response.data.customers);
 			} catch (error) {
 				console.error(error);
 			}
@@ -137,38 +137,63 @@ const Handover = () => {
 						</div>
 					</div>
 				</div>
-				<div className=" flex flex-col">
-					<div className=" flex justify-between text-sm font-medium text-gray-400">
-						<div className=" w-40 text-">Customer Id</div>
-						<div className=" w-32 text-">Suit Id</div>
-						<div className=" w-32 text-">Phone Number</div>
-						<div className=" w-32 text-">Borrowed Date</div>
-						<div className=" w-32 text-">To be handovered</div>
-						<div className=" w-40 px-5">Mark Damages</div>
-					</div>
-					<div className=" w-full border h-0 mt-3 mb-6 border-gray-300"></div>
-				</div>
 				<div>
-					{/* <Handovers onOpen={handleFormOpen} /> */}
-					<div className="flex flex-col gap-6">
-						{filteredHandovers.length <= 0 ?
-							<div>
-								<div className='text-center text-black font-bold text-xl' width={100} height={320} colSpan="6">No data</div>
-							</div>
-							:
-							filteredHandovers.slice(startIndex, endIndex).map((item, index) => ( // SLICE CUSTOMERS ARRAY TO DISPLAY ONLY 6 RECORDS PER PAGE
-								// records.map((item, index) => (
-								<RentalRecord
-									key={index}
-									CustomerId={item.cus_id}
-									SuitId={item.suit_id}
-									CustomerMobile={item.cus_mobile}
-									BorrowedDate={item.rented}
-									HandoverDate={item.handover}
-									onOpen={() => handleFormOpen(item.cus_id, item.suit_id)}
-								/>
-							))}
-					</div>
+					<table className="">
+						<thead className=" text-left text-sm font-medium border-b-2 border-gray-200 text-gray-400 w-full">
+							<tr className="py-4">
+								<th className="py-3 w-72">
+									Customer
+								</th>
+								<th className="py-3 w-72 text-center">
+									Suit
+								</th>
+								<th className="py-3 w-60 text-center">
+									Mobile
+								</th>
+								<th className="py-3 w-60 text-center">
+									Borrowed Date
+								</th>
+								<th className="py-3 w-60 text-center">
+									To be handovered
+								</th>
+								<th className="py-3 w-60 text-center">
+									Mark Damages
+								</th>
+							</tr>
+						</thead>
+						<tbody className=" text-left text-md font-medium text-gray-400 w-full">
+							{records.length <= 0 ?
+								<tr>
+									<td className='text-center text-black font-bold text-3xl' width={100} height={320} colSpan="6">No data</td>
+								</tr>
+								:
+								records.slice(startIndex, endIndex).map((item, index) => ( // SLICE CUSTOMERS ARRAY TO DISPLAY ONLY 6 RECORDS PER PAGE
+									// returns.map((item, index) => (
+									<tr key={index} className="items-center text-centers border-b-2 hover:bg-gray-100 text-black whitespace-nowrap font-medium w-full">
+										<td className="hidden">{item.rentalId}</td>
+										<td className="py-4 w-72">{item.customerId}</td>
+										<td className="py-4 w-60 text-center">{item.costume}</td>
+										<td className="py-4 w-60 text-center">{item.mobileNo}</td>
+										<td className="py-4 w-60 text-center">{new Date(item.rentedDate).toLocaleDateString()}</td>
+										<td className="py-4 w-60 text-center">{new Date(item.willHandover).toLocaleDateString()}</td>
+										<td className="py-4 w-60 text-center">
+											<Button
+												_hover={{
+													bg: 'gray',
+													textColor: 'white'
+												}}
+												bg={'black'}
+												border={'1px'}
+												height={'2rem'}
+												// onClick={onOpen}
+												textColor={'white'}
+												width={'7rem'}>{item.status}
+											</Button>
+										</td>
+									</tr>
+								))}
+						</tbody>
+					</table>
 				</div>
 				<div className=" flex justify-between">
 					<div className=" py-3 text-sm font-medium text-neutral-400">
