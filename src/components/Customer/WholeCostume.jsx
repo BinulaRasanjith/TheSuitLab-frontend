@@ -34,6 +34,13 @@ export function WholeCostume(props) {
 
 
   const TextureProps = {
+    MAT0000000000: useTexture({
+      map: "/textures/default/default_basecolor.jpg",
+      normalMap: "/textures/default/default_normal.jpg",
+      roughnessMap: "/textures/default/default_roughness.jpg",
+      // roughnessMap: "/textures/default/default_ROUGH.jpg",
+      aoMap: "/textures/default/default_ambientOcclusion.jpg",
+    }),
 
     MAT0000000001: useTexture({
       // MEKA MATERIAL CODE EKA WENAS KARALA WENA NAME DANNA EPA!!
@@ -147,6 +154,13 @@ export function WholeCostume(props) {
     THREE.RepeatWrapping;
 
   const pocketTextureProps = {
+    MAT0000000000: useTexture({
+      map: "/textures/default/default_basecolor.jpg",
+      normalMap: "/textures/default/default_normal.jpg",
+      roughnessMap: "/textures/default/default_roughness.jpg",
+      // roughnessMap: "/textures/default/default_ROUGH.jpg",
+      aoMap: "/textures/default/default_ambientOcclusion.jpg",
+    }),
     MAT0000000001: useTexture({
       // MEKA MATERIAL CODE EKA WENAS KARALA WENA NAME DANNA EPA!!
       map: "/textures/Poly - formal coat/color_map.jpg",
@@ -273,4 +287,4 @@ export function WholeCostume(props) {
   )
 }
 
-useGLTF.preload('/models/NewSuit.gltf')
+useGLTF.preload('/models/NewSuit.gltf') 

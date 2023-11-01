@@ -64,7 +64,7 @@ const RecentDesigns = () => {
 
                     allowSlideNext={true}
                     allowSlidePrev={true}
-                    autoplay={{ delay: 5000, disableOnInteraction: true }}
+                    autoplay={{ delay: 10000, disableOnInteraction: true }}
                     className='w-full h-full px-12 pb-12'
                     // install Swiper modules
                     modules={[Navigation, Pagination, A11y, Autoplay]}

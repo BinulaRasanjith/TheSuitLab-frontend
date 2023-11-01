@@ -1,21 +1,37 @@
-import BeltThree from '../../assets/images/belts/belt 3 1.png'
-import BeltFour from '../../assets/images/belts/belt 4 1.png'
-import BeltSix from '../../assets/images/belts/belt 6 1.png'
-import BeltSeven from '../../assets/images/belts/belt 7 1.png'
-import BlackBeltOne from '../../assets/images/belts/black belt 1.png'
-import BrownBeltOne from '../../assets/images/belts/brown belt 1.png'
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
+import { getSpecificAccessories } from "../../api/accessoryAPI";
+import { BELT } from "../../constants";
 import AccessoryCard from "./AccessoryCard"
-
 const BeltsGallery = () => {
-    return (
-        <div className="flex items-start flex-wrap gap-4 bg-gray-200 p-5 overflow-y-auto h-screen">
-            <AccessoryCard image={BeltThree} label="Clarks Men's Tilden Cap Oxford" />
-            <AccessoryCard image={BeltFour} label="Clarks Men's Tilden Cap Oxford" />
-            <AccessoryCard image={BeltSix} label="Clarks Men's Tilden Cap Oxford" />
-            <AccessoryCard image={BeltSeven} label="Clarks Men's Tilden Cap Oxford" />
-            <AccessoryCard image={BlackBeltOne} label="Micro Adjustable Belt" />
-            <AccessoryCard image={BrownBeltOne} label="Genuine Leather Dress Belt" />
 
+    const [beltData, setBeltData] = useState([]); // Create state variable for shoe data
+
+    useEffect(() => {
+
+        getSpecificAccessories({ accessoryType: BELT })
+            .then((response) => {
+                setBeltData(response.data.map((tie) => tie));
+                // console.log(shoeData);
+            })
+            .catch((error) => {
+                console.log(error);
+            }
+            );
+    }, [beltData]);
+
+    return (
+        <div className="flex items-start justify-around flex-wrap bg-gray-100 p-5 w-full overflow-y-auto h-full">
+            {beltData.length === 0 ? (<p className="flex items-center justify-center m-auto">No Available Data</p>) : (beltData.map((belt) => (
+                <Link
+                    key={belt.itemId}
+                    to={`${belt.itemId}`}
+                    className="block curser-pointer"
+                >
+                    <AccessoryCard image={belt.image[0]} label={belt.itemName} item="Accessory" />
+                </Link>
+            )))}
         </div>
     )
 }

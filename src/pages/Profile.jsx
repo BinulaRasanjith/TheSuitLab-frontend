@@ -3,18 +3,40 @@ import { Alert, AlertIcon, useToast } from "@chakra-ui/react";
 import { Collapse } from "@chakra-ui/react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-
+import { IoArrowBackCircle } from "react-icons/io5";
 import { changePassword, refreshToken, updateProfile } from "../api/authAPIs";
 import AVATAR from "../assets/images/avatar.png";
 import useSetUserState from "../hooks/useSetUserState";
 import { selectUser } from "../store/slices/authSlice";
 import displayRoleName from "../utils/displayRoleName";
+import { useLocation, useNavigate } from "react-router-dom";
+import { ADMIN, CUSTOMER, OPERATION_ASSISTANT, PRODUCT_MANAGER, TAILOR } from "../constants";
+
 
 const Profile = () => {
 	const toast = useToast();
 	const setUserState = useSetUserState();
+	const navigate = useNavigate();
+
 
 	const user = useSelector(selectUser);
+
+	const handleBack = () => {
+		if (user.role === TAILOR) {
+			navigate("/tailor");
+		}
+		if (user.role === PRODUCT_MANAGER) {
+			navigate("/manager");
+		} if (user.role === CUSTOMER) {
+			navigate("/customer")
+		}
+		if (user.role === OPERATION_ASSISTANT) {
+			navigate("/assistant")
+		}
+		if (user.role === ADMIN) {
+			navigate("/admin")
+		}
+	};
 
 	const [profileDetails, setProfileDetails] = useState({
 		firstName: user.firstName,
@@ -121,6 +143,12 @@ const Profile = () => {
 			<div className=" flex flex-col justify-between gap-12 mx-10 my-8 p-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg">
 				<div className=" flex justify-start">
 					<div>
+						<button
+							onClick={handleBack}
+							className="flex items-center gap-2 text-primary"
+						>
+							<IoArrowBackCircle className="text-3xl cursor-pointer" />
+						</button>
 						<div className=" flex justify-center gap-12 mx-5">
 							<div className=" ">
 								<img

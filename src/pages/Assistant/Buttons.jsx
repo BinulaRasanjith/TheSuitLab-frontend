@@ -37,7 +37,7 @@ const Buttons = () => {
 							image={button.image}
 							key={index}
 							materialName={button.materialName}
-							supplierID={button.supplierID}
+							supplierID={button.supplier}
 						/>
 					)
 				})}

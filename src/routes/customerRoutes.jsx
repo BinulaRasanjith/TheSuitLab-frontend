@@ -1,5 +1,6 @@
+import AccessoryDescription from "../components/Customer/AccessoryDescription";
 import BeltsGallery from "../components/Customer/BeltsGallery";
-import BowsGallery from "../components/Customer/BowsGallery";
+// import BowsGallery from "../components/Customer/BowsGallery";
 import Cart from "../components/Customer/Cart";
 import ChooseButtonColor from "../components/Customer/ChooseButtonColor";
 import ChoosePocketColor from "../components/Customer/ChoosePocketColor";
@@ -14,7 +15,8 @@ import TiesGallery from "../components/Customer/TiesGallery";
 import JacketsGallery from "../components/Customer/jacketsGallery";
 import PantsGallery from "../components/Customer/pantsGallery";
 import SuitDescription from "../components/Customer/suitDescription";
-import Payment from '../components/Payment';
+import OrderDetails from "../components/OrderDetails";
+import Payment from "../components/Payment";
 import ChooseBackPocket from "../components/customer/ChooseBackPocket";
 import ChooseButtons from "../components/customer/ChooseButtons";
 import ChooseLapel from "../components/customer/ChooseLapels";
@@ -33,13 +35,13 @@ import PantMeasurementLayout from "../layouts/customerLayouts/PantMeasurementLay
 import PantStyleLayout from "../layouts/customerLayouts/PantStyleLayout";
 import AboutUs from "../pages/Aboutus";
 import ContactUs from "../pages/Contactus";
+import Profile from "../pages/Profile"
 import Services from "../pages/Services";
 import Home from "../pages/customer/Home";
 import LookBook from "../pages/customer/LookBook";
 import MeasurementDashboard from "../pages/customer/MeasurementDashboard";
 import MyOrders from "../pages/customer/MyOrders";
 import SuitCustomizationLanding from "../pages/customer/SuitCustomizationLanding";
-import OrderDetails from "../components/OrderDetails";
 
 // TODO: complete the navigation routes
 const costumerRoutes = {
@@ -68,8 +70,7 @@ const costumerRoutes = {
 		},
 		{
 			path: "profile",
-			element: <div>Profile</div>,
-			// element: <Profile />,
+			element: <Profile />,
 		},
 		{
 			path: "my-orders",
@@ -145,7 +146,6 @@ const costumerRoutes = {
 							path: "sleeve-button",
 							element: <ChooseSleeveButtons />,
 						},
-
 					],
 				},
 				{
@@ -216,7 +216,6 @@ const costumerRoutes = {
 							path: "back-pocket",
 							element: <ChooseBackPocket />,
 						},
-
 					],
 				},
 				{
@@ -274,7 +273,8 @@ const costumerRoutes = {
 							element: <MaterialsFabricPattern />,
 						},
 					],
-				}, {
+				},
+				{
 					path: "jacket",
 					element: <SingleOutletLayout />,
 					children: [
@@ -294,7 +294,6 @@ const costumerRoutes = {
 							path: "sleeve-button",
 							element: <ChooseSleeveButtons />,
 						},
-
 					],
 				},
 
@@ -310,7 +309,6 @@ const costumerRoutes = {
 							path: "back-pocket",
 							element: <ChooseBackPocket />,
 						},
-
 					],
 				},
 				{
@@ -356,21 +354,22 @@ const costumerRoutes = {
 			element: <AccessoriesLayout />,
 			children: [
 				{
-					path: "neck-ties",
-					element: <TiesGallery />,
-				},
-				{
 					path: "shoes",
 					element: <ShoesGallery />,
+				},
+				{
+					path: "ties",
+					element: <TiesGallery />,
 				},
 				{
 					path: "belts",
 					element: <BeltsGallery />,
 				},
 				{
-					path: "bow-ties",
-					element: <BowsGallery />,
+					path: ":accessoryType/:accessoryId", // Dynamic route parameter for both suit type and suit ID
+					element: <AccessoryDescription />,
 				},
+
 			],
 		},
 		{

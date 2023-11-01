@@ -1,3 +1,5 @@
+
+
 import button1 from "../../assets/images/fabrics/pattern/pattern- navy blue with red strips.jpg"
 import button2 from "../../assets/images/fabrics/pattern/pattern-ark aegean suit.jpg"
 import button3 from "../../assets/images/fabrics/pattern/pattern-black small square textured.jpg"
@@ -9,9 +11,7 @@ const ViewButtons = () => {
 
 
     return (
-
         <div className="flex flex-row">
-
             <div className="flex-auto">
 
                 <div className='flex flex-col '>

@@ -17,6 +17,7 @@ import Returns from "../pages/Assistant/Returns";
 import String from "../pages/Assistant/Strings";
 import Zippers from "../pages/Assistant/Zippers";
 import Profile from "../pages/Profile";
+import Reviews from "../components/Reviews";
 
 const AssistantRoutes = {
   path: "/assistant",
@@ -45,6 +46,7 @@ const AssistantRoutes = {
     { path: "accessories/:id", element: <AccessoryInfo /> },
     { path: "notifications", element: <Notifications /> },
     { path: "profile", element: <Profile /> },
+    { path: "reviews", element: <Reviews /> },
   ],
 };
 

@@ -37,7 +37,7 @@ const Zippers = () => {
 							image={zipper.image}
 							key={index}
 							materialName={zipper.materialName}
-							supplierID={zipper.supplierID}
+							supplierID={zipper.supplier}
 						/>
 					)
 				})}

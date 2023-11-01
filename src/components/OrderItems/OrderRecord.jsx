@@ -7,6 +7,7 @@ const OrderRecord = ({
     CustomerId,
     ItemCount,
     Amount,
+    OrderedDate,
     Status,
     key,
 }) => {
@@ -15,9 +16,10 @@ const OrderRecord = ({
 
             <tr className="flex items-center text-center border hover:bg-gray-300 text-black whitespace-nowrap font-medium">
                 <td className="w-40"> <Link to={`${OrderId}`}>{OrderId}</Link></td>
-                <td className="w-40">{CustomerId}</td>
+                <td className="w-40 pl-4">{CustomerId}</td>
                 <td className="w-40">{ItemCount}</td>
                 <td className="w-40">{Amount}</td>
+                <td className="w-40">{OrderedDate}</td>
                 <td className="w-40"> {Status}</td>
                 <td className="w-40 py-2">
 

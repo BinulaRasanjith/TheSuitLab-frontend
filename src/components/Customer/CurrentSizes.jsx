@@ -1,25 +1,34 @@
 import {
-	Select,
-	useDisclosure,
-	useToast, Button,
+	Button,
 	FormControl,
 	FormLabel,
 	Input,
-	Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay
+	Modal,
+	ModalBody,
+	ModalCloseButton,
+	ModalContent,
+	ModalFooter,
+	ModalHeader,
+	ModalOverlay,
+	Select,
+	useDisclosure,
+	useToast,
 } from "@chakra-ui/react";
+import React from "react";
 import { useEffect, useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { IoArrowBackCircle } from "react-icons/io5";
+import { MdNavigateNext } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { MdNavigateNext } from "react-icons/md";
 
-import { addCustomSuitToCart as addCustomSuitToCartAPI } from "../../api/customerAPI";
 import {
+	addNewCostumeToItemModel,
 	getCoatMeasurements,
 	getTrouserMeasurements,
-	addNewCostumeToItemModel
 } from "../../api/customerAPI";
+import { addCustomSuitToCart as addCustomSuitToCartAPI } from "../../api/customerAPI";
+import { calculatePrice } from "../../api/purchaseOrdersAPI";
 import FullShoulderWidth from "../../assets/images/measurements/men_size_1 (1).jpg";
 import Sleeves from "../../assets/images/measurements/men_size_2.jpg";
 import FullChest from "../../assets/images/measurements/men_size_3.jpg";
@@ -38,25 +47,30 @@ import MeasurementBlock from "../../components/Customer/MeasurementBlock";
 import { CUSTOM } from "../../constants";
 import { selectUser } from "../../store/slices/authSlice";
 import { selectJacket } from "../../store/slices/jacketCustomizationSlice";
+import {
+	getCourtMeasurementObject,
+	getTrouserMeasurementObject,
+} from "../../utils/measurements";
 import { inchesToCm } from "../../utils/measurements";
-import React from 'react';
+import ItemType from "../../constants/ItemType";
 
 const CurrentSizes = () => {
+	const jacket = useSelector(selectJacket);
 
 	const location = useLocation();
 	const navigate = useNavigate();
 	const toast = useToast();
 	const user = useSelector(selectUser);
 
-	const { isOpen, onOpen, onClose } = useDisclosure()
-	const initialRef = React.useRef()
-	const finalRef = React.useRef()
-	const [inputValue, setInputValue] = useState('');
+	const { isOpen, onOpen, onClose } = useDisclosure();
+	const initialRef = React.useRef();
+	const finalRef = React.useRef();
+	const [inputValue, setInputValue] = useState("");
 	const [isAddButtonDisabled, setIsAddButtonDisabled] = useState(true);
 	const handleInputChange = (e) => {
 		const value = e.target.value;
 
-		if (value === '' || (value >= 1 && value <= 10)) {
+		if (value === "" || (value >= 1 && value <= 10)) {
 			setInputValue(value);
 			setIsAddButtonDisabled(false);
 		} else {
@@ -64,7 +78,7 @@ const CurrentSizes = () => {
 		}
 	};
 
-	const jacket = useSelector(selectJacket);
+	const { fabric, pocketColor } = useSelector(selectJacket);
 
 	const [selectedCategory, setSelectedCategory] = useState("jacket");
 	const [selectedUnit, setSelectedUnit] = useState("inch");
@@ -134,53 +148,92 @@ const CurrentSizes = () => {
 			location.pathname.includes("/customize-suit/jacket")
 				? "/customer/customize-suit/jacket/measurements"
 				: location.pathname.includes("/customize-suit/pant")
-					? "/customer/customize-suit/pant/measurements"
-					: location.pathname.includes("/customize-suit/all")
-						? "/customer/customize-suit/all/measurements"
-						: "/customer/customize-measurements"
+				? "/customer/customize-suit/pant/measurements"
+				: location.pathname.includes("/customize-suit/all")
+				? "/customer/customize-suit/all/measurements"
+				: "/customer/customize-measurements"
 		);
 
 	const handleGoToCart = async () => {
 		// TODO: check if selected all jacket options
-		// console.log(jacket);
-		await addNewCostumeToItemModel({
-			itemType: "CustomSuit",
-			price: 1000,
-			quantity: inputValue,
-			status: "available",
-		}).then((res) => {
-			// console.log(res.data);
-			const coatMeasurementsInInch = getCourtMeasurementObject(
+
+		let coatMeasurementsInInch = {};
+		let pantMeasurementsInInch = {};
+
+		if (selectedCategory === "jacket" || selectedCategory === "all") {
+			coatMeasurementsInInch = getCourtMeasurementObject(
 				coatMeasurements,
 				selectedUnit
 			);
-			const pantMeasurementsInInch = getTrouserMeasurementObject(
-				pantMeasurements,
+		}
+
+		if (selectedCategory === "pant" || selectedCategory === "all") {
+			pantMeasurementsInInch = getTrouserMeasurementObject(
+				trouserMeasurements,
 				selectedUnit
 			);
-			addCustomSuitToCartAPI({
-				description: {
-					type: CUSTOM,
-					customization: jacket,
-				}, measurement: {
-					coatMeasurementsInInch,
-					pantMeasurementsInInch,
-				},
-				customerId: user.id,
-				itemId: res.data.itemId,
-				price: 1000, // TODO: calculate price
-				quantity: inputValue,
-				status: "available",
-			}).then((res) => {
-				console.log(res.data);
-				navigate("/customer/cart");
-			})
-				.catch((err) => {
-					console.log(err);
-				});
-		}).catch((err) => {
-			console.log(err);
+		}
+
+		// selectedCategory
+		const res = await calculatePrice({
+			measurement: {
+				coatMeasurements: coatMeasurementsInInch,
+				pantMeasurements: pantMeasurementsInInch,
+			},
+			fabric,
+			pocketColor,
+			selectedCategory,
 		});
+		// console.log(res);
+
+		const price = res.data.price;
+
+		await addNewCostumeToItemModel({
+			itemType: "CustomSuit",
+			price,
+			quantity: inputValue,
+			status: "available",
+			costumeType: selectedCategory,
+			measurementType: CUSTOM,
+			measurement: {
+				coatMeasurements: coatMeasurementsInInch,
+				pantMeasurements: pantMeasurementsInInch,
+			},
+		})
+			.then((res) => {
+				// console.log(res.data);
+				addCustomSuitToCartAPI({
+					description: {
+						type: ItemType.CUSTOM_SUIT,
+						customization: jacket,
+					},
+					measurements: {
+						coatMeasurements: coatMeasurementsInInch,
+						pantMeasurements: pantMeasurementsInInch,
+					},
+					customerId: user.id,
+					itemId: res.data.itemId,
+					price,
+					quantity: inputValue,
+					status: "available",
+				})
+					.then(() => {
+						// console.log(res.data);
+						toast({
+							title: "Item added to cart",
+							status: "success",
+							duration: 3000,
+							isClosable: true,
+						});
+						navigate("/customer/cart");
+					})
+					.catch((err) => {
+						console.log(err);
+					});
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	};
 
 	return (
@@ -338,8 +391,8 @@ const CurrentSizes = () => {
 							header="Trouser Waist"
 							value={
 								selectedUnit === "inch"
-									? trouserMeasurements?.trouserWaist
-									: trouserMeasurementsCM?.trouserWaist
+									? trouserMeasurements?.waist
+									: trouserMeasurementsCM?.waist
 							}
 							selectedUnit={selectedUnit}
 							unchangeable
@@ -374,8 +427,8 @@ const CurrentSizes = () => {
 							header="Trouser Length"
 							value={
 								selectedUnit === "inch"
-									? trouserMeasurements?.trouserLength
-									: trouserMeasurementsCM?.trouserLength
+									? trouserMeasurements?.length
+									: trouserMeasurementsCM?.length
 							}
 							selectedUnit={selectedUnit}
 							unchangeable
@@ -435,21 +488,28 @@ const CurrentSizes = () => {
 						<ModalBody pb={6}>
 							<FormControl>
 								<FormLabel>Quantity</FormLabel>
-								<Input type="number" ref={initialRef}
+								<Input
+									type="number"
+									ref={initialRef}
 									value={inputValue}
 									onChange={handleInputChange}
 									min={0}
-									max={10} required />
+									max={10}
+									required
+								/>
 							</FormControl>
 						</ModalBody>
 
 						<ModalFooter>
-							<Button onClick={handleGoToCart} colorScheme="blue" mr={3} disabled={isAddButtonDisabled}>
+							<Button
+								onClick={handleGoToCart}
+								colorScheme="blue"
+								mr={3}
+								disabled={isAddButtonDisabled}
+							>
 								<FaShoppingCart className="mr-2 text-xl" />
 								Add to cart
-
 							</Button>
-
 						</ModalFooter>
 					</ModalContent>
 				</Modal>

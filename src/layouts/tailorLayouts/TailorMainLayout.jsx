@@ -11,65 +11,65 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import { TAILOR } from "../../constants";
 import { selectUser } from "../../store/slices/authSlice";
 
-const sidebarItems = [
-	{
-		label: "Dashboard",
-		icon: <HiChartBar />,
-		to: "/tailor",
-	},
-	{
-		label: "Orders",
-		icon: <HiShoppingCart />,
-		to: "/tailor/orders",
-		subItems: [
-			{
-				label: "All",
-				to: "/tailor/orders/all",
-			},
-			{
-				label: "Collected",
-				to: "/tailor/orders/collected",
-			},
-			{
-				label: "Completed",
-				to: "/tailor/orders/completed",
-			},
-			{
-				label: "To be collected",
-				to: "/tailor/orders/to-be-collected",
-			},
-		],
-	},
-	{
-		label: "Materials",
-		icon: <HiColorSwatch />,
-		to: "/tailor/materials",
-		subItems: [
-			{
-				label: "Fabric",
-				to: "/tailor/materials/fabric",
-			},
-			{
-				label: "Strings",
-				to: "/tailor/materials/strings",
-			},
-			{
-				label: "Buttons",
-				to: "/tailor/materials/buttons",
-			},
-		],
-	},
-	{
-		label: "Reviews",
-		icon: <HiHandThumbUp />,
-		to: "/tailor/reviews",
-	},
-	{
-		label: "Profile",
-		icon: <HiUserCircle />,
-		to: "/tailor/profile",
-	},
-];
+// const sidebarItems = [
+// 	{
+// 		label: "Dashboard",
+// 		icon: <HiChartBar />,
+// 		to: "/tailor",
+// 	},
+// 	{
+// 		label: "Orders",
+// 		icon: <HiShoppingCart />,
+// 		to: "/tailor/orders",
+// 		// subItems: [
+// 		// 	{
+// 		// 		label: "All",
+// 		// 		to: "/tailor/orders/all",
+// 		// 	},
+// 		// 	{
+// 		// 		label: "Collected",
+// 		// 		to: "/tailor/orders/collected",
+// 		// 	},
+// 		// 	{
+// 		// 		label: "Completed",
+// 		// 		to: "/tailor/orders/completed",
+// 		// 	},
+// 		// 	{
+// 		// 		label: "To be collected",
+// 		// 		to: "/tailor/orders/to-be-collected",
+// 		// 	},
+// 		// ],
+// 	},
+// 	{
+// 		label: "Materials",
+// 		icon: <HiColorSwatch />,
+// 		to: "/tailor/materials",
+// 		// subItems: [
+// 		// 	{
+// 		// 		label: "Fabric",
+// 		// 		to: "/tailor/materials/fabric",
+// 		// 	},
+// 		// 	{
+// 		// 		label: "Strings",
+// 		// 		to: "/tailor/materials/strings",
+// 		// 	},
+// 		// 	{
+// 		// 		label: "Buttons",
+// 		// 		to: "/tailor/materials/buttons",
+// 		// 	},
+// 		// ],
+// 	},
+// 	{
+// 		label: "Reviews",
+// 		icon: <HiHandThumbUp />,
+// 		to: "/tailor/reviews",
+// 	},
+// 	{
+// 		label: "Profile",
+// 		icon: <HiUserCircle />,
+// 		to: "/tailor/profile",
+// 	},
+// ];
 
 const TailorMainLayout = () => {
 	const navigate = useNavigate();
@@ -83,10 +83,8 @@ const TailorMainLayout = () => {
 		<>
 			<Navbar />
 			<MainLayout>
-				<Sidebar items={sidebarItems} />
-				<ContentWrapper>
+				{/* <Sidebar items={sidebarItems} /> */}
 					<Outlet />
-				</ContentWrapper>
 			</MainLayout>
 		</>
 	);
