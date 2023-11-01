@@ -9,3 +9,5 @@ export const MATERIAL_IMAGES_URL = `${SERVER_URL}/uploads/material-images`;
 export const HIRE_COSTUME_IMAGES_URL = `${SERVER_URL}/uploads/hire-costumes-images`;
 
 export const ACCESSORY_IMAGES_URL = `${SERVER_URL}/uploads/accessories-images`;
+
+export const PRE_DESIGNED_COSTUME_IMAGES_URL = `${SERVER_URL}/uploads/sell-costumes-images`;

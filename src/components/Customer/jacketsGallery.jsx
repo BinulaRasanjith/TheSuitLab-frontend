@@ -63,10 +63,14 @@ const JacketsGallery = () => {
 
 			<div className="flex items-start md:items-center flex-col md:flex-row gap-x-2 w-56">
 				<div className="p-4">
-					<select className="text-xl w-60 py-2.5 pl-5 rounded-lg border-2 border-gray-500 " onChange={toggleSortOrder} value={sortOrder}>
-						<option className="py-2.5 text-gray-400" value="">Sort By Price</option>
-						<option className="py-2.5" value="ascending">Asc</option>
-						<option className="py-2.5" value="descending">Des</option>
+					<select
+						className="text-xl w-60 py-2.5 pl-5 rounded-lg border-2 border-gray-500"
+						onChange={toggleSortOrder}
+						value={sortOrder}
+					>
+						<option value="" disabled hidden>Select Sort Order</option>
+						<option value="ascending">Asc</option>
+						<option value="descending">Des</option>
 					</select>
 				</div>
 				<input
@@ -88,7 +92,7 @@ const JacketsGallery = () => {
 						to={`${jacket.itemId}`}
 						className="block curser-pointer"
 					>
-						<AccessoryCard image={jacket.image[0]} label={jacket.itemName} item="Hire-Costume" price={jacket.price} status={jacket.status} brand="" />
+						<AccessoryCard image={jacket.image[0]} label={jacket.itemName} item="Hire-Costume" price={jacket.price} status={jacket.status} brand="" rating={jacket.rating} />
 					</Link>
 				)))}
 			</div>

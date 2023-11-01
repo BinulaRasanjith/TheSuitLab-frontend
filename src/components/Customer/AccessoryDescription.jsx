@@ -148,7 +148,7 @@ const AccessoryDescription = () => {
                         className=" object-cover h-full rounded"
                     />
                 </div>
-                <div className="flex md:flex-row flex-col items-center md:items-start justify-center md:justify-between mb-4 px-2">
+                <div className="flex gap-4 mb-4 px-2">
                     {accessoryDetails && accessoryDetails.image.map((image, index) => (
 
                         <div key={index} className="h-28 w-32">
@@ -248,9 +248,9 @@ const AccessoryDescription = () => {
                 </div>
 
 
-                <div className="flex md:flex-row flex-col flex-wrap gap-4 items-center justify-around">
+                <div className="flex gap-x-8">
                     <Button
-                        className="flex flex-col justify-center py-6"
+                        className="flex flex-col justify-center py-6 w-30"
                         rounded={"md"}
                         color={"white"}
                         bgColor={"black"}
