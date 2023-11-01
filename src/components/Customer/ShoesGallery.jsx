@@ -14,7 +14,7 @@ const ShoesGallery = () => {
 
         getSpecificAccessories({ accessoryType: SHOE })
             .then((response) => {
-                // console.log(response.data);
+                console.log(response.data);
                 setShoeData(response.data);
             })
             .catch((error) => {

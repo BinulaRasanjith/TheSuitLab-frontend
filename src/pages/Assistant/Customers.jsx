@@ -1,6 +1,7 @@
 import { Button } from '@chakra-ui/react'
 import { useEffect, useState } from "react"
 import { AiFillPlusCircle } from 'react-icons/ai'
+// import Customers from "../../components/Assistant/CustomersView"
 import { Link } from 'react-router-dom';
 
 import { getCustomers } from "../../api/customerAPI";
@@ -9,18 +10,23 @@ import SearchBox from "../../components/Assistant/Controls/HeaderSearchBox"
 import Pagination from "../../components/Assistant/Controls/Pagination"
 import NewCustomerForm from "../../components/Assistant/Forms/NewCustomerForm"
 import NewCustomerOTPForm from "../../components/Assistant/Forms/NewCustomerOTP"
-// import Customer from "../../components/Assistant/CustomersView"
 
 const ViewCustomers = () => {
 
-    const [customers, setCustomers] = useState([]);
-    const [filteredCustomers, setFilteredCustomers] = useState([]);
+	const [customers, setReturns] = useState([]);
 
-    const [currentPage, setCurrentPage] = useState(1);
-    const recordsPerPage = 5;
+	useEffect(() => {
+		const fetchReturns = async () => {
+			try {
+				const response = await getCustomers();
+				setReturns(response.data.customers);
+			} catch (error) {
+				console.error(error);
+			}
+		};
 
-    const startIndex = (currentPage - 1) * recordsPerPage;
-    const endIndex = startIndex + recordsPerPage;
+		fetchReturns();
+	}, []);
 
     const [isNewCustomerForm, addNewCustomer] = useState(false);
 
@@ -30,28 +36,6 @@ const ViewCustomers = () => {
 
     const handleFormOpen = () => {
         addNewCustomer(true); // SET isNewReturnForm TO FALSE TO CLOSE THE FORM
-    };
-
-    useEffect(() => {
-        const fetchCustomers = async () => {
-            try {
-                const response = await getCustomers();
-                setCustomers(response.data.customers);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        fetchCustomers();
-    }, []);
-
-    const handleSearch = (searchText) => {
-        const filtered = customers.filter((customer) => {
-            const customerName = `${customer.firstName} ${customer.lastName}`;
-            return customerName.toLowerCase().includes(searchText.toLowerCase());
-        });
-
-        setFilteredCustomers(filtered);
     };
 
     return (
@@ -67,7 +51,7 @@ const ViewCustomers = () => {
                         </div>
                         <div className=" flex gap-4 align-middle">
                             <div>
-                                <SearchBox onSearch={handleSearch} />
+                                <SearchBox />
                             </div>
                             <div>
                                 <DropDownFilter />
@@ -93,60 +77,47 @@ const ViewCustomers = () => {
                             </div>
                         </div>
                     </div>
-                    <div className=""> {/* PARENT */}
-
+                    <div className="">
                         <table className="">
                             <thead className=" text-left text-sm font-medium border-b-2 border-gray-200 text-gray-400 w-full">
                                 <tr className="py-4">
                                     <th className="py-3 w-72">
+                                        Customer Id
+                                    </th>
+                                    <th className="py-3 w-72">
                                         Customer Name
                                     </th>
-                                    <th className="py-3 w-72 text-center">
+                                    <th className="py-3 w-60">
                                         Phone Number
                                     </th>
-                                    <th className="py-3 w-60 text-center">
+                                    <th className="py-3 w-60">
                                         Email
+                                        {/* Order Count */}
                                     </th>
-                                    <th className="py-3 w-60 text-center">
-                                        Address
-                                    </th>
-                                    <th className="py-3 w-60 text-center">
+                                    <th className="py-3 w-60">
                                         Status
                                     </th>
                                 </tr>
                             </thead>
                             <tbody className=" text-left text-md font-medium text-gray-400 w-full">
-                                {filteredCustomers.length <= 0 ?
-                                    <tr>
-                                        <td className='text-center text-black font-bold text-xl' width={100} height={320} colSpan="6">No data</td>
+                                {customers.map((item, index) => (
+                                    <tr key={index} className="items-center text-centers border-b-2 hover:bg-gray-300 text-black whitespace-nowrap font-medium w-full">
+                                        <td className="py-4 w-72"> <Link to={`${item.userId}`}>{item.userId}</Link></td>
+                                        <td className="py-4 w-72">{item.firstName} {item.lastName}</td>
+                                        <td className="py-4 w-60">{item.mobileNo}</td>
+                                        <td className="py-4 w-60">{item.email}</td>
+                                        <td className="py-4 w-60"> {item.progress ? "Working" : "Blocked"}</td>
                                     </tr>
-                                    :
-                                    filteredCustomers.slice(startIndex, endIndex).map((item, index) => ( // SLICE CUSTOMERS ARRAY TO DISPLAY ONLY 6 RECORDS PER PAGE
-                                        // customers.map((item, index) => (
-                                        <tr key={index} className="items-center text-centers border-b-2 hover:bg-gray-100 text-black whitespace-nowrap font-medium w-full">
-                                            <td className="hidden"> <Link to={`${item.userId}`}>{item.userId}</Link></td>
-                                            <td className="py-4 w-72">{item.firstName} {item.lastName}</td>
-                                            <td className="py-4 w-60 text-center">{item.mobileNo}</td>
-                                            <td className="py-4 w-60 text-center">{item.email ? item.email : " - "}</td>
-                                            <td className="py-4 w-60 text-center">{item.Customer.address ? item.Customer.address : " - "}</td>
-                                            <td className="py-4 w-60 text-center">{item.progress ? "Working" : "Blocked"}</td>
-                                        </tr>
-                                    ))}
+                                ))}
                             </tbody>
                         </table>
-
                     </div>
-
                     <div className=" flex justify-between">
                         <div className=" py-3 text-sm font-medium text-neutral-400">
-                            Showing data {startIndex + 1} to {endIndex} of {filteredCustomers.length} entries
+                            Showing data 1 to 4 of 4 entries
                         </div>
                         <div className=" py-3">
-                            <Pagination
-                                currentPage={currentPage}
-                                totalPages={Math.ceil(customers.length / recordsPerPage)}
-                                onPageChange={(newPage) => setCurrentPage(newPage)}
-                            />
+                            <Pagination />
                         </div>
                     </div>
                 </div>
@@ -163,4 +134,4 @@ const ViewCustomers = () => {
     )
 }
 
-export default ViewCustomers;
+export default ViewCustomers

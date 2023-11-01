@@ -16,7 +16,7 @@ const Slideshow2 = () => {
 			url: "https://images.pexels.com/photos/375902/pexels-photo-375902.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
 		},
 		{
-			url: "https://www.fashionbeans.com/wp-content/uploads/2023/06/collycollz_amanwearingabrownsuit.jpg",
+			url: "https://img.freepik.com/free-photo/front-view-smiling-male-office-worker-suit-holding-documents-pointing-something-right-side-isolated-dark-wall_140725-97201.jpg?w=1480&t=st=1692209222~exp=1692209822~hmac=90e6dddbf4f14bee6ba66d7aadc75ba5dfae357d14bc5eb614cbf0b2fcd0e372",
 		},
 		{
 			url: "https://cdn.mos.cms.futurecdn.net/uPTkLTkC2kZiKzWGCs7oG3-1920-80.jpg.webp",
