@@ -48,7 +48,7 @@ const Cart = () => {
 		viewCartItem();
 	}, [viewCartItemId]);
 
-	const [vat, setVat] = useState(800);
+	// const [vat, setVat] = useState(800);
 
 	useEffect(() => {
 		const getCartItems = async () => {
@@ -79,8 +79,8 @@ const Cart = () => {
 			});
 		} else {
 			// if payment can be done
-			const hash = crypto.SHA256(calculateTotalPrice() + vat + "");
-			localStorage.setItem("amount", calculateTotalPrice() + vat);
+			const hash = crypto.SHA256(calculateTotalPrice() + "");
+			localStorage.setItem("amount", calculateTotalPrice());
 			localStorage.setItem("hash", hash);
 			localStorage.setItem("items", JSON.stringify(cartItems));
 
@@ -127,71 +127,71 @@ const Cart = () => {
 		return totalPrice;
 	};
 
-	const [details, setDetails] = useState({
-		Material_Code: "",
-		Button_Style: "",
-		Lapel_Style: "",
-		Jacket_Pocket: null,
-		Sleeve_Buttons: null,
-		Pocket_Material_Code: null,
-		Button_Color: "",
-		Trouser_Style: "",
-		Back_Pocket: null,
-	});
+	// const [details, setDetails] = useState({
+	// 	Material_Code: "",
+	// 	Button_Style: "",
+	// 	Lapel_Style: "",
+	// 	Jacket_Pocket: null,
+	// 	Sleeve_Buttons: null,
+	// 	Pocket_Material_Code: null,
+	// 	Button_Color: "",
+	// 	Trouser_Style: "",
+	// 	Back_Pocket: null,
+	// });
 
-	const getDetails = ({ customization }) => {
-		for (let key in customization) {
-			if (key === "lapel") {
-				setDetails({ ...details, Lapel_Style: customization[key] });
-			} else if (key === "button") {
-				if (customization[key] === "1S") {
-					setDetails({ ...details, Button_Style: "1 Button" });
-				} else if (customization[key] === "2S") {
-					setDetails({ ...details, Button_Style: "2 Buttons" });
-				} else if (customization[key] === "4D2") {
-					setDetails({ ...details, Button_Style: "4 Buttons" });
-				} else if (customization[key] === "6D3") {
-					setDetails({ ...details, Button_Style: "6 Buttons" });
-				}
-			} else if (key === "fabric") {
-				setDetails({ ...details, Material_Code: customization[key] });
-			} else if (key === "pocket") {
-				if (customization[key] !== null) {
-					setDetails({ ...details, Jacket_Pocket: customization[key] });
-				} else {
-					setDetails({ ...details, Jacket_Pocket: "No Pocket" });
-				}
-			} else if (key === "trouser") {
-				setDetails({ ...details, Trouser_Style: customization[key] });
-			} else if (key === "backPocket") {
-				if (customization[key] !== null) {
-					setDetails({ ...details, Back_Pocket: customization[key] });
-				} else {
-					setDetails({ ...details, Back_Pocket: "No Pocket" });
-				}
-			} else if (key === "buttonColor") {
-				if (customization[key] !== "none") {
-					setDetails({ ...details, Button_Color: customization[key] });
-				} else {
-					setDetails({ ...details, Button_Color: "No Color" });
-				}
-			} else if (key === "pocketColor") {
-				if (customization[key] !== null) {
-					setDetails({ ...details, Pocket_Material_Code: customization[key] });
-				} else {
-					setDetails({ ...details, Pocket_Material_Code: "No Color" });
-				}
-			} else if (key === "sleeveButtons") {
-				if (customization[key] !== null) {
-					setDetails({ ...details, Sleeve_Buttons: customization[key] });
-				} else {
-					setDetails({ ...details, Sleeve_Buttons: "No Buttons" });
-				}
-			}
+	// const getDetails = ({ customization }) => {
+	// 	for (let key in customization) {
+	// 		if (key === "lapel") {
+	// 			setDetails({ ...details, Lapel_Style: customization[key] });
+	// 		} else if (key === "button") {
+	// 			if (customization[key] === "1S") {
+	// 				setDetails({ ...details, Button_Style: "1 Button" });
+	// 			} else if (customization[key] === "2S") {
+	// 				setDetails({ ...details, Button_Style: "2 Buttons" });
+	// 			} else if (customization[key] === "4D2") {
+	// 				setDetails({ ...details, Button_Style: "4 Buttons" });
+	// 			} else if (customization[key] === "6D3") {
+	// 				setDetails({ ...details, Button_Style: "6 Buttons" });
+	// 			}
+	// 		} else if (key === "fabric") {
+	// 			setDetails({ ...details, Material_Code: customization[key] });
+	// 		} else if (key === "pocket") {
+	// 			if (customization[key] !== null) {
+	// 				setDetails({ ...details, Jacket_Pocket: customization[key] });
+	// 			} else {
+	// 				setDetails({ ...details, Jacket_Pocket: "No Pocket" });
+	// 			}
+	// 		} else if (key === "trouser") {
+	// 			setDetails({ ...details, Trouser_Style: customization[key] });
+	// 		} else if (key === "backPocket") {
+	// 			if (customization[key] !== null) {
+	// 				setDetails({ ...details, Back_Pocket: customization[key] });
+	// 			} else {
+	// 				setDetails({ ...details, Back_Pocket: "No Pocket" });
+	// 			}
+	// 		} else if (key === "buttonColor") {
+	// 			if (customization[key] !== "none") {
+	// 				setDetails({ ...details, Button_Color: customization[key] });
+	// 			} else {
+	// 				setDetails({ ...details, Button_Color: "No Color" });
+	// 			}
+	// 		} else if (key === "pocketColor") {
+	// 			if (customization[key] !== null) {
+	// 				setDetails({ ...details, Pocket_Material_Code: customization[key] });
+	// 			} else {
+	// 				setDetails({ ...details, Pocket_Material_Code: "No Color" });
+	// 			}
+	// 		} else if (key === "sleeveButtons") {
+	// 			if (customization[key] !== null) {
+	// 				setDetails({ ...details, Sleeve_Buttons: customization[key] });
+	// 			} else {
+	// 				setDetails({ ...details, Sleeve_Buttons: "No Buttons" });
+	// 			}
+	// 		}
 
-			console.log(key);
-		}
-	};
+	// 		console.log(key);
+	// 	}
+	// };
 
 	const OverlayOne = () => (
 		<ModalOverlay
@@ -361,15 +361,15 @@ const Cart = () => {
 							<div className="flex flex-col items-center gap-y-4 rounded">
 								<p className="text-2xl font-bold">Total Price </p>
 								<p className="mb-1 text-4xl font-bold">
-									{formatPrice(calculateTotalPrice() + vat)}
+									{formatPrice(calculateTotalPrice())}
 								</p>
 							</div>
-							<div className="flex items-center justify-center gap-x-2">
+							{/* <div className="flex items-center justify-center gap-x-2">
 								<p className="text-sm text-gray-700">Including VAT</p>
 								<p className="text-sm text-gray-700 font-semibold">
 									{formatPrice(vat)}
 								</p>
-							</div>
+							</div> */}
 						</div>
 
 						<Button

@@ -4,11 +4,13 @@ import BeltsGallery from "../components/Customer/BeltsGallery";
 import Cart from "../components/Customer/Cart";
 import ChooseButtonColor from "../components/Customer/ChooseButtonColor";
 import ChoosePocketColor from "../components/Customer/ChoosePocketColor";
+import CurrentMeasurements from "../components/Customer/CurrentMeasurements";
 import CurrentSizes from "../components/Customer/CurrentSizes";
 import CustomSizes from "../components/Customer/CustomSizes";
 import CustomizeMeasurements from "../components/Customer/CustomizeMeasurements";
 import MaterialsFabricPattern from "../components/Customer/MaterialView/MaterialsFabricPattern";
 import MaterialsFabricSolid from "../components/Customer/MaterialView/MaterialsFabricSolid";
+import PreDesignedJacketGallery from "../components/Customer/PreDesignedJacketGallery";
 import ShoesGallery from "../components/Customer/ShoesGallery";
 import StandardSizes from "../components/Customer/StandardSizes";
 import TiesGallery from "../components/Customer/TiesGallery";
@@ -33,16 +35,15 @@ import JacketMeasurementLayout from "../layouts/customerLayouts/JacketMeasuremen
 import JacketStyleLayout from "../layouts/customerLayouts/JacketStyleLayout";
 import PantMeasurementLayout from "../layouts/customerLayouts/PantMeasurementLayout";
 import PantStyleLayout from "../layouts/customerLayouts/PantStyleLayout";
+import PurchaseSuitLayout from "../layouts/customerLayouts/PurchaseSuitLayout";
 import AboutUs from "../pages/Aboutus";
 import ContactUs from "../pages/Contactus";
 import Profile from "../pages/Profile"
 import Services from "../pages/Services";
 import Home from "../pages/customer/Home";
 import LookBook from "../pages/customer/LookBook";
-import MeasurementDashboard from "../pages/customer/MeasurementDashboard";
 import MyOrders from "../pages/customer/MyOrders";
 import SuitCustomizationLanding from "../pages/customer/SuitCustomizationLanding";
-
 // TODO: complete the navigation routes
 const costumerRoutes = {
 	path: "/customer",
@@ -83,26 +84,34 @@ const costumerRoutes = {
 			],
 		},
 		{
-			path: "customize-measurements",
-			element: <SingleOutletLayout />,
+			path: "current-measurements",
+			element: <CurrentMeasurements />,
+
+		}, {
+			path: "purchase-suit",
+			element: <PurchaseSuitLayout />,
 			children: [
 				{
-					path: "",
-					element: <MeasurementDashboard />,
+					path: "jacket",
+					element: <PreDesignedJacketGallery />,
 				},
 				{
-					path: "current-sizes",
-					element: <CurrentSizes />,
+					path: "pants",
+					element: <PantsGallery />,
 				},
 				{
-					path: "standard-sizes",
-					element: <StandardSizes />,
+					path: "jacket-pant",
+					element: <JacketsGallery />,
 				},
 				{
-					path: "custom-sizes",
-					element: <CustomSizes />,
+					path: ":suitType/:suitId", // Dynamic route parameter for both suit type and suit ID
+					element: <SuitDescription />,
 				},
 			],
+		},
+		{
+			path: "purchase-suit/:suitType/:suitId", // Dynamic route parameter for both suit type and suit ID
+			element: <SuitDescription />,
 		},
 		{
 			path: "customize-suit",
