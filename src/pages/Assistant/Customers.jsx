@@ -92,7 +92,6 @@ const ViewCustomers = () => {
                                     </th>
                                     <th className="py-3 w-60">
                                         Email
-                                        {/* Order Count */}
                                     </th>
                                     <th className="py-3 w-60">
                                         Status
@@ -100,7 +99,7 @@ const ViewCustomers = () => {
                                 </tr>
                             </thead>
                             <tbody className=" text-left text-md font-medium text-gray-400 w-full">
-                                {customers.map((item, index) => (
+                                {customers.length === 0 ? <tr>No data to show</tr> : customers.map((item, index) => (
                                     <tr key={index} className="items-center text-centers border-b-2 hover:bg-gray-300 text-black whitespace-nowrap font-medium w-full">
                                         <td className="py-4 w-72"> <Link to={`${item.userId}`}>{item.userId}</Link></td>
                                         <td className="py-4 w-72">{item.firstName} {item.lastName}</td>
