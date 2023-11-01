@@ -41,7 +41,7 @@ const Navbar = () => {
 			toast({
 				title: "You have new notifications!",
 				status: "success",
-				duration: 5000,
+				duration: 4000,
 				isClosable: true,
 			});
 		}
