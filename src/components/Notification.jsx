@@ -21,32 +21,7 @@ import {
 import { selectUser } from "../store/slices/authSlice";
 
 const Notifications = () => {
-	const [notifications, setNotifications] = useState([
-		{
-			id: 1,
-			subject: "This is Subject 1",
-			message: "This is Message 1",
-			isRead: false,
-		},
-		{
-			id: 2,
-			subject: "This is Subject 2",
-			message: "This is Message 2",
-			isRead: true,
-		},
-		{
-			id: 3,
-			subject: "This is Subject 3",
-			message: "This is Message 3",
-			isRead: true,
-		},
-		{
-			id: 4,
-			subject: "This is Subject 4",
-			message: "This is Message 4",
-			isRead: false,
-		},
-	]);
+	const [notifications, setNotifications] = useState([]);
 
 	const user = useSelector(selectUser);
 	const navigate = useNavigate();
@@ -81,9 +56,9 @@ const Notifications = () => {
 
 	useEffect(() => {
 		const fetchNotifications = async () => {
-			const notifications = await getNotifications();
-			console.log(notifications);
-			setNotifications(notifications);
+			const response = await getNotifications();
+			console.log(response.data);
+			setNotifications(response.data);
 		};
 		fetchNotifications();
 	}, []);
@@ -117,8 +92,8 @@ const Notifications = () => {
 					</Button>
 				</div>
 				<div className="flex flex-col rounded-2xl shadow-xl mt-10 m-20">
-					{sortedNotifications ? (
-						sortedNotifications.map((notification) => (
+					{notifications ? (
+						notifications.map((notification) => (
 							<div
 								key={notification.id}
 								className={`m-2 py-2 px-5 border-l-4 flex items-center justify-between rounded-xl  ${
