@@ -1,15 +1,15 @@
 import { useEffect } from "react";
+import { MdDoneOutline } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 
 import { MATERIAL_IMAGES_URL } from "../../../config/config";
 import { FABRIC_PATTERN } from "../../../constants";
-import { setJacket, selectJacket } from "../../../store/slices/jacketCustomizationSlice";
+import { selectJacket, setJacket } from "../../../store/slices/jacketCustomizationSlice";
 import {
 	selectFabricPattern,
 	setMaterials,
 } from "../../../store/slices/materialSlice";
 import Container from "./Container";
-import {MdDoneOutline} from "react-icons/md";
 
 const MaterialsFabricPattern = () => {
 	const dispatch = useDispatch();
@@ -34,15 +34,15 @@ const MaterialsFabricPattern = () => {
 								onClick={() =>
 									dispatch(setJacket({ fabric: material.materialCode }))
 								}
-								// className={`${patternSelected === material.materialCode ? "border-4 border-green-600 rounded-lg" : ""
-								// 	}`}
+							// className={`${patternSelected === material.materialCode ? "border-4 border-green-600 rounded-lg" : ""
+							// 	}`}
 							>
 								<div className="flex flex-col border-black-2 border rounded-lg items-center justify-center gap-y-2 cursor-pointer shadow-lg relative">
-								{patternSelected === material.materialCode && (
-									<div className="absolute z-5 top-2 right-2">
-										<MdDoneOutline size={24} color="white" />
-									</div>
-								)}
+									{patternSelected === material.materialCode && (
+										<div className="absolute z-5 top-2 right-2">
+											<MdDoneOutline size={24} color="white" />
+										</div>
+									)}
 									<img
 										className="h-24 w-full rounded-lg"
 										src={`${MATERIAL_IMAGES_URL}/${material.image}`}
