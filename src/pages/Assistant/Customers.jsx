@@ -4,7 +4,7 @@ import { AiFillPlusCircle } from 'react-icons/ai'
 import { Link } from 'react-router-dom';
 
 import { getCustomers } from "../../api/customerAPI";
-import DropDownFilter from "../../components/Assistant/Controls/HeaderDropDown"
+// import DropDownFilter from "../../components/Assistant/Controls/HeaderDropDown"
 import SearchBox from "../../components/Assistant/Controls/HeaderSearchBox"
 import Pagination from "../../components/Assistant/Controls/Pagination"
 import NewCustomerForm from "../../components/Assistant/Forms/NewCustomerForm"
@@ -12,20 +12,28 @@ import NewCustomerOTPForm from "../../components/Assistant/Forms/NewCustomerOTP"
 
 const ViewCustomers = () => {
 
-	const [customers, setReturns] = useState([]);
+    const [customers, setReturns] = useState([]);
+    const [filteredCustomers, setFilteredReturns] = useState([]);
 
-	useEffect(() => {
-		const fetchReturns = async () => {
-			try {
-				const response = await getCustomers();
-				setReturns(response.data.customers);
-			} catch (error) {
-				console.error(error);
-			}
-		};
+    useEffect(() => {
+        const fetchReturns = async () => {
+            try {
+                const response = await getCustomers();
+                setReturns(response.data.customers);
+                setFilteredReturns(response.data.customers)
+            } catch (error) {
+                console.error(error);
+            }
+        };
 
-		fetchReturns();
-	}, []);
+        fetchReturns();
+    }, []);
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const recordsPerPage = 6;
+
+    const startIndex = (currentPage - 1) * recordsPerPage;
+    const endIndex = startIndex + recordsPerPage;
 
     const [isNewCustomerForm, addNewCustomer] = useState(false);
 
@@ -35,6 +43,15 @@ const ViewCustomers = () => {
 
     const handleFormOpen = () => {
         addNewCustomer(true); // SET isNewReturnForm TO FALSE TO CLOSE THE FORM
+    };
+
+    const handleSearch = (searchText) => {
+        const filtered = customers.filter((order) => {
+            const cusName = order.firstName + " " + order.lastName;
+            return cusName.toLowerCase().includes(searchText.toLowerCase());
+        });
+
+        setFilteredReturns(filtered);
     };
 
     return (
@@ -50,11 +67,11 @@ const ViewCustomers = () => {
                         </div>
                         <div className=" flex gap-4 align-middle">
                             <div>
-                                <SearchBox />
+                                <SearchBox onSearch={handleSearch} type={"customer name"} />
                             </div>
-                            <div>
+                            {/* <div>
                                 <DropDownFilter />
-                            </div>
+                            </div> */}
                             <div>
                                 <Button
                                     _hover={
@@ -98,12 +115,13 @@ const ViewCustomers = () => {
                                 </tr>
                             </thead>
                             <tbody className=" text-left text-md font-medium text-gray-400 w-full">
-                                {customers.length === 0 ? <tr className='w-full text-5xl text-center'>No data to show</tr> : customers.map((item, index) => (
+                                {filteredCustomers.length === 0 ? <tr> No data to display </tr> :
+                                filteredCustomers.slice(startIndex, endIndex).map((item, index) => (
                                     <tr key={index} className="items-center text-centers border-b-2 hover:bg-gray-300 text-black whitespace-nowrap font-medium w-full">
                                         <td className="py-4 w-72"> <Link to={`${item.userId}`}>{item.userId}</Link></td>
                                         <td className="py-4 w-72">{item.firstName} {item.lastName}</td>
                                         <td className="py-4 w-60 text-center">{item.mobileNo}</td>
-                                        <td className="py-4 w-60 text-center">{item.email}</td>
+                                        <td className="py-4 w-60 text-center">{item.email ? item.email : "-"}</td>
                                         <td className={`py-4 w-60 text-center font-bold ${item.progress ? 'text-green-600' : 'text-red-600'}`}>{item.progress ? "In Progress" : "Blocked"}</td>
                                     </tr>
                                 ))}
@@ -112,10 +130,14 @@ const ViewCustomers = () => {
                     </div>
                     <div className=" flex justify-between">
                         <div className=" py-3 text-sm font-medium text-neutral-400">
-                            Showing data 1 to 4 of 4 entries
+                            Showing data {startIndex + 1} to {endIndex} of {filteredCustomers.length} entries
                         </div>
                         <div className=" py-3">
-                            <Pagination />
+                        <Pagination
+                            currentPage={currentPage}
+                            totalPages={Math.ceil(customers.length / recordsPerPage)}
+                            onPageChange={(newPage) => setCurrentPage(newPage)}
+                        />
                         </div>
                     </div>
                 </div>

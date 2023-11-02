@@ -156,23 +156,26 @@ const Signup = () => {
 		if (!isMobileNoValid.valid) return;
 
 		// send OTP
-		setOTPResponse({ status: LOADING, msg: "" });
-		try {
-			const response = await sendOTP(mobileNo);
+		// setOTPResponse({ status: LOADING, msg: "" });
+		// try {
+		// 	const response = await sendOTP(mobileNo);
 
-			if (response.status === 200) {
-				setOTPResponse({ status: IDLE, msg: "" });
-				setSignupStep(1);
-			}
-		} catch (error) {
-			const res = error.response.data;
+		// 	if (response.status === 200) {
+		// 		setOTPResponse({ status: IDLE, msg: "" });
+		// 		setSignupStep(1);
+		// 	}
+		// } catch (error) {
+		// 	const res = error.response.data;
 
-			if (res.status === 400) {
-				setOTPResponse({ status: ERROR, msg: res.message });
-			} else {
-				setOTPResponse({ status: ERROR, msg: "Something went wrong" });
-			}
-		}
+		// 	if (res.status === 400) {
+		// 		setOTPResponse({ status: ERROR, msg: res.message });
+		// 	} else {
+		// 		setOTPResponse({ status: ERROR, msg: "Something went wrong" });
+		// 	}
+		// }
+
+		// create account
+		dispatch(signupAsync(signupCredentials));
 	};
 
 	// confirm OTP & create account
@@ -367,7 +370,7 @@ const Signup = () => {
 									type="submit"
 									width={{ base: "100%", md: "70%" }}
 								>
-									Next
+									Signup
 								</Button>
 							</div>
 							{error && (

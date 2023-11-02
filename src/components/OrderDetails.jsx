@@ -7,23 +7,28 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-import { getPurchaseOrder as getPurchaseOrderAPI } from "../api/purchaseOrdersAPI";
+import { assignTailor, getPurchaseOrder as getPurchaseOrderAPI } from "../api/purchaseOrdersAPI";
 import { OrderedDesign } from "../components/OrderedDesign";
 import {
 	CUSTOMER,
 	OPERATION_ASSISTANT,
 	PRODUCT_MANAGER,
 	TAILOR,
+	ADMIN,
 } from "../constants";
 import ItemType from "../constants/ItemType";
 import { selectUser } from "../store/slices/authSlice";
 import { selectComponentHide } from "../store/slices/componentHideSlice";
 import { formatPrice } from "../utils/paymentUtils";
 import { IoArrowBackCircle } from "react-icons/io5";
-import pic2 from "../assets/images/material bg.jpg"
+import { getUsers } from "../api/userAPI";
+import { HiCheck } from "react-icons/hi";
+import { useToast } from "@chakra-ui/react";
+
 
 
 function OrderDetails() {
+	const toast = useToast();
 	const hide = useSelector(selectComponentHide);
 	const user = useSelector(selectUser);
 
@@ -35,6 +40,9 @@ function OrderDetails() {
 		z: 0,
 	});
 
+	const [tailors, setTailors] = useState([]);
+	const [tailor, setTailor] = useState(null);
+
 	const [camCont, setCamCont] = useState({
 		scale: 3,
 	});
@@ -43,12 +51,16 @@ function OrderDetails() {
 
 	useEffect(() => {
 		const getPurchaseOrder = async () => {
-			getPurchaseOrderAPI(orderId).then((res) => {
-				console.log(res.data);
-				setPurchaseOrder(res.data);
+			const res1 = await getPurchaseOrderAPI(orderId);
 
-				setLoading(false);
-			});
+			console.log(res1.data);
+			setPurchaseOrder(res1.data);
+
+			const res = await getUsers({ roles: [TAILOR] })
+
+			console.log(res.data.users);
+			setTailors(res.data.users);
+			setLoading(false);
 		};
 
 		if (orderId) {
@@ -58,11 +70,67 @@ function OrderDetails() {
 
 	const navigate = useNavigate();
 	const handleBack = () => {
-		navigate("/manager/orders");
+		if (user.role === TAILOR) {
+			navigate("/tailor");
+		}
+		if (user.role === PRODUCT_MANAGER) {
+			navigate("/manager");
+		}
+		if (user.role === CUSTOMER) {
+			navigate("/customer");
+		}
+		if (user.role === OPERATION_ASSISTANT) {
+			navigate("/assistant");
+		}
+		if (user.role === ADMIN) {
+			navigate("/admin");
+		}
 	}
 	const trimmedOrderId = orderId.substring(15);
+
+	async function handleSetTailor() {
+		if (!tailor) {
+			toast(
+				{
+					title: "Error",
+					description: "Please select a tailor",
+					status: "warning",
+					duration: 3000,
+					isClosable: true,
+				}
+			)
+			return;
+		}
+
+		try {
+			console.log(purchaseOrder.ItemModels[0].itemId, tailor);
+			const res = await assignTailor(purchaseOrder.ItemModels[0].itemId, tailor);
+			toast(
+				{
+					title: "Tailor Assigned",
+					description: "Tailor has been assigned to the order",
+					status: "success",
+					duration: 3000,
+					isClosable: true,
+				}
+			)
+			console.log(res);
+		}
+		catch (err) {
+			console.log(err);
+			toast(
+				{
+					title: "Error",
+					description: "Tailor could not be assigned to the order",
+					status: "error",
+					duration: 3000,
+					isClosable: true,
+				}
+			)
+		}
+	}
 	return (
-		<div className="flex py-4 px-2 max-h-[calc(100vh-4rem)]">
+		<div className="flex py-4 px-2 max-h-[calc(100vh-4rem)] w-full">
 			<div className="flex max-h-[calc(100vh-4rem)] z-10 bg-transparent absolute justify-start item-start space-y-2 flex-col">
 				<button
 					onClick={handleBack}
@@ -71,19 +139,48 @@ function OrderDetails() {
 					<IoArrowBackCircle className="text-3xl cursor-pointer" />
 				</button>
 
-				<h1 className="text-2xl mt-4  font-semibold leading-7 text-gray-800">
-					OrderId: #{orderId}
-				</h1>
-				<p className="text-base font-medium text-gray-800">
+				<div className=" flex gap-28 items-center justify-center m-5 mb-8">
+					<h1 className="text-2xl mt-4  font-semibold leading-7 text-gray-800">
+						OrderId: #{orderId}
+					</h1>
+					<div className="flex items-center ">
 
-				</p>
+						{user.role === PRODUCT_MANAGER && (
+							<>
+								<select
+									onChange={(e) => setTailor(e.target.value)}
+									className=" p-3 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50"
+								>
+									<option value="" disabled selected>Select Tailor</option>
+									{
+										tailors && tailors.map((tailor) => (
+											<option key={tailor.userId} value={tailor.userId}>{tailor.firstName} {tailor.lastName}</option>
+										))
+									}
+								</select>
+								<div>
+									<button
+										value={tailor}
+										onClick={handleSetTailor}
+										className="flex px-2 py-1 ml-2 bg-green-500 text-white rounded-lg hover:bg-green-600">
+										<HiCheck className="text-3xl cursor-pointer" />
+									</button>
+								</div>
+							</>
+						)
+						}
+
+					</div>
+				</div>
+
 			</div>
 			{!loading && (
-				<div className="max-h-[calc(100vh-4rem)] mt-20 flex flex-col xl:flex-row items-stretch w-full xl:space-x-8 space-y-8 md:space-y-6 xl:space-y-0">
+				<div className="max-h-[calc(100vh-4rem)] mt-24 flex flex-col xl:flex-row items-stretch w-full xl:space-x-8 space-y-8 md:space-y-6 xl:space-y-0">
 					{(user.role === PRODUCT_MANAGER ||
 						user.role === TAILOR ||
 						user.role === CUSTOMER ||
 						user.role === OPERATION_ASSISTANT) && (
+
 							<div className=" flex flex-col w-full space-y-4 md:space-y-6 xl:space-y-8 overflow-scroll">
 								{ItemType.CUSTOM_SUIT.toLowerCase() ===
 									purchaseOrder.ItemModels[0].itemType.toLowerCase() && (
@@ -257,8 +354,8 @@ function OrderDetails() {
 
 								{(user.role === PRODUCT_MANAGER ||
 									user.role === OPERATION_ASSISTANT) && (
-										<div className="flex justify-center flex-col md:flex-row  items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
-											<div className="flex flex-col px-4 py-6 md:p-6 xl:p-8 w-full bg-gray-300 space-y-6 rounded-2xl shadow-2xl">
+										<div className="flex  flex-col md:flex-row  items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
+											{/* <div className="flex flex-col px-4 py-6 md:p-6 xl:p-8 w-full bg-gray-300 space-y-6 rounded-2xl shadow-2xl">
 												<h3 className="text-xl  font-semibold leading-5 text-gray-800">
 													Summary
 												</h3>
@@ -270,15 +367,15 @@ function OrderDetails() {
 														<p className="text-base  leading-4 text-gray-800">
 															{formatPrice(purchaseOrder.ItemModels[0].price)}
 														</p>
-													</div>	
+													</div>
 												</div>
-											</div>
-											<div className="flex flex-col justify-center p-2 md:p-6 xl:p-4 w-full bg-gray-300 space-y-6 rounded-2xl shadow-2xl">
+											</div> */}
+											<div className="flex flex-col p-2 md:p-6 xl:p-4  bg-gray-300 space-y-6 rounded-2xl shadow-2xl">
 												<h3 className="text-xl  font-semibold leading-5 text-gray-800">
 													Dates
 												</h3>
-												<div className="flex justify-between items-start w-full">
-													<div className="flex flex-col justify-center items-center space-x-4">
+												<div className="flex  items-start w-96">
+													<div className="flex flex-col space-x-4">
 														<div className="flex justify-start items-center">
 															<p className="text-lg leading-6  font-semibold text-gray-800">
 																Ordered date:{" "}
@@ -290,7 +387,7 @@ function OrderDetails() {
 																</span>
 															</p>
 														</div>
-														
+
 													</div>
 												</div>
 											</div>

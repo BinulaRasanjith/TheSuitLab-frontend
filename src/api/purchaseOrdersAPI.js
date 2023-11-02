@@ -32,3 +32,7 @@ export const assignTailor = async (itemId, tailorId) => {
 export const getAssignedTailorForCostume = async (id) => {
   return api.get(`/purchase-order/get-assigned-tailor/${id}`);
 }
+
+export const getTailorsPurchaseOrders = async (tailorId) => {
+  return api.get(`/purchase-order/tailor/${tailorId}`);
+}

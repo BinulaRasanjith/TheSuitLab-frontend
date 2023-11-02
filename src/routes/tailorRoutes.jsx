@@ -1,3 +1,4 @@
+
 import OrderDetails from "../components/OrderDetails";
 import SingleOutletLayout from "../layouts/SingleOutletLayout";
 import TailorMainLayout from "../layouts/tailorLayouts/TailorMainLayout";
@@ -35,7 +36,6 @@ const tailorRoutes = {
 					element: <OrderDetails />,
 				},
 			],
-			
 		},
 		{
 			path: "materials",

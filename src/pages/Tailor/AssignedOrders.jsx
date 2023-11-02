@@ -3,55 +3,60 @@ import { useEffect, useState } from "react";
 import { IoArrowBackCircle } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import { getTailorsPurchaseOrders } from '../../api/purchaseOrdersAPI';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../store/slices/authSlice';
 
 // import OrderRecord from "../../components/OrderItems/OrderRecord";
 // import { OPERATION_ASSISTANT, PRODUCT_MANAGER, TAILOR } from "../../constants";
 // import { selectUser } from "../../store/slices/authSlice"
-const orders = [
-    {
-        orderId: 1,
-        custname: "Malini Fonseka",
-        itemCount: 5,
-        status: "completed",
-        orderedDate: '2023-10-22',
-        requiredDate: '2023-11-22',
-    },
-    {
-        orderId: 2,
-        custname: "Siril Piyadasa",
-        itemCount: 2,
-        status: "Pending",
-        orderedDate: '2023-10-22',
-        requiredDate: '2023-11-22',
-    },
-    {
-        orderId: 3,
-        custname: "Anne Perera",
-        itemCount: 3,
-        status: "Processing",
-        orderedDate: '2023-10-22',
-        requiredDate: '2023-11-22',
-    },
-    {
-        orderId: 4,
-        custname: "James Peiris",
-        itemCount: 8,
-        status: "Completed",
-        orderedDate: '2023-09-10',
-        requiredDate: '2023-10-22',
-    },
-    {
-        orderId: 5,
-        custname: "Rakisa Jayaweera",
-        itemCount: 1,
-        status: "Pending",
-        orderedDate: '2023-10-12',
-        requiredDate: '2023-11-28',
-    },
-];
+// const orders = [
+//     {
+//         orderId: 1,
+//         custname: "Nimal Fonseka",
+//         itemCount: 5,
+//         status: "completed",
+//         orderedDate: '2023-10-22',
+//         requiredDate: '2023-11-22',
+//     },
+//     {
+//         orderId: 2,
+//         custname: "Siril Piyadasa",
+//         itemCount: 2,
+//         status: "Pending",
+//         orderedDate: '2023-10-22',
+//         requiredDate: '2023-11-22',
+//     },
+//     {
+//         orderId: 3,
+//         custname: "Anne Perera",
+//         itemCount: 3,
+//         status: "Processing",
+//         orderedDate: '2023-10-22',
+//         requiredDate: '2023-11-22',
+//     },
+//     {
+//         orderId: 4,
+//         custname: "James Peiris",
+//         itemCount: 8,
+//         status: "Completed",
+//         orderedDate: '2023-09-10',
+//         requiredDate: '2023-10-22',
+//     },
+//     {
+//         orderId: 5,
+//         custname: "Rakisa Jayaweera",
+//         itemCount: 1,
+//         status: "Pending",
+//         orderedDate: '2023-10-12',
+//         requiredDate: '2023-11-28',
+//     },
+// ];
 
 const AssignedOrders = () => {
+    const user = useSelector(selectUser)
 
+    const [orders, setOrders] = useState([]);
     const [searchInput, setSearchInput] = useState('');
     const [sortByDate, setSortByDate] = useState("relevant");
 
@@ -73,6 +78,18 @@ const AssignedOrders = () => {
         setSortedByDate(sortedData);
     }, [sortByDate]);
 
+    useEffect(() => {
+        const fetchOrders = async () => {
+            try {
+                const res = await getTailorsPurchaseOrders(user.id);
+                console.log(res.data);
+                setOrders(res.data);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        fetchOrders();
+    }, [])
 
     const filteredOrder = sortedOrderData.filter((order) => {
 
@@ -138,14 +155,12 @@ const AssignedOrders = () => {
                             <div className=" flex flex-col justify-between mx-10 my-8 p-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg">
                                 <div className=" flex flex-col">
                                     <table className=' flex flex-col justify-between text-sm font-medium text-gray-500'>
-                                        <thead className=" uppercase bg-gray-100 py-4 w-full">
+                                        <thead className=" uppercase bg-gray-100 py-4 ">
                                             <tr>
                                                 <th className=" w-40">
                                                     Order Id
                                                 </th>
-                                                <th className=" w-40">
-                                                    Customer
-                                                </th>
+
                                                 <th className=" w-40">
                                                     Item Count
                                                 </th>
@@ -158,20 +173,21 @@ const AssignedOrders = () => {
                                                 <th className=" w-40">
                                                     Status
                                                 </th>
-                                                {/* <th className="w-40 px-10">
+                                                <th className="w-40 px-10">
                                                     Option
-                                                </th> */}
+                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <div className="flex flex-col gap-1">
-                                                {filteredOrder.map((item, index) => (
+                                                {orders.map((item, index) => (
                                                     <tr key={index} className="flex items-center text-center border hover:bg-gray-300 text-black whitespace-nowrap font-medium">
                                                         <td className="w-40"> <Link to={`${item.orderId}`}>{item.orderId}</Link></td>
-                                                        <td className="w-40">{item.custname}</td>
-                                                        <td className="w-40">{item.itemCount}</td>
-                                                        <td className="w-40">{item.orderedDate}</td>
-                                                        <td className="w-40">{item.requiredDate}</td>
+                                                        <td className="w-40">{item.quantity}</td>
+                                                        <td className="w-40">{item.orderedDate.split("T")[0]}</td>
+                                                        <td className="w-40">
+                                                            {item.requiredDate ? item.requiredDate : "Pending"}
+                                                        </td>
                                                         <td className="w-40"> {item.status}</td>
                                                         <td className="w-40 py-2">
 

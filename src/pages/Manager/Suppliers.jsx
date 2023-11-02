@@ -68,7 +68,7 @@ const Suppliers = () => {
 								<th className=" w-40">Phone Number</th>
 								<th className=" w-40">Email</th>
 								<th className=" w-40">Status</th>
-								<th className="w-40 px-10">Option</th>
+								{/* <th className="w-40 px-10">Option</th> */}
 							</tr>
 						</thead>
 						<tbody>
@@ -94,7 +94,7 @@ const Suppliers = () => {
 										<td className="w-40">{item.mobileNo}</td>
 										<td className="w-40">{item.email || "-"}</td>
 										<td className="w-40"> {item.progress ? "Active" : "-"}</td>
-										<td className="w-40 py-2">
+										{/* <td className="w-40 py-2">
 											<Link to={`${item.supplierId}`}>
 												<Button
 													className="block"
@@ -110,7 +110,7 @@ const Suppliers = () => {
 													View
 												</Button>
 											</Link>
-										</td>
+										</td> */}
 									</tr>
 								))}
 							</div>

@@ -29,8 +29,11 @@ const ReviewCard = ({ author, comment, orderId, ratings, date, image }) => {
 	return (
 		<div className="flex flex-col py-6 px-8 border-2 border-borderColor rounded-xl items-center relative">
 			<p className=" text-sm">
-				<span className="font-semibold">Order ID:</span> {orderId}
+				<span className="font-semibold">Customize Order</span>
 			</p>
+			{/* <p className=" text-sm">
+				<span className="font-semibold">Order ID:</span> {orderId}
+			</p> */}
 			<img
 				alt=""
 				className="rounded-full object-cover h-28 w-28 mb-4"

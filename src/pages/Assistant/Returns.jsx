@@ -1,7 +1,8 @@
 import { Button } from "@chakra-ui/react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { AiFillPlusCircle } from "react-icons/ai"
 
+import { getReturns } from '../../api/returnAPI'
 import ReturnFixConfForm from "../../components/Assistant/Confirmations/ReturnFixConfForm";
 import DropDownFilter from "../../components/Assistant/Controls/HeaderDropDown";
 import SearchBox from "../../components/Assistant/Controls/HeaderSearchBox";
@@ -10,8 +11,12 @@ import NewReturnForm from "../../components/Assistant/Forms/NewReturnForm";
 import Returnset from "../../components/Assistant/ReturnedItemSet";
 
 const Returns = () => {
-	const [isNewReturnForm, addNewReturn] = useState(false);
 
+	const [isNewReturnForm, addNewReturn] = useState(false);
+    const [returns, setReturns] = useState([]);
+    const [filteredReturns, setFilteredReturns] = useState([]);
+
+	
 	const handleFormClose = () => {
 		addNewReturn(false);
 	};
@@ -19,6 +24,26 @@ const Returns = () => {
 	const handleFormOpen = () => {
 		addNewReturn(true);
 	};
+
+	useEffect(() => {
+        const fetchReturns = async () => {
+            try {
+                const response = await getReturns();
+                setReturns(response.data);
+                setFilteredReturns(response.data);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchReturns();
+    }, []);
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const recordsPerPage = 5;
+
+    const startIndex = (currentPage - 1) * recordsPerPage;
+    const endIndex = startIndex + recordsPerPage;
 
 	return (
 		<div className="relative">
@@ -70,16 +95,73 @@ const Returns = () => {
 				</div>
 				<div>
 					<Returnset />
+					<table className="">
+                        <thead className=" text-left text-sm font-medium border-b-2 border-gray-200 text-gray-400 w-full">
+                            <tr className="py-4">
+                                <th className="py-3 w-72">
+                                    Material
+                                </th>
+                                <th className="py-3 w-72">
+                                    Material Name
+                                </th>
+                                <th className="py-3 w-72">
+                                    Color
+                                </th>
+                                <th className="py-3 w-60">
+                                    Unit Price
+                                </th>
+                                <th className="py-3 w-60">
+                                    Current Stock
+                                </th>
+                                <th className="py-3 w-60">
+                                    Stock Update
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody className=" text-left text-md font-medium text-gray-400 w-full">
+                            {filteredReturns.length === 0 ? <tr> No data to display </tr> :
+                                filteredReturns.slice(startIndex, endIndex).map((item, index) => (
+                                    <tr key={index} className="items-center text-centers border-b-2 text-black whitespace-nowrap font-medium w-full">
+                                        <td className="py-4 w-72 hidden"> <Link to={`${item.materialCode}`}>{item.materialCode}</Link></td>
+                                        <td className="py-4 w-72"><img className="rounded" width={64} src={`${MATERIAL_IMAGES_URL}/${item.image}`} alt="Material Image" /></td>
+                                        <td className="py-4 w-72">{item.materialName}</td>
+                                        <td className="py-4 w-60">{item.color}</td>
+                                        <td className="py-4 w-60">Rs. {item.unitPrice.toFixed(2)}</td>
+                                        <td className="py-4 w-60">{item.quantity}</td>
+                                        <td className="py-4 w-60">
+                                            <Button
+                                                _hover={{
+                                                    bg: '#6B9DCA',
+                                                    textColor: 'white'
+                                                }}
+                                                bg={'#BEE7FF80'}
+                                                border={'1px'}
+                                                borderColor={'#6B9DCA'}
+                                                height={'2rem'}
+                                                onClick={handleFormOpen}
+                                                textColor={'#6B9DCA'}
+                                                width={'5.5rem'}>
+                                                Update
+                                            </Button>
+                                        </td>
+                                    </tr>
+                                ))}
+                        </tbody>
+                    </table>
 				</div>
 				<div className=" flex my-4 justify-center">
 					{/* <Button colorScheme='gray' onClick={() => addNewReturn(!isNewReturnForm)} size='md'>New Inquery</Button> */}
 				</div>
 				<div className=" flex justify-between">
 					<div className=" py-3 text-sm font-medium text-neutral-400">
-						Showing data 1 to 8 of 256K entries
+					Showing data {startIndex + 1} to {endIndex} of {filteredReturns.length} entries
 					</div>
 					<div className=" py-3">
-						<Pagination />
+                        <Pagination
+                            currentPage={currentPage}
+                            totalPages={Math.ceil(returns.length / recordsPerPage)}
+                            onPageChange={(newPage) => setCurrentPage(newPage)}
+                        />
 					</div>
 				</div>
 			</div>
