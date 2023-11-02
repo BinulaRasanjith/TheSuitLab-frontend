@@ -1,99 +1,59 @@
-/* eslint-disable perfectionist/sort-jsx-props */
-/* eslint-disable perfectionist/sort-imports */
-// import React from "react";
+import { useEffect, useState } from "react"
 
-// import { useEffect, useState } from "react"
-import RecentOrderRecord from "./RecentOrderRecord"
+import { recentOrders } from "../../api/assistantAPI"
 
-import light_olive_1 from '../../assets/images/costume1.jpeg'
-import midnight_gray_1 from '../../assets/images/costume2.jpeg'
-import navy_suit_1 from '../../assets/images/costume3.jpeg'
-import purple_texture_1 from '../../assets/images/costume4.jpeg'
-
-// import { gro } from "../../api/assistantAPI";
 
 
 const RecentOrders = () => {
 
-//     const [recentorders, setRecentOrders] = useState([]);
+    const [recentorders, setRecentOrders] = useState([]);
 
-//     useEffect(() => {
-// 		const fetchRecentOrders = async () => {
-// 			try {
-// 				const response = await gro();
-// 				console.log(response.data);
-// 				setRecentOrders(response.data);
-// 			} catch (error) {
-// 				console.error(error);
-// 			}
-// 		};
+    useEffect(() => {
+        const fetchRecentOrders = async () => {
+            try {
+                const response = await recentOrders();
+                console.log(response.data);
+                setRecentOrders(response.data);
+            } catch (error) {
+                console.error(error);
+            }
+        };
 
-// 		fetchRecentOrders();
-// 	}, []);
-
-    const records = [
-
-        // recentorders.map((item, index) => (
-        //     <ReturnRecord
-        //         key={index}
-        //         OrderId={item.referenceNo}
-        //         ItemCount={item.itemCount}
-        //         OrderedDate={new Date(item.orderedDate).toLocaleDateString()}
-        //         ReturnedDate={new Date(item.returnedDate).toLocaleDateString()}
-        //         Reason={item.reason}
-        //     />
-        //     // {
-        //     //     image: <img alt="" className=' w-14 h-14 object-cover rounded-lg' src={light_olive_1} />,
-        //     //     itemname: 'Black taill suit',
-        //     //     attributes: 'Black, Teill',
-        //     //     payment: 'Paid',
-        //     //     price: '28,990.00',
-        //     // },
-        // ),
-
-        {
-            image: <img alt="" className=' w-14 h-14 object-cover rounded-lg' src={light_olive_1} />,
-            itemname: 'Black taill suit',
-            attributes: 'Black, Teill',
-            payment: 'Paid',
-            price: '28,990.00',
-        },
-        {
-            image: <img alt="" className=' w-14 h-14 object-cover rounded-lg' src={midnight_gray_1} />,
-            itemname: 'Cotton Tuxedo',
-            attributes: 'Brown, Cotton',
-            payment: 'Paid',
-            price: '12,990.00',
-        },
-        {
-            image: <img alt="" className=' w-14 h-14 object-cover rounded-lg' src={navy_suit_1} />,
-            itemname: 'Notch Lapel Tuxedo',
-            attributes: 'Blue, Lapel',
-            payment: 'Paid',
-            price: '15,990.00',
-        },
-        {
-            image: <img alt="" className=' w-14 h-14 object-cover rounded-lg' src={purple_texture_1} />,
-            itemname: 'Notch Lapel Tuxedo',
-            attributes: 'Grey, Lapel',
-            payment: 'Paid',
-            price: '10,990.00',
-        },
-    ]
+        fetchRecentOrders();
+    }, []);
 
 
     return (
         <div className="flex flex-col gap-6">
-            {records.map((item, index) => (
-                <RecentOrderRecord
-                    key={index}
-                    Image={item.image}
-                    ItemName={item.itemname}
-                    Attributes={item.attributes}
-                    Payment={item.payment}
-                    Price={item.price}
-                />
-            ))}
+            <table className="">
+                <thead className=" text-left text-sm font-medium border-b-2 border-gray-200 text-gray-400 w-full">
+                    <tr className="py-4">
+                        <th className="py-3 w-72">
+                            Customer
+                        </th>
+                        <th className="py-3 w-72 text-center">
+                            No.of items
+                        </th>
+                        <th className="py-3 w-72 text-center">
+                            Total
+                        </th>
+                        <th className="py-3 w-60 text-center">
+                            Status
+                        </th>
+                    </tr>
+                </thead>
+                <tbody className=" text-left text-md font-medium text-gray-400 w-full">
+                    {recentorders.length === 0 ? <tr> No data to display </tr> :
+                        recentorders.map((item, index) => (
+                            <tr key={index} className="items-center text-centers border-b-2  text-black whitespace-nowrap text-sm w-full">
+                                <td className="py-4 w-72">{item.Customer.User.firstName}<br/>{item.Customer.User.lastName}</td>
+                                <td className="py-4 w-72 text-center text-sm">{item.quantity}</td>
+                                <td className="py-4 w-60 text-center">{item.totalAmount.toFixed(2)}</td>
+                                <td className={`py-4 w-60 text-center ${item.status === 'COLLECTED' ? 'text-green-600' : item.status === 'PLACED' ? 'text-orange-600' : ''}`}>{item.status}</td>
+                            </tr>
+                        ))}
+                </tbody>
+            </table>
         </div>
     );
 };

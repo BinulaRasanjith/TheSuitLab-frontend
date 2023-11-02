@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const RecentOrderRecord = ({ Image, ItemName, Attributes, Payment, Price }) => {
     return (
-        <div className=" flex flex-row justify-between w-full">
+        <table className=" flex flex-row justify-between w-full">
             <div className=" ">{Image}</div>
             <div className=" flex w-36">
                 <div className=" flex flex-col justify-center">
@@ -23,7 +23,8 @@ const RecentOrderRecord = ({ Image, ItemName, Attributes, Payment, Price }) => {
                     <div className=" text-sm font-semibold text-black">Rs. {Price}</div>
                 </div>
             </div>
-        </div>
+        </table>
+        
     );
 };
 

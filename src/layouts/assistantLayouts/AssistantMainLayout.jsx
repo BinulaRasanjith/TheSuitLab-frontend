@@ -11,7 +11,7 @@ import { TbArrowBackUp } from "react-icons/tb";
 import { useSelector } from "react-redux"; // TODO
 import { Outlet } from "react-router-dom";
 import { useNavigate } from "react-router-dom"; // TODO
-import { TbStarFilled } from "react-icons/tb";
+// import { TbStarFilled } from "react-icons/tb";
 
 import ContentWrapper from "../../components/ContentWrapper";
 import MainLayout from "../../components/MainLayout";
@@ -66,11 +66,11 @@ const assistantSidebarItems = [
 		icon: <FaUserCircle />,
 		to: "/assistant/profile",
 	},
-	{
-		label: "Reviews",
-		icon: <TbStarFilled />,
-		to: "/assistant/reviews",
-	},
+	// {
+	// 	label: "Reviews",
+	// 	icon: <TbStarFilled />,
+	// 	to: "/assistant/reviews",
+	// },
 	// {
 	//     label: 'Log Out',
 	//     icon: <TbLogout />,

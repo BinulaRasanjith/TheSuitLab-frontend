@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { getMaterials } from '../../api/materialAPI'
-import DropDownFilter from '../../components/Assistant/Controls/HeaderDropDown'
+// import DropDownFilter from '../../components/Assistant/Controls/HeaderDropDown'
 import SearchBox from '../../components/Assistant/Controls/HeaderSearchBox'
 import Pagination from '../../components/Assistant/Controls/Pagination'
 import MaterialStockUpdateForm from "../../components/Assistant/Forms/MaterialUpdateForm"
@@ -71,9 +71,9 @@ const Materials = () => {
                         <div>
                             <SearchBox onSearch={handleSearch} type={"material name"} />
                         </div>
-                        <div>
+                        {/* <div>
                             <DropDownFilter />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <div>
