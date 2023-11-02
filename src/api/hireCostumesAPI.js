@@ -30,3 +30,13 @@ export const updateHireCostume = async (changes) => {
 export const removeHireCostume = (CostumeId) => {
   return api.delete(`/costume-hiring/${CostumeId}`);
 };
+
+
+export const getHiringCostumes = async ({ costumeType, rentStatus }) => {
+  return api.get(`/costume-hiring/all`, {
+    params: {
+      costumeType,
+      rentStatus,
+    },
+  });
+};
