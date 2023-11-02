@@ -60,7 +60,6 @@ const Cart = () => {
 				console.log(err);
 			}
 		};
-
 		getCartItems();
 	}, []);
 

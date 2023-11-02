@@ -141,7 +141,7 @@ const AccessoryDescription = () => {
 
 
             <div className="flex flex-col border-r-4 border-gray-600">
-                <div className="mb-6 lg:mb-10 h-60 flex justify-center items-center">
+                <div className="mb-6 lg:mb-10 h-96 flex justify-center items-center">
                     <img
                         src={`${ACCESSORY_IMAGES_URL}/${selectedImage}`}
                         alt="Selected Image"

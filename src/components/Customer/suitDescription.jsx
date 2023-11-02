@@ -47,7 +47,7 @@ const SuitDescription = () => {
 		getHireCostume(suitId)
 			.then((response) => {
 				setSuitDetails(response.data);
-				console.log(response.data);
+				// console.log(response.data);
 				setSelectedImage(response.data.images[0]);
 			})
 			.catch((error) => {
@@ -149,7 +149,7 @@ const SuitDescription = () => {
 			<IoArrowBackCircle className="text-5xl absolute top-24 left-64 z-20" onClick={() => navigate(`/customer/hire-suit/${hireCostumeType}`)} />
 
 			<div className="flex flex-col">
-				<div className="mb-6 lg:mb-10 h-60 flex justify-center items-center">
+				<div className="mb-6 lg:mb-10 h-96 flex justify-center items-center">
 					<img
 						src={`${HIRE_COSTUME_IMAGES_URL}/${selectedImage}`}
 						alt="Selected Image"

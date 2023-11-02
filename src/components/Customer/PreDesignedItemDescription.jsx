@@ -15,6 +15,7 @@ import { getPreDesignedCostumeById } from "../../api/preDesignedCostumesAPI";
 import { PRE_DESIGNED_COSTUME_IMAGES_URL } from "../../config/config";
 import { selectUser } from "../../store/slices/authSlice";
 
+
 const PreDesignedItemDescription = () => {
     // Get the suitId from the route parameters
     const { suitId } = useParams();
@@ -136,7 +137,7 @@ const PreDesignedItemDescription = () => {
             <IoArrowBackCircle className="text-5xl absolute top-24 left-64 z-20" onClick={() => navigate(`/customer/purchase-suit/${hireCostumeType}`)} />
 
             <div className="flex flex-col">
-                <div className="mb-6 lg:mb-10 h-60 flex justify-center items-center">
+                <div className="mb-6 lg:mb-10 h-96 flex justify-center items-center">
                     <img
                         src={`${PRE_DESIGNED_COSTUME_IMAGES_URL}/${selectedImage}`}
                         alt="Selected Image"

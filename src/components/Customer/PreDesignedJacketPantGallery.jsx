@@ -2,17 +2,17 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { getPreDesignedCostumes } from "../../api/preDesignedCostumesAPI";
-import { JACKET } from "../../constants";
+import { JP } from "../../constants";
 import PreDesignedItemCard from "./PreDesignedItemCard";
 
 const PreDesignedJacketGallery = () => {
     const [jacketData, setJacketData] = useState([]); // Create state variable for jacket data
 
     useEffect(() => {
-        getPreDesignedCostumes({ costumeType: JACKET })
+        getPreDesignedCostumes({ costumeType: JP })
             .then((response) => {
                 setJacketData(response.data);
-                console.log(response.data);
+                // console.log(response.data);
             })
             .catch((error) => {
                 // TODO: Handle error

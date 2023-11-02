@@ -12,6 +12,8 @@ import MaterialsFabricPattern from "../components/Customer/MaterialView/Material
 import MaterialsFabricSolid from "../components/Customer/MaterialView/MaterialsFabricSolid";
 import PreDesignedItemDescription from "../components/Customer/PreDesignedItemDescription";
 import PreDesignedJacketGallery from "../components/Customer/PreDesignedJacketGallery";
+import PreDesignedJacketPantGallery from "../components/Customer/PreDesignedJacketPantGallery";
+import PreDesignedPantGallery from "../components/Customer/PreDesignedPantGallery";
 import ShoesGallery from "../components/Customer/ShoesGallery";
 import StandardSizes from "../components/Customer/StandardSizes";
 import TiesGallery from "../components/Customer/TiesGallery";
@@ -98,11 +100,11 @@ const costumerRoutes = {
 				},
 				{
 					path: "pants",
-					element: <PantsGallery />,
+					element: <PreDesignedPantGallery />,
 				},
 				{
 					path: "jacket-pant",
-					element: <JacketsGallery />,
+					element: <PreDesignedJacketPantGallery />,
 				},
 				{
 					path: ":suitType/:suitId", // Dynamic route parameter for both suit type and suit ID

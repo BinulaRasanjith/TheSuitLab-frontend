@@ -17,6 +17,7 @@ export const SIGNUP_SUCCESS = "signup-success";
 // costume types
 export const JACKET = "jacket";
 export const PANT = "pant";
+export const JP = "jacket & pant";
 
 //Accessory types
 export const SHOE = "shoe";

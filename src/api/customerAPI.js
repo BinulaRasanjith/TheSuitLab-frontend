@@ -4,6 +4,10 @@ export const getCustomers = (customerData) => {
   return api.get("/customer/details", customerData);
 };
 
+export const getRecentDesigns = () => {
+  return api.get("/customer");
+};
+
 export const getAllCustomersWithOrderCount = () => {
   return api.get("/customer/include-order-count");
 };
@@ -25,14 +29,20 @@ export const addNewCostumeToItemModel = async ({
   price,
   quantity,
   status,
-  costumeType, measurementType, measurements, customization
+  costumeType,
+  measurementType,
+  measurements,
+  customization,
 }) => {
   return api.post("/customer/add-new-costume-to-item-model", {
     itemType,
     price,
     quantity,
     status,
-    costumeType, measurementType, measurements, customization
+    costumeType,
+    measurementType,
+    measurements,
+    customization,
   });
 };
 
