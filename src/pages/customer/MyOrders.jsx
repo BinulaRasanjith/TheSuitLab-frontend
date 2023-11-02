@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { HiShoppingBag } from "react-icons/hi2";
+import { IoArrowBackCircle } from "react-icons/io5";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { IoArrowBackCircle } from "react-icons/io5";
 
 import { getCustomersPurchaseOrders } from "../../api/purchaseOrdersAPI";
 import SearchBox from "../../components/Assistant/Controls/HeaderSearchBox";
+import ItemType from "../../constants/ItemType";
 import { selectUser } from "../../store/slices/authSlice";
+import { capitalizeFirstLetter } from "../../utils/displayRoleName";
+import { formatPrice } from "../../utils/paymentUtils";
 
 const MyOrders = () => {
 	const customerId = useSelector(selectUser).id;
@@ -17,6 +20,7 @@ const MyOrders = () => {
 		const getPurchaseOrders = async () => {
 			const response = await getCustomersPurchaseOrders(customerId);
 			console.log(response.data);
+			setOrders(response.data);
 		};
 
 		getPurchaseOrders();
@@ -24,7 +28,7 @@ const MyOrders = () => {
 
 	const navigate = useNavigate();
 	const handleBack = () => {
-		navigate("/customer")
+		navigate("/customer");
 	};
 
 	// const handleNavigate = (id) => {
@@ -36,12 +40,12 @@ const MyOrders = () => {
 			<div className=" flex flex-col justify-between m-8 p-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg items-center flex-wrap shadow-xl w-full ">
 				<div className=" flex justify-center items-center w-full">
 					<div className="flex items-center gap-80 mt-4">
-					<button
-						onClick={handleBack}
-						className="flex items-center gap-2 text-primary"
-					>
-						<IoArrowBackCircle className="text-3xl cursor-pointer" />
-					</button>
+						<button
+							onClick={handleBack}
+							className="flex items-center gap-2 text-primary"
+						>
+							<IoArrowBackCircle className="text-3xl cursor-pointer" />
+						</button>
 						<div className="flex gap-3">
 							<HiShoppingBag style={{ fontSize: "2rem" }} />
 							<div className=" text-2xl font-semibold">My Orders</div>
@@ -65,33 +69,54 @@ const MyOrders = () => {
 									OrderId: {order.orderId}
 								</h3>
 								<div className="flex flex-col md:flex-row justify-start items-start h-full md:items-center md:space-x-6 xl:space-x-8 w-full">
-									<div className="w-32 h-full items-center ">
+									{/* <div className="w-32 h-full items-center ">
 										<img
 											className="object-cover"
 											src={order.image}
 											alt={order.productName}
 										/>
-									</div>
+									</div> */}
 									<div className="md:flex-row flex-col flex w-full">
 										<div className="w-full flex flex-col space-y-2">
 											<div className="flex justify-start items-start flex-col">
 												<h3 className="text-xl md:text-md font-semibold text-gray-800">
-													{order.productName}
+													{order.itemType === ItemType.CUSTOM_SUIT &&
+														"Custom Suit"}
+													{order.itemType === ItemType.HIRE_SUIT &&
+														order.hireCostume.name}
+													{order.itemType === ItemType.ACCESSORY && "Hire Suit"}
 												</h3>
 												<div className="text-sm text-gray-800">
-													<span>Style: </span> {order.style}
+													<span></span> {order.style}
 													<br />
-													<span>Size: </span> {order.size} <br />
-													<span>Color: </span> {order.color} <br />
+													<span>
+														{order.itemType === ItemType.HIRE_SUIT && "Size: "}
+													</span>{" "}
+													{order.itemType === ItemType.HIRE_SUIT && "L"} <br />
+													<span>
+														{order.itemType === ItemType.HIRE_SUIT &&
+															"Quantity: "}
+													</span>{" "}
+													{order.itemType === ItemType.HIRE_SUIT &&
+														order.quantity}{" "}
+													<br />
 												</div>
 											</div>
 										</div>
 										<div className="flex flex-col justify-between items-start w-full">
 											<span className="text-base xl:text-lg">
-												Order Status: {order.status}
+												Order Status:{" "}
+												<i>
+													{order.itemType === ItemType.CUSTOM_SUIT &&
+														capitalizeFirstLetter(order.costume.progress)}
+													{order.itemType === ItemType.HIRE_SUIT &&
+														capitalizeFirstLetter(order.hireCostume.rentStatus)}
+													{order.itemType === ItemType.ACCESSORY &&
+														capitalizeFirstLetter(order.accessory.progress)}
+												</i>
 											</span>
 											<span className="text-base xl:text-lg font-semibold ">
-												Total Amount: Rs.{order.price.toFixed(2)}
+												Total Amount: {formatPrice(order.price)}
 											</span>
 										</div>
 									</div>

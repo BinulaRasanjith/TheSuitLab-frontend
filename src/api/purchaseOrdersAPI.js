@@ -22,5 +22,13 @@ export const createPurchaseOrder = async (data) => {
 
 // MARK AS COSTUME IS READY TO COLLECT
 export const updateToCollected = async (id) => {
-    return api.patch("/purchase-order/to-collected", id);
+  return api.patch("/purchase-order/to-collected", id);
+}
+
+export const assignTailor = async (itemId, tailorId) => {
+  return api.post("/purchase-order/assign-tailor", { itemId, tailor: tailorId });
+}
+
+export const getAssignedTailorForCostume = async (id) => {
+  return api.get(`/purchase-order/get-assigned-tailor/${id}`);
 }

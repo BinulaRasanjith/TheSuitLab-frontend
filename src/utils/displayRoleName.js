@@ -20,4 +20,14 @@ const displayRoleName = (role) => {
     }
 };
 
+export function capitalizeFirstLetter(string) {
+    // Check if the string is not empty
+    if (string.length > 0) {
+        // Capitalize the first letter and convert the rest to lowercase
+        return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+    }
+    // Return an empty string for an empty input
+    return string;
+}
+
 export default displayRoleName;
