@@ -79,8 +79,8 @@ const Cart = () => {
 			});
 		} else {
 			// if payment can be done
-			const hash = crypto.SHA256(calculateTotalPrice() + vat + "");
-			localStorage.setItem("amount", calculateTotalPrice() + vat);
+			const hash = crypto.SHA256(calculateTotalPrice() + "");
+			localStorage.setItem("amount", calculateTotalPrice());
 			localStorage.setItem("hash", hash);
 			localStorage.setItem("items", JSON.stringify(cartItems));
 
