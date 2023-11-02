@@ -91,8 +91,6 @@ const AssignedOrders = () => {
         fetchOrders();
     }, [])
 
-
-
     const filteredOrder = sortedOrderData.filter((order) => {
 
         const orderIdMatch = order.orderId && order.orderId.toString().includes(searchInput.toLowerCase());
@@ -157,14 +155,12 @@ const AssignedOrders = () => {
                             <div className=" flex flex-col justify-between mx-10 my-8 p-5 border border-solid border-zinc-950 border-opacity-20 rounded-lg">
                                 <div className=" flex flex-col">
                                     <table className=' flex flex-col justify-between text-sm font-medium text-gray-500'>
-                                        <thead className=" uppercase bg-gray-100 py-4 w-full">
+                                        <thead className=" uppercase bg-gray-100 py-4 ">
                                             <tr>
                                                 <th className=" w-40">
                                                     Order Id
                                                 </th>
-                                                <th className=" w-40">
-                                                    Customer
-                                                </th>
+
                                                 <th className=" w-40">
                                                     Item Count
                                                 </th>
@@ -177,9 +173,9 @@ const AssignedOrders = () => {
                                                 <th className=" w-40">
                                                     Status
                                                 </th>
-                                                {/* <th className="w-40 px-10">
+                                                <th className="w-40 px-10">
                                                     Option
-                                                </th> */}
+                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -187,8 +183,7 @@ const AssignedOrders = () => {
                                                 {orders.map((item, index) => (
                                                     <tr key={index} className="flex items-center text-center border hover:bg-gray-300 text-black whitespace-nowrap font-medium">
                                                         <td className="w-40"> <Link to={`${item.orderId}`}>{item.orderId}</Link></td>
-                                                        <td className="w-40">{item.custname}</td>
-                                                        <td className="w-40">{item.itemCount}</td>
+                                                        <td className="w-40">{item.quantity}</td>
                                                         <td className="w-40">{item.orderedDate.split("T")[0]}</td>
                                                         <td className="w-40">
                                                             {item.requiredDate ? item.requiredDate : "Pending"}

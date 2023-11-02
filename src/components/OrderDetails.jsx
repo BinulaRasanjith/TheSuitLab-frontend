@@ -14,6 +14,7 @@ import {
 	OPERATION_ASSISTANT,
 	PRODUCT_MANAGER,
 	TAILOR,
+	ADMIN,
 } from "../constants";
 import ItemType from "../constants/ItemType";
 import { selectUser } from "../store/slices/authSlice";
@@ -69,7 +70,21 @@ function OrderDetails() {
 
 	const navigate = useNavigate();
 	const handleBack = () => {
-		navigate("/manager/orders");
+		if (user.role === TAILOR) {
+			navigate("/tailor");
+		}
+		if (user.role === PRODUCT_MANAGER) {
+			navigate("/manager");
+		}
+		if (user.role === CUSTOMER) {
+			navigate("/customer");
+		}
+		if (user.role === OPERATION_ASSISTANT) {
+			navigate("/assistant");
+		}
+		if (user.role === ADMIN) {
+			navigate("/admin");
+		}
 	}
 	const trimmedOrderId = orderId.substring(15);
 
