@@ -48,7 +48,7 @@ const Cart = () => {
 		viewCartItem();
 	}, [viewCartItemId]);
 
-	const [vat, setVat] = useState(800);
+	// const [vat, setVat] = useState(800);
 
 	useEffect(() => {
 		const getCartItems = async () => {
