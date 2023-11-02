@@ -28,7 +28,7 @@ const Dashboard = () => {
 				// GET DATA FROM LOCAL STORAGE
 				const storedData = localStorage.getItem('dbData');
 				console.log(storedData);
-				if (storedData) {
+				if (!storedData) {
 					setDashboard(JSON.parse(storedData));
 				} else {
 					const response = await dashboardData();
