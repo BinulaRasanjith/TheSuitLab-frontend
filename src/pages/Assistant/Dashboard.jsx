@@ -47,8 +47,8 @@ const Dashboard = () => {
 	var lastWeekOrderCounts;
 	
 	if (dashboardContent.weeklyPerformance) {
-		thisWeekOrderCounts = dashboardContent.weeklyPerformance.thisWeekPerformance.map((entry) => entry.orderCount);
-		lastWeekOrderCounts = dashboardContent.weeklyPerformance.lastWeekPerformance.map((entry) => entry.orderCount);
+		thisWeekOrderCounts = dashboardContent.weeklyPerformance && dashboardContent.weeklyPerformance.thisWeekPerformance.map((entry) => entry.orderCount);
+		lastWeekOrderCounts = dashboardContent.weeklyPerformance && dashboardContent.weeklyPerformance.lastWeekPerformance.map((entry) => entry.orderCount);
 	} else {
 		console.error("Weekly performance data is not available in the JSON response.");
 	}

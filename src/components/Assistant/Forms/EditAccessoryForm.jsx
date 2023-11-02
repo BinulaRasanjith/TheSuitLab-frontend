@@ -9,18 +9,19 @@ import Input from "../../Input/Input";
 const EditAccessoryForm = ({ isOpen, onClose, thisItem }) => {
 
     const [newAccessoryData, setNewAccessoryData] = useState({
+        itemId: thisItem.accessory && thisItem.itemId,
         brand: thisItem.accessory && thisItem.accessory.brand,
         itemName: thisItem.accessory && thisItem.accessory.itemName,
         materialType: thisItem.accessory && thisItem.accessory.material,
         colorCode: thisItem.accessory && thisItem.accessory.color,
-        price: thisItem.item && thisItem.accessory.price,
+        price: thisItem.item && thisItem.item.price,
         accessoryType: thisItem.accessory && thisItem.accessory.accessoryType,
-        pattern: thisItem.accessory && thisItem.accessory.accessoryType === "tie" ? thisItem.accessory.pattern : "",
-        buckleType: thisItem.accessory && thisItem.accessory.accessoryType === "belt" ? thisItem.accessory.buckleType : "",
-        shoeStyle: thisItem.accessory && thisItem.accessory.accessoryType === "shoe" ? thisItem.accessory.style : "",
-        image: "",
-        // image: "./images/default.png",
+        pattern: thisItem.accessory && thisItem.accessory.accessoryType === "tie" ? thisItem.tie.pattern : "",
+        buckleType: thisItem.accessory && thisItem.accessory.accessoryType === "belt" ? thisItem.belt.buckleType : "",
+        shoeStyle: thisItem.accessory && thisItem.accessory.accessoryType === "shoe" ? thisItem.shoe.style : "",
+        // size: thisItem.accessory && thisItem.accessory.accessoryType === "shoe" ? thisItem.shoe && thisItem.shoe.size : thisItem.accessory && thisItem.accessory.accessoryType === "belt" ? thisItem.belt && thisItem.belt.size : thisItem.accessory && thisItem.accessory.accessoryType === "tie" ? thisItem.accessory && thisItem.tie.width : "",
     });
+    console.log(thisItem); // TODO: REMOVE THIS
 
     const toast = useToast();
     const [selectedFile, setSelectedFile] = useState(null);
@@ -253,7 +254,7 @@ const EditAccessoryForm = ({ isOpen, onClose, thisItem }) => {
                                         placeholder="Unit Price"
                                         id="item-price"
                                         name="unitPrice"
-                                        value={newAccessoryData.unitPrice}
+                                        value={newAccessoryData.price}
                                         onChange={handleInputChange}
                                         className="mb-6"
                                     />

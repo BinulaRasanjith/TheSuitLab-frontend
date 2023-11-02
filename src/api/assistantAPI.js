@@ -19,3 +19,7 @@ export const removeThisItem = (data) => {
 export const getPrManagerDashboardData = () => {
     return api.get('/dashboard2/manager');
 }
+
+export const recentOrders = () => {
+    return api.get('/assistant/recent-orders');
+}
