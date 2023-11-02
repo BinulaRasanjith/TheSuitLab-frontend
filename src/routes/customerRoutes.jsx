@@ -10,6 +10,7 @@ import CustomSizes from "../components/Customer/CustomSizes";
 import CustomizeMeasurements from "../components/Customer/CustomizeMeasurements";
 import MaterialsFabricPattern from "../components/Customer/MaterialView/MaterialsFabricPattern";
 import MaterialsFabricSolid from "../components/Customer/MaterialView/MaterialsFabricSolid";
+import PreDesignedItemDescription from "../components/Customer/PreDesignedItemDescription";
 import PreDesignedJacketGallery from "../components/Customer/PreDesignedJacketGallery";
 import ShoesGallery from "../components/Customer/ShoesGallery";
 import StandardSizes from "../components/Customer/StandardSizes";
@@ -39,7 +40,7 @@ import PantStyleLayout from "../layouts/customerLayouts/PantStyleLayout";
 import PurchaseSuitLayout from "../layouts/customerLayouts/PurchaseSuitLayout";
 import AboutUs from "../pages/Aboutus";
 import ContactUs from "../pages/Contactus";
-import Profile from "../pages/Profile"
+import Profile from "../pages/Profile";
 import Services from "../pages/Services";
 import Home from "../pages/customer/Home";
 import LookBook from "../pages/customer/LookBook";
@@ -87,8 +88,8 @@ const costumerRoutes = {
 		{
 			path: "current-measurements",
 			element: <CurrentMeasurements />,
-
-		}, {
+		},
+		{
 			path: "purchase-suit",
 			element: <PurchaseSuitLayout />,
 			children: [
@@ -106,7 +107,7 @@ const costumerRoutes = {
 				},
 				{
 					path: ":suitType/:suitId", // Dynamic route parameter for both suit type and suit ID
-					element: <SuitDescription />,
+					element: <PreDesignedItemDescription />,
 				},
 			],
 		},
@@ -375,7 +376,6 @@ const costumerRoutes = {
 					path: ":accessoryType/:accessoryId", // Dynamic route parameter for both suit type and suit ID
 					element: <AccessoryDescription />,
 				},
-
 			],
 		},
 		{
@@ -406,8 +406,8 @@ const costumerRoutes = {
 		},
 		{
 			path: "notifications",
-			element: <Notifications />
-		}
+			element: <Notifications />,
+		},
 	],
 };
 

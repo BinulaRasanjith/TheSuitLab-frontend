@@ -21,11 +21,8 @@ const SuitDescription = () => {
 
 	const location = useLocation();
 	const pathname = location.pathname;
-	const segments = pathname.split('/');
+	const segments = pathname.split("/");
 	const hireCostumeType = segments[segments.length - 2];
-
-
-
 
 	const user = useSelector(selectUser);
 	const [suitDetails, setSuitDetails] = useState({
@@ -50,7 +47,7 @@ const SuitDescription = () => {
 		getHireCostume(suitId)
 			.then((response) => {
 				setSuitDetails(response.data);
-				// console.log(response.data);
+				console.log(response.data);
 				setSelectedImage(response.data.images[0]);
 			})
 			.catch((error) => {
@@ -65,7 +62,7 @@ const SuitDescription = () => {
 	const handleSelectSize = (size) => {
 		setSelectedSize(size);
 		setQuantity(0);
-	}
+	};
 
 	const incrementQuantity = () => {
 		if (quantity < suitDetails.size[selectedSize]) {
@@ -149,10 +146,13 @@ const SuitDescription = () => {
 
 	return (
 		<div className="grid grid-cols-1 lg:grid-cols-2 overflow-y-scroll h-full py-4 w-full">
-			<IoArrowBackCircle className="text-5xl absolute top-24 left-64 z-20" onClick={() => navigate(`/customer/hire-suit/${hireCostumeType}`)} />
+			<IoArrowBackCircle
+				className="text-5xl absolute top-24 left-64 z-20"
+				onClick={() => navigate(`/customer/hire-suit/${hireCostumeType}`)}
+			/>
 
 			<div className="flex flex-col">
-				<div className="mb-6 lg:mb-10 h-60 flex justify-center items-center">
+				<div className="mb-6 lg:mb-10 h-96 flex justify-center items-center">
 					<img
 						src={`${HIRE_COSTUME_IMAGES_URL}/${selectedImage}`}
 						alt="Selected Image"
@@ -161,7 +161,6 @@ const SuitDescription = () => {
 				</div>
 				<div className="flex md:flex-row flex-col items-center md:items-start justify-center md:justify-between mb-4">
 					{suitDetails.images.map((image, index) => (
-
 						<div key={index} className="h-28 w-20">
 							<img
 								onClick={() => handleImageClick(image)}
@@ -169,13 +168,10 @@ const SuitDescription = () => {
 								alt={`Image ${index + 1}`}
 								className="block h-full m-1 object-cover rounded"
 							/>
-
 						</div>
 					))}
 				</div>
-
 			</div>
-
 
 			<div className="pl-10 w-full border-l-2 border-gray-600 md:h-full md:overflow-y-scroll">
 				<div className="mb-6 ">
@@ -191,14 +187,15 @@ const SuitDescription = () => {
 								LKR. {suitDetails.price * (112 / 100)}
 							</span>
 							<span className="flex text-xl">
-								<p className="text-red-600">12%</p>
+								<p className="text-red-600">-12%</p>
 								<p>OFF</p>
 							</span>
-
 						</div>
 					</p>
 					<p className={`text-gray-700 font-semibold`}>
-						{suitDetails.rentStatus === "available" ? "Available for Rent" : "Not Available for Rent"}
+						{suitDetails.rentStatus === "available"
+							? "Available for Rent"
+							: "Not Available for Rent"}
 					</p>
 				</div>
 
@@ -209,21 +206,18 @@ const SuitDescription = () => {
 					<div>
 						<div className="flex flex-wrap -mb-2">
 							{suitDetails.size &&
-								Object.entries(suitDetails.size).map(
-									([key, value], index) => (
-										<div
-
-											key={index}
+								Object.entries(suitDetails.size).map(([key, value], index) => (
+									<div key={index}>
+										<button
+											className={`px-4 py-2 mb-2 mr-4 font-semibold border rounded-md hover:bg-gray-400 ${
+												selectedSize === key ? "bg-black text-white" : ""
+											} `}
+											onClick={() => handleSelectSize(key)}
 										>
-											<button
-												className={`px-4 py-2 mb-2 mr-4 font-semibold border rounded-md hover:bg-gray-400 ${selectedSize === key ? 'bg-black text-white' : ''} `}
-												onClick={() => handleSelectSize(key)}
-											>
-												{key} {value}
-											</button>
-										</div>
-									)
-								)}
+											{key} : {value}
+										</button>
+									</div>
+								))}
 						</div>
 					</div>
 				</div>
@@ -252,7 +246,6 @@ const SuitDescription = () => {
 				</div>
 
 				<div className="flex flex-col pb-4 mt-6  ">
-
 					<h2 className="text-lg font-bold text-gray-600 mb-4 ">
 						Renting Period
 					</h2>
@@ -286,7 +279,6 @@ const SuitDescription = () => {
 					</div>
 				</div>
 
-
 				<div className="flex flex-wrap items-center gap-4">
 					<Button
 						className="flex flex-col justify-center w-1/3 py-6"
@@ -315,10 +307,8 @@ const SuitDescription = () => {
 					>
 						View Cart
 					</Button>
-
 				</div>
 			</div>
-
 		</div>
 	);
 };
