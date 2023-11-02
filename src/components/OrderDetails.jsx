@@ -74,6 +74,19 @@ function OrderDetails() {
 	const trimmedOrderId = orderId.substring(15);
 
 	async function handleSetTailor() {
+		if (!tailor) {
+			toast(
+				{
+					title: "Error",
+					description: "Please select a tailor",
+					status: "warning",
+					duration: 3000,
+					isClosable: true,
+				}
+			)
+			return;
+		}
+
 		try {
 			console.log(purchaseOrder.ItemModels[0].itemId, tailor);
 			const res = await assignTailor(purchaseOrder.ItemModels[0].itemId, tailor);
@@ -102,7 +115,7 @@ function OrderDetails() {
 		}
 	}
 	return (
-		<div className="flex py-4 px-2 max-h-[calc(100vh-4rem)]">
+		<div className="flex py-4 px-2 max-h-[calc(100vh-4rem)] w-full">
 			<div className="flex max-h-[calc(100vh-4rem)] z-10 bg-transparent absolute justify-start item-start space-y-2 flex-col">
 				<button
 					onClick={handleBack}

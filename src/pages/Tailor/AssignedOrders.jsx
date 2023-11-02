@@ -10,52 +10,53 @@ import { selectUser } from '../../store/slices/authSlice';
 // import OrderRecord from "../../components/OrderItems/OrderRecord";
 // import { OPERATION_ASSISTANT, PRODUCT_MANAGER, TAILOR } from "../../constants";
 // import { selectUser } from "../../store/slices/authSlice"
-const orders = [
-    {
-        orderId: 1,
-        custname: "Nimal Fonseka",
-        itemCount: 5,
-        status: "completed",
-        orderedDate: '2023-10-22',
-        requiredDate: '2023-11-22',
-    },
-    {
-        orderId: 2,
-        custname: "Siril Piyadasa",
-        itemCount: 2,
-        status: "Pending",
-        orderedDate: '2023-10-22',
-        requiredDate: '2023-11-22',
-    },
-    {
-        orderId: 3,
-        custname: "Anne Perera",
-        itemCount: 3,
-        status: "Processing",
-        orderedDate: '2023-10-22',
-        requiredDate: '2023-11-22',
-    },
-    {
-        orderId: 4,
-        custname: "James Peiris",
-        itemCount: 8,
-        status: "Completed",
-        orderedDate: '2023-09-10',
-        requiredDate: '2023-10-22',
-    },
-    {
-        orderId: 5,
-        custname: "Rakisa Jayaweera",
-        itemCount: 1,
-        status: "Pending",
-        orderedDate: '2023-10-12',
-        requiredDate: '2023-11-28',
-    },
-];
+// const orders = [
+//     {
+//         orderId: 1,
+//         custname: "Nimal Fonseka",
+//         itemCount: 5,
+//         status: "completed",
+//         orderedDate: '2023-10-22',
+//         requiredDate: '2023-11-22',
+//     },
+//     {
+//         orderId: 2,
+//         custname: "Siril Piyadasa",
+//         itemCount: 2,
+//         status: "Pending",
+//         orderedDate: '2023-10-22',
+//         requiredDate: '2023-11-22',
+//     },
+//     {
+//         orderId: 3,
+//         custname: "Anne Perera",
+//         itemCount: 3,
+//         status: "Processing",
+//         orderedDate: '2023-10-22',
+//         requiredDate: '2023-11-22',
+//     },
+//     {
+//         orderId: 4,
+//         custname: "James Peiris",
+//         itemCount: 8,
+//         status: "Completed",
+//         orderedDate: '2023-09-10',
+//         requiredDate: '2023-10-22',
+//     },
+//     {
+//         orderId: 5,
+//         custname: "Rakisa Jayaweera",
+//         itemCount: 1,
+//         status: "Pending",
+//         orderedDate: '2023-10-12',
+//         requiredDate: '2023-11-28',
+//     },
+// ];
 
 const AssignedOrders = () => {
     const user = useSelector(selectUser)
 
+    const [orders, setOrders] = useState([]);
     const [searchInput, setSearchInput] = useState('');
     const [sortByDate, setSortByDate] = useState("relevant");
 
@@ -82,11 +83,11 @@ const AssignedOrders = () => {
             try {
                 const res = await getTailorsPurchaseOrders(user.id);
                 console.log(res.data);
+                setOrders(res.data);
             } catch (error) {
                 console.log(error);
             }
         }
-
         fetchOrders();
     }, [])
 
@@ -183,7 +184,7 @@ const AssignedOrders = () => {
                                         </thead>
                                         <tbody>
                                             <div className="flex flex-col gap-1">
-                                                {filteredOrder.map((item, index) => (
+                                                {orders.map((item, index) => (
                                                     <tr key={index} className="flex items-center text-center border hover:bg-gray-300 text-black whitespace-nowrap font-medium">
                                                         <td className="w-40"> <Link to={`${item.orderId}`}>{item.orderId}</Link></td>
                                                         <td className="w-40">{item.custname}</td>
