@@ -11,12 +11,11 @@ import { TbArrowBackUp } from "react-icons/tb";
 import { useSelector } from "react-redux"; // TODO
 import { Outlet } from "react-router-dom";
 import { useNavigate } from "react-router-dom"; // TODO
+import { TbStarFilled } from "react-icons/tb";
 
 import ContentWrapper from "../../components/ContentWrapper";
 import MainLayout from "../../components/MainLayout";
-// import Navbar from "../../components/TopNavBar/Staffnavbar"
 import Navbar from "../../components/Navbar";
-// import Sidebar from "../../components/AssistantSidebar"
 import Sidebar from "../../components/Sidebar/Sidebar";
 import { OPERATION_ASSISTANT } from "../../constants"; // TODO
 import { selectUser } from "../../store/slices/authSlice"; // TODO
@@ -69,7 +68,7 @@ const assistantSidebarItems = [
 	},
 	{
 		label: "Reviews",
-		icon: <FaUserCircle />,
+		icon: <TbStarFilled />,
 		to: "/assistant/reviews",
 	},
 	// {

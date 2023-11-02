@@ -20,10 +20,10 @@ const StateCard = ({ CardTitle, BigCount, Icon, PercentageValue }) => {
 					<div className="flex flex-col justify-center">
 						{PercentageValue > 0 ? <FaArrowUp className="text-green-500" /> : PercentageValue < 0 ? <FaArrowDown className="text-orange-500" /> : ""}
 					</div>
-					<div>{PercentageValue}%</div>
+					<div>{PercentageValue > 1000 ? "1000+" : PercentageValue < -1000 ? "-1000+" : PercentageValue}%</div>
 				</div>
 				<div className="text-sm font-regular text-zinc-400">
-					Since last week
+					than last week
 				</div>
 			</div>
 		</div>

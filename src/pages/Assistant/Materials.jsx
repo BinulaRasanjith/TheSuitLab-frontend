@@ -20,7 +20,7 @@ const Materials = () => {
     });
 
     const [currentPage, setCurrentPage] = useState(1);
-    const recordsPerPage = 4;
+    const recordsPerPage = 5;
 
     const startIndex = (currentPage - 1) * recordsPerPage;
     const endIndex = startIndex + recordsPerPage;
