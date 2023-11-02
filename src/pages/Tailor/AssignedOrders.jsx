@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import { IoArrowBackCircle } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import { getTailorsPurchaseOrders } from '../../api/purchaseOrdersAPI';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../store/slices/authSlice';
 
 // import OrderRecord from "../../components/OrderItems/OrderRecord";
 // import { OPERATION_ASSISTANT, PRODUCT_MANAGER, TAILOR } from "../../constants";
@@ -10,7 +13,7 @@ import { Link } from 'react-router-dom';
 const orders = [
     {
         orderId: 1,
-        custname: "Malini Fonseka",
+        custname: "Nimal Fonseka",
         itemCount: 5,
         status: "completed",
         orderedDate: '2023-10-22',
@@ -51,6 +54,7 @@ const orders = [
 ];
 
 const AssignedOrders = () => {
+    const user = useSelector(selectUser)
 
     const [searchInput, setSearchInput] = useState('');
     const [sortByDate, setSortByDate] = useState("relevant");
@@ -72,6 +76,20 @@ const AssignedOrders = () => {
         });
         setSortedByDate(sortedData);
     }, [sortByDate]);
+
+    useEffect(() => {
+        const fetchOrders = async () => {
+            try {
+                const res = await getTailorsPurchaseOrders(user.id);
+                console.log(res.data);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        fetchOrders();
+    }, [])
+
 
 
     const filteredOrder = sortedOrderData.filter((order) => {

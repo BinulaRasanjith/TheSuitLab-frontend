@@ -33,10 +33,10 @@ const sidebarItems = [
 				label: "Fabric",
 				to: "/manager/materials/fabric",
 			},
-			{
-				label: "String",
-				to: "/manager/materials/string",
-			},
+			// {
+			// 	label: "String",
+			// 	to: "/manager/materials/string",
+			// },
 			{
 				label: "Buttons",
 				to: "/manager/materials/buttons",
