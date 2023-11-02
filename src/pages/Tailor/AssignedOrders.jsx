@@ -189,8 +189,10 @@ const AssignedOrders = () => {
                                                         <td className="w-40"> <Link to={`${item.orderId}`}>{item.orderId}</Link></td>
                                                         <td className="w-40">{item.custname}</td>
                                                         <td className="w-40">{item.itemCount}</td>
-                                                        <td className="w-40">{item.orderedDate}</td>
-                                                        <td className="w-40">{item.requiredDate}</td>
+                                                        <td className="w-40">{item.orderedDate.split("T")[0]}</td>
+                                                        <td className="w-40">
+                                                            {item.requiredDate ? item.requiredDate : "Pending"}
+                                                        </td>
                                                         <td className="w-40"> {item.status}</td>
                                                         <td className="w-40 py-2">
 
